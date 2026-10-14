@@ -1,0 +1,215 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/discovery-selection" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Discovery decisions and build.yaml selectors | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/discovery-selection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Discovery decisions and build.yaml selectors | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/discovery-selection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/discovery-selection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/discovery-selection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/discovery-selection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/discovery-selection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Discovery decisions and build.yaml selectors","item":"https://docs.oyzu.ai/docs/reference/discovery-selection"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
+<script src="/assets/js/runtime~main.fa57f0d9.js" defer="defer"></script>
+<script src="/assets/js/main.af762f7e.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/node">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and environments</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/configuration"><span class="linkLabel_WmDU">Cascading configuration (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/project-environments"><span class="linkLabel_WmDU">Project environments (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/discovery-selection"><span class="linkLabel_WmDU">Discovery decisions and build.yaml selectors</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-management-development"><span class="linkLabel_WmDU">Core tool-management development integration</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/node"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Configuration and environments</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Discovery decisions and build.yaml selectors</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Discovery decisions and build.yaml selectors</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Current CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/discovery-selection.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Experimental. Static discovery decides each exclusive role of a Node or Python
+target, such as its package manager or formatter, from native project files. It
+reads bounded metadata, never runs a tool, script or configuration file, and
+never breaks a tie silently. When native evidence settles a role, no Oyzu
+configuration is needed. When it does not, discovery fails and names both the
+conflicting inputs and the <code>build.yaml</code> declaration that settles the role.
+<code>oyzu build --plan</code> shows every decision with its reason.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-role-is-decided">How a role is decided<a href="#how-a-role-is-decided" class="hash-link" aria-label="Direct link to How a role is decided" title="Direct link to How a role is decided" translate="no">​</a></h2>
+<p>Without <code>build.yaml</code>, discovery selects a native project at the root or searches
+below that root for targets. The inventory walk stops descending as soon as it
+finds a target; the selected native builder owns discovery within that target.
+Nested Git repositories and directories with their own <code>build.yaml</code> also stop
+the walk. Existing generated/dependency directory exclusions, the depth limit
+of 32 and the limit of 1,024 targets still apply. Ordinary files below an
+already selected target do not add inventory traversal work. These rules apply
+equally to human and JSON discovery output.</p>
+<p>The invocation&#x27;s <a class="" href="/docs/reference/configuration#inspection-and-selection">configuration boundary</a>
+also bounds conventional target discovery. An empty or malformed ancestor <code>.git</code>
+marker does not select that ancestor as a workspace: for standalone sibling
+projects with no enclosing Oyzu configuration, <code>oyzu -C first run list</code> discovers
+only <code>first</code>&#x27;s tasks. In a real Git workspace, discovery still includes its
+conventional targets, and an unqualified task exposed by several targets remains
+ambiguous. Use the target-qualified task named by the error, or <code>--root first</code>
+when deliberately selecting a narrower root. Gitdir-pointer repositories and
+linked worktrees follow the same boundary rules.</p>
+<p>Each detector reports a candidate with evidence of one strength. The strongest
+evidence wins:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Strength</th><th>Examples</th></tr></thead><tbody><tr><td>declared</td><td>a <code>test</code> script that runs exactly one recognized test runner</td></tr><tr><td>native</td><td>a lockfile, <code>package.json</code> <code>packageManager</code>, a framework configuration file, a <code>pyproject.toml</code> tool table</td></tr><tr><td>conventional</td><td>a declared dependency, a settings-only <code>pnpm-workspace.yaml</code>, a <code>uv.lock</code> that locks no packages</td></tr><tr><td>default</td><td>the documented default when nothing else applies, such as npm, ESLint, Prettier, pip or Ruff</td></tr></tbody></table>
+<p>Two different candidates with the strongest evidence are a conflict. A candidate
+the builder has no adapter for, such as <code>packageManager: nub@0.8.3</code>, is
+unsupported. Both fail discovery; neither registration order nor file order
+picks a winner.</p>
+<p>Native rules that settle a role without configuration:</p>
+<ul>
+<li class=""><strong>Lockfiles beat a settings-only <code>pnpm-workspace.yaml</code>.</strong> pnpm reads settings
+from <code>pnpm-workspace.yaml</code> and can write the file on its own; only its
+<code>packages</code> list declares a workspace (the pnpm adapter already treats a
+settings-only file as no workspace). A file without <code>packages</code> is
+conventional pnpm evidence, so <code>package-lock.json</code> (npm) outranks it, while
+with no lockfile it still selects pnpm over the npm default. A file with
+<code>packages</code>, or one that is not a YAML mapping, stays native and conflicts with
+another manager&#x27;s lockfile.</li>
+<li class=""><strong>The runner a compound <code>test</code> script names.</strong> When the <code>test</code> script is not
+exactly a recognized command (<code>jest</code>, <code>vitest run</code>, <code>mocha</code>, ...) but its
+<code>&amp;&amp;</code>, <code>||</code>, <code>;</code> and <code>|</code> segments name exactly one of <code>jest</code>, <code>vitest</code>,
+<code>mocha</code> or <code>node --test</code>, that runner is declared evidence. Segments such as
+<code>pnpm lint</code>, <code>npm run unit</code> or <code>yarn unit</code> are followed into the referenced
+package script. Leading <code>NAME=value</code> assignments, <code>cross-env</code>, <code>npx</code> and
+<code>&lt;manager&gt; exec</code> are skipped. A script with quotes, <code>$</code>, backticks,
+parentheses, redirection or manager flags such as <code>--filter</code> is not read; its
+framework is then decided by the remaining evidence. The script itself still
+runs natively, without report instrumentation unless it is an exact
+recognized command.</li>
+<li class=""><strong>A <code>uv.lock</code> that locks no packages.</strong> uv records the project itself in
+<code>uv.lock</code>, so a lock without any <code>[[package]]</code> cannot belong to this project&#x27;s
+manager. It is conventional evidence and yields to <code>poetry.lock</code> or
+<code>[tool.poetry]</code>. A <code>uv.lock</code> that does lock packages stays native.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="selecting-a-role-in-buildyaml">Selecting a role in build.yaml<a href="#selecting-a-role-in-buildyaml" class="hash-link" aria-label="Direct link to Selecting a role in build.yaml" title="Direct link to Selecting a role in build.yaml" translate="no">​</a></h2>
+<p>When discovery fails, declare the target and add the selector the error names
+under <code>with</code>:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">pytest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> python/package</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">with</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">formatter</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> ruff</span><br></div></code></pre></div></div>
+<p>If native files identify more than one builder, select <code>uses</code> first. For
+example, the pinned Mermaid root contains both <code>package.json</code> and <code>Dockerfile</code>;
+its <code>build.yaml</code> needs <code>mermaid: {uses: node/app}</code> before the Node test-runner
+decision can be made. That choice does not require a <code>with.test-framework</code>
+selector: <code>pnpm lint &amp;&amp; vitest run</code> selects Vitest from the native test script.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Builder</th><th><code>with</code> key</th><th>Values</th></tr></thead><tbody><tr><td><code>node/app</code>, <code>node/package</code></td><td><code>package-manager</code></td><td><code>npm</code>, <code>pnpm</code>, <code>yarn</code></td></tr><tr><td></td><td><code>test-framework</code></td><td><code>node-test</code>, <code>jest</code>, <code>vitest</code>, <code>mocha</code>, <code>custom</code></td></tr><tr><td></td><td><code>linter</code></td><td><code>eslint</code>, <code>biome</code></td></tr><tr><td></td><td><code>formatter</code></td><td><code>prettier</code>, <code>biome</code></td></tr><tr><td><code>python/app</code>, <code>python/package</code>, <code>python/library</code></td><td><code>package-manager</code></td><td><code>pip</code>, <code>uv</code>, <code>poetry</code></td></tr><tr><td></td><td><code>linter</code></td><td><code>ruff</code>, <code>flake8</code></td></tr><tr><td></td><td><code>formatter</code></td><td><code>ruff</code>, <code>black</code></td></tr></tbody></table>
+<p>The keys match the role names in <code>--plan</code> and in the target&#x27;s
+<code>oyzu.dev/discovery</code> plan extension. A selection wins over every observation;
+discovery still records the observations, and the selected value must be one of
+the listed values. Any other value, a non-string value or any other <code>with</code> key
+fails. A selection applies to the declared target&#x27;s own root only; it does not
+change the decisions of packages inside a Node workspace. Tool versions are not
+selected here: they belong in <code>oyzu.toml</code>.</p>
+<p>Example errors:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">conflicting Python formatter candidates black, ruff: black via pyproject.toml tool.black; ruff via pyproject.toml tool.ruff; declare the intended one for this target in build.yaml with `with: {formatter: black}` or `with: {formatter: ruff}`</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">conflicting Node package manager candidates nub, pnpm (nub unsupported): nub via package.json /packageManager; pnpm via pnpm-lock.yaml lockfile; declare the intended one for this target in build.yaml with `with: {package-manager: pnpm}`</span><br></div></code></pre></div></div>
+<p>The suggestions list the supported candidates that were observed; when none
+was, they list every supported value. Selecting a manager or runner the project
+does not natively use can still fail later, in that tool&#x27;s own preparation or
+test run.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="decisions-in-the-build-preview">Decisions in the build preview<a href="#decisions-in-the-build-preview" class="hash-link" aria-label="Direct link to Decisions in the build preview" title="Direct link to Decisions in the build preview" translate="no">​</a></h2>
+<p><code>oyzu build --plan</code> shows a <code>Discovered</code> table per target with each role, the
+selected candidate and the reason. With <code>--json</code>, each entry of <code>targets</code> has a
+<code>discovery</code> object mapping the role to <code>selected</code> and <code>reason</code>. For example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">package-manager  npm  native package-lock.json lockfile; outranks pnpm (conventional pnpm-workspace.yaml settings without packages)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">formatter        ruff build.yaml with.formatter; discovery also observed black</span><br></div></code></pre></div></div>
+<p>A reason names the strength and evidence of the winner and every candidate it
+outranked with non-default evidence. Executed builds keep the complete
+observations, detector registry and any <code>selector</code> in the plan&#x27;s
+<code>oyzu.dev/discovery</code> extension.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-toolchain-files">Rust toolchain files<a href="#rust-toolchain-files" class="hash-link" aria-label="Direct link to Rust toolchain files" title="Direct link to Rust toolchain files" translate="no">​</a></h2>
+<p>The Rust builder reads <code>rust-toolchain.toml</code> and <code>rust-toolchain</code> in every form
+rustup accepts:</p>
+<ul>
+<li class="">the legacy <code>rust-toolchain</code> file holding only a toolchain name, such as
+<code>nightly-2020-07-10</code>, <code>stable</code> or <code>1.95.0</code>;</li>
+<li class="">the TOML <code>[toolchain]</code> table, in either file, with <code>channel</code> (<code>stable</code>,
+<code>beta</code>, <code>nightly</code>, <code>&lt;major.minor&gt;</code>, <code>&lt;major.minor.patch&gt;</code>, optionally dated
+or with a host triple), <code>components</code>, <code>targets</code> and <code>profile</code>;</li>
+<li class="">a table without <code>channel</code>, which rustup resolves to the default toolchain:
+Oyzu then uses its own default (the <code>[tools] rust</code> selection in <code>oyzu.toml</code>,
+otherwise the adapter baseline) and keeps the declared components, targets
+and profile;</li>
+<li class=""><code>path</code>, a local toolchain directory. Oyzu cannot provision it, so
+<code>oyzu pin</code> and build tool resolution fail with <code>toolchain.path names the local toolchain ...; select a Rust release in oyzu.toml with [tools] rust = &quot;&lt;version&gt;&quot;</code>. An explicit
+<code>[tools] rust</code> overrides it.</li>
+</ul>
+<p>An empty <code>[toolchain]</code> table, <code>channel</code> together with <code>path</code>, or an empty or
+whitespace-containing channel fails. Both files together still fail with
+<code>both rust-toolchain.toml and rust-toolchain exist</code>, although rustup itself
+prefers <code>rust-toolchain</code>. Reading a channel is not resolving it: the Rust tool
+backend currently resolves exact three-part stable versions, and other channels
+report that backend version selection is needed.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits-and-verification">Limits and verification<a href="#limits-and-verification" class="hash-link" aria-label="Direct link to Limits and verification" title="Direct link to Limits and verification" translate="no">​</a></h2>
+<p>Selections are read once, at discovery, from the frozen <code>build.yaml</code>
+inventory. Captured workspace planning reuses the target&#x27;s decisions for its
+root. The host development composition of npm workspace tests and quality
+checks re-detects each package, including the root, without them, so a root
+that needed a selection fails there. Node output profiles and the Python test
+framework have no selector.</p>
+<p>The six discovery stops in the feasibility corpus
+are covered by fixtures in <code>tests/integration/discovery.rs</code>; the shared
+resolver by <code>discovery::detectors</code> unit tests; Rust toolchain forms by
+<code>builders::rust::requirement_evidence</code> unit tests. The
+pinned-corpus qualification
+records a compiled-CLI Windows plan against all six real source commits,
+including required selector reruns and its limits. It does not qualify builds
+or other host platforms.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/project-environments"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Project environments (experimental)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-management-development"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Core tool-management development integration</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#how-a-role-is-decided" class="table-of-contents__link toc-highlight">How a role is decided</a></li><li><a href="#selecting-a-role-in-buildyaml" class="table-of-contents__link toc-highlight">Selecting a role in build.yaml</a></li><li><a href="#decisions-in-the-build-preview" class="table-of-contents__link toc-highlight">Decisions in the build preview</a></li><li><a href="#rust-toolchain-files" class="table-of-contents__link toc-highlight">Rust toolchain files</a></li><li><a href="#limits-and-verification" class="table-of-contents__link toc-highlight">Limits and verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

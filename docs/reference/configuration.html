@@ -1,0 +1,650 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/configuration" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Cascading configuration (experimental) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/configuration"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Cascading configuration (experimental) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/configuration.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/configuration.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/configuration"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/configuration" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/configuration" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cascading configuration (experimental)","item":"https://docs.oyzu.ai/docs/reference/configuration"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
+<script src="/assets/js/runtime~main.fa57f0d9.js" defer="defer"></script>
+<script src="/assets/js/main.af762f7e.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/node">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and environments</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/configuration"><span class="linkLabel_WmDU">Cascading configuration (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/project-environments"><span class="linkLabel_WmDU">Project environments (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/discovery-selection"><span class="linkLabel_WmDU">Discovery decisions and build.yaml selectors</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-management-development"><span class="linkLabel_WmDU">Core tool-management development integration</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/node"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Configuration and environments</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Cascading configuration (experimental)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Cascading configuration (experimental)</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>Current CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/configuration.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>The configuration engine implements the public OEP-0002 draft in Rust. Its CLI and wire formats remain experimental; implementation authorization does not change the proposal&#x27;s maintainer-review status. See the acceptance contract and <a class="" href="/docs/support/capabilities">measured implementation status</a>.</p>
+<p><code>oyzu config show</code> presents resolved status and profile first, followed by setting
+tables grouped by namespace and the computation digest. Keys retain their exact
+spelling; booleans use <code>true</code>/<code>false</code> and empty lists use <code>[]</code>. Environment values
+and task bodies remain redacted under configuration inspection&#x27;s contract; use
+<code>oyzu env</code> for environment inspection. <code>--json</code> retains the structured result.
+See the <a class="" href="/docs/reference/cli-output#human-presentation-standard">CLI style guide</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="local-and-ci-execution-context">Local and CI execution context<a href="#local-and-ci-execution-context" class="hash-link" aria-label="Direct link to Local and CI execution context" title="Direct link to Local and CI execution context" translate="no">​</a></h2>
+<p>Oyzu captures caller environment hints once when opening the configuration session,
+before build workers set their own <code>CI=true</code>. Detection is offline and independent
+of terminals, hostnames, network access and operating system. This is unverified
+execution context, never runner authentication, authorization or release eligibility.</p>
+<p>The following nonempty markers identify providers. Empty values and the trimmed,
+case-insensitive values <code>false</code>, <code>0</code>, <code>no</code>, and <code>off</code> disable that individual marker.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Provider</th><th>Marker</th></tr></thead><tbody><tr><td>GitHub Actions / Gitea Actions</td><td><code>GITHUB_ACTIONS</code> / <code>GITEA_ACTIONS</code></td></tr><tr><td>GitLab / Azure Pipelines</td><td><code>GITLAB_CI</code> / <code>TF_BUILD</code></td></tr><tr><td>Jenkins / TeamCity / Bamboo</td><td><code>JENKINS_URL</code> / <code>TEAMCITY_VERSION</code> / <code>bamboo_planKey</code></td></tr><tr><td>Buildkite / CircleCI / Travis / AppVeyor</td><td><code>BUILDKITE</code> / <code>CIRCLECI</code> / <code>TRAVIS</code> / <code>APPVEYOR</code></td></tr><tr><td>Bitbucket Pipelines / Bitrise</td><td><code>BITBUCKET_BUILD_NUMBER</code> / <code>BITRISE_IO</code></td></tr><tr><td>Google Cloud Build</td><td><code>BUILDER_OUTPUT</code></td></tr><tr><td>AWS CodeBuild / Harness</td><td><code>CODEBUILD_BUILD_ARN</code> / <code>HARNESS_BUILD_ID</code></td></tr><tr><td>Codefresh / GoCD / Prow</td><td><code>CF_BUILD_ID</code> / <code>GO_PIPELINE_LABEL</code> / <code>PROW_JOB_ID</code></td></tr><tr><td>Drone / Cirrus / Semaphore</td><td><code>DRONE</code> / <code>CIRRUS_CI</code> / <code>SEMAPHORE</code></td></tr><tr><td>Netlify / Vercel / Xcode Cloud</td><td><code>NETLIFY</code> / <code>VERCEL</code> / <code>CI_XCODE_PROJECT</code></td></tr></tbody></table>
+<p>TaskCluster requires both <code>TASK_ID</code> and <code>RUN_ID</code> to be nonempty (<code>RUN_ID=0</code> is valid).
+Additionally, exact <code>CI=woodpecker</code>, <code>CI_NAME=sourcehut</code>, and <code>CI_NAME=codeship</code>
+identify those providers. Any enabled <code>CI</code> value selects CI behavior even when the
+provider is unknown. Multiple provider matches are retained in sorted order;
+<code>CI=false</code> disables only the generic hint, not an enabled vendor marker. With no
+matching signal the context is local. Unknown platforms without a recognized
+marker must supply the conventional <code>CI=true</code>; no detector can identify every
+future or privately hosted system without a signal. Generic variables such as
+<code>BUILD_ID</code> alone are deliberately insufficient.</p>
+<p><code>config explain</code> exposes <code>executionContext</code> with <code>ci</code>, sorted <code>providers</code>, and
+matched variable names in <code>signals</code>. Values and private runner URLs are not
+recorded. Build plans retain the same context in <code>oyzu.dev/execution-context</code>.
+The detector follows the environment-marker approach used by
+<a href="https://github.com/watson/ci-info" target="_blank" rel="noopener noreferrer" class="">ci-info</a>; its implementation is first-party
+and adds no dependency or copied vendor dataset.</p>
+<p>Plain <code>oyzu build</code> defaults to artifact building and packaging locally. In CI it
+also admits the builder&#x27;s available test, lint and format-check stages. Existing
+<code>checks.required</code>, a positive coverage minimum, and explicit task prerequisites
+remain effective locally. <code>oyzu build --full</code> enables all available quality gates regardless of context;
+it does not change context detection or profile selection. <code>config explain</code> includes the resolved <code>fullBuild</code> request
+(default <code>false</code>); build plans record <code>fullRequested</code>. The existing
+<code>oyzu --profile ci build</code> also requests full stages but selects the CI profile.
+CI needs no extra flags. A different profile
+or <code>--no-profile</code> does not turn off detected CI checks. See
+<a class="" href="/docs/reference/build-tasks#local-fast-builds-and-ci-checks">build context behavior</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="trusted-environment-and-credential-destinations">Trusted environment and credential destinations<a href="#trusted-environment-and-credential-destinations" class="hash-link" aria-label="Direct link to Trusted environment and credential destinations" title="Direct link to Trusted environment and credential destinations" translate="no">​</a></h2>
+<p>Project trust controls are <code>trust.enabled</code> (boolean, default <code>true</code>) and
+<code>trust.parents</code> (absolute folder paths, default <code>[]</code>). They and <code>platform.url</code>,
+<code>platform.account</code>, <code>cache.remote</code>, <code>cache.ciRemote</code> are rejected in project/local
+scope, including profile overlays. Set them in user/global, machine or
+administrative configuration. Supported invocation environment sources are
+<code>OYZU_PROJECT_TRUST</code>, <code>OYZU_PLATFORM_URL</code>, <code>OYZU_PLATFORM_ACCOUNT</code>,
+<code>OYZU_CACHE_REMOTE</code> and <code>OYZU_CACHE_CI_REMOTE</code>; each overrides ordinary files while
+remaining subject to administrative constraints. <code>OYZU_PROJECT_TRUST</code> accepts
+true/false, on/off, yes/no or 1/0. See
+<a class="" href="/docs/reference/project-environments#trust-a-project-folder">folder trust</a> for the environment
+application boundary and native user-state records.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-inventory-migration">Build inventory migration<a href="#build-inventory-migration" class="hash-link" aria-label="Direct link to Build inventory migration" title="Direct link to Build inventory migration" translate="no">​</a></h2>
+<p><code>build.yaml</code> now accepts a <code>builds</code> mapping with <code>uses</code>, <code>path</code>, <code>platforms</code>,
+<code>depends_on</code>, <code>materialize</code>, <code>bindings</code> and <code>with</code> per entry. <code>depends_on</code> is an ordering-only list of producer build names; it does not transfer artifacts. <code>bindings</code> remains
+discovery-only and fails captured-build admission. Configuration owns normalization and freezes
+all declared platforms; builders own validation of <code>with</code>. See the
+Rust build options for the implemented options and
+execution limits. This is a partial implementation of the proposed build model,
+not support for every future example. Tool requirements remain in TOML and lock
+identities remain in <code>oyzu.lock</code>. The previous flat inventory is retained for
+compatibility; do not mix it with a <code>builds</code> envelope.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites-and-quick-start">Prerequisites and quick start<a href="#prerequisites-and-quick-start" class="hash-link" aria-label="Direct link to Prerequisites and quick start" title="Direct link to Prerequisites and quick start" translate="no">​</a></h2>
+<p>Configuration commands default to human-readable output. Pass global <code>--json</code>
+for structured results and errors; see <a class="" href="/docs/reference/cli-output">CLI output</a>.</p>
+<p>Use an Oyzu CLI built from this branch; these commands are not a promise about older releases. Standalone configuration inspection and editing require no platform account, Docker, native ecosystem toolchain or network service. The client has Windows, macOS and Linux implementations; platform qualification and measured checks are tracked in <a class="" href="/docs/support/capabilities">implementation status</a>. Running tasks or builds additionally requires their explicitly provisioned native tools.</p>
+<p>In an otherwise empty directory named <code>config-demo</code>, save this as <code>oyzu.toml</code>:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">build</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">jobs</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">profile</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">default</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;dev&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">profiles.dev.build</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">jobs</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">3</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">ui</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">color</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;never&quot;</span><br></div></code></pre></div></div>
+<p>Run these commands from its parent directory. Expected values assume standalone operation with no administrative constraints, local overrides or <code>OYZU_PROFILE</code> selection:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo config get build.jobs</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo --no-profile config get build.jobs</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo config validate --strict --all-profiles</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo --profile dev config set build.jobs 4 --project</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo config get build.jobs</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo --profile dev config unset build.jobs --project</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root config-demo config get build.jobs</span><br></div></code></pre></div></div>
+<p>The successive <code>get</code> results are <code>3</code>, <code>2</code>, <code>4</code>, and <code>2</code>. Validation reports success; with <code>--json</code> it returns <code>valid: true</code>. Removing the profile assignment exposes the base value; it does not restore the old value of <code>3</code>. Set/unset return the destination path and updated key. No project task runs in this walkthrough.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inspection-and-selection">Inspection and selection<a href="#inspection-and-selection" class="hash-link" aria-label="Direct link to Inspection and selection" title="Direct link to Inspection and selection" translate="no">​</a></h2>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config show --json</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config explain build.jobs --json</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config profiles</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config validate --strict --all-profiles</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project --profile integration run test</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project --no-profile run test</span><br></div></code></pre></div></div>
+<p><code>--root</code> explicitly fixes both build and configuration roots. Otherwise the nearest ancestor <code>build.yaml</code> within the current Git worktree selects the build; configuration still inherits from the Git worktree root. Outside Git, the outermost ancestor with Oyzu configuration or a build declaration bounds inheritance, falling back to the invocation directory. With no build declaration, that boundary remains the conventional-discovery root. <code>-C</code> / <code>--directory</code> selects the invocation directory; <code>--root</code> alone also selects that directory.</p>
+<p>Git boundaries require recognizable repository metadata: <code>HEAD</code> plus the common
+<code>objects</code> and <code>refs</code> directories. A <code>.git</code> file must contain a <code>gitdir: &lt;path&gt;</code>
+pointer to that metadata; linked worktrees use its <code>commondir</code> pointer for the
+common directories. Relative pointers are resolved from their declaring
+directory. An unborn repository and packed refs remain valid boundaries; no
+commit or loose branch ref is required. Empty <code>.git</code> directories, malformed
+pointers and missing metadata do not define a workspace. They are left intact.
+Recognition reads bounded local metadata without running Git, executing
+configuration or establishing repository integrity. Conservative nested
+repository/submodule exclusions during target traversal remain in effect.</p>
+<p>Entering an independent nested example and running <code>oyzu build --plan</code> therefore selects the example without <code>--root</code>. Its <code>oyzu.lock</code> and build outputs belong to that selected root. Parent inventories are not merged, and automatic discovery skips nested build roots. An explicit parent target path remains authoritative. Configuration retains normal project/local precedence, relative paths retain their declaring-file origin, and machine/enterprise constraints remain enforced. A selected build root may declare its default profile; ordinary target subdirectories cannot. Explicit composition and shared-workspace lock ownership are not implemented.</p>
+<p>Relative task <code>cwd</code> values are now relative to the TOML file that declares them. For a root-file override of <code>api:test</code>, use <code>cwd = &quot;api/checks&quot;</code> to select that directory. Multiple targets cannot own the same native build unit; use distinct project paths or distinct builders where appropriate.</p>
+<p>Sources resolve in this order: built-ins, verified corporate defaults, protected local administrative defaults, machine configuration, user configuration, root-to-target <code>oyzu.toml</code>, eligible root-to-target <code>oyzu.local.toml</code>, and invocation compatibility inputs. Each source applies its base followed by the selected profile. Siblings receive separate snapshots. Arrays replace, tasks replace atomically, and <code>[overrides].remove</code> removes explicit environment/task entries. Environment removals also unset inherited variables during development task execution. A task environment can replace a global variable with the same spelling, but case aliases such as <code>TOKEN</code> and <code>token</code> are rejected across the combined environment on every host.</p>
+<p>Known tool aliases share that same precedence. For example, project <code>node = &quot;22&quot;</code>
+overrides global <code>&quot;oyzu:node&quot; = &quot;latest&quot;</code>; a selected profile can override its base
+through either spelling. Inspection retains the spellings with their effective
+value and winning provenance. Lock ownership follows the winning source.
+Declaring multiple aliases for one tool in the same overlay remains ambiguous.
+Administrative constraints bind the selected value regardless of its spelling.</p>
+<p>Profile selection uses explicit <code>--profile</code> or <code>--no-profile</code>, inherited task selection, <code>OYZU_PROFILE</code>, the eligible root/default selector, inferred CI&#x27;s empty <code>ci</code> profile, then no profile. Names grant no authority. Inferred CI excludes user computation settings and local files; <code>--local-overrides</code> requests local files, subject to administrative restrictions. Excluded local files are not parsed.</p>
+<p><code>config show</code>, <code>get</code>, <code>explain</code>, <code>profiles</code>, and <code>validate</code> do not execute project tasks. If resolution is blocked, <code>show</code> and <code>explain</code> return an explicit unresolved status without effective values; <code>validate</code> remains the failing validation command. The credential-origin and trust-control scope ban is an exception: <code>platform.url</code>, <code>platform.account</code>, <code>cache.remote</code>, <code>cache.ciRemote</code>, <code>trust.enabled</code> and <code>trust.parents</code> in project/local sources are hard errors even for <code>show</code> and <code>explain</code>, in human and JSON output and in CI when that source is included. The error names the key, source and user/global or administrative remedy. Configuration inspection displays ordinary environment settings and path arrays; credential-like environment names and recognizable sensitive values remain redacted, as do task bodies. Discovery/task listing also redacts environment values. Explain includes source histories, byte spans, exclusions, constraint source IDs and the effective computation digest. Warnings carry severity, source byte spans when available, target scope, and a remedy without including the configured value. Unknown optional settings warn and stay inert; known invalid values, unsupported required capabilities, duplicate keys and unsupported schema majors fail. <code>--strict</code> rejects optional warnings. <code>--all-profiles</code> validates inactive capability requirements and profile outcomes.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="editing">Editing<a href="#editing" class="hash-link" aria-label="Direct link to Editing" title="Direct link to Editing" translate="no">​</a></h2>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config set build.jobs 8 --project</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config set checks.required &#x27;[&quot;tests&quot;]&#x27; --json-value --local</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project --profile dev config set ui.color never --global</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu --root path/to/project config unset build.jobs --project</span><br></div></code></pre></div></div>
+<p>Exactly one of <code>--global</code> (the user configuration file), <code>--project</code>, or <code>--local</code> is required. <code>--directory</code> can select a contained nested project scope. <code>unset</code> removes an assignment in that file and exposes inherited values; it does not create a removal tombstone. Ordinary edits remain available to repair invalid values even when resolution is blocked; they do not activate values or alter protected records. Edits preserve unrelated comments and unknown syntax, validate known types/scopes, and compare the original bytes before atomic replacement. Concurrent changes produce <code>CONFIG_EDIT_CONFLICT</code>. A small <code>.oyzu-config-edit.lock</code> coordinates Oyzu writers and is excluded from source snapshots.</p>
+<p>Only an explicit <code>--profile NAME</code> directs an edit into that profile. An inferred/default profile does not change the write destination: an edit without <code>--profile</code> writes the base section. Scalar booleans and numbers are parsed by type; strings are literal. Use <code>--json-value</code> for arrays or objects. The array example above uses shell quoting supported by PowerShell and POSIX shells. Edits cannot repair malformed TOML syntax; correct that syntax in an editor first. They cannot modify administrative or enrollment records.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="commands-and-output-contracts">Commands and output contracts<a href="#commands-and-output-contracts" class="hash-link" aria-label="Direct link to Commands and output contracts" title="Direct link to Commands and output contracts" translate="no">​</a></h2>
+<p>All <code>config</code> commands default to human-readable output. Add global <code>--json</code> for
+structured results and errors. The JSON schema is experimental.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Command</th><th>Result and important behavior</th></tr></thead><tbody><tr><td><code>show</code></td><td>Effective values, selected profile, digest, diagnostics and resolution status</td></tr><tr><td><code>get KEY</code></td><td>One effective value (a JSON value with <code>--json</code>); fails if the key has no effective value</td></tr><tr><td><code>explain [KEY]</code></td><td>Resolution evidence, optionally narrowed to a key; includes origins and constraints</td></tr><tr><td><code>profiles</code></td><td>Available profiles, selected profile and selection reason</td></tr><tr><td><code>validate [--strict] [--all-profiles]</code></td><td><code>valid: true</code> on success; nonzero exit on validation failure</td></tr><tr><td><code>status</code></td><td>Standalone/enrolled state and managed cache health; does not refresh over the network</td></tr><tr><td><code>refresh</code></td><td>Explicit online policy acquisition; returns revision and offline deadline; requires protected enrollment</td></tr><tr><td><code>set</code> / <code>unset</code></td><td>Changes one ordinary file and reports its destination; does not establish that the edited value is effective</td></tr></tbody></table>
+<p><code>show</code>, <code>get</code> and <code>explain</code> accept mutually exclusive <code>--global</code>, <code>--project</code> and
+<code>--local</code> flags. These inspect only the selected file: the user configuration,
+<code>oyzu.toml</code> in the selected directory, or <code>oyzu.local.toml</code> there, respectively.
+For example, <code>oyzu config get build.jobs --global</code> reads the user declaration;
+<code>oyzu -C packages/api config show --project</code> shows that directory&#x27;s declarations.
+Without a scope flag, the merged effective configuration remains the default.
+Scoped reads do not inject defaults, inspect other sources, contact policy
+services or execute tasks. They preserve the normal inspection redaction.
+An explicit <code>--profile NAME</code> overlays only that profile from the selected file;
+automatic/default profile selection does not apply to file inspection.
+<code>show</code>/<code>explain</code> report the source, scope and whether the file exists, with empty
+values when absent; <code>get</code> fails when the key is not declared there. These are
+declarations, not a claim that execution policy allows the requested values.</p>
+<p>TOML syntax failures identify <code>file:line:column</code> (one-based Unicode character
+coordinates) and the parser&#x27;s reason, including during <code>set</code>/<code>unset</code>. Source
+snippets are omitted to keep configuration values out of diagnostics. Correct
+malformed syntax in an editor before retrying. Strict validation retains every
+warning&#x27;s key, source, available line/column and byte span, message and remedy;
+human errors list them and JSON errors include a <code>diagnostics</code> array. Strict
+validation still fails instead of silently accepting the warnings.</p>
+<p>Human <code>explain</code> groups exact setting keys with effective values and their last
+source. Multiple origins appear as an ordered resolution history; the last source
+does not imply it supplied every element of a merged value. Only nonempty policy
+restrictions, exclusions and diagnostics are expanded. With no restrictions it
+prints one policy summary rather than an empty entry for every setting. Source
+paths omit Windows extended-path prefixes for display. Ordinary environment paths and compiler settings remain visible. Sensitive values stay
+redacted. <code>explain &lt;key&gt;</code> narrows the view; <code>--json</code> retains the complete metadata,
+including byte spans, constraint source IDs, context signals and digest.</p>
+<p><code>show</code> and <code>explain</code> can exit successfully with <code>status: &quot;unresolved&quot;</code> and no effective values. <code>status</code> can likewise return an unhealthy managed state successfully. Automation must inspect these fields or use <code>validate</code> as its configuration gate. Execution errors are reported on stderr with a nonzero exit status. Inspection does not run tasks, but resolving an enrolled configuration can contact the policy endpoint and update its cache. Thus inspection is not necessarily network-free or free of persistent state changes.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="registered-settings">Registered settings<a href="#registered-settings" class="hash-link" aria-label="Direct link to Registered settings" title="Direct link to Registered settings" translate="no">​</a></h2>
+<p>Ordinary settings below can appear in machine, user, project or local configuration and in profiles, subject to eligibility and administrative constraints. An absent default means no value is contributed by the registry. Recognition of a setting does not imply that its downstream integration is available.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Key</th><th>Type and built-in default</th><th>Current behavior</th></tr></thead><tbody><tr><td><code>scan.jobs</code></td><td>Integer 1–65535; default 2</td><td>Bounds independent scan checks, including remote analysis waits; 1 serializes checks</td></tr><tr><td><code>analysis.rules</code></td><td>Table of rule id to <code>off</code>, <code>advisory</code> or <code>enforce</code>; no value (every rule <code>advisory</code>)</td><td>Experimental (OEP-0020 S5). Unknown rule ids and levels are configuration errors that name the valid ids. The nearest scope that sets it replaces lower scopes as a whole; a managed constraint can pin the whole value. Consumed by <code>oyzu build --check</code> and <code>oyzu build</code> per target; never grants authority</td></tr><tr><td><code>analysis.suppress</code></td><td>Array of <code>{rule, path?, reason}</code> tables; none</td><td>Experimental. <code>reason</code> is mandatory and non-empty, <code>path</code> is an optional project-relative glob over the finding&#x27;s file. Suppressed findings do not fail and stay in <code>--json</code>; unmatched suppressions are reported as stale notes. Replaced as a whole by the nearest scope</td></tr><tr><td><code>build.jobs</code></td><td>Integer 1–65535; available logical parallelism, fallback 1</td><td>Bounds independent preparation and ready build actions; the smallest root/target ceiling and worker-memory admission apply. <code>oyzu build --jobs N</code> (<code>-j N</code>), then the <code>OYZU_BUILD_JOBS</code> environment variable, override every file for one invocation; see <a class="" href="/docs/reference/build-tasks#worker-ceiling">worker ceiling</a>. Scheduling only: not part of the configuration digest, so a serial and a parallel build share <a class="" href="/docs/reference/action-cache">cached results</a></td></tr><tr><td><code>build.isolation</code></td><td><code>auto</code>, <code>docker</code>, <code>crun</code>; <code>auto</code></td><td>Which sandbox runs the isolated steps of Node targets on Linux: <code>auto</code> uses Docker when an engine answers and the <a class="" href="/docs/reference/local-builds#the-daemonless-sandbox">daemonless sandbox</a> (crun) otherwise; <code>docker</code> always uses Docker; <code>crun</code> uses crun even with Docker present. <code>--no-docker</code> and <code>OYZU_NO_DOCKER=1</code> select crun. Scheduling only: not part of the configuration digest, so both backends share <a class="" href="/docs/reference/action-cache">cached results</a></td></tr><tr><td><code>version.strategy</code></td><td><code>auto</code>, <code>native</code>, <code>tags</code>, <code>conventional</code>; <code>auto</code></td><td>Selects artifact version inference; computation setting consumed by each builder; never grants release authority</td></tr><tr><td><code>checks.required</code></td><td>Set of <code>tests</code>, <code>coverage</code>, <code>lint</code>, <code>format</code>; <code>[]</code></td><td>Requires actual build check actions/report contracts</td></tr><tr><td><code>checks.coverageMinimum</code></td><td>Integer 0–100; <code>0</code></td><td>Positive minimum requires coverage evidence; missing or zero-denominator coverage fails</td></tr><tr><td><code>ui.color</code></td><td><code>auto</code>, <code>always</code>, <code>never</code>; <code>auto</code></td><td>Human task labels/status only; JSON stays unstyled</td></tr><tr><td><code>profile.default</code></td><td>Profile name; absent</td><td>Default selector; cannot be declared inside a profile or nested project selector scope</td></tr><tr><td><code>cache.remote</code></td><td>OCI URL; absent</td><td>Destination of the experimental <a class="" href="/docs/reference/action-cache#remote-oci-cache">remote OCI action cache</a> (<code>oci://host[:port]/repository/prefix</code>; plain HTTP only for loopback hosts). Credentials, query and fragment are forbidden. A registry that asks for sign-in gets a token through its token endpoint; the credential is never a setting: it comes from <code>OYZU_CACHE_TOKEN</code>, or in a CI job from its ID tokens (<code>OYZU_ID_TOKEN_URL</code>)</td></tr><tr><td><code>toolIndex.url</code></td><td>HTTPS URL (HTTP only for a loopback host), or <code>false</code>; <code>https://github.com/oyzuai/tool-index/releases/latest/download/</code></td><td>Base URL of the signed public tool index; by default the newest release of the public index. <code>false</code>: no index, so registry packages resolve from the pinned registry. No credentials, query or fragment</td></tr><tr><td><code>toolIndex.trustedRoot</code></td><td>Absolute path; absent (Sigstore&#x27;s production trusted root: compiled in, or newer from <code>oyzu tools trust refresh</code>)</td><td>A Sigstore <code>trusted_root.json</code> (Fulcio CA certificates, Rekor log keys and timestamp authorities) to verify the index&#x27;s signature bundle against, for a private Sigstore deployment. User or machine scope only (<code>CONFIG_SCOPE</code> in a project file)</td></tr><tr><td><code>toolIndex.identity</code></td><td><code>https:</code> URI; <code>https://github.com/oyzuai/tool-index/.github/workflows/release.yml@refs/heads/main</code></td><td>The signing certificate identity (SAN URI) the index must be signed by, for a customer-signed index. The OIDC issuer (<code>https://token.actions.githubusercontent.com</code>) and runner environment (<code>github-hosted</code>) are fixed. User or machine scope only (<code>CONFIG_SCOPE</code> in a project file)</td></tr><tr><td><code>toolCatalog.url</code></td><td>HTTPS URL (HTTP only for a loopback host); absent</td><td>Delivery edge of the organization tool catalog. Set: registry packages, all Oyzu archive providers and indexed Rust install only versions the organization approved, through the edge, with the token from <code>OYZU_TOOL_CATALOG_TOKEN</code>. Lock it in <code>admin-settings.json</code> to make it mandatory</td></tr><tr><td><code>toolCatalog.keys</code></td><td>Array of one to eight <code>ed25519:&lt;base64&gt;</code> public keys; absent</td><td>The keys the edge&#x27;s signed organization catalog must verify under. Required with <code>toolCatalog.url</code>; pin two while the edge rotates. User or machine scope only (<code>CONFIG_SCOPE</code> in a project file); lockable in <code>admin-settings.json</code></td></tr><tr><td><code>toolCatalog.maxOfflineAge</code></td><td><code>0</code>, <code>&lt;n&gt;h</code> or <code>&lt;n&gt;d</code> (at most <code>366d</code>); <code>7d</code></td><td>How long after the edge built it the last good organization catalog may be used when the edge cannot be reached (network error or HTTP 5xx). <code>0</code> never uses it. User or machine scope only (<code>CONFIG_SCOPE</code> in a project file); lockable in <code>admin-settings.json</code></td></tr><tr><td><code>platform.url</code></td><td>HTTPS URL (HTTP only for a loopback host); absent</td><td>Platform for <a class="" href="/docs/reference/remote-runs">remote runs</a> and secrets; no credentials, query or fragment. The access token is never a setting: it comes from <code>OYZU_PLATFORM_TOKEN</code></td></tr><tr><td><code>platform.account</code></td><td>Platform account identifier (lowercase letters, digits, hyphens); absent</td><td>Account that <a class="" href="/docs/reference/remote-runs">remote runs</a> are created in and whose secrets <code>oyzu secrets</code> manages</td></tr><tr><td><code>npm.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Opt-in <a class="" href="/docs/reference/tool-management-development#experimental-automatic-npm-session">experimental npm session</a>; no credentials, query or fragment; requires a separately running laboratory agent</td></tr><tr><td><code>nuget.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>NuGet session prototype; user/admin authority only, no profile selection or implicit login</td></tr><tr><td><code>python.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Python session prototype; user/admin authority only, no profile selection or implicit login</td></tr><tr><td><code>cargo.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Cargo session prototype; user/admin authority only, one named sparse registry</td></tr><tr><td><code>gradle.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Gradle session prototype; user/admin authority only, no profile selection or implicit login</td></tr><tr><td><code>maven.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Maven session prototype; user/admin authority only, no profile selection or implicit login</td></tr><tr><td><code>oci.sessionEndpoint</code></td><td>Numeric-loopback HTTP URL; absent</td><td>Isolated OCI session prototype; user/admin authority only, no implicit login or production agent</td></tr><tr><td><code>cache.local</code></td><td>Boolean; <code>true</code></td><td>Enables the <a class="" href="/docs/reference/action-cache">local action cache</a> (reuse of unchanged targets on the captured and native host paths). <code>false</code> runs every action, like <code>oyzu build --no-cache</code>, which bypasses it for one invocation</td></tr><tr><td><code>cache.dir</code></td><td>Absolute path; absent</td><td>Replaces the default per-user action-cache store (Linux <code>$XDG_CACHE_HOME/oyzu/actions</code>, macOS <code>~/Library/Caches/Oyzu/actions</code>, Windows <code>%LocalAppData%\Oyzu\cache\actions</code>). <strong>User or system scope only</strong>: a project <code>oyzu.toml</code> or <code>oyzu.local.toml</code> that sets it is rejected with <code>CONFIG_SCOPE</code>; not eligible for profiles; ignored with other user-scope settings in CI. Never part of an action key</td></tr><tr><td><code>cache.ciRemote</code></td><td>OCI URL; absent</td><td>The <a class="" href="/docs/reference/action-cache#ci-and-development-repositories">CI repository</a>: a CI build reads and writes only it; other builds read it first and never write it. Its trust comes from the registry refusing writes without the CI credential (<code>OYZU_CACHE_TOKEN</code> or the job&#x27;s ID tokens from <code>OYZU_ID_TOKEN_URL</code>, environment variables, never a setting). Same URL rules as <code>cache.remote</code></td></tr><tr><td><code>cache.immutableTags</code></td><td>Boolean; <code>false</code></td><td>Declares that every configured cache repository refuses to replace a tag, so pushes skip the racing-writer read and a refused tag write is a conflict. Never set it for a registry that replaces tags</td></tr><tr><td><code>cache.read</code>, <code>cache.write</code></td><td>Booleans; <code>true</code>, <code>false</code></td><td>Whether the <a class="" href="/docs/reference/action-cache#remote-oci-cache">remote OCI cache</a> is consulted after a local miss and whether locally stored action results are pushed to it. No effect without <code>cache.remote</code> or with the local cache disabled. Transport preferences: not part of the configuration digest, so they never change an action key</td></tr><tr><td><code>cache.nativeMaxMiB</code></td><td>Integer 1–1048576; <code>8192</code> (8 GiB)</td><td>Aggregate retained budget for the selected native Rust compiler caches; see <a class="" href="/docs/reference/local-builds#native-compiler-cache-retention">retention</a>. Independent of remote cache preferences.</td></tr><tr><td><code>tools.&lt;name&gt;</code></td><td>Nonempty string; absent</td><td>Explicit requests fail execution until a verified installation binding exists; no tool installation is performed</td></tr><tr><td><code>env.&lt;name&gt;</code></td><td>Literal string or <code>{ secret = &quot;reference&quot; }</code>; absent</td><td>Literal environment overlay; secret references require a future authorized consumer</td></tr><tr><td><code>tasks.&lt;name&gt;</code></td><td>Task record; absent</td><td>Atomic task replacement; see syntax below</td></tr><tr><td><code>docker.apparmorProfile</code></td><td>Profile name; host-derived</td><td><code>oyzu-buildkit</code> when the detected Linux user-namespace restriction requires it, otherwise <code>unconfined</code></td></tr><tr><td><code>docker.frontends</code></td><td>List of image references pinned by digest; empty</td><td><code># syntax=</code> frontends a Dockerfile may request. A request matches an entry with the same repository and the same digest, or the same tag when the request has no digest. Oyzu&#x27;s BuildKit frontend runs the approved frontend; any other request fails with <code>FRONTEND_NOT_APPROVED</code> naming the requested and approved references. See Docker frontends</td></tr></tbody></table>
+<p>Environment names use ASCII letters, digits and underscores, beginning with a letter or underscore; the <code>OYZU_</code> prefix is reserved case-insensitively. Values are not expressions or interpolation programs. Inspection redaction does not make literal environment values a secret store: literals can participate in build inputs/evidence. Do not use a literal as a substitute for the deferred secret consumer.</p>
+<p>Task records select either <code>run</code> (a shell command) or <code>argv</code> (an argument array), and accept <code>shell</code>, <code>cwd</code>, <code>env</code>, <code>depends_on</code>, <code>inputs</code>, <code>outputs</code>, <code>cache</code>, <code>interactive</code> and <code>reports</code>. <code>cache = true</code> with <code>outputs</code> makes an authored task cacheable by <code>oyzu build</code> (its <code>inputs</code> may only add paths inside its target); <code>outputs</code> on a hook lets the cache follow it; see <a class="" href="/docs/reference/action-cache#authored-tasks-cached-on-request">authored tasks</a>. Local <code>oyzu run</code> inherits stdin. Text-mode tasks recording a bundle tee stdout/stderr live and retain them in <code>dist/logs</code>; <code>interactive = true</code> instead preserves real output terminal descriptors, with no captured stdout/stderr logs. Tasks without a bundle inherit output directly. For PowerShell <code>run</code> scripts, <code>interactive = true</code> also omits <code>-NonInteractive</code>; it does not make captured builds interactive. JSON mode captures output while retaining stdin; see <a class="" href="/docs/reference/build-tasks#live-development-task-output">task streams and limits</a>. Task <code>env</code> contains strings. Task execution also requires a discoverable native project. For example, with Node explicitly provisioned and a <code>package.json</code> containing <code>{&quot;name&quot;:&quot;config-demo&quot;,&quot;version&quot;:&quot;1.0.0&quot;}</code>, add this to <code>oyzu.toml</code>:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tasks.hello</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">argv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;node&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;-e&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;console.log(&#x27;hello&#x27;)&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<p><code>oyzu --root path/to/project run hello</code> executes that command. A higher-priority task record replaces the entire record rather than merging its fields. To remove inherited environment/task entries, use dotted key strings in a removal list:</p>
+<p>Additional arguments after <code>--</code> are appended to an <code>argv</code> task, including an
+argv that already contains <code>-c</code> or <code>-Command</code> (for example a Python expression).
+Tasks authored with <code>run</code> reject additional arguments; choose <code>argv</code> when a task
+needs parameters. This distinction follows the declared task form, not the
+spelling of arguments passed to the native executable.</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">overrides</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remove</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;env.DEMO_MODE&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;tasks.hello&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<p>The following keys are administrative-only and cannot appear in ordinary files or profiles:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Key</th><th>Type and default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>config.localOverridesInCi</code></td><td>Boolean; <code>false</code></td><td>Whether the local override request is eligible in CI</td></tr><tr><td><code>config.allowedProfiles</code></td><td>Set of names, including <code>@none</code>; absent</td><td>Restricts selection when supplied</td></tr><tr><td><code>tools.allowed</code></td><td>Set of canonical tool IDs; absent</td><td>Restricts tool eligibility</td></tr><tr><td><code>tools.catalogs</code></td><td>Ordered string array; <code>[&quot;public&quot;]</code></td><td>Catalog preference; unavailable protected bindings block execution</td></tr><tr><td><code>registries.routes</code></td><td>Route array; <code>[]</code></td><td>Each entry has <code>protocol</code>, <code>scope</code>, <code>connectorId</code>; protocols are <code>npm</code>, <code>pypi</code>, <code>maven</code>, <code>cargo</code>, <code>go</code>, <code>oci</code>, <code>tools</code>; standalone Node/Go installation supports explicit host tool bindings; real Node proxy acceptance passed, Go proxy acceptance remains pending; other connector execution remains deferred</td></tr><tr><td><code>npm.sources</code></td><td>Set of HTTPS URL prefixes ending in <code>/</code>; <code>[]</code></td><td>Extra locations an isolated npm build may download locked packages from, in addition to <code>https://registry.npmjs.org/</code>. For example, <code>https://codeload.github.com/&lt;owner&gt;/&lt;repo&gt;/tar.gz/</code> admits a package that pins a public GitHub commit as a tarball. Declare it in <code>package.json</code> as that same HTTPS tarball URL and record the URL and its sha512 in the lockfile; a <code>git+https</code> or <code>github:</code> spec in <code>package.json</code> is refused, because native npm would refetch it as a git dependency instead of using the captured tarball. Each package still needs the lockfile&#x27;s sha512 integrity, which is verified. Credentials, queries and fragments are refused. Applies to the npm builder only; <code>git+https</code> lock entries remain unsupported</td></tr><tr><td><code>fetches.sources</code></td><td>Set of HTTPS URL prefixes ending in <code>/</code>; absent</td><td>Administrative allowlist for declared fetches. Absent, any HTTPS URL is admitted. Set, each fetch URL and every redirect must fall under a listed prefix, or the build fails with <code>SOURCE_DENIED</code> or <code>REDIRECT_DENIED</code>; an empty list admits none. Project configuration cannot set it. Credentials, queries and fragments are refused</td></tr><tr><td><code>maven.snapshotRepositories</code></td><td>Set of HTTPS repository base URLs ending in <code>/</code>; <code>[]</code> (off)</td><td>Snapshot repositories that captured Maven acquisition may use for snapshot version paths only, each through its own broker source; every other path keeps the Maven Central or session-approved route. Credentials, queries, fragments and plain HTTP are refused. Snapshot inputs are inventoried in the dependency snapshot, and a build whose version intent is not a development snapshot fails rather than use one. See Maven snapshot repositories</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="files-and-persistent-state">Files and persistent state<a href="#files-and-persistent-state" class="hash-link" aria-label="Direct link to Files and persistent state" title="Direct link to Files and persistent state" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Host</th><th>Machine directory</th><th>User configuration</th><th>User state directory</th></tr></thead><tbody><tr><td>Windows</td><td>ProgramData known folder + <code>Oyzu</code></td><td>RoamingAppData known folder + <code>Oyzu/config.toml</code></td><td>LocalAppData known folder + <code>Oyzu/state</code></td></tr><tr><td>macOS</td><td><code>/Library/Application Support/Oyzu</code></td><td><code>~/Library/Application Support/Oyzu/config.toml</code></td><td><code>~/Library/Application Support/Oyzu/state</code></td></tr><tr><td>Linux</td><td><code>/etc/oyzu</code></td><td><code>$XDG_CONFIG_HOME/oyzu/config.toml</code>, fallback <code>~/.config/oyzu/config.toml</code></td><td><code>$XDG_STATE_HOME/oyzu</code>, fallback <code>~/.local/state/oyzu</code></td></tr></tbody></table>
+<p>Windows paths come from native known-folder APIs. Relative XDG paths warn and use the home fallback. The machine directory contains ordinary <code>config.toml</code>, protected <code>admin-settings.json</code>, and protected enrollment <code>management.json</code>. Project/local files are named <code>oyzu.toml</code> and <code>oyzu.local.toml</code>; keep personal local overrides out of version control. Oyzu does not auto-enroll the machine.</p>
+<p>For persistent user data, including the tool store, an absolute Windows <code>HOME</code>
+that differs from the native profile selects <code>&lt;HOME&gt;/AppData/Local/Oyzu</code>.
+This lets disposable homes isolate tool caches and rollback records. With <code>HOME</code>
+unset or naming the normal profile, native LocalAppData redirection is preserved.
+A relative <code>HOME</code> fails with <code>CONFIG_SCOPE</code>; use an absolute path or unset it.
+This data override does not redirect the configuration and managed policy state
+locations in the table, or the separate action/image cache locations. Existing
+data is not moved or deleted when selecting another home.</p>
+<p><code>OYZU_USER_CONFIG</code> optionally selects an absolute user configuration file, useful
+for disposable environments and testing user defaults without modifying a real
+profile. Relative paths are rejected. The file retains user-level precedence and
+authority; this setting cannot redirect machine policy, enrollment or state.
+Its sibling <code>oyzu.lock</code> owns user-default tool pins. Unset the variable to return
+to the native user configuration location. Help/version do not read this setting.</p>
+<p>Managed state includes signed policy entries under the user state directory and integrity pointers/high-water state in the native credential store. Ordinary configuration edits do not change that state. Source capture enforces size/complexity budgets, including a 1 MiB file limit, and detects concurrent source changes rather than mixing revisions. This configuration format has no include mechanism or executable configuration language.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="administrative-policy">Administrative policy<a href="#administrative-policy" class="hash-link" aria-label="Direct link to Administrative policy" title="Direct link to Administrative policy" translate="no">​</a></h2>
+<p>Native locations follow OEP-0002: Windows known folders, macOS Application Support, and Linux <code>/etc/oyzu</code> plus absolute XDG user locations. Protected files require administrative ownership and permissions. Windows uses native ACL/handle checks; Unix checks root ownership and write permissions; macOS also examines extended ACL entries on the opened object and rejects non-root mutation grants using the <a href="https://developer.apple.com/library/archive/documentation/System/Conceptual/ManPages_iPhoneOS/man3/acl_get_fd_np.3.html" target="_blank" rel="noopener noreferrer" class="">native descriptor ACL API</a>. An insecure, unreadable or malformed enrollment never becomes standalone mode.</p>
+<p><code>admin-settings.json</code> uses the same typed constraint evaluator as corporate policy. Locks, allowed whole values, numeric bounds and required sets intersect independently of ordinary precedence. Required checks cannot be removed by empty ordinary arrays. The build planner requires configured checks to have actual actions/report contracts; report collection enforces the coverage minimum, including missing/zero-denominator failures.</p>
+<p><code>config status</code> reports enrollment and cached-policy status. <code>config refresh</code> performs a headless request to the enrolled platform&#x27;s public configuration-context endpoint. Signed responses use pinned Ed25519 keys, canonical JSON, identity/context binding, monotonic sequences, expiry and explicit offline permissions. Cache entries are content-addressed and flushed before an OS credential-store pointer commits them. A corrupt entry can only be repaired from a newly verified online response. Windows Credential Manager, macOS Keychain and Linux Secret Service hold integrity state. If that service is unavailable, managed execution fails; standalone use does not need it. Transport backoff never extends signed deadlines. Server denial cannot become offline permission.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-inventory-options">Build inventory options<a href="#build-inventory-options" class="hash-link" aria-label="Direct link to Build inventory options" title="Direct link to Build inventory options" translate="no">​</a></h2>
+<p>Rust targets can declare a finite <code>rust</code> object with optional <code>features</code> and a
+<code>targets</code> list of Cargo triples. Tool requirements remain in TOML and resolved
+identities in <code>oyzu.lock</code>; the YAML object rejects toolchain pins. It produces explicit native
+binary task definitions, described in Rust binary targets,
+including the unfinished locked-tool execution handoff.
+It cannot be combined with captured platform matrices. Isolated builds reject
+that native-only intent instead of dropping its requirements.</p>
+<p><code>build.yaml</code> describes target intent separately from the TOML cascade. Its optional application <code>container</code> field is a boolean or a finite object with <code>base</code>, <code>user</code>, <code>workdir</code> and <code>entrypoint</code>; see Python application containers for types, defaults and current runtime support. Capture validates and freezes that object with the target inventory. <code>config validate</code> rejects malformed option values without resolving images or executing a build. The object introduces no task language or additional precedence layer. Administrative execution checks and resolved owner settings still apply to generated image actions.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="existing-settings-migration-and-boundaries">Existing settings migration and boundaries<a href="#existing-settings-migration-and-boundaries" class="hash-link" aria-label="Direct link to Existing settings migration and boundaries" title="Direct link to Existing settings migration and boundaries" translate="no">​</a></h2>
+<p>The Docker adapter registers <code>docker.apparmorProfile</code>. It replaces direct adapter reads of <code>OYZU_BUILDKIT_APPARMOR_PROFILE</code>; the legacy environment variable remains a diagnosed invocation input and faces the same policy constraints. The default still detects the host&#x27;s AppArmor user-namespace restriction. Builder namespaces stay behind the crate-private Builder contract.</p>
+<p>A frozen build configuration contributes its digest to target/action records. Formatting, profile names and presentation preferences do not affect that configuration digest. Policy revision and online/offline context remain separate evidence. No policy snapshot grants signing, publishing or credential issuance.</p>
+<p>Build preparation and planning require the resolved invocation snapshot and every selected target&#x27;s snapshot, including inferred targets without configuration files. Missing internal snapshots fail with <code>CONFIG_INVALID_VALUE</code>; they never disable policy checks or cause adapters to recalculate defaults. Library callers must use discovery to obtain this state; serialized discovery JSON is an inspection result, not a resumable workspace. Rediscover the workspace if that state is missing. Docker reads its execution profile from the admitted snapshot before preparation starts. Later edits to live configuration files do not change an already frozen plan; start a new invocation to resolve them.</p>
+<p>The current native tool-store, authenticated platform-session, connector-binding and shell-secret-consumer implementations are not completed by this configuration change; the remote action cache is an experimental development-scope implementation that signs in only with a token from <code>OYZU_CACHE_TOKEN</code> or a CI job&#x27;s ID tokens (see the <a class="" href="/docs/reference/action-cache#remote-oci-cache">action cache</a>). Explicit tool requests that cannot be bound to a verified installation are rejected before builds. Enforced routes/catalogs requiring unavailable bindings fail before public acquisition. Managed builders that still require public dependency preparation are blocked; offline-capable local Docker and Helm preparation remains separate from those network paths. Development secret references require an authorized consumer and are not substituted into build literals. <code>build.jobs</code> bounds concurrent ready actions. The invocation uses the smallest admitted root/target ceiling; each target retains serial mutation and hook order. Targets have private workspaces and output roots. Dependency or deferred-report failure blocks consumers while independent targets can finish. <code>ui.color</code> controls human-readable task labels and outcome statuses: <code>always</code> emits ANSI color, <code>never</code> disables it, and <code>auto</code> enables it only when the relevant output stream is a terminal. Task-specific resolved preferences apply to that task; root tasks use root preferences. JSON output remains unstyled. Cache preferences do not grant cache credentials or trust: a remote hit is a development result.</p>
+<p>These boundaries are deliberate failures rather than claims that all OEP-0002 ecosystem and platform integration acceptance cases pass. Three-host ACL/keychain qualification, signed server interoperability, authenticated logout/account-switch flows, complete connector routing and tool-store integration remain release gates.</p>
+<p>Development execution checks tool eligibility, explicit tool requests and protected routing/catalog requirements before any prerequisite or hook runs. Managed host tasks remain blocked until approved development execution and connector bindings exist; the host runner cannot claim to enforce managed network routing. Task-specific and native-adapter environment additions must satisfy administrative environment restrictions. In a single-target nested project, the target&#x27;s final task cascade determines whether a root operation is replaced or removed, consistently with inspection and build planning.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="recovery-and-authentication-follow-up">Recovery and authentication follow-up<a href="#recovery-and-authentication-follow-up" class="hash-link" aria-label="Direct link to Recovery and authentication follow-up" title="Direct link to Recovery and authentication follow-up" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Diagnostic or symptom</th><th>Recovery</th></tr></thead><tbody><tr><td><code>CONFIG_SYNTAX</code>, duplicate keys</td><td>Correct the source file&#x27;s syntax/duplicate declaration, then validate</td></tr><tr><td><code>CONFIG_INVALID_VALUE</code>, <code>CONFIG_SCOPE</code></td><td>Use the registered type and permitted scope; ordinary <code>set</code>/<code>unset</code> can repair invalid values</td></tr><tr><td><code>CONFIG_PROFILE_UNKNOWN</code></td><td>Inspect profile declarations and select an existing name; use <code>--no-profile</code> only if policy permits</td></tr><tr><td>Optional-setting warning / strict failure</td><td>Correct the spelling or remove inert optional settings; ordinary validation does not execute unknown syntax</td></tr><tr><td>Unsupported schema major or required capability</td><td>Use a compatible client; do not remove a requirement unless the project no longer needs it</td></tr><tr><td><code>CONFIG_POLICY_CONFLICT</code>, <code>CONFIG_OVERRIDE_DENIED</code></td><td>Reconcile conflicting administrative constraints or choose an allowed value; unavailable execution bindings require their implementation/provisioning</td></tr><tr><td><code>CONFIG_EDIT_CONFLICT</code></td><td>Re-read the file and retry the intended edit; do not overwrite another writer&#x27;s changes</td></tr><tr><td><code>CONFIG_LIMIT</code></td><td>Reduce file size, nesting or configuration entries, including inactive profile data</td></tr><tr><td><code>POLICY_INVALID</code></td><td>Inspect enrollment protection and policy/cache validity; an administrator may need to repair bootstrap permissions or signing configuration</td></tr><tr><td><code>POLICY_EXPIRED</code>, <code>POLICY_UNAVAILABLE</code></td><td>Restore endpoint/native credential-store availability and run <code>config refresh</code>; failure never converts an enrolled machine to standalone</td></tr><tr><td><code>POLICY_CLOCK_UNCERTAIN</code></td><td>Correct clock problems and reconcile online; do not erase rollback-protection state to bypass the error</td></tr></tbody></table>
+<p>Offline execution requires explicit signed permission and remains bounded by both signed expiry and maximum offline age (at most 24 hours). CI requires online policy. Transport retry/backoff preserves these deadlines; denial and malformed responses do not authorize offline fallback. Explicit refresh can fail while an older valid cache remains stored. A corrupt cache entry requires a newly verified online response; damaged integrity-store state can require administrator intervention. Refresh rechecks time after I/O, so a request that finishes after a deadline does not extend authorization.</p>
+<p>Changing protected bootstrap pins invalidates the previous cache binding. Recovery requires an online response verified against the current pins with a strictly newer policy sequence; existing high-water state remains in force. Do not delete credential-store state as a key-rotation procedure. Cache commit ordering preserves the old committed pointer until the new entry has been flushed; full crash/reboot qualification remains a release gate.</p>
+<p>There are no login, logout or enrollment commands in this delivery. When authentication is designed, revisit session-to-policy identity binding, account/organization switching, logout invalidation, credential lifecycle, authenticated refresh and CI identity, plus end-to-end server interoperability. Configuration policy is not a login session and does not grant publishing/signing authority. Connector credentials, shell secrets, verified tool installation and remote action caching also remain separate integrations.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification-evidence">Verification evidence<a href="#verification-evidence" class="hash-link" aria-label="Direct link to Verification evidence" title="Direct link to Verification evidence" translate="no">​</a></h2>
+<p>The <a class="" href="/docs/support/capabilities">implementation status</a> records tested revisions and host coverage. The current contracts have focused coverage in resolution and editing tests, CLI tests, execution enforcement tests, and signed managed-policy tests. Agent transition tests beside the policy agent cover key rotation, elapsed deadlines and denial/clock behavior. These tests do not establish interoperability with a production authenticated service.</p>
+<p>Documentation structure is checked with <code>node tooling/check-docs.mjs</code>; that check does not validate product behavior. The quick-start command sequence and the provisioned-Node task example were separately exercised against the compiled CLI on Windows during this documentation update.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="development-path-metadata">Development PATH metadata<a href="#development-path-metadata" class="hash-link" aria-label="Direct link to Development PATH metadata" title="Direct link to Development PATH metadata" translate="no">​</a></h2>
+<p>The <a class="" href="/docs/reference/project-environments">project environment reference</a> documents env._.path, its atomic replacement and file-relative paths. The optional compatibility capability is config.env-path/v1. This metadata is not exported into task/build environments.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="bootstrap-presentation-options">Bootstrap presentation options<a href="#bootstrap-presentation-options" class="hash-link" aria-label="Direct link to Bootstrap presentation options" title="Direct link to Bootstrap presentation options" translate="no">​</a></h2>
+<p>Global verbosity and <code>OYZU_LOG</code> are typed invocation-only presentation inputs,
+resolved before any project session. They are not project keys and never enter
+effective execution snapshots or configuration digests. Explicit CLI controls
+override the complete environment filter. Help/version do not resolve it. See
+<a class="" href="/docs/reference/cli-output#diagnostic-controls">CLI diagnostic controls</a> for grammar and errors.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tool-lock-execution-platform-coverage">Tool lock execution-platform coverage<a href="#tool-lock-execution-platform-coverage" class="hash-link" aria-label="Direct link to Tool lock execution-platform coverage" title="Direct link to Tool lock execution-platform coverage" translate="no">​</a></h2>
+<p><code>[tools]</code> declarations can also be written, replaced and removed with
+<code>oyzu install SPEC</code>, <code>oyzu uninstall</code> and <code>-g</code>/<code>--local</code>/<code>--profile</code>, which keep
+comments and lock the result; see <a class="" href="/docs/reference/tool-commands">tool commands</a>.</p>
+<p>A declaration is a version string, or mise&#x27;s option-table form with only a
+<code>version</code> key (<code>node = { version = &quot;22&quot; }</code>), which validation normalizes to that
+string so every consumer sees one form. Edits change only the table&#x27;s <code>version</code>.
+Any other option key, or a table without a <code>version</code> string, fails with
+<code>CONFIG_INVALID_VALUE</code> naming the key; see option tables.</p>
+<p><code>tools.platforms</code> is an optional project/profile string set consumed through the
+normal configuration cascade. It restricts Rust lock metadata coverage, not the
+artifact matrix or installation authority. When absent, pin uses the finite
+default metadata platforms.
+An empty or unsupported selection fails pin. Values are exact OS/architecture/ABI
+tuples; this setting is not a tool version request. No schema version changes.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/build-logging"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Build logging</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/project-environments"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Project environments (experimental)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#local-and-ci-execution-context" class="table-of-contents__link toc-highlight">Local and CI execution context</a></li><li><a href="#trusted-environment-and-credential-destinations" class="table-of-contents__link toc-highlight">Trusted environment and credential destinations</a></li><li><a href="#build-inventory-migration" class="table-of-contents__link toc-highlight">Build inventory migration</a></li><li><a href="#prerequisites-and-quick-start" class="table-of-contents__link toc-highlight">Prerequisites and quick start</a></li><li><a href="#inspection-and-selection" class="table-of-contents__link toc-highlight">Inspection and selection</a></li><li><a href="#editing" class="table-of-contents__link toc-highlight">Editing</a></li><li><a href="#commands-and-output-contracts" class="table-of-contents__link toc-highlight">Commands and output contracts</a></li><li><a href="#registered-settings" class="table-of-contents__link toc-highlight">Registered settings</a></li><li><a href="#files-and-persistent-state" class="table-of-contents__link toc-highlight">Files and persistent state</a></li><li><a href="#administrative-policy" class="table-of-contents__link toc-highlight">Administrative policy</a></li><li><a href="#build-inventory-options" class="table-of-contents__link toc-highlight">Build inventory options</a></li><li><a href="#existing-settings-migration-and-boundaries" class="table-of-contents__link toc-highlight">Existing settings migration and boundaries</a></li><li><a href="#recovery-and-authentication-follow-up" class="table-of-contents__link toc-highlight">Recovery and authentication follow-up</a></li><li><a href="#verification-evidence" class="table-of-contents__link toc-highlight">Verification evidence</a></li><li><a href="#development-path-metadata" class="table-of-contents__link toc-highlight">Development PATH metadata</a></li><li><a href="#bootstrap-presentation-options" class="table-of-contents__link toc-highlight">Bootstrap presentation options</a></li><li><a href="#tool-lock-execution-platform-coverage" class="table-of-contents__link toc-highlight">Tool lock execution-platform coverage</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

@@ -1,0 +1,501 @@
+{
+  "scope": "Packages encountered by browser compilation; conservative, includes parsed tree-shaken modules",
+  "legal_approval": false,
+  "packages": [
+    {
+      "name": "@babel/runtime",
+      "version": "7.29.10",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_babel_runtime-7.29.10/LICENSE",
+          "sha256": "117da2af0d4ce0fe1c8e19b5cff9dcd806adf973d328d27b11d4448c4ff24f76"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/core",
+      "version": "3.10.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_core-3.10.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/plugin-content-docs",
+      "version": "3.10.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_plugin-content-docs-3.10.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/react-loadable",
+      "version": "6.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_react-loadable-6.0.0/LICENSE",
+          "sha256": "96b87c81eeab12d924064d38b755c91826ae5070eff9f6015a3d895961b13442"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/theme-classic",
+      "version": "3.10.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_theme-classic-3.10.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/theme-common",
+      "version": "3.10.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_theme-common-3.10.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@docusaurus/utils-common",
+      "version": "3.10.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_docusaurus_utils-common-3.10.2/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@easyops-cn/autocomplete.js",
+      "version": "0.38.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_easyops-cn_autocomplete.js-0.38.1/LICENSE",
+          "sha256": "ef3dc7985655a4d8a69e5b38d30d8b83738ad8b3f452150f02face234e8971fb"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@easyops-cn/docusaurus-search-local",
+      "version": "0.55.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_easyops-cn_docusaurus-search-local-0.55.3/LICENSE",
+          "sha256": "8ebfaf64af418324bc21db8b8cc8d9f2b150d762e207e78d2edb22621fb1ec6e",
+          "source": "https://raw.githubusercontent.com/easyops-cn/docusaurus-search-local/5cd6c12a42bc76154ca6f2d4789e67f406e76c94/LICENSE"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "@mdx-js/react",
+      "version": "3.1.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "_mdx-js_react-3.1.1/license",
+          "sha256": "c274d2be30a4def0f9344506f3fe6d15668890a8e6d3e3d6bea732b44af9e124"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "clsx",
+      "version": "2.1.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "clsx-2.1.1/license",
+          "sha256": "9a9edad7baae52622bddf3c15b2ef8a33d2c89f2d25408ad13e8a7481c6b0c97"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "comlink",
+      "version": "4.4.2",
+      "license": "Apache-2.0",
+      "notices": [
+        {
+          "path": "comlink-4.4.2/LICENSE",
+          "sha256": "bcf29b4fd3ec2cb5f9d40a0866da446f6da62170d2ccedf4aeca9cf9406dd20c"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "copy-text-to-clipboard",
+      "version": "3.2.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "copy-text-to-clipboard-3.2.2/license",
+          "sha256": "5c932d88256b4ab958f64a856fa48e8bd1f55bc1d96b8149c65689e0c61789d3"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "css-loader",
+      "version": "6.11.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "css-loader-6.11.0/LICENSE",
+          "sha256": "9068a8782d2fb4c6e432cfa25334efa56f722822180570802bf86e71b6003b1e"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "cssesc",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "cssesc-3.0.0/LICENSE-MIT.txt",
+          "sha256": "483acb265f182907d1caf6cff9c16c96f31325ed23792832cc5d8b12d5f88c8a"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "hoist-non-react-statics",
+      "version": "3.3.2",
+      "license": "BSD-3-Clause",
+      "notices": [
+        {
+          "path": "hoist-non-react-statics-3.3.2/LICENSE.md",
+          "sha256": "eb32ff0ec52b6ea86e3d3e06c6ad1b68ee03798b6729af13919f6d5c14b368f3"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "immediate",
+      "version": "3.3.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "immediate-3.3.0/LICENSE.txt",
+          "sha256": "809e66de579fb7d92503848bbe6d1f348f4f6521a71e5d294fe7cc0c87a3b4ff"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "infima",
+      "version": "0.2.0-alpha.45",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "infima-0.2.0-alpha.45/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85",
+          "source": "https://raw.githubusercontent.com/facebookincubator/infima/205b8aedc62496839991b75a8bc2922350766fe4/LICENSE"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "invariant",
+      "version": "2.2.4",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "invariant-2.2.4/LICENSE",
+          "sha256": "f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "isarray",
+      "version": "0.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "isarray-0.0.1/LICENSE",
+          "sha256": "a1bd5deadb6a06dd74efa852c1b8b23f63b67f2214fbe9c8bd591da51da69268",
+          "source": "https://registry.npmjs.org/isarray/-/isarray-0.0.1.tgz#README.md-license-section"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "lunr",
+      "version": "2.3.9",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "lunr-2.3.9/LICENSE",
+          "sha256": "ae33f5a0d538cd93de1136a052ffa734b59d6b28e7cfc19e03de1d8b5d9f40ea"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "mark.js",
+      "version": "8.11.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "mark.js-8.11.1/LICENSE",
+          "sha256": "402936bcc8f1b6947750eb9193183d7d0c4dbca3c0ba06398571d94ee85c24be"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "nprogress",
+      "version": "0.2.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "nprogress-0.2.0/License.md",
+          "sha256": "d90e3b520a248648dcb9aad1a1c932aa33bf8ea09fbb1965d3ca6a2bfcc4fd0a"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "parse-numeric-range",
+      "version": "1.3.0",
+      "license": "ISC",
+      "notices": [
+        {
+          "path": "parse-numeric-range-1.3.0/LICENSE",
+          "sha256": "53a3985388c606d77e38e5bd225a8a433fd0e206c5287004fb1c2cb673affb3c"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "path-to-regexp",
+      "version": "1.9.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "path-to-regexp-1.9.0/LICENSE",
+          "sha256": "4eeb3271453a891df609e5a9f4ee79a68307f730c13417a3bfeffa604ac8cf25"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "prism-react-renderer",
+      "version": "2.4.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "prism-react-renderer-2.4.1/LICENSE",
+          "sha256": "f0b13db195ed479e26f203b8d8c69c52a20e87b9d8982474b84d81152e47e382"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "prismjs",
+      "version": "1.30.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "prismjs-1.30.0/LICENSE",
+          "sha256": "2b947f0901a7ffcf08a89957da9783c0e9c6e72cb6ce8e959f501ab5409e4d2b"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "prop-types",
+      "version": "15.8.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "prop-types-15.8.1/LICENSE",
+          "sha256": "f657f99d3fb9647db92628e96007aabb46e5f04f33e49999075aab8e250ca7ce"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react",
+      "version": "19.3.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-19.3.0/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react-dom",
+      "version": "19.3.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-dom-19.3.0/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react-fast-compare",
+      "version": "3.2.2",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-fast-compare-3.2.2/LICENSE",
+          "sha256": "1e187eec147d04bcbb3b7aef9f3b0ea82228961fa7d390d3efb9e57751dbe0cb"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react-is",
+      "version": "16.13.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-is-16.13.1/LICENSE",
+          "sha256": "52412d7bc7ce4157ea628bbaacb8829e0a9cb3c58f57f99176126bc8cf2bfc85"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react-router-config",
+      "version": "5.1.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-router-config-5.1.1/LICENSE",
+          "sha256": "079b9fe13858745a8faeaf305231a339b63ba13f36b65e6e9eca94d89196c456"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "react-router-dom",
+      "version": "5.3.4",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "react-router-dom-5.3.4/LICENSE",
+          "sha256": "f8028d6599b4b781d151ba12c534ff23a9fce4f3bb3f417778302ed8970306e2"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "resolve-pathname",
+      "version": "3.0.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "resolve-pathname-3.0.0/LICENSE",
+          "sha256": "e0dca6c79586466b5df4c3b31766391152dc4074978fd3c68fe10da744d0f114"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "scheduler",
+      "version": "0.28.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "scheduler-0.28.0/LICENSE",
+          "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "shallowequal",
+      "version": "1.1.0",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "shallowequal-1.1.0/LICENSE",
+          "sha256": "709e45bb17277819ce27e9abe5dc8e56fe93081e54adb6e6385517f28aa11ac4"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "tiny-invariant",
+      "version": "1.3.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "tiny-invariant-1.3.3/LICENSE",
+          "sha256": "b1c501095de70182748cb8e8d97ac5577701a4ef3b755ba30d59fd87b24bdb0f"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "tiny-warning",
+      "version": "1.0.3",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "tiny-warning-1.0.3/LICENSE",
+          "sha256": "b1c501095de70182748cb8e8d97ac5577701a4ef3b755ba30d59fd87b24bdb0f"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "tslib",
+      "version": "2.8.1",
+      "license": "0BSD",
+      "notices": [
+        {
+          "path": "tslib-2.8.1/LICENSE.txt",
+          "sha256": "210b19e543130388c68654b7497e967119ce17145f66ab7d85688fbd70f08751"
+        }
+      ],
+      "review_status": "pending"
+    },
+    {
+      "name": "value-equal",
+      "version": "1.0.1",
+      "license": "MIT",
+      "notices": [
+        {
+          "path": "value-equal-1.0.1/LICENSE",
+          "sha256": "e0dca6c79586466b5df4c3b31766391152dc4074978fd3c68fe10da744d0f114"
+        }
+      ],
+      "review_status": "pending"
+    }
+  ]
+}
