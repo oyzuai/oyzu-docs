@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.fa57f0d9.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b78b51e6.js" defer="defer"></script>
 <script src="/assets/js/main.af762f7e.js" defer="defer"></script>
 </head>
 <body>
@@ -114,7 +114,8 @@ mode and requested checks. A compact scope record names up to three selected
 targets and counts the rest. Affected work retains its baseline, overlapping
 category counts and any conservative fallback. Planner facts remain authoritative.</p>
 <p>Routine queued/included stage rows do not produce tables. Deliberate skips are
-neutral, grouped by reason, with up to three distinct reasons and an inspection
+neutral, grouped by reason, naming up to three affected stages in each group,
+with up to three distinct reasons and an inspection
 route for further detail. Unavailable/unknown stages receive attention separately;
 up to eight such records appear, followed by an explicit omission and
 <code>oyzu build --plan --json</code> inspection route. <code>-v</code> shows
@@ -165,13 +166,23 @@ raw build task logs never collapse. A late parallel preparation event does not r
 the Build heading. Installer worker stderr is followed into the same logging owner;
 its stdout remains the private worker protocol. Commands intentionally exposing a
 native pass-through payload retain that separate contract.</p>
+<p>Captured Rust compiler materialization also follows installer stderr through the
+invocation logger. Installer protocol stdout remains private; human views show
+bounded attention while JSON stderr and retained events preserve structured
+records instead of unframed rustup output.</p>
 <p>Native excerpts identify their task once and preserve source indentation and
 carets beneath that label. Decoded multiline Cargo diagnostics
 are written together under the invocation output lock; unstructured native output
 retains line-level ordering without guessing diagnostic boundaries. When a registered
 Cargo compiler warning arrives line by line, successful collapse preserves its first
 bounded context from that same stream, without repeating its already printed header. Other streams do
-not fill that context, and it shares the eight-line warning budget. Native process
+not fill that context, and it shares the eight-line warning budget. Native status
+lines or a new diagnostic end that source context. Cargo packaging uses the same
+registration and warning facts; identical packaging warnings appear once per
+action at normal verbosity, while verbose output and raw evidence retain them.
+Consecutive warnings share an excerpt label; changing work restores its label.
+Routine preparation narration is live status or verbose detail, and slow project
+metadata completion says <code>Ready</code> without listing internal worker calls. Native process
 success is omitted because it precedes validation. Task completion and the final
 receipt retain their distinct meanings; failures include available exit codes.</p>
 <p>The linear view shows preparation and execution as named lifecycle records, then
@@ -206,6 +217,15 @@ facts and never infers an action result from a warning or error string.</p>
 <p>Detected provider names include GitHub Actions, GitLab CI, Azure Pipelines, Buildkite, Jenkins and TeamCity, with generic CI fallback. These are unverified presentation hints, never credentials or release authority.</p>
 <p>In GitHub Actions, preflight, dependency and planning phases use collapsible groups. Groups close before action execution; individual concurrent tasks do not open overlapping groups. On completion, Oyzu appends an HTML-escaped receipt to <code>GITHUB_STEP_SUMMARY</code> if supplied. Failure to write the summary warns without changing build status. JSON mode still uses only JSON events on stderr, with no group commands. Local artifact paths are not presented as download links: artifact uploading, additional provider-native summaries and reliable source-location annotations are not implemented here.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-receipt-and-retained-evidence">Final receipt and retained evidence<a href="#final-receipt-and-retained-evidence" class="hash-link" aria-label="Direct link to Final receipt and retained evidence" title="Direct link to Final receipt and retained evidence" translate="no">​</a></h2>
+<p>A build stopped during preparation preserves its known selected target count
+and says <code>Build failed during preparation</code> and <code>No build actions started</code>.
+Prepared action records remain empty; they are not described as an empty target
+selection. Available target identity and the original preparation cause remain
+in diagnostics. Human diagnostic and recovery paragraphs wrap at word boundaries
+with a hanging indent (100 columns when the terminal width is unavailable).
+History summaries and bundle inspection retain that selected scope as well;
+the shared record summary owns the count rather than treating an empty prepared
+target array as no selected work.</p>
 <p>The completion summary leads with the build outcome and elapsed wall time. Successful builds show artifacts with target, bundle-relative path and recorded size, followed by actual manifest/event references or explicit unavailability. Multiple targets receive at most eight target rows with an omitted count; single-target builds omit that redundant table. Receipts distinguish selected targets from actions and reconcile disjoint action outcomes. Failed builds list failed and blocked actions with available exit codes/reasons; their detailed output stays beside the live operation above. Host failures explain that existing local binaries were not updated. Empty artifact results say “No artifacts produced”; empty Reports sections are omitted.</p>
 <p>Fresh tests and reused test evidence have separate totals. Reuse identifies available producer provenance and never increments tests run now. A report with mixed or missing action ownership is labelled with unavailable origin. Coverage measurements remain visible when available. Missing reports do not imply zero failures or 100% coverage, and coverage is not averaged across unrelated metrics. Planned artifacts are labeled as planned. Diagnostic messages retain severity, code, affected action and available recovery. Success with warning diagnostics says so explicitly; warning detail remains visible. Default receipt sections are bounded to eight records and disclose omitted detail. <code>-v</code> (or a debug log level enabled for the command) additionally lists manifest and individual report paths; these files remain in the output bundle at normal verbosity. Human and structured views consume the same finalized facts; JSON retains the complete manifest. The summary uses semantic color on capable terminals and remains readable without color.</p>
 <p>Normal builds retain <code>dist/logs/events.jsonl</code>, numbered action stdout/stderr files, <code>manifest.json</code> and <code>plan.json</code>. Preparation output is included in events. Independent branches emit partial plan events as they become ready; later aggregate plan events preserve running/completed task states. Branch action logs are namespaced under <code>logs/&lt;target&gt;/</code>, and sealed plans are retained under <code>plans/</code>. Preflight records are temporarily spooled and replayed into the existing journal when the bundle becomes available, so collapsed installer output is retained on completed preflight flows. If setup fails before a bundle is created, a durable build journal is not published; terminal error details and JSON/redirected output remain available. The final console build outcome follows publication of the bundle; the journal is closed before publication. <code>--plan</code> uses a separate <a class="" href="/docs/reference/local-builds#read-only-build-preview">read-only preview</a> receipt with stage selection, tool requirements and unresolved details; it runs no dependency preparation and creates no bundle. History follows the <a class="" href="/docs/reference/build-bundles">bundle lifecycle</a>.</p>
@@ -286,10 +306,14 @@ build is followed by where the time went (<code>Preflight 71s · Build 174s · C
 platforms, and packaged for the build container. The package is cached across builds under
 <code>cache/rust-packaged</code> in the Oyzu user-data directory, so a repeat build only reuses it.</li>
 <li class=""><strong>Compiler in container.</strong> The package is restored into a read-only Docker volume named
-<code>oyzu-tools-&lt;hash&gt;</code> (the hash covers the worker image and the compiler archive digest). The volume
+<code>oyzu-tools-&lt;hash&gt;</code> (the hash covers the worker image, compiler archive digest and restoration
+format). The restored copy grants read/search access while preserving executable bits, so
+actions assigned the source owner&#x27;s UID can use compilers installed privately with <code>0700</code>
+modes. The original installation and archive are unchanged. Older private-mode volumes are
+retained; the new restoration format uses a separate derived key. The volume
 persists across builds, so a repeat build reuses it in under a second instead of re-extracting the
 compiler (about 20 s). A second volume, <code>oyzu-tools-&lt;hash&gt;-ok</code>, is created only after extraction
-succeeds; a volume without it is treated as unfinished and rebuilt. A lock file under <code>cache/</code> in
+and accessibility normalization succeed; a volume without it is treated as unfinished and rebuilt. A lock file under <code>cache/</code> in
 the Oyzu user-data directory serializes concurrent builds. Each compiler or worker-image change
 adds one volume (about a gigabyte); remove old ones with <code>docker volume rm</code>. Without the lock the
 volume is private to the build and removed afterwards.</li>

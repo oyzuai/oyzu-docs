@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Core tool-management development integration | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-management-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Core tool-management development integration | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-management-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-management-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-management-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-management-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-management-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Core tool-management development integration","item":"https://docs.oyzu.ai/docs/reference/tool-management-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.fa57f0d9.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b78b51e6.js" defer="defer"></script>
 <script src="/assets/js/main.af762f7e.js" defer="defer"></script>
 </head>
 <body>
@@ -41,15 +41,18 @@ Installation remains limited to admitted tool providers and never installs OS
 components. Native project dependencies retain their native manifest/lock owner.
 See <a class="" href="/docs/reference/local-builds#executor-readiness">native build readiness</a> and the
 design boundary.</p>
-<p>Native npm execution uses the selected Node installation&#x27;s bundled npm through
+<p>Native npm execution uses the selected Node installation&#x27;s bundled npm/npx through
 Oyzu&#x27;s verified execution environment. No aube installer or mise application is
 embedded. Native npm retains its own registry, authentication and cache semantics;
 Oyzu controls prerequisite selection, execution and evidence.</p>
-<p>This is an execution boundary, not new public npm-tool support. Oyzu&#x27;s
-currently admitted provider capabilities remain unchanged; npm package recipe,
-prerequisite acquisition and governed-network qualification are still required
-before advertising that public flow. Mise&#x27;s aube-dependent Node workspace task
-provider is also omitted; Oyzu owns its own task discovery and execution.</p>
+<p>Bundled commands need no separate tool declaration. Explicit npm/pnpm releases
+use their own providers; selecting npm overrides
+Node&#x27;s bundled copy. Python similarly exposes its interpreter aliases and
+bundled pip through the selected Python, including Windows module-only layouts.
+Developer commands use the shared composed-PATH lookup, including host commands;
+controlled builds retain their separate admission rules. Mise&#x27;s
+aube-dependent Node workspace task provider is omitted; Oyzu owns its own task
+discovery and execution.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="first-user-flow">First user flow<a href="#first-user-flow" class="hash-link" aria-label="Direct link to First user flow" title="Direct link to First user flow" translate="no">​</a></h2>
 <p>The shared-store/portable-lock realignment is in progress. Resolution records now
 contain request facts and recipe roots without scope/profile labels. Rust lookup
@@ -420,10 +423,12 @@ resolve the current project on each invocation. No global npm is selected.
 <code>oyzu which npm</code> reports the JavaScript entry point, not a standalone Windows
 executable; use <code>exec npm</code> rather than attempting to execute that path directly.</p>
 <p>npm&#x27;s existing version is the one bundled with the selected Node release. There
-is no separate npm tool request or version pin. Existing receipts containing only
-Node require a refreshed installation/lock layout; this experimental change does
-not silently relabel them. Keep the previous store until migration is qualified.
-Fresh stores are the scope of the current proof.</p>
+is no separate npm request or version pin for that bundled copy. An explicit
+<code>npm</code> selection can override it. Known bundled
+npx and Python/pip aliases are discovered inside an already leased installation,
+so accepted existing receipts and frozen locks do not need edits or reinstalling.
+This does not revive rejected legacy lock/receipt formats. <code>which pip</code> reports
+the backing Python interpreter; <code>exec pip</code> and the pip shim supply <code>-m pip</code>.</p>
 <p>Ordinary environment configuration is passed to npm through existing execution
 and shell contracts. The local broker experiment sets proxy and CA variables
 without storing upstream tokens in npm configuration. This is a laboratory
