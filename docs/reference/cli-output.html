@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.18e2e39a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.da4a2fec.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -30,6 +30,12 @@ overview includes common examples; <code>oyzu &lt;command&gt; --help</code> or
 nested commands such as <code>oyzu config set --help</code>. Help works offline without a
 project, installed tool selection or platform account. Hidden shell hooks stay
 out of the public command list.</p>
+<p><code>oyzu reshim</code> appears under <strong>Project tools</strong> and refreshes the fixed shim folder
+and existing activation launchers owned by this frontend. Human output reports
+the shims folder and recorded commands; <code>--json</code> returns <code>directory</code> and
+<code>commands</code>. See shim refresh
+for store selection, Windows prerequisites and recovery. <code>shell</code> groups startup
+profile <code>install</code> and <code>remove</code>; shim refresh has no nested spelling or alias.</p>
 <p>Help uses cyan headings, green command/option names and yellow placeholders on
 color-capable terminals. Redirected help is plain text by default. Set
 <code>NO_COLOR=1</code> to disable help color or <code>CLICOLOR_FORCE=1</code> to request it explicitly
