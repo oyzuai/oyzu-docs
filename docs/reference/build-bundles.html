@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build bundles and retention | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-bundles"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build bundles and retention | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-bundles.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-bundles.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-bundles"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-bundles" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-bundles" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build bundles and retention","item":"https://docs.oyzu.ai/docs/reference/build-bundles"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.185fd7b7.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.272e172e.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -48,10 +48,24 @@ time, plus omitted counts and up to eight incomplete-bundle notices. A selected
 summary contains reconciled action counts, fresh/reused/unknown-origin test
 totals, warnings, at most eight exceptional actions and eight diagnostics,
 bounded diagnostic excerpts, available reuse provenance and evidence paths.
+It also contains at most eight recorded action decisions (<code>decisions</code>, with
+<code>omittedDecisions</code>), the recorded selection, and cache status/reason. Nested
+inventories keep at most eight entries with adjacent <code>*Omitted</code> counts; selection
+reason/variant maps also retain at most eight keys with omission counts. Recorded
+<code>cacheLimitations</code> retain unavailable local/remote tiers and <code>selectionFallback</code>
+retains a fallback reason independently of warning diagnostics. Each decision
+preserves its actual outcome, execution/reuse reason, available captured-source
+comparison and original producer. Human history and <code>build --explain</code> share this
+projection; the complete manifest retains omitted details.
 It does not include native log bodies or environments. Missing event/plan/action
 logs are explicitly unavailable. The complete manifest and available files can
 be opened using the returned paths. Summary availability is not artifact
 verification or proof that a journal contains every execution event.</p>
+<p>Later source/configuration changes or <code>cache clear</code> do not rewrite these selected
+invocation decisions. History never substitutes current preview analysis or the
+latest cache-key history. Older or incomplete records without file comparison
+detail explicitly report it unavailable, preserving known outcomes and producer
+provenance. A reused test report remains evidence of earlier execution.</p>
 <p>This is local build/test-bundle history, governed by existing filesystem access
 and bundle retention. Nothing is uploaded or granted to another user. There is
 no automatic history expiry or deletion command; bundles remain until their
