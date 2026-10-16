@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds (in development) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds (in development) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds (in development)","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.272e172e.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9adf3106.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -387,6 +387,17 @@ records how it was sandboxed in <code>sandbox</code>: <code>backend</code> (<cod
 <p>A build can be split into jobs queued along the target graph, each reusing the
 results its predecessors built. Each job runs a <strong>slice</strong>: a build of the named targets in which
 every other target the build needs may only be reused, never built.</p>
+<p>The pinned worker&#x27;s private admitted preparation and execution operations use
+the same executor preflight as ordinary builds: no-Docker refusal, resolved
+<code>build.isolation</code> selection, then the required sandbox probe before native
+preparation. They honor the existing <code>OYZU_NO_DOCKER</code> control. A read-only public
+preview still performs no executor preparation.</p>
+<p>Private assigned execution emits its completed manifest even when the build
+fails, then returns the ordinary failure status: 1 for failed/interrupted work,
+4 for unavailable upstream reuse or 5 for failed handoff publication. A failed
+manifest cannot appear to the worker as successful execution. Native admission
+still requires exact selected records; mismatch diagnostics name the record and
+changed field names without printing command/environment values.</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --slice --handoff oci://registry.oyzu.dev/acme/web/ci web</span><br></div></code></pre></div></div>
 
 
@@ -492,7 +503,8 @@ fields (below):</p>
 <table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>targets</code></td><td>The concrete targets this slice built (requested targets and their variants).</td></tr><tr><td><code>upstream</code></td><td>The other targets it reused.</td></tr><tr><td><code>handoff</code></td><td>The <code>--handoff</code> location, or <code>null</code>.</td></tr><tr><td><code>written</code></td><td>One entry per result of a built target that is in the handoff repository: <code>target</code>, <code>action</code>, <code>key</code> and <code>outcome</code> (<code>pushed</code>, <code>converged</code> when an identical entry was already there, <code>conflicts</code> when a different one held the key and was kept). The runs service keeps these on the job, so a later miss can tell a producer that wrote a different key from one that wrote none.</td></tr><tr><td><code>misses</code></td><td>Every upstream action that was not restored: <code>target</code>, <code>action</code>, <code>key</code>, <code>repositories</code> (each remote asked, with <code>status</code> <code>active</code> or <code>unavailable</code> and why), <code>inPlan</code>, and <code>why</code> when the action was never looked up (for example an authored task without declared outputs, which is never cached).</td></tr><tr><td><code>notWritten</code></td><td>Every result of a built target that did not reach the handoff repository: <code>target</code>, <code>action</code>, <code>key</code>, <code>repository</code> and <code>status</code> (the registry&#x27;s answer).</td></tr><tr><td><code>failure</code></td><td><code>null</code>, or the first miss (<code>reason: UPSTREAM_NOT_CACHED</code>, <code>exitCode: 4</code>) or else the first unwritten result (<code>reason: HANDOFF_PUSH_FAILED</code>, <code>exitCode: 5</code>), with that entry&#x27;s fields.</td></tr></tbody></table>
 <p><code>inPlan</code> tests membership in the original set passed with <code>--slice-plan</code>. <code>false</code>
 means a missing producer was absent from that preview, including a dependency
-added between preview and execution. Clients can then retry as one whole build.
+added between preview and execution. That is an explicit plan mismatch; it does
+not authorize a whole-build replay or repetition of effects that may have occurred.
 <code>true</code> means an expected producer did not leave a reusable result. Both exit 4;
 neither permits the slice to execute an unnamed producer.</p>
 <p>The action cache&#x27;s summary gains a <code>handoff</code> section beside <code>ciRemote</code> and <code>remote</code>,
@@ -501,8 +513,11 @@ result: a later CI build that finds it in its local store looks it up again, as 
 does for a development remote&#x27;s.</p>
 <p>An upstream marked <code>sliceable: false</code> must be named alongside its consumer, for
 example <code>oyzu build --slice --handoff oci://localhost:5000/demo/ci generate web</code>.
-If several consumers need it, each such slice executes it. An unnamed unreusable
-upstream still fails with <code>UPSTREAM_NOT_CACHED</code> and its <code>why</code>.
+If several consumers require its live state or its effects are not known safe to
+repeat, keep the coupled work in one engine invocation. Transferability and
+repeatability are separate facts; cache ineligibility does not authorize one
+execution per consumer. An unnamed unreusable upstream still fails with
+<code>UPSTREAM_NOT_CACHED</code> and its <code>why</code>.
 Every upstream target is prepared (its
 dependencies acquired) because its keys include the prepared dependency identity.
 Verified with the <code>slice-handoff</code> build scenario against zot on Linux

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Remote runs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/remote-runs"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Remote runs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/remote-runs"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Remote runs","item":"https://docs.oyzu.ai/docs/reference/remote-runs"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.272e172e.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9adf3106.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -145,14 +145,25 @@ operator when no link was supplied, before starting a replacement run.
 Reattachment and CLI retrieval of a previous remote run are not implemented.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cancellation">Cancellation<a href="#cancellation" class="hash-link" aria-label="Direct link to Cancellation" title="Direct link to Cancellation" translate="no">​</a></h2>
 <p>The first Ctrl-C asks the platform to cancel the run and keeps following its log
-while the pool stops it; a second Ctrl-C, or ten seconds, exits at once with
-130. Cancelling is retry-safe, so a cancel that races the run&#x27;s own finish is
+while the pool stops it; a second Ctrl-C exits at once with
+130. The observer keeps following beyond the local cleanup grace period so it
+can retain the execution owner&#x27;s confirmed outcome. Cancelling is retry-safe, so a cancel that races the run&#x27;s own finish is
 harmless. There is no confirmation prompt, so cancelling works the same in CI.</p>
 <p><code>cancelled</code> records that this invocation <strong>requested</strong> cancellation. It is not
 confirmation that execution stopped. <code>cancellation.requested</code>, <code>acknowledged</code>
 and <code>confirmed</code> expose separate facts; confirmation follows a terminal
 <code>cancelled</code> result. A finished-run conflict is followed to its actual outcome.
-The receipt preserves pending or unknown cancellation and any known log gaps.
+The receipt preserves pending or unknown cancellation and any known log gaps.</p>
+<p>Assigned native workers use the same cooperative interruption lifetime as a
+local captured build. A running cancellation acknowledgement requires the
+execution owner&#x27;s normal process wait and fresh finalized native build record;
+revoking a lease or receiving a success response alone is insufficient. Forced
+or unconfirmed stops remain explicit failures. The real Linux service/worker
+proof passed cancellation during the shared native action: the observer retained
+all three cancellation facts and exited 130 after confirmed cleanup. A second
+real run preserved an already accepted shared contribution while stopping API
+and preventing the final bundle from starting; see
+the distributed qualification record.
 <code>resultAvailable</code> distinguishes a fetched result from a partial observation.
 When the final run resource is already confirmed, losing access to its result
 retains that execution outcome and identifies unavailable metadata/outputs.
@@ -163,6 +174,17 @@ timestamps advance on actual responses; elapsed waiting is not execution progres
 fetches each one through the platform&#x27;s short-lived download link, which receives
 no platform credential, verifies its SHA-256 digest before writing, and writes it
 at its recorded path under <code>DIR</code>. A path that would leave <code>DIR</code> is refused.</p>
+<p>For accepted native split builds, these are the manifest, artifacts and required
+reports. The output projection excludes the private admitted plan, execution
+envelope and logs; it is not a complete local build bundle for <code>oyzu inspect</code>.
+The existing run log view retains remote observation separately. Native
+contribution validation precedes final platform success; downloaded file digests
+are checked again by the client.</p>
+<p>Reported native success does not guarantee platform acceptance. If the complete
+transferred contribution cannot be verified, the run fails with
+<code>CONTRIBUTION_UNVERIFIED</code> and no accepted outputs. This does not turn successful
+native actions into failed tests or grant permission to replay their commands.
+Inspect the run&#x27;s diagnostic and retained native evidence before retrying.</p>
 <p>The result must contain an <code>outputs</code> array, including an empty array when there
 are no outputs. Every output supplies its kind (<code>manifest</code>, <code>report</code> or
 <code>artifact</code>), media type, nonnegative size, path and digest. A missing or
@@ -192,13 +214,22 @@ development against a mock. Run ids and digests from the platform are validated
 before they are used in a URL or a file name, and log text is escaped before it
 reaches the terminal like local child output.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limitations">Limitations<a href="#limitations" class="hash-link" aria-label="Direct link to Limitations" title="Direct link to Limitations" translate="no">​</a></h2>
+<p>The #479 implementation candidate connects internal admitted native preparation
+and assigned-plan verification separately from public read-only preview. This
+has passed the connected real-service flow on Linux, including distinct API/Web
+workers, an independent whole-build artifact/report comparison, cancellation,
+retained-byte upload retry, safe worker replacement, coupled prerequisites and
+required output/report/contribution refusals without implicit replay.
+The agreed finite cases and exact qualification limits are recorded in
+distributed build completion.</p>
 <ul>
 <li class="">No interactive login; the token comes from <code>OYZU_PLATFORM_TOKEN</code>.</li>
 <li class="">GitHub repositories on github.com only, matching the contract&#x27;s <code>github</code>
 provider.</li>
 <li class="">Task arguments (<code>-- args</code>) are not supported remotely.</li>
 <li class=""><code>--detach</code>, listing runs and re-attaching to a run are not implemented.</li>
-<li class="">Not qualified against a platform service; see RUNS-08 and RUNS-09 in the
+<li class="">Broader platform/host qualification remains incomplete; see the linked
+distributed qualification record and RUNS-08/RUNS-09 in the
 design page.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Local action cache | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/action-cache"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Local action cache | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/action-cache"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Local action cache","item":"https://docs.oyzu.ai/docs/reference/action-cache"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.272e172e.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9adf3106.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -93,7 +93,9 @@ checkouts pushed. A remote hit is a development result, not trusted CI evidence.
 The bounded shared-source baseline
 also measured Windows-host/Linux-Docker seed/repeat reuse and native package
 results. Shared edits conservatively re-execute unrelated work there; full
-Windows/macOS cache qualification and Linux shared-source acceptance remain pending.</li>
+Windows/macOS cache qualification remains pending. The bounded Linux
+shared-source proof passed; its named remaining qualification cases stay
+explicit in that record.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build                       # first build executes and stores; repeats reuse</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --affected HEAD       # Git-selected targets also reuse unchanged results</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --full                # quality stages and their reports are reused too</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --no-cache            # run every action; read and write nothing</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu cache status                # where the store is, how large, how many entries</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu cache clear                 # remove every cached result (bundles are untouched)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --explain             # after the build, why each stage was reused or ran</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu cache explain api           # why target api&#x27;s key (and its stages&#x27; keys) last changed</span><br></div></code></pre></div></div>
@@ -1243,9 +1245,23 @@ have been measured for this change.</p>
 
 
 
-<table><thead><tr><th>Situation</th><th>Behavior</th></tr></thead><tbody><tr><td>No entry</td><td>the target executes and is stored</td></tr><tr><td>Damaged blob or descriptor, mismatched key, unreadable entry</td><td>rejected, <strong>quarantined</strong>, the target executes and replaces it; the summary notes the rejection</td></tr><tr><td>Report gate fails on restore</td><td>entry rejected; the target executes normally</td></tr><tr><td>Cache location missing, unwritable or unusable</td><td>the build runs normally and stores nothing; no pipeline change is needed</td></tr><tr><td><code>cache.local = false</code> / <code>--no-cache</code></td><td>everything executes</td></tr><tr><td>Cancelled or failed build</td><td>nothing partial is stored</td></tr></tbody></table>
+<table><thead><tr><th>Situation</th><th>Behavior</th></tr></thead><tbody><tr><td>No entry</td><td>the target executes and is stored</td></tr><tr><td>Damaged blob or descriptor, mismatched key, unreadable entry</td><td>rejected, <strong>quarantined</strong>, the target executes and replaces it; the summary notes the rejection</td></tr><tr><td>Report gate fails on restore</td><td>entry rejected; the target executes normally</td></tr><tr><td>Cache location missing, unwritable or unusable</td><td>the build runs normally and stores nothing; no pipeline change is needed</td></tr><tr><td><code>cache.local = false</code> / <code>--no-cache</code></td><td>everything executes</td></tr><tr><td>Cancelled or failed build</td><td>independently valid completed actions can remain reusable; failed/interrupted actions and failed target groups have no success descriptor</td></tr></tbody></table>
 <p>Writes are atomic (stage, then rename), and a descriptor is published only after every
-blob it references. Maintenance uses the leases described above. Regression tests
+blob it references. Maintenance uses the leases described above.</p>
+<p>The completed-action recovery qualification
+records the failure/retry/test-only-repair/fresh-comparison proof, missing aggregate
+evidence and interruption cases, plus native standalone OCI restoration into an
+empty local store. Windows partial-reuse precision remains unqualified.</p>
+<p>An eligible action seals its outputs, workspace changes/deletions and owned
+reports at its actual completion/report boundary. Later writers and target
+failure cannot replace those captured bytes. Required missing or malformed
+action reports prevent its publication; aggregate target obligations still gate
+target success. Restored evidence retains the original producer and is checked
+against current report requirements. The real four-run failed-target recovery
+and standalone OCI recovery case passed; remaining finite and preservation
+qualification is recorded in
+the bounded recovery record.</p>
+<p>Maintenance regression tests
 cover competing-process clear/eviction, human/JSON busy errors, corrupt-blob
 destination preservation and deferred restore from retained verified bytes. These
 new tests have not run on the desktop; see <a class="" href="/docs/support/capabilities">verification status</a>.</p>
