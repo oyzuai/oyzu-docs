@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tasks in captured builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-tasks"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tasks in captured builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-tasks"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tasks in captured builds","item":"https://docs.oyzu.ai/docs/reference/build-tasks"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.9adf3106.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.8ec540c8.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -75,6 +75,36 @@ branch. An existing planned source projection selects only its admitted entries;
 without a projection, the target still receives the full capture. There is no
 new option and no inferred narrowing of arbitrary task inputs. Final assembly of
 already completed branches does not materialize their workspaces again.</p>
+<p>Source selection applies case-sensitive in-tree <code>.gitignore</code> rules, including
+ancestor rules for a nested build root. Untracked nonignored files are included;
+tracked ignored files are excluded with <code>SOURCE_TRACKED_IGNORED</code> warnings when Git
+is available. Declare an ignored required path in the target&#x27;s <code>inputs</code> to include
+it; this cannot admit Oyzu state, Git metadata or an opaque nested repository.
+Declaring a file permits traversal through its ignored parent directories, while
+unrelated ignored siblings remain excluded. Declaring a directory includes its
+ordinary descendants under the same mandatory state and repository boundaries.
+Global Git excludes and builder-specific ignore files do not define capture.</p>
+<p>The plan and manifest retain <code>source.selection</code>: effective rule bytes, the source
+prefix within its repository, authored inputs and encountered nested repository
+boundaries. This frozen selection
+lets consumers replay the same selection after relocation, including rules above
+a nested source root, without rereading mutable declarations or ignore rules.
+Host builds retain <code>source.projections</code> instead: each actual target capture&#x27;s
+frozen rules and repository-relative target/input roots, plus the workspace
+prefix. Their source identity remains the existing aggregate of per-target
+digests. Replaying those projections
+selects current files under the recorded roots, so a newly added nonignored file
+changes identity while an unrelated sibling stays outside the target. A nested
+host replay requires its corresponding enclosing repository layout; metadata
+cannot authorize reads outside that boundary.</p>
+<p>Consumers must still compare the recaptured tree or aggregate digest with
+<code>source.treeDigest</code>; selection replay does not establish unchanged input bytes.
+The Windows host and Linux isolated Go artifact flows cover declared ignored
+inputs, ignored scratch data and changed-rule variants in the
+source qualification record. Native scanner
+replay and source-mismatch refusal have separate
+qualification evidence. These measured
+profiles do not establish support for every host or scanner.</p>
 <p>Materialization hashes each selected file while copying it and compares its
 size, digest and executable bit with the capture. Files are independent copies,
 never writable hard links to another target or the frozen source. Changed or

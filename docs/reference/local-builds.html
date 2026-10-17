@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds (in development) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds (in development) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds (in development)","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.9adf3106.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.8ec540c8.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -99,6 +99,19 @@ even when a project is rooted under <code>/workspace/</code>, <code>/out/</code>
 Captured workspace, output and runtime paths still translate into the source
 projection, report output and engine runtime. Path declarations do not relax
 native cache, binary inventory or artifact containment checks.</p>
+<p>Native Rust builds now project inferred snapshot package versions into the
+private manifests using the same resolver as captured builds. Each native member
+keeps its own package scope and tag baseline, augmented by the declared target
+prerequisite closure. Cargo reconciles only private workspace versions offline
+against the existing lock, preserving locked external packages. Compiled
+<code>CARGO_PKG_VERSION</code>, artifact version metadata and plan/manifest decisions use
+the projected version; executable filenames retain their native names. The
+original manifests and Cargo/tool locks remain unchanged. Conflicts and missing
+offline dependencies fail preparation with recovery guidance. This new Rust
+projection passes the Windows three-application pair with and without a declared
+producer edge, including native reports and independent compiled-version
+execution. This does not qualify other hosts or all native profiles; see
+version inference.</p>
 <p>This fixes issue #384, where an absolute
 host cache was mistaken for a captured <code>/workspace/</code> mount and compilation failed
 with <code>COMMAND_FAILED: No such file or directory</code> after successful preparation.
