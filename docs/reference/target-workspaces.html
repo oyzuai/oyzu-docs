@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Host target workspaces and artifact inputs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/target-workspaces"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Host target workspaces and artifact inputs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/target-workspaces"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.80d3ed82.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.9c5ca4e3.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -54,6 +54,19 @@ atomic repository-wide snapshot. Unsupported native inputs fail through their
 native tools; arbitrary script dependencies are not automatically inferred.</p>
 <p>Source capture caches directory ignore decisions within one invocation; explicit
 inputs and mandatory metadata/repository exclusions keep their existing rules.
+Host workspace refresh walks each target&#x27;s known source/input roots directly,
+without a preliminary whole-repository inventory for that target. It still hashes
+every admitted source file on each build. Files whose size, modification time and
+read-only state match the retained private copy are not rewritten; other files are
+copied again, and stale generated files are removed. This reduces preparation
+work on repeated builds without depending on Git&#x27;s tracked-file list.
+Refresh uses a nonfollowing source-file handle for live metadata, hashing and
+the post-read change check, avoiding a separate path-based file metadata open.
+For Oyzu&#x27;s own checkout, keep the source revision current when testing this
+behavior: a successful self-build promotes that checkout&#x27;s compiled executables
+back into <code>.oyzu/bin</code>, including artifacts restored from cache. Replacing only
+the launcher cannot keep a fix absent from the sources being built. See
+<a class="" href="/docs/reference/cli-output#which-executable-is-running">local executable promotion</a>.
 Temporary source captures and complete admitted-source copies used by dependency
 preparation preserve modification times and do not flush each file to durable
 storage. Complete copies keep already-admitted inputs without reapplying ignores.
