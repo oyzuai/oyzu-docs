@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.89c5701b.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.82917482.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -128,9 +128,10 @@ version, whether it was <code>already installed</code> or <code>installed now</c
 detected requirement that needs it, then why the build has it:
 <code>detected from Cargo.toml</code> (a builder found it) or <code>pinned in docs-site/oyzu.toml · not detected for docs</code> (only a folder pin selected it), followed by the detected toolchain components and host
 prerequisites. Best-effort detection (Rust: <code>prost-build</code>/<code>tonic-build</code> in
-<code>Cargo.lock</code> → <code>protoc</code>) lists a pinned detected tool (<code>detected from Cargo.lock</code>) and adds <code>!</code>
-attention rows for an unpinned package tool (preflight cannot yet resolve
-those), a tool with no catalog entry, a missing host prerequisite, or a package that fetches a tool
+<code>Cargo.lock</code> → <code>protoc</code>) lists a detected tool (<code>detected from Cargo.lock</code>), pinned or not
+(an unpinned one is resolved to the detection&#x27;s version hint, else the latest stable
+release, locked in <code>oyzu.lock</code> and installed), and adds <code>!</code>
+attention rows for a detected tool that is unknown, has no usable checksum or cannot be resolved or installed (<code>pin it in oyzu.toml or silence it with tools.ignore</code>; the build continues, only an explicit pin fails), a missing host prerequisite, or a package that fetches a tool
 outside the lock; they warn and never fail the build. <code>tools.ignore</code> silences a
 detection (shown only with <code>-v</code>). When another build holds the workspace, a <code>Build lock</code> row
 waits for it, naming its process and start time, instead of failing; Ctrl-C
@@ -397,8 +398,9 @@ output appends an elapsed-time update instead. These are liveness indicators,
 not percentages or proof that a native tool is advancing. Native output continues
 to stream as it arrives; Cargo may remain quiet during compilation or linking.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interrupting-a-build">Interrupting a build<a href="#interrupting-a-build" class="hash-link" aria-label="Direct link to Interrupting a build" title="Direct link to Interrupting a build" translate="no">​</a></h2>
-<p>The first Ctrl+C (or SIGTERM) asks the build to stop: schedulers stop starting work and running
-container steps are removed. Steps blocked in a native or Docker call cannot observe the request,
+<p>The first Ctrl+C (or SIGTERM, or SIGHUP when the terminal closes) asks the build to stop:
+schedulers stop starting work and running container steps are removed. A signal that was already
+ignored when the build started, such as SIGHUP under <code>nohup</code>, stays ignored and does not stop it. Steps blocked in a native or Docker call cannot observe the request,
 so the CLI prints <code>Stopping build; waiting up to 10s for running steps. Press Ctrl-C again to force exit.</code> A second Ctrl+C, or the end of the 10-second grace period, removes the containers this
 invocation started (named <code>oyzu-*</code> or the build worker names), ends the process tree and exits.
 On Windows the exit status of a forced exit is 1; on Unix it is 130. Unix forced exit does not

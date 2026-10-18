@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Remote runs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/remote-runs"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Remote runs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/remote-runs"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Remote runs","item":"https://docs.oyzu.ai/docs/reference/remote-runs"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.89c5701b.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.82917482.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -149,6 +149,8 @@ while the pool stops it; a second Ctrl-C exits at once with
 130. The observer keeps following beyond the local cleanup grace period so it
 can retain the execution owner&#x27;s confirmed outcome. Cancelling is retry-safe, so a cancel that races the run&#x27;s own finish is
 harmless. There is no confirmation prompt, so cancelling works the same in CI.</p>
+<p>Closing the terminal (SIGHUP) is not a cancellation: it ends only the local
+follower, and the remote run continues on the pool.</p>
 <p><code>cancelled</code> records that this invocation <strong>requested</strong> cancellation. It is not
 confirmation that execution stopped. <code>cancellation.requested</code>, <code>acknowledged</code>
 and <code>confirmed</code> expose separate facts; confirmation follows a terminal
