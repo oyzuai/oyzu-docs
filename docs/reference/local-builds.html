@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds (in development) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds (in development) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds (in development)","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.9c5ca4e3.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.5d917eeb.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -185,10 +185,11 @@ provisioning. The full Oyzu checkout also passed <code>cargo check --locked --of
 was not tested by that check. Coverage remains required when the test/coverage
 stage is selected; plain local compilation does not select it automatically.</p>
 <p>The native path builds development-profile binaries. Plain local <code>oyzu build</code>
-automatically schedules compilation only. <code>oyzu build --full</code>, detected CI context
-or the CI profile also schedule test/JUnit/coverage/doctest integration, Clippy
-and read-only formatting checks. Explicit <code>checks.required</code>, coverage minimums,
-hooks and task prerequisites remain enforced in fast mode. Binaries are collected
+automatically schedules compilation and any check at level <code>required</code>.
+<code>oyzu build --full</code>, the <code>pr</code>, <code>ci</code> and <code>release</code> contexts or the CI profile also
+schedule test/JUnit/coverage/doctest integration, Clippy and read-only formatting
+checks, except those whose <a class="" href="/docs/reference/configuration#check-levels">check level</a> is <code>off</code>.
+Required checks, hooks and task prerequisites remain enforced in fast mode. Binaries are collected
 only after the selected stages succeed. <code>oyzu run test</code>, <code>oyzu run lint</code> and
 <code>oyzu run format-check</code> remain explicit task entry points. Native <code>build</code> overrides
 are currently rejected with an explicit diagnostic. Ordinary hooks and task

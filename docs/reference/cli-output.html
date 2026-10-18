@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.9c5ca4e3.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.5d917eeb.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -139,11 +139,19 @@ when one is known; an explicit request shows <code>requested</code> and <code>re
 (prerequisites pulled in). <code>── Plan ──</code> then prints once after it.
 Rows are targets; columns are the stages the builders declare, in the order
 format, lint, test, build, package and then any other stage. A cell is <code>run</code>
-(selected), <code>skip</code> (the builder has the stage but it is not selected or not
-available) or <code>-</code> (the builder declares no such stage). Below the table, after a
-blank line, one dim line per distinct skip reason names the stages it covers under
-a <code>skipped</code> label, and table notes follow under a <code>note</code> label, so neither reads as
-a table row. A single target built for several
+(selected), <code>skip</code> (the builder has the stage but this build does not run it, for
+example a fast local build, or it is not available), <code>off</code> (a
+<a class="" href="/docs/reference/configuration#check-levels">check level</a> of <code>off</code>: never run and its tools
+not prepared) or <code>-</code> (the builder declares no such stage). Below the table, after a
+blank line, one dim line per distinct reason names the stages it covers: under an
+<code>off</code> label with where the check was turned off (<code>format · disabled in oyzu.toml</code>, <code>test · disabled in oyzu.toml [context.pr]</code>), under a <code>skipped</code> label
+(<code>lint and test · fast local build</code>), and under an <code>advisory</code> label for run
+stages whose failure is only a warning (<code>lint · failures are warnings; the build still succeeds</code>). Table notes follow under a <code>note</code> label, so none reads as a
+table row. A failed advisory check is shown once, as a warning: its Build row
+reads <code>warn … failed · advisory</code>, it gets no Failure block, Warnings holds one
+<code>CHECK_ADVISORY</code> entry with the action, exit code and native cause, and the
+summary counts it apart from failures (<code>1 advisory failed</code>); the build still
+succeeds. A single target built for several
 platforms (<code>--all-platforms</code>) pivots to one row per platform and says
 <code>1 target · N platforms</code>. Above twelve rows, targets with identical stages share a
 counted row (<code>29 targets</code>) and a <code>note</code> line says so; a narrowed build&#x27;s trailer
