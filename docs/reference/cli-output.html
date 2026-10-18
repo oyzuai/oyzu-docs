@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.8dc81a65.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.aa31bd38.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -82,10 +82,92 @@ changing any installation. No global bootstrap replacement is required for a
 project-local build. Native Windows routing qualification is recorded separately
 from cross-platform source/tests.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="result-output">Result output<a href="#result-output" class="hash-link" aria-label="Direct link to Result output" title="Direct link to Result output" translate="no">​</a></h2>
-<p>Default builds use compact linear progress; the dashboard remains an explicit option.
-The old linear preparation/context/stage tables are removed. Routine successes and
+<p>Default builds use compact linear progress, preceded by one plan table (targets by
+stages, or platforms by stages for a single target) shown before work starts; the
+dashboard remains an explicit option. The old linear preparation/context/stage
+tables and the per-stage <code>Skipped</code> lines are removed. Routine successes and
 accepted per-action test details collapse; <code>-v</code>, planning, inspection, history and
-JSON retain deeper detail. Build receipts include separate target/action totals and
+JSON retain deeper detail.</p>
+<p>A build prints named sections in a fixed order and omits any that has nothing to
+say. The title line names the project and, right-aligned, the host platform, <code>local</code>
+or the CI provider, and <code>fast</code> or <code>full</code>. <code>── Prepare ──</code> lists slow, warned or
+failed preparation steps as rows (mark, name, detail, duration, and the warning
+count of the work that raised them); routine steps stay verbose detail.
+<code>── Build ──</code> has one row per finished action: mark, target, stage, the command
+shortened with <code>…</code> to fit the width, <code>executed</code> or <code>reused</code>, and its duration.
+<code>── Outputs ──</code> lists artifacts as project-relative paths with sizes;
+<code>-v</code> and <code>--json</code> keep absolute paths. <code>── Warnings (N) ──</code> lists each distinct
+warning once, with its owner (for example <code>docs · npm</code>); it is not repeated inline
+during the run. The generic <code>NATIVE_WARNING</code> code is hidden in the default view
+and shown with <code>-v</code> and in JSON, while Oyzu-owned diagnostic codes are always
+shown. The summary line carries the outcome and counts only the outcomes that
+happened (<code>2 targets · 1 executed · 1 reused · 235.3s</code>), followed by a dim
+<code>Details</code> line with the manifest and event paths and the invocation id. The
+separate <code>Action cache</code> line, the &quot;counts do not estimate time remaining&quot; sentence
+and the &quot;Check selection unavailable … retained evidence is incomplete&quot; sentence
+are not part of the default build view; <code>-v</code> adds the <code>Reuse</code> and <code>Cache</code> facts,
+history keeps the selection caveat, and JSON is unchanged. <code>── Selection ──</code> prints
+only when the build is not every declared target: <code>--affected</code> shows what it was
+compared with (<code>compared with origin/main at 0123456</code>), the <code>changed</code> targets and
+changed paths, their <code>dependents</code> and the <code>unaffected</code> count; a conservative
+fallback shows <code>! Not narrowed</code> with its reason, the recorded code and a fix only
+when one is known; an explicit request shows <code>requested</code> and <code>required</code>
+(prerequisites pulled in). <code>── Plan ──</code> then prints once after it.
+Rows are targets; columns are the stages the builders declare, in the order
+format, lint, test, build, package and then any other stage. A cell is <code>run</code>
+(selected), <code>skip</code> (the builder has the stage but it is not selected or not
+available) or <code>-</code> (the builder declares no such stage). One dim footnote per
+distinct skip reason names the stages it covers. A single target built for several
+platforms (<code>--all-platforms</code>) pivots to one row per platform and says
+<code>1 target · N platforms</code>. Above twelve rows, targets with identical stages share a
+counted row (<code>29 targets</code>) and a footnote says so; a narrowed build&#x27;s trailer
+reads <code>N of M targets</code> and an affected build adds a <code>why</code> column (<code>changed</code>,
+<code>uses &lt;target&gt;</code>); <code>-v</code> lists every target. When
+the table would not fit the terminal width each row becomes a record (<code>cli  build run · package -</code>, then its skipped stages on the next line) so no value is lost.
+The table renders the planner&#x27;s recorded stage and check-selection facts and
+does not recompute them; a <code>runs on</code> executor column is not shown because no
+such fact is recorded.</p>
+<p>A failed action&#x27;s Build row reads <code>✗ … failed &lt;duration&gt;</code> (<code>FAIL</code> without color).
+After Build, a <code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code> section shows the native
+cause (line breaks kept, terminal controls escaped, the first error context or the
+last lines written), the exit code, <code>Log</code> with the retained log path, and
+<code>Next  oyzu build &lt;target&gt;   re-run only this target</code>. Actions that did not run
+because a prerequisite failed are <code>blocked</code> (<code>⊘</code>), counted apart from failed; a
+blocked row says <code>needs &lt;target&gt; · &lt;stage&gt;</code>, only the first three get a row and
+the rest become <code>+ N more blocked · -v lists them</code>. The summary counts only
+non-zero outcomes (<code>✗ Build failed   1 failed · 12 blocked · 130 succeeded · 4m 02s</code>)
+and is followed by <code>Details</code> and, for a host build, the note that local binaries
+were not updated. A preparation failure ends after Prepare with a
+<code>── Failure: preparation ──</code> block and no Build section. In a build of more than
+twelve actions, clean successes fold into one <code>✓ 91 finished · 78 reused · 13 executed</code> tally (<code>-v</code> lists every action); running, warned, waiting, blocked and
+failed actions keep their rows, and the Build heading says <code>143 actions</code>.
+On a terminal the live pane shows <code>○ &lt;target&gt; · &lt;stage&gt;  waits for &lt;target&gt; · &lt;stage&gt;</code> for queued actions with unfinished prerequisites (at most three, then
+<code>+ N more waiting</code>) and an <code>N of M finished</code> line. <code>-q</code> prints only Failure,
+Warnings and the summary line. Redirected output is rendered at 100 columns on
+every host; failure text wraps instead of exceeding it, Windows extended-length
+(<code>\\?\</code>) prefixes are not shown, and a long log path keeps its tail. Interrupted,
+<code>--plan</code> and <code>--check</code> builds keep their existing receipts.</p>
+<p>Redirected output and CI logs are appended, not redrawn: each action prints a
+<code>..  target  stage  started</code> line and an end line with its outcome and duration,
+both led by the elapsed <code>mm:ss</code>, and the ten-second heartbeat reads
+<code>still running: api build 10s · auth-lib test 12s · 6 waiting</code>. In a narrow
+terminal or without color every table falls back to records and nothing is dropped.</p>
+<p>When the selected targets live in more than one top-level directory below the
+project root (<code>./</code> for targets at the root), the plan table groups its rows under
+a dim <code>services/</code> heading, a prerequisite in another directory shows in a final
+<code>needs</code> column when it fits, Outputs are listed under their directory, and the
+summary gains one line per directory (<code>services/  ✓ 2 targets  58.1s</code>, where the
+time is the sum of that directory&#x27;s action durations). Identical-stage grouping
+above twelve rows applies within each directory. A build in a single directory is
+unchanged.</p>
+<p>With color, state is a glyph (<code>✓</code> ok, <code>↺</code> reused, <code>!</code> warning, <code>✗</code> failed). Without
+color (<code>NO_COLOR</code>, <code>TERM=dumb</code>, redirected output) every mark becomes a padded
+word (<code>ok</code>, <code>reused</code>, <code>warn</code>, <code>FAIL</code>) and headings use <code>-- Name ---</code>, so no state
+depends on color. <code>-q</code> prints only warnings and the summary line (failures keep
+their existing receipt). The titles, rows and receipt are produced by the shared
+presentation and logging layer; JSON stdout, JSON events and exit status are
+unchanged.</p>
+<p>Build receipts include separate target/action totals and
 nonzero disjoint action outcomes,
 fresh tests, reused test evidence, warnings and available evidence references.
 Receipts distinguish captured checks selected (with their action outcomes) from
@@ -94,7 +176,8 @@ facts, including required checks in fast mode; a fast/full label or missing
 report never establishes that tests were not requested. A native report with an
 explicit zero total is labeled <code>Native zero-test reports</code>; native skips keep
 their own counts. Missing numeric facts display <code>unavailable</code>, not zero.
-Legacy records without captured selection say <code>Check selection unavailable</code>.
+Legacy records without captured selection say <code>Check selection unavailable</code>
+in history and failed receipts.
 Required report validation still fails the build, and a successful build does
 not itself establish release eligibility. Selected history uses the same labels.
 Successful target totals remain separate from actions labeled <code>executed</code> or
@@ -104,8 +187,8 @@ and explicit uncertainty; they do not recompute causes from the current checkout
 Ordinary misses remain ordinary execution, while material fallback warnings and
 required failures keep their existing visibility and exit semantics.
 Successful receipts say <code>Build succeeded</code>, including <code>with warnings</code> when
-warning diagnostics are present. Native warnings remain visible after transient
-progress clears, and both human views share compiler/test output projection;
+warning diagnostics are present. Native warnings are listed once in the
+Warnings section, and both human views share compiler/test output projection;
 raw native records remain in JSON events and retained logs. Intentional stage
 skips use neutral grouped reasons; missing required work still receives attention.
 Lifecycle records use compact spacing and a simpler nested description at narrow
@@ -134,8 +217,8 @@ preparation spool, redraw worker or cursor controls; their stdout contracts
 views retain their ten-second progress heartbeat; interactive builds redraw at
 up to ten frames per second. Closing either timed build view wakes its wait
 immediately, so command completion does not wait for the next redraw or heartbeat.</p>
-<p><code>oyzu build --verify-contract</code> adds a <strong>Contract check</strong> block after the <code>Action cache</code> line of the final
-summary: the outcome (<code>passed</code>, <code>failed</code>, <code>nothing to verify</code>), how many confined actions ran again with their
+<p><code>oyzu build --verify-contract</code> adds a <strong>Contract check</strong> block after the Outputs of the final
+receipt: the outcome (<code>passed</code>, <code>failed</code>, <code>nothing to verify</code>), how many confined actions ran again with their
 whole target visible, how many matched, diverged or were not confined, and one <code>Diverged</code> row per mismatch
 naming the extra files and the declaration that fixes them. The same data is <code>manifest.extensions[&quot;oyzu.dev/contract-verification&quot;]</code>
 in <code>--json</code>; a divergence is also an <code>error</code> diagnostic and a non-zero exit. A confined action&#x27;s undeclared read

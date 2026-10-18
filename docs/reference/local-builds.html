@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds (in development) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds (in development) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds (in development)","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.8dc81a65.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.aa31bd38.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -145,11 +145,14 @@ quality-stage helpers; explicitly declared components remain requirements.</p>
 <p>This check currently covers native Rust execution. It does not introduce remote
 executor probes, arbitrary system-package detection or OS provisioning. A ready
 host capability is not a claim of hermeticity or publication eligibility.</p>
-<p>For a single inferred or declared Rust target, plain
-<code>oyzu build</code> selects native development execution. Other builder/workspace shapes
+<p>Plain <code>oyzu build</code> selects native development execution when every selected
+target is native-eligible (Rust, Go, Gradle, Maven, npm node/app and pip Python,
+plus admitted image workers). Other builder/workspace shapes
 retain their existing captured behavior. <code>oyzu build --isolated</code> explicitly uses
-the existing captured container executor; <code>--image</code> and <code>--affected</code> also retain
-that path. A failed native or isolated build never retries through another
+the existing captured container executor; <code>--image</code> also retains that path.
+<code>--affected</code> computes its <a class="" href="/docs/reference/affected-builds">selection</a> first and then follows
+the same native-eligibility rules as a plain build, falling back to the captured
+path only where a plain build would. A failed native or isolated build never retries through another
 executor. CI detection does not change this selection.</p>
 <p>Plain local builds need pinned Rust/Cargo and provisioned native compilation prerequisites.
 Preflight verifies or installs the pinned tools before native dependency preparation.
@@ -237,11 +240,11 @@ artifact names and report bindings remain <strong>unresolved</strong>. A selecte
 configuration requests it, not that its prerequisites have passed. Dynamic target
 relationships may add work during real preparation. Success means the static
 preview was produced; it does not certify build success or publication eligibility.</p>
-<p>Live build output shows a stage table once; platform siblings with an identical plan print a one-line &quot;same plan as&quot; reference instead of repeating it.</p>
+<p>Live build output shows one plan table once, before work starts: targets by stages with <code>run</code>, <code>skip</code> or <code>-</code> cells and one footnote per skip reason. A single target built for several platforms pivots to one row per platform; above twelve rows targets with identical stages share a counted row (<code>-v</code> lists every target). See <a class="" href="/docs/reference/cli-output#result-output">Result output</a>.</p>
 <p>Matrix expansion (<code>--all-platforms</code>, <code>--isolated</code>) can yield targets that differ only by
-platform. Human output renders such targets as one &quot;N targets · identical plan&quot;
-section that lists each platform and target ID, with a single stage table; the
-requirements table shows &quot;all N targets&quot; when every target shares a requirement.
+platform. In the live build output a single target built for several platforms is
+one plan table with a row per platform; the requirements table shows &quot;all N targets&quot;
+when every target shares a requirement.
 <code>--json</code> still reports every target individually. Targets whose plans differ keep
 their own sections.</p>
 <p>Human output uses stage/requirement tables with semantic color on capable terminals
