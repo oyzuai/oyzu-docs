@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.3d6a92b1.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.89c5701b.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -118,11 +118,23 @@ A section appears only with its first row and is never printed empty.</p>
 <li class=""><strong>Title.</strong> The <code>heading</code> event keeps its recorded text. The linear view shortens
 its subtitle (<code>windows/x86_64 (host) · local · fast</code>) and right-aligns it, wrapping
 below the title when the width is short.</li>
-<li class=""><strong>Prepare.</strong> Preparation steps that are slow (ten seconds or more), failed or
-warned print as one row: mark, name, detail, and the duration followed by
-<code>· N warnings</code> when work raised them. The warning count joins a step to its
-scope (a step named <code>docs dependencies</code> ran the scope <code>docs:dependencies</code>).
-Routine fast steps and tool readiness stay in <code>-v</code> and the journal.</li>
+<li class=""><strong>Prepare.</strong> Every preparation step prints as one row: mark, name, detail,
+and the duration followed by <code>· N warnings</code> when work raised them. The warning
+count joins a step to its scope (a step named <code>docs dependencies</code> ran the scope
+<code>docs:dependencies</code>). While a step runs it shows under the heading with a
+spinner (<code>..</code> without color). The <code>Tools</code> row summarizes the pinned tools
+(<code>2 tools pinned · 0 installed now</code>) and lists each beneath it with its
+version, whether it was <code>already installed</code> or <code>installed now</code>, and the
+detected requirement that needs it, then why the build has it:
+<code>detected from Cargo.toml</code> (a builder found it) or <code>pinned in docs-site/oyzu.toml · not detected for docs</code> (only a folder pin selected it), followed by the detected toolchain components and host
+prerequisites. Best-effort detection (Rust: <code>prost-build</code>/<code>tonic-build</code> in
+<code>Cargo.lock</code> → <code>protoc</code>) lists a pinned detected tool (<code>detected from Cargo.lock</code>) and adds <code>!</code>
+attention rows for an unpinned package tool (preflight cannot yet resolve
+those), a tool with no catalog entry, a missing host prerequisite, or a package that fetches a tool
+outside the lock; they warn and never fail the build. <code>tools.ignore</code> silences a
+detection (shown only with <code>-v</code>). When another build holds the workspace, a <code>Build lock</code> row
+waits for it, naming its process and start time, instead of failing; Ctrl-C
+stops the wait.</li>
 <li class=""><strong>Selection.</strong> Only when the build is not simply every declared target, a
 <code>Selection</code> section prints after Prepare, from the recorded selection record
 (<code>mode</code>, <code>requested</code>, <code>selected</code>, <code>excluded</code>, <code>prerequisites</code>) and affected

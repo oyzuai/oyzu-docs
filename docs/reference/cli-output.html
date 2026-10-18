@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.3d6a92b1.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.89c5701b.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -90,9 +90,25 @@ accepted per-action test details collapse; <code>-v</code>, planning, inspection
 JSON retain deeper detail.</p>
 <p>A build prints named sections in a fixed order and omits any that has nothing to
 say. The title line names the project and, right-aligned, the host platform, <code>local</code>
-or the CI provider, and <code>fast</code> or <code>full</code>. <code>── Prepare ──</code> lists slow, warned or
-failed preparation steps as rows (mark, name, detail, duration, and the warning
-count of the work that raised them); routine steps stay verbose detail.
+or the CI provider, and <code>fast</code> or <code>full</code>. Every row, the title and the section
+rules share one width (80 columns, or less on a narrower terminal). <code>── Prepare ──</code>
+lists every preparation step as a row (mark, name, detail, duration, and the
+warning count of the work that raised them). The <code>Tools</code> row summarizes the pinned
+tools (<code>2 tools pinned · 0 installed now</code>) and lists each beneath it with its
+version, <code>already installed</code> or <code>installed now</code>, and the detected requirement that
+needs it (or <code>pinned in oyzu.toml</code>), followed by detected toolchain <code>components</code>
+and <code>host</code> prerequisites of the selected targets. With several targets the block
+prints once, when Prepare closes, listing each tool once; a tool whose reason
+differs between targets shows each reason (<code>detected from …; pinned in … · not detected for &lt;target&gt;</code>). Best-effort detection adds attention rows (yellow <code>!</code>) beneath the tools: <code>! protoc  needed by prost-build · not pinned; add it to oyzu.toml (oyzu pin)</code> (an unpinned detected package tool; core toolchains resolve and lock instead, and a pinned tool is an ordinary <code>detected from Cargo.lock</code> row; <code>no catalog entry; pin or provide it</code> marks an unknown tool), <code>host prerequisite … · not found on PATH</code>, <code>fetches &lt;what&gt; outside the lock (&lt;file&gt;)</code> and <code>detection failed: &lt;reason&gt; · nothing extra detected</code>. They warn and never fail the build; <code>tools.ignore</code> silences a detection, visible only with <code>-v</code>. Rules and patterns: build tool scope. When another build holds the workspace, a <code>Build lock</code>
+row waits for it (<code>waiting for pid N, started Ns ago</code>) before any other
+preparation instead of failing; Ctrl-C stops the wait. Routine housekeeping that
+finishes after Prepare closes (end-of-build cache retention) is shown only when
+slow, failed or warned, or with <code>-v</code>. In an interactive terminal, work in progress
+shows under its section heading as one line per step or action with an animated
+spinner, redrawn several times a second; long status is shortened with <code>…</code> rather
+than wrapped. Redirected and CI output never redraws: each action prints a start
+and an end line prefixed with elapsed <code>mm:ss</code>, and the ten-second heartbeat names
+what is still running.
 <code>── Build ──</code> has one row per finished action: mark, target, stage, the command
 shortened with <code>…</code> to fit the width, <code>executed</code> or <code>reused</code>, and its duration.
 <code>── Outputs ──</code> lists artifacts as project-relative paths with sizes;
@@ -116,11 +132,13 @@ when one is known; an explicit request shows <code>requested</code> and <code>re
 Rows are targets; columns are the stages the builders declare, in the order
 format, lint, test, build, package and then any other stage. A cell is <code>run</code>
 (selected), <code>skip</code> (the builder has the stage but it is not selected or not
-available) or <code>-</code> (the builder declares no such stage). One dim footnote per
-distinct skip reason names the stages it covers. A single target built for several
+available) or <code>-</code> (the builder declares no such stage). Below the table, after a
+blank line, one dim line per distinct skip reason names the stages it covers under
+a <code>skipped</code> label, and table notes follow under a <code>note</code> label, so neither reads as
+a table row. A single target built for several
 platforms (<code>--all-platforms</code>) pivots to one row per platform and says
 <code>1 target · N platforms</code>. Above twelve rows, targets with identical stages share a
-counted row (<code>29 targets</code>) and a footnote says so; a narrowed build&#x27;s trailer
+counted row (<code>29 targets</code>) and a <code>note</code> line says so; a narrowed build&#x27;s trailer
 reads <code>N of M targets</code> and an affected build adds a <code>why</code> column (<code>changed</code>,
 <code>uses &lt;target&gt;</code>); <code>-v</code> lists every target. When
 the table would not fit the terminal width each row becomes a record (<code>cli  build run · package -</code>, then its skipped stages on the next line) so no value is lost.
