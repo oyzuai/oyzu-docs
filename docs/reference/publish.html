@@ -1,0 +1,828 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/publish" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Publishing finalized artifacts | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/publish"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Publishing finalized artifacts | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/publish"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.80d3ed82.js" defer="defer"></script>
+<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/publish">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Publishing finalized artifacts</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/publish.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Status: experimental OCI and GitHub Releases publication. The standalone path distributes
+selected finalized files without a platform account, requires preexisting signed provenance,
+signs publication intent, and retrieves the registry objects to verify their bytes.
+Native npm, Python, OCI image archives and mutable OCI tag publication remain
+outside this slice. Authored code and tests are not a deployed-provider qualification;
+measured evidence belongs in <a class="" href="/docs/support/capabilities">implementation status</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="standalone-oci-publication">Standalone OCI publication<a href="#standalone-oci-publication" class="hash-link" aria-label="Direct link to Standalone OCI publication" title="Direct link to Standalone OCI publication" translate="no">​</a></h2>
+<p>Run <code>oyzu publish --manifest dist/manifest.json --destination sandbox</code>, or omit
+<code>--destination</code> to use <code>publish.default</code>. Repeat the option for several named
+destinations or select a configured set. All selected destinations are required.
+The complete selection and evidence are checked and all publication signatures
+are verified before the first distribution. A later destination failure leaves
+earlier successful publications intact and reports unfinished destinations.</p>
+<p>Configure through the ordinary <a class="" href="/docs/reference/configuration">configuration cascade</a>:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">default</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sandbox&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.destinations.sandbox</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">kind</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;oci&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Optional when the build bundle has exactly one artifact:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">artifacts</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;app/archive&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">registry</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://registry.example.com&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">repository</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;team/artifacts&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">usernameEnv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;REGISTRY_USERNAME&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">passwordEnv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;REGISTRY_PASSWORD&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.sets</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">release</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;sandbox&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.requirements.provenance</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">bundlePath</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;evidence/build.sigstore.json&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">publicKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;base64 raw 32-byte Ed25519 public key&gt;&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">builderId</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://ci.example.com/builders/release&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.requirements.signing</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">keyEnv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;PUBLICATION_SIGNING_SEED&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">publicKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;base64 raw 32-byte Ed25519 publication public key&gt;&quot;</span><br></div></code></pre></div></div>
+<p>This is an illustrative configuration: supply your own accepted public roots,
+preexisting signed evidence and independently provisioned credentials. Secret
+values never belong in the TOML. <code>PUBLICATION_SIGNING_SEED</code> contains a base64
+32-byte Ed25519 seed. Its derived public key must match the configured public key.
+Registry username/password references are optional and must appear together.
+The same-origin registry bearer challenge flow is supported. HTTPS is required,
+with plain HTTP permitted only on loopback for local proof registries.</p>
+<p><code>kind</code> is optional and defaults to <code>oci</code>. Explicit <code>kind = &quot;oci&quot;</code> uses the same
+publication path and normalized request as an existing destination that omits it;
+existing configurations need no migration. GitHub Releases uses the native adapter described below.
+<code>npm</code>, <code>pypi</code> and unknown kinds fail configuration validation
+with <code>CONFIG_INVALID_VALUE</code> before evidence loading, credentials or network access.
+Remove the unsupported kind only when the destination is actually an OCI registry;
+omitting it does not enable a native package protocol. Unknown destination fields
+also remain errors.</p>
+<p><code>publish.destinations</code>, <code>publish.sets</code> and <code>publish.requirements</code> each resolve as
+one atomic value: a later cascade source replaces that entire map/object. They
+do not merge nested entries. Profiles and existing mandatory configuration
+constraints apply. An evidence path is relative to the source declaring the
+effective requirements. Artifact paths are relative to the build manifest&#x27;s bundle.</p>
+<p>Each destination may select distinct exact build output IDs with <code>artifacts</code>. The ID
+is the target for its <code>primary</code> output, otherwise <code>target/name</code>; it is not the
+file&#x27;s basename or the manifest&#x27;s internal artifact <code>id</code>. For example,
+<code>artifacts = [&quot;app/archive&quot;]</code> selects target <code>app</code>, output <code>archive</code>, while
+<code>artifacts = [&quot;app&quot;]</code> selects that target&#x27;s <code>primary</code> output. Omission is valid
+only when the manifest contains one artifact. Empty or duplicate
+selectors fail configuration validation with <code>CONFIG_INVALID_VALUE</code>.
+Unknown or ambiguous output IDs or omitted selection in a multi-artifact bundle fail with
+<code>PUBLISH_ARTIFACT_SELECTION_INVALID</code> before evidence loading, signing or upload.
+Correct the exact IDs in each selected destination. Explicit entries support several files and
+different files per destination, without implicit Cartesian fan-out.</p>
+<p>A selector may name one platform: <code>output-id@os/arch</code>, such as
+<code>cli/bin-oyzu@linux/x86_64</code>. The platform is the one the builder recorded for the
+file (its <code>oyzu.dev/artifact-compatibility</code> fact), written in the canonical
+spelling <code>x86_64</code>/<code>arm64</code>; <code>amd64</code> and <code>aarch64</code> are accepted and normalized. An
+unqualified selector such as <code>cli/bin-oyzu</code> selects every platform of that output
+in the bundle, each as a separate file with its own evidence, so a single-platform
+bundle keeps working unchanged. A qualified selector whose platform the bundle
+lacks fails with <code>PUBLISH_ARTIFACT_SELECTION_INVALID</code> and lists the platforms
+present; so does a qualified selector for an output without a recorded platform,
+and two artifacts of one output and platform (another variant axis), since variant
+selection is unsupported. Listing an output both unqualified and qualified, or the
+same platform twice, fails configuration validation with <code>CONFIG_INVALID_VALUE</code>.
+A bundle holds several platforms of one output only when its manifest lists them;
+today <code>oyzu build</code> writes one platform per bundle, and the
+<a href="#releasing-oyzu-itself-interim" class="">release workflow</a> publishes each platform&#x27;s
+bundle to the same release.</p>
+<p>The manifest must record a succeeded build. The selected artifact must be a
+finalized regular file; its bytes and size must match its SHA-256 identity. Other
+outputs retain manifest validation but their files are not read or distributed.
+Publication never builds, scans, repackages, executes project hooks, or creates missing historical
+evidence. The evidence profile is a Sigstore v0.3 bundle carrying one DSSE
+<code>application/vnd.in-toto+json</code> envelope, an in-toto Statement v1 and SLSA build
+provenance v1, verified against an independently configured Ed25519 public root
+and exact accepted builder identity. This self-managed-key profile makes no
+transparency-log, trusted-time, keyless identity or SLSA-level claim.</p>
+<p>For a build with different provenance per output, replace the single
+<code>[publish.requirements.provenance]</code> fields with an exact output-ID map:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.requirements.provenance.byArtifact.&quot;app/archive&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">bundlePath</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;evidence/app.sigstore.json&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">publicKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;accepted base64 raw Ed25519 builder public key&gt;&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">builderId</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://ci.example.com/builders/package&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.requirements.provenance.byArtifact.&quot;cli&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">bundlePath</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;evidence/cli.sigstore.json&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">publicKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;accepted base64 raw Ed25519 builder public key&gt;&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">builderId</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://ci.example.com/builders/cli&quot;</span><br></div></code></pre></div></div>
+<p>These illustrative entries use the same output IDs as destination <code>artifacts</code>;
+only the selected output&#x27;s profile is used. Its <code>bundlePath</code> stays relative to
+the source declaring the effective requirements, and its exact subject, public
+key and builder are verified before signing or distribution. Unselected bundle
+files are not read. The existing single form remains supported; it still must
+cover the selected file. Combining that form with <code>byArtifact</code>, using an empty
+map/ID, or supplying malformed profile fields fails with <code>CONFIG_INVALID_VALUE</code>.
+A missing selected entry fails with <code>PUBLISH_EVIDENCE_MISSING</code>; add its exact
+profile rather than substituting another output&#x27;s evidence. Mapping several
+profiles requires exact-subject evidence for each selected file. Signing settings are unchanged.</p>
+<p><code>byArtifact</code> keys use the selector grammar above. Provenance is one bundle per
+file, so an output selected on several platforms needs one bundle per platform:
+either a qualified key per platform (<code>&quot;cli@linux/arm64&quot;</code>), or one unqualified key
+whose <code>bundlePath</code> contains the <code>{artifact.platform}</code> placeholder. The placeholder
+renders as the canonical platform, which is also a relative path:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.requirements.provenance.byArtifact.&quot;cli&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">bundlePath</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;evidence/{artifact.platform}/cli.sigstore.json&quot;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic"># evidence/linux/x86_64/cli.sigstore.json</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">publicKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;accepted base64 raw Ed25519 builder public key&gt;&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">builderId</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://ci.example.com/builders/cli&quot;</span><br></div></code></pre></div></div>
+<p><code>{artifact.platform}</code> is the only placeholder; any other <code>{</code> or <code>}</code> in <code>bundlePath</code>
+fails configuration validation. An unqualified key without the placeholder that
+would cover several selected platforms, or a placeholder on an output without a
+recorded platform, fails with <code>CONFIG_INVALID_VALUE</code> before evidence loading.
+Qualified and unqualified keys for the same output together fail configuration
+validation. A missing bundle for one platform fails the whole plan with
+<code>PUBLISH_EVIDENCE_MISSING</code> naming the qualified key; nothing is published.</p>
+<p>Standalone publication rejects <code>--no-upload</code> and the governed <code>--provenance</code>
+and <code>--policy-evidence</code> options before configuration or network access. It takes existing evidence only
+from the resolved <code>publish.requirements.provenance.bundlePath</code> setting.</p>
+<p>The separately signed publication intent binds the exact artifact identity,
+media type, native coordinate, provenance digest, canonical plan digest, evidence placement and effect targets to the operation <code>publish</code>.
+It cannot assert a historical build origin or completed upload. Its deterministic
+contents exclude the invocation identifier, allowing identical republishing to
+reuse the native OCI coordinate. The signature is verified before distribution.</p>
+<p>The OCI artifact contains the unchanged file plus the preexisting provenance
+bundle and publication-intent bundle as retrievable layers. The coordinate is
+<code>registry/repository@sha256:&lt;manifest-digest&gt;</code>. Tags are unsupported: a mutable
+tag&#x27;s preflight read cannot prevent a concurrent writer from replacing it.
+Matching existing content is <code>already-present</code>; a wrong digest header, manifest,
+layer or declared artifact identity is a conflict. Success requires independent
+native GETs of the manifest, config and all layers with digest/size checks.
+Upload acknowledgements and HEAD responses alone never establish success.</p>
+<p>Human output identifies the operation, selected artifact output ID, each
+destination outcome, exact reference and retrieved artifact digest. <code>--json</code>
+returns a <code>v1alpha1</code> receipt with <code>operationId</code>, <code>status</code>,
+<code>planDigest</code>, <code>artifacts</code> and <code>destinations</code>. Each destination has <code>kind</code> and <code>entries</code> with artifact ID, coordinate, reference, payload/native-asset outcomes and evidence storage/verification. Artifact <code>id</code> is the exact
+selection key: <code>output-id@os/arch</code> for a file with a recorded platform
+(<code>cli/bin-oyzu@linux/x86_64</code>), the output ID otherwise. Such an artifact also
+carries <code>compatibility</code> (<code>kind</code> <code>target</code>, <code>native</code> or <code>independent</code>, and the
+canonical <code>platform</code>), which the signed intent binds. When other outputs exist,
+<code>unselectedArtifacts</code> lists their keys in sorted order. Human output lists them as
+unselected and not published.
+Each destination distinguishes <code>published</code>, <code>already-present</code>, <code>failed</code> and <code>unfinished</code>, and records
+the manifest/artifact/evidence digests actually verified. A failed or unfinished
+receipt exits 2; successful publication exits 0. Retry the unchanged plan after
+resolving the failure; successful destinations are reconciled by their digest.
+Preflight operation errors such as missing evidence, a wrong subject or a
+conflicting existing asset exit 1 through the shared CLI error path; JSON
+diagnostics carry the same <code>exitCode</code>. Invalid command syntax exits 2.</p>
+<p>Publication needs network access. There is no offline publication success.
+Artifacts and GET responses are currently held in memory; streaming and larger
+artifact qualification are deferred. The implementation is shared across host
+platforms; only explicitly recorded native runs establish platform coverage.
+The Linux standalone selection proof
+built two real binaries and verified the selected output, its original provenance
+and signed intent through a disposable OCI registry. It also verified that the
+unselected payload was absent, matching repeat/recheck behavior and early refusals.
+That anonymous loopback run does not qualify authentication or governed execution.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="existing-github-release">Existing GitHub release<a href="#existing-github-release" class="hash-link" aria-label="Direct link to Existing GitHub release" title="Direct link to Existing GitHub release" translate="no">​</a></h2>
+<p>The GitHub adapter uses the same configuration, whole-plan evidence acceptance,
+signing and restricted worker as OCI. The bounded GitHub.com proof passed on
+Windows x64, including native downloads, exact evidence/signature checks,
+matching/conflicting assets and controlled partial recovery. The
+GitHub qualification record records
+exact revisions and limits; broader hosts, enterprise routes and deployed
+platform execution remain unqualified.</p>
+<p>Replace the destination in the preceding example with this illustrative entry:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.destinations.sandbox</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">kind</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;github-release&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">apiUrl</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://api.github.com&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">repository</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;your-owner/your-test-repository&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">tag</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;existing-test-tag&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">tokenEnv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;GITHUB_SANDBOX_TOKEN&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">artifacts</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;app/archive&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;cli&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">publish.destinations.sandbox.evidence</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">mode</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;destination&quot;</span><br></div></code></pre></div></div>
+<p>Provision the tag/release separately and supply a repository-scoped Contents
+read/write credential by environment reference. The adapter never creates refs
+or releases, finalizes releases, changes metadata or deletes assets. It freezes
+the API root, observed repository/release IDs, resolved tag commit, upload route,
+draft/prerelease state and exact filenames, then refuses changed identity before
+writes. Reported draft/private visibility does not imply public distribution.</p>
+<p>Asset names are derived at publication from the file&#x27;s local name and the
+compatibility its builder recorded, so one release holds several platforms of one
+operating system family. Bytes and local <code>dist/</code> filenames never change:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Recorded compatibility</th><th>Asset name</th><th>Example</th></tr></thead><tbody><tr><td><code>target</code> (built for one platform)</td><td><code>&lt;stem&gt;-&lt;os&gt;-&lt;arch&gt;&lt;ext&gt;</code></td><td><code>oyzu</code> for <code>linux/x86_64</code> → <code>oyzu-linux-x86_64</code>; <code>oyzu.exe</code> for <code>windows/x86_64</code> → <code>oyzu-windows-x86_64.exe</code>; <code>app.tar.gz</code> for <code>linux/arm64</code> → <code>app-linux-arm64.tar.gz</code></td></tr><tr><td><code>independent</code> (no platform restriction)</td><td>the filename</td><td><code>site.tar.gz</code></td></tr><tr><td><code>native</code> (a package whose own name encodes the platform, such as a wheel)</td><td>the filename</td><td><code>pkg-1.0-cp312-cp312-manylinux_2_28_x86_64.whl</code></td></tr><tr><td><code>pending</code>, <code>unknown</code> or missing</td><td>refused with <code>PUBLISH_ARTIFACT_SELECTION_INVALID</code></td><td>the builder must record what the file is for</td></tr></tbody></table>
+<p>The platform uses the canonical spelling (<code>x86_64</code>, <code>arm64</code>, never <code>amd64</code>); an ABI
+would appear only when the builder records one, and no builder records one today.
+<code>ext</code> is the longest case-insensitive match from <code>.tar.gz</code>, <code>.tar.xz</code>, <code>.tar.zst</code>,
+<code>.tgz</code>, <code>.zip</code>, <code>.exe</code>, <code>.msi</code>, <code>.dmg</code>, <code>.pkg</code>, <code>.deb</code>, <code>.rpm</code>, <code>.dll</code>, <code>.so</code>,
+<code>.dylib</code>, keeping its original case; without a match the platform is appended. A
+<code>target</code> file is qualified even when the release holds one platform, and names
+carry no version, so <code>releases/latest/download/oyzu-linux-x86_64</code> stays stable.
+Extending the extension list renames matching assets.</p>
+<p>Derived names must use ASCII letters, digits, dot, underscore or dash, at most 220
+bytes, without a leading dot, and must not end in a reserved evidence suffix.
+Reserved evidence names follow the derived name:
+<code>&lt;asset&gt;.provenance.sigstore.json</code> and <code>&lt;asset&gt;.publication.sigstore.json</code>. Two
+planned names that are equal ignoring ASCII case collide. These checks fail with
+<code>PUBLISH_ARTIFACT_SELECTION_INVALID</code> before evidence loading, signing or network
+access. The plan freezes each derived name in the coordinate&#x27;s <code>assetName</code>, which
+the signed intent binds; the worker re-derives it from the frozen artifact facts
+and refuses any other name. Earlier assets under unqualified names (<code>oyzu</code>) are left
+alone; they are never renamed or removed. Before any upload, the complete plan checks
+planned name collisions, aliases and independently retrieved existing assets.
+Matching content is reused; different bytes fail with <code>PUBLISH_CONFLICT</code> without
+overwrite or deletion. Original provenance and verified signed intent are uploaded
+and retrieved before their corresponding payload. Success requires exact native
+GET bytes, sizes/digests and evidence claims, rather than an upload acknowledgement.</p>
+<p>The default and only supported evidence placement for both OCI and GitHub is
+<code>evidence.mode = &quot;destination&quot;</code>. <code>receipt</code> and <code>managed</code> cannot be used to weaken
+remotely retrievable evidence requirements. This does not imply npm/PyPI support.</p>
+<p>GitHub.com admits the configured API origin, exact release upload route on
+<code>uploads.github.com</code> and asset downloads on <code>release-assets.githubusercontent.com</code>.
+API path prefixes are preserved. Same-origin requests stay within that prefix;
+upload routes bind the repository and release ID. Redirected asset downloads
+remain anonymous, including a return to the API origin. Tokens never follow
+arbitrary redirects. Enterprise endpoints are initially limited to same-origin
+routes within the API prefix; translating <code>/api/v3</code> to <code>/api/uploads</code> is unsupported.
+No enterprise, GitHub Actions artifact or GHCR qualification is implied.</p>
+<p>An uncertain upload can leave a remote asset. Receipts retain verified completed,
+failed and unfinished native asset outcomes. Retry the unchanged plan under current
+authority: matching assets remain, and only missing work is attempted. Changed
+subjects, coordinates or evidence require a new plan; same-name different evidence
+is a conflict, not permission to replace it. Release metadata remains mutable by
+other writers; read-back is an observation, not permanent immutability.</p>
+<p>The unreleased <code>v1alpha1</code> worker, receipt and intent evolve in place to file sets,
+typed coordinates and entries. Old singular-subject worker bodies are rejected;
+there is no parallel legacy protocol. Existing OCI configuration still defaults
+to <code>oci</code>, but derived wrapper coordinates can differ because intent claims changed.
+Use a fresh proof namespace when comparing historical OCI qualification. Release
+asset naming changed every destination kind, not only GitHub: when a file has
+recorded compatibility, its receipt <code>artifacts[].id</code>, entry <code>artifactId</code> and
+<code>unselectedArtifacts</code> use the qualified key (<code>cli/bin-oyzu@linux/x86_64</code>), and its
+artifact identity, plan digest and signed intent include <code>compatibility</code>. An OCI
+destination still accepts files without recorded compatibility.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="releasing-oyzu-itself-interim">Releasing oyzu itself (interim)<a href="#releasing-oyzu-itself-interim" class="hash-link" aria-label="Direct link to Releasing oyzu itself (interim)" title="Direct link to Releasing oyzu itself (interim)" translate="no">​</a></h3>
+<p>For preparation without publication, see the
+native Linux candidate review record.
+Its private covered-source rebuild proof
+demonstrates changing an embedded shell component and emitting it from a rebuilt
+CLI, with exact source/material identities and explicit cache/delivery limits.
+CLI distribution remains subject to the compliance gate;
+the workflow below does not grant distribution clearance.</p>
+<p>Publishing a GitHub release triggers <code>.github/workflows/release.yml</code>. It runs one
+job per platform runner; each job downloads the newest earlier release&#x27;s <code>oyzu</code>
+for its platform (<code>tooling/bootstrap-oyzu.sh --release</code>), builds the release tag
+with it natively (<code>oyzu build cli</code>), signs provenance and publishes its own
+platform&#x27;s executables to the same release with <code>oyzu publish</code>. Asset names carry
+the platform, so jobs never collide and may run in parallel. When no earlier
+release has the qualified executable for the runner&#x27;s platform, the workflow builds
+<code>oyzu</code> from the tag&#x27;s source instead; that happens once per platform.</p>
+<p>The bootstrap maps the host to its asset and verifies the digest GitHub reports
+before installing it as <code>.oyzu/bin/oyzu</code> (or <code>oyzu.exe</code>) with mode 755, since raw
+downloads lose the executable bit:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Host</th><th>Asset</th></tr></thead><tbody><tr><td>Linux x86_64 / aarch64</td><td><code>oyzu-linux-x86_64</code> / <code>oyzu-linux-arm64</code></td></tr><tr><td>macOS x86_64 / arm64</td><td><code>oyzu-darwin-x86_64</code> / <code>oyzu-darwin-arm64</code>; under Rosetta (<code>sysctl.proc_translated</code> is 1) it takes arm64</td></tr><tr><td>Windows x86_64 / ARM64 (MSYS/MINGW)</td><td><code>oyzu-windows-x86_64.exe</code> / <code>oyzu-windows-arm64.exe</code>, read from <code>PROCESSOR_ARCHITEW6432</code>/<code>PROCESSOR_ARCHITECTURE</code> because <code>uname -m</code> reports x86_64 under emulation</td></tr></tbody></table>
+<p><code>tooling/bootstrap-oyzu.sh --print-asset</code> prints the name for the current host. It
+does not look up the unqualified <code>oyzu</code>/<code>oyzu.exe</code> names of earlier interim
+releases; without a qualified asset it builds from source. Sidecar verification in
+the bootstrap is later work.</p>
+<p>Create and publish the release (and its tag) first: the adapter attaches assets to
+an existing release found by tag, and GitHub&#x27;s tag lookup does not return a draft,
+so a draft fails with <code>PUBLISH_GITHUB_API: inspection returned HTTP 404</code>. A
+prerelease on a private repository is visible only to collaborators and its assets
+need a token to download. Re-run a release with <code>gh workflow run release.yml -f tag=&lt;tag&gt;</code>.</p>
+<p>Until a protected builder exists, the evidence comes from a local test-builder
+witness, <code>tooling/release-witness.mjs</code>. It signs SLSA provenance for the built
+outputs with a self-managed Ed25519 key. It is not a protected build, a trusted
+timestamp or a SLSA level claim. The accepted public keys are in <code>oyzu.toml</code>; the
+seeds are the repository secrets <code>OYZU_RELEASE_BUILDER_SEED</code> and
+<code>OYZU_RELEASE_PUBLISHER_SEED</code> in CI, or files in a directory outside the checkout:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">node tooling/release-witness.mjs keys --key-dir &lt;dir outside the checkout&gt;    # once</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">gh secret set OYZU_RELEASE_BUILDER_SEED &lt; &lt;dir&gt;/builder.seed</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">gh secret set OYZU_RELEASE_PUBLISHER_SEED &lt; &lt;dir&gt;/publisher.seed</span><br></div></code></pre></div></div>
+<p>To release by hand, build, then sign with <code>--started</code>/<code>--finished</code> timestamps taken
+around the build (without them the witness falls back to approximate <code>dist/</code> file
+times), then publish:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build cli</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">node tooling/release-witness.mjs sign --key-dir &lt;dir&gt; --artifact cli/bin-oyzu --artifact cli/bin-oyzu-shim</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">node tooling/release-witness.mjs publish --key-dir &lt;dir&gt; --arg --manifest --arg dist/manifest.json --arg --destination --arg github</span><br></div></code></pre></div></div>
+<p>The witness takes the same selectors as <code>oyzu publish</code> (<code>cli/bin-oyzu</code> signs every
+platform of that output in the manifest, <code>cli/bin-oyzu@linux/x86_64</code> exactly one)
+and writes each bundle to <code>.oyzu/release-evidence/&lt;os&gt;/&lt;arch&gt;/</code>, the path the
+<code>{artifact.platform}</code> placeholder in <code>oyzu.toml</code> renders. Signing the same bundle
+again yields byte-identical evidence: the invocation ID derives from the manifest
+and artifact digests, and the build times and source state are recorded once per
+manifest in <code>.oyzu/release-evidence/witness-run.json</code> and reused. A retried
+publish over the same bundle therefore reuses the sidecars already uploaded.</p>
+<p>Limitations:</p>
+<ul>
+<li class=""><strong>Development-profile executables.</strong> <code>oyzu build</code> on the host compiles a
+development build; only <code>--isolated</code> uses <code>cargo --release</code>. The published
+executables report <code>debug</code> in <code>--version</code>.</li>
+<li class=""><strong>Only Linux x86_64 is published by the workflow.</strong> Only the self-hosted Linux
+x86_64 runner exists while GitHub-hosted minutes are blocked. Linux arm64, macOS
+and Windows have no runner and are unpublished and unqualified; add a matrix entry
+for a runner that builds the platform natively.</li>
+<li class=""><strong>A rebuild conflicts.</strong> A re-run that rebuilds produces different payload bytes
+under the same asset name, which is <code>PUBLISH_CONFLICT</code>. A workflow re-run
+rebuilds, so publish the same bundle again by hand, or delete the partial assets
+before re-running. Publishing a combined
+bundle handed off from build jobs is later work (build intent slice 6).</li>
+<li class=""><strong>Hosted checks are unavailable.</strong> The workflow runs on the self-hosted Linux
+runner (as <code>build.yml</code> does) while GitHub-hosted minutes are blocked; it has not
+yet run on GitHub.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="governed-publication-and-build-registration">Governed publication and build registration<a href="#governed-publication-and-build-registration" class="hash-link" aria-label="Direct link to Governed publication and build registration" title="Direct link to Governed publication and build registration" translate="no">​</a></h2>
+<p>With explicit <code>--server</code>, <code>--account</code>, <code>--project</code> (or the corresponding environment
+selection), the CLI stages/registers the build, then submits a durable publication
+operation. Pass <code>--provenance FILE</code> with the preexisting Sigstore bundle. The
+platform selects requirements and destinations centrally; caller-selected roots
+or signing credentials cannot grant governed authority. <code>--destination</code> cannot be
+combined with governed routing. The first slice requires one staged file artifact;
+<code>--no-upload</code> cannot satisfy this path.</p>
+<p>Optionally pass <code>--policy-evidence FILE</code> with an existing signed policy report
+bundle when the central policy requires one. The CLI reads UTF-8 JSON and sends
+the original string unchanged as <code>policyEvidence.bundle</code>; omitting the flag omits
+that optional object. It does not verify the report signature, evaluate customer
+facts, select trusted roots, or treat report contents as approval. Central admission
+determines accepted producer, predicate, root and account/subject scope. A report
+that observes an issue is open is an observation, not an approval claim.</p>
+<p>The operation POST is
+<code>/publish/v1/accounts/{account}/projects/{project}/operations</code>, carrying
+<code>schemaVersion</code>, <code>registrationBuild</code>, exact staged <code>artifact</code> identity/reference,
+and <code>provenance.bundle</code>. The CLI follows GET <code>/operations/{operationId}</code>. Build
+registration or staging success alone is never presented as completed distribution.
+The durable operation remains inspectable when following it times out; inspect
+that operation before submitting another request.
+Server URL path prefixes are preserved for staging, registration, operation
+submission and status following, with or without a trailing slash.</p>
+<p>The complete governed flow and publisher isolation qualification are deferred
+by the maintainer&#x27;s 2026-10-17 implementation-merge decision and tracked in
+issue #541. The standalone proof and
+component checks do not establish those governed guarantees in a live deployment.</p>
+<p>Protected workers invoke the same built-in implementation through the hidden
+<code>__publication-worker --request FILE</code> bridge. This is an internal fixed contract,
+not a plugin ABI. The request freezes the exact file set, entries, native coordinates, evidence,
+signing references and operation/executor authority. Before signing and each
+registry mutation, the worker requests current central authorization bound to the
+exact operation, executor, subject, destination, provenance and signing intent.
+Mutation requests have no automatic transport replay. Roots and secrets are
+provisioned by the protected host, never returned to the caller.</p>
+<p>The following sections document the existing registration/staging transport used
+before that operation, including its CI credential discovery.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="purpose">Purpose<a href="#purpose" class="hash-link" aria-label="Direct link to Purpose" title="Direct link to Purpose" translate="no">​</a></h2>
+<p>In CI, governed <code>oyzu publish</code> first reads the completed build manifest
+(<code>dist/manifest.json</code>), stages its file artifact and registers its outputs and
+component versions. This registration uses the same output contract as platform
+build completion. The command then requests publication with the preexisting
+provenance and follows the durable operation. Its final result reports that
+operation&#x27;s decisions, execution and verified receipts. Registration alone does
+not authorize external distribution.</p>
+<p>Publishing is optional. <code>oyzu build</code> and everything else stay local and work
+without an account.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<ul>
+<li class="">A finished <code>oyzu build</code> whose manifest records <code>status: succeeded</code>. A failed,
+cancelled or interrupted build is refused before anything is sent
+(<code>PUBLISH_BUILD_NOT_SUCCEEDED</code>).</li>
+<li class="">The platform URL, account and project, as flags or environment variables.</li>
+<li class="">A credential the project accepts: the pipeline&#x27;s OIDC token for a trusted CI
+connector, or a publish token issued on the project&#x27;s CI connector. See
+<a href="#credentials" class="">credentials</a>.</li>
+</ul>
+<p>Registration routing uses flags/environment; commit, repository and ref come from
+the CI system&#x27;s environment or flags. Standalone publication uses the cascade above.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu publish </span><span class="token parameter variable" style="color:#36acaa">--server</span><span class="token plain"> https://oyzu.example.com </span><span class="token parameter variable" style="color:#36acaa">--account</span><span class="token plain"> acme </span><span class="token parameter variable" style="color:#36acaa">--project</span><span class="token plain"> web </span><span class="token parameter variable" style="color:#36acaa">--provenance</span><span class="token plain"> evidence/build.sigstore.json</span><br></div></code></pre></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Flag</th><th>Environment</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>--server URL</code></td><td><code>OYZU_URL</code></td><td>required</td><td>The platform&#x27;s URL. Must be <code>https</code>, except <code>http://localhost</code>, <code>http://127.0.0.1</code> or <code>http://[::1]</code> for a local devstack, so a token never crosses a network unencrypted (<code>PUBLISH_INSECURE_SERVER</code>).</td></tr><tr><td><code>--account ID</code></td><td><code>OYZU_ACCOUNT</code></td><td>required</td><td>The account to publish to.</td></tr><tr><td><code>--project ID</code></td><td><code>OYZU_PROJECT</code></td><td>required</td><td>The project to publish to.</td></tr><tr><td><code>--manifest FILE</code></td><td></td><td><code>dist/manifest.json</code></td><td>The build manifest, relative to the directory (<code>-C</code>).</td></tr><tr><td><code>--provenance FILE</code></td><td></td><td>required for governed publication</td><td>Original preexisting signed provenance bundle, read as UTF-8 without rewriting its bytes.</td></tr><tr><td><code>--policy-evidence FILE</code></td><td></td><td>omitted</td><td>Optional original signed policy report bundle for central admission; governed only.</td></tr><tr><td><code>--version VERSION</code></td><td></td><td>none</td><td>The build&#x27;s version, when the pipeline names one.</td></tr><tr><td><code>--commit SHA</code></td><td></td><td>from CI</td><td>The built commit.</td></tr><tr><td><code>--repository OWNER/NAME</code></td><td></td><td>from CI</td><td>The repository the build came from.</td></tr><tr><td><code>--audience AUDIENCE</code></td><td><code>OYZU_AUDIENCE</code></td><td><code>oyzu</code></td><td>The audience requested for OIDC tokens the CLI asks a CI system for.</td></tr><tr><td><code>--token-env NAME</code></td><td></td><td>none</td><td>Read the OIDC token from this environment variable instead of discovering one.</td></tr><tr><td><code>--no-upload</code></td><td><code>OYZU_PUBLISH_UPLOAD=0</code></td><td>upload</td><td>Historical registration-only transport control. Governed publication requires staging and rejects an artifact without an immutable staged reference.</td></tr></tbody></table>
+<p>A flag wins over its environment variable. Account and project identifiers
+follow the platform rule: lowercase letters, digits and inner hyphens, 1 to 63
+characters, starting and ending with a letter or digit.</p>
+<p>The global <code>--json</code> flag prints the final operation record with
+<code>registrationBuild</code>. If following the operation times out, the CLI reports
+<code>status: &quot;unfinished&quot;</code> and a recovery message; the platform operation remains
+inspectable. Transport errors follow the usual <code>{&quot;error&quot;: …, &quot;exitCode&quot;: 2}</code> shape.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="github-actions">GitHub Actions<a href="#github-actions" class="hash-link" aria-label="Direct link to GitHub Actions" title="Direct link to GitHub Actions" translate="no">​</a></h3>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">jobs</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">build</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">runs-on</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> ubuntu</span><span class="token punctuation" style="color:#393A34">-</span><span class="token number" style="color:#36acaa">24.04</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">permissions</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">contents</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> read</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">id-token</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> write   </span><span class="token comment" style="color:#999988;font-style:italic"># lets oyzu publish request an OIDC token</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">steps</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> actions/checkout@v4</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">run</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">run</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> oyzu publish </span><span class="token punctuation" style="color:#393A34">-</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">server https</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//oyzu.example.com </span><span class="token punctuation" style="color:#393A34">-</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">account acme </span><span class="token punctuation" style="color:#393A34">-</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">project web </span><span class="token punctuation" style="color:#393A34">-</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">provenance evidence/build.sigstore.json</span><br></div></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="credentials">Credentials<a href="#credentials" class="hash-link" aria-label="Direct link to Credentials" title="Direct link to Credentials" translate="no">​</a></h2>
+<p><code>oyzu publish</code> uses the first credential it finds, in this order:</p>
+<ol>
+<li class=""><strong><code>--token-env NAME</code></strong>, else <strong><code>OYZU_ID_TOKEN</code></strong>: an OIDC token the pipeline
+already holds. A <code>--token-env</code> variable that is unset or empty is an error,
+not a fall-through.</li>
+<li class=""><strong>GitHub Actions</strong>: when <code>ACTIONS_ID_TOKEN_REQUEST_URL</code> and
+<code>ACTIONS_ID_TOKEN_REQUEST_TOKEN</code> are set (the job has
+<code>permissions: id-token: write</code>), the CLI requests a token for the audience
+(<code>GET $ACTIONS_ID_TOKEN_REQUEST_URL&amp;audience=oyzu</code>, authorized by the request
+token) and uses the answer&#x27;s <code>value</code>.</li>
+<li class=""><strong>Bitbucket Pipelines</strong>: <code>BITBUCKET_STEP_OIDC_TOKEN</code> (a step with <code>oidc: true</code>);
+<strong>CircleCI</strong>: <code>CIRCLE_OIDC_TOKEN_V2</code>, then <code>CIRCLE_OIDC_TOKEN</code>.</li>
+<li class=""><strong>Buildkite</strong>: when <code>BUILDKITE</code> is set and <code>buildkite-agent</code> is on <code>PATH</code>,
+<code>buildkite-agent oidc request-token --audience oyzu</code>.</li>
+<li class=""><strong><code>OYZU_PUBLISH_TOKEN</code></strong>: a scoped, revocable publish token (<code>oyzp_…</code>) issued
+on the project&#x27;s CI connector, for CI tools without OIDC.</li>
+</ol>
+<p>A source that is present but fails (GitHub refuses the token request, the
+Buildkite agent fails) stops the command (<code>PUBLISH_CREDENTIAL_UNAVAILABLE</code>)
+instead of falling through to another credential. With none found the command
+fails with <code>PUBLISH_NO_CREDENTIAL</code> and, in GitHub Actions, names the missing
+<code>id-token</code> permission.</p>
+<p>The Buildkite helper has a fixed <strong>30-second deadline</strong>, including output capture.
+If it stalls, Oyzu attempts to kill the local helper and returns
+<code>PUBLISH_CREDENTIAL_UNAVAILABLE</code> with <code>external command deadline exceeded</code>; it
+does not wait indefinitely for a descendant holding an output pipe open or fall
+back to the publish token. Token output stays in memory and is not included in
+timeout diagnostics. There is no timeout setting or automatic helper retry.
+Check the Buildkite agent and its OIDC service/policy, then rerun <code>oyzu publish</code>,
+or explicitly select an already issued credential with <code>--token-env</code>. An absent
+agent still allows the normal discovery fallback. Killing the local helper does
+not guarantee remote work or descendants stopped, and the helper deadline does
+not bound the complete HTTP publication flow. Offline publication is unavailable.
+Deadline-runner regressions are authored but unexecuted on this desktop; see
+<a class="" href="/docs/support/capabilities">verification status</a>.</p>
+<p>How each CI system provides its token:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>CI system</th><th>How</th></tr></thead><tbody><tr><td>GitHub Actions</td><td><code>permissions: id-token: write</code> on the job; discovered automatically.</td></tr><tr><td>GitLab CI/CD</td><td><code>id_tokens:</code> on the job, for example <code>OYZU_ID_TOKEN: {aud: oyzu}</code>; read from <code>OYZU_ID_TOKEN</code> (or name another variable with <code>--token-env</code>).</td></tr><tr><td>Bitbucket Pipelines</td><td><code>oidc: true</code> on the step; <code>BITBUCKET_STEP_OIDC_TOKEN</code> is discovered. Its audience is fixed by Bitbucket; the project&#x27;s trust must accept it.</td></tr><tr><td>CircleCI</td><td><code>CIRCLE_OIDC_TOKEN_V2</code> / <code>CIRCLE_OIDC_TOKEN</code> are discovered. Their audience is the CircleCI organization; for an <code>oyzu</code> audience, mint one with <code>circleci run oidc get --claims &#x27;{&quot;aud&quot;:&quot;oyzu&quot;}&#x27;</code> into <code>OYZU_ID_TOKEN</code>.</td></tr><tr><td>Buildkite</td><td>Discovered through <code>buildkite-agent oidc request-token</code>; the pipeline&#x27;s OIDC policy must allow it.</td></tr><tr><td>Jenkins with the OIDC provider plugin</td><td>Bind the plugin&#x27;s credential to a variable and pass <code>--token-env</code> (or bind it as <code>OYZU_ID_TOKEN</code>).</td></tr><tr><td>Jenkins without OIDC, TeamCity</td><td><code>OYZU_PUBLISH_TOKEN</code> from a credentials store / secure parameter.</td></tr></tbody></table>
+<p>Which tokens a project accepts is the platform&#x27;s decision (the trusts on the
+project&#x27;s CI connector), not the CLI&#x27;s.</p>
+<p>The token is sent only in the <code>Authorization</code> header of the publish request. It
+is never printed, logged or written to disk; progress names only where it came
+from (for example &quot;a GitHub Actions OIDC token&quot;).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-sent">What is sent<a href="#what-is-sent" class="hash-link" aria-label="Direct link to What is sent" title="Direct link to What is sent" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="artifact-upload">Artifact upload<a href="#artifact-upload" class="hash-link" aria-label="Direct link to Artifact upload" title="Direct link to Artifact upload" translate="no">​</a></h3>
+<p>Before the build is POSTed, every artifact without an <code>oci_digest</code> (anything
+but an OCI image or index) is uploaded to the platform&#x27;s registry as an OCI
+artifact, unless <code>--no-upload</code> or <code>OYZU_PUBLISH_UPLOAD=0</code> is given. Images and
+indexes are not uploaded by the CLI; they keep their <code>oci_digest</code>.</p>
+<ol>
+<li class="">
+<p><strong>Check the files.</strong> Only an artifact whose path is a regular file in the
+bundle, of the recorded size and SHA-256 digest, is uploaded. A directory
+artifact is skipped with one warning and published without an <code>oci_ref</code>. A
+missing file or one whose bytes changed since <code>oyzu build</code> stops the publish
+with <code>PUBLISH_ARTIFACT_CHANGED</code> before any credential is requested. With no
+artifact left to upload, steps 2 to 4 are skipped.</p>
+</li>
+<li class="">
+<p><strong>Upload grant.</strong> <code>POST {server}/publish/v1/accounts/{account}/projects/{project}/builds/uploads</code>
+with the same credential and headers as the publish:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;artifacts&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;path&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;artifacts/api/default/binary/server&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token property" style="color:#36acaa">&quot;media_type&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application/octet-stream&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">                </span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">123</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>path</code> is the artifact&#x27;s path in the bundle as the manifest lists it (1 to
+1000 entries, only the artifacts being uploaded). The platform answers <code>200</code>:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;registry&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://registry.example&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;repository&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;acme/web/artifacts&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;token&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;&lt;jwt&gt;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;expires_at&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;2026-10-11T12:00:00Z&quot;</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>404</code> means the platform has no artifact storage: one warning is printed and
+the build is published as without upload, with no <code>oci_ref</code>. <code>401</code>, <code>403</code>
+and <code>422</code> fail the publish with the platform&#x27;s problem, as for the publish
+itself; <code>502</code>, <code>503</code> and <code>504</code> are retried the same way.</p>
+</li>
+<li class="">
+<p><strong>Registry sign-in.</strong> The standard registry token flow: <code>GET {registry}/v2/</code>
+answers <code>401</code> with <code>WWW-Authenticate: Bearer realm=&quot;…&quot;,service=&quot;…&quot;</code>; the CLI
+calls the realm with <code>?service=&lt;service&gt;&amp;scope=repository:&lt;repository&gt;:pull,push</code>
+and HTTP Basic authentication (user <code>oyzu</code>, password the grant&#x27;s <code>token</code>) and
+uses the answer&#x27;s <code>token</code> (or <code>access_token</code>) as the bearer. The realm must
+be on the registry&#x27;s own origin (scheme, host and port), so the grant token
+never goes elsewhere. The registry must be <code>https</code>, except plain <code>http</code> on
+loopback.</p>
+</li>
+<li class="">
+<p><strong>Push.</strong> The empty config blob <code>{}</code> once
+(<code>application/vnd.oci.empty.v1+json</code>,
+<code>sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a</code>,
+size 2), then for each artifact:</p>
+<ul>
+<li class="">
+<p>its file&#x27;s bytes, uncompressed, as one blob whose digest is the artifact&#x27;s
+<code>digest</code>, after <code>HEAD /v2/&lt;repository&gt;/blobs/&lt;digest&gt;</code>; a <code>200</code> skips the
+upload;</p>
+</li>
+<li class="">
+<p>this manifest, serialized once in exactly this form and put to
+<code>/v2/&lt;repository&gt;/manifests/sha256:&lt;SHA-256 of those bytes&gt;</code> with
+<code>Content-Type: application/vnd.oci.image.manifest.v1+json</code> (never a tag):</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;schemaVersion&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;mediaType&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;application/vnd.oci.image.manifest.v1+json&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;artifactType&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;&lt;media_type&gt;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;config&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;mediaType&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;application/vnd.oci.empty.v1+json&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;sha256:44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">2</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;layers&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;mediaType&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;&lt;media_type&gt;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;&lt;digest&gt;&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain">&lt;size&gt;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;annotations&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;org.opencontainers.image.title&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;&lt;file name&gt;&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;annotations&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;dev.oyzu.output&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;&lt;output name&gt;&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>&lt;output name&gt;</code> is the target for its <code>primary</code> artifact and
+<code>target/name</code> otherwise, as components name build outputs.</p>
+</li>
+</ul>
+<p>Registry requests that fail with a server error or in transport are retried
+up to three attempts; any other refusal fails the publish with
+<code>PUBLISH_UPLOAD_FAILED</code> and nothing is published.</p>
+</li>
+</ol>
+<p>Each uploaded artifact&#x27;s output then carries
+<code>&quot;oci_ref&quot;: &quot;&lt;registry host[:port]&gt;/&lt;repository&gt;@sha256:&lt;manifest digest&gt;&quot;</code>
+(no scheme).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-publish">The publish<a href="#the-publish" class="hash-link" aria-label="Direct link to The publish" title="Direct link to The publish" translate="no">​</a></h3>
+<p><code>POST {server}/publish/v1/accounts/{account}/projects/{project}/builds</code> with
+<code>Authorization: Bearer &lt;credential&gt;</code>, <code>Content-Type: application/json</code> and
+<code>Accept: application/json</code>:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;1.4.2&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;commit&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;0123456789abcdef0123456789abcdef01234567&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;repository&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;acme/web&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;ref&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;refs/heads/main&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;run_url&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://github.com/acme/web/actions/runs/42&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;outputs&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;path&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;dist/manifest.json&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;manifest&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;media_type&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application/vnd.oyzu.build-manifest.v1alpha1+json&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">2101</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;path&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;dist/image-index/image.oci.tar&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;artifact&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;media_type&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application/vnd.oci.image.index.v1+json&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">123</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;target&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;image-index&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;name&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;primary&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;0.1.0-dev.g111111111111&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;oci_digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;path&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;dist/artifacts/api/default/binary/server&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;artifact&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;media_type&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application/octet-stream&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;digest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">123</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;target&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;api&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;name&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;binary&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;0.1.0-dev.g111111111111&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">     </span><span class="token property" style="color:#36acaa">&quot;oci_ref&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;registry.example/acme/web/artifacts@sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>Optional fields are omitted when unknown. <code>outputs</code> matches a platform runner&#x27;s
+<code>FinishOutput</code> (runner contract):</p>
+<ul>
+<li class="">one <code>manifest</code> output for the manifest file itself: its media type, the
+SHA-256 of its bytes and its size;</li>
+<li class="">one <code>artifact</code> output per artifact the manifest lists, with the manifest&#x27;s
+<code>path</code>, <code>mediaType</code>, <code>digest</code>, <code>size</code>, <code>target</code>, <code>name</code> and <code>version</code>, plus
+<code>oci_digest</code> (the manifest&#x27;s <code>ociDigest</code>, the digest a registry addresses it
+by) for <code>oci-image</code> and <code>oci-index</code> artifacts only, or <code>oci_ref</code> for an
+artifact the CLI <a href="#artifact-upload" class="">uploaded</a>. <code>oci_ref</code> is the one field
+beyond the runner&#x27;s <code>FinishOutput</code>. Directory artifacts carry their tree
+digest.</li>
+</ul>
+<p>Paths are relative to the checkout root, as a runner reports them: the
+manifest&#x27;s directory relative to <code>-C</code> (<code>dist/</code> by default) followed by the
+artifact&#x27;s bundle path. A <code>--manifest</code> outside the directory reports paths
+relative to its own bundle. Artifact digests are the ones <code>oyzu build</code>
+recorded; files that are uploaded are checked against them, and <code>oyzu inspect</code>
+checks the whole bundle.</p>
+<p>The CLI checks the platform&#x27;s limits before sending (<code>PUBLISH_MANIFEST_INVALID</code>):
+at most 1000 outputs, paths up to 1024 bytes, media types 255, targets 256,
+names 64 and versions 255; every artifact has a target, name and version, a
+sha256 digest, a safe relative path and, if it is an OCI image or index, a
+sha256 <code>ociDigest</code>.</p>
+<p>Commit, repository, ref and run link come from the first CI system that
+announces itself:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>CI system</th><th>commit</th><th>repository</th><th>ref</th><th>run_url</th></tr></thead><tbody><tr><td>GitHub Actions</td><td><code>GITHUB_SHA</code></td><td><code>GITHUB_REPOSITORY</code></td><td><code>GITHUB_REF</code></td><td><code>$GITHUB_SERVER_URL/$GITHUB_REPOSITORY/actions/runs/$GITHUB_RUN_ID</code></td></tr><tr><td>GitLab</td><td><code>CI_COMMIT_SHA</code></td><td><code>CI_PROJECT_PATH</code></td><td><code>refs/tags/$CI_COMMIT_TAG</code> or <code>refs/heads/$CI_COMMIT_BRANCH</code></td><td><code>CI_PIPELINE_URL</code></td></tr><tr><td>CircleCI</td><td><code>CIRCLE_SHA1</code></td><td><code>CIRCLE_PROJECT_USERNAME/CIRCLE_PROJECT_REPONAME</code></td><td><code>CIRCLE_TAG</code> / <code>CIRCLE_BRANCH</code></td><td><code>CIRCLE_BUILD_URL</code></td></tr><tr><td>Buildkite</td><td><code>BUILDKITE_COMMIT</code> (not <code>HEAD</code>)</td><td>from <code>BUILDKITE_REPO</code></td><td><code>BUILDKITE_TAG</code> / <code>BUILDKITE_BRANCH</code></td><td><code>BUILDKITE_BUILD_URL</code></td></tr><tr><td>Bitbucket</td><td><code>BITBUCKET_COMMIT</code></td><td><code>BITBUCKET_REPO_FULL_NAME</code></td><td><code>BITBUCKET_TAG</code> / <code>BITBUCKET_BRANCH</code></td><td><code>https://bitbucket.org/&lt;repo&gt;/pipelines/results/$BITBUCKET_BUILD_NUMBER</code></td></tr><tr><td>Jenkins</td><td><code>GIT_COMMIT</code></td><td>from <code>GIT_URL</code></td><td><code>GIT_BRANCH</code> without <code>origin/</code></td><td><code>BUILD_URL</code></td></tr><tr><td>TeamCity</td><td><code>BUILD_VCS_NUMBER</code></td><td>(use <code>--repository</code>)</td><td>none</td><td>none</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="registration-response-intermediate">Registration response (intermediate)<a href="#registration-response-intermediate" class="hash-link" aria-label="Direct link to Registration response (intermediate)" title="Direct link to Registration response (intermediate)" translate="no">​</a></h2>
+<p>The platform answers <code>200</code> with the build, its eligibility (<code>candidate</code> or
+<code>snapshot</code>), one entry per component and the outputs that belong to no
+component:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Build registered · 01jab7v3k9m2q8r4t6w0y1z5c7 (candidate)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ published api 1.4.2 (candidate)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  = already published web 2.0.0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ! skipped worker 0.3.0: the build did not publish [worker/config]</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Outputs in no component (never shipped)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  web/build-metadata</span><br></div></code></pre></div></div>
+<p>This registration response describes recorded components and does not establish
+external distribution. The public command proceeds to the durable publication
+operation; its final receipt and independently verified outcome control success.
+The displayed final result is the operation result described above.</p>
+<p>A successful HTTP status alone is insufficient: the response must name the
+build, use <code>candidate</code> or <code>snapshot</code> eligibility, and provide components and
+unassigned outputs arrays. Every component names its component and version,
+uses <code>published</code>, <code>already-published</code> or <code>skipped</code>, and includes a reason when
+skipped. Malformed responses fail with <code>PUBLISH_RESPONSE_INVALID</code> in human and
+JSON modes. The server may already have published the build; inspect its state
+and check platform/client compatibility. Retrying the same build is safe.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors-and-recovery">Errors and recovery<a href="#errors-and-recovery" class="hash-link" aria-label="Direct link to Errors and recovery" title="Direct link to Errors and recovery" translate="no">​</a></h2>
+<p>Every failure exits 2 and prints one diagnostic; nothing is retried that the
+platform refused.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Code</th><th>Meaning</th></tr></thead><tbody><tr><td><code>PUBLISH_NOT_CONFIGURED</code></td><td>A server, account or project is missing or malformed.</td></tr><tr><td><code>PUBLISH_INSECURE_SERVER</code></td><td>The server uses plain <code>http</code> and is not localhost.</td></tr><tr><td><code>PUBLISH_MANIFEST_MISSING</code> / <code>PUBLISH_MANIFEST_INVALID</code></td><td>No manifest at the path, or it breaks a rule above. Nothing is sent and no token is requested.</td></tr><tr><td><code>PUBLISH_BUILD_NOT_SUCCEEDED</code></td><td>The manifest records a build that did not succeed.</td></tr><tr><td><code>PUBLISH_ARTIFACT_CHANGED</code></td><td>An artifact to upload is missing, not a regular file, or no longer has its recorded size or digest. Nothing is sent; build again.</td></tr><tr><td><code>PUBLISH_UPLOAD_FAILED</code></td><td>The registry refused or failed a sign-in, blob or manifest request (after retries for server errors). Nothing is published.</td></tr><tr><td><code>PUBLISH_RESPONSE_INVALID</code></td><td>The platform&#x27;s upload grant or answer is malformed, or names a registry that is not <code>https</code> (plain <code>http</code> only on loopback).</td></tr><tr><td><code>PUBLISH_NO_CREDENTIAL</code> / <code>PUBLISH_CREDENTIAL_UNAVAILABLE</code></td><td>No credential found, or a CI system did not issue one.</td></tr><tr><td><code>PUBLISH_UNAUTHENTICATED</code> (401)</td><td>The platform did not accept the credential: expired, wrong audience or revoked.</td></tr><tr><td>403 (<code>PUBLISH_&lt;code&gt;</code>)</td><td>&quot;Oyzu refused this pipeline&#x27;s token&quot;: the token is valid, but no trust on the project&#x27;s CI connector accepts this pipeline (repository, branch or workflow).</td></tr><tr><td>other <code>PUBLISH_&lt;code&gt;</code></td><td>The platform&#x27;s RFC 9457 problem: its <code>detail</code>, each <code>errors[]</code> entry as <code>field: message</code>, and the platform request id.</td></tr><tr><td><code>PUBLISH_UNREACHABLE</code></td><td>The platform could not be reached after retries.</td></tr></tbody></table>
+<p>Connection failures and <code>502</code>, <code>503</code> and <code>504</code> answers are retried up to five
+attempts with backoff, honoring <code>Retry-After</code> (at most 30 seconds).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
+<ul>
+<li class="">Not qualified against a deployed platform; the endpoint is being built.</li>
+<li class="">The first explicit publication slice accepts one finalized file. OCI images,
+indexes and directory publication require later native destination support.</li>
+<li class="">Each uploaded file is read into memory for its push; very large files need
+that much memory. Streaming is a later refinement.</li>
+<li class="">A registry whose token endpoint (realm) is on another origin is refused.</li>
+<li class="">Commit, repository and ref are what the CI system says; the platform decides
+what it trusts from the token&#x27;s claims.</li>
+<li class="">Windows and macOS runners use the same code; the integration test runs on
+Linux CI.</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#standalone-oci-publication" class="table-of-contents__link toc-highlight">Standalone OCI publication</a></li><li><a href="#existing-github-release" class="table-of-contents__link toc-highlight">Existing GitHub release</a><ul><li><a href="#releasing-oyzu-itself-interim" class="table-of-contents__link toc-highlight">Releasing oyzu itself (interim)</a></li></ul></li><li><a href="#governed-publication-and-build-registration" class="table-of-contents__link toc-highlight">Governed publication and build registration</a></li><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#github-actions" class="table-of-contents__link toc-highlight">GitHub Actions</a></li></ul></li><li><a href="#credentials" class="table-of-contents__link toc-highlight">Credentials</a></li><li><a href="#what-is-sent" class="table-of-contents__link toc-highlight">What is sent</a><ul><li><a href="#artifact-upload" class="table-of-contents__link toc-highlight">Artifact upload</a></li><li><a href="#the-publish" class="table-of-contents__link toc-highlight">The publish</a></li></ul></li><li><a href="#registration-response-intermediate" class="table-of-contents__link toc-highlight">Registration response (intermediate)</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

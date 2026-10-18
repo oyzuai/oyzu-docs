@@ -1,0 +1,328 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/target-workspaces" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Host target workspaces and artifact inputs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/target-workspaces"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Host target workspaces and artifact inputs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/target-workspaces"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.80d3ed82.js" defer="defer"></script>
+<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/target-workspaces">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><main class="docMainContainer_TBSr docMainContainerEnhanced_lQrH"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Host target workspaces and artifact inputs</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/target-workspaces.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Native <code>oyzu build</code> prepares a separate source workspace per selected target before
+native dependency preparation. Target hooks and stages share that target workspace;
+ordering dependencies do not expose another target&#x27;s generated files. Direct
+<code>oyzu run</code> tasks retain their intentional checkout behavior.</p>
+<p>This is workspace separation, not enforced filesystem or network sandboxing.
+Host processes retain ambient host access. This behavior does not establish
+production publication eligibility.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="source-selection">Source selection<a href="#source-selection" class="hash-link" aria-label="Direct link to Source selection" title="Direct link to Source selection" translate="no">​</a></h2>
+<p>Named builds require explicit source inputs only for their selected
+targets and required dependencies, including task prerequisites and hooks. A
+missing prepared input belonging to an unselected target does not block the
+build or its read-only preview. For example, <code>oyzu build cli</code> needs no prepared
+docs input; <code>oyzu build docs</code> and an all-target build still require it. Missing
+inputs of a selected target or dependency fail before native execution. Affected
+selection observes inputs across the workspace to determine which targets changed.
+Captured source retains available authored inputs for prerequisites discovered
+during native preparation, such as archive hooks; their inputs become required
+when that target joins the selection. Existing snapshot boundary and link
+restrictions still apply to those retained inputs.</p>
+<p>The target&#x27;s source directory is captured with current edits and eligible untracked
+files using the existing snapshot exclusions (including <code>.git</code>, <code>.oyzu</code>, <code>dist</code>,
+<code>target</code>, <code>node_modules</code> and virtual environments). Native project ownership still
+belongs to discovery. Files outside the target directory require explicit source
+inputs when not already part of that native ownership unit:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">api</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> node/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> api</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">inputs</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">../../shared/schemas</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<p><code>inputs</code> is a list of literal file/directory paths relative to the declaring
+<code>build.yaml</code>, not the target&#x27;s <code>path</code>. Paths must resolve within the enclosing Git
+repository. Without a Git repository, the selected build root is the boundary.
+Absolute paths and boundary escapes fail. On the captured execution path the captured
+source is the boundary: an input must stay under the directory holding <code>build.yaml</code> and name at
+least one captured file, and it joins the target&#x27;s action-cache scope and stage contracts
+(<a class="" href="/docs/reference/action-cache#declared-inputs">declared inputs</a>). Snapshot link/reparse restrictions remain
+in force. Captures preserve repository-relative layout; each target receives its
+own copies. Additional source contents participate in recorded source-projection
+identity. This does not enable host action-result caching.</p>
+<p>Generated outputs from another build must use artifact relationships, not source
+inputs. A snapshot detects changes while copying individual files; it is not an
+atomic repository-wide snapshot. Unsupported native inputs fail through their
+native tools; arbitrary script dependencies are not automatically inferred.</p>
+<p>Source capture caches directory ignore decisions within one invocation; explicit
+inputs and mandatory metadata/repository exclusions keep their existing rules.
+Temporary source captures and complete admitted-source copies used by dependency
+preparation preserve modification times and do not flush each file to durable
+storage. Complete copies keep already-admitted inputs without reapplying ignores.
+Content hashing, change detection and independent copies remain required.
+Prepared dependency/output snapshots and final bundle/store publication retain
+their durability boundaries.
+Completed prepared trees are inspected directly when only their validated
+identity is needed; no discarded duplicate is created for that observation.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="artifact-placement">Artifact placement<a href="#artifact-placement" class="hash-link" aria-label="Direct link to Artifact placement" title="Direct link to Artifact placement" translate="no">​</a></h2>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">server</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> rust/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> server</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">consumer</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> node/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> consumer</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">materialize</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">from</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> server</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">to</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> inputs/server</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">from</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> server</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">into</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> inputs/original</span><br></div></code></pre></div></div>
+<p><code>from</code> selects a producer. Optional <code>artifact</code> selects its logical output name;
+omission requires an unambiguous primary artifact. Exactly one destination is
+required:</p>
+<ul>
+<li class=""><code>to</code>: exact destination for a file, or contents-under-destination for a directory.</li>
+<li class=""><code>into</code>: destination directory for a file, preserving its exported basename. When
+the producer fixes the file name only as it runs (a native wheel), the collected
+name is used, not the planned one; see
+<a href="#artifact-file-name-discovery" class="">file name discovery</a>. Directory artifacts use <code>to</code>.</li>
+</ul>
+<p>Optional <code>runtime</code> names a provisioned local image that must accept native files
+(such as a Python wheel) for this input; see
+<a href="#native-wheels-and-the-consumer-runtime" class="">native wheels</a>. It is valid only with
+<code>usage: runtime</code>, the image must match the consumer&#x27;s platform, and it is never pulled.</p>
+<p>Destinations are relative to the consumer target. No implicit archive extraction,
+source overwrite, overlapping destination, or scraping of old output trees is
+allowed. Producer platform compatibility and artifact identity are validated.
+<code>materialize</code> establishes ordering automatically; do not repeat <code>depends_on</code>.</p>
+<p>Native metadata and dependency preparation still precede action execution. Inputs
+that generate a consumer manifest or are needed by <code>npm ci</code> during preparation
+are not supported by this slice; handoff occurs before the consumer&#x27;s first action.</p>
+<p>Artifacts are collected once all required producer actions and report obligations
+succeed, before its consumers run. Each consumer receives an independent copy
+verified against the collected digest. The manifest records handoff receipts.
+A failed producer blocks dependents; successful independent artifacts can remain
+in a failed bundle, without making that bundle successful.</p>
+<p>The producer&#x27;s <code>pre_build</code>, build and <code>post_build</code> actions share its private tree.
+Post-hook changes to declared output are included in the artifact handed to the
+consumer. A failure in any of those actions prevents producer artifact publication,
+even if the build already wrote output files. Native failure diagnostics remain
+in the failed bundle; fixing the hook or command and rebuilding starts with a
+fresh private source tree. This is not a guarantee that post-hooks run on cancellation.</p>
+<p>A host-built (native local) Python output is a wheel <em>directory</em> named <code>primary</code>, so
+use <code>to</code> for it. A <code>python/package</code> target built in a worker image (<code>--image pip=&lt;image&gt;</code>)
+exports file outputs named <code>wheel</code> and <code>sdist</code>; select one with <code>artifact: wheel</code> and
+<code>into</code>. Typed image bindings remain separate work. Host-coordinated image execution is described below.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="host-coordinator-with-image-workers">Host coordinator with image workers<a href="#host-coordinator-with-image-workers" class="hash-link" aria-label="Direct link to Host coordinator with image workers" title="Direct link to Host coordinator with image workers" translate="no">​</a></h2>
+<p>The experimental host coordinator admits <code>docker/image</code> alongside supported
+native targets. It reuses the existing captured Docker metadata and rootless
+BuildKit executor; ordinary host targets still run as host processes. Docker is
+required only when an image target is selected. No build container receives the
+host Docker socket, and no nested Docker daemon is started.</p>
+<p>Provision the existing worker image explicitly from this repository:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">docker</span><span class="token plain"> build </span><span class="token parameter variable" style="color:#36acaa">-f</span><span class="token plain"> tooling/images/docker-metadata.Dockerfile </span><span class="token parameter variable" style="color:#36acaa">-t</span><span class="token plain"> oyzu-toolchain/docker:buildkit0.25.0 </span><span class="token builtin class-name">.</span><br></div></code></pre></div></div>
+<p>Image bases must already be available to the provisioned Docker daemon. Preparation
+captures their identities; worker actions remain offline. This does not install
+Docker or change host security settings. Existing <code>docker.apparmorProfile</code>
+configuration and executor enforcement still apply. Explicit tool pins must be
+satisfied by their supported executor contract; an image tag does not verify pins.</p>
+<p>An intended Linux producer/consumer flow is:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">package</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> python/package</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> package</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">image</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> docker/image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">materialize</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">from</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> package</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        </span><span class="token key atrule" style="color:#00a4db">to</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> payload</span><br></div></code></pre></div></div>
+<p><code>oyzu build image --plan</code> includes the producer, artifact edge and each target&#x27;s
+executor without contacting Docker. <code>oyzu build image</code> runs that graph. The image&#x27;s
+Dockerfile can use <code>COPY payload/ /wheels/</code> without predicting a versioned wheel
+filename. This assembles a wheel payload; installing it into an application runtime
+is a separate Dockerfile responsibility. Native source selection and Dockerignore
+filtering apply to the image&#x27;s context; materialized artifacts are explicitly added.
+Additional source files outside that context do not become Docker COPY inputs.</p>
+<p>Artifact compatibility is separate from producer execution provenance. Captured
+matrix expansion selects the declared producer variant matching each consumer
+platform; it does not select by filename or matrix enumeration order. Host Python
+wheel directories are inspected after collection: every wheel must report pure
+Python and <code>none-any</code> tags before the directory is admitted across platforms.
+Python tags remain in evidence; the image&#x27;s package manager must check interpreter
+and other runtime requirements. A host-built wheel whose tags all name one Linux
+x86_64 or aarch64 platform (<code>linux_*</code>, <code>manylinux*</code>, <code>musllinux_*</code>) is recorded as
+<code>native</code> and is consumed only as described under
+<a href="#native-wheels-and-the-consumer-runtime" class="">native wheels</a>. Any other native wheel
+tags (for example Windows or macOS) remain unqualified and fail runtime handoff,
+including on the same OS. Platform-independent sharing of native wheels through
+captured matrix expansion is not implemented.
+Plain native builds still select host producer outputs. For a native binary
+matrix feeding a foreign-platform image, use <code>--all-platforms</code>; the CLI does not
+automatically switch that producer to a cross-compilation executor.</p>
+<p><code>materialize.usage</code> defaults to <code>runtime</code>. Explicit <code>usage: data</code> permits deliberate
+inclusion without claiming runtime compatibility. It still requires a unique
+logical output, successful producer, verified bytes and safe placement. Data edges
+do not propagate consumer platform requirements into producers; ambiguous matrix
+outputs still fail. <code>to</code> and <code>into</code> retain their existing placement semantics.</p>
+<p>Artifacts carry <code>extensions.oyzu.dev/artifact-compatibility</code>: <code>target</code> records the
+resolved artifact platform, <code>pending</code> requires builder inspection before use,
+<code>independent</code> retains native runtime tags, <code>native</code> binds package files to one
+platform plus the builder that verifies them against the consumer runtime, and
+<code>unknown</code> explains absent qualification.
+Bindings/receipts record <code>oyzu.dev/artifact-consumer</code> platform and usage. Pending or
+unknown artifacts cannot satisfy runtime consumption. This extends the existing
+version-1 contracts; it does not certify arbitrary binaries or runtime ABIs.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-wheels-and-the-consumer-runtime">Native wheels and the consumer runtime<a href="#native-wheels-and-the-consumer-runtime" class="hash-link" aria-label="Direct link to Native wheels and the consumer runtime" title="Direct link to Native wheels and the consumer runtime" translate="no">​</a></h3>
+<p>A <code>native</code> wheel is accepted only after the consumer runtime check. For generic
+<code>linux_x86_64</code> and <code>linux_aarch64</code> wheels, Oyzu inspects ELF <code>.so</code> dependencies in
+the wheel and probes the exact consumer image&#x27;s Python process. A positively
+identified glibc/musl mismatch is refused before the consumer image build, naming
+the wheel, ELF member, linkage and consumer image. If linkage or consumer libc is
+inconclusive, the check reports <code>NATIVE_WHEEL_LIBC_UNVERIFIED</code> and continues to pip.
+This includes wheels with no identifiable libc dependency and wheels with other
+unidentified <code>.so</code> members. A missing Python runtime remains an error.
+<code>UNVERIFIED</code> means Oyzu has no libc conclusion. Separately, for generic Linux
+wheels with a recognized interpreter-specific <code>*.cpython-&lt;version&gt;-&lt;platform&gt;.so</code>
+member, Oyzu compares that filename suffix with <code>importlib.machinery.EXTENSION_SUFFIXES</code>
+from the exact consumer Python. When its CPython-specific suffix is absent, or the
+consumer cannot report those suffixes, Oyzu emits
+<code>NATIVE_WHEEL_EXTENSION_SUFFIX_UNVERIFIED</code> in human and JSON diagnostics, naming
+the wheel, member, observed suffix and consumer. Pip still decides wheel tags and
+ABI, and a warning does not block the build. A plain <code>.so</code> or <code>.abi3.so</code> does not
+trigger this specific comparison. The member may be a helper or data library, so
+this check does not claim that every <code>.so</code> is a required import module. A warning
+calls for checking the module import in the final image and, if it fails, building
+the wheel with that consumer&#x27;s Python and native toolchain.
+For <code>manylinux*</code> and <code>musllinux_*</code> tags, pip retains its existing decision without
+the extra ELF or suffix checks. Pure <code>*-none-any</code> wheels keep their independent
+handoff.</p>
+<p>Before a native wheel enters the consumer workspace, Oyzu runs
+<code>pip install --dry-run --no-index --no-deps</code> for it in that image with networking
+disabled. Pip decides whether the interpreter version, ABI and wheel tag fit; the
+extra refusal handles only positively identified libc mismatches for generic Linux
+tags. The suffix comparison is diagnostic only. The runtime image is, in order:</p>
+<ol>
+<li class="">the input&#x27;s explicit <code>runtime: &lt;image&gt;</code> (a provisioned local image; it overrides
+the captured base and must match the consumer platform), else</li>
+<li class="">the consumer&#x27;s captured pip dependency base (a <code>requirements.txt</code> consumed from the
+pinned base image; see Docker images).</li>
+</ol>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">materialize</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">from</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> package</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">to</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> inputs</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">runtime</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> registry.example/python</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">3.12</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">slim   </span><span class="token comment" style="color:#999988;font-style:italic"># only needed without a pip base</span><br></div></code></pre></div></div>
+<p>A consumer with neither (for example a plain <code>COPY</code> into <code>scratch</code>) cannot receive a
+native wheel; <code>usage: data</code> still includes it without a runtime claim. A rejection
+fails the consumer with the wheel name, the image reference and either the linkage
+mismatch or pip&#x27;s message. The
+human summary shows it as an <code>ERROR</code> line (terminal controls escaped, line breaks
+kept); <code>--json</code> carries it in <code>diagnostics</code>, and the action log keeps the full text.</p>
+<p>Wheel classification covers Linux wheels whose tags all name x86_64 or aarch64
+(<code>linux_*</code>, <code>manylinux*</code>, <code>musllinux_*</code>), including <code>abi3</code> wheels. The proof shows
+version-specific tags (<code>cp313-cp313-linux_x86_64</code>) accepted only by the matching
+Python and an <code>abi3</code> wheel accepted by both Python 3.12 and 3.13. Because pip is
+the authority, Python versions need no Oyzu list. Not covered: a Linux arm64 consumer
+(classification is unit-tested; no arm64 build or execution was available), broader
+libc version and transitive library checks, and Windows/macOS tags, which stay
+<code>unknown</code> and are refused. These and the Windows/macOS host qualification are tracked
+in <a class="" href="/docs/support/capabilities">implementation status</a>.</p>
+<p>Qualification: <code>python tooling/test-native-wheel-abi.py --cli &lt;compiled-oyzu&gt;</code>
+(needs Docker, a host C compiler and <code>oyzu-fixture/python-abi:&lt;version&gt;</code> images;
+the script header describes them). The producer&#x27;s CPython is pinned with
+<code>.python-version</code>; Oyzu provisions it. These host-built cases need a Linux host: a
+Windows or macOS host builds <code>win_*</code>/<code>macosx_*</code> wheels, which stay <code>unknown</code> and are
+refused by a Linux consumer.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="wheels-built-in-a-worker-image">Wheels built in a worker image<a href="#wheels-built-in-a-worker-image" class="hash-link" aria-label="Direct link to Wheels built in a worker image" title="Direct link to Wheels built in a worker image" translate="no">​</a></h3>
+<p>A Linux native wheel can be produced from any host with Docker by building it in a
+worker image: <code>oyzu build --image pip=&lt;image&gt;</code>, where the image is a Python image with a
+C compiler (not a <code>-slim</code> image) and the Oyzu worker at
+<code>/usr/local/libexec/oyzu/oyzu</code>. The wheel&#x27;s tag comes from that image&#x27;s interpreter, for
+example <code>cp313-cp313-linux_x86_64</code>. Collection finds it (below), reads its tags from the
+wheel&#x27;s own <code>WHEEL</code> metadata and records <code>native</code> compatibility for the image&#x27;s platform,
+so the consumer check above applies unchanged. The case is
+<code>tooling/test-native-wheel-abi.py --worker-image &lt;image&gt;</code>; on Windows add
+<code>--captured-only</code> to skip the host-built cases.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="artifact-file-name-discovery">Artifact file name discovery<a href="#artifact-file-name-discovery" class="hash-link" aria-label="Direct link to Artifact file name discovery" title="Direct link to Artifact file name discovery" translate="no">​</a></h3>
+<p>A planned file output has an exact name and collection requires that file. The one
+exception is a builder-declared discovery, used when the name cannot be known until the
+build has run:</p>
+<ul>
+<li class="">It is consulted only when no file exists at the planned path, so an output that exists
+under its planned name, such as a pure <code>py3-none-any</code> wheel, is collected exactly as
+before and never reinterpreted.</li>
+<li class="">Python implements it for the <code>wheel</code> output of <code>python/package</code>: the single regular
+file <code>{name}-{version}-*.whl</code> next to the planned file. No match keeps the original
+<code>missing bundle path</code> failure; more than one match fails and names them. <code>sdist</code>, applications and
+other builders have no discovery.</li>
+<li class="">The result is a file name in the planned directory, never a path; symlinks are ignored
+and the usual containment, regular-file, digest and size checks still apply.</li>
+<li class="">The bundle&#x27;s artifact record carries the file actually collected, and compatibility is
+inspected from that file&#x27;s metadata, not from its name. The frozen plan, <code>--plan</code> output
+and plan digest keep the planned name (<code>py3-none-any</code>), so the planned and collected
+names can differ for a native wheel.</li>
+<li class=""><code>materialize</code> with <code>into</code> writes the consumer&#x27;s file under the collected name; the
+receipt records where it was written. <code>to</code> names an exact file and therefore cannot
+address a name that is only known after the build; use <code>into</code> for a discovered file.
+Collisions with the collected name are detected when the file is written, not at
+planning, and an existing file is never overwritten.</li>
+</ul>
+<p>Limits: the lookup also applies to a legacy <code>setup.py</code> wheel whose planned tag is absent,
+so a mismatched tag there is collected and classified from its metadata rather than failing.
+The Windows/macOS wheel tags are not classified (below).</p>
+<p>Named image platform lists must include the resolved
+worker platform for this path; use the existing <code>--all-platforms</code> captured path for
+matrix execution. Worker task replacements and pre/post hooks run through the shared
+task executor and retain report obligations. Hooks share the private target workspace.
+Docker context membership is frozen during preparation: hooks may modify admitted
+files, but newly generated undeclared files do not automatically enter the context. <code>--isolated</code> continues to
+select the captured build path for the whole graph.</p>
+<p>Fast builds assemble and verify the OCI image without selecting optional checks.
+<code>--full</code> adds the existing image assertions, lint and formatting stages, with reports
+collected through the shared owner. Image content and platform integrity are always
+verified before publication, including fast builds. The bundle records worker image
+identity, dependency evidence and per-action enforcement; this does not imply that
+host producer actions were sandboxed or establish production publication eligibility.</p>
+<p>Windows image-only fast/full flows have passed. The Windows Python-to-Linux runtime
+fixture installs/imports the wheel in Linux and verifies exact materialized bytes.
+Failed-producer blocking, unknown native-wheel rejection and explicit data-only
+inclusion also passed. See the
+three-platform Rust-to-image proof, which independently exports Linux amd64,
+Linux arm64 and Windows amd64 binaries and executes only the matching Linux amd64
+binary in its consumer image, in the
+qualification record.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inspection-storage-and-recovery">Inspection, storage and recovery<a href="#inspection-storage-and-recovery" class="hash-link" aria-label="Direct link to Inspection, storage and recovery" title="Direct link to Inspection, storage and recovery" translate="no">​</a></h2>
+<p>During an executing build, Windows Ctrl+C or Unix SIGINT/SIGTERM requests
+coordinated cancellation. Oyzu stops admitting actions, terminates owned native
+process groups/trees or removes active named workers, retains available logs and a
+failed bundle, blocks pending dependents, and returns exit code 130. Normal private
+workspace cleanup then runs. Windows console, Linux SIGINT and Windows-coordinated
+image-worker flows are verified. Post-hooks are not guaranteed to run.</p>
+<p>Forced termination (SIGKILL), deliberately detached descendants, every acquisition
+phase and macOS runtime behavior are not qualified. Inspect remaining processes
+and build-owned storage after an unhandled termination; do not assume cleanup.</p>
+<p><code>oyzu build --plan</code> shows declared shared source inputs and artifact relationships
+without tool installation, copying source, or running a build. Physical artifact
+selection and source admission are verified during preparation.</p>
+<p>Private trees use <code>.oyzu/host-workspaces</code> under the existing build transaction lock.
+They persist between builds as exact source copies: each build refreshes them in
+place, rewriting only files whose bytes changed and removing anything outside the
+selection, and at the end of a build removes what the build generated inside them.
+On Windows this avoids re-creating every source file per build, which on-access
+scanning made the slowest preparation step (about 46 seconds for this repository&#x27;s
+2,600-file CLI projection). Interrupted builds leave state that the next build
+reconciles under that same lock. Native Rust compiler caches remain in the original target&#x27;s
+<code>.oyzu/native/rust</code> store with existing budget controls. Copies preserve modification
+times and use stable paths for repeat builds. Tool stores and native download caches
+remain shared. This does not promise unchanged cache keys after target selection or
+source layout changes. Offline runs still require tools and native dependencies
+already available.</p>
+<p>Fix an invalid input path, artifact selector, collision or failed native command,
+then rebuild. No manual copying into a consumer is required. Private workspace
+cleanup does not remove finalized bundles, tools, or compiler caches.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification-and-limits">Verification and limits<a href="#verification-and-limits" class="hash-link" aria-label="Direct link to Verification and limits" title="Direct link to Verification and limits" translate="no">​</a></h2>
+<p><code>tooling/test-host-workspaces.py --cli &lt;compiled-oyzu&gt;</code> exercises real host
+producer/consumer builds, shared parent inputs, edits, verified handoff, clean
+checkout behavior, preview, hook continuity, pre/build/post failure blocking,
+diagnostic retention, recovery and cleanup. Qualification results are recorded in
+<a class="" href="/docs/support/capabilities">implementation status</a>. Linux/macOS runtime
+qualification and enforced sandboxing are not implied by Windows checks.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="artifact-handoff-follow-up-checkpoint">Artifact handoff follow-up checkpoint<a href="#artifact-handoff-follow-up-checkpoint" class="hash-link" aria-label="Direct link to Artifact handoff follow-up checkpoint" title="Direct link to Artifact handoff follow-up checkpoint" translate="no">​</a></h2>
+<p>An explicitly selected <code>python/package</code> output named <code>wheel</code> can bind one producer
+to multiple consumer platforms when the producer declares no platform matrix.
+Collection inspects the actual wheel before runtime consumption; pure Python
+platform-independent wheels can be shared. Explicit producer platforms remain
+authoritative. A Linux native wheel is <code>native</code> and is accepted only after pip accepts
+it in the consumer runtime (<a href="#native-wheels-and-the-consumer-runtime" class="">native wheels</a>);
+unknown wheel compatibility (for example Windows or macOS tags) still fails closed. A
+wheel built in a worker image keeps its real file name through
+<a href="#artifact-file-name-discovery" class="">discovery</a>.</p>
+<p><code>materialize.usage: build</code> selects compatibility against the execution platform,
+while the default <code>runtime</code> uses the consumer artifact platform and <code>data</code> carries
+no executable compatibility claim. The current build-tool path requires an
+unambiguous producer; selection from a multi-variant generator matrix remains
+unfinished. Its end-to-end qualification passed on Linux amd64 (2026-10-07): an amd64
+generator ran on the executor and a linux/arm64 consumer built from its output. Rust
+recipe lookup selects the smallest pinned recipe that contains the requested components
+and still fails with <code>TOOL_LOCK_AMBIGUOUS</code> for incomparable recipes; a cross target&#x27;s
+request includes its target-platform standard library. Windows, macOS and other
+Docker versions are not qualified.</p>
+<p>See the qualification record for measured
+portable-wheel and worker-hook results and remaining limitations.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#source-selection" class="table-of-contents__link toc-highlight">Source selection</a></li><li><a href="#artifact-placement" class="table-of-contents__link toc-highlight">Artifact placement</a></li><li><a href="#host-coordinator-with-image-workers" class="table-of-contents__link toc-highlight">Host coordinator with image workers</a><ul><li><a href="#native-wheels-and-the-consumer-runtime" class="table-of-contents__link toc-highlight">Native wheels and the consumer runtime</a></li><li><a href="#wheels-built-in-a-worker-image" class="table-of-contents__link toc-highlight">Wheels built in a worker image</a></li><li><a href="#artifact-file-name-discovery" class="table-of-contents__link toc-highlight">Artifact file name discovery</a></li></ul></li><li><a href="#inspection-storage-and-recovery" class="table-of-contents__link toc-highlight">Inspection, storage and recovery</a></li><li><a href="#verification-and-limits" class="table-of-contents__link toc-highlight">Verification and limits</a></li><li><a href="#artifact-handoff-follow-up-checkpoint" class="table-of-contents__link toc-highlight">Artifact handoff follow-up checkpoint</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>
