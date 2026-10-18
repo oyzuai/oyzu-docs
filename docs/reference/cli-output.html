@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.dba7e6ac.css">
-<script src="/assets/js/runtime~main.a9f0f90f.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.223551cb.js" defer="defer"></script>
 <script src="/assets/js/main.89d9da4c.js" defer="defer"></script>
 </head>
 <body>
@@ -123,7 +123,10 @@ separate <code>Action cache</code> line, the &quot;counts do not estimate time r
 and the &quot;Check selection unavailable … retained evidence is incomplete&quot; sentence
 are not part of the default build view; <code>-v</code> adds the <code>Reuse</code> and <code>Cache</code> facts,
 history keeps the selection caveat, and JSON is unchanged. <code>── Selection ──</code> prints
-only when the build is not every declared target: <code>--affected</code> shows what it was
+when a target is built by a plugin (its builder selection: the full record with
+remedies when the build adopted or installed one, otherwise one line per target;
+see plugin catalog) and when the
+build is not every declared target. For the latter: <code>--affected</code> shows what it was
 compared with (<code>compared with origin/main at 0123456</code>), the <code>changed</code> targets and
 changed paths, their <code>dependents</code> and the <code>unaffected</code> count; a conservative
 fallback shows <code>! Not narrowed</code> with its reason, the recorded code and a fix only
