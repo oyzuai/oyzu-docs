@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.8c3370c4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.ae9ebb04.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -57,7 +57,8 @@ Unix timestamp (seconds since the UTC epoch). <code>SOURCE_DATE_EPOCH</code> ove
 timestamp at compilation for reproducible inputs. Without Git metadata, source
 identity is explicitly <code>unknown.source-unknown</code>. This is diagnostic identity,
 not a release version, source attestation or production eligibility claim.
-All current builds are labelled local, including optimized release-profile builds.</p>
+All current builds are labelled local, including optimized release-profile builds
+(<code>oyzu build --optimized</code>); optimized never implies a release or publication eligibility.</p>
 <p>Identity is embedded at compile time. Version/help never opens project
 configuration, starts a worker, runs Git or contacts a service. <code>--version --json</code>
 uses the existing structured output/exit-code envelope.</p>
@@ -93,7 +94,8 @@ say. The title line names the project and, right-aligned, the host platform, <co
 or the CI provider, the build <code>context</code> value only (<code>context pr</code>, <code>context local</code>;
 the deciding signal or pin is shown by the Build context fact in Prepare and by
 <code>config explain context</code>, see <a class="" href="/docs/reference/configuration#build-context">Build context</a>),
-and <code>fast</code> or <code>full</code>. The CI provider label alone nearly fills 80 columns, so
+and <code>fast</code> or <code>full</code>, followed by <code>optimized</code> or <code>development</code> when
+<code>--optimized</code> or <code>--no-optimized</code> asks for one. The CI provider label alone nearly fills 80 columns, so
 under a CI provider the subtitle may continue on the line below the project. A pin that a
 CI provider marker forbids lowering prints a <code>CONTEXT_OVERRIDE_IGNORED</code> warning. Every row, the title and the section
 rules share one width (80 columns, or less on a narrower terminal). <code>── Prepare ──</code>
@@ -116,8 +118,13 @@ and an end line prefixed with elapsed <code>mm:ss</code>, and the ten-second hea
 what is still running.
 <code>── Build ──</code> has one row per finished action: mark, target, stage, the command
 shortened with <code>…</code> to fit the width, <code>executed</code> or <code>reused</code>, and its duration.
-<code>── Outputs ──</code> lists artifacts as project-relative paths with sizes;
-<code>-v</code> and <code>--json</code> keep absolute paths. <code>── Warnings (N) ──</code> lists each distinct
+<code>── Outputs ──</code> lists artifacts as project-relative paths under
+<code>dist/&lt;target&gt;/&lt;platform&gt;/</code> (<code>any</code> for a platform-independent target; see the
+<a class="" href="/docs/reference/build-bundles#layout">bundle layout</a>) with sizes and the build profile each
+was built with, <code>development</code> or <code>optimized</code>
+(<code>cli  dist/cli/windows/x86_64/oyzu.exe  64.1 MB  development</code>); <code>-v</code> and
+<code>--json</code> keep absolute paths, and the JSON artifact record carries the label as
+<code>profile</code>. <code>── Warnings (N) ──</code> lists each distinct
 warning once, with its owner (for example <code>docs · npm</code>); it is not repeated inline
 during the run. The generic <code>NATIVE_WARNING</code> code is hidden in the default view
 and shown with <code>-v</code> and in JSON, while Oyzu-owned diagnostic codes are always
@@ -146,8 +153,11 @@ not prepared) or <code>-</code> (the builder declares no such stage). Below the 
 blank line, one dim line per distinct reason names the stages it covers: under an
 <code>off</code> label with where the check was turned off (<code>format · disabled in oyzu.toml</code>, <code>test · disabled in oyzu.toml [context.pr]</code>), under a <code>skipped</code> label
 (<code>lint and test · fast local build</code>), and under an <code>advisory</code> label for run
-stages whose failure is only a warning (<code>lint · failures are warnings; the build still succeeds</code>). Table notes follow under a <code>note</code> label, so none reads as a
-table row. A failed advisory check is shown once, as a warning: its Build row
+stages whose failure is only a warning (<code>lint · failures are warnings; the build still succeeds</code>). One line per distinct <a class="" href="/docs/reference/configuration#optimized-builds">build profile</a>
+follows under a <code>profile</code> label, naming its targets with the profile and why
+(<code>cli · optimized · --optimized</code>, <code>cli and docs · development · local dist only</code>,
+<code>cli · optimized · release builds are published</code>). Table notes follow under a
+<code>note</code> label, so none reads as a table row. A failed advisory check is shown once, as a warning: its Build row
 reads <code>warn … failed · advisory</code>, it gets no Failure block, Warnings holds one
 <code>CHECK_ADVISORY</code> entry with the action, exit code and native cause, and the
 summary counts it apart from failures (<code>1 advisory failed</code>); the build still

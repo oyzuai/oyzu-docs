@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds (in development) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds (in development) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds (in development)","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.8c3370c4.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.ae9ebb04.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -184,7 +184,12 @@ coverage execution, not the complete Oyzu self-build or automatic tool
 provisioning. The full Oyzu checkout also passed <code>cargo check --locked --offline --bin oyzu</code> with GNU/LLVM, Clang and native CMake/Ninja; final executable linking
 was not tested by that check. Coverage remains required when the test/coverage
 stage is selected; plain local compilation does not select it automatically.</p>
-<p>The native path builds development-profile binaries. Plain local <code>oyzu build</code>
+<p>The native path builds development-profile binaries unless the build is
+optimized: <code>oyzu build --optimized</code>, <code>build.optimized = true</code>, or a build whose
+artifacts leave the machine (a slice, a shared remote cache write, a packaging
+target, the <code>release</code> context) runs <code>cargo build --release</code> instead; see
+<a class="" href="/docs/reference/configuration#optimized-builds">optimized builds</a>. Tests keep Cargo&#x27;s test
+profile. Plain local <code>oyzu build</code>
 automatically schedules compilation and any check at level <code>required</code>.
 <code>oyzu build --full</code>, the <code>pr</code>, <code>ci</code> and <code>release</code> contexts or the CI profile also
 schedule test/JUnit/coverage/doctest integration, Clippy and read-only formatting
@@ -557,7 +562,10 @@ and refused handoff writes exit 5; see
 The expanded scenario adds concrete matrix IDs, folded hooks and graph growth.
 <code>--suite rust --only slice-corpus</code> adds the pinned serde and regex workspaces,
 three declared crate targets each, checking every action key and cached output
-tree digest plus artifact digests from fresh local stores. These additions await
+tree digest plus artifact digests from fresh local stores. A slice hands its
+results off and so builds the <a class="" href="/docs/reference/configuration#optimized-builds">optimized profile</a>;
+slices and the reference whole build are compared at the same profile, so the
+reference runs with <code>--optimized</code>. These additions await
 execution with Docker; the earlier two-target proof does not qualify them.</p>
 <p>Invalid configuration, unknown targets and statically invalid relationships fail
 normally. Configuration is opened offline to preserve the no-network contract;
@@ -566,8 +574,13 @@ bypassing policy. Correct the reported configuration or run a normal build to
 perform the preparation needed to resolve remaining details. Native macOS runtime
 qualification remains pending.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="outputs-and-incremental-state">Outputs and incremental state<a href="#outputs-and-incremental-state" class="hash-link" aria-label="Direct link to Outputs and incremental state" title="Direct link to Outputs and incremental state" translate="no">​</a></h2>
-<p>Successful binaries are collected in <code>dist/&lt;target&gt;/artifacts/</code> with their normal
-native names, then exposed at <code>.oyzu/bin/&lt;name&gt;[.exe]</code>. The shared bundle store
+<p>Successful binaries are collected in <code>dist/&lt;target&gt;/&lt;platform&gt;/</code> (the host
+platform, such as <code>dist/cli/windows/x86_64/</code>; see the <a class="" href="/docs/reference/build-bundles#layout">bundle layout</a>)
+with their normal native names, then exposed at <code>.oyzu/bin/&lt;name&gt;[.exe]</code>.
+Outputs labels each one with the profile it was built with, <code>development</code> or,
+for an optimized build, <code>optimized</code>; each binary is statically verified as an
+executable for the host before it is collected (<a class="" href="/docs/reference/build-bundles#layout">executable verification</a>).
+The shared bundle store
 retains manifest, plan, envelope, reports and action logs. These disclose host
 execution, observed source and unverified tool identity; they do not confer
 production eligibility or assert enforced isolation.</p>
