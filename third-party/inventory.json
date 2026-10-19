@@ -343,11 +343,11 @@
     },
     {
       "name": "react",
-      "version": "19.3.0",
+      "version": "19.3.1",
       "license": "MIT",
       "notices": [
         {
-          "path": "react-19.3.0/LICENSE",
+          "path": "react-19.3.1/LICENSE",
           "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
         }
       ],
@@ -355,11 +355,11 @@
     },
     {
       "name": "react-dom",
-      "version": "19.3.0",
+      "version": "19.3.1",
       "license": "MIT",
       "notices": [
         {
-          "path": "react-dom-19.3.0/LICENSE",
+          "path": "react-dom-19.3.1/LICENSE",
           "sha256": "da6d3703ed11cbe42bd212c725957c98da23cbff1998c05fa4b3d976d1a58e93"
         }
       ],

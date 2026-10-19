@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build bundles and retention | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-bundles"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build bundles and retention | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-bundles.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-bundles.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-bundles"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-bundles" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-bundles" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build bundles and retention","item":"https://docs.oyzu.ai/docs/reference/build-bundles"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.381b060a.js" defer="defer"></script>
-<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.474d8fc7.js" defer="defer"></script>
+<script src="/assets/js/main.de371c77.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -17,8 +17,10 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="layout">Layout<a href="#layout" class="hash-link" aria-label="Direct link to Layout" title="Direct link to Layout" translate="no">​</a></h2>
 <p>Every artifact a target produces, and that target&#x27;s reports, is written below
 <code>dist/&lt;target&gt;/&lt;platform&gt;/</code> (build intent BIN-07). The platform is the canonical
-<code>os/arch</code> name (<code>linux/x86_64</code>, <code>windows/arm64</code>, <code>darwin/arm64</code>); output a
-builder declares platform-independent uses <code>any</code> instead:</p>
+<code>os/arch</code> name (<code>linux/x86_64</code>, <code>windows/arm64</code>, <code>darwin/arm64</code>), with <code>-&lt;abi&gt;</code>
+on the architecture only when the platform was declared or requested with an ABI
+that is not the OS&#x27;s naming default (<code>linux/arm64-musl</code>; see below); output a builder declares
+platform-independent uses <code>any</code> instead:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">dist/</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  manifest.json  plan.json  envelope.json  logs/</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  cli/windows/x86_64/oyzu.exe</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  cli/windows/x86_64/oyzu-shim.exe</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  cli/windows/x86_64/reports/junit.xml</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  docs/windows/x86_64/application-0.1.0/</span><br></div></code></pre></div></div>
 <p>The layout is the same for local, multi-platform and CI builds, so bundles for
 different platforms merge without collisions. Which platform a target uses:</p>
@@ -73,6 +75,35 @@ changes: Rust binaries, native or isolated (<code>cargo build --release</code>; 
 source archives stay <code>development</code>), and .NET packages (<code>--configuration Release</code>). Builders whose output optimization does not change keep
 <code>development</code>. When the target&#x27;s build or the artifact&#x27;s producer is an authored
 task replacing the builder&#x27;s command, the artifact is <code>development</code>.</p>
+<p><strong>Platform and executor.</strong> Each target record&#x27;s <code>platform</code> is the platform it
+was built for (canonical <code>os/arch[/abi]</code>), with the ABI its toolchain resolved
+when the OS has several (<code>{&quot;os&quot;:&quot;linux&quot;,&quot;arch&quot;:&quot;arm64&quot;,&quot;abi&quot;:&quot;musl&quot;}</code>; Rust
+records it today); its artifacts&#x27; compatibility carries the same platform. The
+<code>dist/&lt;target&gt;/&lt;platform&gt;/</code> directory uses the published form of the declared or
+requested platform: an ABI appears only when it is not the OS&#x27;s default, as a
+sibling folder that never nests inside another (<code>--platform linux/arm64/musl</code>
+writes <code>dist/&lt;target&gt;/linux/arm64-musl/</code>, <code>linux/arm64/gnu</code> writes
+<code>dist/&lt;target&gt;/linux/arm64/</code>), so builds of both ABIs merge into one tree
+without collisions <em>when the ABI is declared or requested</em>. The folder follows
+the declared or requested platform, not the resolved ABI, which is known only
+after planning: a target declaring <code>linux/arm64</code> that is cross-built to musl
+lands in <code>dist/&lt;target&gt;/linux/arm64/</code> although its asset is <code>-musl</code> and its
+evidence path <code>linux/arm64-musl</code>, and a native GNU build and a musl cross build
+of that undeclared ABI share one folder. Declare the ABI (<code>linux/arm64/musl</code>)
+to keep them apart; a folder that follows the resolved ABI is a recorded
+follow-up,
+and <code>extensions[&quot;oyzu.dev/platforms&quot;]</code> records how it was built: <code>target</code> (the
+logical target every platform variant shares), <code>declared</code> (the platforms the
+target declares), <code>declaredExecutors</code>, <code>platform</code> and <code>executor</code>
+(<code>{&quot;kind&quot;:&quot;host&quot;}</code>,
+<code>{&quot;kind&quot;:&quot;cross-toolchain&quot;,&quot;toolchain&quot;:&quot;rust-lld&quot;,&quot;target&quot;:&quot;aarch64-unknown-linux-musl&quot;}</code>
+or <code>{&quot;kind&quot;:&quot;container&quot;}</code>), and one <code>rows</code> entry per declared or requested
+platform with <code>selected</code>, <code>executor</code> or <code>reason</code>, and the <code>runner</code> that builds it
+on its own host. Image-worker targets record <code>target</code>, <code>declared</code>, <code>platform</code>
+and the <code>container</code> executor. Publication reads <code>declared</code> to refuse an
+<a class="" href="/docs/reference/publish#incomplete-platform-sets">incomplete platform set</a>. An executor other
+than the host is part of the target&#x27;s action-cache identity. See
+<a class="" href="/docs/reference/local-builds#platforms-and-executors">platforms and executors</a>.</p>
 <p><strong>Executable verification.</strong> An artifact the builder declares a native
 executable (Rust and Go binaries; an external plugin&#x27;s <code>executable</code> flag only promotes a file to <code>.oyzu/bin</code> and is not verified)
 is verified statically when it is collected, on the native and isolated paths:

@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tasks in captured builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-tasks"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tasks in captured builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-tasks"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tasks in captured builds","item":"https://docs.oyzu.ai/docs/reference/build-tasks"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.381b060a.js" defer="defer"></script>
-<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.474d8fc7.js" defer="defer"></script>
+<script src="/assets/js/main.de371c77.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -64,11 +64,16 @@ with <code>--optimized</code> to reuse those results. Builders where optimizatio
 difference keep sharing. See <a class="" href="/docs/reference/configuration#optimized-builds">optimized builds</a>.</p>
 <p>For the supported single Rust target, plain <code>oyzu build</code> selects the current host
 and, unless the build is optimized, the development compilation profile,
-including when <code>build.yaml</code> declares a platform matrix. <code>--all-platforms</code> requests the complete declared matrix through
-the existing captured executor; <code>--isolated</code> explicitly selects captured execution
-and, like a plain build, keeps only the host platform from a declared platform
-matrix unless <code>--all-platforms</code> is also given. A target that does not declare the
-host platform keeps its full matrix.
+including when <code>build.yaml</code> declares a platform matrix. <code>--platform &lt;os/arch&gt;</code>
+(repeatable) selects other target platforms instead; Rust builds them natively
+with a cross toolchain where this host has one. <code>--all-platforms</code> requests the
+complete declared matrix through the existing captured executor and fails before
+running when a declared platform cannot be built here; <code>--isolated</code> explicitly
+selects captured execution and, like a plain build, keeps only the host platform
+from a declared platform matrix unless <code>--all-platforms</code> or <code>--platform</code> is also
+given. In a captured build a target that does not declare the host platform keeps
+its full matrix; a native build builds the one declared platform it can, or skips
+the target with the reason. See <a class="" href="/docs/reference/local-builds#platforms-and-executors">platforms and executors</a>.
 The matrix backend currently requires Docker and provisioned worker images.
 Unsupported native relationships fail explicitly rather than ignoring them.
 Platform selection and isolation are distinct concepts; this implementation does

@@ -87,11 +87,11 @@ prismjs 1.30.0 — MIT
 prop-types 15.8.1 — MIT
   third-party/prop-types-15.8.1/LICENSE
 
-react 19.3.0 — MIT
-  third-party/react-19.3.0/LICENSE
+react 19.3.1 — MIT
+  third-party/react-19.3.1/LICENSE
 
-react-dom 19.3.0 — MIT
-  third-party/react-dom-19.3.0/LICENSE
+react-dom 19.3.1 — MIT
+  third-party/react-dom-19.3.1/LICENSE
 
 react-fast-compare 3.2.2 — MIT
   third-party/react-fast-compare-3.2.2/LICENSE

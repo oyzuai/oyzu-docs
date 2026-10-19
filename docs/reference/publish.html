@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Publishing finalized artifacts | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/publish"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Publishing finalized artifacts | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/publish"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.381b060a.js" defer="defer"></script>
-<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.474d8fc7.js" defer="defer"></script>
+<script src="/assets/js/main.de371c77.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -202,13 +202,38 @@ operating system family. Bytes and local <code>dist/</code> filenames never chan
 
 
 <table><thead><tr><th>Recorded compatibility</th><th>Asset name</th><th>Example</th></tr></thead><tbody><tr><td><code>target</code> (built for one platform)</td><td><code>&lt;stem&gt;-&lt;os&gt;-&lt;arch&gt;&lt;ext&gt;</code></td><td><code>oyzu</code> for <code>linux/x86_64</code> → <code>oyzu-linux-x86_64</code>; <code>oyzu.exe</code> for <code>windows/x86_64</code> → <code>oyzu-windows-x86_64.exe</code>; <code>app.tar.gz</code> for <code>linux/arm64</code> → <code>app-linux-arm64.tar.gz</code></td></tr><tr><td><code>independent</code> (no platform restriction)</td><td>the filename</td><td><code>site.tar.gz</code></td></tr><tr><td><code>native</code> (a package whose own name encodes the platform, such as a wheel)</td><td>the filename</td><td><code>pkg-1.0-cp312-cp312-manylinux_2_28_x86_64.whl</code></td></tr><tr><td><code>pending</code>, <code>unknown</code> or missing</td><td>refused with <code>PUBLISH_ARTIFACT_SELECTION_INVALID</code></td><td>the builder must record what the file is for</td></tr></tbody></table>
-<p>The platform uses the canonical spelling (<code>x86_64</code>, <code>arm64</code>, never <code>amd64</code>); an ABI
-would appear only when the builder records one, and no builder records one today.
-<code>ext</code> is the longest case-insensitive match from <code>.tar.gz</code>, <code>.tar.xz</code>, <code>.tar.zst</code>,
+<p>The platform uses the canonical spelling (<code>x86_64</code>, <code>arm64</code>, never <code>amd64</code>) and
+carries an ABI only when it differs from the OS&#x27;s naming default ABI (GNU on
+Linux, MSVC on Windows, none elsewhere): a GNU (glibc) Linux build is
+<code>oyzu-linux-x86_64</code>, a musl one <code>oyzu-linux-x86_64-musl</code>, a GNU Windows build
+<code>oyzu-windows-x86_64-gnu.exe</code>; sidecars follow the derived name. The resolved ABI is always recorded in the
+artifact&#x27;s compatibility, which the plan digest, signed intent and receipt carry.
+Qualified selectors and output IDs (<code>cli/bin-oyzu@linux/x86_64</code>,
+<code>cli/bin-oyzu@linux/x86_64/musl</code>) and <code>{artifact.platform}</code> evidence paths use the
+same published form, so a GNU and a musl build of one output coexist. A selector
+naming the default ABI (<code>@linux/x86_64/gnu</code>) can never match and is refused
+with the form to write. Two artifacts whose published platforms are identical
+are refused with <code>PUBLISH_ARTIFACT_SELECTION_INVALID</code> before evidence or network
+access. <code>{artifact.platform}</code> in an evidence <code>bundlePath</code> renders a non-nesting
+path form: <code>linux/x86_64</code> for the default ABI, <code>linux/x86_64-musl</code> otherwise.</p>
+<p>Each artifact&#x27;s identity also records the executor that built it (<code>executor</code>:
+<code>host</code>, <code>cross-toolchain</code> with its target, <code>container</code>) in the plan digest,
+signed intent and receipt. The record is read strictly from the manifest: an
+unknown kind or field is <code>PUBLISH_MANIFEST_INVALID</code>, and a cross toolchain whose
+target triple does not build the artifact&#x27;s platform is
+<code>PUBLISH_EXECUTOR_INVALID</code> (also checked again by the publication worker). A
+<code>release</code> publication refuses a platform-specific (<code>target</code> or <code>native</code>)
+artifact without an executor record with <code>PUBLISH_EXECUTOR_UNKNOWN</code>; rebuild it
+with this oyzu. Publication does not otherwise judge the executor: refusing
+cross-built or native output is a policy constraint planned for build intent
+slice 7.</p>
+<p><code>ext</code> is the longest case-insensitive match from <code>.tar.gz</code>, <code>.tar.xz</code>, <code>.tar.zst</code>,
 <code>.tgz</code>, <code>.zip</code>, <code>.exe</code>, <code>.msi</code>, <code>.dmg</code>, <code>.pkg</code>, <code>.deb</code>, <code>.rpm</code>, <code>.dll</code>, <code>.so</code>,
 <code>.dylib</code>, keeping its original case; without a match the platform is appended. A
 <code>target</code> file is qualified even when the release holds one platform, and names
-carry no version, so <code>releases/latest/download/oyzu-linux-x86_64</code> stays stable.
+carry no version, so <code>releases/latest/download/oyzu-linux-x86_64</code> stays stable as
+long as each release builds Linux with GNU (the native Ubuntu runners do); a
+musl release build would publish <code>oyzu-linux-x86_64-musl</code> instead.
 Extending the extension list renames matching assets.</p>
 <p>Derived names must use ASCII letters, digits, dot, underscore or dash, at most 220
 bytes, without a leading dot, and must not end in a reserved evidence suffix.
@@ -252,6 +277,41 @@ recorded compatibility, its receipt <code>artifacts[].id</code>, entry <code>art
 <code>unselectedArtifacts</code> use the qualified key (<code>cli/bin-oyzu@linux/x86_64</code>), and its
 artifact identity, plan digest and signed intent include <code>compatibility</code>. An OCI
 destination still accepts files without recorded compatibility.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="incomplete-platform-sets">Incomplete platform sets<a href="#incomplete-platform-sets" class="hash-link" aria-label="Direct link to Incomplete platform sets" title="Direct link to Incomplete platform sets" translate="no">​</a></h3>
+<p>A build records the platforms each target declares (<code>platforms:</code> in
+<code>build.yaml</code>) in its manifest (<code>oyzu.dev/platforms</code>, under the logical target
+that every platform variant shares). Standalone publication (every destination
+kind) compares them with the platforms its selected artifacts record, combining
+the variants of one target: a declared platform of a published target with no
+selected artifact is a gap, whether it was never built (a build on one runner)
+or simply not selected (<code>cli/bin-oyzu@linux/x86_64</code> only). In the <code>release</code>
+context a gap refuses the whole publication with <code>PUBLISH_PLATFORMS_INCOMPLETE</code>
+before evidence loading, signing or network access, naming each missing target
+and platform; in any other context it is a warning and the gaps are recorded
+without a reason. A target that declares no platforms is not checked. A bundle
+whose manifest has no platform records (built before they existed) is refused in
+<code>release</code> with <code>PUBLISH_PLATFORMS_UNKNOWN</code> and warned about elsewhere. A platform
+the project never ships belongs out of its declared platforms; an allowance is
+for one publication, not a standing exception.</p>
+<p>To publish anyway, name each missing platform with a reason:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu publish </span><span class="token parameter variable" style="color:#36acaa">--destination</span><span class="token plain"> github </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  --allow-incomplete darwin/x86_64</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">no-intel-mac-runner </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  --allow-incomplete windows/arm64</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;arm64 runner not qualified yet&quot;</span><br></div></code></pre></div></div>
+<p>Each value is <code>&lt;platform&gt;=&lt;reason&gt;</code> (aliases accepted; the reason is 1 to 200
+printable characters). A malformed value, a repeated platform or a named platform
+that no published target is missing is <code>CONFIG_INVALID_VALUE</code>, so the record never
+claims a gap that does not exist. Every gap (target, canonical platform and the
+allowance&#x27;s reason, or <code>null</code> for a warned gap) is bound into the plan digest,
+recorded in every signed publication intent as <code>incompletePlatforms</code> and returned
+in the receipt. Governed publication does not check completeness yet and refuses
+the flag (<code>PUBLISH_UNSUPPORTED</code>).</p>
+<p><strong>Several bundles as one publication.</strong> A release built one platform per job
+publishes every platform at once by repeating <code>--manifest</code>, one bundle each:</p>
+<div class="language-bash codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-bash codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu publish </span><span class="token parameter variable" style="color:#36acaa">--destination</span><span class="token plain"> github </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--manifest</span><span class="token plain"> bundles/linux-x86_64/dist/manifest.json </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--manifest</span><span class="token plain"> bundles/darwin-arm64/dist/manifest.json </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  --allow-incomplete windows/arm64</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">runner-unavailable</span><br></div></code></pre></div></div>
+<p>The bundles&#x27; artifacts are selected, checked for completeness (their target
+records combine, so the variants of one target cover its declared platforms
+together) and published in one plan. Each artifact keeps its own bundle&#x27;s files
+and executor record. A bundle given twice is <code>PUBLISH_REQUEST_INVALID</code>; governed
+publication takes one manifest (<code>PUBLISH_UNSUPPORTED</code>). The
+<a href="#releasing-oyzu-itself-interim" class="">release workflow</a> uses this.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="releasing-oyzu-itself-interim">Releasing oyzu itself (interim)<a href="#releasing-oyzu-itself-interim" class="hash-link" aria-label="Direct link to Releasing oyzu itself (interim)" title="Direct link to Releasing oyzu itself (interim)" translate="no">​</a></h3>
 <p>For preparation without publication, see the
 native Linux candidate review record.
@@ -261,20 +321,56 @@ CLI, with exact source/material identities and explicit cache/delivery limits.
 CLI distribution remains subject to the compliance gate;
 the workflow below does not grant distribution clearance.</p>
 <p>Publishing a GitHub release triggers <code>.github/workflows/release.yml</code>. It runs one
-job per platform runner; each job downloads the newest earlier release&#x27;s <code>oyzu</code>
-for its platform (<code>tooling/bootstrap-oyzu.sh --release</code>), builds the release tag
-with it natively (<code>oyzu build cli</code>), signs provenance and publishes its own
-platform&#x27;s executables to the same release with <code>oyzu publish</code>. Asset names carry
-the platform, so jobs never collide and may run in parallel. Each of the six
+build job per platform runner; each job downloads the newest earlier release&#x27;s
+<code>oyzu</code> for its platform (<code>tooling/bootstrap-oyzu.sh --release</code>), builds the
+release tag with it natively (<code>oyzu build cli</code>), signs provenance with the
+witness (<code>--artifact cli/bin-oyzu@&lt;platform&gt;</code>; on Linux that is the GNU build,
+the naming default, while a musl release would need <code>@linux/&lt;arch&gt;/musl</code>) and
+uploads its bundle (<code>dist/</code>, its evidence and a status) as a workflow artifact.
+The bundle is staged under the runner&#x27;s temporary directory, outside the
+checkout, so checkout&#x27;s cleaning cannot delete it and the witness&#x27;s source state
+stays clean. Build jobs have read-only repository access (<code>contents: read</code>); only
+the publish job can write the release (<code>contents: write</code>).</p>
+<p>One <strong>publish job</strong> then downloads every bundle and runs <code>oyzu publish</code> once in
+the <code>release</code> context with one <code>--manifest</code> per built platform, so the declared
+platform set is complete; the completeness check
+(<a href="#incomplete-platform-sets" class="">incomplete platform sets</a>) refuses a release that
+leaves a declared platform out. The publish job chooses its <code>oyzu</code> by the Linux
+x86_64 bundle&#x27;s status: the executable this run built when that platform was
+built, otherwise (a re-run where it was already published) the release&#x27;s own
+<code>oyzu-linux-x86_64</code> through the bootstrap. Before publishing it checks that this
+<code>oyzu publish --help</code> offers <code>--allow-incomplete</code> and repeatable <code>--manifest</code>, and
+fails with that reason if not. Each of the six
 declared platforms has a GitHub-hosted runner that builds it natively
 (<code>ubuntu-24.04</code>, <code>ubuntu-24.04-arm</code>, <code>macos-15-intel</code>, <code>macos-15</code>, <code>windows-2025</code>,
 <code>windows-11-arm</code>); the repository variable <code>OYZU_LINUX_RUNNER</code> (a JSON <code>runs-on</code>
-value) moves Linux x86_64 to another runner. Paid hosted minutes are used for
-releases only; pull request and push checks stay on the self-hosted runner. A job whose platform&#x27;s payload and
-both sidecars are already on the release skips itself, so re-running the workflow
-only builds the platforms still missing. When no earlier
-release has the qualified executable for the runner&#x27;s platform, the workflow builds
-<code>oyzu</code> from the tag&#x27;s source instead; that happens once per platform.</p>
+value) moves Linux x86_64 and the publish job to another runner. Paid hosted
+minutes are used for releases only; pull request and push checks stay on the
+self-hosted runner.</p>
+<p>A job whose platform&#x27;s payload and both sidecars are already on the release skips
+its build, and the publish job names that platform with
+<code>--allow-incomplete &lt;platform&gt;=already-published-on-&lt;tag&gt;</code>. A platform
+deliberately not built in a release is named in the workflow&#x27;s <code>incomplete</code>
+input (<code>&lt;platform&gt;=&lt;reason&gt;</code>, separated by <code>;</code> or new lines, for example
+<code>gh workflow run release.yml -f tag=&lt;tag&gt; -f incomplete=&quot;windows/arm64=runner unavailable&quot;</code>):
+its job is skipped and the reason goes to <code>--allow-incomplete</code>; nothing is allowed
+by default. Every build job validates the whole input before doing anything
+else: each entry needs a <code>=</code> and a non-empty reason, and its platform must be one
+of the six canonical names (<code>linux/amd64</code> and other aliases are refused).
+<code>linux/x86_64</code> cannot be named, because the publish job runs that platform&#x27;s
+<code>oyzu</code>.</p>
+<p>If any build job fails, nothing is published; re-run the failed jobs (GitHub
+keeps the successful jobs&#x27; bundles for the run, and a re-run job replaces its own
+bundle). Bundles are kept for 7 days. A re-run after that finds no bundle for
+the expired platforms and stops with that reason; start the workflow again
+(<code>gh workflow run release.yml -f tag=&lt;tag&gt;</code>), which skips the platforms already
+on the release. When no earlier release has the qualified executable for the
+runner&#x27;s platform, the workflow builds <code>oyzu</code> from the tag&#x27;s source instead; that
+happens once per platform. When the earlier release&#x27;s <code>oyzu</code> predates platform
+records (it has no <code>publish --allow-incomplete</code>), each build job also builds
+<code>oyzu</code> from the tag&#x27;s source, because the publish job needs every bundle&#x27;s
+platform and executor records: this is the case on the first release after build
+intent slice 6.</p>
 <p>The bootstrap maps the host to its asset and verifies the digest GitHub reports
 before installing it as <code>.oyzu/bin/oyzu</code> (or <code>oyzu.exe</code>) with mode 755, since raw
 downloads lose the executable bit:</p>
@@ -493,7 +589,7 @@ the CI system&#x27;s environment or flags. Standalone publication uses the casca
 
 
 
-<table><thead><tr><th>Flag</th><th>Environment</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>--server URL</code></td><td><code>OYZU_URL</code></td><td>required</td><td>The platform&#x27;s URL. Must be <code>https</code>, except <code>http://localhost</code>, <code>http://127.0.0.1</code> or <code>http://[::1]</code> for a local devstack, so a token never crosses a network unencrypted (<code>PUBLISH_INSECURE_SERVER</code>).</td></tr><tr><td><code>--account ID</code></td><td><code>OYZU_ACCOUNT</code></td><td>required</td><td>The account to publish to.</td></tr><tr><td><code>--project ID</code></td><td><code>OYZU_PROJECT</code></td><td>required</td><td>The project to publish to.</td></tr><tr><td><code>--manifest FILE</code></td><td></td><td><code>dist/manifest.json</code></td><td>The build manifest, relative to the directory (<code>-C</code>).</td></tr><tr><td><code>--provenance FILE</code></td><td></td><td>required for governed publication</td><td>Original preexisting signed provenance bundle, read as UTF-8 without rewriting its bytes.</td></tr><tr><td><code>--policy-evidence FILE</code></td><td></td><td>omitted</td><td>Optional original signed policy report bundle for central admission; governed only.</td></tr><tr><td><code>--version VERSION</code></td><td></td><td>none</td><td>The build&#x27;s version, when the pipeline names one.</td></tr><tr><td><code>--commit SHA</code></td><td></td><td>from CI</td><td>The built commit.</td></tr><tr><td><code>--repository OWNER/NAME</code></td><td></td><td>from CI</td><td>The repository the build came from.</td></tr><tr><td><code>--audience AUDIENCE</code></td><td><code>OYZU_AUDIENCE</code></td><td><code>oyzu</code></td><td>The audience requested for OIDC tokens the CLI asks a CI system for.</td></tr><tr><td><code>--token-env NAME</code></td><td></td><td>none</td><td>Read the OIDC token from this environment variable instead of discovering one.</td></tr><tr><td><code>--no-upload</code></td><td><code>OYZU_PUBLISH_UPLOAD=0</code></td><td>upload</td><td>Historical registration-only transport control. Governed publication requires staging and rejects an artifact without an immutable staged reference.</td></tr></tbody></table>
+<table><thead><tr><th>Flag</th><th>Environment</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>--server URL</code></td><td><code>OYZU_URL</code></td><td>required</td><td>The platform&#x27;s URL. Must be <code>https</code>, except <code>http://localhost</code>, <code>http://127.0.0.1</code> or <code>http://[::1]</code> for a local devstack, so a token never crosses a network unencrypted (<code>PUBLISH_INSECURE_SERVER</code>).</td></tr><tr><td><code>--account ID</code></td><td><code>OYZU_ACCOUNT</code></td><td>required</td><td>The account to publish to.</td></tr><tr><td><code>--project ID</code></td><td><code>OYZU_PROJECT</code></td><td>required</td><td>The project to publish to.</td></tr><tr><td><code>--manifest FILE</code></td><td></td><td><code>dist/manifest.json</code></td><td>The build manifest, relative to the directory (<code>-C</code>). Repeat it to publish several bundles (one per platform) as one standalone publication; see <a href="#incomplete-platform-sets" class="">incomplete platform sets</a>.</td></tr><tr><td><code>--provenance FILE</code></td><td></td><td>required for governed publication</td><td>Original preexisting signed provenance bundle, read as UTF-8 without rewriting its bytes.</td></tr><tr><td><code>--policy-evidence FILE</code></td><td></td><td>omitted</td><td>Optional original signed policy report bundle for central admission; governed only.</td></tr><tr><td><code>--version VERSION</code></td><td></td><td>none</td><td>The build&#x27;s version, when the pipeline names one.</td></tr><tr><td><code>--commit SHA</code></td><td></td><td>from CI</td><td>The built commit.</td></tr><tr><td><code>--repository OWNER/NAME</code></td><td></td><td>from CI</td><td>The repository the build came from.</td></tr><tr><td><code>--audience AUDIENCE</code></td><td><code>OYZU_AUDIENCE</code></td><td><code>oyzu</code></td><td>The audience requested for OIDC tokens the CLI asks a CI system for.</td></tr><tr><td><code>--token-env NAME</code></td><td></td><td>none</td><td>Read the OIDC token from this environment variable instead of discovering one.</td></tr><tr><td><code>--no-upload</code></td><td><code>OYZU_PUBLISH_UPLOAD=0</code></td><td>upload</td><td>Historical registration-only transport control. Governed publication requires staging and rejects an artifact without an immutable staged reference.</td></tr></tbody></table>
 <p>A flag wins over its environment variable. Account and project identifiers
 follow the platform rule: lowercase letters, digits and inner hyphens, 1 to 63
 characters, starting and ending with a letter or digit.</p>
@@ -832,6 +928,6 @@ that much memory. Streaming is a later refinement.</li>
 what it trusts from the token&#x27;s claims.</li>
 <li class="">Windows and macOS runners use the same code; the integration test runs on
 Linux CI.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#standalone-oci-publication" class="table-of-contents__link toc-highlight">Standalone OCI publication</a></li><li><a href="#existing-github-release" class="table-of-contents__link toc-highlight">Existing GitHub release</a><ul><li><a href="#releasing-oyzu-itself-interim" class="table-of-contents__link toc-highlight">Releasing oyzu itself (interim)</a></li></ul></li><li><a href="#governed-publication-and-build-registration" class="table-of-contents__link toc-highlight">Governed publication and build registration</a></li><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#github-actions" class="table-of-contents__link toc-highlight">GitHub Actions</a></li></ul></li><li><a href="#credentials" class="table-of-contents__link toc-highlight">Credentials</a></li><li><a href="#what-is-sent" class="table-of-contents__link toc-highlight">What is sent</a><ul><li><a href="#artifact-upload" class="table-of-contents__link toc-highlight">Artifact upload</a></li><li><a href="#the-publish" class="table-of-contents__link toc-highlight">The publish</a></li></ul></li><li><a href="#registration-response-intermediate" class="table-of-contents__link toc-highlight">Registration response (intermediate)</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#standalone-oci-publication" class="table-of-contents__link toc-highlight">Standalone OCI publication</a></li><li><a href="#existing-github-release" class="table-of-contents__link toc-highlight">Existing GitHub release</a><ul><li><a href="#incomplete-platform-sets" class="table-of-contents__link toc-highlight">Incomplete platform sets</a></li><li><a href="#releasing-oyzu-itself-interim" class="table-of-contents__link toc-highlight">Releasing oyzu itself (interim)</a></li></ul></li><li><a href="#governed-publication-and-build-registration" class="table-of-contents__link toc-highlight">Governed publication and build registration</a></li><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#github-actions" class="table-of-contents__link toc-highlight">GitHub Actions</a></li></ul></li><li><a href="#credentials" class="table-of-contents__link toc-highlight">Credentials</a></li><li><a href="#what-is-sent" class="table-of-contents__link toc-highlight">What is sent</a><ul><li><a href="#artifact-upload" class="table-of-contents__link toc-highlight">Artifact upload</a></li><li><a href="#the-publish" class="table-of-contents__link toc-highlight">The publish</a></li></ul></li><li><a href="#registration-response-intermediate" class="table-of-contents__link toc-highlight">Registration response (intermediate)</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

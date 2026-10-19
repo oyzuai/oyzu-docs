@@ -4,8 +4,8 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rust applications, libraries and workspaces | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/rust"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust applications, libraries and workspaces | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/rust"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="x-default"><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.381b060a.js" defer="defer"></script>
-<script src="/assets/js/main.9bce9509.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.474d8fc7.js" defer="defer"></script>
+<script src="/assets/js/main.de371c77.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -84,7 +84,79 @@ Three members retain their declared versions while five retain normal snapshot
 projection; all eight decisions retain snapshot identity and no release authority.
 Coverage collection passed at zero of 73 lines, which is not positive application
 coverage. See the commands, artifacts and limits.</p>
-<p>Plain local <code>oyzu build</code> selects the host and retains quality gates. Use <code>--all-platforms</code> for the declared matrix through the captured executor. See <a class="" href="/docs/reference/build-tasks#local-fast-builds-and-ci-checks">build selection and checks</a>.</p>
+<p>Plain local <code>oyzu build</code> selects the host and retains quality gates. Use <code>--platform &lt;os/arch&gt;</code> to cross-compile one other platform natively, or <code>--all-platforms</code> for the declared matrix through the captured executor. See <a class="" href="/docs/reference/build-tasks#local-fast-builds-and-ci-checks">build selection and checks</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cross-compiling-on-this-host">Cross-compiling on this host<a href="#cross-compiling-on-this-host" class="hash-link" aria-label="Direct link to Cross-compiling on this host" title="Direct link to Cross-compiling on this host" translate="no">​</a></h2>
+<p><code>oyzu build --platform &lt;os/arch[/abi]&gt;</code> builds a Rust target for another platform
+with this host&#x27;s pinned toolchain: <code>cargo build --target &lt;triple&gt;</code> with the
+target&#x27;s linker. Oyzu decides from host facts and file lookups alone (nothing is
+installed or run while planning) and shows the result in Plan for every declared
+platform (<a class="" href="/docs/reference/local-builds#platforms-and-executors">platforms and executors</a>):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Target platform</th><th>Triple</th><th>Linker</th><th>Available when</th></tr></thead><tbody><tr><td><code>linux/&lt;arch&gt;</code> (default, published as <code>-musl</code>), <code>linux/&lt;arch&gt;/musl</code></td><td><code>&lt;arch&gt;-unknown-linux-musl</code></td><td><code>rust-lld</code> (self-contained, ships with every Rust toolchain)</td><td>always; pure-Rust crates only</td></tr><tr><td><code>linux/&lt;arch&gt;/gnu</code></td><td><code>&lt;arch&gt;-unknown-linux-gnu</code></td><td><code>&lt;arch&gt;-linux-gnu-gcc</code></td><td>it is on <code>PATH</code></td></tr><tr><td><code>windows/&lt;arch&gt;</code> on a Windows host, <code>windows/&lt;arch&gt;/msvc</code></td><td><code>&lt;arch&gt;-pc-windows-msvc</code></td><td>MSVC</td><td>Visual Studio&#x27;s <code>VC/Tools/MSVC/&lt;version&gt;/lib/&lt;x64 or arm64&gt;</code> is installed</td></tr><tr><td><code>windows/&lt;arch&gt;</code> elsewhere, <code>windows/&lt;arch&gt;/gnullvm</code></td><td><code>&lt;arch&gt;-pc-windows-gnullvm</code></td><td><code>&lt;arch&gt;-w64-mingw32-clang</code> (LLVM MinGW)</td><td>it is on <code>PATH</code></td></tr><tr><td><code>windows/&lt;arch&gt;/gnu</code></td><td><code>&lt;arch&gt;-pc-windows-gnu</code></td><td><code>&lt;arch&gt;-w64-mingw32-gcc</code></td><td>it is on <code>PATH</code></td></tr><tr><td><code>darwin/&lt;arch&gt;</code></td><td><code>&lt;arch&gt;-apple-darwin</code></td><td>Apple clang</td><td>the host is macOS; elsewhere <code>needs a macOS runner</code></td></tr></tbody></table>
+<p>The defaults are musl for Linux, MSVC on a Windows host and LLVM MinGW
+elsewhere; an ABI in the platform name (<code>linux/arm64/gnu</code>) overrides them. The
+host&#x27;s own machine (and its default ABI: GNU on Linux, MSVC on Windows) builds as
+a host build; a musl build of the host&#x27;s machine is a cross build. The
+target&#x27;s standard library must be in the pinned toolchain: a cross-built target
+adds <code>rust-std@&lt;triple&gt;</code> to its tool requirements, and preparation refuses with
+<code>PLATFORM_UNAVAILABLE</code> when <code>rustc --print target-libdir --target &lt;triple&gt;</code> has
+none. Outputs go to <code>dist/&lt;target&gt;/&lt;platform&gt;/</code> with the target&#x27;s executable
+suffix, and <a class="" href="/docs/reference/build-bundles#layout">static executable verification</a> checks the
+format and architecture against the target platform without running it.</p>
+<p>Limits: a crate that compiles C code (the <code>cc</code> crate) needs a C cross compiler
+the <code>rust-lld</code> route does not provide; tests, coverage and doctests are not run
+for a cross-built platform here (<code>--full</code> with <code>--platform</code> would try to run
+foreign executables); and <code>cargo-zigbuild</code> is not used. A project can require a
+cross build for a platform with
+<a class="" href="/docs/reference/local-builds#declaring-a-platforms-executor"><code>build.executors</code></a>; a release
+then cross-compiles it as declared or fails. Demonstrated on Windows 11 x86_64 for
+<code>linux/arm64</code> (see the status entry).</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="locked-rust-compiler-handoff">Locked Rust compiler handoff<a href="#locked-rust-compiler-handoff" class="hash-link" aria-label="Direct link to Locked Rust compiler handoff" title="Direct link to Locked Rust compiler handoff" translate="no">​</a></h2>
 <p>A <code>[tools] rust = &quot;1.95.0&quot;</code> declaration in <code>oyzu.toml</code> selects the matching
 <code>oyzu.lock</code> environment for the captured target scope and profile. The current
@@ -139,15 +211,15 @@ still fails captured-build admission until implemented. Rust currently accepts <
 unique Cargo feature names. Features apply to native metadata resolution,
 builds, lint, tests, doctests and package verification. Native default features
 remain enabled. Unknown options fail; options are not arbitrary command strings.</p>
-<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">cli</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> rust/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">platforms</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">linux/amd64</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">with</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">features</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">integration</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">cli</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> rust/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">platforms</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">linux/x86_64</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">with</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">features</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">integration</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
 <p>Run <code>oyzu build</code> for the native host, or <code>oyzu build --all-platforms</code> for the
 declared matrix. The existing captured execution path still requires the
 provisioned Linux Rust builder image described below and captures crates.io
 inputs before offline execution. Outputs and reports remain in the verified
 <code>dist</code> bundle. An omitted platform uses the existing executor platform; an
-explicit list expands every declared platform on the captured path. The native local default selects the current host from that list.
-This parser migration does not add cross-compilation or a new compatibility
-baseline. Explicit Rust requests now use the locked-tool handoff below. Pinned public GitHub acquisition is implemented through the scoped broker;
+explicit list expands every declared platform on the captured path. The native local default selects the current host from that list;
+<code>--platform</code> selects another one, built natively by a
+<a href="#cross-compiling-on-this-host" class="">cross toolchain</a> when this host has one. Explicit Rust requests now use the locked-tool handoff below. Pinned public GitHub acquisition is implemented through the scoped broker;
 private Git remains unsupported. The repository&#x27;s six-platform self-build is not yet
 working. Other proposed shared fields and other builders&#x27; <code>with</code> options fail
 explicitly until their adapters implement them.</p>
@@ -290,8 +362,9 @@ current qualification is recorded in implementation status.</p>
 <p>Native binary capture now identifies a planned binary by its target-relative Cargo manifest path and target name. This preserves ownership when a prepared target rooted at <code>/workspace</code> executes under <code>/workspace/&lt;target&gt;</code> in a mixed repository. Cargo package IDs remain opaque; Oyzu does not rewrite or parse them. The change fixes the nested-target failure observed by the live logging acceptance probe. The sole version-1 inventory records relative manifest paths; the superseded package-ID inventory reader has been removed.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="experimental-cross-platform-execution">Experimental cross-platform execution<a href="#experimental-cross-platform-execution" class="hash-link" aria-label="Direct link to Experimental cross-platform execution" title="Direct link to Experimental cross-platform execution" translate="no">​</a></h2>
 <p>Explicit artifact platforms select the local Linux cross-compilation image. The
-six supported selections are <code>linux/amd64</code>, <code>linux/arm64</code>, <code>darwin/amd64</code>,
-<code>darwin/arm64</code>, <code>windows/amd64</code> and <code>windows/arm64</code>. The curated native baselines
+six supported selections are <code>linux/x86_64</code>, <code>linux/arm64</code>, <code>darwin/x86_64</code>,
+<code>darwin/arm64</code>, <code>windows/x86_64</code> and <code>windows/arm64</code> (the image builds musl and
+LLVM MinGW; another ABI is refused). The curated native baselines
 are musl for Linux, Apple Darwin with a macOS 13 deployment target, and LLVM
 MinGW for Windows. These baselines remain experimental until the real CLI flow
 has passed; they do not establish older operating-system compatibility.</p>
@@ -372,6 +445,6 @@ eligibility. The inferred Windows Oyzu self-install with an explicit root uses
 <a class="" href="/docs/reference/local-builds#updating-this-repositorys-bootstrap-with-cargo">staged bootstrap replacement</a>:
 the current binary remains available during compilation, and successful results
 replace it while preserving an adjacent backup. Generic Cargo installations keep
-native behavior.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#locked-rust-compiler-handoff" class="table-of-contents__link toc-highlight">Locked Rust compiler handoff</a></li><li><a href="#named-build-options" class="table-of-contents__link toc-highlight">Named build options</a></li><li><a href="#native-binary-target-tasks" class="table-of-contents__link toc-highlight">Native binary target tasks</a></li><li><a href="#ordinary-tasks-and-isolated-build-prerequisites" class="table-of-contents__link toc-highlight">Ordinary tasks and isolated build prerequisites</a></li><li><a href="#preparation-and-build-gates" class="table-of-contents__link toc-highlight">Preparation and build gates</a></li><li><a href="#direct-test-evidence" class="table-of-contents__link toc-highlight">Direct test evidence</a></li><li><a href="#artifact-selection-and-collection" class="table-of-contents__link toc-highlight">Artifact selection and collection</a></li><li><a href="#verification-and-remaining-work" class="table-of-contents__link toc-highlight">Verification and remaining work</a></li><li><a href="#experimental-cross-platform-execution" class="table-of-contents__link toc-highlight">Experimental cross-platform execution</a></li><li><a href="#tool-requirement-evidence" class="table-of-contents__link toc-highlight">Tool requirement evidence</a></li><li><a href="#installing-project-executables" class="table-of-contents__link toc-highlight">Installing project executables</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+native behavior.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#cross-compiling-on-this-host" class="table-of-contents__link toc-highlight">Cross-compiling on this host</a></li><li><a href="#locked-rust-compiler-handoff" class="table-of-contents__link toc-highlight">Locked Rust compiler handoff</a></li><li><a href="#named-build-options" class="table-of-contents__link toc-highlight">Named build options</a></li><li><a href="#native-binary-target-tasks" class="table-of-contents__link toc-highlight">Native binary target tasks</a></li><li><a href="#ordinary-tasks-and-isolated-build-prerequisites" class="table-of-contents__link toc-highlight">Ordinary tasks and isolated build prerequisites</a></li><li><a href="#preparation-and-build-gates" class="table-of-contents__link toc-highlight">Preparation and build gates</a></li><li><a href="#direct-test-evidence" class="table-of-contents__link toc-highlight">Direct test evidence</a></li><li><a href="#artifact-selection-and-collection" class="table-of-contents__link toc-highlight">Artifact selection and collection</a></li><li><a href="#verification-and-remaining-work" class="table-of-contents__link toc-highlight">Verification and remaining work</a></li><li><a href="#experimental-cross-platform-execution" class="table-of-contents__link toc-highlight">Experimental cross-platform execution</a></li><li><a href="#tool-requirement-evidence" class="table-of-contents__link toc-highlight">Tool requirement evidence</a></li><li><a href="#installing-project-executables" class="table-of-contents__link toc-highlight">Installing project executables</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>
