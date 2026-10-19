@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
-<script src="/assets/js/runtime~main.ae9ebb04.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.381b060a.js" defer="defer"></script>
 <script src="/assets/js/main.9bce9509.js" defer="defer"></script>
 </head>
 <body>
@@ -460,8 +460,10 @@ live <code>› Tools determining…</code> line is a placeholder while any of th
 id such as <code>cli-platform-windows_amd64-157f0d1f6adb</code> is shown as <code>cli · windows/amd64</code>. The same
 steps and durations are in the event journal (<code>Step</code> events with <code>duration_ms</code>).</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-context-and-receipts">Build context and receipts<a href="#build-context-and-receipts" class="hash-link" aria-label="Direct link to Build context and receipts" title="Direct link to Build context and receipts" translate="no">​</a></h2>
-<p>Detailed version/source/configuration facts use labeled lifecycle records with
-<code>-v</code>; they are also retained in JSON events and the journal. The optional dashboard
+<p>The ordinary build transcript shows the shared
+<a class="" href="/docs/reference/cli-output#discovered-build-facts">Facts section</a> before its plan and actions.
+<code>-v</code> adds full hashes and other context records; structured facts are also
+retained in plan events and the journal. The optional dashboard
 keeps its context inspection panel. Snapshot version facts do not confer release
 or publication authority.</p>
 <p>The final receipt leads with the outcome and elapsed time, then target/action
