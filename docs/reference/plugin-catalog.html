@@ -1,0 +1,537 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/plugin-catalog" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Plugin catalog, detection and builder selection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-catalog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin catalog, detection and builder selection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-catalog"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin catalog, detection and builder selection","item":"https://docs.oyzu.ai/docs/reference/plugin-catalog"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.de4c0740.js" defer="defer"></script>
+<script src="/assets/js/main.dc58e292.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/plugin-catalog">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and shell activation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/local-builds"><span class="linkLabel_WmDU">Native local builds (in development)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-bundles"><span class="linkLabel_WmDU">Build bundles and retention</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/direct-tests"><span class="linkLabel_WmDU">Direct test reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/acquisition-transport"><span class="linkLabel_WmDU">Scoped dependency acquisition transport</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/ant"><span class="linkLabel_WmDU">Ant builds and test reporting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets (client slice)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-verification"><span class="linkLabel_WmDU">Running builder acceptance checks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cargo-sessions"><span class="linkLabel_WmDU">Managed Cargo launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance"><span class="linkLabel_WmDU">Repository compliance tooling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/declared-fetches"><span class="linkLabel_WmDU">Declared fetches</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/directory-artifacts"><span class="linkLabel_WmDU">Directory artifact integrity and materialization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-frontend"><span class="linkLabel_WmDU">Oyzu&#x27;s BuildKit frontend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-images"><span class="linkLabel_WmDU">Docker image inputs and offline builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-quality"><span class="linkLabel_WmDU">Dockerfile linting and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/dotnet"><span class="linkLabel_WmDU">.NET builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/engine-staging"><span class="linkLabel_WmDU">Exact native engine staging</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/example-collection"><span class="linkLabel_WmDU">Runnable examples collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/go"><span class="linkLabel_WmDU">Go applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle"><span class="linkLabel_WmDU">Gradle builds and tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle-sessions"><span class="linkLabel_WmDU">Managed Gradle launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/helm"><span class="linkLabel_WmDU">Helm charts and native chart tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/installer-recipes"><span class="linkLabel_WmDU">Installer-asset recipes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/java-quality"><span class="linkLabel_WmDU">Java quality tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven"><span class="linkLabel_WmDU">Maven builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven-sessions"><span class="linkLabel_WmDU">Managed Maven launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mise-maintenance"><span class="linkLabel_WmDU">Extracted tool mechanics maintenance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mocha"><span class="linkLabel_WmDU">Mocha tests and coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-applications"><span class="linkLabel_WmDU">Node application directory artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-quality"><span class="linkLabel_WmDU">Node lint and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-static-analysis"><span class="linkLabel_WmDU">Node static analysis in oyzu build --plan</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-workspace-tests"><span class="linkLabel_WmDU">Native Node workspace test bundles</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/npm-workspaces"><span class="linkLabel_WmDU">npm workspace builds and development tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/nuget-sessions"><span class="linkLabel_WmDU">Managed NuGet/.NET launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-indices"><span class="linkLabel_WmDU">Complete OCI image indices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-sessions"><span class="linkLabel_WmDU">Native OCI launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/os-package-locks"><span class="linkLabel_WmDU">OS package locks (oyzu lock)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog, detection and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Local development plugin bindings (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview: terms, support and recovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-releases"><span class="linkLabel_WmDU">Plugin releases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/pnpm"><span class="linkLabel_WmDU">pnpm builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-applications"><span class="linkLabel_WmDU">Python application artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-containers"><span class="linkLabel_WmDU">Python application containers (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-preparation"><span class="linkLabel_WmDU">Captured Python package preparation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-sessions"><span class="linkLabel_WmDU">Managed Python launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-testing"><span class="linkLabel_WmDU">Python test discovery and reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/runtime-matrices"><span class="linkLabel_WmDU">Verification toolsets and platform matrices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/rust"><span class="linkLabel_WmDU">Rust applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Experimental scan command</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/target-workspaces"><span class="linkLabel_WmDU">Host target workspaces and artifact inputs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-backend-inspection"><span class="linkLabel_WmDU">Tool Backend Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Tool Go Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-grant-inspection"><span class="linkLabel_WmDU">Tool grant inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Tool Helm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Tool Java, Maven and Gradle Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">Tool k3d Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">Tool kubectl Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Tool Liquibase Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool identity inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">Tool npm and pnpm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Tool Proxy Acquisition</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Tool Python Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-request-identity"><span class="linkLabel_WmDU">Tool Request Identity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Tool Rust Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Tool Shell Environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">Tool Store Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tool Tailscale Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-worker-contract"><span class="linkLabel_WmDU">Tool worker contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/toolchain-platforms"><span class="linkLabel_WmDU">Provisioned toolchain platform selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/yarn"><span class="linkLabel_WmDU">Yarn Classic builds</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">More reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Plugin catalog, detection and builder selection</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Plugin catalog, detection and builder selection</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/plugin-catalog.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Experimental. Recognizes a project from a plugin catalog, resolves explicit and
+detected <code>uses</code> references through one resolver, and shows which builder each
+target got, why, and how to change it. The design is the draft
+discovery proposal and
+package sources;
+this page records what is implemented (issue
+#585). Installation, the store and
+lock records are described in <a class="" href="/docs/reference/plugin-packages">plugin packages</a>. What each release status does to selection, adoption and replay, and the
+preview&#x27;s proposed support terms, is in <a class="" href="/docs/reference/plugin-preview">Go builder preview</a>.</p>
+<p>Nothing here changes a build that has no plugin opt-in, no package binding, no
+organization catalog and no lock selection: built-in builders keep detecting and
+building as before, and the build shows no builder selection.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-start-the-go-builder-preview">Quick start: the Go builder preview<a href="#quick-start-the-go-builder-preview" class="hash-link" aria-label="Direct link to Quick start: the Go builder preview" title="Direct link to Quick start: the Go builder preview" translate="no">​</a></h2>
+<p>The preview builder for Go projects is in the official catalog and on GHCR. In
+<strong>user</strong> configuration (never a project file), opt in to preview releases:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">preview</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
+<p><code>oyzu build</code> in any Go module now detects <code>go/app</code> from the catalog, acquires
+<code>oyzu/go 0.1.0-preview.1</code> from the release&#x27;s own OCI route in that catalog
+(<code>ghcr.io/oyzuai/plugins/go@sha256:…</code>, anonymous, signature-verified), records
+the selection in <code>oyzu.lock</code> and builds with the plugin; Selection shows the
+source as <code>official default</code>. No binding is needed. A <code>plugins.packages</code>
+binding still works and takes precedence (a local archive or an OCI source);
+one whose digest equals the catalog&#x27;s release is that release&#x27;s local route.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-catalog-snapshot">The catalog snapshot<a href="#the-catalog-snapshot" class="hash-link" aria-label="Direct link to The catalog snapshot" title="Direct link to The catalog snapshot" translate="no">​</a></h2>
+<p>An invocation chooses its catalog snapshot once, and the process keeps it, so
+two discoveries in one command never see different catalogs. The snapshot is
+the published catalog of the configured tool index: the official one, or the
+organization&#x27;s. No catalog is compiled into the CLI; without a usable published
+copy there is no snapshot, and the rules under
+<a href="#the-catalog-snapshot" class="">Without a usable catalog</a> apply.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Configured tool index (<code>toolIndex.*</code>)</th><th><code>plugins.preview</code></th><th>Snapshot used</th><th>Fetched by a real build</th></tr></thead><tbody><tr><td>Official (production trusted root, default identity), any URL</td><td>on</td><td>The published official catalog</td><td>Yes, at most hourly</td></tr><tr><td>Official</td><td>off</td><td>The verified cached published official catalog</td><td>No</td></tr><tr><td><code>toolIndex.url = false</code></td><td>any</td><td>None: there is no catalog</td><td>No</td></tr><tr><td>Organization (<code>toolIndex.identity</code> or <code>toolIndex.trustedRoot</code> set)</td><td>any</td><td>The organization&#x27;s published catalog only</td><td>Yes, at most hourly</td></tr></tbody></table>
+<p>Every view names the snapshot that decided: <code>official catalog serial 17</code> or
+<code>acme catalog serial 3</code>, on the Selection heading, on each target&#x27;s <code>selected by</code> and <code>source</code> lines, and as <code>label</code> in the JSON records.</p>
+<p><strong>Published catalog.</strong> <code>plugins.json</code> and <code>plugins.json.sigstore.json</code> beside
+<code>index.json</code> in the configured tool index release, signed by the same identity
+(<a class="" href="/docs/reference/tool-index">tool index</a>). The client verifies the bundle with the index&#x27;s
+trusted root and identity, decodes and checks the document with the protocol
+crate (content digest, structure, limits), refuses it at or after <code>expires_at</code>,
+and refuses a rollback against the highest verified serial (a lower serial, the
+same serial with different bytes, or a higher serial generated earlier). The
+last verified copy lives in <code>&lt;store&gt;/catalogs/plugins/</code>, the rollback floor in
+<code>&lt;store&gt;/state/plugins/</code>. A copy fetched less than an hour ago is reused without
+a request. An online <code>build --frozen</code> uses this same metadata refresh rule,
+so current withdrawals still apply; it neither changes the locked selection nor
+acquires a missing package from an OCI binding or catalog route.
+<code>--offline</code> and read-only previews never fetch. A fetched copy that is refused (untrusted,
+invalid, expired, rolled back) is ignored and the last verified copy stays in
+force, with its withdrawals and serial floor. If no
+acceptable copy is usable, there is no catalog and nothing stands in for it;
+the rules below apply.</p>
+<p><strong>Organization catalogs are exclusive.</strong> With an organization identity the
+official catalog is never consulted.</p>
+<p><strong>Without a usable catalog.</strong> When no snapshot is usable (an organization
+catalog, or the official one), the reason decides, the same way for explicit and detected <code>uses</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Why there is no snapshot</th><th>Locked selection</th><th>Unlocked reference</th></tr></thead><tbody><tr><td>Refused: a fetched copy failed trust, decoding, freshness or rollback and nothing verified is cached; the cached copy fails trust or rollback; or nothing is cached although a serial was verified before (the floor in <code>&lt;store&gt;/state/plugins/</code> remains)</td><td>refused before replay, <code>PLUGIN_CATALOG_UNAVAILABLE</code>, on every command including <code>--plan</code></td><td>refused (<code>PLUGIN_CATALOG_UNAVAILABLE</code>) for an organization catalog, with <code>plugins.preview</code>, or when no built-in serves the reference; otherwise built-in</td></tr><tr><td>Expired: the last verified copy, still the successor of the floor, has expired since</td><td>its withdrawals and revocations still apply; otherwise the lock replays with the warning <code>PLUGIN_CATALOG_EXPIRED: &lt;ref&gt;: the &lt;label&gt; expired at &lt;expires_at&gt;; replaying oyzu.lock against its withdrawals, but newer withdrawals may be missing. Refresh the catalog …</code>, and JSON records that copy as <code>catalog</code> with <code>expired: true</code> and the same caveat in <code>note</code>. When the refresh of that copy was refused, the warning says the refresh was refused and to fix the catalog source, not to run online</td><td>as for Refused</td></tr><tr><td>Absent: nothing published, reachable or cached, and no catalog ever verified in this store (a first run offline, or <code>toolIndex.url = false</code>)</td><td>replays from <code>oyzu.lock</code></td><td>built-in builders only; with <code>plugins.preview</code> on and every target built-in, the Selection section and <code>oyzu plugins explain</code> say no catalog is available (and to run online, or, for <code>toolIndex.url = false</code>, to configure a tool index). Nothing is said while a lock or a binding keeps a plugin in use; the JSON record carries it as <code>catalogNotice</code></td></tr></tbody></table>
+<p>A local development binding (<code>plugins.development</code>) or package binding
+(<code>plugins.packages</code>) for the reference is exempt: it goes on without a usable
+catalog, but never past a withdrawal or revocation a catalog it does have (the
+last verified copy, an expired one included) states for the bound release.
+The refusal names the catalog and says <code>oyzu never falls back to the official catalog</code> (organization) or a bundled one (official; none is compiled in).
+These rules were agreed with the maintainer for the S3b review. Known gap: a network attacker
+who blocks the fetch on a store that never verified a catalog yields Absent, so
+a lock still replays unchecked (#601).
+The expiry warning is also a note in the Selection section. A build that fails
+before its receipt (and that section) renders shows it with <code>-v</code> and in
+<code>--json</code> only, a limitation of the shared receipt.</p>
+<p>When a refresh is refused or fails and the last verified copy decides, the
+JSON <code>catalog.note</code> gives the reason and the Selection section adds
+<code>note  using the last verified &lt;label&gt;: &lt;reason&gt;</code>.</p>
+<p><strong>The official catalog and the preview.</strong> The official published catalog
+lists the Go preview (<code>oyzu/go</code> <code>0.1.0-preview.1</code>), its references <code>go/app</code> and
+<code>go/library</code> and the detections <code>go-module</code> (a <code>go.mod</code> with a <code>module</code>
+directive and no <code>go.work</code>) and <code>go-workspace</code> (a <code>go.work</code>). Without the
+opt-in a build reads the catalog from the verified cache only, since there is no
+stable release to find; with the opt-in a real build refreshes it, so its
+withdrawals apply. A preview is selectable only with <code>plugins.preview</code>, and a
+withdrawal or revocation refuses the release everywhere, matched by package and
+version or by root digest. The newest eligible release wins.</p>
+<p>Nothing is compiled into the CLI as a stand-in. On a machine that has never
+obtained the catalog (a first run offline, or <code>toolIndex.url = false</code>) there is
+no snapshot: built-in builders work as before, and a plugin-backed reference
+needs the catalog or a local binding.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="detection">Detection<a href="#detection" class="hash-link" aria-label="Direct link to Detection" title="Direct link to Detection" translate="no">​</a></h2>
+<p>A catalog detection maps observations in a directory to a logical reference. The
+grammar is fixed by core: exact marker file names, bounded <code>field</code> predicates of
+JSON, TOML and the <code>module</code>/<code>go</code>/<code>toolchain</code> directives of <code>go.mod</code> (<code>present</code>,
+<code>equals</code>, <code>prefix</code>), and <code>all</code>/<code>any</code>/<code>not</code>. There are no globs, paths,
+expressions or commands.</p>
+<ul>
+<li class="">Only detections whose reference this invocation could use take part: a
+reference with an eligible release, a lock selection or a binding. Others add
+no target.</li>
+<li class="">Rules are indexed by marker file name; a directory costs one existence check
+per marker and is evaluated only against rules whose markers are present.
+Markers compare case-exactly; a symbolic link is not a marker. Files are read
+through the discovery source view (contained, at most 4 MiB) once per
+directory; a malformed file is &quot;no field&quot;, never an error.</li>
+<li class="">Total work per invocation is bounded: 100,000 directories, 512 parsed files,
+32 MiB parsed, 200,000 matcher steps, 1,024 findings. Reaching a bound fails
+with <code>PLUGIN_DETECTION_INCOMPLETE</code> naming the bound; it never reads as &quot;no
+match&quot;.</li>
+<li class="">An explicit <code>build.yaml</code> is the inventory: detection does not run and an
+incidental file adds no target (PLG-DISC-03). Without one, a directory is a
+target when a built-in detector or an applicable catalog detection recognizes
+it, with the existing walk rules (dependency and output directories skipped,
+nested repositories and <code>build.yaml</code> directories are boundaries).</li>
+<li class="">In a directory, every catalog finding and every built-in detection is a
+candidate. Candidates with different references (two catalog detections, or
+a catalog <code>go/app</code> beside a built-in <code>rust/app</code>) are
+<code>PLUGIN_DETECTION_CONFLICT</code>, naming each candidate&#x27;s evidence and the
+<code>build.yaml</code> declaration that settles it; oyzu does not guess (PLG-DISC-02).
+A built-in detection of the same reference is the same candidate. If exactly
+one candidate is already locked, the lock keeps the target and the others are
+a note (PLG-DISC-05).</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-builder-is-selected">How a builder is selected<a href="#how-a-builder-is-selected" class="hash-link" aria-label="Direct link to How a builder is selected" title="Direct link to How a builder is selected" translate="no">​</a></h2>
+<p>Every target&#x27;s reference, whether written as <code>uses:</code> in <code>build.yaml</code>, detected
+by the catalog or recognized by a built-in detector, goes through the same
+sources in order (PLG-DISC-08):</p>
+<ol>
+<li class="">a <code>plugins.development</code> binding (<a class="" href="/docs/reference/plugin-development">development bindings</a>);</li>
+<li class="">a <code>plugins.packages</code> binding. When its digest is the release digest of the
+catalog&#x27;s selected release it is that release&#x27;s <strong>local archive route</strong> and
+the selection is the catalog&#x27;s (official default or company binding), with
+the package&#x27;s publisher, name and version checked against the catalog
+before installation. Any other digest is a <strong>local package binding</strong>. A
+binding of a release any consulted catalog withdrew or revoked (matched by
+root digest before anything is installed, and by digest or package and
+version once the installer knows the release, which covers an OCI tag) is
+refused with <code>PLUGIN_RELEASE_WITHDRAWN</code> or <code>PLUGIN_RELEASE_REVOKED</code> before
+it is recorded or launched; <code>oyzu plugins update</code> reports the same refusal
+as <code>PLUGIN_UPDATE_REFUSED</code>. A binding never silently changes a lock: when it names a different release
+than the one <code>oyzu.lock</code> selects, the build fails with
+<code>PLUGIN_LOCK_MISMATCH</code> until the lock entry is removed;</li>
+<li class="">the selection <code>oyzu.lock</code> already holds, replayed and never replaced by a
+newer catalog, while it stays eligible. A locked release that any consulted
+catalog withdraws is refused with <code>PLUGIN_RELEASE_WITHDRAWN</code>, and one it
+revokes with <code>PLUGIN_RELEASE_REVOKED</code> (matched by package and version or by
+root digest; it never runs), each naming the lock entry to remove so that
+<code>oyzu build</code> adopts an eligible release. When an organization catalog binds
+the reference to a different package than the lock (and no local package
+binding names the locked one), the build fails with
+<code>PLUGIN_BINDING_CHANGED</code>: a changed company binding is adopted visibly, never
+replayed silently (PLG-PKG-06). An authentic expired copy also supplies this
+rebinding refusal; it never supplies an acquisition route;</li>
+<li class="">the catalog: the reference&#x27;s canonical package and profile and its newest
+eligible release. A release is ineligible when it is withdrawn or revoked,
+a preview without <code>plugins.preview</code>, <code>unsupported</code>, without protocol
+generation <code>v1alpha1</code>, without the builder profile, or without a payload for
+this host&#x27;s OS, architecture and ABI;</li>
+<li class="">the built-in builder serving the reference, if any. A reference no builder
+serves fails with <code>PLUGIN_UNAVAILABLE</code> and the catalog&#x27;s reason.</li>
+</ol>
+<p>A catalog-selected release with no binding is acquired by a real <code>oyzu build</code>
+from the OCI route in its verified catalog entry, through the installer an OCI
+binding uses: anonymous, by the listed root digest, with the same package,
+platform and withdrawal checks, and recorded in <code>oyzu.lock</code> as exactly that
+root. With an existing lock and an empty plugin store, an online, non-frozen
+<code>oyzu build</code> acquires the exact locked digest from that release&#x27;s own entry in
+the current verified snapshot, even when a newer release is listed. It never
+rewrites the lock. Withdrawals and revocations are checked before routing;
+an unlisted digest, or a Refused, Absent or Expired catalog, supplies no route.
+Existing installed releases retain the replay rules above. A release already
+in the store is reused without a request, and is not verified again.</p>
+<p><strong>Route trust follows the package identity</strong>
+(decision of 2026-10-20).
+A release of a package of the official publisher <code>oyzu</code> (such as <code>oyzu/go</code>)
+must carry a signature from the fixed official signer (the <code>plugin-release.yml</code>
+workflow on <code>main</code>, GitHub-hosted runner), verified against Sigstore&#x27;s
+production trusted root, on whatever registry the catalog routes it through:
+the official <code>ghcr.io/oyzuai/plugins/&lt;name&gt;</code>, or a company mirror an
+organization catalog lists. A mirror therefore has to serve the release&#x27;s
+signature referrers as well as its root, manifests and blobs, and the root it
+serves must hash to the digest the catalog lists. Nothing in a catalog or in
+configuration can name another signer or trusted root for it, so a company
+catalog cannot pass off its own build as <code>oyzu/go</code>. A route in the official
+namespace always requires the official signer. A release of a package of any
+other publisher (such as <code>acme/go</code> on a company registry) is trusted by its
+digest, which the signed catalog lists, as a digest binding is; no signature is
+requested. A refused mirror reports <code>PLUGIN_SIGNATURE_MISSING</code> (no signature
+referrer), <code>PLUGIN_SIGNATURE_INVALID</code> (no signature verifies for the official
+signer against the production root) or <code>PLUGIN_PACKAGE_DIGEST</code> (other bytes
+under the listed root), and installs and records nothing. The real official
+signature through a mirror is proved by the
+mirror qualification; the loopback
+registry tests cannot hold a production signature and prove the refusals.
+Routes come only from the verified catalog, never from project files. A release with no OCI route (an
+HTTPS layout-archive route is not acquired from yet), or any release under
+<code>--offline</code> that is not in the store, fails with <code>PLUGIN_ROUTE_UNAVAILABLE</code>
+naming the binding that supplies it; a route that cannot be used (unreachable,
+incomplete, serving other bytes than the listed root) fails with
+<code>PLUGIN_ROUTE_FAILED</code> and installs and records nothing (only for access:
+an unreachable or incomplete registry, or an unusable listed address; a
+signature, digest or package failure keeps its own code and advice). A catalog-only builder (a
+reference no built-in builder serves, PLG-DISC-04) runs with only the tools its
+package manifest requires.</p>
+<p>Only a real <code>oyzu build</code> adopts or installs. Every other command (<code>build --plan</code>, <code>--check</code>, <code>run</code>, <code>discover</code>, …) replays the lock and the store; an
+unadopted catalog selection there is <code>PLUGIN_NOT_ADOPTED: the catalog selects &lt;package&gt; &lt;version&gt; (release …) for &lt;reference&gt; … this command downloads, installs, launches and writes nothing</code> (PLG-DISC-06). Help, <code>--version</code>, shell
+activation and <code>oyzu exec</code> never load a catalog or select a builder
+(PLG-DISC-07).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pluginspreview"><code>plugins.preview</code><a href="#pluginspreview" class="hash-link" aria-label="Direct link to pluginspreview" title="Direct link to pluginspreview" translate="no">​</a></h3>
+<p><code>plugins.preview = true</code> makes preview releases eligible. It is accepted only
+from user, machine or administrative configuration, never from a project file,
+<code>oyzu.local.toml</code> or a profile (<code>CONFIG_SCOPE</code>), because it selects code to run:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> plugins.preview </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-selection-section">The Selection section<a href="#the-selection-section" class="hash-link" aria-label="Direct link to The Selection section" title="Direct link to The Selection section" translate="no">​</a></h2>
+<p>A build with a plugin-backed target shows the builder selection in the
+<code>Selection</code> section, after <code>Prepare</code> (so tools are known) and before <code>Plan</code>.
+When the build adopted a selection or installed a package, each such target
+gets the full record:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">-- Selection --- official catalog serial 18</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ok      go/app  project  oyzu/go 0.1.0-preview.1 (adopted)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      selected by  go.mod module (rule go-module, official catalog serial 18)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      source       official default · from official catalog serial 18 · preview release (plugins.preview)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      package      installed now · sha256:0382c192…ee48 · 710.6 KiB · from /home/me/go-0.1.0-preview.1.tar.gz</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      lock         recorded in oyzu.lock now; review and commit the diff</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      tool         go 1.27.2 · installed now · go.mod requires go &gt;=1.22; nothing pins it</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      not what you wanted?</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        not a go/app target? Declare the targets you want in build.yaml; undeclared directories add none</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          build.yaml: {builds: {project: {uses: &lt;builder&gt;, path: .}}}</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        another implementation of go/app? Bind its package for this reference (or use your organization&#x27;s catalog) and select again</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          oyzu config set --global --json-value &#x27;plugins.packages.&quot;go/app&quot;&#x27; &#x27;{&quot;archive&quot;:&quot;&lt;path&gt;&quot;,&quot;sha256&quot;:&quot;&lt;digest&gt;&quot;}&#x27; &amp;&amp; rm oyzu.lock</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        undo this adoption: revert oyzu.lock and this reference&#x27;s settings (plugins.preview is the global preview opt-in)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          rm oyzu.lock &amp;&amp; oyzu config unset --global &#x27;plugins.packages.&quot;go/app&quot;&#x27; &amp;&amp; oyzu config set --global plugins.preview false</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">        another go version? Pin it in oyzu.toml</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          oyzu pin go@&lt;version&gt;</span><br></div></code></pre></div></div>
+<p>When nothing changed, each plugin-backed target is one line:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">-- Selection --- official catalog serial 18</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  reused  go/app  project  oyzu/go 0.1.0-preview.1 (locked)</span><br></div></code></pre></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td>selected by</td><td><code>uses in build.yaml</code>, the catalog detection&#x27;s evidence and rule with the snapshot, or the built-in detector</td></tr><tr><td>source</td><td><code>official default</code>, <code>company binding</code> (an organization catalog), <code>local package binding</code>, <code>local development binding</code>, or <code>oyzu.lock</code> (a locked selection no current source explains), with the snapshot that listed the release; <code>preview release (plugins.preview)</code> with the opt-in, or <code>prerelease version</code> when a local binding supplied a prerelease without it</td></tr><tr><td>package</td><td><code>installed now</code> with release digest, archive size and the local route, or <code>reused from the store</code></td></tr><tr><td>lock</td><td>adopted now (a reviewable <code>oyzu.lock</code> diff), replayed, or not locked (development)</td></tr><tr><td>tool</td><td>each tool this target requires (not every tool of the build), with version, whether installed now, and why: the native requirement and that nothing pins it, or where it is pinned</td></tr><tr><td>remedies</td><td>one copyable line per case; the <code>build.yaml</code> line lists the other detected targets when there are any. <code>other-implementation</code> and <code>undo</code> change only this reference&#x27;s binding (<code>plugins.packages.&quot;&lt;reference&gt;&quot;</code>); <code>plugins.preview</code> has no per-reference form, so undoing a catalog preview turns the global opt-in off. For a selection locked earlier, the line ends with <a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update &lt;reference&gt;</code></a></td></tr></tbody></table>
+<p>Targets using built-in builders are not listed. Notes (for example a competing
+detection kept out by a lock, or why an expired catalog was used) follow the
+targets. Without color the marks are words (<code>ok</code>, <code>reused</code>). <code>--json</code> records
+the same typed result as the build manifest&#x27;s
+<code>extensions[&quot;oyzu.dev/plugin-selection&quot;]</code>:</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;catalog&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;label&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;official catalog serial 17&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;source&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;fetched&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;authority&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;oyzu&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;official&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;serial&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">17</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;generatedAt&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;expiresAt&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;expired&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;contentDigest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;documentDigest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;url&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;https://github.com/…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;note&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token null keyword" style="color:#00009f">null</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;catalogChoice&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;published&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;preview&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;changed&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;notes&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;targets&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;target&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;project&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;path&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;.&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;reference&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;go/app&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;decision&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;detected&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;rule&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;go-module&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;evidence&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;go.mod module&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;catalog&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;official catalog serial 18&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;source&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;official-default&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;authority&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;oyzu&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;catalog&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;official catalog serial 18&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;package&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;oyzu/go&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;version&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;0.1.0-preview.1&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;release&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;preview&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;state&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;adopted&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;installedNow&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;size&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token number" style="color:#36acaa">727700</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;route&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;/home/me/…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;executableDigest&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;sha256:…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;packageBinding&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;tools&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;tool&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;go&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;id&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;oyzu:go&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;requirement&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;go.mod requires go &gt;=1.22&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token property" style="color:#36acaa">&quot;reason&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;Go compiler for selected build stages&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;pinned&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;remedies&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;case&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;wrong-ecosystem&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;summary&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;case&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;other-implementation&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;summary&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;case&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;undo&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;summary&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;…&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;case&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;tool-version&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;summary&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;another go version? Pin it in oyzu.toml&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token property" style="color:#36acaa">&quot;action&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token string" style="color:#e3116c">&quot;oyzu pin go@&lt;version&gt;&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>catalogChoice</code> (why the snapshot) is <code>published</code>, <code>no-index</code>,
+<code>official-unavailable</code> or <code>organization</code>. <code>tools</code> lists the
+target&#x27;s own tool requirements, added once the build has collected them; the
+resolved versions stay in the build&#x27;s tool records. The record is
+<code>crate::plugins::resolve::Explanation</code>.
+<a class="" href="/docs/reference/plugin-inspection#explain-and-current"><code>oyzu plugins explain</code></a> shows the
+same record after the fact without adopting, installing or launching anything;
+only there <code>state</code> can also be <code>not-adopted</code> or <code>not-installed</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="changing-a-choice">Changing a choice<a href="#changing-a-choice" class="hash-link" aria-label="Direct link to Changing a choice" title="Direct link to Changing a choice" translate="no">​</a></h2>
+<p>Adoption happens only in a real build and always appears as an <code>oyzu.lock</code>
+diff. There are no prompts. Each wrong choice has a fix, verified through the
+compiled CLI after applying it (<a href="#verification" class="">verification</a>):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Wrong choice</th><th>Fix</th></tr></thead><tbody><tr><td>Wrong ecosystem from an incidental file</td><td>Declare the targets you want in <code>build.yaml</code> (the printed line); the incidental directory adds no target and its builder is never acquired</td></tr><tr><td>Right ecosystem, unwanted implementation</td><td>The printed line binds another package for this reference only (<code>oyzu config set --global --json-value &#x27;plugins.packages.&quot;&lt;reference&gt;&quot;&#x27; …</code>) and reverts the lock this build wrote; for an older lock, remove its <code>[[plugin]]</code> entry, then build</td></tr><tr><td>Right builder, wrong tool version</td><td><code>oyzu pin &lt;tool&gt;@&lt;version&gt;</code> writes the pin to <code>oyzu.toml</code></td></tr><tr><td>Ambiguous evidence (npm and pnpm lockfiles; two catalog detections)</td><td>Discovery stops with a focused conflict naming the smallest <code>build.yaml</code> selector; nothing is guessed or installed</td></tr><tr><td>Undo an adoption</td><td>The printed line: <code>git checkout -- oyzu.lock</code>, or <code>rm oyzu.lock</code> when this build created it, then this reference&#x27;s <code>plugins.packages</code> entry when it supplied the bytes, and <code>plugins.preview</code> for a catalog preview (global: it has no per-reference form)</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors">Errors<a href="#errors" class="hash-link" aria-label="Direct link to Errors" title="Direct link to Errors" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Code</th><th>Cause</th><th>Recovery</th></tr></thead><tbody><tr><td><code>PLUGIN_DETECTION_CONFLICT</code></td><td>Candidates with different references (catalog detections, or a catalog detection and a built-in one) match a directory</td><td>Declare the target with <code>uses:</code> in <code>build.yaml</code></td></tr><tr><td><code>PLUGIN_RELEASE_WITHDRAWN</code>, <code>PLUGIN_RELEASE_REVOKED</code></td><td>A consulted catalog (an expired copy included) withdrew or revoked the locked release, or the release a <code>plugins.packages</code> binding names: by digest before anything is installed, and by digest or package and version once the installer knows the release, which covers an OCI tag. A bound release is refused before it is recorded or launched</td><td>Run <code>oyzu plugins update REFERENCE</code> (it needs a binding or the store to supply the replacement), or remove the named <code>[[plugin]]</code> entry and build, to adopt an eligible release; for a binding, bind an eligible release or run the <code>oyzu config unset --global …</code> line the error prints. The refused bytes stay in the store when they had to be fetched to be identified (a tag, or a package refused by package and version); <code>oyzu plugins list</code> marks them <code>(withdrawn)</code> or <code>(revoked)</code>, and nothing can select them</td></tr><tr><td><code>PLUGIN_BINDING_CHANGED</code></td><td>The organization catalog binds the reference to another package than the lock</td><td>Remove the named <code>[[plugin]]</code> entry and build to adopt the new binding visibly</td></tr><tr><td><code>PLUGIN_LOCK_MISMATCH</code></td><td>A <code>plugins.packages</code> binding names another release than the lock</td><td>Remove the lock entry, or restore the binding</td></tr><tr><td><code>PLUGIN_DETECTION_INCOMPLETE</code></td><td>A matcher work bound was reached</td><td>Declare the targets in <code>build.yaml</code></td></tr><tr><td><code>PLUGIN_ROUTE_UNAVAILABLE</code></td><td>The catalog selects a release that is not installed and has no OCI route, or <code>--offline</code> forbids its route</td><td>Run online, or bind the archive with the release digest (<code>plugins.packages</code>)</td></tr><tr><td><code>PLUGIN_ROUTE_FAILED</code></td><td>The release&#x27;s catalog route could not be used (registry unreachable or not holding the release, or an unusable listed address); the cause follows. A signature, digest or package failure keeps its own code</td><td>Fix access to the registry, or bind the package; nothing was installed or recorded</td></tr><tr><td><code>PLUGIN_UNAVAILABLE</code></td><td>No builder serves the reference; the catalog says why (for example preview only)</td><td>Opt in, or bind a package</td></tr><tr><td><code>PLUGIN_CATALOG_UNAVAILABLE</code></td><td>No usable snapshot and the catalog was refused, or an unlocked reference met an expired one (see <a href="#the-catalog-snapshot" class="">Without a usable catalog</a>)</td><td>Restore access to the catalog, or select a local binding; oyzu never falls back to another catalog for the reference</td></tr><tr><td><code>PLUGIN_CATALOG_EXPIRED</code> (warning)</td><td>A lock replayed against an expired catalog&#x27;s withdrawals</td><td>Refresh the catalog with an online <code>oyzu build</code>; if the refresh was refused, fix the catalog source</td></tr><tr><td><code>PLUGIN_CATALOG_INVALID</code>, <code>_EXPIRED</code>, <code>_ROLLBACK</code></td><td>Reasons inside the above</td><td></td></tr><tr><td><code>PLUGIN_PACKAGE_MISMATCH</code></td><td>The archive is not the catalog&#x27;s package and version</td><td>Bind the right archive</td></tr><tr><td><code>PLUGIN_NOT_ADOPTED</code></td><td>A non-build command met an unadopted selection</td><td>Run <code>oyzu build</code></td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
+<ul>
+<li class="">Only the OCI route is acquired from; an HTTPS layout-archive route is not.
+Locked acquisition needs a current verified catalog listing the exact root,
+or an explicit binding. Without either, a missing release remains
+<code>PLUGIN_LOCK_UNUSABLE</code>; Refused catalogs remain <code>PLUGIN_CATALOG_UNAVAILABLE</code>.
+<code>--frozen</code> and <code>--offline</code> never acquire from a catalog route. <code>oyzu plugins current</code> and <code>explain</code> install nothing and describe the pending acquisition;
+<code>build --plan</code> never downloads and stops with <code>PLUGIN_ROUTE_UNAVAILABLE</code>. See
+the lock replay qualification for
+the evidence and what is not proved. A route for a package of another
+publisher carries no signer identity: the signed catalog&#x27;s digest is its
+trust. An official package needs the official signature on every route.</li>
+<li class="">Without <code>plugins.preview</code> the official published catalog is not refreshed by
+builds; there is no <code>--refresh</code> yet.</li>
+<li class="">The published entry lists the platforms the release was built for
+(darwin, linux and windows); only linux/amd64 musl is proved end to end.</li>
+<li class=""><code>@vN</code> major selectors in <code>uses</code>, revocation of installed copies and policy
+admission are not implemented. Updates are <a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update</code></a>.</li>
+<li class=""><code>oyzu config validate</code> checks declared <code>uses</code> against built-in builders only,
+so it rejects a catalog-only reference a build would accept.</li>
+<li class="">Windows and macOS are untested.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
+<p>Unit tests: <code>src/plugins/catalog.rs</code> (a published official catalog is the
+only snapshot; without one there is none; a refused refresh stays a refusal),
+<code>src/plugins/resolve.rs</code> (a published preview is selectable only with the
+opt-in; an official withdrawal by package and version, or by root digest,
+refuses the release and removes its detections),
+<code>src/plugins/matcher.rs</code> (go.mod directives, exact markers, symbolic links,
+JSON/TOML fields, malformed files, budget exhaustion). Compiled-CLI tests
+<code>tests/integration/plugin_catalog.rs</code>, with an organization catalog served over
+loopback and signed by a test-only Sigstore instance and a stand-in plugin:
+detected selection, <code>--plan</code> without acquisition, missing route, locked replay
+against a newer release and a competing detector, unlocked conflict
+(PLG-DISC-02, 05, 06); explicit and detected references give identical lock
+records (PLG-DISC-08); an explicit <code>build.yaml</code> keeps an incidental Go module
+out and nothing is installed (PLG-DISC-03); preview needs the user-scope opt-in
+and a project cannot set it; a catalog update adds a catalog-only builder
+(PLG-DISC-04); a refused organization catalog does not fall back; help,
+<code>--version</code> and <code>exec</code> neither fetch nor select (PLG-DISC-07); npm and pnpm
+lockfiles name the <code>package-manager</code> selector (PLG-DISC-02). Route
+acquisition, <code>tests/integration/plugin_oci.rs</code> (<code>catalog_routes</code>, a signed
+organization catalog and a loopback registry, no binding): adopt, lock and
+<code>--frozen</code> replay without the registry; a binding keeps precedence; a withdrawn
+release is never fetched; a route serving other bytes, an unreachable route
+and <code>--offline</code> fail without installing or recording; an official package
+(<code>oyzu/go</code>) through a company mirror is refused without the official signature
+(unsigned, signed by the company, signed with the official identity by another
+Sigstore instance, other bytes under the listed root) on first adoption,
+committed-lock replay and <code>oyzu plugins update</code>, in human and JSON output,
+while a <code>plugins.packages</code> binding keeps precedence and an installed release is
+reused without a request. Unit tests in
+<code>src/plugins/resolve.rs</code> and <code>src/tools/plugin_package/oci.rs</code> (route selected,
+no OCI route, offline, withdrawn and revoked, precedence, root mismatch, and
+the signer of a catalog route by package identity). The real official
+signature through a mirror: <code>tests/integration/plugin_mirror.rs</code>, ignored by
+default because it copies the published release from GHCR (see the
+mirror qualification).</p>
+<p>End to end on linux/amd64 (2026-10-18) with the compiled CLI, the real preview
+Go plugin, scratch XDG directories (so the default store is scratch; <code>oyzu pin</code>
+has no <code>--store</code>), scratch user configuration (<code>plugins.preview = true</code> plus the
+local archive route) and a fresh Git checkout of
+<code>examples/builds/go-app/project</code>, with no plugin installed:</p>
+<ol>
+<li class=""><code>oyzu build</code> refreshed and verified the live official catalog (serial 17,
+production Sigstore trust root), detected <code>go/app</code> from the bundled preview
+source of that day (since replaced by the published catalog), installed
+<code>oyzu/go 0.1.0-preview.1</code> and Go 1.27.2, showed the full Selection record,
+wrote the <code>[[plugin]]</code> entry (<code>git status</code>: new <code>oyzu.lock</code>) and produced
+<code>dist/project/artifacts/project-0.0.0-dev.…</code>, which prints <code>Hello, Oyzu!</code>
+(PLG-DISC-01).</li>
+<li class="">The printed undo line (<code>rm oyzu.lock &amp;&amp; oyzu config set --global plugins.preview false &amp;&amp; oyzu config unset --global plugins.packages</code>) run
+as printed: the next build used the built-in builder, showed no builder
+selection and wrote no <code>[[plugin]]</code> entry.</li>
+<li class="">Opting in again re-adopted the release from the store with no archive
+route; after committing the lock the rebuild showed the one-line form, and
+<code>--json</code> carried the same record (<code>state: locked</code>).</li>
+<li class=""><code>oyzu pin go@1.24.5</code> wrote the pin to <code>oyzu.toml</code>; the next build installed
+and used Go 1.24.5 with the locked plugin, and the artifact ran.</li>
+<li class="">Binding another package of <code>go/app</code> was refused against the lock
+(<code>PLUGIN_LOCK_MISMATCH</code>); after removing the <code>[[plugin]]</code> entry the build
+adopted it as a local package binding.</li>
+<li class="">In a checkout with <code>image/Dockerfile</code> and an incidental <code>tools/go.mod</code>, the
+build adopted <code>go/app</code> for <code>project-tools</code> and printed
+<code>build.yaml: {builds: {project-image: {uses: docker/image, path: image}}}</code>; with that
+file, a build with a fresh store planned only <code>project-image</code>, installed no
+plugin and wrote no lock (PLG-DISC-03).</li>
+</ol></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/os-package-locks"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OS package locks (oyzu lock)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/plugin-development"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Local development plugin bindings (experimental)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#quick-start-the-go-builder-preview" class="table-of-contents__link toc-highlight">Quick start: the Go builder preview</a></li><li><a href="#the-catalog-snapshot" class="table-of-contents__link toc-highlight">The catalog snapshot</a></li><li><a href="#detection" class="table-of-contents__link toc-highlight">Detection</a></li><li><a href="#how-a-builder-is-selected" class="table-of-contents__link toc-highlight">How a builder is selected</a><ul><li><a href="#pluginspreview" class="table-of-contents__link toc-highlight"><code>plugins.preview</code></a></li></ul></li><li><a href="#the-selection-section" class="table-of-contents__link toc-highlight">The Selection section</a></li><li><a href="#changing-a-choice" class="table-of-contents__link toc-highlight">Changing a choice</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

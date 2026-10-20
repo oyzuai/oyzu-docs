@@ -1,0 +1,439 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/tool-worker-contract" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Tool worker contract | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-worker-contract"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool worker contract | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-worker-contract.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-worker-contract.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-worker-contract"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-worker-contract" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-worker-contract" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool worker contract","item":"https://docs.oyzu.ai/docs/reference/tool-worker-contract"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.de4c0740.js" defer="defer"></script>
+<script src="/assets/js/main.dc58e292.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/tool-worker-contract">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and shell activation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/local-builds"><span class="linkLabel_WmDU">Native local builds (in development)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-bundles"><span class="linkLabel_WmDU">Build bundles and retention</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/direct-tests"><span class="linkLabel_WmDU">Direct test reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/acquisition-transport"><span class="linkLabel_WmDU">Scoped dependency acquisition transport</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/ant"><span class="linkLabel_WmDU">Ant builds and test reporting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets (client slice)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-verification"><span class="linkLabel_WmDU">Running builder acceptance checks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cargo-sessions"><span class="linkLabel_WmDU">Managed Cargo launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance"><span class="linkLabel_WmDU">Repository compliance tooling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/declared-fetches"><span class="linkLabel_WmDU">Declared fetches</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/directory-artifacts"><span class="linkLabel_WmDU">Directory artifact integrity and materialization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-frontend"><span class="linkLabel_WmDU">Oyzu&#x27;s BuildKit frontend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-images"><span class="linkLabel_WmDU">Docker image inputs and offline builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-quality"><span class="linkLabel_WmDU">Dockerfile linting and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/dotnet"><span class="linkLabel_WmDU">.NET builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/engine-staging"><span class="linkLabel_WmDU">Exact native engine staging</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/example-collection"><span class="linkLabel_WmDU">Runnable examples collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/go"><span class="linkLabel_WmDU">Go applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle"><span class="linkLabel_WmDU">Gradle builds and tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle-sessions"><span class="linkLabel_WmDU">Managed Gradle launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/helm"><span class="linkLabel_WmDU">Helm charts and native chart tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/installer-recipes"><span class="linkLabel_WmDU">Installer-asset recipes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/java-quality"><span class="linkLabel_WmDU">Java quality tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven"><span class="linkLabel_WmDU">Maven builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven-sessions"><span class="linkLabel_WmDU">Managed Maven launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mise-maintenance"><span class="linkLabel_WmDU">Extracted tool mechanics maintenance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mocha"><span class="linkLabel_WmDU">Mocha tests and coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-applications"><span class="linkLabel_WmDU">Node application directory artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-quality"><span class="linkLabel_WmDU">Node lint and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-static-analysis"><span class="linkLabel_WmDU">Node static analysis in oyzu build --plan</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-workspace-tests"><span class="linkLabel_WmDU">Native Node workspace test bundles</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/npm-workspaces"><span class="linkLabel_WmDU">npm workspace builds and development tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/nuget-sessions"><span class="linkLabel_WmDU">Managed NuGet/.NET launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-indices"><span class="linkLabel_WmDU">Complete OCI image indices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-sessions"><span class="linkLabel_WmDU">Native OCI launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/os-package-locks"><span class="linkLabel_WmDU">OS package locks (oyzu lock)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog, detection and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Local development plugin bindings (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview: terms, support and recovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-releases"><span class="linkLabel_WmDU">Plugin releases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/pnpm"><span class="linkLabel_WmDU">pnpm builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-applications"><span class="linkLabel_WmDU">Python application artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-containers"><span class="linkLabel_WmDU">Python application containers (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-preparation"><span class="linkLabel_WmDU">Captured Python package preparation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-sessions"><span class="linkLabel_WmDU">Managed Python launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-testing"><span class="linkLabel_WmDU">Python test discovery and reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/runtime-matrices"><span class="linkLabel_WmDU">Verification toolsets and platform matrices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/rust"><span class="linkLabel_WmDU">Rust applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Experimental scan command</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/target-workspaces"><span class="linkLabel_WmDU">Host target workspaces and artifact inputs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-backend-inspection"><span class="linkLabel_WmDU">Tool Backend Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Tool Go Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-grant-inspection"><span class="linkLabel_WmDU">Tool grant inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Tool Helm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Tool Java, Maven and Gradle Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">Tool k3d Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">Tool kubectl Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Tool Liquibase Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool identity inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">Tool npm and pnpm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Tool Proxy Acquisition</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Tool Python Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-request-identity"><span class="linkLabel_WmDU">Tool Request Identity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Tool Rust Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Tool Shell Environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">Tool Store Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tool Tailscale Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/tool-worker-contract"><span class="linkLabel_WmDU">Tool worker contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/toolchain-platforms"><span class="linkLabel_WmDU">Provisioned toolchain platform selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/yarn"><span class="linkLabel_WmDU">Yarn Classic builds</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">More reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Tool worker contract</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Tool worker contract</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/tool-worker-contract.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Maintainer reference for the private worker protocol, not public CLI syntax.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="internal-worker-control-framing">Internal worker control framing<a href="#internal-worker-control-framing" class="hash-link" aria-label="Direct link to Internal worker control framing" title="Direct link to Internal worker control framing" translate="no">​</a></h3>
+<p><code>ToolWorkerChannel&lt;T&gt;</code> provides the initial private-channel byte framing for
+OEP-0003. It takes an already established duplex <code>Read + Write</code> transport; it
+does not discover a channel, start a subprocess or read worker stdin/stdout.
+The supervisor must authenticate and restrict inherited channel handles and
+enforce deadlines/cancellation independently. A blocking <code>Read</code> or <code>Write</code> is
+not made interruptible by this codec. This is an unstable internal interface,
+not a public worker/plugin compatibility promise.</p>
+<p>The sequential <code>ToolWorkerChannel</code> is suitable only when no read/write overlap
+is needed. For cancellation while waiting on a response, use
+<code>split_tool_worker_channel(read_handle, write_handle)</code> to obtain a
+<code>ToolWorkerReceiver</code> and <code>ToolWorkerSender</code>. Supply already established halves of
+the same trusted channel; this function neither creates nor duplicates handles.
+Each half can be owned by a separate thread. There is one shared atomic byte
+budget and failure state, and no synchronization lock spans transport I/O.
+The sender can therefore transmit a cancel while the receiver is blocked.
+The receiver reserves prefix bytes before reading them and body bytes before
+allocation/read; the sender reserves its complete frame before writing. In-flight
+reservations count against the same limit and are not refunded after failure.</p>
+<p>Failure in either half prevents subsequent successful operations in both.
+<code>abort()</code> on either half marks the shared state closed, and an in-flight read
+that later completes cannot return a successful frame. It does not interrupt the
+underlying syscall or retract bytes already written. The supervisor must still
+apply OS deadlines and explicitly shut down/cancel the underlying transport on
+timeout; dropping or invalidating a framing object is not process cancellation.
+Neither half is cloneable, so callers cannot accidentally interleave multiple
+framed writers through this API.</p>
+<p>Construct one channel per operation with <code>ToolWorkerChannel::new(transport)</code>.
+<code>send(json_bytes)</code> validates one UTF-8 JSON object, writes a four-byte big-endian
+length and the original bytes, then flushes. <code>receive()</code> reads exactly one frame
+and returns an untrusted JSON value. Both directions share a 32 MiB lifetime
+budget, including length prefixes; each body is at most 8 MiB. Empty bodies,
+non-object roots, duplicate keys, malformed/nonfinite values and excessive nesting
+fail. The shared strict JSON parser also caps aggregate entries at 10,000.
+Oversized lengths and exhausted budgets fail before allocating or reading bodies.
+Malformed outgoing JSON emits no bytes.</p>
+<p>All failures permanently invalidate the channel instance. This includes clean
+EOF, short reads, invalid input and write/flush failures; retry requires a new
+supervised operation rather than attempting stream resynchronization. Errors
+use <code>TOOL_WORKER_*</code> codes without payload or transport-error text. No files,
+network connections or credentials are created by the codec itself.</p>
+<p>Framing success is not envelope admission. <code>ToolWorkerExchange</code>, described below,
+adds closed outer envelopes and response correlation; operation-specific payload
+admission and worker-side dispatch remain unimplemented. Complete authenticated
+bootstrap, handshake/operation deadlines, embedded backend dispatch and executor
+containment are also absent. Windows restricted process inheritance is implemented
+separately below; Unix process creation remains outstanding. The native allocation API creates
+local endpoints only. Tests exercise fragmented reads/writes,
+exact frame bounds, combined budgets, invalid/truncated JSON and terminal errors;
+they do not qualify a running worker or complete TM-05.</p>
+<p>Concurrent tests additionally hold a receive pending while sending cancellation,
+then check shared abort and budget exhaustion. A Unix-only test exchanges control
+frames over a real close-on-exec socketpair. It does not launch a process, verify
+inherited descriptor restrictions or establish Windows handle-list support.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-private-worker-endpoints">Native private worker endpoints<a href="#native-private-worker-endpoints" class="hash-link" aria-label="Direct link to Native private worker endpoints" title="Direct link to Native private worker endpoints" translate="no">​</a></h3>
+<p><code>native_tool_worker_channel()</code> creates two connected <code>NativeToolWorkerEndpoint</code>
+values without stdin/stdout, an environment token, a filesystem socket name or a
+listening network port. Unix uses a socketpair, with duplicate descriptors for
+independent read/write ownership. Windows uses two anonymous pipes through the
+existing standard-library <a href="https://doc.rust-lang.org/std/io/fn.pipe.html" target="_blank" rel="noopener noreferrer" class="">pipe API</a>.
+No new crate dependency or executable is added. Creation checks <code>FD_CLOEXEC</code> on
+Unix or absence of <code>HANDLE_FLAG_INHERIT</code> on Windows and fails if any returned
+handle is inheritable. Dropping an endpoint closes its owned handles.</p>
+<p>An endpoint implements <code>Read + Write</code> for sequential framing. Its <code>split()</code>
+consumes it and returns <code>NativeToolWorkerReader</code> and <code>NativeToolWorkerWriter</code>
+without additional duplication. Pass those to <code>split_tool_worker_channel</code> for
+concurrent framing with a shared budget. The halves expose borrowed native
+descriptors/handles through <code>AsFd</code> or <code>AsHandle</code> for future explicit supervisor
+inheritance and cancellation; they do not transfer ownership or reopen a name.</p>
+<p>This API allocates blocking transports. It does not spawn a worker, authenticate
+an inherited channel, configure a Windows process handle list, install an OS
+deadline, interrupt pending I/O or contain backend code. A dropped peer produces
+EOF, which framing treats as terminal failure. A blocked read/write with a live
+peer still requires supervisor-owned OS cancellation/deadline enforcement.
+The factory must not be presented as a deadline-bounded production worker.</p>
+<p>Windows and Linux tests transfer a 2 MiB JSON payload in both directions using
+the native factory and framed split transport, then verify peer-close failure
+propagates to both framing halves. Creation itself checks non-inheritance.
+Additional Windows/Linux regressions leave a length prefix incomplete or write
+a 2 MiB frame while the peer never drains the transport. Closing the peer then
+causes each pending operation to fail and makes the other framing half terminal.
+These tests depend on all peer endpoint handles closing. They do not prove that
+killing a child closes handles inherited by descendants, or that a live peer can
+be interrupted; the supervisor must establish those lifecycle properties.
+The test watchdog bounds the test harness, not production I/O. macOS uses the
+Unix implementation but native verification of this increment remains pending.
+The Windows process primitive below now implements explicit cross-process
+inheritance. Unix inheritance and actual worker dispatch remain unfinished.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="interruptible-native-control-io">Interruptible native control I/O<a href="#interruptible-native-control-io" class="hash-link" aria-label="Direct link to Interruptible native control I/O" title="Direct link to Interruptible native control I/O" translate="no">​</a></h3>
+<p><code>NativeToolWorkerIo::new(endpoint)</code> takes ownership of one private native endpoint
+and wraps the existing shared framing budget. This experimental supervisor API
+provides one dedicated read thread and one dedicated write thread at most, with
+no frame queue. <code>start_receive()</code> and <code>start_send(owned_bytes)</code> begin a frame;
+<code>try_receive()</code> returns <code>None</code> while its read is pending and <code>try_send()</code> returns
+<code>false</code> while its write is pending. Completed operations are joined before results
+are returned. Another send can therefore deliver a cancel while a response read
+is blocked. A second start in the same direction before collecting completion
+fails with <code>TOOL_WORKER_IO_PENDING</code>; polling without a started operation fails
+with <code>TOOL_WORKER_IO_NOT_STARTED</code>.</p>
+<p>The existing 8 MiB frame, 32 MiB session and JSON shape limits still apply. Send
+input is validated before creating its thread; invalid input closes the operation.
+Results are untrusted JSON, not admitted worker responses or installation receipts.
+This API has no network, backend, filesystem configuration or process-spawn effects.</p>
+<p>The supervisor calls <code>shutdown(absolute_monotonic_deadline)</code> after cancellation,
+expiry or transport failure. It permanently closes framing, interrupts native I/O,
+discards racing results and joins both threads. Unix shuts down the retained socket;
+Windows repeatedly requests synchronous I/O cancellation against the owned,
+dedicated thread handles until completion is observed. Those threads never execute
+an unrelated operation or return to a thread pool. No peer closure is required.
+This follows Microsoft&#x27;s <a href="https://learn.microsoft.com/en-us/windows/win32/fileio/canceling-pending-i-o-operations" target="_blank" rel="noopener noreferrer" class="">synchronous I/O cancellation guidance</a>: requesting cancellation alone does not establish completion.</p>
+<p><code>TOOL_WORKER_IO_SHUTDOWN_TIMEOUT</code> means cleanup is still incomplete: the owner
+retains pending threads and handles, permits another shutdown attempt and refuses
+all result retrieval or new I/O. Do not report successful cleanup or publish a
+result on this path. Dropping the owner also interrupts and joins; it can wait
+if the operating system fails to complete cancellation. It never deliberately
+detaches pending I/O threads. This is not a guarantee against a stuck OS driver.
+Shutdown uses at most 5 ms polling sleeps, shortened to the remaining deadline.</p>
+<p>Tests exercise simultaneous partial-frame read and backpressured write with a
+live peer, duplex request/cancel traffic, cancellation independent of another
+channel, discarded completed results, pending-operation rejection, joining on
+drop and retained ownership after cleanup timeout. Run
+<code>cargo test --locked --lib tools::worker::io</code>. Native process creation and job
+termination are separate Windows components described below. These I/O tests do
+not establish channel authentication, deadline scheduling, backend dispatch or
+authorization to use a backend.
+The six tests pass on Windows GNU with Rust 1.94 and Linux with Rust 1.95
+(network disabled). At commit <code>63e8073</code>, the full locked unit/integration test,
+strict Clippy and formatting steps also passed on Windows, macOS and Linux in
+<a href="https://github.com/micahlmartin/oyzu/actions/runs/37031170986" target="_blank" rel="noopener noreferrer" class="">native CI</a>.
+That observation covers those completed steps, not every downstream CI job or
+later process-lifecycle changes.</p>
+<p>The development backend entry point normalizes the LLVM coverage
+runtime&#x27;s <code>__LLVM_PROFILE_RT_INIT_ONCE</code> startup marker before validating the
+inherited installer environment.
+LLVM can inject it even after the supervisor clears the child environment. No
+other variable is removed by this normalization or added to the installer&#x27;s allowlist;
+profiling is not disabled. Normalization precedes installer environment validation.</p>
+<p>On 2026-10-17, Linux qualification with managed Rust 1.99.1 reproduced the
+pre-fix worker&#x27;s exit 1 after LLVM inserted that marker into an otherwise cleared
+environment. At source <code>0c3bbdda</code>, the unchanged
+<code>tool_catalog::governed_providers::governed_rust_installs_from_indexed_inputs_and_refuses_unapproved_or_changed_bytes</code>
+fixture passed against a CLI built with <code>oyzu exec -- cargo rustc --locked --offline --bin oyzu --target x86_64-unknown-linux-gnu -j 1 -- -C instrument-coverage</code>.
+The integration fixture was compiled first and then executed directly, preserving
+its compiled-in CLI path and original assertions. Main-binary instrumentation
+activates the actual LLVM startup runtime; the library was compiled normally.
+This qualifies installer startup and admission with fixture payloads, not a Rust
+compiler installation or full-workspace coverage run. The earlier instrumented
+failure and later memory interruption remain failed observations. Separate plain
+workspace tests passed 1,851/0 failures/35 ignored; strict workspace/all-target
+Clippy, formatting and documentation checks passed on Linux.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="windows-worker-process-tree-cleanup">Windows worker process-tree cleanup<a href="#windows-worker-process-tree-cleanup" class="hash-link" aria-label="Direct link to Windows worker process-tree cleanup" title="Direct link to Windows worker process-tree cleanup" translate="no">​</a></h3>
+<p>Cleanup retains handles to job members observed before requesting termination.
+Success requires both zero active job members and signalled retained process
+handles, under the existing deadline. A zero accounting count alone can precede
+Windows signalling a descendant&#x27;s handle. Retries retain those original handles;
+a membership-capture error still requests termination but cannot claim confirmed
+cleanup. Neither worker handle restrictions nor deadlines are relaxed.</p>
+<p>On Windows, <code>WindowsToolWorkerJob::new()</code> creates an unnamed, non-inheritable
+job with kill-on-last-handle-close enabled and no process breakaway permission.
+The native spawn adapter must create the initial worker suspended, call
+<code>assign_suspended(process_handle)</code>, and only then resume its primary thread.
+Assignment is permitted once, including when the native assignment fails. If it
+fails, the caller must terminate and reap the still-suspended initial process;
+it must never resume it or retry assignment on that job. This API does not
+verify the image, inspect suspension, transfer the supplied process handle,
+establish a sandbox or authenticate a control channel.</p>
+<p><code>terminate(absolute_monotonic_deadline)</code> requests termination of every process in
+the job, then queries native job accounting until no active processes remain.
+This includes descendants and any associated console-host processes. Success
+requires an empty job, not just a successful termination request. A repeated
+termination call is permitted. Assignment is permanently closed once termination
+starts, even for an initially empty job. The supervisor must independently join
+control I/O and finish handle/receipt cleanup before reporting operation cleanup.</p>
+<p><code>TOOL_WORKER_JOB_CLEANUP_TIMEOUT</code> or a native query/termination error means exit
+has not been confirmed. The owner retains its job handle so cleanup can be
+retried. Closing the last handle requests job-wide termination as a fallback;
+dropping this value alone does not claim observed exit. Native errors preserve
+their OS cause under stable <code>TOOL_WORKER_JOB_*</code> diagnostic context.</p>
+<p>The Windows-only tests launch the test executable suspended, assign it before
+resuming, and have it create a real descendant. They check breakaway denial,
+membership of both known processes, confirmed exit of both after termination,
+empty job accounting, independence of another live worker, last-handle-close
+termination, failed-assignment sequencing and empty-job shutdown. Console hosts
+were observed as additional job members on Windows; the tests intentionally
+require cleanup of all members rather than assuming a fixed process count.
+Run <code>oyzu exec -- cargo test --locked --lib launch::windows_job</code>. The ignored child
+fixture is invoked by those tests; it is not a product worker entry point.
+All four lifecycle tests pass on Windows GNU with Rust 1.94, as do the full
+locked suite, strict all-target Clippy, formatting and real CLI task scenarios.
+At commit <code>d9c18de</code>, the locked unit/integration tests, strict Clippy and formatting
+also passed on native Windows MSVC in
+<a href="https://github.com/micahlmartin/oyzu/actions/runs/37032992735" target="_blank" rel="noopener noreferrer" class="">CI run 37032992735</a>.
+The same checks passed on Linux and macOS; the Windows-only job tests do not run
+on those hosts. The complete workflow was still running when these completed
+steps were recorded; downstream build/task acceptance is not inferred from them.</p>
+<p>This is the Windows job component. The process primitive below supplies pinned
+same-binary creation and an explicit inherited handle list. Combined process/I/O
+deadline scheduling and backend dispatch remain unimplemented.
+Unix process groups and their equivalent cleanup verification remain outstanding.
+The implementation follows Microsoft&#x27;s <a href="https://learn.microsoft.com/en-us/windows/win32/procthread/job-objects" target="_blank" rel="noopener noreferrer" class="">job-object lifecycle contract</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="windows-same-binary-process-creation">Windows same-binary process creation<a href="#windows-same-binary-process-creation" class="hash-link" aria-label="Direct link to Windows same-binary process creation" title="Direct link to Windows same-binary process creation" translate="no">​</a></h3>
+<p><code>WindowsToolWorkerProcess::spawn_current(expected_image_digest, arguments, environment, directory, inherited_handles)</code> is an experimental native supervisor
+primitive. It resolves the running executable from the OS, never PATH or a project
+image setting. The expected <code>sha256:</code> digest must come from independently trusted
+release admission; computing a hash of whatever file happens to be present does
+not establish that admission. This API does not approve the release, admit backend
+capabilities, authenticate a protocol bootstrap or expose an install/exec command.</p>
+<p>Before creation it opens the image and all canonical parent directories without
+following reparse points at those opens. Parent handles deny directory replacement;
+the image handle denies writes/deletion while held. It hashes the opened image in
+bounded chunks and requires the expected digest and exact observed length. Images
+larger than 512 MiB are rejected by this initial implementation. The handles stay
+owned for the process owner&#x27;s lifetime. A changed release fails with
+<code>TOOL_WORKER_IMAGE_DIGEST_MISMATCH</code>; retry requires trusted release selection, not
+accepting the newly observed hash. No image or parent directory is modified.</p>
+<p>Image pinning is owned by <code>worker/windows_process/image.rs</code>. Disposable-file
+tests exercise write, delete, image rename and parent-directory rename denial
+while a pin is held, then successful replacement after release. A digest rejection
+must release every acquired handle so the update/retry path remains available.
+These tests use ordinary temporary files rather than a loaded executable, so the
+Windows loader&#x27;s own image lock cannot substitute for the pin&#x27;s protection. The
+path-taking helper is private; production still selects only the running executable.
+Run <code>cargo test --locked --lib tools::worker::windows_process::image</code>.
+These two pin-lifetime tests pass on Windows GNU Rust 1.94. Native MSVC verification
+of the extracted image module and its new tests remains pending.</p>
+<p>The caller supplies an absolute, admitted private working directory and literal
+bootstrap arguments. Arguments are quoted for native Windows parsing, without a
+shell. There are at most 256 arguments and 32,767 UTF-16 code units in the encoded
+command line including its terminator; NUL values are rejected. An explicit
+environment map replaces the inherited environment. It permits at most 256 ASCII
+alphanumeric/underscore names of 1-256 bytes, rejects case-insensitive duplicates
+and embedded NULs, and bounds the complete UTF-16 block to 32,767 code units.
+The empty map produces an empty environment block. The supervisor must supply
+only admitted settings; the primitive does not interpret or authorize their values.</p>
+<p>At most 16 caller-owned capability handles are consumed by launch. Their raw
+values remain unchanged for bootstrap arguments; the caller must bind their kinds
+and purpose independently. The child receives only these selected handles and
+one null-device handle used for its standard streams. Standard streams carry no
+control traffic and inherit no parent console output handle. Parent copies of
+the consumed handles close before the child is resumed. This uses the native
+<a href="https://learn.microsoft.com/en-us/windows/win32/api/processthreadsapi/nf-processthreadsapi-updateprocthreadattribute" target="_blank" rel="noopener noreferrer" class="">process handle-list attribute</a>, not broad inheritance into this child.
+Selected handles are temporarily inheritable in the parent during launch;
+coordination with any concurrent broad-inheritance launchers remains a supervisor
+integration obligation. The worker bootstrap must validate and clear inheritance
+on received handles before executing backend code.</p>
+<p>Creation is hidden and suspended. The process is assigned to its private job
+before its primary thread resumes. A failed assignment/resume terminates and
+waits for the initial process instead of leaving a suspended orphan. Earlier
+failure closes consumed handles without resuming a child. Native startup itself
+is synchronous; automatic handshake/operation deadline scheduling is not supplied
+by this primitive. <code>try_wait()</code> reports the full native DWORD exit code of the
+initial process. <code>terminate(deadline)</code> confirms an empty job and initial-process
+exit; it does not join I/O. Call the I/O owner&#x27;s shutdown as part of the same
+supervised cleanup. Dropping the process owner requests job termination through
+kill-on-close, without claiming observed exit.</p>
+<p>Tests spawn this same test binary through the primitive. They verify literal
+argument parsing, explicit environment, access to a selected event but no access
+to an unrelated inheritable event, request/response traffic on private pipes,
+termination with a descendant retaining those pipes and blocked I/O, partial-frame
+child exit, preservation of a high-bit DWORD exit code, wrong-image rejection and
+handle closure after failed native creation. A separate native Windows argument
+parser checks empty, quoted, Unicode and trailing-backslash argument round trips.
+Run <code>cargo test --locked --lib tools::worker::windows_process</code>.
+All four native process tests pass on Windows GNU Rust 1.94, together with the
+full locked suite, strict all-target Clippy, formatting and real CLI task scenarios.
+At <code>b68b983</code>, the locked unit/integration suite, strict Clippy and formatting also
+passed on Windows MSVC in
+<a href="https://github.com/micahlmartin/oyzu/actions/runs/37036054434" target="_blank" rel="noopener noreferrer" class="">run 37036054434</a>.
+Those steps passed on Linux/macOS too, where Windows-only tests are excluded.
+That observation predates the extracted image module and its two pin-lifetime
+tests, and does not establish success of the still-running full workflow.</p>
+<p>The focused <code>Tool worker lifecycle</code> workflow runs formatting, strict all-target
+Clippy and <code>cargo test --locked --lib tools::worker</code> on Windows, macOS and Linux
+with Rust 1.94. It runs for relevant changes on <code>main</code> and the active integration
+branch, and supports manual dispatch. Native tests launch their own ignored
+subprocess fixtures; ordinary <code>--ignored</code> execution is not required. This workflow
+does not run archive qualification, CLI task scenarios or captured builds. The
+full <code>CLI and scenarios</code> workflow remains the broader regression/acceptance suite;
+a green worker workflow cannot establish full OEP-0003 completion.</p>
+<p>The tests are lifecycle qualification, not mise execution. Release-manifest
+admission, the product worker entry point and authenticated bootstrap, automatic
+deadlines, backend dispatch, Unix spawning and the complete supervisor remain
+unfinished. No separate mise executable is used.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="worker-exchange-correlation">Worker exchange correlation<a href="#worker-exchange-correlation" class="hash-link" aria-label="Direct link to Worker exchange correlation" title="Direct link to Worker exchange correlation" translate="no">​</a></h3>
+<p><code>ToolWorkerExchange::new(request_bytes)</code> checks a closed outer request: exact
+protocol, canonical UUID, context/backend-release digests, a recognized target
+platform, operation enum, sorted unique capability IDs and an object payload.
+Use one exchange per supervised operation. <code>operation()</code> exposes the selected
+operation; <code>untrusted_payload()</code> deliberately does not imply payload admission.
+Recognized platform syntax does not establish backend/platform support, and
+capability names do not prove executor capabilities.</p>
+<p>Both <code>ToolWorkerExchange::context()</code> and <code>ToolWorkerSession::context()</code> return
+a borrowed <code>ToolWorkerRequestContext</code> containing <code>request_id</code>, <code>context_digest</code>,
+<code>backend_release_digest</code>, <code>target_platform</code> and the sorted capability IDs. These
+are the fields from the validated original request, not a second parse or a
+separately mutable identity. Use them to compare the request with independently
+trusted supervisor state before dispatch. They remain inspectable after the
+operation ends; inspecting this snapshot does not renew the operation, authenticate
+the channel, admit a capability or grant execution permission. No wire format or
+request validation rule changes with this accessor.</p>
+<p><code>finish(response_bytes)</code> compares protocol, request ID and context digest with
+the original request. It accepts exactly one <code>ok</code> response with an object result,
+or <code>error</code>/<code>cancelled</code> with a closed diagnostic containing only <code>code</code>. Codes are
+1-64 uppercase ASCII letters, digits or underscores; arbitrary worker message
+text is not accepted. Even successful results use the explicitly named
+<code>ToolWorkerOutcome::UntrustedResult</code> variant and require operation-specific
+validation, containment/digest checks and current authorization before use.</p>
+<p>Call <code>cancel()</code> once to obtain a correlated envelope with the same protocol,
+request ID and context digest and <code>operation=&quot;cancel&quot;</code>. It marks cancellation
+before transport; any write failure requires aborting the operation. A later
+success response is discarded rather than allowing a cancelled operation to
+publish. <code>abort()</code> handles timeout, transport loss or supervisor cancellation.
+Any response attempt, including malformed or mismatched input, terminates the
+exchange; a second response is rejected. This state machine does not send bytes,
+interrupt a blocking transport, cancel a process or authenticate the channel.</p>
+<p>The outer-envelope schema
+and shared fixtures cover request/response shapes. Sorting, response correlation
+and lifecycle rules are runtime checks. Cancel encoding, code-only diagnostics
+and cancellation-race handling are initial draft wire choices requiring contract
+review. Operation-specific request/result records and backend cancellation
+remain outstanding; this is not the complete typed worker schema or a deployed
+worker protocol.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="worker-side-operation-session">Worker-side operation session<a href="#worker-side-operation-session" class="hash-link" aria-label="Direct link to Worker-side operation session" title="Direct link to Worker-side operation session" translate="no">​</a></h3>
+<p>On Windows, <code>WindowsToolWorkerLifecycle::new(process, io)</code> joins ownership of an
+already-created process and its control channel. The trusted caller must associate
+the matching endpoint; this constructor does not authenticate their relationship.
+Use <code>control()</code> for protocol I/O and <code>try_wait()</code> for the initial process status.
+<code>shutdown(absolute_cleanup_deadline)</code> permanently denies further control access,
+interrupts both I/O directions, terminates and observes the job, then attempts I/O
+joining even if process cleanup failed. Both phases use the same deadline.
+Success returns the native initial-process exit code and confirms job-wide exit
+and joined threads. Failure retains ownership for another shutdown attempt;
+<code>TOOL_WORKER_PROCESS_CLEANUP_FAILED</code>, <code>TOOL_WORKER_CONTROL_CLEANUP_FAILED</code> or
+<code>TOOL_WORKER_CLEANUP_FAILED</code> preserve the relevant causes. A retry never reopens
+the protocol. Synchronous native calls are not preempted by this deadline.</p>
+<p>Dropping the lifecycle interrupts I/O and releases the process/job owner before
+the I/O owner joins its threads. Job close requests descendant termination;
+only explicit successful shutdown confirms process cleanup. Drop may still wait
+if native I/O cancellation fails to complete. Native tests cover descendants
+holding both control pipes, exhausted-budget retry, denial of protocol reuse and
+drop cleanup with a live transport peer. This Windows-only composition adds no
+backend dispatch, launch authorization, bootstrap protocol or Unix supervisor.</p>
+<p>For bounded synchronous collection of an already-started native I/O operation,
+<code>NativeToolWorkerIo::wait_receive_frame(deadline)</code> and <code>wait_send(deadline)</code> use
+an absolute <code>std::time::Instant</code>. They check expiry before polling and before
+returning a completed result. Expiry returns <code>TOOL_WORKER_IO_DEADLINE_EXCEEDED</code>,
+closes both directions and requests native interruption. An already-completed
+result collected after expiry is discarded. No elapsed-time extension occurs
+between polls; sleeps are at most one millisecond, subject to OS scheduling.
+The caller must still terminate the worker process and call <code>shutdown</code> with its
+separate cleanup deadline to confirm that all I/O threads joined. Expiry is not
+proof of process exit or completed cleanup, and the closed instance cannot be
+reused. These optional blocking waits do not schedule protocol defaults or a
+cancellation grace period. A supervisor that must concurrently observe process
+exit or user cancellation should use the nonblocking collection methods instead.
+Native tests keep peers open during incomplete reads and backpressured writes,
+then verify deadline failure, rejection of reuse and confirmed thread cleanup.</p>
+<p><code>ToolWorkerExchange::request_digest()</code> commits to the exact validated request body
+using SHA-256 over <code>oyzu.tool-worker.request.v1</code> followed by a NUL byte and the
+request bytes. The four-byte frame prefix is excluded. The supervisor must compute
+this expectation from its independently admitted request before launch.
+<code>ToolWorkerSession::from_committed_request(bytes, expected_digest)</code> validates the
+digest format and envelope, then rejects a mismatch with
+<code>TOOL_WORKER_REQUEST_COMMITMENT_INVALID</code>. This binds payload bytes as well as the
+outer identity. Even semantically equivalent JSON with different whitespace or
+field ordering fails against the original commitment; send the original bytes.
+After failure, tear down the operation rather than replacing the expectation
+with a digest computed from received input.</p>
+<p>For this startup path, <code>ToolWorkerChannel::receive_frame()</code> and the receiver&#x27;s
+equivalent return <code>ToolWorkerFrame</code>, preserving the bounded original body through
+<code>bytes()</code> alongside <code>untrusted_value()</code>. <code>NativeToolWorkerIo::try_receive_frame()</code>
+collects the same single pending read as <code>try_receive()</code>; collecting through one
+consumes it for both. Existing value-only receive APIs remain available. Frame
+limits and shared accounting are unchanged. These APIs perform no network access
+or persistent writes, and require no new configuration or lockfile fields.</p>
+<p>The digest is an integrity commitment, not a credential. Supplying both request
+and expectation from an untrusted source establishes no authority. Authenticated
+launch context, capability-handle validation and typed payload admission remain
+separate requirements. Tests cover an independent digest vector, payload
+substitution, changed JSON spelling and exact-byte exchange over native channels
+between test threads; they do not exercise a product worker entrypoint.</p>
+<p><code>ToolWorkerSession::new(request_bytes, expected_operation, expected_context)</code>
+applies the same bounded outer-request validation as the supervisor exchange,
+then requires exact equality with independently trusted supervisor state before
+creating a session. It compares operation, request ID, context digest, backend
+release digest, target and the complete ordered capability list. A mismatch returns
+<code>TOOL_WORKER_REQUEST_BINDING_INVALID</code>; neither adding nor dropping capabilities
+is accepted. Expected values must come from the supervisor operation, never from
+the received request. This is identity binding, not channel authentication or
+validation of payload values and capability handles. <code>operation()</code> and <code>untrusted_payload()</code> expose only the validated
+operation name and untrusted payload. One session represents one operation; it
+does not authorize serving multiple workspaces in a persistent worker process.</p>
+<p><code>accept_cancel(bytes)</code> accepts exactly the correlated cancel envelope once.
+Unknown fields, duplicate JSON keys, another initial request, foreign identities,
+malformed JSON and repeated cancellation permanently end the session. A valid
+cancel prevents later success output. The dispatcher must still interrupt or
+stop backend work; accepting the envelope alone has no process effect.</p>
+<p><code>finish(ToolWorkerOutcome)</code> encodes one correlated terminal response and reuses
+the supervisor&#x27;s validation, including frame limits, object results, code-only
+diagnostics and cancellation-race rejection. Invalid output consumes the attempt;
+it cannot be replaced with a second response. <code>abort()</code> ends the session after
+transport loss or dispatcher failure. A send failure requires teardown, with no
+retry or new context in the same worker. Result contents remain untrusted and
+require independent supervisor validation before any publication or execution.</p>
+<p>Before recursive response serialization, the shared JSON tree validator checks
+the same depth-32 and 10,000-entry limits used on input. Encoding then writes into
+a bounded buffer and stops before an append would exceed 8 MiB, counting JSON
+escaping and envelope fields. Geometric buffer reservation is capped at that
+frame size; output is not fully serialized into an unbounded temporary first.
+This bounds the encoded buffer, not memory a backend already used to construct
+its result. Encoding failure ends the session and emits no response bytes.</p>
+<p>Focused tests cover all three terminal outcomes, invalid/oversized output,
+malformed/foreign/duplicate cancel, repeated response and success-after-cancel.
+A native private-channel test sends a request and cancel, receives the correlated
+cancellation diagnostic and observes peer closure. The 15-second test watchdog
+does not implement production deadlines. Run <code>cargo test --locked tools::worker</code>;
+no mise dependency, network or backend execution is required. Worker process
+composition and channel authentication, actual dispatch, OS deadline scheduling,
+backend cancellation and typed operation payloads remain absent. The Windows
+native process primitive above separately implements image pinning and restricted
+inheritance; the session itself does not perform those operations.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/tool-tailscale-installation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Tool Tailscale Installation</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/toolchain-platforms"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Provisioned toolchain platform selection</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#internal-worker-control-framing" class="table-of-contents__link toc-highlight">Internal worker control framing</a></li><li><a href="#native-private-worker-endpoints" class="table-of-contents__link toc-highlight">Native private worker endpoints</a></li><li><a href="#interruptible-native-control-io" class="table-of-contents__link toc-highlight">Interruptible native control I/O</a></li><li><a href="#windows-worker-process-tree-cleanup" class="table-of-contents__link toc-highlight">Windows worker process-tree cleanup</a></li><li><a href="#windows-same-binary-process-creation" class="table-of-contents__link toc-highlight">Windows same-binary process creation</a></li><li><a href="#worker-exchange-correlation" class="table-of-contents__link toc-highlight">Worker exchange correlation</a></li><li><a href="#worker-side-operation-session" class="table-of-contents__link toc-highlight">Worker-side operation session</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

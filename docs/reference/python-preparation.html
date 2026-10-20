@@ -1,0 +1,454 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/python-preparation" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Captured Python package preparation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/python-preparation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Captured Python package preparation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/python-preparation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Captured Python package preparation","item":"https://docs.oyzu.ai/docs/reference/python-preparation"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.de4c0740.js" defer="defer"></script>
+<script src="/assets/js/main.dc58e292.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/python-preparation">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and shell activation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/local-builds"><span class="linkLabel_WmDU">Native local builds (in development)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-bundles"><span class="linkLabel_WmDU">Build bundles and retention</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/direct-tests"><span class="linkLabel_WmDU">Direct test reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/acquisition-transport"><span class="linkLabel_WmDU">Scoped dependency acquisition transport</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/ant"><span class="linkLabel_WmDU">Ant builds and test reporting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets (client slice)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-verification"><span class="linkLabel_WmDU">Running builder acceptance checks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cargo-sessions"><span class="linkLabel_WmDU">Managed Cargo launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance"><span class="linkLabel_WmDU">Repository compliance tooling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/declared-fetches"><span class="linkLabel_WmDU">Declared fetches</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/directory-artifacts"><span class="linkLabel_WmDU">Directory artifact integrity and materialization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-frontend"><span class="linkLabel_WmDU">Oyzu&#x27;s BuildKit frontend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-images"><span class="linkLabel_WmDU">Docker image inputs and offline builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-quality"><span class="linkLabel_WmDU">Dockerfile linting and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/dotnet"><span class="linkLabel_WmDU">.NET builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/engine-staging"><span class="linkLabel_WmDU">Exact native engine staging</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/example-collection"><span class="linkLabel_WmDU">Runnable examples collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/go"><span class="linkLabel_WmDU">Go applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle"><span class="linkLabel_WmDU">Gradle builds and tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle-sessions"><span class="linkLabel_WmDU">Managed Gradle launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/helm"><span class="linkLabel_WmDU">Helm charts and native chart tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/installer-recipes"><span class="linkLabel_WmDU">Installer-asset recipes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/java-quality"><span class="linkLabel_WmDU">Java quality tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven"><span class="linkLabel_WmDU">Maven builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven-sessions"><span class="linkLabel_WmDU">Managed Maven launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mise-maintenance"><span class="linkLabel_WmDU">Extracted tool mechanics maintenance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mocha"><span class="linkLabel_WmDU">Mocha tests and coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-applications"><span class="linkLabel_WmDU">Node application directory artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-quality"><span class="linkLabel_WmDU">Node lint and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-static-analysis"><span class="linkLabel_WmDU">Node static analysis in oyzu build --plan</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-workspace-tests"><span class="linkLabel_WmDU">Native Node workspace test bundles</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/npm-workspaces"><span class="linkLabel_WmDU">npm workspace builds and development tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/nuget-sessions"><span class="linkLabel_WmDU">Managed NuGet/.NET launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-indices"><span class="linkLabel_WmDU">Complete OCI image indices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-sessions"><span class="linkLabel_WmDU">Native OCI launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/os-package-locks"><span class="linkLabel_WmDU">OS package locks (oyzu lock)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog, detection and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Local development plugin bindings (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview: terms, support and recovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-releases"><span class="linkLabel_WmDU">Plugin releases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/pnpm"><span class="linkLabel_WmDU">pnpm builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-applications"><span class="linkLabel_WmDU">Python application artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-containers"><span class="linkLabel_WmDU">Python application containers (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/python-preparation"><span class="linkLabel_WmDU">Captured Python package preparation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-sessions"><span class="linkLabel_WmDU">Managed Python launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-testing"><span class="linkLabel_WmDU">Python test discovery and reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/runtime-matrices"><span class="linkLabel_WmDU">Verification toolsets and platform matrices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/rust"><span class="linkLabel_WmDU">Rust applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Experimental scan command</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/target-workspaces"><span class="linkLabel_WmDU">Host target workspaces and artifact inputs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-backend-inspection"><span class="linkLabel_WmDU">Tool Backend Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Tool Go Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-grant-inspection"><span class="linkLabel_WmDU">Tool grant inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Tool Helm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Tool Java, Maven and Gradle Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">Tool k3d Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">Tool kubectl Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Tool Liquibase Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool identity inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">Tool npm and pnpm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Tool Proxy Acquisition</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Tool Python Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-request-identity"><span class="linkLabel_WmDU">Tool Request Identity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Tool Rust Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Tool Shell Environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">Tool Store Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tool Tailscale Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-worker-contract"><span class="linkLabel_WmDU">Tool worker contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/toolchain-platforms"><span class="linkLabel_WmDU">Provisioned toolchain platform selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/yarn"><span class="linkLabel_WmDU">Yarn Classic builds</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">More reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Captured Python package preparation</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Captured Python package preparation</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/python-preparation.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>A captured <code>python/package</code> or <code>python/app</code> build first prepares its Python
+dependencies: a worker with access only to the public PyPI broker routes
+downloads binary wheels, then every build, test and quality action installs
+them offline. This page describes which authored inputs preparation reads and
+how it treats dependency-group includes, editable references to the project
+itself, dynamic versions and locked packages that must be built from source.
+Native pip, uv and Poetry semantics stay with those tools; Oyzu reads only the
+declarations listed here.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-preparation-captures">What preparation captures<a href="#what-preparation-captures" class="hash-link" aria-label="Direct link to What preparation captures" title="Direct link to What preparation captures" translate="no">​</a></h2>
+<p>The worker collects these declarations from the captured source:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Input</th><th>Purpose recorded</th></tr></thead><tbody><tr><td><code>project.dependencies</code> in <code>pyproject.toml</code></td><td><code>runtime</code></td></tr><tr><td><code>build-system.requires</code> (or native locked legacy tools, with fixed defaults for unselected tools)</td><td><code>build</code></td></tr><tr><td>The <code>dev</code> dependency group, with its includes</td><td><code>test</code></td></tr><tr><td><code>requirements.txt</code></td><td><code>runtime</code></td></tr><tr><td>Default test and quality tools not already declared or locked</td><td><code>build</code> or <code>test</code></td></tr></tbody></table>
+<p>A uv project contributes its native <code>uv export --locked</code> closure and a Poetry
+project its native lock export. That complete hashed export owns the selected
+project and group closure. Supplemental backend, requirements-file and injected
+tool requirements are resolved by native pip with the native registry lock as
+constraints, retaining their original extras and transitive dependencies. A pip
+project continues to resolve its complete declarations. Every original root
+remains available to native dependency inventory validation; separating download
+roots does not remove extra activation, closure/version checks or the guard
+against downloading a package already selected for a source build. Every wheel
+is digest-recorded in the
+dependency snapshot.</p>
+<p>An authored <code>build-system.requires</code> remains authoritative, including native
+conflicts with a lock. When it is absent, the implicit setuptools/wheel backend
+uses active requirements already selected by the native lock. Only an
+unselected tool receives the fixed fallback (<code>setuptools==80.9.0</code> or
+<code>wheel==0.45.1</code>). Native packaging interprets names and environment markers;
+every active locked constraint is retained for pip to resolve. No lock is
+refreshed and no authored requirement is dropped to make a conflict disappear.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-current-package-as-a-quality-tool">The current package as a quality tool<a href="#the-current-package-as-a-quality-tool" class="hash-link" aria-label="Direct link to The current package as a quality tool" title="Direct link to The current package as a quality tool" translate="no">​</a></h3>
+<p>A captured package/library can itself provide the selected native quality tool,
+as when building Black with Black formatting. The offline build installs the
+project&#x27;s wheel before quality checks, so those checks use the installed tool.
+Oyzu omits only the implicit quality fallback whose native canonical name equals
+the current package name; it does not download a second public copy of that
+package. Explicit requirements and native locked constraints, build/test-runner
+defaults, ordinary tool acquisition and required failure/report gates remain
+unchanged. This does not change app or runtime-only preparation or execute
+project/backend code during acquisition. The affected native Black replay passed
+offline preparation/build and actual installed self-formatting; its required
+coverage and lint failures still block full package delivery. See the
+qualification result.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dependency-group-includes">Dependency-group includes<a href="#dependency-group-includes" class="hash-link" aria-label="Direct link to Dependency-group includes" title="Direct link to Dependency-group includes" translate="no">​</a></h3>
+<p><code>[dependency-groups]</code> follows <a href="https://peps.python.org/pep-0735/" target="_blank" rel="noopener noreferrer" class="">PEP 735</a>.
+An entry is either a requirement string or an <code>{ include-group = &quot;name&quot; }</code>
+table, and an include is expanded in place. Group names compare after PEP 503
+normalization, so <code>Runtime_Checks</code> and <code>runtime-checks</code> name the same group:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">dependency-groups</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">dev</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token key property" style="color:#36acaa">include-group</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;tests&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;pytest-cov==6.0.0&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">tests</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token key property" style="color:#36acaa">include-group</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;runtime-checks&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;pytest==8.3.5&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">runtime-checks</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;packaging==24.2&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<p>Preparation captures <code>packaging</code>, <code>pytest</code> and <code>pytest-cov</code> as test inputs. An
+include of an undefined group, a group defined twice under equivalent names,
+a cyclic include or any other table entry fails preparation with a diagnostic
+naming the group. Only the <code>dev</code> group is selected, matching uv&#x27;s default; for
+uv projects the native export applies the same includes.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-project-itself-as-a-requirement">The project itself as a requirement<a href="#the-project-itself-as-a-requirement" class="hash-link" aria-label="Direct link to The project itself as a requirement" title="Direct link to The project itself as a requirement" translate="no">​</a></h3>
+<p>Requirements files commonly install the project under development, as in
+<code>-e .[cli]</code>, and dependency groups commonly reference the project with extras,
+such as <code>name[tests]</code>. The project is built from the captured source, so
+preparation never downloads it. Such a reference is replaced by the
+requirements that installing the project adds: <code>project.dependencies</code> and the
+<code>project.optional-dependencies</code> tables for the selected extras, following
+extras that reference the project again. Extra names compare normalized. An
+undefined extra fails preparation, and a reference whose environment marker does
+not apply to the build interpreter is skipped, as pip skips it.</p>
+<p>The editable forms accepted in <code>requirements.txt</code> are <code>-e .</code>, <code>-e ./</code>,
+<code>--editable .</code> and <code>--editable=.</code>, each optionally followed by <code>[extras]</code>; the
+project needs a static <code>project.name</code>. Every other directive, including <code>-r</code>,
+<code>-c</code>, an editable path to another directory and option lines, still fails with
+<code>Unsupported requirements directive; no alternate source fallback</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="current-project-dependency-back-edges">Current-project dependency back-edges<a href="#current-project-dependency-back-edges" class="hash-link" aria-label="Direct link to Current-project dependency back-edges" title="Direct link to Current-project dependency back-edges" translate="no">​</a></h3>
+<p>In a package/library build, an exported dependency can itself require the
+current project, including an extra: for example, a Litestar plugin requires
+<code>litestar[cli]&gt;=2.0.1</code>. The current project is built from captured source, so it
+is a provider for that dependency without being downloaded or represented as
+an external package ID. Native inventory checks its declared base requirements,
+requested optional groups and their captured closure using native marker and
+extra semantics. Unknown extras, missing dependencies, unapproved direct URLs
+and a duplicate downloaded/source identity fail. Dynamic dependency metadata
+cannot establish this closure without backend execution and is refused.</p>
+<p>The original source version is not assumed equal to the final snapshot version.
+Active back-edge constraints remain explicitly pending in private prepared
+metadata. At the start of the existing package prepare action, after the private
+project version is bound to the shared version decision, native PEP 440 checks
+compare every pending constraint with actual <code>OYZU_VERSION</code>. A missing planned
+version, identity mismatch or incompatible constraint fails before creating the
+venv, installing dependencies or running a source backend. Acquisition does not
+run project code or invent a version for dynamic metadata. This provider is not
+available in app or runtime-only dependency contexts.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dynamic-versions">Dynamic versions<a href="#dynamic-versions" class="hash-link" aria-label="Direct link to Dynamic versions" title="Direct link to Dynamic versions" translate="no">​</a></h3>
+<p>A project may list <code>version</code> in <code>project.dynamic</code> instead of declaring it.
+For the selected <code>pdm.backend</code>, this native declaration supplies a version
+without running the backend or importing project code:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">project</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">name</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;example&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">dynamic</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;version&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">build-system</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">requires</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;pdm-backend&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">build-backend</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;pdm.backend&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tool.pdm.version</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">source</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;file&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">path</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;example/__init__.py&quot;</span><br></div></code></pre></div></div>
+<p>Oyzu reads that captured UTF-8 file and follows PDM&#x27;s default syntax: the first
+line matching <code>__version__ = &quot;1.2.3&quot;</code> or <code>VERSION = &#x27;1.2.3&#x27;</code> wins, including
+an optional trailing comment. Native <code>packaging.Version</code> validates and normalizes
+the literal, and the existing <a class="" href="/docs/reference/version-inference">shared version inference</a>
+selects its source snapshot. The recorded <code>nativeVersion</code> retains the native
+value; wheel/sdist metadata carries the selected snapshot. Actual native PDM
+metadata, installed-artifact tests/coverage and an independent offline
+delivered-wheel consumer passed on Linux; see the
+bounded proof.</p>
+<p>The path must be relative, contained in admitted captured source, free of links
+or reparse points, and name a regular file no larger than 4 MiB. Unsafe or missing
+paths, invalid UTF-8, a missing default literal and an invalid PEP 440 version
+fail preparation; correct the native declaration or version file and rerun.
+No project code in the file executes while facts are acquired.</p>
+<p>Other dynamic forms retain name-only facts and tag-based inference: setuptools
+<code>[tool.setuptools.dynamic] version = { attr = ... }</code>, Hatch file/VCS providers,
+PDM call/SCM/custom-pattern providers, and PDM projects with <code>backend-path</code>, a
+configured <code>tool.pdm.build.custom-hook</code> or conventional <code>pdm_build.py</code>. These
+providers are not executed during preparation or claimed as native file facts.
+Without applicable tags their base remains <code>0.0.0</code>, giving a PEP 440 snapshot
+such as <code>0.0.0.dev0+g0123456789ab</code>; the <code>native</code> strategy fails with
+<code>version-needs-native</code> when no native version is available.</p>
+<p>In its private build tree the build removes <code>version</code> from <code>project.dynamic</code>,
+removes <code>tool.setuptools.dynamic.version</code> when present and writes the selected
+snapshot as the static <code>project.version</code>, so the wheel, sdist and their metadata
+carry the same version. The checkout keeps its dynamic declaration. A
+<code>pyproject.toml</code> without either a static or a dynamic version still fails with
+<code>Python project version must be static or listed in project.dynamic</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="packages-built-from-source">Packages built from source<a href="#packages-built-from-source" class="hash-link" aria-label="Direct link to Packages built from source" title="Direct link to Packages built from source" translate="no">​</a></h3>
+<p>Some locked packages have no wheel to download: a <code>uv.lock</code> package whose source
+is a Git repository pinned to a commit, and a uv workspace member or path
+dependency, which <code>uv export</code> lists as <code>-e ./PATH</code> or <code>./PATH</code>, and a registry
+package that <code>uv.lock</code> locks with only a source distribution (sdist) and no
+wheel. Following the
+maintainer decision of 2026-10-10, these are built from source, but the build
+runs only inside the isolated, network-denied build worker, never during
+preparation:</p>
+<ol>
+<li class="">Preparation splits these lines from the native export. Only registry lines
+are downloaded with their hashes; a project or group declaration that names
+such a package is satisfied by its source build and is not downloaded. This
+includes a declaration that repeats the source as a direct URL, such as
+<code>advanced-alchemy @ git+https://github.com/...</code> in an extra or dependency
+group, when <code>uv.lock</code> pins that package to a Git commit or member. A direct
+URL for a package that is not built from a locked source is still refused.
+A registry package with an <code>sdist</code> and no <code>wheels</code> in <code>uv.lock</code> is removed
+from the wheel download and treated as a source package of kind <code>sdist</code>.
+Its sdist is downloaded from the <code>files.pythonhosted.org</code> route of the scoped
+broker, checked against the SHA-256 in <code>uv.lock</code> (a missing hash or a URL
+outside that route fails preparation), and unpacked by Oyzu without running
+any of its code. Only regular files are written, names must be portable
+with one top-level directory, and archives are limited to 256 MiB. The tree is
+stored under <code>sources/</code> and then follows steps 3 and 4. A package with any
+wheel keeps the wheel download.</li>
+<li class="">Each Git source is fetched at the commit <code>uv.lock</code> records, with the native
+Git client through a read-only route of the scoped broker. Only public HTTPS
+GitHub repositories have routes, as for Cargo Git sources. The checkout&#x27;s
+tree, without Git metadata, is stored under <code>sources/</code> in the prepared tree.
+No hooks, filters, submodules or credentials are used.</li>
+<li class="">Preparation reads each source&#x27;s <code>build-system.requires</code> from its
+<code>pyproject.toml</code> (or native locked legacy tools, with fixed fallbacks, for a <code>setup.py</code>
+package without it) and captures those requirements as <code>build</code> wheels,
+resolved with the lock&#x27;s constraints. No backend or package code runs.</li>
+<li class="">In the build worker, after the captured wheels are installed, each source is
+copied into the <a href="#private-build-state" class="">private build state</a> and built with
+<code>pip wheel --no-index --no-deps --no-build-isolation</code>, so the backend and its
+requirements come only from the captured set. A build requirement missing
+from that set fails before the build runs. The wheel must carry the locked
+name and version; the wheels are then installed from a manifest of their
+digests with <code>--require-hashes</code>, and the project builds and tests against
+them.</li>
+</ol>
+<p>For example, with this declaration uv locks <code>sampleproject</code> at the commit, and
+preparation records it with <code>sourceId</code> <code>python-git-0</code>:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">project</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">dependencies</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;sampleproject&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tool.uv.sources</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">sampleproject</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"> </span><span class="token key property" style="color:#36acaa">git</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;https://github.com/pypa/sampleproject&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token key property" style="color:#36acaa">rev</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;621e4974ca25ce531773def586ba3ed8e736b3fc&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p>The dependency snapshot
+records each Git source as a package whose digest is that of its captured tree,
+with <code>verification</code> <code>digest-only</code>, and lists every source package with its
+kind, path, commit, purpose and build requirements in the
+<code>oyzu.dev/python-sources</code> extension; an sdist source also records its URL and
+SHA-256, and its package record uses <code>sourceId</code> <code>pypi</code>. Workspace members are part of the captured
+project source and have no separate package record. Because Git metadata is not
+captured, <code>SETUPTOOLS_SCM_PRETEND_VERSION</code> is set to the locked version during
+the source build, so backends that read the version through setuptools-scm or
+hatch-vcs use it.</p>
+<p>A source whose build requirements include <code>maturin</code> or <code>setuptools-rust</code> needs a
+Rust toolchain and Cargo crates, which Python preparation does not capture.
+Preparation fails naming the requirement before any build runs, as for the
+maturin-built <code>pydantic-core</code> workspace member of pydantic. Python applications
+(<code>python/app</code>) whose runtime closure includes a package built from source fail
+at packaging, because application archives install captured wheels only;
+runtime dependency contexts for Docker refuse such packages during preparation.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="private-build-state">Private build state<a href="#private-build-state" class="hash-link" aria-label="Direct link to Private build state" title="Direct link to Private build state" translate="no">​</a></h2>
+<p>The build worker keeps everything it creates for a Python target outside the
+project tree, in <code>/out/.oyzu-python</code> of the target&#x27;s private output root:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>venv/</code></td><td>Build environment with the captured wheels and source builds installed</td></tr><tr><td><code>dist/</code></td><td>Native wheel and sdist before packaging copies them</td></tr><tr><td><code>sources/</code>, <code>source-builds/</code>, <code>source-wheels/</code></td><td>Copies and wheels of <a href="#packages-built-from-source" class="">packages built from source</a></td></tr><tr><td><code>application/</code>, <code>application-project/</code>, <code>application.pyz</code>, <code>test-application/</code></td><td><a class="" href="/docs/reference/python-applications">Application</a> staging, archive and its extracted test copy</td></tr></tbody></table>
+<p>The output root persists across the target&#x27;s actions and is never inside
+<code>/workspace</code>, so a project at the workspace root is covered too. Native build
+backends therefore cannot pack the build environment into the sdist (hatchling
+and other backends that include untracked files did, issue #315), and Ruff,
+Black and Flake8 check only project files without an added exclusion.
+Packaging still copies artifacts to the target&#x27;s bundle directory
+<code>/out/&lt;target&gt;/&lt;platform&gt;/</code> (named to the adapter as <code>OYZU_OUTPUT</code>) and reports
+are written to its <code>reports/</code> directory, so bundle locations follow the shared
+<a class="" href="/docs/reference/build-bundles#layout">bundle layout</a>.</p>
+<p>The state is private to the worker and not an input or output contract. Project
+hooks that ran against the former <code>.oyzu-build/</code> folder inside the project no
+longer see it there. A Python target has no stage contract, so the action cache
+reuses it only as a whole target and never needs to restore this state.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-recovery">Failures and recovery<a href="#failures-and-recovery" class="hash-link" aria-label="Direct link to Failures and recovery" title="Direct link to Failures and recovery" translate="no">​</a></h2>
+<p>Preparation failures stop the build before any action runs and retain the
+worker diagnostic. Correct the authored input and start a new build.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Diagnostic</th><th>Cause and recovery</th></tr></thead><tbody><tr><td><code>Dependency group NAME is not defined</code> / <code>includes itself</code></td><td>Fix the include in <code>[dependency-groups]</code></td></tr><tr><td><code>Project extra NAME is not defined</code></td><td>Declare the extra in <code>project.optional-dependencies</code> or correct the reference</td></tr><tr><td><code>An editable project reference needs a static pyproject.toml project name</code></td><td>Declare <code>project.name</code> statically</td></tr><tr><td><code>Source package NAME needs build requirement maturin...</code></td><td>The source builds Rust code; no Rust toolchain or Cargo inputs are captured. Not supported (below)</td></tr><tr><td><code>Source package NAME build requirement REQ is not in the captured dependency set</code></td><td>A source&#x27;s build requirement was not captured; the isolated build stops before running its backend</td></tr><tr><td><code>Isolated source build of NAME failed</code></td><td>The backend failed offline with only captured inputs; pip&#x27;s native output is in the action log</td></tr><tr><td><code>Locked path requirement PATH: only workspace members and path dependencies inside the captured project can be built</code></td><td>The export names an absolute path, a parent directory or a <code>file:</code> URL</td></tr><tr><td><code>Git sources currently require a public HTTPS GitHub repository</code> / <code>Git source must lock a full commit identity</code></td><td>The <code>uv.lock</code> Git source is not admitted; pin a public GitHub repository by commit</td></tr><tr><td><code>Git source NAME uses submodules, which preparation does not fetch</code></td><td>The locked commit has a <code>.gitmodules</code> file</td></tr><tr><td><code>Git sources need the git client in the Python preparation image</code></td><td>The preparation image has no <code>git</code>; the provisioned images install it</td></tr><tr><td><code>Packages built from source are supported only for uv projects with uv.lock</code> / <code>...not supported in runtime dependency contexts</code></td><td>Source builds from a Poetry export or for a Docker runtime context</td></tr><tr><td><code>uv.lock sdist-only package NAME: has no locked SHA-256...</code> / <code>...outside the approved registry file route</code></td><td>The lock&#x27;s sdist entry cannot be trusted as a hashed input; re-lock from PyPI</td></tr><tr><td><code>The sdist of NAME does not match the SHA-256 recorded in uv.lock</code></td><td>The downloaded archive differs from the lock; nothing is built</td></tr><tr><td><code>Python applications cannot package runtime dependency NAME built from source yet</code></td><td>A <code>python/app</code> runtime dependency is built from source</td></tr><tr><td><code>Direct URL requirements need an approved source adapter</code></td><td>A declaration or requirements file pins a direct URL or Git source outside <code>uv.lock</code></td></tr><tr><td><code>Current project dependency REQ is incompatible with planned version VERSION</code></td><td>A back-edge does not accept the actual snapshot; the original native version is not proof of compatibility</td></tr><tr><td><code>Current project extra is not defined: NAME</code> / <code>Current project dependency closure requires static metadata</code></td><td>The requested current-project closure cannot be established from admitted captured metadata</td></tr><tr><td><code>Poetry lock is missing or stale; update it with poetry lock</code></td><td>The lock does not match <code>pyproject.toml</code>; run <code>poetry lock</code> and commit the result</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Source builds.</strong> Git sources, sdist-only registry packages and local members
+are built from source only for uv; Poetry Git and path sources and pip requirements-file Git or path
+lines are still refused. Git sources need a public HTTPS GitHub repository and
+a full commit; sdist-only packages need <code>files.pythonhosted.org</code> sdists in
+<code>uv.lock</code> and are refused in runtime contexts and applications like other
+source builds; submodules and Git LFS content are not fetched. Sources that
+build Rust (maturin, setuptools-rust) and other non-Python build toolchains
+beyond what the build image provides are not captured. A source package that
+is itself the build requirement of another source is refused, environment
+markers on member lines are refused, and virtual members are skipped as uv
+skips them. These choices are provisional and conservative.</li>
+<li class=""><strong>Source build evidence.</strong> The source-built wheels are not reproducibility
+checked; their bytes come from the backend run in the build worker, and only
+the source tree and captured build requirements are digest-recorded.</li>
+<li class=""><strong>Stale Poetry locks.</strong> A lock whose content hash no longer matches the
+project is rejected, as <code>poetry install</code> rejects it; Oyzu does not refresh or
+tolerate it. Confirmed by the maintainer on 2026-10-10.</li>
+<li class=""><strong>Dynamic version evidence.</strong> Only the selected PDM default file form above
+supplies declarative native version facts; other computed versions use tags.
+Other dynamic metadata, such as dynamic dependencies, is not computed.</li>
+<li class=""><strong>Groups.</strong> Only <code>dev</code> is selected; selecting other groups is not
+configurable.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
+<p><code>python tooling/test-build-scenarios.py --suite python --only python-captured --cli &lt;compiled-cli&gt;</code>
+selects full checks and captured execution through its registered wrappers. It
+builds pip and uv fixtures with dependency-group includes, a pip project whose
+<code>requirements.txt</code> installs itself with an extra, a setuptools project with
+a dynamic version, a PDM default file-version project with an independent
+delivered-wheel consumer, explicit optional prerequisites/native formatter scope,
+uv workspace and local-path dependencies, a uv Git source pinned to a
+<code>pypa/sampleproject</code> commit,
+a uv sdist-only registry package (<code>pyperclip</code> 1.9.0), a real registry wheel
+depending on that locked source build, legacy root/member backends with native
+locked setuptools, and a positive Poetry main/dev export. Each successful build
+must retain unchanged source/lock bytes, deliver wheel/sdist artifacts, and
+collect passing installed-artifact tests and coverage with measured hits. Git
+dependency tests also exercise the project&#x27;s installed module. Refusal cases
+cover cyclic includes, missing extras, external editable paths, unapproved direct
+URLs, maturin members, and stale uv/Poetry locks; they must retain unchanged
+authored inputs and deliver no successful artifacts.</p>
+<p>Fixture lock setup uses the provisioned uv/Poetry images with <code>--pull=never</code>;
+network access there authors a native lock before the captured build starts and
+is not an execution fallback. When fixture setup needs a custom certificate
+authority, explicitly set <code>SSL_CERT_FILE</code> to a readable regular CA bundle. The
+harness mounts it read-only for native lock acquisition and supplies its path to
+uv, Requests/Poetry and Git, preserving TLS validation. An invalid explicit path
+fails before Docker starts. This fixture setting does not change captured-build
+trust or add the CA to an image.</p>
+<p>The registered captured/full group passed all 22 expected outcomes on Linux:
+14 successful artifact flows each collected passing installed-artifact tests
+and coverage, seven required preparation refusals emitted no actions/artifacts,
+and one required formatter failure retained real passing tests/reports while
+blocking every artifact. Source/lock guards and compiled inspection passed. The
+PDM flow additionally executed its delivered wheel independently offline. For stale
+uv declarations, the pinned native tool refuses offline resolution before its
+stale-lock diagnostic; a separate freshness guard is not claimed from that case.
+All eight affected pinned corpus baselines ran; Attrs completed its installed
+artifact/test/report/package flow, while the other repositories retained
+explicit failures or refusals. The captured helper, backend, transitive-source
+and Poetry fixtures passed. Litestar&#x27;s real offline prepare/build corrections
+passed, but its own snapshot parser blocks collection/reports/package exports;
+that remains a named upstream compatibility outlier.
+Configured FastAPI selects its declared all extra and native formatter scope,
+clearing the earlier optional-CLI failure. Its installed tests report 3595 passed,
+one telemetry prerelease conflict and 22 skips; native Ruff rejects three
+translation-test Markdown fixtures and one skills reference document. Required
+reports are retained and packaging remains blocked. Black&#x27;s implicit self-tool
+correction passes native prepare/build and actual installed Black formatting.
+Its 556 passing native tests and three skips still yield a failed test
+action because mandatory Cobertura is missing: native coverage configuration
+omits installed site-packages. Native Flake8/pycodestyle also crashes on its
+existing invalid-escape token fixture. No Black artifacts are exported. These
+distinct configured replays do not replace the original pinned baselines or
+imply corpus success. See
+captured Python completion
+for exact revisions, tools, native evidence, remaining scenarios and corpus
+obligations. The Rust unit tests
+in <code>src/builders/python/adapter/requirements.rs</code> cover include expansion,
+normalized names and the accepted editable forms, and those in
+<code>src/builders/python/adapter/sources.rs</code> cover Git source admission, export
+splitting and member lookup. Unit checks supplement the compiled native proof;
+they do not qualify the remaining source forms or pinned corpus.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-coverage-omits-the-installed-package">Native coverage omits the installed package<a href="#native-coverage-omits-the-installed-package" class="hash-link" aria-label="Direct link to Native coverage omits the installed package" title="Direct link to Native coverage omits the installed package" translate="no">​</a></h3>
+<p>Installed-artifact tests measure the installed package, not the checkout. A
+native coverage configuration such as <code>[tool.coverage.report]</code> with
+<code>omit = [&quot;*/site-packages/*&quot;]</code> can therefore exclude every measured package file:
+native assertions may pass while coverage reports <code>No data to report</code> and the
+required Cobertura report is missing. The test action fails and packaging stays
+blocked. Narrow or remove that exclusion in the project&#x27;s native coverage
+configuration so the installed package remains eligible, then rerun and retain
+the configuration change as an explicit captured input. Do not substitute
+checkout-only coverage, suppress the required report or infer coverage success
+from pytest&#x27;s passing assertion count. This recovery guidance does not claim a
+configured Black coverage rerun has passed. See <a class="" href="/docs/reference/python-testing">Python artifact testing</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/python-containers"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Python application containers (experimental)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/python-sessions"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Managed Python launch sessions (prototype)</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-preparation-captures" class="table-of-contents__link toc-highlight">What preparation captures</a><ul><li><a href="#the-current-package-as-a-quality-tool" class="table-of-contents__link toc-highlight">The current package as a quality tool</a></li><li><a href="#dependency-group-includes" class="table-of-contents__link toc-highlight">Dependency-group includes</a></li><li><a href="#the-project-itself-as-a-requirement" class="table-of-contents__link toc-highlight">The project itself as a requirement</a></li><li><a href="#current-project-dependency-back-edges" class="table-of-contents__link toc-highlight">Current-project dependency back-edges</a></li><li><a href="#dynamic-versions" class="table-of-contents__link toc-highlight">Dynamic versions</a></li><li><a href="#packages-built-from-source" class="table-of-contents__link toc-highlight">Packages built from source</a></li></ul></li><li><a href="#private-build-state" class="table-of-contents__link toc-highlight">Private build state</a></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a><ul><li><a href="#native-coverage-omits-the-installed-package" class="table-of-contents__link toc-highlight">Native coverage omits the installed package</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

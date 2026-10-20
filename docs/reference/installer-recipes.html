@@ -1,0 +1,404 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/installer-recipes" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Installer-asset recipes | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/installer-recipes"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Installer-asset recipes | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/installer-recipes.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/installer-recipes.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/installer-recipes"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/installer-recipes" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/installer-recipes" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Installer-asset recipes","item":"https://docs.oyzu.ai/docs/reference/installer-recipes"}]}</script><link rel="stylesheet" href="/assets/css/styles.4a09d5a4.css">
+<script src="/assets/js/runtime~main.de4c0740.js" defer="defer"></script>
+<script src="/assets/js/main.dc58e292.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/installer-recipes">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/configuration"><span class="categoryLinkLabel_W154">Configuration and shell activation</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts/build-graph"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">More reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/local-builds"><span class="linkLabel_WmDU">Native local builds (in development)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-bundles"><span class="linkLabel_WmDU">Build bundles and retention</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/direct-tests"><span class="linkLabel_WmDU">Direct test reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/acquisition-transport"><span class="linkLabel_WmDU">Scoped dependency acquisition transport</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/ant"><span class="linkLabel_WmDU">Ant builds and test reporting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets (client slice)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-verification"><span class="linkLabel_WmDU">Running builder acceptance checks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cargo-sessions"><span class="linkLabel_WmDU">Managed Cargo launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/compliance"><span class="linkLabel_WmDU">Repository compliance tooling</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/declared-fetches"><span class="linkLabel_WmDU">Declared fetches</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/directory-artifacts"><span class="linkLabel_WmDU">Directory artifact integrity and materialization</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-frontend"><span class="linkLabel_WmDU">Oyzu&#x27;s BuildKit frontend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-images"><span class="linkLabel_WmDU">Docker image inputs and offline builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/docker-quality"><span class="linkLabel_WmDU">Dockerfile linting and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/dotnet"><span class="linkLabel_WmDU">.NET builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/engine-staging"><span class="linkLabel_WmDU">Exact native engine staging</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/example-collection"><span class="linkLabel_WmDU">Runnable examples collection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/go"><span class="linkLabel_WmDU">Go applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle"><span class="linkLabel_WmDU">Gradle builds and tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/gradle-sessions"><span class="linkLabel_WmDU">Managed Gradle launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/helm"><span class="linkLabel_WmDU">Helm charts and native chart tests</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/installer-recipes"><span class="linkLabel_WmDU">Installer-asset recipes</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/java-quality"><span class="linkLabel_WmDU">Java quality tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven"><span class="linkLabel_WmDU">Maven builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/maven-sessions"><span class="linkLabel_WmDU">Managed Maven launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mise-maintenance"><span class="linkLabel_WmDU">Extracted tool mechanics maintenance</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/mocha"><span class="linkLabel_WmDU">Mocha tests and coverage</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-applications"><span class="linkLabel_WmDU">Node application directory artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-quality"><span class="linkLabel_WmDU">Node lint and formatting</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-static-analysis"><span class="linkLabel_WmDU">Node static analysis in oyzu build --plan</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/node-workspace-tests"><span class="linkLabel_WmDU">Native Node workspace test bundles</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/npm-workspaces"><span class="linkLabel_WmDU">npm workspace builds and development tasks</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/nuget-sessions"><span class="linkLabel_WmDU">Managed NuGet/.NET launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-indices"><span class="linkLabel_WmDU">Complete OCI image indices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/oci-sessions"><span class="linkLabel_WmDU">Native OCI launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/os-package-locks"><span class="linkLabel_WmDU">OS package locks (oyzu lock)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog, detection and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Local development plugin bindings (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview: terms, support and recovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-releases"><span class="linkLabel_WmDU">Plugin releases</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/pnpm"><span class="linkLabel_WmDU">pnpm builds</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-applications"><span class="linkLabel_WmDU">Python application artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-containers"><span class="linkLabel_WmDU">Python application containers (experimental)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-preparation"><span class="linkLabel_WmDU">Captured Python package preparation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-sessions"><span class="linkLabel_WmDU">Managed Python launch sessions (prototype)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/python-testing"><span class="linkLabel_WmDU">Python test discovery and reports</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/runtime-matrices"><span class="linkLabel_WmDU">Verification toolsets and platform matrices</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/rust"><span class="linkLabel_WmDU">Rust applications, libraries and workspaces</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Experimental scan command</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/target-workspaces"><span class="linkLabel_WmDU">Host target workspaces and artifact inputs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-backend-inspection"><span class="linkLabel_WmDU">Tool Backend Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Tool Go Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-grant-inspection"><span class="linkLabel_WmDU">Tool grant inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Tool Helm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Tool Java, Maven and Gradle Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">Tool k3d Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">Tool kubectl Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Tool Liquibase Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool identity inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">Tool npm and pnpm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Tool Proxy Acquisition</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Tool Python Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-request-identity"><span class="linkLabel_WmDU">Tool Request Identity</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Tool Rust Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Tool Shell Environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">Tool Store Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tool Tailscale Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-worker-contract"><span class="linkLabel_WmDU">Tool worker contract</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/toolchain-platforms"><span class="linkLabel_WmDU">Provisioned toolchain platform selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/yarn"><span class="linkLabel_WmDU">Yarn Classic builds</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">More reference</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Installer-asset recipes</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Installer-asset recipes</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/installer-recipes.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Some packages download extra files while they install or run: Puppeteer
+downloads a browser, node-gyp downloads Node.js headers. A captured build runs
+without network, so those downloads fail. For a package Oyzu recognises, the
+builder downloads the matching file during preparation and points the tool at it
+through the tool&#x27;s own settings. The project declares nothing.</p>
+<p>Status: experimental and provisional. This answers the &quot;known recipes&quot; open
+decision of the declared fetches design
+for the Node builder. The choices marked provisional below need maintainer
+review. Recipes have unit tests and a registered compiled-CLI check, which have
+not been run yet (see <a href="#verification" class="">verification</a>).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-recipe-works">How a recipe works<a href="#how-a-recipe-works" class="hash-link" aria-label="Direct link to How a recipe works" title="Direct link to How a recipe works" translate="no">​</a></h2>
+<p>A recipe is a table owned by the builder: a recognised package, the asset URL
+for its locked version, a SHA-256 pinned in the repository, and the settings and
+cache layout the tool reads. Recipes reuse the <a class="" href="/docs/reference/declared-fetches">declared fetches</a>
+engine, with no second download path:</p>
+<ol>
+<li class="">After the package manager&#x27;s captured preparation, the Node builder reads the
+locked packages, the verified registry archives and the captured Node version.</li>
+<li class="">For each recognised package it looks up the pinned asset. A version or
+platform without a pinned asset is reported (below) and nothing is guessed.</li>
+<li class="">Each asset is admitted against <code>fetches.sources</code>, downloaded through the
+broker, verified against the pinned digest, stored by digest under
+<code>&lt;user data&gt;/cache/fetches/</code> and unpacked under <code>recipes/&lt;recipe&gt;/</code> in the
+prepared tree, in the tool&#x27;s own layout.</li>
+<li class="">Execution sees the prepared tree read-only at <code>/dependencies</code>. Every command
+action (install, tasks and package) gets the recipe&#x27;s settings, so the
+install script skips its download and the tool finds the asset at run time.</li>
+</ol>
+<p>Recipes apply to captured Node builds, which is <code>oyzu build --isolated</code>. A
+native host build runs with network and downloads as the package intends.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="puppeteer">Puppeteer<a href="#puppeteer" class="hash-link" aria-label="Direct link to Puppeteer" title="Direct link to Puppeteer" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Recognised</td><td>Every locked version of the registry package <code>puppeteer</code>, in npm, pnpm or Yarn locks</td></tr><tr><td>Assets</td><td>Chrome for Testing <code>chrome</code> and <code>chrome-headless-shell</code> for linux64, at the build Puppeteer pins for that release</td></tr><tr><td>URL</td><td><code>https://storage.googleapis.com/chrome-for-testing-public/&lt;build&gt;/linux64/&lt;browser&gt;-linux64.zip</code></td></tr><tr><td>Layout</td><td><code>recipes/puppeteer/&lt;browser&gt;/linux-&lt;build&gt;/&lt;browser&gt;-linux64/</code>, Puppeteer&#x27;s cache layout</td></tr><tr><td>Settings</td><td><code>PUPPETEER_CACHE_DIR=/dependencies/recipes/puppeteer</code>, <code>PUPPETEER_SKIP_DOWNLOAD=true</code></td></tr><tr><td>Pinned</td><td>Puppeteer releases 24.0.0 to 25.13.0, in <code>puppeteer.tsv</code></td></tr></tbody></table>
+<p>Puppeteer&#x27;s install script reads <code>PUPPETEER_SKIP_DOWNLOAD</code> and does not try the
+network. <code>puppeteer.launch()</code> and <code>puppeteer.executablePath()</code> read
+<code>PUPPETEER_CACHE_DIR</code> and resolve the browser for their own pinned build, so the
+project needs no change. Both browsers are delivered because Puppeteer&#x27;s install
+script downloads both by default. Firefox is skipped by Puppeteer by default and
+has no recipe.</p>
+<p>Limits:</p>
+<ul>
+<li class="">Only linux/amd64 workers are pinned. Chrome for Testing has no Linux arm64
+build before Chrome 153, and on other platforms the log reports that the
+browser is not pinned.</li>
+<li class="">A Puppeteer configuration file or variable that selects another browser build
+(<code>PUPPETEER_CHROME_VERSION</code>, <code>chrome.version</code> in <code>.puppeteerrc</code>) or another
+cache directory overrides the recipe for that setting, and the install fails
+offline.</li>
+<li class="">The toolchain image omits the
+system libraries Chrome needs to start (<code>libnss3</code> and others). The recipe
+delivers the browser; a build that launches it needs an image that has them.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="node-gyp-headers">node-gyp headers<a href="#node-gyp-headers" class="hash-link" aria-label="Direct link to node-gyp headers" title="Direct link to node-gyp headers" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th></th><th></th></tr></thead><tbody><tr><td>Recognised</td><td>A locked registry package whose archive has a top-level <code>binding.gyp</code>, or a <code>binding.gyp</code> in the project root. Native install compiles these with node-gyp</td></tr><tr><td>Asset</td><td><code>node-v&lt;version&gt;-headers.tar.gz</code> for the captured Node version</td></tr><tr><td>URL</td><td><code>https://nodejs.org/dist/v&lt;version&gt;/node-v&lt;version&gt;-headers.tar.gz</code></td></tr><tr><td>Layout</td><td><code>recipes/node-gyp/&lt;version&gt;/node-v&lt;version&gt;/include/node/</code></td></tr><tr><td>Settings</td><td><code>npm_config_nodedir=/dependencies/recipes/node-gyp/&lt;version&gt;/node-v&lt;version&gt;</code></td></tr><tr><td>Pinned</td><td>Node.js 18.0.0 to 26.11.1, in <code>node-headers.tsv</code></td></tr></tbody></table>
+<p>node-gyp reads <code>npm_config_nodedir</code> and uses those headers instead of
+downloading them. The scripts npm, pnpm and Yarn run inherit the variable.
+The headers are not enough on their own: compiling an addon also needs Python,
+<code>make</code> and a C++ compiler in the image, and the default toolchain image has none.
+Addons that download a prebuilt binary first (<code>prebuild-install</code>,
+<code>node-pre-gyp</code>) still fail offline unless they fall back to compiling.</p>
+<p>The authored <code>npm-node-gyp-consumer</code> fixture
+prepares a root Node-API addon with no package dependencies. Its native tests and
+standalone exported-addon consumer are written, not executed. Qualification must
+use a separately provisioned compiler/Python image through the existing
+<code>build --image npm=&lt;image&gt;</code> override, retaining the normal header recipe,
+network-denied execution and report gates. A Linux addon must be consumed in a
+matching Linux runtime; a Windows host Node process cannot establish that proof.
+The install analyzer now records the root <code>binding.gyp</code> probe and retains the
+existing unbounded lifecycle scope when npm implicitly runs <code>node-gyp rebuild</code>;
+see <a class="" href="/docs/reference/node-static-analysis#builder-owned-stages">builder-owned stages</a>.
+Its focused regressions and native proof remain unrun. This preserves native
+installation semantics without adding an explicit install script to the fixture.</p>
+<p>The registered <code>node-gyp-recipe</code> acceptance check supplies the original fixture&#x27;s
+exact Node request and tool lock, without a handcrafted dependency lock. It
+requires a real compiled addon and three native tests with JUnit/coverage, then
+extracts only the inspected archive&#x27;s regular addon/wrapper/results files into a
+separate dependency-free consumer project. A second captured build executes that
+consumer in the selected Linux image, runs three additional native tests and
+packages its actual <code>consumed.json</code>. Both builds retain full quality gates,
+source/tool-lock equality and bundle inspection. Each temporary project selects
+its explicit fixture root, avoiding unrelated ancestor configuration. This flow
+remains unrun:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu exec --store &lt;verified-tool-store&gt; -- python tooling/test-build-scenarios.py --suite node --only node-gyp-recipe --store &lt;verified-tool-store&gt; --image npm=&lt;provisioned-native-image&gt; --cli &lt;compiled-oyzu-path&gt; --evidence-dir &lt;task-evidence-directory&gt;</span><br></div></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-a-package-is-recognised-but-not-pinned">When a package is recognised but not pinned<a href="#when-a-package-is-recognised-but-not-pinned" class="hash-link" aria-label="Direct link to When a package is recognised but not pinned" title="Direct link to When a package is recognised but not pinned" translate="no">​</a></h2>
+<p>Preparation continues and the build log shows one fact per recipe, for example:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Recipe puppeteer    puppeteer@25.14.0 has no pinned Chrome for Testing build in this Oyzu release; its install script will try to download one</span><br></div></code></pre></div></div>
+<p>Preparation does not fail, because the project may already avoid the download
+with the tool&#x27;s own settings. Otherwise the install then fails as described next.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="downloads-without-a-recipe">Downloads without a recipe<a href="#downloads-without-a-recipe" class="hash-link" aria-label="Direct link to Downloads without a recipe" title="Direct link to Downloads without a recipe" translate="no">​</a></h2>
+<p>When a captured npm install fails because a lifecycle script could not reach the
+network, the error names the package, the URL and the remedy, where npm&#x27;s output
+shows them:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">DEPENDENCY_INPUT_MISSING: the install script of cypress@13.6.0 tried to download https://download.cypress.io/desktop.json, and captured execution has no network. Oyzu has no recipe for this asset. Declare it as a pinned fetch in build.yaml (name, url, sha256) and point the package at OYZU_FETCH_&lt;NAME&gt; through its own setting; see the declared fetches reference.</span><br></div></code></pre></div></div>
+<p>The original npm output follows the message. The package comes from npm&#x27;s
+<code>npm error path</code> line and the URL from the script&#x27;s output on the host named by
+its network error (<code>getaddrinfo EAI_AGAIN</code>, <code>ENOTFOUND</code>, <code>connect ENETUNREACH</code>,
+<code>EHOSTUNREACH</code>, <code>ECONNREFUSED</code> or <code>Could not resolve host</code>). Without a URL the
+host is named; without a network error the npm failure is reported unchanged.
+This diagnosis covers npm installs; pnpm and Yarn report their native error.
+For the root package, npm reports the effective build version applied by
+<a class="" href="/docs/reference/version-inference">version inference</a>, which may differ from the source
+manifest&#x27;s version. The acceptance check compares that exact published identity
+alongside the URL and declared-fetch remedy.</p>
+<p>To supply such an asset yourself, add a <a class="" href="/docs/reference/declared-fetches">declared fetch</a>
+and set the tool&#x27;s own variable to its path in the target environment. For
+Puppeteer on an unpinned release, for example, fetch the Chrome for Testing zip
+with <code>unpack: zip</code> and set <code>PUPPETEER_SKIP_DOWNLOAD=true</code> and
+<code>PUPPETEER_EXECUTABLE_PATH=/dependencies/fetches/&lt;name&gt;/chrome-linux64/chrome</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="spotless-eclipse-p2-artifacts-unsupported">Spotless Eclipse P2 artifacts (unsupported)<a href="#spotless-eclipse-p2-artifacts-unsupported" class="hash-link" aria-label="Direct link to Spotless Eclipse P2 artifacts (unsupported)" title="Direct link to Spotless Eclipse P2 artifacts (unsupported)" translate="no">​</a></h2>
+<p>Spotless steps backed by Eclipse formatters (<code>&lt;eclipse&gt;</code>, <code>&lt;greclipse&gt;</code>,
+<code>&lt;eclipseWtp&gt;</code> and <code>&lt;eclipseCdt&gt;</code> in the Maven plugin, and their Gradle
+equivalents) provision Eclipse P2 bundles from <code>download.eclipse.org</code> at run
+time, into Spotless&#x27;s own P2 cache rather than a file path. There is no JVM
+recipe, and a declared fetch cannot be pointed at that cache. In a captured
+Maven build <code>spotless-maven-plugin:check</code> fails during preparation with
+<code>java.net.UnknownHostException: download.eclipse.org</code> (observed for
+<code>assertj/assertj</code> in the captured-feasibility corpus).</p>
+<p>Recovery: run that Spotless check outside the captured build, or keep the
+Eclipse step out of the captured lifecycle, for example with a Maven profile that
+sets <code>spotless.check.skip=true</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pinned-digests-and-trust">Pinned digests and trust<a href="#pinned-digests-and-trust" class="hash-link" aria-label="Direct link to Pinned digests and trust" title="Direct link to Pinned digests and trust" translate="no">​</a></h2>
+<p>Every recipe asset has a SHA-256 in an in-repo table. A download whose bytes do
+not match fails with <code>INTEGRITY_MISMATCH</code> and stores nothing. Oyzu never takes a
+digest from the network at build time (no trust on first use).</p>
+<ul>
+<li class="">Chrome for Testing publishes no checksums. Each digest was computed from the
+downloaded zip after its bytes matched the MD5 that Google Cloud Storage reports
+for the object (<code>x-goog-hash</code>), and its size matched. The build list comes from
+<code>PUPPETEER_REVISIONS</code> in each <code>puppeteer-core</code> release.</li>
+<li class="">Node.js headers digests come from each release&#x27;s <code>SHASUMS256.txt</code> and were
+checked against the downloaded bytes. The signature of <code>SHASUMS256.txt</code> was
+not checked when the table was written.</li>
+</ul>
+<p>The snapshot records each asset as a package with <code>verification: digest-only</code>:
+the bytes match the pinned digest, but no publisher signature was checked.
+<code>tooling/refresh-node-recipes.py</code>
+regenerates both tables with the same checks; review the diff before committing.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="evidence">Evidence<a href="#evidence" class="hash-link" aria-label="Direct link to Evidence" title="Direct link to Evidence" translate="no">​</a></h2>
+<p>Each asset becomes a package in the target&#x27;s dependency snapshot:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Field</th><th>Value</th></tr></thead><tbody><tr><td><code>id</code></td><td><code>recipe:&lt;target&gt;/&lt;recipe&gt;/&lt;asset&gt;/&lt;version&gt;</code>, for example <code>recipe:web/puppeteer/chrome/136.0.7103.94</code></td></tr><tr><td><code>name</code>, <code>version</code></td><td>The asset name (<code>chrome</code>, <code>chrome-headless-shell</code>, <code>node-headers</code>) and its upstream version</td></tr><tr><td><code>sourceId</code></td><td><code>fetch:&lt;host&gt;</code> standalone, or <code>fetches.sources/&lt;index&gt;</code> under an allowlist</td></tr><tr><td><code>digest</code>, <code>size</code></td><td>The verified bytes</td></tr><tr><td><code>purpose</code>, <code>verification</code></td><td><code>build</code>, <code>digest-only</code></td></tr></tbody></table>
+<p>The extension <code>oyzu.dev/recipes</code> lists each applied recipe with the packages it
+serves, its settings and each asset&#x27;s path and tree digest. Both are part of the
+snapshot digest, so the plan binds the delivered assets.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors">Errors<a href="#errors" class="hash-link" aria-label="Direct link to Errors" title="Direct link to Errors" translate="no">​</a></h2>
+<p>Recipe assets use the <a class="" href="/docs/reference/declared-fetches#errors">declared fetch errors</a>. The
+label names the recipe, the asset and the package, for example
+<code>web: puppeteer recipe asset chrome 136.0.7103.94 for puppeteer@24.9.0</code>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<table><thead><tr><th>Code</th><th>Cause</th><th>Recovery</th></tr></thead><tbody><tr><td><code>SOURCE_DENIED</code></td><td>An administrative <code>fetches.sources</code> does not admit the asset&#x27;s host</td><td>Ask an administrator to admit it, such as <code>https://storage.googleapis.com/chrome-for-testing-public/</code></td></tr><tr><td><code>INTEGRITY_MISMATCH</code></td><td>The upstream bytes differ from the pinned digest</td><td>Report it; do not edit the table without checking the upstream release</td></tr><tr><td><code>DEPENDENCY_INPUT_MISSING</code></td><td>An offline build needs an asset that is not stored, or an install script without a recipe tried the network</td><td>Run one online build, or declare the asset as above</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="provisional-decisions">Provisional decisions<a href="#provisional-decisions" class="hash-link" aria-label="Direct link to Provisional decisions" title="Direct link to Provisional decisions" translate="no">​</a></h2>
+<p>These need maintainer review:</p>
+<ul>
+<li class="">Recipes apply automatically to every captured Node build that locks a
+recognised package. There is no setting to turn one off yet.</li>
+<li class="">The digest tables live in the repository and cover a fixed range of releases.
+A newer release needs a table update and an Oyzu release.</li>
+<li class="">A recognised package without a pinned asset is a build-log fact, not a
+preparation failure.</li>
+<li class="">Recipe settings override the same variable from the builder plan, and a
+variable delivered twice (for example by a recipe and a declared fetch) fails.</li>
+<li class=""><code>fetches.sources</code> governs recipes as well as declared fetches.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
+<p>The first functional proof combines the compiled CLI&#x27;s ordinary captured build
+of the unchanged npm installer fixture with a separate native companion project,
+preserving each project&#x27;s source and lock bytes during execution.
+Preparation must acquire and verify both pinned Puppeteer browsers through the
+existing broker; the network-denied install and build must produce an inspected,
+independently usable artifact. Dependency evidence must identify the two browser
+assets and their effective cache settings. An expected unsupported refusal alone
+does not establish this successful flow.</p>
+<p>A second required flow compiles and consumes a native node-gyp addon using the
+captured headers and an explicitly identified compiler/Python runtime. This
+establishes recipe reuse beyond browser delivery. Browser startup remains a
+separate functional obligation when a browser-executing project is selected;
+the existing missing-system-library limitation is not silently waived.
+Keep additional hosts and architecture qualification separate from these bounded
+Linux/amd64 flows.</p>
+<p>Unit tests cover the pinned tables, Puppeteer and node-gyp recognition from
+captured facts, unpinned versions and platforms, recipe capture, offline reuse,
+digest mismatch and allowlist denial (<code>dependencies::fetches</code> and
+<code>builders::node::recipes</code>), and the install diagnosis
+(<code>node --test tooling/test-install-diagnosis.mjs</code>). The <code>installer-recipes</code>
+check in the <code>node</code> suite builds <code>tooling/fixtures/npm-installer-recipes</code>
+(puppeteer 24.9.0, esbuild and sharp) with <code>oyzu build --isolated</code>, checks source
+and tool-lock preservation and inspects the bundle. It retains the diagnosis for
+an unrecognised download. Its native npm exclusion and build-only scripts remain
+unchanged; this baseline alone cannot establish artifact/report acceptance.</p>
+<p>The separately selectable <code>installer-recipes-consumer</code> check uses
+<code>npm-installer-consumer</code> sources.
+Before the source snapshot, the harness derives its package manifest from the
+original and adds only ordinary native packaging/build/test declarations. It
+copies the original exact dependency/tool locks, tool request and ignore file.
+Its name, version and dependencies match the lock&#x27;s root; no lock regeneration
+or second tracked dependency declaration is needed. Native
+<code>files: [&quot;dist&quot;]</code> declares packaging intent. Native esbuild compiles a TypeScript
+module and sharp generates a PNG; Node&#x27;s three tests consume those outputs and
+check both prepared browser executables. The existing <code>full_checks</code> wrapper
+selects real test/lint/format stages and required JUnit/coverage collection.</p>
+<p>Acceptance requires the inspected npm archive to deliver the module, PNG and
+<code>dist/results.json</code>. The standalone
+<code>consume.mjs</code>
+executable runs in a separate Node process selected through <code>oyzu exec</code> and imports
+the exported module, reads the PNG signature/dimensions and checks the four
+successful recipe results, without project dependencies or the private build
+workspace. Reports must come from the actual native tests; no XML is fabricated.
+Neither check starts a browser or proves node-gyp compilation.</p>
+<p>The separately selected <code>puppeteer-startup</code> follow-up adds a real native Node
+test that calls Puppeteer&#x27;s prepared headless-shell executable, evaluates a
+local page to <code>42</code>, captures a 64-by-32 PNG and waits for the browser to exit.
+It requests Puppeteer&#x27;s default sandbox, checks that neither <code>--no-sandbox</code> nor
+<code>--disable-setuid-sandbox</code> was supplied, and fails rather than skips when native
+libraries or sandbox prerequisites are missing. Absence of bypass flags is not
+a general browser-confinement qualification.</p>
+<p>This check derives its native manifest from the same original installer fixture,
+reuses its exact dependency/tool locks and copies the completed companion&#x27;s
+build/tests without changing those originals. Existing <code>full_checks</code> plus the
+isolated invocation select genuine native JUnit/coverage and quality gates. All
+four tests must pass, including the actual browser test, before packaging. The
+exported npm archive must contain the rendered HTML, screenshot and receipt in
+addition to the companion&#x27;s original module/PNG/results. Independent
+built-in-only Node consumers check only files extracted from that final archive;
+they do not launch a host browser. Browser execution belongs to the captured
+producer, not these output-consumption checks.</p>
+<p>The focused invocation is:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu exec --store &lt;verified-tool-store&gt; -- python tooling/test-build-scenarios.py --suite node --only puppeteer-startup --store &lt;verified-tool-store&gt; --image npm=&lt;qualified-browser-image&gt; --cli &lt;compiled-oyzu-path&gt; --evidence-dir &lt;new-evidence-directory&gt;</span><br></div></code></pre></div></div>
+<p>Supply an explicitly qualified Linux/amd64 image with a matching compiled worker,
+the existing Node quality tooling, Chrome&#x27;s native libraries and working default
+browser sandbox support under the ordinary executor. No image is provisioned or
+security setting changed by this check. The standard missing-library boundary
+above remains; this authored check has not yet established a passing browser
+startup. See the startup qualification checkpoint.</p>
+<p>With managed Python, harness requirements and the Linux Docker worker available,
+the focused command from the repository root is:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu exec --store &lt;verified-tool-store&gt; -- python tooling/test-build-scenarios.py --suite node --only installer-recipes-consumer --store &lt;verified-tool-store&gt; --cli &lt;compiled-oyzu-path&gt; --evidence-dir &lt;task-evidence-directory&gt;</span><br></div></code></pre></div></div>
+<p>The bounded Windows-controller/Linux-amd64 flows are now demonstrated. The
+unchanged original fixture passed its four build-only actions and inspection;
+the genuine unknown download produced the package, effective version, URL and
+pinned-fetch remedy. The separate companion passed all seven native actions,
+three tests, coverage, full quality gates and inspection, and an independent
+Oyzu-managed Node process consumed its delivered module, PNG and results. All
+source inputs and locks remained unchanged. Earlier failed registered summaries
+remain failed; detailed corrections are in qualification.</p>
+<p>The registered <code>node-gyp-recipe</code> also passed end to end with a verified
+compiler/Python task image. It compiled the addon offline using captured Node
+22.23.3 headers, packaged the regular ELF addon and transferred only the exported
+payload to a second Linux captured project. Both builds passed seven native
+actions, three genuine tests each, wrapper LCOV, full quality gates, packaging
+and inspection. The independent consumer loaded the addon and packaged its
+consumption result. All nine original inputs and the tool lock stayed unchanged
+in each project. Node LCOV covers the JavaScript wrapper; C is not instrumented.</p>
+<p>With the same prerequisites, select that check and explicit provisioned image:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu exec --store &lt;verified-tool-store&gt; -- python tooling/test-build-scenarios.py --suite node --only node-gyp-recipe --store &lt;verified-tool-store&gt; --image npm=&lt;linux-amd64-image-IID&gt; --cli &lt;compiled-oyzu-path&gt; --evidence-dir &lt;task-evidence-directory&gt;</span><br></div></code></pre></div></div>
+<p>Rust formatting, managed Python/JavaScript syntax, registration, tool-contract
+shape/schema and documentation checks pass. The isolated full workspace Rust
+rerun passed with 1,819 tests passed, zero failed and 37 ignored, including all
+17 previously failing tests. The original failure and its test-only/launcher
+corrections remain recorded in qualification. Strict workspace/all-target Clippy
+also passes with warnings treated as errors. All nine reported real CLI
+development-task behaviors pass against the paired candidate, including Windows
+native launchers. The
+fresh-checkout proof is unavailable on this Windows host because its explicit
+platform guard supports Linux/macOS only. Unix
+host confinement, browser startup and wider platforms remain unproved. A Windows
+controller does not qualify Windows workers; macOS workers are not covered.
+Native candidate records do not establish exact Git-to-compiler byte binding or
+release provenance. See the qualification record
+for the actual commands, image and artifact identities, preserved failures and
+verification limits.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/helm"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Helm charts and native chart tests</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/java-quality"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Java quality tasks</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#how-a-recipe-works" class="table-of-contents__link toc-highlight">How a recipe works</a></li><li><a href="#puppeteer" class="table-of-contents__link toc-highlight">Puppeteer</a></li><li><a href="#node-gyp-headers" class="table-of-contents__link toc-highlight">node-gyp headers</a></li><li><a href="#when-a-package-is-recognised-but-not-pinned" class="table-of-contents__link toc-highlight">When a package is recognised but not pinned</a></li><li><a href="#downloads-without-a-recipe" class="table-of-contents__link toc-highlight">Downloads without a recipe</a></li><li><a href="#spotless-eclipse-p2-artifacts-unsupported" class="table-of-contents__link toc-highlight">Spotless Eclipse P2 artifacts (unsupported)</a></li><li><a href="#pinned-digests-and-trust" class="table-of-contents__link toc-highlight">Pinned digests and trust</a></li><li><a href="#evidence" class="table-of-contents__link toc-highlight">Evidence</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a></li><li><a href="#provisional-decisions" class="table-of-contents__link toc-highlight">Provisional decisions</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>
