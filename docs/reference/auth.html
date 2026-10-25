@@ -3,114 +3,92 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Platform sign-in and the credential provider | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/auth"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Platform sign-in and the credential provider | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/auth.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/auth.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/auth"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/auth" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/auth" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Platform sign-in and the credential provider","item":"https://docs.oyzu.ai/docs/reference/auth"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<title data-rh="true">Platform sign-in | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/auth"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Platform sign-in | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/auth.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/auth.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/auth"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/auth" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/auth" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Platform sign-in","item":"https://docs.oyzu.ai/docs/reference/auth"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/auth">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Remote runs and sign-in</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Platform sign-in and the credential provider</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Platform sign-in and the credential provider</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/auth">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Remote runs and sign-in</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Platform sign-in</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Platform sign-in</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/auth.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>Status: experimental client. <code>oyzu auth login|status|logout</code> and the shared
-credential provider implement the initial client contract of the draft
-connected-client authentication companion.
-The OEP stays a draft. They are verified against a local conformance fake
-(<code>oyzu auth conformance</code>); they have <strong>not</strong> been run against a real identity
-provider, a real platform or each operating system&#x27;s credential store. The
-platform surfaces they rely on (protected-resource metadata, the registered
-<code>oyzu-cli</code> client and the self access-context route) are built separately;
-until a platform serves them these commands report discovery as unsupported.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="purpose">Purpose<a href="#purpose" class="hash-link" aria-label="Direct link to Purpose" title="Direct link to Purpose" translate="no">​</a></h2>
-<p>Sign a person in to a platform account once, keep the session in the operating
-system&#x27;s protected credential store, and let <code>oyzu build --remote</code>,
-<code>oyzu run --remote</code>, <code>oyzu secrets</code> and <code>oyzu release check</code> use it. Everything
-else Oyzu does stays local and needs no account.</p>
+<p><code>oyzu auth</code> signs you in to an Oyzu platform account and keeps the session in your
+operating system&#x27;s credential store. Remote builds and runs (<code>--remote</code>),
+<code>oyzu secrets</code> and <code>oyzu release check</code> then use it. Everything else Oyzu does is
+local and needs no account.</p>
+<blockquote>
+<p><strong>Note:</strong> Platform sign-in is experimental. It needs a platform that publishes the
+sign-in endpoints described below; until it does, <code>login</code> reports discovery as
+unsupported. It hasn&#x27;t been tested yet against a real identity provider or each
+operating system&#x27;s credential store.</p>
+</blockquote>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.url https://platform.example.com</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.account payments</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu auth login</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu auth status</span><br></div></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="commands">Commands<a href="#commands" class="hash-link" aria-label="Direct link to Commands" title="Direct link to Commands" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>oyzu auth login</code></td><td>Shows a web address and a short code. Approve the code in any browser, on any device. Oyzu then checks that you&#x27;re an active member of <code>platform.account</code> and stores the session.</td></tr><tr><td><code>oyzu auth status</code></td><td>Shows the platform, account and local session state: <code>absent</code>, <code>active</code>, <code>refreshing</code>, <code>reauthentication-required</code> or <code>logged-out</code>. Reads local state only; contacts no server.</td></tr><tr><td><code>oyzu auth logout</code></td><td>Deletes this account&#x27;s local session, then asks the issuer to revoke it and reports that result separately.</td></tr><tr><td><code>oyzu auth conformance</code></td><td>Checks the client against a built-in fake issuer on your machine. Needs no account. Exits 1 if any scenario fails.</td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
 <ul>
-<li class="">
-<p><code>platform.url</code> and <code>platform.account</code> in user, machine or administrative
-configuration (a project or local file is refused, so a checkout cannot choose
-where credentials go):</p>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.url https://platform.example.com</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.account payments</span><br></div></code></pre></div></div>
-</li>
-<li class="">
-<p>A platform that publishes OAuth protected-resource metadata
-(<a href="https://www.rfc-editor.org/rfc/rfc9728.html" target="_blank" rel="noopener noreferrer" class="">RFC 9728</a>) naming exactly one
-issuer that allows the device authorization grant
-(<a href="https://www.rfc-editor.org/rfc/rfc8628.html" target="_blank" rel="noopener noreferrer" class="">RFC 8628</a>) for the registered
-public client <code>oyzu-cli</code>, and the draft self access-context route.</p>
-</li>
-<li class="">
-<p>For <code>login</code>: a terminal where you can read a code and approve it in a browser
-(any browser, on any device).</p>
-</li>
-<li class="">
-<p>A protected credential store: macOS Keychain, Windows Credential Manager, or a
-running Linux Secret Service provider (GNOME Keyring, KWallet). There is no
-plaintext fallback; without a store <code>login</code> stops before asking you to approve
-anything.</p>
-</li>
+<li class=""><code>platform.url</code> and <code>platform.account</code> set in user, machine or administrator
+configuration. Project and local files can&#x27;t set them, so a checkout can&#x27;t choose
+where your credentials go.</li>
+<li class="">For <code>login</code>, a terminal where you can read the code.</li>
+<li class="">A credential store: macOS Keychain, Windows Credential Manager, or a running Linux
+Secret Service provider (GNOME Keyring, KWallet). There is no plaintext fallback.
+Without a store, <code>login</code> stops before asking you to approve anything.</li>
+<li class="">A platform that publishes OAuth protected-resource metadata
+(<a href="https://www.rfc-editor.org/rfc/rfc9728.html" target="_blank" rel="noopener noreferrer" class="">RFC 9728</a>) naming one issuer that
+supports the device authorization grant
+(<a href="https://www.rfc-editor.org/rfc/rfc8628.html" target="_blank" rel="noopener noreferrer" class="">RFC 8628</a>) for the public client
+<code>oyzu-cli</code>.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>Does</th></tr></thead><tbody><tr><td><code>oyzu auth login</code></td><td>Discover the issuer, show a verification address and code, wait for approval, confirm you are an active member of <code>platform.account</code>, then store the session</td></tr><tr><td><code>oyzu auth status</code></td><td>Show the platform, account and local session state: <code>absent</code>, <code>active</code>, <code>refreshing</code>, <code>reauthentication-required</code> or <code>logged-out</code>. Reads local state only and asks no server</td></tr><tr><td><code>oyzu auth logout</code></td><td>Fence renewal, delete this account&#x27;s local session, then ask the issuer to revoke it and report that separately</td></tr><tr><td><code>oyzu auth conformance</code></td><td>Run the <a href="#conformance" class="">client conformance suite</a> against a local fake; needs no account</td></tr></tbody></table></div>
-<p>Login discovery, step by step:</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-login-works">How login works<a href="#how-login-works" class="hash-link" aria-label="Direct link to How login works" title="Direct link to How login works" translate="no">​</a></h2>
 <ol>
-<li class=""><code>GET /.well-known/oauth-protected-resource</code> (with the platform URL&#x27;s path
-appended when it has one). <code>resource</code> must equal <code>platform.url</code> and exactly one
-<code>authorization_servers</code> entry is accepted; zero, several or a mismatch stop the
-login.</li>
-<li class="">The issuer&#x27;s RFC 8414 metadata (else its OpenID configuration). Its <code>issuer</code>
-must equal the advertised one; the device authorization and token endpoints
-(and a revocation endpoint if offered) must be HTTPS (HTTP only for a
-loopback host), carry no credentials, query or fragment, and sit on the
-issuer&#x27;s own origin. The device grant must be advertised and public clients
-(<code>none</code> authentication) allowed. No bearer is sent to any of this and no
-redirect is followed.</li>
-<li class="">The device grant for client <code>oyzu-cli</code>: no client secret, password grant or
-dynamic registration; no <code>scope</code> parameter (the issuer&#x27;s session defaults) and
-never <code>offline_access</code>. The verification address must be on the issuer&#x27;s origin
-or it is not shown. Polling honors the issuer&#x27;s interval and <code>slow_down</code> and is
-bounded to 15 minutes.</li>
-<li class=""><code>GET /api/v1/access-context?account=&lt;platform.account&gt;</code> with the new access
-token: the response must be <code>oyzu.access/1</code> and name an active membership of
-exactly that account. Another membership is never a fallback. An account that
-needs stronger authentication is reported as <code>AUTH_STEP_UP_REQUIRED</code>; a missing
-membership as <code>AUTH_NOT_A_MEMBER</code>. Either way the sign-in is revoked and
-nothing is stored.</li>
+<li class="">Oyzu reads <code>/.well-known/oauth-protected-resource</code> from <code>platform.url</code> (with the
+URL&#x27;s path appended, if it has one). Its <code>resource</code> must equal <code>platform.url</code>, and
+it must list exactly one authorization server.</li>
+<li class="">Oyzu reads the issuer&#x27;s metadata. The issuer must match, and its device and token
+endpoints (and revocation endpoint, if any) must use HTTPS on the issuer&#x27;s own
+origin, with no credentials, query or fragment. Plain HTTP is accepted only for a
+loopback host. Redirects aren&#x27;t followed and no token is sent.</li>
+<li class="">Oyzu starts the device grant for <code>oyzu-cli</code>, with no client secret and no <code>scope</code>
+(it never asks for <code>offline_access</code>). A verification address on a different origin
+isn&#x27;t shown. Oyzu polls at the issuer&#x27;s interval for up to 15 minutes.</li>
+<li class="">Oyzu calls <code>GET /api/v1/access-context?account=&lt;platform.account&gt;</code>. The answer
+must show an active membership of exactly that account; another membership is
+never used instead. If the account requires stronger sign-in, you get
+<code>AUTH_STEP_UP_REQUIRED</code>; without a membership, <code>AUTH_NOT_A_MEMBER</code>. In both cases
+the new sign-in is revoked and nothing is stored.</li>
 </ol>
-<p>Only then is the session stored, so a cancelled, denied, expired or failed login
-leaves no usable partial session. The device code is never shown or logged.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-credential-a-command-uses">Which credential a command uses<a href="#which-credential-a-command-uses" class="hash-link" aria-label="Direct link to Which credential a command uses" title="Direct link to Which credential a command uses" translate="no">​</a></h3>
-<p><code>secrets</code>, <code>release check</code> and <code>--remote</code> obtain their credential from one
-provider. Selection is deterministic and never falls through to another
-identity after a failure:</p>
+<p>The session is stored only after every step succeeds, so a cancelled, denied, expired
+or failed login leaves nothing behind. The device code is never shown or logged.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-credential-a-command-uses">Which credential a command uses<a href="#which-credential-a-command-uses" class="hash-link" aria-label="Direct link to Which credential a command uses" title="Direct link to Which credential a command uses" translate="no">​</a></h2>
+<p>Every command that talks to the platform gets its credential the same way. The rule
+is fixed, and a failure never falls back to a different identity.</p>
 
 
 
@@ -144,12 +122,10 @@ identity after a failure:</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Situation</th><th>Result</th></tr></thead><tbody><tr><td><code>platform.authentication.provider</code> is <code>workload</code>, <code>private-key</code> or <code>execution</code></td><td><code>AUTH_PROVIDER_UNSUPPORTED</code> (not implemented yet)</td></tr><tr><td>Provider <code>environment</code></td><td><code>OYZU_PLATFORM_TOKEN</code> is required; without it <code>AUTH_PROVIDER_UNAVAILABLE</code></td></tr><tr><td>Provider <code>session</code></td><td>The stored session; with <code>OYZU_PLATFORM_TOKEN</code> also set, <code>AUTH_PROVIDER_CONFLICT</code></td></tr><tr><td>No provider selected, <code>OYZU_PLATFORM_TOKEN</code> set</td><td>That bearer, as supplied: never stored, refreshed or replaced</td></tr><tr><td>No provider selected, stdin and stderr are terminals</td><td>The stored session</td></tr><tr><td>No provider selected, unattended (CI, scripts, agents)</td><td><code>AUTH_PROVIDER_REQUIRED</code>; a stored session is never used implicitly</td></tr></tbody></table></div>
-<p>A bearer the platform rejects is reported (<code>*_UNAUTHENTICATED</code>); it is not
-replaced by a stored session. An explicit <code>session</code> selection is human authority,
-not an automation identity.</p>
-<p>The credential is delivered only to the origin of <code>platform.url</code>. A request to
-any other origin (a redirect, a download link from a checkout) gets none.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Situation</th><th>Credential</th></tr></thead><tbody><tr><td><code>platform.authentication.provider</code> is <code>environment</code></td><td><code>OYZU_PLATFORM_TOKEN</code>. Without it: <code>AUTH_PROVIDER_UNAVAILABLE</code>.</td></tr><tr><td><code>platform.authentication.provider</code> is <code>session</code></td><td>The stored session. If <code>OYZU_PLATFORM_TOKEN</code> is also set: <code>AUTH_PROVIDER_CONFLICT</code>.</td></tr><tr><td><code>platform.authentication.provider</code> is <code>workload</code>, <code>private-key</code> or <code>execution</code></td><td><code>AUTH_PROVIDER_UNSUPPORTED</code> (not available).</td></tr><tr><td>No provider set, <code>OYZU_PLATFORM_TOKEN</code> set</td><td>That token, as given. It&#x27;s never stored, refreshed or replaced.</td></tr><tr><td>No provider set, at a terminal (stdin and stderr)</td><td>The stored session.</td></tr><tr><td>No provider set, unattended (CI, scripts, agents)</td><td><code>AUTH_PROVIDER_REQUIRED</code>. A stored session is never used implicitly.</td></tr></tbody></table></div>
+<p>If the platform rejects a token, the command reports <code>*_UNAUTHENTICATED</code>; it doesn&#x27;t
+try your stored session instead. The credential is sent only to the origin of
+<code>platform.url</code>, never to a redirect or any other address.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="settings">Settings<a href="#settings" class="hash-link" aria-label="Direct link to Settings" title="Direct link to Settings" translate="no">​</a></h3>
 
 
@@ -166,130 +142,124 @@ any other origin (a redirect, a download link from a checkout) gets none.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Setting</th><th>Values</th><th>Meaning</th></tr></thead><tbody><tr><td><code>platform.authentication.provider</code></td><td><code>session</code>, <code>environment</code>, <code>workload</code>, <code>private-key</code>, <code>execution</code>; absent</td><td>Host-owned provider selection, see above. Contains no credential. Environment input <code>OYZU_PLATFORM_AUTH_PROVIDER</code>. User, machine or administrative scope only</td></tr></tbody></table></div>
-<p><code>OYZU_PLATFORM_TOKEN</code> stays a credential, not a setting.</p>
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Setting</th><th>Values</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>platform.authentication.provider</code></td><td><code>session</code>, <code>environment</code> (<code>workload</code>, <code>private-key</code>, <code>execution</code> are reserved)</td><td>unset</td><td>Chooses the credential source, as above. Environment variable <code>OYZU_PLATFORM_AUTH_PROVIDER</code>. User, machine or administrator configuration only.</td></tr></tbody></table></div>
+<p><code>OYZU_PLATFORM_TOKEN</code> holds a credential. It isn&#x27;t a setting and doesn&#x27;t belong in a
+configuration file.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="storage-renewal-and-logout">Storage, renewal and logout<a href="#storage-renewal-and-logout" class="hash-link" aria-label="Direct link to Storage, renewal and logout" title="Direct link to Storage, renewal and logout" translate="no">​</a></h2>
 <ul>
-<li class="">Refresh state and the cached access token are separate protected entries,
-keyed by platform, issuer, client, subject and account. Selection metadata
-(issuer, subject, state, expiry) is a small non-secret file under the user data
-directory (<code>auth/</code>), created private.</li>
-<li class="">Renewal takes a per-session cross-process lock plus an in-process single
-flight, rereads state after waiting and renews only if still needed, so
-concurrent commands renew once.</li>
-<li class="">Before a refresh credential is spent it is marked pending. If the answer is
-lost (timeout, crash, failed store write) the session is ended
-(<code>AUTH_REFRESH_AMBIGUOUS</code>, <code>AUTH_STORE_FAILED</code>) and you are asked to sign in
-again; a possibly spent rotating credential is never retried. A rejected
-renewal also ends the session (<code>AUTH_REAUTHENTICATION_REQUIRED</code>). An issuer
-outage or an unreachable network leaves the session untouched.</li>
-<li class=""><code>logout</code> starts a new session epoch under the commit lock before deleting, so
-a renewal already in flight cannot recreate the session; it discards its result
-and revokes the credential it just received. A new login also starts a new epoch.</li>
-<li class="">Local removal can succeed while remote revocation is unavailable; the record
-says so (<code>remote: refused|unreachable|not-advertised</code>). Access tokens already
-issued stay valid until they expire. A separately supplied
-<code>OYZU_PLATFORM_TOKEN</code> is unaffected.</li>
+<li class="">The refresh credential and the cached access token are stored as separate entries
+in the credential store. A small non-secret file under the user data directory
+(<code>auth/</code>) records the issuer, subject, state and expiry.</li>
+<li class="">When several commands need to renew at once, only one renews; the others wait and
+reuse the result.</li>
+<li class="">If a renewal answer is lost (timeout, crash, failed store write), the session ends
+with <code>AUTH_REFRESH_AMBIGUOUS</code> or <code>AUTH_STORE_FAILED</code> and you sign in again. A
+rejected renewal ends it with <code>AUTH_REAUTHENTICATION_REQUIRED</code>. An issuer outage or
+lost network leaves the session as it is.</li>
+<li class=""><code>logout</code> wins over a renewal already in progress, which can&#x27;t bring the session
+back.</li>
+<li class="">Local logout can succeed while remote revocation can&#x27;t. The result says so with
+<code>remote: refused</code>, <code>unreachable</code> or <code>not-advertised</code>. Access tokens already issued
+stay valid until they expire. A separately supplied <code>OYZU_PLATFORM_TOKEN</code> isn&#x27;t
+affected.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="output">Output<a href="#output" class="hash-link" aria-label="Direct link to Output" title="Direct link to Output" translate="no">​</a></h2>
-<p>Human output leads with the outcome. <code>--json</code> prints one record: <code>auth-login</code>,
-<code>auth-status</code>, <code>auth-logout</code> or <code>auth-conformance</code>, holding session facts only.
-The verification address and user code go to standard error and only when it is a
-terminal, so JSON on standard output stays machine-readable; without a terminal
-<code>login</code> fails with <code>AUTH_INTERACTION_REQUIRED</code> before any request.</p>
+<p>Human output leads with the outcome. With <code>--json</code>, each command prints one record
+(<code>auth-login</code>, <code>auth-status</code>, <code>auth-logout</code> or <code>auth-conformance</code>) with session facts
+only. The login address and code go to standard error, and only when it&#x27;s a terminal,
+so JSON on standard output stays clean. Without a terminal, <code>login</code> fails with
+<code>AUTH_INTERACTION_REQUIRED</code> before contacting anything.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors-and-recovery">Errors and recovery<a href="#errors-and-recovery" class="hash-link" aria-label="Direct link to Errors and recovery" title="Direct link to Errors and recovery" translate="no">​</a></h2>
-<p>Exit status is 1 on failure. Codes: <code>AUTH_NOT_CONFIGURED</code>,
-<code>AUTH_INTERACTION_REQUIRED</code>, <code>AUTH_STORE_UNAVAILABLE</code> (start or unlock the
-store), <code>AUTH_STORE_FAILED</code>, <code>AUTH_DISCOVERY_UNSUPPORTED</code>,
-<code>AUTH_DISCOVERY_UNAVAILABLE</code>, <code>AUTH_DISCOVERY_INVALID</code>,
-<code>AUTH_DISCOVERY_AMBIGUOUS</code>, <code>AUTH_ISSUER_MISMATCH</code>, <code>AUTH_ISSUER_UNTRUSTED</code>,
-<code>AUTH_REDIRECT_REFUSED</code>, <code>AUTH_GRANT_UNSUPPORTED</code>, <code>AUTH_DEVICE_EXPIRED</code>,
-<code>AUTH_DEVICE_UNTRUSTED</code>, <code>AUTH_LOGIN_DENIED</code>, <code>AUTH_LOGIN_CANCELLED</code>,
-<code>AUTH_NOT_A_MEMBER</code>, <code>AUTH_STEP_UP_REQUIRED</code>, <code>AUTH_CONTEXT_UNAVAILABLE</code>,
-<code>AUTH_LOGIN_REQUIRED</code>, <code>AUTH_REAUTHENTICATION_REQUIRED</code>,
-<code>AUTH_REFRESH_AMBIGUOUS</code>, <code>AUTH_ISSUER_UNREACHABLE</code>, <code>AUTH_ISSUER_CHANGED</code>,
-<code>AUTH_DESTINATION_MISMATCH</code>, <code>AUTH_AUDIENCE_UNSUPPORTED</code> and the provider codes
-above. Commands that use the provider report <code>*_UNAUTHENTICATED</code> when no
-credential is available. Recovery for a session that cannot be renewed is always
-<code>oyzu auth login</code>.</p>
+<p>Failures exit 1. If a session can&#x27;t be renewed, run <code>oyzu auth login</code> again.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Code</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td><code>AUTH_NOT_CONFIGURED</code></td><td><code>platform.url</code> or <code>platform.account</code> is missing.</td><td>Set them with <code>oyzu config set --global</code>.</td></tr><tr><td><code>AUTH_INTERACTION_REQUIRED</code></td><td><code>login</code> isn&#x27;t running at a terminal.</td><td>Run it in a terminal.</td></tr><tr><td><code>AUTH_STORE_UNAVAILABLE</code>, <code>AUTH_STORE_FAILED</code></td><td>The credential store is missing, locked or failed.</td><td>Start or unlock the store.</td></tr><tr><td><code>AUTH_DISCOVERY_UNSUPPORTED</code>, <code>AUTH_DISCOVERY_UNAVAILABLE</code>, <code>AUTH_DISCOVERY_INVALID</code>, <code>AUTH_DISCOVERY_AMBIGUOUS</code></td><td>The platform&#x27;s sign-in metadata is missing, unreachable, invalid or lists more than one issuer.</td><td>Check <code>platform.url</code>; ask your platform administrator.</td></tr><tr><td><code>AUTH_ISSUER_MISMATCH</code>, <code>AUTH_ISSUER_UNTRUSTED</code>, <code>AUTH_ISSUER_CHANGED</code>, <code>AUTH_REDIRECT_REFUSED</code>, <code>AUTH_GRANT_UNSUPPORTED</code>, <code>AUTH_DEVICE_UNTRUSTED</code></td><td>The issuer&#x27;s metadata or endpoints failed a safety check.</td><td>Ask your platform administrator.</td></tr><tr><td><code>AUTH_DEVICE_EXPIRED</code>, <code>AUTH_LOGIN_DENIED</code>, <code>AUTH_LOGIN_CANCELLED</code></td><td>The code expired, was denied or you cancelled.</td><td>Run <code>oyzu auth login</code> again.</td></tr><tr><td><code>AUTH_NOT_A_MEMBER</code>, <code>AUTH_STEP_UP_REQUIRED</code></td><td>You aren&#x27;t an active member of the account, or it needs stronger sign-in.</td><td>Check the account, or complete the stronger sign-in.</td></tr><tr><td><code>AUTH_CONTEXT_UNAVAILABLE</code>, <code>AUTH_ISSUER_UNREACHABLE</code></td><td>The platform or issuer couldn&#x27;t be reached.</td><td>Retry later.</td></tr><tr><td><code>AUTH_LOGIN_REQUIRED</code>, <code>AUTH_REAUTHENTICATION_REQUIRED</code>, <code>AUTH_REFRESH_AMBIGUOUS</code></td><td>No usable session.</td><td>Run <code>oyzu auth login</code>.</td></tr><tr><td><code>AUTH_DESTINATION_MISMATCH</code>, <code>AUTH_AUDIENCE_UNSUPPORTED</code></td><td>A credential would have gone to the wrong place.</td><td>Check <code>platform.url</code>.</td></tr><tr><td><code>AUTH_PROVIDER_*</code></td><td>See <a href="#which-credential-a-command-uses" class="">which credential a command uses</a>.</td><td>Set the provider or token.</td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h2>
 <ul>
 <li class="">Tokens, device codes and refresh credentials never appear in output, logs,
-configuration, command arguments, error text or the metadata file; debug
-formatting is redacted and credential handles cannot be serialized.</li>
-<li class="">No plaintext credential file exists. The conformance suite&#x27;s file-backed store
-holds synthetic credentials for its own fake and is not selectable by a command.</li>
-<li class="">A coding agent or unattended job does not inherit a developer&#x27;s session. Do not
-give an agent a person&#x27;s <code>OYZU_PLATFORM_TOKEN</code>; a copied bearer still identifies
-that person.</li>
+configuration, command arguments, error text or the metadata file.</li>
+<li class="">There is no plaintext credential file.</li>
+<li class="">Coding agents and unattended jobs don&#x27;t inherit your session. Don&#x27;t give an agent
+your <code>OYZU_PLATFORM_TOKEN</code>: a copied token still identifies you.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="conformance">Conformance<a href="#conformance" class="hash-link" aria-label="Direct link to Conformance" title="Direct link to Conformance" translate="no">​</a></h2>
-<p><code>oyzu auth conformance</code> (or <code>oyzu --json auth conformance</code>) starts a fake issuer
-and protected resource on loopback and runs the real client against it, with
-synthetic credentials and stores and real child processes for refresh
-contention. It exits 1 if any scenario fails. Covered client-side criteria of the
-authentication contract:</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Criterion</th><th>Covered</th></tr></thead><tbody><tr><td>AUTH-CLIENT-01</td><td>Device login, membership validation, an authorized call, revoked membership denying a fresh call and login (against the fake)</td></tr><tr><td>AUTH-CLIENT-02</td><td>Provider selection without fallback, unattended refusal, one renewal for concurrent callers, expiry and logout</td></tr><tr><td>AUTH-CLIENT-03</td><td>Store failure, cancelled, denied and expired login, foreign verification address, destination binding, no partial session</td></tr><tr><td>AUTH-CLIENT-06 / 07</td><td>Self-context subset: step-up challenge, no implicit membership fallback, independent accounts, local state versus authority, remote revocation reported separately</td></tr><tr><td>AUTH-CLIENT-08</td><td>Ambiguous, mismatched or untrusted metadata and endpoints, redirects, checkout-selected settings</td></tr><tr><td>AUTH-CLIENT-09</td><td>Two-process contention, failed replacement store, ambiguous renewal, refresh racing logout</td></tr><tr><td>AUTH-TEL-01 / 03 (client side)</td><td>No credential in output, errors, debug text or state files</td></tr></tbody></table></div>
-<p>Not covered: AUTH-CLIENT-04, 05 and 10 (server-side or later work), a real
-identity provider, real per-OS credential stores, and a real platform remote
-build with membership revocation. Those need a platform and each operating
-system, and are not claimed.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limitations">Limitations<a href="#limitations" class="hash-link" aria-label="Direct link to Limitations" title="Direct link to Limitations" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
-<li class="">The OS store implementation compiles for macOS, Windows and Linux but has not
-been exercised on each here; Linux additionally needs a Secret Service
-provider in the session.</li>
-<li class=""><code>workload</code>, <code>private-key</code> and <code>execution</code> providers, loopback PKCE login,
-account switching beyond re-running <code>login</code> for another <code>platform.account</code>, and
-a local background agent are not implemented.</li>
-<li class="">Pagination of the self access-context response follows an optional
-<code>next_cursor</code>; the exact wire shape awaits the platform implementation.</li>
-<li class="">The <code>subject</code> of the access-context response may be a string or an object with
-an <code>id</code>.</li>
+<li class="">Supported credential stores are macOS Keychain, Windows Credential Manager and the
+Linux Secret Service, but none has been tested with real sign-ins yet.</li>
+<li class="">The <code>workload</code>, <code>private-key</code> and <code>execution</code> providers, browser-redirect (PKCE)
+login and a background agent aren&#x27;t available. To switch accounts, change
+<code>platform.account</code> and run <code>login</code> again.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
-<p><code>oyzu exec -- cargo test --locked --test integration authentication</code> runs the
-compiled CLI (help opens no store or network, status/logout without a session,
-provider selection and no fall-through against real consumers, supplied-bearer
-mode, conformance). <code>oyzu exec -- cargo test --locked --lib auth::</code> runs the
-library suite, including the full conformance scenarios. Neither qualifies a
-real identity provider, platform or OS store.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Remote runs</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/secrets"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Platform secrets</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#which-credential-a-command-uses" class="table-of-contents__link toc-highlight">Which credential a command uses</a></li><li><a href="#settings" class="table-of-contents__link toc-highlight">Settings</a></li></ul></li><li><a href="#storage-renewal-and-logout" class="table-of-contents__link toc-highlight">Storage, renewal and logout</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#security" class="table-of-contents__link toc-highlight">Security</a></li><li><a href="#conformance" class="table-of-contents__link toc-highlight">Conformance</a></li><li><a href="#limitations" class="table-of-contents__link toc-highlight">Limitations</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/remote-runs">Remote runs</a></li>
+<li class=""><a class="" href="/docs/reference/secrets">Secrets</a></li>
+<li class=""><a class="" href="/docs/reference/release-check">Checking whether a build would ship</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Remote runs</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/secrets"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Platform secrets</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#commands" class="table-of-contents__link toc-highlight">Commands</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#how-login-works" class="table-of-contents__link toc-highlight">How login works</a></li><li><a href="#which-credential-a-command-uses" class="table-of-contents__link toc-highlight">Which credential a command uses</a><ul><li><a href="#settings" class="table-of-contents__link toc-highlight">Settings</a></li></ul></li><li><a href="#storage-renewal-and-logout" class="table-of-contents__link toc-highlight">Storage, renewal and logout</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#security" class="table-of-contents__link toc-highlight">Security</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

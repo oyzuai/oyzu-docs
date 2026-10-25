@@ -3,391 +3,281 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Tool Rust Installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool Rust Installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool Rust Installation","item":"https://docs.oyzu.ai/docs/reference/tool-rust-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<title data-rh="true">Rust installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust installation","item":"https://docs.oyzu.ai/docs/reference/tool-rust-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/tool-rust-installation">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-commands"><span class="linkLabel_WmDU">Tool commands: install, update, uninstall and inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Tool Shell Environment</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets (client slice)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool identity inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">Tool Store Inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Tool Proxy Acquisition</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/tool-go-installation"><span class="categoryLinkLabel_W154">Installing specific tools</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Tool Go Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Tool Helm Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Tool Java, Maven and Gradle Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">Tool k3d Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">Tool kubectl Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Tool Liquibase Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">Node package manager installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Tool Python Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Tool Rust Installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tool Tailscale Installation</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Tools</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Installing specific tools</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Tool Rust Installation</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Tool Rust Installation</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/tool-rust-installation">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-commands"><span class="linkLabel_WmDU">Tool commands: install, update, uninstall and inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-shell-environment"><span class="linkLabel_WmDU">Using tools in your shell</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-catalog"><span class="linkLabel_WmDU">Organization tool catalog (toolCatalog)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-index"><span class="linkLabel_WmDU">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-aqua"><span class="linkLabel_WmDU">Registry packages (oyzu: ids, from the aqua registry)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-github"><span class="linkLabel_WmDU">The github: backend</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-resolve"><span class="linkLabel_WmDU">Recipe resolution and evidence (oyzu tools resolve, oyzu tools evidence)</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/artifact-sets"><span class="linkLabel_WmDU">Installing from resolved artifact sets</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-lock-inspection"><span class="linkLabel_WmDU">Tool lock files and inspection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-store-inspection"><span class="linkLabel_WmDU">The tool store</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-proxy-acquisition"><span class="linkLabel_WmDU">Downloading tools through a proxy</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-3 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/tool-go-installation"><span class="categoryLinkLabel_W154">Installing specific tools</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-go-installation"><span class="linkLabel_WmDU">Go installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-zig-installation"><span class="linkLabel_WmDU">Zig installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-helm-installation"><span class="linkLabel_WmDU">Helm installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-java-installation"><span class="linkLabel_WmDU">Java, Maven and Gradle installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-k3d-installation"><span class="linkLabel_WmDU">k3d installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-kubectl-installation"><span class="linkLabel_WmDU">kubectl installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-liquibase-installation"><span class="linkLabel_WmDU">Liquibase installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-npm-pnpm-installation"><span class="linkLabel_WmDU">npm, pnpm and Yarn installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-python-installation"><span class="linkLabel_WmDU">Python installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/tool-rust-installation"><span class="linkLabel_WmDU">Rust installation</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-4 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/tool-tailscale-installation"><span class="linkLabel_WmDU">Tailscale installation</span></a></li></ul></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Tools</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Installing specific tools</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Rust installation</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Rust installation</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/tool-rust-installation.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>See <a class="" href="/docs/reference/tool-management-development">tool management</a> for shared prerequisites,
-command conventions and qualification limits.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-installation-through-the-frozen-native-worker">Rust installation through the frozen native worker<a href="#rust-installation-through-the-frozen-native-worker" class="hash-link" aria-label="Direct link to Rust installation through the frozen native worker" title="Direct link to Rust installation through the frozen native worker" translate="no">​</a></h2>
-<p>The current implementation uses Oyzu&#x27;s compiled worker to invoke rustup with
-broker-verified frozen inputs. Its command mechanics are adapted from the pinned
-mise source, without initializing mise settings, loading backends or consulting
-mise configuration. Cargo/Rustup homes remain private to the installation;
-rustup uses a minimal profile, explicit components/targets and disabled self-update.
-Both native streams go to diagnostics while the worker&#x27;s stdout remains a private
-protocol. The returned sysroot must reside inside the private Rustup home.
-This extraction is undergoing real-host qualification; earlier evidence below
-describes the former embedded implementation and does not qualify this replacement.</p>
-<p>The Rust integration is being verified through the same <code>install</code>, <code>which</code>,
-<code>exec</code>, environment and shell contracts as Node/Go. It requires a current
-Oyzu frontend and a Rust selection declared in native toolchain files or Oyzu TOML:</p>
+<p>oyzu can install the Rust toolchain for your project (rustc, Cargo, rustdoc, rustfmt,
+Clippy and the LLVM coverage tools) and the Cargo helpers the Rust builder uses, so
+you don&#x27;t need rustup or Rust installed on the machine. The exact release is
+recorded in <code>oyzu.lock</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
+<p>Pinning is optional. With nothing declared, <code>oyzu pin</code> or your first <code>oyzu build</code>
+picks the newest stable Rust and records it in <code>oyzu.lock</code>. To choose a version,
+set it in <code>oyzu.toml</code> or in <code>rust-toolchain.toml</code>:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tools</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">rust</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;1.95.0&quot;</span><br></div></code></pre></div></div>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> rust</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token function" style="color:#d73a49">which</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> -- rustc </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> -- </span><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> rust </span><span class="token parameter variable" style="color:#36acaa">--frozen</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--offline</span><br></div></code></pre></div></div>
-<p>An explicit install name must already be configured. It validates the name and
-installs the complete configured project selection, retaining one environment
-lock rather than creating a separate Rust installation workflow. Bare <code>install</code>
-continues to install all configured tools. Rust recipes use exact three-part
-stable versions. Pinning and isolated first-build resolution also accept the
-native <code>stable</code> channel, resolving it to one exact release before acquisition
-and plan freeze. Windows amd64 installations select the MSVC compiler (the host&#x27;s platform, like
-Linux and macOS) and consume the matching
-pinned recipe, including its formatting, lint and coverage components. Windows
-selections retain a separate native platform identity for each helper; see
-<a href="#discovered-native-helper-installation" class="">discovered helper installation</a>. The experimental Linux compiler profile also
-installs rustfmt, Clippy, LLVM coverage tools and standard libraries for the six
-binary targets supported by the Rust builder. Native rustup owns component
-and target installation. Discovery reads every rust-toolchain file form (see
-<a class="" href="/docs/reference/discovery-selection#rust-toolchain-files">Rust toolchain files</a>); resolving
-beta/nightly, partial-version or dated channels remains subsequent functional work.</p>
-<p>For <code>stable</code>, the resolver first uses the admitted signed index and organization
-catalog. Standalone publisher fallback, when allowed by existing controls, reads
-the checksum-verified official stable channel manifest only to select the exact
-version. Its versioned manifest, components and installer still pass the existing
-exact recipe/acquisition checks. The lock retains request <code>stable</code> and its exact
-selection. Offline reuse and <code>pin --refresh</code> retain that selection; they do not
-move the channel. A fresh offline request without locked metadata remains
-unresolved. The original source and Cargo minimum remain binding. See the
-original stable qualification for
-the observed gap and current native verification status. This addition covers
-pinning, frozen reuse and isolated first-build selection; direct install/update
-entry points still require an exact configured Rust release.</p>
-<p>The worker performs rustup installation in private homes. Oyzu packages the completed
-compiler sysroot into its existing cached archive/store format, retaining bundled
-notices; the receipt identifies the published Cargo/rustc/rustdoc commands. The
-lock&#x27;s digest-only evidence covers that generated snapshot, not a claim of signed
-publisher verification or a captured bootstrap download closure. Frozen cached
-restoration does not invoke rustup. If both installation and archive are absent,
-restore online through explicit update; do not silently regenerate a different
-archive for an existing digest.</p>
-<p>Pinned Rust installation captures and verifies each recipe input through Oyzu&#x27;s
-broker, then gives rustup a private local distribution mirror.
-An organization catalog now governs indexed Rust releases and every selected
-component; see below. Configured Rust connector routes remain unsupported, with
-no direct fallback from an enforced route.
-Cargo package/Git acquisition remains ordinary Cargo behavior. Mutable Cargo
-cache/configuration is separate from the committed compiler payload. Execution
-sets RUSTC and RUSTDOC to selected native binaries and prepends their bin directory;
-no ambient rustup installation supplies the compiler. A compatible system linker
-is a prerequisite: Windows MSVC requires Visual Studio Build Tools with the C++
-workload (no IDE) and its Windows SDK; macOS requires command line tools. A
-GNU/LLVM recipe, if selected explicitly, requires externally provisioned LLVM/MinGW. Installing Rust does not install MSVC, Windows
-SDKs or other system prerequisites.</p>
-<p>Acceptance is exercised by <code>tooling/test-tool-rust.py</code>. At <code>9ddf621</code>, Linux amd64
-passed real installation with ambient Rust removed from PATH, store-owned
-Cargo/rustc/rustdoc version checks, dependency-free compilation and program
-execution, frozen reuse with unchanged lock bytes, and building the actual Oyzu
-checkout&#x27;s default frontend using the installed compiler. The last check reused
-the provisioned Cargo dependency cache; it does not establish dependency capture
-or an isolated Oyzu build. A subsequent run with container networking disabled
-restored the removed installation from its cached snapshot and compiled the sample
-project again. Native Windows/macOS Rust qualification remains pending.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="local-linux-rust-worker-from-windows-experimental">Local Linux Rust worker from Windows (experimental)<a href="#local-linux-rust-worker-from-windows-experimental" class="hash-link" aria-label="Direct link to Local Linux Rust worker from Windows (experimental)" title="Direct link to Local Linux Rust worker from Windows (experimental)" translate="no">​</a></h3>
-<p>Native Linux arm64 GNU is admitted. Remote arm64 installation uses the explicitly
-provisioned <code>oyzu-toolchain/worker:v1-linux-arm64</code> sibling and verifies its actual
-architecture. Oyzu does not provision images or emulators. Native ARM64 and this
-worker sibling still need qualification.</p>
-<p>Ordinary <code>oyzu install</code> now installs only the native development selection; it
-never provisions a Linux compiler worker merely because <code>build.yaml</code> declares
-Rust targets. Isolated build preparation remains a separate execution path.</p>
-<p>Earlier acceptance proved Windows-to-Linux provisioning through a prebuilt
-<code>oyzu-toolchain/worker:v1</code> image. That historical flow is no longer part of
-ordinary installation. The captured-build machinery and its image prerequisites
-remain independent; native installation does not qualify isolated builds.</p>
-<p>The remote Linux installer uses a private 6 GiB executable tmpfs and an 8 GiB
-container memory limit with two CPUs. Rustup keeps downloaded inputs, expanded
-components and transaction scratch concurrently; the earlier 2 GiB scratch limit
-failed the repository&#x27;s 12-component Rust 1.99.1 recipe during extraction. The
-larger bound completed that installation during qualification. Network denial,
-the read-only root and distribution inputs, dropped capabilities and
-no-new-privileges remain required.
-The separate restoration worker also uses 6 GiB scratch and an 8 GiB memory
-limit: its verified private archive, cached archive and extracted tree coexist.
-The measured repository recipe required at least 3,276,915,836 bytes before
-filesystem overhead and exhausted its earlier 3 GiB bound. That recipe completed
-restoration under the larger limit; this does not qualify the full isolated
-build. Neither stage removes locked
-components. Hosts must have sufficient container resources.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pinned-native-rust-and-task-execution">Pinned native Rust and task execution<a href="#pinned-native-rust-and-task-execution" class="hash-link" aria-label="Direct link to Pinned native Rust and task execution" title="Direct link to Pinned native Rust and task execution" translate="no">​</a></h3>
-<p>For a Rust-only Windows amd64 project, run <code>oyzu pin</code>, <code>oyzu install</code>, then
-<code>oyzu run install</code>. The last command is the Rust builder&#x27;s executable installation
-task; it does not provision tools. An older MSVC or differently pinned installation
-requires explicit <code>oyzu install --update rust</code>; stale records are never relabeled.
-The native compiler&#x27;s platform is <code>windows/amd64/msvc</code>. The pinned recipe&#x27;s
-cross-target standard libraries may also be installed; their presence does not
-establish that cross-linkers are available.</p>
-<p>Installation uses the existing verified store and records the recipe digest in
-the tool record&#x27;s options. After publication, <code>install --frozen --offline</code> verifies
-and reuses the installed selection or restores its cached archive. Missing cached
-payloads fail. The version-1 lock retains its other platform resolution recipes.</p>
-<p><code>oyzu run</code> obtains verified tools from the default user-level store
-using discovery&#x27;s resolved configuration snapshot. It holds installation leases
-for the complete task/hook sequence and prepends verified tool binaries to PATH;
-Rust also supplies explicit RUSTC/RUSTDOC paths. Other task-specific environment
-values are retained. Missing verified selections fail before task hooks, with an
-<code>oyzu install</code> remedy; listing/help do not acquire tool leases. Custom stores are
-available through <code>oyzu exec --store</code>, not through <code>oyzu run</code> in this slice.
-Native linker, CMake and other package-specific prerequisites remain external.
-Managed task environments and wider native platform qualification remain pending.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-compiler-metadata-preflight">Rust compiler metadata preflight<a href="#rust-compiler-metadata-preflight" class="hash-link" aria-label="Direct link to Rust compiler metadata preflight" title="Direct link to Rust compiler metadata preflight" translate="no">​</a></h3>
-<p>Before a new Rust installation, the admitted tool broker fetches the exact stable
-channel manifest and its published SHA-256 checksum. The adapter verifies the
-manifest and checks that every requested compiler component has a published URL
-and digest. Missing components or mismatched checksums fail before launching rustup.
-Metadata parsing itself installs nothing and creates no state.</p>
-<p>Metadata acquisition also pins a versioned rustup installer using its published
-checksum. The broker verifies every selected input before the compiled worker
-invokes rustup. Existing locked offline archive reuse does not invoke this
-new-install metadata preflight.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="indexed-rust-and-organization-catalogs">Indexed Rust and organization catalogs<a href="#indexed-rust-and-organization-catalogs" class="hash-link" aria-label="Direct link to Indexed Rust and organization catalogs" title="Direct link to Indexed Rust and organization catalogs" translate="no">​</a></h3>
-<p><code>oyzu tools evidence --provider rust --version 1.95.0</code> produces the existing
-artifact-set shape for all five index platforms, marking macOS amd64 unsupported.
-The approved artifact is the official channel manifest. Its checksum params carry
-all available xz component URL/digest pairs and a checksum-verified, versioned
-rustup bootstrap. The evidence collector checks rustc, Cargo, host rust-std,
-Clippy, rustfmt and LLVM tools availability. Cross-target standard libraries and
-target-independent components such as rust-src remain selectable from the same
-indexed manifest.</p>
-<p>Under <code>toolCatalog.url</code>, pin/install/build acquisition selects an approved,
-verified indexed release. The manifest download must match the index&#x27;s SHA-256,
-and its complete component map must equal the indexed map. Native declarations
-in <code>rust-toolchain.toml</code> select components/targets from those inputs. Every selected
-component and the bootstrap must match an indexed URL and digest; the broker then
-hashes their downloaded bytes before copying them into the temporary mirror.
-Rustup uses this local mirror, private homes, a minimal profile and disabled
-self-update. Missing mirror inputs fail; no live publisher fallback can add them.
-This retains rustup&#x27;s native installation semantics instead of reimplementing them.</p>
-<p>The release catalog entry governs delivery of its manifest and admitted component
-URLs: direct entries use the fixed publisher hosts, proxy entries use the edge&#x27;s
-existing upstream URL route. The edge must serve those approved component URLs.
-Frozen recipes are checked against current catalog/index metadata before installing
-or reusing a selection. Installed payloads are trusted and never rehashed on reuse.
-Offline operations use the existing signed caches and archive/store rules.</p>
-<p>Unapproved releases fail with <code>TOOL_NOT_IN_CATALOG</code>; absent tools or records without
-component metadata fail with <code>TOOL_NOT_IN_INDEX</code>; differing indexed/locked inputs
-fail with <code>TOOL_CATALOG_MISMATCH</code>. A downloaded input with the wrong digest fails
-before rustup starts. Older Rust index records need regeneration, without a schema
-version change. <code>cargo:</code> helpers still refuse under a catalog; their governance is
-deferred.</p>
-<p>Unit tests cover the indexed component map and extra target/component selection.
-The compiled-CLI installation fixtures require Linux amd64 and check protocol
-and digest enforcement with a stand-in installer. They do not qualify real
-rustup, compilation or native platforms. See
-<a class="" href="/docs/support/capabilities">implementation status</a> for verification results.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="refreshing-pinned-installation-recipes">Refreshing pinned installation recipes<a href="#refreshing-pinned-installation-recipes" class="hash-link" aria-label="Direct link to Refreshing pinned installation recipes" title="Direct link to Refreshing pinned installation recipes" translate="no">​</a></h3>
-<p>After an embedded backend update, <code>oyzu pin --refresh</code> reacquires installation
-metadata for the already selected versions and configured execution platforms.
-It preserves version selection; it does not upgrade Rust, install tools, edit
-<code>oyzu.toml</code>, or reinterpret an old installation receipt as a new backend identity.
-Use <code>oyzu pin --refresh --dry-run</code> to review the proposed lock without writing it.
-Refresh requires online metadata acquisition and conflicts with <code>--offline</code>.
-An incomplete or failed resolution does not publish a replacement lock.</p>
-<p>Then run <code>oyzu build</code>. Build looks up the exact refreshed recipe in the shared
-user store and installs it if missing. Historical installation records embedded
-in a development lock do not override portable resolution records. Existing
-installations remain intact; reuse requires the exact current recipe identity.
-The native build retains the installation&#x27;s verified lease through task execution
-instead of hashing the payload again to activate it. No invocation re-hashes an
-already installed payload: tools are validated when installed and trusted afterwards,
-and this is not a same-user tamper boundary.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="experimental-pin-preview">Experimental pin preview<a href="#experimental-pin-preview" class="hash-link" aria-label="Direct link to Experimental pin preview" title="Direct link to Experimental pin preview" translate="no">​</a></h3>
-<p>Mise-enabled builds now expose <code>oyzu pin --dry-run</code> (optionally <code>--offline</code>).
-The command discovers the full project&#x27;s quality-stage requirements, expands
-platform declarations using the build planner, and prints a concise tool summary with unresolved explanations. Use <code>--json</code> for
-requirement provenance, available compiler metadata, and detailed diagnostics.
-A matching version-1 selection retains its exact compiler version and is checked
-against native constraints. New selections accept an exact stable version or
-the native <code>stable</code> request in configuration or a native toolchain declaration.</p>
-<p>Pinning is optional. With no explicit <code>[tools] rust</code>, no <code>rust-toolchain.toml</code>
-channel and no <code>oyzu.lock</code>, <code>oyzu pin</code> or the first build resolves the requirement
-<code>stable</code> to the greatest stable release (which must satisfy any Cargo
-<code>rust-version</code> minimum, otherwise resolution fails) and records it in <code>oyzu.lock</code>.
-A toolchain-file channel (the nearest <code>rust-toolchain.toml</code> or <code>rust-toolchain</code>
-upward from the build folder, stopping at the project root) is a complete
-request; a <code>[tools] rust</code> value must agree with it, as described in
-<a class="" href="/docs/reference/configuration#native-pin-files">native pin files</a>. Offline resolution
-needs an existing lock, as for any <code>stable</code> request. Verified 2026-10-18 with the
-compiled CLI: an unpinned tiny Cargo project (<code>rust-version = &#x27;1.80&#x27;</code>, committed
-<code>Cargo.lock</code>) built natively on Windows, locking Rust 1.99.1 and producing its executable.</p>
-<p>The experimental resolver supports exact stable Rust selections, resolution of
-<code>stable</code> to an exact release, and the Rust
-adapter&#x27;s supported helper defaults: cargo-nextest 0.9.146 and cargo-llvm-cov 0.9.1
-for Linux amd64 execution. Their versioned archives and checksums are the same
-inputs already declared by the Rust worker recipe. Other helper versions remain
-unsupported; these metadata records do not establish installed availability.</p>
-<p>A complete preview includes the exact proposed <code>oyzu.lock</code> text in JSON
-<code>proposed_files</code> and exits 0. Incomplete resolution exits 2 and proposes no files.
-<code>oyzu pin</code> revalidates discovery/configuration, then publishes a complete version-1
-lock through the recoverable transaction. It does not install tools or change
-native files or TOML, preserving comments and avoiding duplicate declarations.
-<code>--offline</code> reuses existing matching version-1 compiler metadata and built-in helper
-metadata, or reports missing inputs without acquisition. The build handoff supports
-a pinned Rust compiler; native installation of the complete pinned component
-selection remains unfinished.</p>
-<p>Configuration reads, frozen selection and installation lease acquisition reject an
-unfinished <code>.oyzu-pin-journal.json</code>. Pin recovery checks every destination against
-its recorded old/new bytes before rolling the entire set forward. Unexpected
-external changes retain the journal and fail with <code>PIN_EDIT_CONFLICT</code>. This is
-recoverable publication, not atomic replacement of multiple files. The transaction
-engine has focused stale-edit/interruption coverage. Pin captures the original lock
-before metadata acquisition and checks discovery/configuration again before commit.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="single-version-1-lock">Single version-1 lock<a href="#single-version-1-lock" class="hash-link" aria-label="Direct link to Single version-1 lock" title="Direct link to Single version-1 lock" translate="no">​</a></h3>
-<p>The decoded TOML schema
-defines the sole tool lock contract. <code>resolved_environment</code> and <code>resolution</code>
-record exact plans before installation; <code>environment</code> and <code>tool</code> retain verified
-installation graph facts. Optional <code>requirements</code> records hold discovery evidence.
-All sections are validated by one parser. Missing sections mean no records,
-never permission to execute an unresolved tool.</p>
-<p>Pinning retains installation records and updates resolution records. Installation
-retains resolution records. Resolution recipes are not receipts. The private
-materialization graph uses this same contract, with only installation records.
-No schema-version dispatch, legacy pin mode, or format migration is supported.
-Native installation of pinned components remains separate functional work.</p>
-<p>Version conflicts in ordinary pin output show the two source files and versions,
-an explanation, and confirmation that no files changed. Generated matrix IDs and
-content hashes remain in structured evidence rather than the normal message.
-<code>--json</code> represents a conflict as a schema-versioned object with <code>complete: false</code>
-and a <code>conflict</code> record, retaining the native field and content digest.</p>
-<p>The experimental preview treats native Rust toolchain channels as defaults. An explicit
-<code>tools.rust</code> (or canonical <code>tools.&quot;oyzu:rust&quot;</code>) selection overrides that channel.
-Cargo minimum Rust versions remain mandatory compatibility checks. Structured
-requirements distinguish <code>native-default</code> from <code>compatibility</code> origins. The accepted
-pinning direction preserves authored TOML and records exact selections in the lock.
-Ranges and other rolling or dated channels are not yet supported by this
-experimental resolver.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="experimental-resolution-materialization">Experimental resolution materialization<a href="#experimental-resolution-materialization" class="hash-link" aria-label="Direct link to Experimental resolution materialization" title="Direct link to Experimental resolution materialization" translate="no">​</a></h3>
-<p>The mise-enabled build handoff can now read an exact Rust compiler from a
-version-1 lock and provision its declared components. It checks explicit versions,
-native defaults and Cargo compatibility using the same compatibility function as
-pin. The local Linux worker must be rebuilt with this protocol; the controller
-requires confirmation of the requested component set.</p>
-<p>Generated archives are hashed after installation. A private materialization graph
-under <code>.oyzu/tools/resolutions/&lt;resolution-digest&gt;/oyzu.lock</code> binds the resolution
-ID to those actual archive bytes. This graph uses the existing version-1 receipt
-and lease verifier; it is not a conversion of the public resolution lock into an
-installation receipt. Publication follows successful Linux restoration and lease
-validation. Subsequent captures verify the cached archive through that same path.</p>
-<p>The two-platform dependency-free fixture has passed a real build from an empty
-project tool store after pinning, followed by bundle inspection and ELF architecture
-checks (amd64 and arm64). A subsequent build and inspection also passed using
-the cached compiler without invoking rustup. Automatic first-build resolution and
-explicit offline build behavior are described below. Native helper installation
-is described below; isolated helper materialization is not qualified by that flow. Do not interpret a
-successful pin as installed-tool evidence.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="automatic-first-build-resolution">Automatic first build resolution<a href="#automatic-first-build-resolution" class="hash-link" aria-label="Direct link to Automatic first build resolution" title="Direct link to Automatic first build resolution" translate="no">​</a></h3>
-<p>For a mise-enabled build with no <code>oyzu.lock</code>, preflight now sends the selected
-captured targets to the same tool planner used by pin. It publishes a complete
-resolution lock before capturing source, then uses the materialization path above.
-Authored TOML stays unchanged. Local fast builds select only their required stages;
-pin still selects all configured applicable gates. Existing locks retain their
-selections rather than being silently migrated or replaced.</p>
-<p>This path supports exact Rust versions from configuration or native declarations.
-Without either, the Rust adapter supplies its supported default, Rust 1.99.1;
-discovery exposes that default and pin records the exact recipe in the lock. It
-does not select a compiler from PATH or copy the default into TOML. Native
-declarations take precedence over this fallback, and explicit TOML selections
-take precedence over native defaults. A missing-lock affected build is rejected until a full
-selection establishes the environment. The first run published the lock and
-installed the selected compiler, but exposed an unconditional coverage probe in
-Cargo preparation. Preparation now probes nextest and coverage only when the test
-stage is enabled by the captured configuration. The corrected fast build passed
-in 289.7 seconds using the cached compiler; bundle inspection and ELF checks
-confirmed amd64 (machine 62) and arm64 (machine 183). No nextest or coverage
-probe ran. A dry run on the repository&#x27;s dependency-free Rust example also
-resolved the supported default successfully and proposed only <code>oyzu.lock</code>.
-The frozen compiler acquisition proof is recorded below.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="offline-rust-builds">Offline Rust builds<a href="#offline-rust-builds" class="hash-link" aria-label="Direct link to Offline Rust builds" title="Direct link to Offline Rust builds" translate="no">​</a></h3>
-<p><code>oyzu build --offline</code> requires an existing tool lock and a cached compiler
-archive. It does not resolve new versions or publish lock changes. The compiler
-still passes normal archive, receipt and lease verification before execution;
-an absent installation or archive fails without starting an installer.</p>
-<p>This first offline path supports standalone Rust projects with dependency-free
-Cargo locks (including local workspace packages). Registry and Git package replay
-is not connected and fails before fetching those inputs. Other builders and
-managed configuration acquisition reject explicit offline mode. Worker images
-must already be provisioned, as for online builds. These limitations are explicit
-errors rather than permission to fall back to online acquisition. The missing
-installation CLI check passed: exit 1, unchanged lock, and no tool store created.
-Cached build replay passed in 270.25 seconds, with both ELF architectures verified,
-successful bundle inspection, an unchanged lock and no installer invocation.
-The latest CLI also passed
-<code>pin --dry-run --offline</code> against an existing full resolution lock without edits.</p>
-<p>The repository example (<code>examples/builds/rust-app/project</code>, with a two-platform
-build declaration) passed plain <code>oyzu build</code> from an empty project tool store and
-without <code>oyzu.lock</code>, <code>oyzu.toml</code> or a native toolchain declaration. The run selected
-the adapter default, installed it through embedded mise and produced Linux amd64
-and arm64 binaries. Bundle inspection and ELF machine checks passed. The measured
-run took 648.15 seconds on the available Windows/Docker host; this is functional
-evidence, not a performance claim. The successful offline replay used this exact
-example and retained its original Cargo manifests and source bytes.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="frozen-rust-distribution-integration">Frozen Rust distribution integration<a href="#frozen-rust-distribution-integration" class="hash-link" aria-label="Direct link to Frozen Rust distribution integration" title="Direct link to Frozen Rust distribution integration" translate="no">​</a></h3>
-<p>The current controller stages every locked Rust acquisition input through its
-broker and checks its SHA-256 digest before launching installation. A private
-read-only distribution directory is passed to the embedded mise Rust installer
-through <code>install_rust_from_directory</code>; the Linux installer worker runs with
-<code>--network=none</code>. Bootstrap HTTP is answered from the same verified inputs.
-Unlisted requests fail rather than falling back to public acquisition. The
-existing store still records and verifies the actual generated compiler archive.</p>
-<p>This uses mise revision <code>0105e9222972c0e5c6bd89f24aff1550f460de16</code>, which changes
-the admitted backend identity. Prior backend locks are not silently rewritten or
-reused. Both controller and worker compiled successfully. A fresh copy of the
-dependency-free repository Rust example, with no lock or tool store, passed plain
-<code>oyzu build</code> in 522.51 seconds. Bundle inspection passed and ELF headers confirmed
-Linux amd64 and arm64 outputs. Source files remained byte-identical. Installer
-network mode <code>none</code> and the read-only input mount were captured during the run.</p>
-<p>The first isolated run installed the compiler but failed when rustup attempted
-an unpinned self-update. The frozen-directory method now disables that update;
-the bootstrap version remains fixed by the recipe. The corrected run passed;
-the original failure remains recorded in implementation status. The subsequent
-<code>oyzu build --offline</code> passed in 254.27 seconds, with successful bundle inspection,
-both ELF architectures, an unchanged lock and no installer invocation. The final
-binary also passed pin preview/publication/idempotence and missing-offline-input
-checks. This completes the bounded dependency-free Rust workflow, not all builder
-or helper-tool installation coverage.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="portable-rust-metadata-coverage">Portable Rust metadata coverage<a href="#portable-rust-metadata-coverage" class="hash-link" aria-label="Direct link to Portable Rust metadata coverage" title="Direct link to Portable Rust metadata coverage" translate="no">​</a></h3>
-<p>Pin now publishes platform-specific Rust and helper records as described in the
-<a class="" href="/docs/reference/tool-lock-inspection#execution-platform-resolutions">lock reference</a>. Earlier
-Linux-only pin descriptions above are superseded for metadata resolution. Native
-installation and worker paths retain their existing qualification limits; this
-change does not complete portable installation or backend compatibility work.</p>
+<p><code>oyzu install rust</code> checks that <code>rust</code> is configured, then installs the project&#x27;s
+whole tool selection into one lock. Bare <code>oyzu install</code> does the same for every
+configured tool.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-the-version-is-chosen">How the version is chosen<a href="#how-the-version-is-chosen" class="hash-link" aria-label="Direct link to How the version is chosen" title="Direct link to How the version is chosen" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Source</th><th>Role</th></tr></thead><tbody><tr><td><code>rust-toolchain.toml</code> or <code>rust-toolchain</code>, the nearest one from the build folder up to the project root</td><td>The request. It&#x27;s a <a class="" href="/docs/reference/configuration#native-pin-files">native pin file</a>; see <a class="" href="/docs/reference/discovery-selection#rust-toolchain-files">Rust toolchain files</a></td></tr><tr><td><code>[tools] rust</code> (or <code>[tools].&quot;oyzu:rust&quot;</code>)</td><td>The request when no toolchain file applies. Otherwise it must agree with the file</td></tr><tr><td><code>rust-version</code> in <code>Cargo.toml</code></td><td>A minimum every selection must meet</td></tr><tr><td>None of these</td><td><code>stable</code>: the newest stable release</td></tr></tbody></table></div>
+<p>Accepted requests are an exact stable version (<code>1.95.0</code>) or <code>stable</code>. oyzu resolves
+<code>stable</code> to one exact release and keeps it in the lock; offline commands and
+<code>oyzu pin --refresh</code> don&#x27;t move it. <code>oyzu install rust</code> and <code>oyzu update rust</code>
+need an exact version in configuration. Beta, nightly, partial versions such as
+<code>1.95</code>, dated channels and ranges aren&#x27;t supported.</p>
+<p>A fresh <code>stable</code> request needs the network. Offline, it works only when the lock
+already has the selection.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-rust-is-installed">How Rust is installed<a href="#how-rust-is-installed" class="hash-link" aria-label="Direct link to How Rust is installed" title="Direct link to How Rust is installed" translate="no">​</a></h2>
+<p>When it installs Rust, oyzu:</p>
+<ol>
+<li class="">Downloads the official channel manifest for the exact release and its published
+SHA-256, and checks that every needed component has a URL and digest.</li>
+<li class="">Downloads each component and a fixed rustup installer, checking each against its
+digest.</li>
+<li class="">Runs rustup against a private local copy of those files, with its own private
+Cargo and rustup homes, a minimal profile, the listed components and targets,
+and self-update turned off. Nothing outside those files is downloaded.</li>
+<li class="">Stores the finished toolchain as an archive in oyzu&#x27;s tool store, with its
+license files.</li>
+</ol>
+<p>Reinstalling from the lock (<code>--frozen</code>) restores that archive and doesn&#x27;t run
+rustup. If both the installation and the archive are gone, run an online update;
+oyzu won&#x27;t silently build a different archive for an existing digest.</p>
+<p>The default profile also installs the standard libraries for the targets the Rust
+builder supports. Having a target&#x27;s standard library doesn&#x27;t mean you have a
+linker for it.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-oyzu-sets-when-rust-runs">What oyzu sets when Rust runs<a href="#what-oyzu-sets-when-rust-runs" class="hash-link" aria-label="Direct link to What oyzu sets when Rust runs" title="Direct link to What oyzu sets when Rust runs" translate="no">​</a></h2>
+<ul>
+<li class="">The toolchain&#x27;s <code>bin</code> directory goes first on <code>PATH</code>.</li>
+<li class=""><code>RUSTC</code> and <code>RUSTDOC</code> point at the installed binaries.</li>
+<li class=""><code>RUSTUP_TOOLCHAIN</code> points at the installed toolchain, so Cargo subcommands from
+your own Cargo home can&#x27;t pick a different global Clippy or rustfmt.</li>
+</ul>
+<p>Cargo still downloads crates and Git dependencies itself, and your Cargo cache and
+configuration are separate from the installed toolchain.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
+<p>oyzu doesn&#x27;t install system linkers or SDKs:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Platform</th><th>You need</th></tr></thead><tbody><tr><td>Windows (MSVC)</td><td>Visual Studio Build Tools with the C++ workload and a Windows SDK. The IDE isn&#x27;t needed</td></tr><tr><td>macOS</td><td>Apple Command Line Tools, which provide the SDK, linker and Git (oyzu uses Git to infer versions). Check with <code>xcode-select -p</code>, <code>xcrun --show-sdk-path</code> and <code>git --version</code>; install with <code>xcode-select --install</code>. Some builders may need full Xcode</td></tr><tr><td>GNU or LLVM targets</td><td>LLVM or MinGW installed yourself, if you select those toolchains</td></tr></tbody></table></div>
+<p>CMake and other build tools your crates need are also up to you.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pinned-native-rust-and-task-execution">Pinned native Rust and task execution<a href="#pinned-native-rust-and-task-execution" class="hash-link" aria-label="Direct link to Pinned native Rust and task execution" title="Direct link to Pinned native Rust and task execution" translate="no">​</a></h2>
+<p>On Windows x86-64, for a Rust-only project:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu pin</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run </span><span class="token function" style="color:#d73a49">install</span><br></div></code></pre></div></div>
+<p><code>oyzu run install</code> runs the Rust builder&#x27;s executable installation task; it doesn&#x27;t
+install tools. The compiler platform is <code>windows/amd64/msvc</code>. If an installation
+was made by an older oyzu or for a different pin, run <code>oyzu install --update rust</code>.</p>
+<p><code>oyzu run</code> uses tools from the default user-level tool store. It puts them on
+<code>PATH</code> (and sets <code>RUSTC</code>/<code>RUSTDOC</code>) for the whole task and its hooks. If a needed
+tool isn&#x27;t installed, the task fails before any hook runs and tells you to run
+<code>oyzu install</code>. Listing tasks and help don&#x27;t need tools. To use a custom store,
+use <code>oyzu exec --store</code>; <code>oyzu run</code> doesn&#x27;t accept one.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="discovered-native-helper-installation">Discovered native helper installation<a href="#discovered-native-helper-installation" class="hash-link" aria-label="Direct link to Discovered native helper installation" title="Direct link to Discovered native helper installation" translate="no">​</a></h2>
-<p>With a portable <code>oyzu.lock</code>, native preparation combines builder requirements with
-the effective configuration instead of installing only literal <code>[tools]</code> entries.
-You do not need to repeat inferred helpers in TOML. Use <code>oyzu pin</code>, then
-<code>oyzu install</code> to prepare the containing target&#x27;s full enabled tool selection, or
-<code>oyzu build --full</code> to install and execute the selected quality stages. Ordinary
-<code>oyzu build</code> prepares compile requirements only unless configuration requires
-additional checks. <code>oyzu run test</code> consumes the same pinned test selection but
-requires it to be installed first.</p>
-<p>The admitted release archives are <code>cargo:cargo-nextest</code> 0.9.146 and
-<code>cargo:cargo-llvm-cov</code> 0.9.1. Their short names are also accepted in <code>[tools]</code>.
-Explicit configuration overrides builder defaults and still must satisfy native
-compatibility constraints and policy. Other helper versions/backends fail with a
-named unsupported or stale-pin error; there is no implicit <code>cargo install</code>, source
-build, or separate mise executable. Archives use the existing broker, published
-checksum verification, bounded extraction and installation lease contracts.
-Configured tool routes do not fall back to public downloads on failure.</p>
-<p>The shared user store contains the installations; project locks remain portable
-version-1 resolution records. Reusing a compatible installation does not copy it
-into the project. Windows GNU/LLVM Rust and native MSVC helper executables retain
-their separate artifact platforms. This does not install MSVC or a Windows SDK.
-The selected Rust sysroot also binds rustup&#x27;s <code>RUSTUP_TOOLCHAIN</code> so Cargo subcommand
-proxies in a user Cargo home cannot select a different global Clippy or rustfmt.</p>
-<p><code>tools current</code>, <code>which</code>, <code>exec</code> and shell activation recognize the inferred
-selection for the nearest containing target. Descendant targets do not change a
-parent shell&#x27;s tool versions; native builds prepare each target against its own
-configuration. Existing explicitly provisioned flows without portable pins remain
-available. Missing pins require <code>oyzu pin</code>; build never silently repins them.
-Missing installations require online preparation; <code>--offline</code> reuses verified
-installed payloads and cached archives and cannot acquire missing inputs.</p>
-<p>Windows native coverage is the first runtime qualification; Linux/macOS and
-isolated helper installation are separate qualification work. See
-<a class="" href="/docs/support/capabilities">implementation status</a> for commands and results.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/tool-python-installation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Tool Python Installation</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-tailscale-installation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Tool Tailscale Installation</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#rust-installation-through-the-frozen-native-worker" class="table-of-contents__link toc-highlight">Rust installation through the frozen native worker</a><ul><li><a href="#local-linux-rust-worker-from-windows-experimental" class="table-of-contents__link toc-highlight">Local Linux Rust worker from Windows (experimental)</a></li><li><a href="#pinned-native-rust-and-task-execution" class="table-of-contents__link toc-highlight">Pinned native Rust and task execution</a></li><li><a href="#rust-compiler-metadata-preflight" class="table-of-contents__link toc-highlight">Rust compiler metadata preflight</a></li><li><a href="#indexed-rust-and-organization-catalogs" class="table-of-contents__link toc-highlight">Indexed Rust and organization catalogs</a></li><li><a href="#refreshing-pinned-installation-recipes" class="table-of-contents__link toc-highlight">Refreshing pinned installation recipes</a></li><li><a href="#experimental-pin-preview" class="table-of-contents__link toc-highlight">Experimental pin preview</a></li><li><a href="#single-version-1-lock" class="table-of-contents__link toc-highlight">Single version-1 lock</a></li><li><a href="#experimental-resolution-materialization" class="table-of-contents__link toc-highlight">Experimental resolution materialization</a></li><li><a href="#automatic-first-build-resolution" class="table-of-contents__link toc-highlight">Automatic first build resolution</a></li><li><a href="#offline-rust-builds" class="table-of-contents__link toc-highlight">Offline Rust builds</a></li><li><a href="#frozen-rust-distribution-integration" class="table-of-contents__link toc-highlight">Frozen Rust distribution integration</a></li><li><a href="#portable-rust-metadata-coverage" class="table-of-contents__link toc-highlight">Portable Rust metadata coverage</a></li></ul></li><li><a href="#discovered-native-helper-installation" class="table-of-contents__link toc-highlight">Discovered native helper installation</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<p>The Rust builder needs <code>cargo-nextest</code> 0.9.146 for tests and <code>cargo-llvm-cov</code> 0.9.1
+for coverage. You don&#x27;t have to list them: after <code>oyzu pin</code>,</p>
+<ul>
+<li class=""><code>oyzu install</code> installs everything the enabled build stages need;</li>
+<li class=""><code>oyzu build --full</code> installs and runs the quality stages;</li>
+<li class="">plain <code>oyzu build</code> installs only what compiling needs, unless configuration
+turns on more checks;</li>
+<li class=""><code>oyzu run test</code> uses the pinned helpers but needs them installed first.</li>
+</ul>
+<p>You can also set them in <code>[tools]</code> as <code>cargo:cargo-nextest</code> and
+<code>cargo:cargo-llvm-cov</code> (short names work too). Other versions fail with a clear
+error. oyzu never runs <code>cargo install</code> or builds helpers from source.</p>
+<p><code>oyzu tools current</code>, <code>oyzu which</code>, <code>oyzu exec</code> and activated shells use the
+selection of the nearest build target. Child targets don&#x27;t change a parent shell&#x27;s
+tools. If pins are missing, run <code>oyzu pin</code>; <code>oyzu build</code> never re-pins on its own.
+If installations are missing, run an online install; <code>--offline</code> reuses installed
+tools and cached archives only.</p>
+<p>Installations live in the shared user store and are reused across projects; the
+project lock stays portable.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="indexed-rust-and-organization-catalogs">Indexed Rust and organization catalogs<a href="#indexed-rust-and-organization-catalogs" class="hash-link" aria-label="Direct link to Indexed Rust and organization catalogs" title="Direct link to Indexed Rust and organization catalogs" translate="no">​</a></h2>
+<p>When <code>toolCatalog.url</code> is set (see <a class="" href="/docs/reference/tool-catalog">organization tool catalog</a>),
+pin, install and build only use an approved release from the signed index:</p>
+<ul>
+<li class="">The downloaded channel manifest must match the index&#x27;s SHA-256, and its full
+component list must match the indexed one.</li>
+<li class="">Every component selected by <code>rust-toolchain.toml</code> and the rustup installer must
+match an indexed URL and digest. There&#x27;s no fallback to the public site.</li>
+<li class="">Locked selections are checked against the current catalog before install or
+reuse.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Error</th><th>Cause</th></tr></thead><tbody><tr><td><code>TOOL_NOT_IN_CATALOG</code></td><td>The release isn&#x27;t approved</td></tr><tr><td><code>TOOL_NOT_IN_INDEX</code></td><td>The tool isn&#x27;t indexed, or its record has no component list</td></tr><tr><td><code>TOOL_CATALOG_MISMATCH</code></td><td>The indexed and locked inputs differ</td></tr></tbody></table></div>
+<p>A downloaded file with the wrong digest fails before rustup starts. <code>cargo:</code>
+helpers are refused under a catalog. Corporate mirror routes for Rust aren&#x27;t
+supported.</p>
+<p>To see what an index entry would contain, run
+<code>oyzu tools evidence --provider rust --version 1.95.0</code> (see
+<a class="" href="/docs/reference/tool-resolve">tools evidence</a>).</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="one-lock-file">One lock file<a href="#one-lock-file" class="hash-link" aria-label="Direct link to One lock file" title="Direct link to One lock file" translate="no">​</a></h2>
+<p>All tool selections live in one <code>oyzu.lock</code> (see <a class="" href="/docs/reference/tool-lock-inspection">lock inspection</a>).
+<code>oyzu pin</code> updates what&#x27;s selected; <code>oyzu install</code> records what&#x27;s installed. Neither
+edits <code>oyzu.toml</code> or native files.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>What it does</th></tr></thead><tbody><tr><td><code>oyzu pin</code></td><td>Resolves every tool the project needs, on every platform it builds for, and writes <code>oyzu.lock</code>. Doesn&#x27;t install anything</td></tr><tr><td><code>oyzu pin --dry-run</code></td><td>Shows the result without writing. With <code>--json</code>, the proposed lock is in <code>proposed_files</code>. Exits 0 when complete, 2 when something couldn&#x27;t be resolved</td></tr><tr><td><code>oyzu pin --refresh</code></td><td>Re-fetches installation details for the versions already selected, without upgrading. Needs the network</td></tr><tr><td><code>oyzu pin --refresh --dry-run</code></td><td>Previews the refresh</td></tr></tbody></table></div>
+<p>A failed or incomplete pin doesn&#x27;t replace the lock. If two sources disagree on a
+version, the error names both files and versions and confirms nothing changed.</p>
+<p>oyzu writes the lock and related files through a recovery journal
+(<code>.oyzu-pin-journal.json</code>). If a pin is interrupted, the next pin finishes it.
+Commands that read tools refuse to run while the journal is unfinished. If a file
+was changed by something else in the meantime, pin keeps the journal and fails
+with <code>PIN_EDIT_CONFLICT</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="builds-in-docker">Builds in Docker<a href="#builds-in-docker" class="hash-link" aria-label="Direct link to Builds in Docker" title="Direct link to Builds in Docker" translate="no">​</a></h2>
+<p>Isolated builds use the locked compiler too. With no <code>oyzu.lock</code>, the first build
+resolves and writes one before it starts.</p>
+<ul>
+<li class="">Linux ARM64 builds use the arm64 <a class="" href="/docs/reference/execution-image">execution image</a>,
+<code>oyzu-execution/base:1-linux-arm64</code> until the image is published. oyzu checks its
+architecture but doesn&#x27;t install emulators.</li>
+<li class=""><code>oyzu install</code> never sets up a Linux worker just because <code>build.yaml</code> declares
+Rust targets.</li>
+<li class="">The installer container gets 6 GiB of scratch space, 8 GiB of memory and two CPUs,
+with no network and a read-only root. Make sure Docker allows that much.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="offline-rust-builds">Offline Rust builds<a href="#offline-rust-builds" class="hash-link" aria-label="Direct link to Offline Rust builds" title="Direct link to Offline Rust builds" translate="no">​</a></h2>
+<p><code>oyzu build --offline</code> needs an existing lock and a cached compiler. It doesn&#x27;t
+resolve versions or change the lock, and it fails without running an installer if
+the compiler is missing.</p>
+<p>Offline builds work only for projects whose <code>Cargo.lock</code> has no registry or Git
+dependencies (local workspace packages are fine). Otherwise the build fails before
+fetching, because cached crate replay isn&#x27;t available yet.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="supported-platforms">Supported platforms<a href="#supported-platforms" class="hash-link" aria-label="Direct link to Supported platforms" title="Direct link to Supported platforms" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Platform</th><th>Status</th></tr></thead><tbody><tr><td>Linux x86-64 (glibc)</td><td>Supported</td></tr><tr><td>Windows x86-64 (MSVC)</td><td>Supported</td></tr><tr><td>macOS Intel</td><td>Supported with an existing lock; automatic default pinning isn&#x27;t available yet</td></tr><tr><td>Windows ARM64 (MSVC)</td><td><code>oyzu install</code> installs Rust from a lock that covers <code>windows/arm64/msvc</code>; building on this platform isn&#x27;t verified yet</td></tr><tr><td>macOS Apple silicon, Linux ARM64</td><td>Not supported yet</td></tr></tbody></table></div>
+<p>Helper installation (<code>cargo-nextest</code>, <code>cargo-llvm-cov</code>) is supported on Windows
+x86-64; on other platforms it isn&#x27;t supported yet.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/discovery-selection#rust-toolchain-files">Rust toolchain files</a></li>
+<li class=""><a class="" href="/docs/reference/tool-lock-inspection">Lock inspection</a></li>
+<li class=""><a class="" href="/docs/reference/tool-commands">Tool commands</a></li>
+<li class=""><a class="" href="/docs/reference/tool-catalog">Organization tool catalog</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/tool-python-installation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Python installation</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-tailscale-installation"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Tailscale installation</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#how-the-version-is-chosen" class="table-of-contents__link toc-highlight">How the version is chosen</a></li><li><a href="#how-rust-is-installed" class="table-of-contents__link toc-highlight">How Rust is installed</a></li><li><a href="#what-oyzu-sets-when-rust-runs" class="table-of-contents__link toc-highlight">What oyzu sets when Rust runs</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#pinned-native-rust-and-task-execution" class="table-of-contents__link toc-highlight">Pinned native Rust and task execution</a></li><li><a href="#discovered-native-helper-installation" class="table-of-contents__link toc-highlight">Discovered native helper installation</a></li><li><a href="#indexed-rust-and-organization-catalogs" class="table-of-contents__link toc-highlight">Indexed Rust and organization catalogs</a></li><li><a href="#one-lock-file" class="table-of-contents__link toc-highlight">One lock file</a></li><li><a href="#builds-in-docker" class="table-of-contents__link toc-highlight">Builds in Docker</a></li><li><a href="#offline-rust-builds" class="table-of-contents__link toc-highlight">Offline Rust builds</a></li><li><a href="#supported-platforms" class="table-of-contents__link toc-highlight">Supported platforms</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

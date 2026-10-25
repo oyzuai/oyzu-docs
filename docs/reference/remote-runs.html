@@ -4,51 +4,42 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Remote runs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/remote-runs"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Remote runs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/remote-runs"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Remote runs","item":"https://docs.oyzu.ai/docs/reference/remote-runs"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/remote-runs">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in and the credential provider</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Remote runs and sign-in</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Remote runs</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Remote runs</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/remote-runs">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/remote-runs"><span class="linkLabel_WmDU">Remote runs</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/auth"><span class="linkLabel_WmDU">Platform sign-in</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/secrets"><span class="linkLabel_WmDU">Platform secrets</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Remote runs and sign-in</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Remote runs</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Remote runs</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/remote-runs.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>Status: experimental client. <code>oyzu build --remote</code> and <code>oyzu run &lt;task&gt; --remote</code>
-implement the CLI side of the draft remote runs contract
-(design page). Client
-checks use a scripted local server and the contract mock. The bounded connected
-Linux build flow also has recorded qualification;
-broader host/service support remains incomplete. Sign-in is the experimental
-<a class="" href="/docs/reference/auth"><code>oyzu auth</code></a>, verified only against a local conformance fake.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="purpose">Purpose<a href="#purpose" class="hash-link" aria-label="Direct link to Purpose" title="Direct link to Purpose" translate="no">​</a></h2>
-<p><code>--remote</code> runs the same invocation on a platform pool instead of this machine:
-the pool checks out the exact pushed commit, runs <code>oyzu build</code> or <code>oyzu run &lt;task&gt;</code> there with full checks in isolation, and streams the output back. The
-CLI follows it to the end and exits with the remote exit code. Everything else
-Oyzu does stays local and works without an account; <code>--remote</code> is the optional
-platform path.</p>
+<p>Add <code>--remote</code> to <code>oyzu build</code> or <code>oyzu run &lt;task&gt;</code> to run the same command on a
+platform pool instead of your machine. The pool checks out the exact commit you
+pushed, runs the build or task there with full checks in isolation, and streams the
+output back. Oyzu follows the run to the end and exits with the remote exit code.</p>
+<blockquote>
+<p><strong>Note:</strong> Remote runs are experimental and have been run on Linux pools only.
+Everything else Oyzu does is local and works without an account.</p>
+</blockquote>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">git</span><span class="token plain"> push</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--remote</span><br></div></code></pre></div></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
 <ul>
 <li class="">
-<p>A Git checkout whose <code>HEAD</code> is pushed to a github.com repository linked to a
-project in your platform account. <code>git</code> must be on <code>PATH</code>.</p>
+<p>A Git checkout whose <code>HEAD</code> is pushed to a github.com repository that is linked to
+a project in your platform account. <code>git</code> must be on <code>PATH</code>.</p>
 </li>
 <li class="">
-<p><code>platform.url</code> and <code>platform.account</code> in user/global, machine or administrative
-configuration. Project/local scope is rejected with a diagnostic naming the key:</p>
+<p><code>platform.url</code> and <code>platform.account</code> in user, machine or administrator
+configuration. Project and local files can&#x27;t set them, so a checkout can&#x27;t send
+your credential somewhere else.</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.url https://platform.example.com</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> platform.account payments</span><br></div></code></pre></div></div>
-<p>CI can supply <code>OYZU_PLATFORM_URL</code> and <code>OYZU_PLATFORM_ACCOUNT</code> through the
-configuration contract. These invocation sources override ordinary files and
-remain subject to administrative constraints. A checkout cannot redirect a
-developer&#x27;s platform credential, even when its environment is trusted.</p>
+<p>In CI you can set <code>OYZU_PLATFORM_URL</code> and <code>OYZU_PLATFORM_ACCOUNT</code> instead.</p>
 </li>
 <li class="">
-<p>A platform credential from the shared <a class="" href="/docs/reference/auth#which-credential-a-command-uses">credential provider</a>:
-the session stored by <code>oyzu auth login</code> (used when you run from a terminal or
-select it with <code>platform.authentication.provider</code>), or a bearer supplied in
-<code>OYZU_PLATFORM_TOKEN</code> (never stored or refreshed; it is a credential, so it is
-read from the environment and never from a configuration file). Unattended
-runs with neither fail with <code>REMOTE_UNAUTHENTICATED</code> instead of looking for a
-developer&#x27;s session.</p>
+<p>A platform credential: an <a class="" href="/docs/reference/auth"><code>oyzu auth login</code></a> session (used at a terminal,
+or when <code>platform.authentication.provider</code> is <code>session</code>) or a token in
+<code>OYZU_PLATFORM_TOKEN</code>. See <a class="" href="/docs/reference/auth#which-credential-a-command-uses">which credential a command uses</a>.
+Unattended runs with neither fail with <code>REMOTE_UNAUTHENTICATED</code>.</p>
 </li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
@@ -81,39 +72,65 @@ developer&#x27;s session.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>Runs remotely</th></tr></thead><tbody><tr><td><code>oyzu build --remote</code></td><td>Every target</td></tr><tr><td><code>oyzu build cli web --remote</code></td><td>Targets <code>cli</code> and <code>web</code> (and what they depend on)</td></tr><tr><td><code>oyzu build --affected origin/main --remote</code></td><td>Targets affected since the merge base of <code>origin/main</code> and <code>HEAD</code></td></tr><tr><td><code>oyzu run policy-check --remote</code></td><td>Task <code>policy-check</code> (<code>target:task</code> also works)</td></tr><tr><td><code>… --remote --download out</code></td><td>The same, then downloads every output into <code>out/</code></td></tr></tbody></table></div>
-<p><code>oyzu build --remote --plan</code> previews a remote build locally without creating a
-run; see <a class="" href="/docs/reference/local-builds#planning-a-remote-run">planning a remote run</a>.</p>
-<p>The CLI resolves the repository from the current branch&#x27;s remote (else
-<code>origin</code>), the full <code>HEAD</code> commit and the checked-out branch ref. For
-<code>--affected</code> it sends the full merge-base commit, never a local ref name.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>Runs remotely</th></tr></thead><tbody><tr><td><code>oyzu build --remote</code></td><td>Every target.</td></tr><tr><td><code>oyzu build cli web --remote</code></td><td>Targets <code>cli</code> and <code>web</code>, plus what they depend on.</td></tr><tr><td><code>oyzu build --affected origin/main --remote</code></td><td>Targets affected since the merge base of <code>origin/main</code> and <code>HEAD</code>.</td></tr><tr><td><code>oyzu run policy-check --remote</code></td><td>Task <code>policy-check</code> (<code>target:task</code> also works).</td></tr><tr><td><code>... --remote --download out</code></td><td>The same, then downloads every output into <code>out/</code>.</td></tr></tbody></table></div>
+<p>To see what a pool would run without starting anything, use
+<code>oyzu build --remote --plan</code>; see <a class="" href="/docs/reference/local-builds#planning-a-remote-run">planning a remote run</a>.</p>
+<p>Oyzu sends the repository from the current branch&#x27;s remote (or <code>origin</code>), the full
+<code>HEAD</code> commit and the branch. For <code>--affected</code> it sends the merge-base commit, not a
+local ref name. Uncommitted changes aren&#x27;t part of the run; you get a warning.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="output">Output<a href="#output" class="hash-link" aria-label="Direct link to Output" title="Direct link to Output" translate="no">​</a></h2>
-<p>Text mode uses the same linear view as a local build. Each log line the pool
-streams is attributed to the target or task that wrote it (<code>scope</code> in the
-contract), so task starts, native output and task results look like local ones.
-The runner&#x27;s own lines (checkout, start, finish) appear under <code>runner</code>. The
-receipt on stdout leads with the outcome, then the run id, commit, project, Oyzu
-version, portal link when there is one, and the outputs the run produced:</p>
+<p>The terminal view looks like a local build. Each streamed log line is attributed to
+the target or task that wrote it, and the pool&#x27;s own lines (checkout, start, finish)
+appear under <code>runner</code>. At the end you get a summary:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">✓ Remote build succeeded</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Run       01jab7v3k9m2q8r4t6w0y1z5c7</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Commit    3f2a9c1d4b5e (main)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Project   oyzu/platform</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Oyzu      0.9.0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Outputs</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    manifest dist/manifest.json   4.0 KiB  sha256:aaaaaaaaaaaa</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    report   dist/cli/linux/x86_64/reports/junit.xml   2.0 KiB  sha256:bbbbbbbbbbbb</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  Use --download &lt;DIR&gt; to fetch outputs; nothing was written locally.</span><br></div></code></pre></div></div>
-<p>With <code>--json</code>, stderr carries the same structured events a local build emits
-(output events keep the remote scope as <code>operationId</code>) and stdout carries one
-<code>remote-run</code> record: <code>run</code> (the final run resource), <code>result</code> (state, exit code,
-reason and outputs), <code>downloads</code> (<code>path</code>, <code>digest</code>, local <code>file</code>) and
-<code>cancelled</code>.</p>
-<p>The record also contains <code>invocationId</code>, the exact <code>submission</code> body (repository,
-commit and selection), <code>observation</code> and a <code>cancellation</code> object. After a run has
-been created, failure to follow or retrieve its result produces an <code>unknown</code>
-outcome with the last observed run state/time and log position; it does not
-assert failed remote execution or start local work. The last run-resource state
-can predate subsequent scoped task log events. Known log gaps remain explicit
-in the result even after a connection recovers. Complete observation means the
-client received terminal records, not that every log entry or required artifact
-transfer is complete.</p>
-<p>Bounded retry notices describe observation loss and recovery. Submission,
-observation and requested artifact transfer are distinct phases. The current
-public contract supplies queued/running/final states and scoped task lifecycles;
-worker identity, assignment and detailed worker preparation/transfer telemetry
-are unavailable and are not inferred from illustrative studies.</p>
+<p>With <code>--json</code>, standard error carries the same events a local build emits, and
+standard output carries one <code>remote-run</code> record:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>invocationId</code></td><td>This invocation.</td></tr><tr><td><code>submission</code></td><td>What was sent: repository, commit and selection.</td></tr><tr><td><code>run</code></td><td>The final run resource.</td></tr><tr><td><code>result</code></td><td>State, exit code, reason and outputs. <code>resultAvailable</code> says whether the full result was fetched.</td></tr><tr><td><code>downloads</code></td><td>Each downloaded <code>path</code>, <code>digest</code> and local <code>file</code>.</td></tr><tr><td><code>observation</code></td><td>The last seen run state, time and log position, and any known log gaps.</td></tr><tr><td><code>cancelled</code></td><td>This invocation asked for cancellation. It doesn&#x27;t mean the run stopped.</td></tr><tr><td><code>cancellation</code></td><td><code>requested</code>, <code>acknowledged</code> and <code>confirmed</code>, as separate facts.</td></tr></tbody></table></div>
+<p>If Oyzu loses track of a run after creating it, the outcome is <code>unknown</code>, with the
+last state it saw. That doesn&#x27;t mean the run failed, and Oyzu never starts local work
+instead. Check the run in the platform (using the web link, if one was shown) before
+starting another.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="exit-status">Exit status<a href="#exit-status" class="hash-link" aria-label="Direct link to Exit status" title="Direct link to Exit status" translate="no">​</a></h2>
 
 
@@ -144,117 +161,141 @@ are unavailable and are not inferred from illustrative studies.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Remote outcome</th><th>Exit code</th></tr></thead><tbody><tr><td>Succeeded</td><td>0</td></tr><tr><td>Oyzu exited non-zero on the pool</td><td>That exit code</td></tr><tr><td>Failed before Oyzu ran, skipped, cancelled, timed out, or an unknown state</td><td>1</td></tr><tr><td>Refused before or while creating the run (configuration, Git, platform problem)</td><td>2</td></tr><tr><td>Interrupted with Ctrl-C</td><td>130</td></tr></tbody></table></div>
-<p>An unknown remote outcome after submission exits non-zero (1); an interrupt
-retains exit 130. Use the supplied Web link, or check the run ID with the platform
-operator when no link was supplied, before starting a replacement run.
-Reattachment and CLI retrieval of a previous remote run are not implemented.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Remote outcome</th><th>Exit code</th></tr></thead><tbody><tr><td>Succeeded</td><td>0</td></tr><tr><td>Oyzu exited non-zero on the pool</td><td>That exit code</td></tr><tr><td>Failed before Oyzu ran, skipped, cancelled, timed out, or unknown</td><td>1</td></tr><tr><td>Refused before or while creating the run (configuration, Git or platform problem)</td><td>2</td></tr><tr><td>Interrupted with Ctrl-C</td><td>130</td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cancellation">Cancellation<a href="#cancellation" class="hash-link" aria-label="Direct link to Cancellation" title="Direct link to Cancellation" translate="no">​</a></h2>
-<p>The first Ctrl-C asks the platform to cancel the run and keeps following its log
-while the pool stops it; a second Ctrl-C exits at once with
-130. The observer keeps following beyond the local cleanup grace period so it
-can retain the execution owner&#x27;s confirmed outcome. Cancelling is retry-safe, so a cancel that races the run&#x27;s own finish is
-harmless. There is no confirmation prompt, so cancelling works the same in CI.</p>
-<p>Closing the terminal (SIGHUP) is not a cancellation: it ends only the local
-follower, and the remote run continues on the pool.</p>
-<p><code>cancelled</code> records that this invocation <strong>requested</strong> cancellation. It is not
-confirmation that execution stopped. <code>cancellation.requested</code>, <code>acknowledged</code>
-and <code>confirmed</code> expose separate facts; confirmation follows a terminal
-<code>cancelled</code> result. A finished-run conflict is followed to its actual outcome.
-The receipt preserves pending or unknown cancellation and any known log gaps.</p>
-<p>Assigned native workers use the same cooperative interruption lifetime as a
-local captured build. A running cancellation acknowledgement requires the
-execution owner&#x27;s normal process wait and fresh finalized native build record;
-revoking a lease or receiving a success response alone is insufficient. Forced
-or unconfirmed stops remain explicit failures. The real Linux service/worker
-proof passed cancellation during the shared native action: the observer retained
-all three cancellation facts and exited 130 after confirmed cleanup. A second
-real run preserved an already accepted shared contribution while stopping API
-and preventing the final bundle from starting; see
-the distributed qualification record.
-<code>resultAvailable</code> distinguishes a fetched result from a partial observation.
-When the final run resource is already confirmed, losing access to its result
-retains that execution outcome and identifies unavailable metadata/outputs.
-The invocation still fails if requested observation cannot complete. Last-observed
-timestamps advance on actual responses; elapsed waiting is not execution progress.</p>
+<ul>
+<li class="">The first Ctrl-C asks the platform to cancel and keeps following the log while the
+pool stops the work. <code>cancellation.confirmed</code> is set once the run reports
+<code>cancelled</code>.</li>
+<li class="">A second Ctrl-C exits at once with 130.</li>
+<li class="">There&#x27;s no confirmation prompt, so it behaves the same in CI. Cancelling a run that
+just finished is harmless; you see its real outcome.</li>
+<li class="">Closing the terminal (SIGHUP) doesn&#x27;t cancel. It stops only the local follower; the
+run continues on the pool.</li>
+</ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="outputs">Outputs<a href="#outputs" class="hash-link" aria-label="Direct link to Outputs" title="Direct link to Outputs" translate="no">​</a></h2>
-<p>Outputs are listed by digest and never written into <code>dist/</code>. <code>--download &lt;DIR&gt;</code>
-fetches each one through the platform&#x27;s short-lived download link, which receives
-no platform credential, verifies its SHA-256 digest before writing, and writes it
-at its recorded path under <code>DIR</code>. A path that would leave <code>DIR</code> is refused.</p>
-<p>For accepted native split builds, these are the manifest, artifacts and required
-reports. The output projection excludes the private admitted plan, execution
-envelope and logs; it is not a complete local build bundle for <code>oyzu inspect</code>.
-The existing run log view retains remote observation separately. Native
-contribution validation precedes final platform success; downloaded file digests
-are checked again by the client.</p>
-<p>Reported native success does not guarantee platform acceptance. If the complete
-transferred contribution cannot be verified, the run fails with
-<code>CONTRIBUTION_UNVERIFIED</code> and no accepted outputs. This does not turn successful
-native actions into failed tests or grant permission to replay their commands.
-Inspect the run&#x27;s diagnostic and retained native evidence before retrying.</p>
-<p>The result must contain an <code>outputs</code> array, including an empty array when there
-are no outputs. Every output supplies its kind (<code>manifest</code>, <code>report</code> or
-<code>artifact</code>), media type, nonnegative size, path and digest. A missing or
-malformed array or missing output metadata fails with
-<code>REMOTE_RESPONSE_INVALID</code> before downloads start, in human and JSON modes,
-even when the platform reports that the run succeeded. Check the platform&#x27;s
-result and client compatibility; the remote run itself is not restarted.</p>
+<p>Outputs are listed by digest and never written into <code>dist/</code>. With <code>--download &lt;DIR&gt;</code>,
+Oyzu fetches each one through a short-lived download link (no platform credential is
+sent to it), checks its SHA-256 digest and writes it at its recorded path under
+<code>DIR</code>. A path that would land outside <code>DIR</code> is refused.</p>
+<p>Outputs are the manifest, artifacts and required reports. They aren&#x27;t a complete
+local build bundle, so <code>oyzu inspect</code> can&#x27;t check them as one.</p>
+<p>If the platform can&#x27;t verify the work a pool sent back, the run fails with
+<code>CONTRIBUTION_UNVERIFIED</code> and no outputs, even if the native build succeeded. Check
+the run&#x27;s diagnostics before retrying.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors-and-recovery">Errors and recovery<a href="#errors-and-recovery" class="hash-link" aria-label="Direct link to Errors and recovery" title="Direct link to Errors and recovery" translate="no">​</a></h2>
-<p>Refusals never fall back to a local build. Platform problems keep their stable
-code with a <code>REMOTE_</code> prefix and the platform request id, for example
-<code>REMOTE_UNAUTHENTICATED</code> (set a current token), <code>REMOTE_REPOSITORY_NOT_LINKED</code>,
-<code>REMOTE_COMMIT_NOT_FOUND</code> (push first) and <code>REMOTE_VALIDATION_FAILED</code>. Local
-checks fail before any request: <code>REMOTE_NOT_CONFIGURED</code>, <code>REMOTE_NOT_A_CHECKOUT</code>,
-<code>REMOTE_REPOSITORY_UNSUPPORTED</code> (not github.com), <code>REMOTE_COMMIT_NOT_PUSHED</code>
-(<code>HEAD</code> is on no branch of the remote) and <code>REMOTE_AFFECTED_BASE_INVALID</code>.
-Uncommitted changes produce a warning: they are not part of the run.</p>
-<p>Requests that fail in transport or answer 503 are retried up to five times with
-backoff, honoring <code>Retry-After</code>. Creation is retried under the same
-<code>Idempotency-Key</code>, so a retry never starts a second run. Logs are followed with
-30-second long polls over plain HTTPS and resume from the last cursor, so the
-client works through proxies (<code>HTTPS_PROXY</code>, <code>NO_PROXY</code>, <code>SSL_CERT_FILE</code>) with
+<p>A refused remote run never falls back to a local build. Platform errors keep the
+platform&#x27;s code with a <code>REMOTE_</code> prefix, plus the platform request id.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Code</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td><code>REMOTE_NOT_CONFIGURED</code></td><td><code>platform.url</code> or <code>platform.account</code> is missing or set in the wrong scope.</td><td>Set them at user scope.</td></tr><tr><td><code>REMOTE_NOT_A_CHECKOUT</code></td><td>Not a Git checkout.</td><td>Run from a checkout.</td></tr><tr><td><code>REMOTE_REPOSITORY_UNSUPPORTED</code></td><td>The remote isn&#x27;t on github.com.</td><td>Only github.com is supported.</td></tr><tr><td><code>REMOTE_COMMIT_NOT_PUSHED</code></td><td><code>HEAD</code> isn&#x27;t on any branch of the remote.</td><td>Push first.</td></tr><tr><td><code>REMOTE_AFFECTED_BASE_INVALID</code></td><td>The <code>--affected</code> ref can&#x27;t be resolved.</td><td>Fetch the ref or pick another.</td></tr><tr><td><code>REMOTE_UNAUTHENTICATED</code></td><td>No credential, or it was refused.</td><td>Run <code>oyzu auth login</code>, or set a current token.</td></tr><tr><td><code>REMOTE_REPOSITORY_NOT_LINKED</code></td><td>The repository isn&#x27;t linked to a project.</td><td>Link it in the platform.</td></tr><tr><td><code>REMOTE_COMMIT_NOT_FOUND</code></td><td>The platform can&#x27;t see the commit.</td><td>Push first.</td></tr><tr><td><code>REMOTE_VALIDATION_FAILED</code></td><td>The platform rejected the request.</td><td>Correct the named field.</td></tr><tr><td><code>REMOTE_RESPONSE_INVALID</code></td><td>The run result is missing output details.</td><td>Check CLI and platform compatibility. The run isn&#x27;t restarted.</td></tr><tr><td><code>CONTRIBUTION_UNVERIFIED</code></td><td>See <a href="#outputs" class="">Outputs</a>.</td><td>Check the run&#x27;s diagnostics.</td></tr></tbody></table></div>
+<p>Requests that fail on the network or get a 503 are retried up to five times with
+backoff, honoring <code>Retry-After</code>. Retried creation uses the same idempotency key, so
+it never starts a second run. Logs are followed with 30-second long polls over plain
+HTTPS, which works through proxies (<code>HTTPS_PROXY</code>, <code>NO_PROXY</code>, <code>SSL_CERT_FILE</code>) with
 outbound access alone.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h2>
-<p>Supply only a credential intended for this client, account and operation through
-the supported authentication setup. The environment input is a transport, not
-proof of how a token was issued or its allowed actions. It does not provide
-token creation, refresh or a safe way to share a person&#x27;s session with an agent.
-Never copy a browser session token or put a bearer value in command arguments.</p>
-<p>The token is sent only to <code>platform.url</code> as a bearer credential. <code>platform.url</code>
-must be HTTPS; plain HTTP is accepted only for a loopback host, for local
-development against a mock. Run ids and digests from the platform are validated
-before they are used in a URL or a file name, and log text is escaped before it
-reaches the terminal like local child output.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limitations">Limitations<a href="#limitations" class="hash-link" aria-label="Direct link to Limitations" title="Direct link to Limitations" translate="no">​</a></h2>
-<p>The #479 implementation candidate connects internal admitted native preparation
-and assigned-plan verification separately from public read-only preview. This
-has passed the connected real-service flow on Linux, including distinct API/Web
-workers, an independent whole-build artifact/report comparison, cancellation,
-retained-byte upload retry, safe worker replacement, coupled prerequisites and
-required output/report/contribution refusals without implicit replay.
-The agreed finite cases and exact qualification limits are recorded in
-distributed build completion.</p>
 <ul>
-<li class="">No interactive login; the token comes from <code>OYZU_PLATFORM_TOKEN</code>.</li>
-<li class="">GitHub repositories on github.com only, matching the contract&#x27;s <code>github</code>
-provider.</li>
-<li class="">Task arguments (<code>-- args</code>) are not supported remotely.</li>
-<li class=""><code>--detach</code>, listing runs and re-attaching to a run are not implemented.</li>
-<li class="">Broader platform/host qualification remains incomplete; see the linked
-distributed qualification record and RUNS-08/RUNS-09 in the
-design page.</li>
+<li class="">The credential is sent only to <code>platform.url</code>. <code>platform.url</code> must use HTTPS;
+plain HTTP is accepted only for a loopback host.</li>
+<li class="">Never put a token in command arguments, copy a browser session, or give a coding
+agent your personal token.</li>
+<li class="">Run ids and digests from the platform are checked before they&#x27;re used in a URL or
+file name. Streamed log text is escaped before it reaches your terminal.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limitations">Limitations<a href="#limitations" class="hash-link" aria-label="Direct link to Limitations" title="Direct link to Limitations" translate="no">​</a></h2>
 <ul>
-<li class=""><code>oyzu exec -- cargo test --locked --test integration remote_runs</code>: the compiled
-CLI against a scripted server for a successful build with scoped log replay
-and verified download, a failing task&#x27;s exit code and JSON event stream, an
-expired token and an unpushed <code>HEAD</code>.</li>
-<li class=""><code>python tooling/check-runs-contract.py</code>: the contract and its mock, including
-scoped log entries.</li>
-<li class=""><code>python tooling/test-remote-cli.py --cli &lt;compiled-oyzu&gt;</code>: the compiled CLI
-against the contract mock end to end.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-development"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Local development plugin bindings (experimental)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/auth"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Platform sign-in and the credential provider</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#purpose" class="table-of-contents__link toc-highlight">Purpose</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#exit-status" class="table-of-contents__link toc-highlight">Exit status</a></li><li><a href="#cancellation" class="table-of-contents__link toc-highlight">Cancellation</a></li><li><a href="#outputs" class="table-of-contents__link toc-highlight">Outputs</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#security" class="table-of-contents__link toc-highlight">Security</a></li><li><a href="#limitations" class="table-of-contents__link toc-highlight">Limitations</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<li class="">Only GitHub repositories on github.com.</li>
+<li class="">Task arguments (<code>-- args</code>) aren&#x27;t supported remotely.</li>
+<li class="">There&#x27;s no <code>--detach</code>, no way to list runs and no way to reattach to a run.</li>
+<li class="">Tested on Linux pools only.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="private-files-in-isolated-native-actions">Private files in isolated native actions<a href="#private-files-in-isolated-native-actions" class="hash-link" aria-label="Direct link to Private files in isolated native actions" title="Direct link to Private files in isolated native actions" translate="no">​</a></h2>
+<p>A platform executor can hand private files, such as a signing key, to the native
+actions of a remote run. You don&#x27;t configure this in your project, and ordinary
+local builds don&#x27;t use it. The runtime-input contract
+describes the details.</p>
+<ul>
+<li class="">Files are mounted read-only at <code>/oyzu-runtime</code>, and an environment variable points
+to each file only while the action runs. The project can&#x27;t name host files.</li>
+<li class="">The files never affect source, plans or cache keys. Affected targets skip the
+action cache so tests always see the current files.</li>
+<li class="">Where the executor provides an egress gateway, an HTTP client that can use a Unix
+socket can reach it through <code>OYZU_HTTP_PROXY_SOCKET</code>. Direct TCP networking stays
+off.</li>
+<li class="">Supported for Unix process actions on Linux x86-64 in Docker. Anything that doesn&#x27;t
+match (unsupported host, missing or unsafe files, conflicting variables) is refused.
+Fix it and submit a new job.</li>
+<li class="">Removing the files afterward is cleanup, not secure erasure.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/auth">Platform sign-in</a></li>
+<li class=""><a class="" href="/docs/reference/local-builds">Local builds</a></li>
+<li class=""><a class="" href="/docs/reference/build-logging">Build logging</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-development"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Writing and testing builder plugins</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/auth"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Platform sign-in</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#exit-status" class="table-of-contents__link toc-highlight">Exit status</a></li><li><a href="#cancellation" class="table-of-contents__link toc-highlight">Cancellation</a></li><li><a href="#outputs" class="table-of-contents__link toc-highlight">Outputs</a></li><li><a href="#errors-and-recovery" class="table-of-contents__link toc-highlight">Errors and recovery</a></li><li><a href="#security" class="table-of-contents__link toc-highlight">Security</a></li><li><a href="#limitations" class="table-of-contents__link toc-highlight">Limitations</a></li><li><a href="#private-files-in-isolated-native-actions" class="table-of-contents__link toc-highlight">Private files in isolated native actions</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

@@ -1,0 +1,345 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/install-script" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Install script | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/install-script"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Install script | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/install-script.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/install-script.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/install-script"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/install-script" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/install-script" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Install script","item":"https://docs.oyzu.ai/docs/reference/install-script"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/install-script">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/install-script"><span class="linkLabel_WmDU">Install script</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-help"><span class="linkLabel_WmDU">CLI help</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-output"><span class="linkLabel_WmDU">CLI output</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-logging"><span class="linkLabel_WmDU">Build logging</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Commands and output</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Install script</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Install script</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/install-script.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p><code>install.sh</code> and <code>install.ps1</code> install the <code>oyzu</code> executable from a GitHub release with one command. They pick the release asset for your platform, check its SHA-256 digest and put <code>oyzu</code> in a folder of your own. They need no administrator rights. They then run <code>oyzu shell install</code>, so your shells activate <code>oyzu</code> and both <code>oyzu</code> and its tool shims are on your PATH.</p>
+<blockquote>
+<p><strong>Note:</strong> Every release is a preview. Releases are binaries and notices published on the public <a href="https://github.com/oyzuai/oyzu-releases" target="_blank" rel="noopener noreferrer" class=""><code>oyzuai/oyzu-releases</code></a> repository, and both scripts default to it, so you need no account or token. No release has been published there yet. Until one is, a run stops with <em>no published release</em>. The scripts don&#x27;t check release provenance (the <code>*.sigstore.json</code> files) yet.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="install">Install<a href="#install" class="hash-link" aria-label="Direct link to Install" title="Direct link to Install" translate="no">​</a></h2>
+<p>On Linux or macOS:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-fsSL</span><span class="token plain"> https://docs.oyzu.ai/install.sh </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">sh</span><br></div></code></pre></div></div>
+<p>On Windows, in PowerShell:</p>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">irm</span><span class="token plain"> https:</span><span class="token operator" style="color:#393A34">/</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">docs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">oyzu</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ai/install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1 </span><span class="token punctuation" style="color:#393A34">|</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">iex</span><br></div></code></pre></div></div>
+<p>A GitHub token is optional. It lifts the anonymous API limit, or lets you install from a private repository named in <code>OYZU_RELEASE_REPO</code>. With the <a href="https://cli.github.com/" target="_blank" rel="noopener noreferrer" class="">GitHub CLI</a> signed in:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-fsSL</span><span class="token plain"> https://docs.oyzu.ai/install.sh </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> </span><span class="token assign-left variable" style="color:#36acaa">GH_TOKEN</span><span class="token operator" style="color:#393A34">=</span><span class="token variable" style="color:#36acaa">$(</span><span class="token variable" style="color:#36acaa">gh auth token</span><span class="token variable" style="color:#36acaa">)</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">sh</span><br></div></code></pre></div></div>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token variable" style="color:#36acaa">$env</span><span class="token plain">:GH_TOKEN = </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">gh auth token</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">irm</span><span class="token plain"> https:</span><span class="token operator" style="color:#393A34">/</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">docs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">oyzu</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ai/install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1 </span><span class="token punctuation" style="color:#393A34">|</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">iex</span><br></div></code></pre></div></div>
+<p>A successful run names the release, prints one summary line (tag, asset, SHA-256 digest, location), the installed <code>oyzu --version</code> and the result of <code>oyzu shell install</code>. Release values are placeholders here:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Installing oyzu &lt;tag&gt; for linux/x86_64 from oyzuai/oyzu-releases</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Installed oyzu &lt;tag&gt; (oyzu-linux-x86_64, sha256:&lt;digest&gt;) to /home/you/.oyzu/bin/oyzu</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu &lt;version&gt; (&lt;build&gt;; x86_64-unknown-linux-gnu; build &lt;id&gt;)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Shells and PATH set up</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  activation  bash  /home/you/.bashrc</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  login-path  bash  /home/you/.profile</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Next Step: Open a new terminal (and restart IDEs) so they pick up the new PATH.</span><br></div></code></pre></div></div>
+<p>To use Preview plugins, run <code>oyzu config set --global plugins.preview true</code> once. It is a user-level setting that applies to all your projects, and Stable defaults stay unchanged.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="read-it-before-you-run-it">Read it before you run it<a href="#read-it-before-you-run-it" class="hash-link" aria-label="Direct link to Read it before you run it" title="Direct link to Read it before you run it" translate="no">​</a></h2>
+<p>Piping a download into a shell runs whatever the server sent. Each script is under 250 lines, so you can read it first:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-fsSL</span><span class="token plain"> https://docs.oyzu.ai/install.sh </span><span class="token parameter variable" style="color:#36acaa">-o</span><span class="token plain"> install.sh</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">less</span><span class="token plain"> install.sh</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">sh</span><span class="token plain"> install.sh</span><br></div></code></pre></div></div>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">irm</span><span class="token plain"> https:</span><span class="token operator" style="color:#393A34">/</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">docs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">oyzu</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ai/install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1 </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">OutFile install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">Get-Content</span><span class="token plain"> install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">powershell </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">ExecutionPolicy Bypass </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">File </span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">\install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1</span><br></div></code></pre></div></div>
+<p>Both are served from the documentation site over HTTPS.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="options">Options<a href="#options" class="hash-link" aria-label="Direct link to Options" title="Direct link to Options" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th><code>install.sh</code></th><th><code>install.ps1</code></th><th>Environment variable</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>--version TAG</code></td><td><code>-Version TAG</code></td><td><code>OYZU_VERSION</code></td><td>newest release with your platform&#x27;s asset</td><td>Install this release tag, for example <code>v0.0.4</code></td></tr><tr><td><code>--dir DIR</code></td><td><code>-InstallDir DIR</code></td><td><code>OYZU_INSTALL_DIR</code></td><td><code>~/.oyzu/bin</code>; Windows <code>%LOCALAPPDATA%\Oyzu\bin</code></td><td>Folder that receives <code>oyzu</code> and <code>oyzu-shim</code></td></tr><tr><td><code>--no-modify-path</code></td><td><code>-NoModifyPath</code></td><td><code>OYZU_NO_MODIFY_PATH=1</code></td><td>off</td><td>Install the files only: skip shell activation and PATH changes (see <a href="#shell-and-path-setup" class="">Shell and PATH setup</a>)</td></tr><tr><td><code>--modify-path</code></td><td><code>-ModifyPath</code></td><td></td><td></td><td>Accepted and ignored. Shell and PATH setup is now the default</td></tr><tr><td><code>--help</code></td><td><code>-Help</code></td><td></td><td></td><td>Print usage and exit</td></tr></tbody></table></div>
+<p>An option wins over its environment variable. These variables have no option:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Variable</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>GH_TOKEN</code>, then <code>GITHUB_TOKEN</code></td><td>none</td><td>GitHub token for the API, for the rate limit or a private <code>OYZU_RELEASE_REPO</code></td></tr><tr><td><code>OYZU_RELEASE_REPO</code></td><td><code>oyzuai/oyzu-releases</code></td><td>Repository whose releases are read, for forks</td></tr><tr><td><code>OYZU_API_BASE</code></td><td><code>https://api.github.com</code></td><td>GitHub API base, for GitHub Enterprise or a test server</td></tr><tr><td><code>OYZU_DOWNLOAD_BASE</code></td><td><code>https://github.com</code></td><td>Base of anonymous release downloads</td></tr></tbody></table></div>
+<p>To pass options through a pipe:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">curl</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-fsSL</span><span class="token plain"> https://docs.oyzu.ai/install.sh </span><span class="token operator" style="color:#393A34">|</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">sh</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-s</span><span class="token plain"> -- </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"> v0.0.4 </span><span class="token parameter variable" style="color:#36acaa">--dir</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string environment constant" style="color:#36acaa">$HOME</span><span class="token string" style="color:#e3116c">/bin&quot;</span><br></div></code></pre></div></div>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">&amp; </span><span class="token punctuation" style="color:#393A34">(</span><span class="token namespace" style="opacity:0.7">[scriptblock]</span><span class="token plain">::Create</span><span class="token punctuation" style="color:#393A34">(</span><span class="token punctuation" style="color:#393A34">(</span><span class="token function" style="color:#d73a49">irm</span><span class="token plain"> https:</span><span class="token operator" style="color:#393A34">/</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">docs</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">oyzu</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ai/install</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">ps1</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">Version v0</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">0</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">4</span><br></div></code></pre></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-release-and-asset">Which release and asset<a href="#which-release-and-asset" class="hash-link" aria-label="Direct link to Which release and asset" title="Direct link to Which release and asset" translate="no">​</a></h2>
+<p>Without a version, the script reads the newest 30 releases and takes the newest one that is not a draft and has an executable for your platform. Previews count, and every release is one.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Host</th><th>Asset</th></tr></thead><tbody><tr><td>Linux x86_64 / aarch64 (glibc)</td><td><code>oyzu-linux-x86_64</code> / <code>oyzu-linux-arm64</code></td></tr><tr><td>Linux with musl (Alpine)</td><td><code>oyzu-linux-x86_64-musl</code> / <code>oyzu-linux-arm64-musl</code></td></tr><tr><td>macOS Intel / Apple silicon</td><td><code>oyzu-darwin-x86_64</code> / <code>oyzu-darwin-arm64</code>; a shell under Rosetta still gets arm64</td></tr><tr><td>Windows x86_64 / ARM64</td><td><code>oyzu-windows-x86_64.exe</code> / <code>oyzu-windows-arm64.exe</code>, by the native architecture even in an emulated shell</td></tr></tbody></table></div>
+<p>If the release also has <code>oyzu-shim-&lt;platform&gt;</code>, it is installed beside <code>oyzu</code> as <code>oyzu-shim</code>. Releases so far publish no musl assets, so a musl host gets the <a href="#failures-and-recovery" class="">no asset</a> error.</p>
+<p>On macOS and Windows the script also downloads the same release&#x27;s Linux <code>oyzu</code> for your architecture (<code>oyzu-linux-x86_64</code> or <code>oyzu-linux-arm64</code>), checked the same way. Isolated builds (<code>oyzu build --isolated</code>) run that Linux <code>oyzu</code> inside the container. A Linux host doesn&#x27;t need it: its own <code>oyzu</code> runs there.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-it-changes">What it changes<a href="#what-it-changes" class="hash-link" aria-label="Direct link to What it changes" title="Direct link to What it changes" translate="no">​</a></h2>
+<ol>
+<li class="">Downloads the asset into a temporary folder and compares its SHA-256 with the <code>digest</code> GitHub reports for that asset. A mismatch or a missing digest stops the install.</li>
+<li class="">Runs the new <code>oyzu --version</code> from the temporary folder. An executable that can&#x27;t run on this host leaves an existing install alone.</li>
+<li class="">Creates the install folder and replaces <code>oyzu</code> (and <code>oyzu-shim</code>) there, with the executable bit set. Running it again upgrades or reinstalls.</li>
+<li class="">On macOS and Windows, runs <code>oyzu engine install --linux</code> with the downloaded Linux <code>oyzu</code>. This installs the pair as the <a class="" href="/docs/reference/engine-staging#installing-this-oyzu-with-its-linux-member">engine package</a> of the new <code>oyzu</code>, so <code>--isolated</code> works. It prints <code>Installed the Linux engine for isolated builds</code>. If the release has no Linux <code>oyzu</code> for your architecture, or the step fails, <code>oyzu</code> stays installed and the script says so; only isolated builds are affected.</li>
+<li class="">Prints one line with the tag, asset, digest and location, then the version.</li>
+<li class="">Runs the installed <code>oyzu shell install</code>, unless you skipped it.</li>
+</ol>
+<p>The scripts never use <code>sudo</code> and never install toolchains.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="shell-and-path-setup">Shell and PATH setup<a href="#shell-and-path-setup" class="hash-link" aria-label="Direct link to Shell and PATH setup" title="Direct link to Shell and PATH setup" translate="no">​</a></h2>
+<p>The last step runs <code>oyzu shell install</code> with the new executable. It needs no network and edits only the files below. Running it again changes nothing.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>What</th><th>Where</th></tr></thead><tbody><tr><td>Shell activation: bash, zsh, PowerShell 7 (each one found)</td><td><code>~/.bashrc</code>, <code>$ZDOTDIR/.zshrc</code> or <code>~/.zshrc</code>, and the PowerShell 7 current-user profile</td></tr><tr><td><code>oyzu</code> and the tool shims on the persistent PATH, Windows</td><td>your user <code>Path</code> in the registry (<code>HKCU\Environment</code>), with <code>%VARIABLE%</code> entries unexpanded, announced to running programs</td></tr><tr><td><code>oyzu</code> and the tool shims on the persistent PATH, Linux and macOS</td><td>a marked block in your login profile (<code>~/.bash_profile</code>, <code>~/.bash_login</code> or <code>~/.profile</code>, whichever exists first; <code>~/.zprofile</code> for zsh)</td></tr></tbody></table></div>
+<p>The shims let IDEs, GUI programs, services and scripts that never start a shell run <code>node</code>, <code>go</code> or <code>cargo</code> at the version the project locks, without <code>oyzu exec --</code>. Programs that are already open keep the PATH they started with, so restart them or open a new terminal.</p>
+<p>If setup fails, the install still stands. The script says so on standard error and prints the command to run again. fish and Windows PowerShell 5.1 are not configured, so add the folders yourself.</p>
+<p>With <code>--no-modify-path</code> (<code>-NoModifyPath</code>, <code>OYZU_NO_MODIFY_PATH=1</code>) the script changes no profile or PATH. If the folder isn&#x27;t on <code>PATH</code>, it prints how to set things up later:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Shell</th><th>Line</th></tr></thead><tbody><tr><td>any</td><td><code>~/.oyzu/bin/oyzu shell install</code> (Windows: <code>&amp; &quot;$env:LOCALAPPDATA\Oyzu\bin\oyzu.exe&quot; shell install</code>)</td></tr><tr><td>PowerShell, this session</td><td><code>$env:Path = &quot;$env:LOCALAPPDATA\Oyzu\bin;$env:Path&quot;</code></td></tr></tbody></table></div>
+<p>See <a class="" href="/docs/reference/tool-shell-environment#set-up-all-shells-and-path"><code>oyzu shell</code></a> for what each file receives and how to undo it.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="upgrade-and-uninstall">Upgrade and uninstall<a href="#upgrade-and-uninstall" class="hash-link" aria-label="Direct link to Upgrade and uninstall" title="Direct link to Upgrade and uninstall" translate="no">​</a></h2>
+<p>Run the same command again to move to the newest release, or pass a version to switch to that one.</p>
+<p>To uninstall, run <code>oyzu shell remove</code> to undo the shell and PATH setup, then delete the two files (and the folder if it is empty):</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">rm</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-f</span><span class="token plain"> ~/.oyzu/bin/oyzu ~/.oyzu/bin/oyzu-shim</span><br></div></code></pre></div></div>
+<div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">Remove-Item</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$env</span><span class="token string" style="color:#e3116c">:LOCALAPPDATA\Oyzu\bin\oyzu.exe&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$env</span><span class="token string" style="color:#e3116c">:LOCALAPPDATA\Oyzu\bin\oyzu-shim.exe&quot;</span><br></div></code></pre></div></div>
+<p>Tools that <code>oyzu</code> installed for projects live in its own store, not in this folder, so deleting these files doesn&#x27;t remove them.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="security">Security<a href="#security" class="hash-link" aria-label="Direct link to Security" title="Direct link to Security" translate="no">​</a></h2>
+<ul>
+<li class=""><strong>Integrity:</strong> the digest comes from the GitHub releases API over HTTPS, and the download must match it. This shows the bytes are the ones GitHub holds for that release asset. It doesn&#x27;t show who built them, because the scripts don&#x27;t check release provenance yet.</li>
+<li class=""><strong>Transport:</strong> <code>install.sh</code> restricts curl to HTTPS, including redirects, unless <code>OYZU_API_BASE</code> or <code>OYZU_DOWNLOAD_BASE</code> names a plain <code>http:</code> test server.</li>
+<li class=""><strong>Tokens:</strong> a token is sent only in a request header to the GitHub API. <code>install.sh</code> gives it to curl on standard input, never on the command line, so it needs curl when you use a token (wget is used only without one). curl and PowerShell drop the header when GitHub redirects a download to its storage host. The scripts never print a token.</li>
+<li class=""><strong>Scope:</strong> files go to the install folder and a temporary folder that is removed afterwards. <code>oyzu shell install</code> then edits the profiles listed under <a href="#shell-and-path-setup" class="">Shell and PATH setup</a>. <code>--no-modify-path</code> skips it.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="platforms-and-requirements">Platforms and requirements<a href="#platforms-and-requirements" class="hash-link" aria-label="Direct link to Platforms and requirements" title="Direct link to Platforms and requirements" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Script</th><th>Runs on</th><th>Needs</th></tr></thead><tbody><tr><td><code>install.sh</code></td><td>Linux, macOS; also Git Bash on Windows</td><td>POSIX <code>sh</code>, <code>awk</code>, curl or wget, and <code>sha256sum</code>, <code>shasum</code> or <code>openssl</code></td></tr><tr><td><code>install.ps1</code></td><td>Windows x86_64 and ARM64</td><td>Windows PowerShell 5.1 or PowerShell 7</td></tr></tbody></table></div>
+<p><code>install.sh</code> uses no bash features, jq or Python. Running <code>install.ps1</code> under PowerShell on macOS or Linux stops and points you to <code>install.sh</code>.</p>
+<p>The scripts are tested on Linux and Windows (x86-64). macOS, musl and ARM64 aren&#x27;t tested yet.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="exit-status">Exit status<a href="#exit-status" class="hash-link" aria-label="Direct link to Exit status" title="Direct link to Exit status" translate="no">​</a></h2>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Status</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0</code></td><td>Installed</td></tr><tr><td><code>1</code></td><td>Failed: network, HTTP error, no release or asset for this platform, the executable doesn&#x27;t run, or the folder can&#x27;t be written</td></tr><tr><td><code>2</code></td><td>Usage error (unknown option or missing value)</td></tr><tr><td><code>3</code></td><td>Integrity refusal: the digest differs, the release reports none, or no SHA-256 tool is available</td></tr></tbody></table></div>
+<p><code>install.ps1</code> sets the process exit status when run with <code>powershell -File install.ps1</code>. Under <code>irm ... | iex</code> it doesn&#x27;t exit, because that would close your window. It prints the error and sets <code>$LASTEXITCODE</code>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-recovery">Failures and recovery<a href="#failures-and-recovery" class="hash-link" aria-label="Direct link to Failures and recovery" title="Direct link to Failures and recovery" translate="no">​</a></h2>
+<p>Errors start with <code>oyzu install:</code> and leave an existing install unchanged.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Message</th><th>Cause</th><th>Recovery</th></tr></thead><tbody><tr><td><code>GitHub answered 404 Not Found for the release list of &lt;repo&gt; ... private</code></td><td><code>OYZU_RELEASE_REPO</code> names a private repository and no token was given, or it doesn&#x27;t exist</td><td>Pass <code>GH_TOKEN</code> with access, for example <code>GH_TOKEN=$(gh auth token)</code></td></tr><tr><td><code>GitHub answered 404 Not Found ... with your token</code></td><td>The token can&#x27;t read the repository, or the tag or asset doesn&#x27;t exist</td><td>Check the tag and the token&#x27;s repository access</td></tr><tr><td><code>GitHub rejected the token ... (HTTP 401)</code></td><td>Invalid or expired token</td><td>Create a new token or run <code>gh auth login</code></td></tr><tr><td><code>GitHub refused ... (HTTP 403)</code></td><td>Anonymous API rate limit (60 requests an hour) or missing permission</td><td>Wait, or pass <code>GH_TOKEN</code></td></tr><tr><td><code>no published release of oyzuai/oyzu-releases has &lt;asset&gt;</code></td><td>No release has an executable for this platform (musl, other CPUs), or no release is published yet</td><td><a class="" href="/docs/get-started">Build from source</a></td></tr><tr><td><code>release &lt;tag&gt; ... has no &lt;asset&gt;</code></td><td>That release lacks this platform</td><td>Choose another <code>--version</code></td></tr><tr><td><code>&lt;asset&gt; ... has digest ..., but the release reports ...</code></td><td>The download doesn&#x27;t match the published digest</td><td>Retry. If it repeats, don&#x27;t use the file, and report it</td></tr><tr><td><code>release &lt;tag&gt; reports no SHA-256 digest</code></td><td>The release API returned no digest for the asset</td><td>Choose another release</td></tr><tr><td><code>could not connect to download ...</code></td><td>Offline, DNS or proxy failure</td><td>Check the network. curl, wget and PowerShell honor the usual proxy settings</td></tr><tr><td><code>the downloaded &lt;asset&gt; does not run on this host</code></td><td>Wrong ABI or a damaged download</td><td>Build from source, or report the platform</td></tr><tr><td><code>cannot write &lt;path&gt;</code></td><td>No permission, or <code>oyzu.exe</code> is running on Windows</td><td>Choose <code>--dir</code>, or close <code>oyzu</code> and retry</td></tr></tbody></table></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/get-started">Getting started</a>, including building from source.</li>
+<li class=""><a class="" href="/docs/reference/tool-shell-environment">Shell setup</a> for activating project tools.</li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/cli/release"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">oyzu release and oyzu secrets</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/cli-help"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">CLI help</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#install" class="table-of-contents__link toc-highlight">Install</a></li><li><a href="#read-it-before-you-run-it" class="table-of-contents__link toc-highlight">Read it before you run it</a></li><li><a href="#options" class="table-of-contents__link toc-highlight">Options</a></li><li><a href="#which-release-and-asset" class="table-of-contents__link toc-highlight">Which release and asset</a></li><li><a href="#what-it-changes" class="table-of-contents__link toc-highlight">What it changes</a></li><li><a href="#shell-and-path-setup" class="table-of-contents__link toc-highlight">Shell and PATH setup</a></li><li><a href="#upgrade-and-uninstall" class="table-of-contents__link toc-highlight">Upgrade and uninstall</a></li><li><a href="#security" class="table-of-contents__link toc-highlight">Security</a></li><li><a href="#platforms-and-requirements" class="table-of-contents__link toc-highlight">Platforms and requirements</a></li><li><a href="#exit-status" class="table-of-contents__link toc-highlight">Exit status</a></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>

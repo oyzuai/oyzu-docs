@@ -4,32 +4,87 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/build-logging">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-help"><span class="linkLabel_WmDU">CLI help</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-output"><span class="linkLabel_WmDU">CLI output</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/build-logging"><span class="linkLabel_WmDU">Build logging</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Commands and output</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Build logging</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Build logging</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/build-logging">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/install-script"><span class="linkLabel_WmDU">Install script</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-help"><span class="linkLabel_WmDU">CLI help</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-output"><span class="linkLabel_WmDU">CLI output</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/build-logging"><span class="linkLabel_WmDU">Build logging</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Commands and output</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Build logging</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Build logging</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/build-logging.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p><code>oyzu build</code> presents a pipeline in the terminal: phases, parallel targets, commands, live output and an evidence-based final receipt. Presentation never changes the task graph, execution policy or required checks.</p>
+<p><code>oyzu build</code> shows its work as it happens: preparation steps, parallel targets,
+commands, live output and a final receipt. It also saves complete logs and an event
+journal in the bundle. How output is shown never changes what is built or which
+checks run.</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build api web worker</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --output plain</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --output interactive</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --plan</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --json &gt; result.json 2&gt; events.jsonl</span><br></div></code></pre></div></div>
+<p>For the section-by-section layout of the default view (Prepare, Selection, Plan,
+Build, Failure, Outputs, Warnings, summary), see
+<a class="" href="/docs/reference/cli-output#build-transcript">build transcript</a>. This page covers the output modes,
+the interactive dashboard, CI output, saved logs and interruption.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="presentation-selection">Presentation selection<a href="#presentation-selection" class="hash-link" aria-label="Direct link to Presentation selection" title="Direct link to Presentation selection" translate="no">​</a></h2>
-<p><code>--output auto</code> is the default and uses compact linear preparation, named work and one final receipt. <code>--output plain</code> uses the same flow: no alternate screen, fixed panes, input handling or whole-screen redraws. On capable terminals, active operations show a labeled header and the last eight output lines beneath it; routine successful steps collapse; slow steps and exceptions stay in scrollback. Redirected streams are strictly append-only. Colors are independent of interactivity (<code>ui.color=auto|always|never</code>); nonempty <code>NO_COLOR</code> takes precedence, and <code>CLICOLOR_FORCE</code> can style a pipe without enabling redraw. GitHub Actions uses the same bounded linear view with balanced phase groups. <code>--output interactive</code> requires terminal stdin/stderr and allows inspecting the dashboard even in CI. <code>--json</code> and quiet logging take precedence over either option. In JSON mode, stdout contains the final manifest/plan JSON and stderr contains JSON-line events only. No project configuration is needed.</p>
-<p>The dashboard uses Crossterm&#x27;s Windows/macOS/Linux terminal support. Only explicit interactive selection initializes the dashboard and can report its setup errors. Windows GNU builds using an older bundled GNU linker can encounter import-table incompatibility with terminal dependencies; the local proof uses the provisioned LLVM MinGW linker explicitly. Standard CI compilation remains registered on all three hosts; see <a class="" href="/docs/support/capabilities">implementation status</a> for actual verification.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Option</th><th>Behavior</th></tr></thead><tbody><tr><td><code>--output auto</code> (default)</td><td>Compact linear view: named preparation steps, one row per action and one final receipt.</td></tr><tr><td><code>--output plain</code></td><td>The same linear view. Never uses an alternate screen, fixed panes, key input or full-screen redraws.</td></tr><tr><td><code>--output interactive</code></td><td>The full-screen <a href="#persistent-terminal-view" class="">dashboard</a>. Needs a terminal on stdin and stderr. Works in CI too.</td></tr><tr><td><code>--json</code></td><td>Stdout holds the final manifest or plan JSON; stderr holds JSON-line events only. Takes precedence over <code>--output</code>.</td></tr><tr><td><code>-q</code></td><td>Quiet output. Takes precedence over <code>--output</code>.</td></tr></tbody></table></div>
+<ul>
+<li class="">On a capable terminal, each active step shows a header and its last eight output
+lines. Routine successes collapse; slow steps and problems stay in scrollback.</li>
+<li class="">Redirected output is append-only, never redrawn.</li>
+<li class="">Color is separate from interactivity: <code>ui.color = auto | always | never</code>. A
+nonempty <code>NO_COLOR</code> wins, and <code>CLICOLOR_FORCE</code> can color a pipe without turning on
+redraws.</li>
+<li class="">GitHub Actions gets the same linear view, wrapped in collapsible groups.</li>
+</ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="persistent-terminal-view">Persistent terminal view<a href="#persistent-terminal-view" class="hash-link" aria-label="Direct link to Persistent terminal view" title="Direct link to Persistent terminal view" translate="no">​</a></h2>
-<p>The explicit dashboard follows Prepare, Build and Collect. During preparation it
-shows verified/pending tool counts and up to two pending tools, without claiming
-that external prerequisites are installed. Completed setup collapses when
-execution starts. Optional quality tools stay out of a fast-build summary.
-<code>p</code> reveals requested versions, observed setup/context facts and the selected
-work&#x27;s stage/output details. Setup facts use a height-dependent budget of at most
-eight rows, disclose omitted detail and point to detailed logs or
-<code>oyzu build --plan --json</code>. The live pane remains available with large tool inventories.</p>
-<p>The project header, elapsed time, phase indicators and platform overview stay in place. Selected platforms appear before dependency preparation starts, with readable OS/architecture names. Each row shows its current operation and elapsed time. Active rows also show how long output has been quiet. Preparation is tracked separately from planned build actions.</p>
-<p>One live pane shows the selected step&#x27;s seven most recent output lines. Its last lines remain visible during silence, alongside time since the last output. New parallel work does not steal focus from a running step. Warnings and failures remain pinned above the pane. Native output is retained even when Oyzu does not recognize its content; detailed history preserves redacted command arguments, observed timing and event details. Successful process exit can show <code>Checking outputs</code> until collection validates the action.</p>
-<p>Color reinforces status symbols and labels. <code>NO_COLOR</code> disables color, including an explicit force; the frozen <code>ui.color</code> configuration supports <code>auto</code>, <code>always</code> and <code>never</code>. Status remains readable without color.</p>
+<p><code>--output interactive</code> opens a dashboard that stays in place while the build runs.</p>
+<ul>
+<li class="">The header shows the project, elapsed time, phases (Prepare, Build, Collect) and
+the selected platforms with readable OS and architecture names.</li>
+<li class="">During preparation it shows how many tools are verified or pending, and up to two
+pending tools. Finished setup collapses when the build starts.</li>
+<li class="">Each row shows its current operation, elapsed time and, for active rows, how long
+the output has been quiet.</li>
+<li class="">One live pane shows the selected step&#x27;s last seven output lines. New parallel work
+doesn&#x27;t steal focus from the step you&#x27;re watching. Warnings and failures stay
+pinned above the pane.</li>
+<li class="">Reused actions show <code>Reused · not executed now</code>. After a process exits, a step may
+show <code>Checking outputs</code> until its reports and artifacts pass validation; a clean
+exit alone isn&#x27;t success.</li>
+<li class="">Blocked tasks show which prerequisite they&#x27;re waiting for.</li>
+<li class="">Resizing recalculates the layout; very small terminals show a resize hint. Long
+lines are clipped, and you can pan to see them.</li>
+<li class="">Scrollback is kept in a temporary file on disk, deleted when the view closes. The
+saved build logs are the permanent record.</li>
+<li class="">When the build ends (or fails), your previous screen is restored and the permanent
+receipt is printed.</li>
+</ul>
 
 
 
@@ -87,414 +142,349 @@ eight rows, disclose omitted detail and point to detailed logs or
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>Up / Down</td><td>Select the previous/next preparation or build step</td></tr><tr><td>Enter</td><td>Expand or collapse the live output pane</td></tr><tr><td>a</td><td>Follow active work automatically</td></tr><tr><td>p</td><td>Toggle bounded preparation/context and selected-work details</td></tr><tr><td>d / l</td><td>Toggle detailed multiplexed log history</td></tr><tr><td>Escape</td><td>Return to the compact live pane</td></tr><tr><td>Page Up / Page Down</td><td>Scroll the selected/all log view</td></tr><tr><td>Left / Right</td><td>Pan long log/command lines horizontally</td></tr><tr><td>f / End</td><td>Follow new output again</td></tr><tr><td>q</td><td>Restore terminal input, hide the dashboard and continue the build with plain logs (including during resize)</td></tr><tr><td>n</td><td>Inspect the next failed task without automatic focus changes</td></tr><tr><td>Ctrl+C</td><td>Restore the terminal and request cooperative interruption; exit 130</td></tr></tbody></table></div>
-<p>A failed command or final action failure raises a notice without changing the selected task; <code>n</code> selects a failed task explicitly. Successful process exit does not establish action success: reports/artifacts can fail validation later. Blocked tasks expose their prerequisite reason. The interface does not require input to finish.</p>
-<p>Terminal resizing recalculates panel sizes. Very small terminals show a resize hint. Output is clipped to display cells rather than wrapping into the pinned header; horizontal panning reveals long lines. Interactive scrollback uses a temporary disk spool with in-memory line offsets, retaining early output without holding every output byte in memory. It is removed when the view closes. Raw build logs and the event journal remain the durable record.</p>
-<p>The alternate screen restores the previous terminal at normal completion or error, then prints the permanent receipt. <code>q</code> restores the screen immediately without cancelling work. Ctrl+C uses the build cancellation lifecycle below.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="forced-cancellation">Forced cancellation<a href="#forced-cancellation" class="hash-link" aria-label="Direct link to Forced cancellation" title="Direct link to Forced cancellation" translate="no">​</a></h2>
-<p>The first Ctrl+C requests cooperative build cancellation; its notice uses the
-invocation logger, including JSONL framing and correlation. A second Ctrl+C, or
-expiry of the ten-second grace period, forces exit. Forced cleanup gives all
-tracked container removals one shared five-second deadline; on Windows, tracked
-child process-tree termination shares that budget. Unfinished cleanup clients
-are killed and reaped asynchronously rather than waited on indefinitely. Oyzu
-names containers or process trees whose removal failed or remained pending, then
-exits with status 130 even when Docker does not respond. These budgets are fixed.</p>
-<p>Forced exit is best effort: it can leave containers, process trees and incomplete
-staging evidence, and does not promise a finalized failure bundle. After the
-daemon recovers, inspect the reported names and remove leftovers before retrying;
-use <a class="" href="/docs/reference/build-bundles">bundle recovery</a> for retained build state. Emergency cleanup
-messages go to stderr even with <code>--json</code>; they are not a final JSON result.
-The authored stuck-Docker regression is Unix-specific; neither it nor the
-cross-platform cleanup tests ran on this desktop. See <a class="" href="/docs/support/capabilities">verification status</a>.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Key</th><th>Action</th></tr></thead><tbody><tr><td>Up / Down</td><td>Select the previous or next step.</td></tr><tr><td>Enter</td><td>Expand or collapse the live output pane.</td></tr><tr><td>a</td><td>Follow active work automatically.</td></tr><tr><td>p</td><td>Show or hide preparation details, requested versions and the selected work&#x27;s stages and outputs (up to eight setup rows; see <code>oyzu build --plan --json</code> for the rest).</td></tr><tr><td>d / l</td><td>Show or hide the full combined log.</td></tr><tr><td>Escape</td><td>Return to the compact live pane.</td></tr><tr><td>Page Up / Page Down</td><td>Scroll the log.</td></tr><tr><td>Left / Right</td><td>Pan long lines.</td></tr><tr><td>f / End</td><td>Follow new output again.</td></tr><tr><td>n</td><td>Select the next failed task. Failures only raise a notice; they never move your selection.</td></tr><tr><td>q</td><td>Close the dashboard and continue the build with plain output. Doesn&#x27;t cancel anything.</td></tr><tr><td>Ctrl+C</td><td>Restore the terminal and <a href="#interrupting-a-build" class="">interrupt the build</a>.</td></tr></tbody></table></div>
+<p>The dashboard never needs input to finish.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="ci-and-redirected-output">CI and redirected output<a href="#ci-and-redirected-output" class="hash-link" aria-label="Direct link to CI and redirected output" title="Direct link to CI and redirected output" translate="no">​</a></h2>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="sectioned-build-view">Sectioned build view<a href="#sectioned-build-view" class="hash-link" aria-label="Direct link to Sectioned build view" title="Direct link to Sectioned build view" translate="no">​</a></h3>
-<p><code>oyzu build</code> prints one build as named sections (see
-<a class="" href="/docs/reference/cli-output#result-output">Result output</a> for the reader&#x27;s view). The live
-stream on stderr carries the title, <code>Prepare</code>, <code>Plan</code> and <code>Build</code>; the final
-receipt on stdout carries <code>Outputs</code>, <code>Warnings</code>, the summary line and <code>Details</code>.
-A section appears only with its first row and is never printed empty.</p>
+<p>When output is redirected, or the build runs in a detected CI system, the view is
+append-only:</p>
 <ul>
-<li class=""><strong>Title.</strong> The <code>heading</code> event keeps its recorded text. The linear view shortens
-its subtitle (<code>windows/x86_64 (host) · local · fast</code>) and right-aligns it, wrapping
-below the title when the width is short.</li>
-<li class=""><strong>Prepare.</strong> Every preparation step prints as one row: mark, name, detail,
-and the duration followed by <code>· N warnings</code> when work raised them. The warning
-count joins a step to its scope (a step named <code>docs dependencies</code> ran the scope
-<code>docs:dependencies</code>). While a step runs it shows under the heading with a
-spinner (<code>..</code> without color). The <code>Tools</code> row summarizes the pinned tools
-(<code>2 tools pinned · 0 installed now</code>) and lists each beneath it with its
-version, whether it was <code>already installed</code> or <code>installed now</code>, and the
-detected requirement that needs it, then why the build has it:
-<code>detected from Cargo.toml</code> (a builder found it) or <code>pinned in docs-site/oyzu.toml · not detected for docs</code> (only a folder pin selected it), followed by the detected toolchain components and host
-prerequisites. Best-effort detection (Rust: <code>prost-build</code>/<code>tonic-build</code> in
-<code>Cargo.lock</code> → <code>protoc</code>) lists a detected tool (<code>detected from Cargo.lock</code>), pinned or not
-(an unpinned one is resolved to the detection&#x27;s version hint, else the latest stable
-release, locked in <code>oyzu.lock</code> and installed), and adds <code>!</code>
-attention rows for a detected tool that is unknown, has no usable checksum or cannot be resolved or installed (<code>pin it in oyzu.toml or silence it with tools.ignore</code>; the build continues, only an explicit pin fails), a missing host prerequisite, or a package that fetches a tool
-outside the lock; they warn and never fail the build. <code>tools.ignore</code> silences a
-detection (shown only with <code>-v</code>). When another build holds the workspace, a <code>Build lock</code> row
-waits for it, naming its process and start time, instead of failing; Ctrl-C
-stops the wait.</li>
-<li class=""><strong>Selection.</strong> Only when the build is not simply every declared target, a
-<code>Selection</code> section prints after Prepare, from the recorded selection record
-(<code>mode</code>, <code>requested</code>, <code>selected</code>, <code>excluded</code>, <code>prerequisites</code>) and affected
-evidence; nothing is recomputed. For <code>--affected</code> the heading says <code>compared with &lt;ref&gt; at &lt;short commit&gt;</code> and the rows are <code>changed</code> (targets and changed paths),
-<code>dependents</code> and <code>unaffected</code> (<code>not built · -v lists them</code>); long name lists end
-in <code>+N</code> and <code>-v</code> lists all. A conservative fallback prints <code>! Not narrowed</code> with a
-short reason, <code>recorded reason: &lt;code&gt;</code>, <code>selected  all N targets</code> and a <code>to narrow</code> line only for the codes with a known fix (<code>unowned-input</code>,
-<code>baseline-unavailable</code>); it is an attention notice, not a failure. An explicit
-request prints <code>requested</code> and, when prerequisites were pulled in, <code>required</code>.
-When every target is selected the section is omitted. <code>-q</code> hides it.</li>
-<li class=""><strong>Plan.</strong> The plan table waits until preparation and Selection have been shown,
-then prints once under <code>Plan</code>; if no action runs it prints when the view
-closes. With a Selection the trailer reads <code>N of M targets</code>, and an affected
-build adds a final <code>why</code> column (<code>changed</code> or <code>uses &lt;target&gt;</code>) unless the table
-would overflow. The table has a row per target (a row per platform
-for one target on several platforms, headed <code>1 target · N platforms</code>), a column
-per declared stage (format, lint, test, build, package, then others), cells
-<code>run</code>, <code>skip</code> or <code>-</code>, and one dim footnote per skip reason. Above twelve rows,
-identical rows are counted (<code>29 targets</code>); <code>-v</code> lists every target. A table wider
-than the terminal becomes one record per row. Stage facts come from the inventory
-event&#x27;s <code>stagePlans</code>; stages whose status is unavailable also read <code>skip</code>, with
-their reason in a footnote. Stage plans that arrive after execution has started
-are not added.</li>
-<li class=""><strong>Build.</strong> The heading opens when execution starts. Each finished action prints
-one row: mark, target (without the platform when every target shares it), stage,
-the redacted command shortened to the remaining width with <code>…</code> (an internal
-builder worker shows <code>builder operation</code>), <code>executed</code>, <code>reused</code> or <code>failed</code>,
-and the duration right-aligned. Rows of a narrow terminal keep the command on
-a second line instead of dropping it. A failed action&#x27;s native cause prints
-before its row. An action reused from retained evidence has the mark <code>↺</code> (word
-<code>reused</code>), is never counted as executed, and shows <code>was &lt;duration&gt;</code>: the recorded
-duration is that of the run that produced it, not time spent now. Starts print nothing in redirected
-output; the ten-second heartbeat still reports long waits.</li>
-<li class=""><strong>Failure.</strong> A failed action&#x27;s row says <code>failed</code> (<code>FAIL</code>). Its native cause is
-not printed where it happens: the view keeps the first error context (else the
-last eight lines) and the receipt prints it once under
-<code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code> with the exit code, the retained log path and
-<code>Next  oyzu build &lt;target&gt;</code>; at most three blocks, then <code>+ N more failed actions</code>. If nothing was captured the recorded error diagnostics are the cause.
-A preparation failure prints <code>Failure: preparation · &lt;target&gt;</code> from the error
-diagnostics and no Build section.</li>
-<li class=""><strong>Blocked and waiting.</strong> A <code>blocked</code> task event gives one row,
-<code>⊘ target stage  needs target · stage</code>, taken from the event&#x27;s reason; only the
-first three print and <code>finish</code> adds <code>+ N more blocked · -v lists them</code>. In a live
-terminal pane a queued action with unfinished prerequisites (plan <code>dependsOn</code>)
-shows <code>○ … waits for …</code>, at most three and <code>+ N more waiting</code>.</li>
-<li class=""><strong>Collapse.</strong> With more than twelve planned actions and without <code>-v</code>, clean
-executed and reused successes are counted into one <code>✓ N finished · R reused · E executed</code> line (printed when the view closes, and live in the pane with <code>N of M finished</code>); warned, failed and blocked actions keep rows. The Build heading
-then carries the action count, because an append-only stream cannot update it.</li>
-<li class=""><strong>Redirected and CI logs.</strong> Output that is redirected, or a build in a detected CI
-context, is appended and never redrawn. Each action prints one start line
-(<code>00:12  ..  api  build  started</code>) and one end line with its outcome and
-duration, both led by the dim elapsed <code>mm:ss</code> since the invocation began; blocked
-rows carry it too. In a build that collapses (more than twelve actions) only the
-end lines and the tally remain. The ten-second heartbeat is one line,
-<code>00:31  still running: api build 10s · auth-lib test 12s · 6 waiting</code> (at most three
-running actions, then <code>+ N more</code>), and replaces the earlier <code>Progress</code>, <code>Work</code>
-and <code>Running …</code> lines among the Build rows; <code>-v</code> keeps the older lines. CI group
-markers around the phases are unchanged. An interactive terminal keeps the live
-pane and prints no elapsed prefix.</li>
-<li class=""><strong>Directories.</strong> The build tells the view where each selected target lives
-through <code>Log::target_directories</code>, a presentation call outside the event stream,
-so JSON events are unchanged. Builds across more than one top-level directory
-group the plan, Outputs and the summary by directory as described in
-<a class="" href="/docs/reference/cli-output#result-output">Result output</a>; the receipt reads the same
-directories from the manifest&#x27;s target <code>path</code>.</li>
-<li class=""><strong>Narrow and no color.</strong> Below about 60 columns, or without color, marks are
-padded words and rules are short; every table has a record form that loses no
-value: the plan table (one record per target), Outputs (the target and size, then
-the whole path on the next line), Selection (counts, then the names below) and
-Build rows (the command, elided with <code>…</code>, moves below the row). Redirected output
-always renders at 100 columns. Terminal width comes from the console, so a
-narrow layout cannot be forced through <code>COLUMNS</code>.</li>
-<li class=""><strong>Quiet.</strong> With <code>-q</code> the view prints no native excerpts; the receipt prints the
-Failure blocks, Warnings and the summary line only.</li>
-<li class=""><strong>Warnings once.</strong> With the default verbosity native warnings and <code>WARN</code>
-diagnostics are not printed where they happen: the receipt&#x27;s <code>Warnings (N)</code>
-section lists each distinct one, owner first (target and tool, for example
-<code>docs · npm</code>). Errors are never deferred. <code>-v</code> keeps warnings inline as well.
-<code>NATIVE_WARNING</code> is shown only with <code>-v</code>; Oyzu-owned codes are always shown.</li>
-<li class=""><strong>No color.</strong> Without color the mark is a word padded to a common width
-(<code>ok</code>, <code>reused</code>, <code>warn</code>, <code>FAIL</code>) and rules use dashes. Terminal controls in
-every value are escaped before display.</li>
-<li class=""><strong>Quiet.</strong> <code>-q</code> hides the title and sections; warnings and the summary line
-remain in the receipt.</li>
+<li class="">Each action prints a start line (<code>00:12  ..  api  build  started</code>) and an end line
+with its outcome and duration, both led by the elapsed time since the build began.
+In builds with more than twelve actions, only end lines and the final tally are
+printed.</li>
+<li class="">Every ten seconds a heartbeat line names what&#x27;s still running:
+<code>00:31  still running: api build 10s · auth-lib test 12s · 6 waiting</code> (up to three
+actions, then <code>+ N more</code>). A heartbeat shows the build is alive, not that a tool is
+making progress.</li>
+<li class="">Output is laid out at 100 columns on every host. Terminal width comes from the
+console, so <code>COLUMNS</code> doesn&#x27;t change it.</li>
+<li class="">Without color, marks are padded words (<code>ok</code>, <code>reused</code>, <code>warn</code>, <code>FAIL</code>) and rules
+use dashes. Terminal controls in every value are escaped. Redirected files never
+contain cursor movement.</li>
 </ul>
-<p>Only a real local <code>oyzu build</code> selects the sectioned view, because only it prints
-the receipt that lists warnings once; <code>--plan</code>, <code>--check</code>, remote runs, <code>oyzu run</code>,
-<code>scan</code> and the dashboard keep their existing renderers. JSON
-events, <code>--json</code> stdout and exit status do not change.</p>
+<p>Recognized CI systems: GitHub Actions, GitLab CI, Azure Pipelines, Buildkite, Jenkins
+and TeamCity, with a generic CI fallback. Detection only affects presentation (and the
+build context); it never grants any permission.</p>
+<p><strong>GitHub Actions.</strong> Preparation, dependency and planning phases are wrapped in
+collapsible groups, closed before actions run. When <code>GITHUB_STEP_SUMMARY</code> is set, Oyzu
+appends an HTML-escaped receipt to it; if that write fails you get a warning and the
+build result doesn&#x27;t change. In JSON mode, no group commands are printed. Oyzu doesn&#x27;t
+upload artifacts or add source annotations.</p>
+<p>The sectioned view described in <a class="" href="/docs/reference/cli-output#build-transcript">build transcript</a>
+applies to local <code>oyzu build</code> runs. <code>--plan</code>, <code>--check</code>, remote runs, <code>oyzu run</code>,
+<code>oyzu scan</code> and the dashboard use their own layouts.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="stage-overview">Stage overview<a href="#stage-overview" class="hash-link" aria-label="Direct link to Stage overview" title="Direct link to Stage overview" translate="no">​</a></h3>
-<p>The operation heading identifies the project, host/platform selection, execution
-mode and requested checks. In the sectioned build view the scope and affected
-facts are the Selection section described above; the legacy renderer keeps a
-compact scope record naming up to three selected targets and counting the rest,
-with the baseline, overlapping category counts and any conservative fallback.
-Planner facts remain authoritative.</p>
-<p>Routine queued/included stage rows do not produce per-stage lines; the plan table
-above carries them. In the legacy (non-sectioned) renderer deliberate skips are
-neutral, grouped by reason, naming up to three affected stages in each group,
-with up to three distinct reasons and an inspection
-route for further detail. Unavailable/unknown stages receive attention separately;
-up to eight such records appear, followed by an explicit omission and
-<code>oyzu build --plan --json</code> inspection route. <code>-v</code> shows
-additional stage/context records in the same linear design. The old <code>Preflight</code>,
-<code>Selection</code>, <code>Stages</code> and <code>About this build</code> sections have been removed from the
-linear renderer, including its verbose path. Explicit <code>build --plan</code> remains a
-read-only inspection view with its own grouped plan tables.</p>
-<p>Concurrent plans preserve active work and register every target&#x27;s readable label,
-including targets beyond the visible budget. JSON inventory <code>stagePlans</code>, action
-selection, dependencies, checks, caching and execution policy are unchanged.</p>
-<p>The linear view uses status, subject and activity records, without table headers
-mixed into preflight updates. Installation progress includes the requested version
-when available. Routine checks and reused tool readiness collapse by default;
-actual acquisition and explicit installation results remain visible. System prerequisites
-explicitly say they are checked during compilation. Unselected optional tools stay
-out of the summary.</p>
-<p>Native preflight uses named steps for configuration, tool preparation, dependencies,
-output bundle, compiler cache, source evidence, CLI identity and report preparation.
-Running steps use <code>›</code>, explicitly completed steps use <code>✓</code>, and interrupted-by-error
-preparation uses <code>✗</code>; stopping a progress heartbeat is not a completion signal.
-On capable terminals active rows redraw. Fast successful preparation collapses;
-steps lasting at least ten seconds and failures remain visible. Completed slow
-work stays successful; duration alone does not turn it into a warning. Dependency
-readiness removes its running row, and entering execution retires preparation.
-Redirected output
-appends named long-wait feedback and remains readable without color. Report
-contracts and binding readiness share one completion row. Execution/isolation
-context remains in context facts and the build heading, not repeated <code>· build</code>
-progress prose. Structured JSON events and journal records retain these transitions;
-stdout, native child streams and exit status retain their existing contracts.</p>
-<p>Each active build subprocess has a short preview immediately beneath its operation
-header. This applies uniformly to formatting, linting, tests, compilation, custom
-hooks and tool installation through the shared logging lifecycle. The latest eight
-lines scroll within that preview and use dim text when color is enabled. Successful
-operations collapse into receipt totals; slow action completions may remain visible. Failed operations retain
-the first useful eight-line diagnostic context, or their last eight lines when
-no diagnostic marker is recognized, with the failure status and available exit code; the receipt
-identifies retained build logs. Each parallel operation has its own preview. The
-active region is bounded by terminal height; excess activity is indicated explicitly.
-Long preview lines are clipped to terminal width, while retained output stays complete.
-This is a transient section of ordinary scrollback, with no alternate screen or keys.</p>
-<p>Redirected human output is bounded and append-only. Routine captured native lines
-are retained for verbose output, failure excerpts and evidence. Preparation
-subprocesses retain the same eight-line failure tail, including native causes
-without a recognized warning/error prefix; successful preparation clears its
-tail, and <code>-v</code> expands its captured output. JSON events and
-raw build task logs never collapse. A late parallel preparation event does not reset
-the Build heading. Installer worker stderr is followed into the same logging owner;
-its stdout remains the private worker protocol. Commands intentionally exposing a
-native pass-through payload retain that separate contract.</p>
-<p>Captured Rust compiler materialization also follows installer stderr through the
-invocation logger. Installer protocol stdout remains private; human views show
-bounded attention while JSON stderr and retained events preserve structured
-records instead of unframed rustup output.</p>
-<p>Native excerpts identify their task once and preserve source indentation and
-carets beneath that label. Decoded multiline Cargo diagnostics
-are written together under the invocation output lock; unstructured native output
-retains line-level ordering without guessing diagnostic boundaries. When a registered
-Cargo compiler warning arrives line by line, successful collapse preserves its first
-bounded context from that same stream, without repeating its already printed header. Other streams do
-not fill that context, and it shares the eight-line warning budget. Native status
-lines or a new diagnostic end that source context. Cargo packaging uses the same
-registration and warning facts; identical packaging warnings appear once per
-action at normal verbosity, while verbose output and raw evidence retain them.
-Consecutive warnings share an excerpt label; changing work restores its label.
-Routine preparation narration is live status or verbose detail, and slow project
-metadata completion says <code>Ready</code> without listing internal worker calls. Native process
-success is omitted because it precedes validation. Task completion and the final
-receipt retain their distinct meanings; failures include available exit codes.</p>
-<p>The linear view shows preparation and execution as named lifecycle records, then
-one receipt. At most four routine action starts and four slow completions appear
-by default; further work collapses into totals. Native warnings/errors retain
-bounded permanent context on both terminals and redirected streams. Warning and
-error budgets are separate so warnings cannot hide a later root failure, with omission notices and
-failure tails. <code>-v</code> expands captured output and successful preparation records.
-Context and command metadata remain in structured events and retained evidence.
-Every ten seconds it reports nonzero, disjoint action outcome counts, active work, dependency waits with causes/observed ages and elapsed time while execution remains unfinished. Graph growth updates known action totals without erasing existing outcomes. Action counts are never a time-remaining estimate; a liveness update is not progress. Cargo JSON compiler records are projected into concise compiled-target/status
-lines by the shared native projection, including native <code>build-host</code> workers;
-cached artifact records and build-script metadata are omitted from both human
-views. Registered <code>go test -json</code> streams show native output and failed test
-identities instead of JSON envelopes. Split records are assembled per scope and
-stream, bounded to one MiB per record; exceeding that display limit directs the
-reader to retained native logs. Compiler diagnostics and unknown output remain visible. Original
-output events, JSON mode, raw logs and artifact validation inputs are unchanged.
-Native processes retain their own buffering; Oyzu cannot show
-bytes before the process writes them. GitHub Actions keeps collapsible phase groups around the shared bounded view.</p>
-<p>The ordinary terminal shows reconciled scheduler counts beside its bounded live
-work, including short builds before the first heartbeat. Closing the dashboard
-with <code>q</code> preserves active scopes, elapsed age and native projection in the linear
-view. Automatic focus advances from completed setup to active work until the user
-pins a selection; subsequent workers and failures do not steal that selection.</p>
-<p>Native warnings are included in the receipt as <code>NATIVE_WARNING</code> diagnostics in
-JSON, and in the human <code>Warnings</code> section (the generic code is shown there only
-with <code>-v</code>). Cargo&#x27;s typed warnings retain primary source locations when
-available; its repeated summary does not add another warning. Recognizable plain
-native warning markers, including Node runtime and npm warnings, are retained;
-unrelated JSON is not reinterpreted as a warning. This reports native diagnostic
-facts and never infers an action result from a warning or error string.</p>
-<p>Concurrent scopes share a synchronized sink so lines do not interleave at the byte level. Within-stream ordering is retained. Observation order between independent tasks or stdout/stderr is not a global causal order. Command-event <code>argv</code> is a redacted presentation value, not an authoritative command or portable shell script. Control characters are escaped. Text redirected to a file contains no dashboard cursor controls.</p>
-<p>Detected provider names include GitHub Actions, GitLab CI, Azure Pipelines, Buildkite, Jenkins and TeamCity, with generic CI fallback. These are unverified presentation hints, never credentials or release authority.</p>
-<p>In GitHub Actions, preflight, dependency and planning phases use collapsible groups. Groups close before action execution; individual concurrent tasks do not open overlapping groups. On completion, Oyzu appends an HTML-escaped receipt to <code>GITHUB_STEP_SUMMARY</code> if supplied. Failure to write the summary warns without changing build status. JSON mode still uses only JSON events on stderr, with no group commands. Local artifact paths are not presented as download links: artifact uploading, additional provider-native summaries and reliable source-location annotations are not implemented here.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-receipt-and-retained-evidence">Final receipt and retained evidence<a href="#final-receipt-and-retained-evidence" class="hash-link" aria-label="Direct link to Final receipt and retained evidence" title="Direct link to Final receipt and retained evidence" translate="no">​</a></h2>
-<p>A build stopped during preparation preserves its known selected target count
-and says <code>Build failed during preparation</code> and <code>No build actions started</code>.
-Prepared action records remain empty; they are not described as an empty target
-selection. Available target identity and the original preparation cause remain
-in diagnostics. Human diagnostic and recovery paragraphs wrap at word boundaries
-with a hanging indent (100 columns when the terminal width is unavailable).
-History summaries and bundle inspection retain that selected scope as well;
-the shared record summary owns the count rather than treating an empty prepared
-target array as no selected work.</p>
-<p>The completion summary of a successful build is the sectioned receipt described above: <code>Outputs</code> with project-relative paths and sizes (absolute with <code>-v</code>), <code>Warnings</code>, then the outcome line (<code>Build succeeded</code>, <code>with warnings</code>) with its target and non-zero action-outcome tally and elapsed wall time, and a <code>Details</code> line with the manifest path, event path and invocation id (or <code>unavailable</code>). Other outcomes keep the form below: the outcome and elapsed wall time first, then artifacts with target, bundle-relative path and recorded size, followed by actual manifest/event references or explicit unavailability. Multiple targets receive at most eight target rows with an omitted count; single-target builds omit that redundant table. Receipts distinguish selected targets from actions and reconcile disjoint action outcomes. A failed build ends with a Failure block per failed action (or one for preparation), Warnings, a summary that counts only non-zero outcomes (<code>1 failed · 12 blocked · 130 succeeded</code>) and Details; host failures add the note that existing local binaries were not updated. Interrupted builds keep the older form: failed and blocked actions with available exit codes/reasons. Empty artifact results say “No artifacts produced”; empty Reports sections are omitted.</p>
-<p>Fresh tests and reused test evidence have separate totals. Reuse identifies available producer provenance and never increments tests run now. A report with mixed or missing action ownership is labelled with unavailable origin. Coverage measurements remain visible when available. Missing reports do not imply zero failures or 100% coverage, and coverage is not averaged across unrelated metrics. Planned artifacts are labeled as planned. Diagnostic messages retain severity, code, affected action and available recovery. Success with warning diagnostics says so explicitly; warning detail remains visible. Default receipt sections are bounded to eight records and disclose omitted detail. <code>-v</code> (or a debug log level enabled for the command) additionally lists manifest and individual report paths; these files remain in the output bundle at normal verbosity. Human and structured views consume the same finalized facts; JSON retains the complete manifest. The summary uses semantic color on capable terminals and remains readable without color.</p>
-<p>Normal builds retain <code>dist/logs/events.jsonl</code>, numbered action stdout/stderr files, <code>manifest.json</code> and <code>plan.json</code>. Preparation output is included in events. Independent branches emit partial plan events as they become ready; later aggregate plan events preserve running/completed task states. Branch action logs are namespaced under <code>logs/&lt;target&gt;/</code>, and sealed plans are retained under <code>plans/</code>. Preflight records are temporarily spooled and replayed into the existing journal when the bundle becomes available, so collapsed installer output is retained on completed preflight flows. If setup fails before a bundle is created, a durable build journal is not published; terminal error details and JSON/redirected output remain available. The final console build outcome follows publication of the bundle; the journal is closed before publication. <code>--plan</code> uses a separate <a class="" href="/docs/reference/local-builds#read-only-build-preview">read-only preview</a> receipt with stage selection, tool requirements and unresolved details; it runs no dependency preparation and creates no bundle. History follows the <a class="" href="/docs/reference/build-bundles">bundle lifecycle</a>.</p>
-<p>Bundled development tasks (<code>oyzu run test</code>) also retain full stdout/stderr in
-their numbered log files in text and JSON modes. Text mode tees output live
-without duplicating it as console log events. The exception is a text-mode task
-explicitly marked <code>interactive = true</code>: it inherits terminal descriptors, which
-Oyzu cannot capture simultaneously without a pseudo-terminal. Its stdout/stderr
-files are empty; report collection still applies. See <a class="" href="/docs/reference/build-tasks#live-development-task-output">task stream behavior</a>.</p>
-<p>Event records have <code>schemaVersion</code>, <code>sequence</code>, <code>elapsedMs</code>, <code>scope</code>, <code>severity</code>, <code>target</code>, <code>invocationId</code>, <code>operationId</code>, <code>parentOperationId</code> and a tagged <code>event</code>: <code>diagnostic</code>, <code>heading</code>, <code>fact</code>, <code>inventory</code>, <code>preparation</code>, <code>progress</code>, <code>phase</code>, <code>plan</code>, <code>task</code>, <code>command</code>, <code>output</code> or <code>finished</code>. Observed warnings/errors are retained independently of console filtering; disabled debug/trace messages are not constructed or persisted. Fact events carry explicit section/name/value presentation observations, without environment maps. Inventory contains selected target labels, platforms, check mode and color preference, without environment maps. Preparation/phase/task events carry lifecycle facts. The plan event contains only presentation inventory (target ID/builder, action ID/target/dependencies and artifact versions), never action environments. Output includes <code>stream</code>, <code>text</code> and <code>continued</code>; completion includes <code>status</code>, optional <code>exit_code</code> and optional <code>duration_ms</code>. Consumers should tolerate new event types. This experimental observation format remains separate from deterministic plan identity and release evidence.</p>
-<p>The logger adds no network calls. Environment maps are not dumped. Project commands/output can deliberately print sensitive values; arbitrary-output secret detection is not promised. Upstream broker credentials remain outside executor arguments/environment under the existing acquisition contract. Native raw-log size and process-time limits remain in force. Log sink failures do not override native process results; durable remote delivery is separate work.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
-<p><code>tooling/test-build-logging.py --cli &lt;compiled-cli&gt; --evidence-dir &lt;new-directory&gt;</code> runs two real Rust targets, verifies live parallel streams, four snapshot artifacts, report collection, JSON failure/blocked events and bundle inspection. The Rust image must already be provisioned.</p>
-<p>Add <code>--linear</code> to verify the linear view and human failure output instead of the
-GitHub grouped view. <code>--image &lt;reference&gt;</code> selects an explicit provisioned Cargo
-image containing the compiled worker and required quality tools.</p>
-<p>For real terminal acceptance, install <code>tooling/terminal-requirements.txt</code>, then run <code>tooling/test-build-terminal.py --cli &lt;compiled-cli&gt; --evidence-dir &lt;new-directory&gt;</code>. This uses ConPTY on Windows and a pseudo-terminal on Unix to exercise the actual CLI, independent active panels, navigation, resizing, failure focus, hide/restore behavior and resulting bundles. Screen transcripts and representative text frames are retained. Unit tests cover the event projection, full spool history, control escaping and evidence-based receipts. Registration is not passing evidence; see <a class="" href="/docs/support/capabilities">implementation status</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="shared-verbosity">Shared verbosity<a href="#shared-verbosity" class="hash-link" aria-label="Direct link to Shared verbosity" title="Direct link to Shared verbosity" translate="no">​</a></h2>
-<p>Builds use the <a class="" href="/docs/reference/cli-output#diagnostic-controls">global diagnostic controls</a>.
-Routine lifecycle presentation is info; command observations are debug; failed
-completion is error and blocked tasks are warn. Native stdout/stderr events are
-always retained independently of threshold; a native stderr line is not an Oyzu
-error. Dashboard state and existing journal lifecycle facts continue to receive
-events even when console detail is filtered. Build journals retain observed diagnostic facts and the same correlation envelope as console JSON. They are observation evidence, not a complete execution audit; existing bundle retention remains in force; command argument
-redaction applies consistently to their presentation events as well.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="preflight-status-and-native-styling">Preflight status and native styling<a href="#preflight-status-and-native-styling" class="hash-link" aria-label="Direct link to Preflight status and native styling" title="Direct link to Preflight status and native styling" translate="no">​</a></h3>
-<p>A tool has one evolving terminal status followed by a final <code>Ready</code> result.
-Redirected output retains the initial check and final result, without repeating
-intermediate reuse/verification notices. Native output remains attributed to its
-operation. The human child-output projection removes SGR color/style escapes;
-other terminal controls remain escaped. Original child events and raw evidence
-retain their existing contracts. Failed operations retain their diagnostic tail.
-Executor capability results appear after the selected native environment has been
-checked, rather than as an additional speculative unchecked row.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="managed-installation-and-long-running-native-output">Managed installation and long-running native output<a href="#managed-installation-and-long-running-native-output" class="hash-link" aria-label="Direct link to Managed installation and long-running native output" title="Direct link to Managed installation and long-running native output" translate="no">​</a></h3>
-<p>Explicit installation and automatic build preparation send native installer
-stderr through the invocation-owned logger. JSON diagnostics stay on stderr;
-worker stdout remains its private protocol. Human output omits rustup&#x27;s advice to
-add its temporary staging home to PATH, because Oyzu publishes and activates the
-verified installation itself. Native errors remain visible; raw events and JSON
-retain that advice. Redirected build progress emits changed task summaries once,
-with explicit omission notices when native previews are bounded. Multiline Oyzu diagnostics retain
-indented line boundaries while escaping terminal control sequences. Rust doctest
-compilation streams live output and retains bounded report diagnostics; see the
-<a class="" href="/docs/reference/rust#direct-test-evidence">Rust evidence contract</a>.</p>
-<p>Native task heartbeats are visible in the linear view: while a subprocess is
-silent, its active terminal row updates elapsed time every ten seconds. Redirected
-output appends an elapsed-time update instead. These are liveness indicators,
-not percentages or proof that a native tool is advancing. Native output continues
-to stream as it arrives; Cargo may remain quiet during compilation or linking.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interrupting-a-build">Interrupting a build<a href="#interrupting-a-build" class="hash-link" aria-label="Direct link to Interrupting a build" title="Direct link to Interrupting a build" translate="no">​</a></h2>
-<p>The first Ctrl+C (or SIGTERM, or SIGHUP when the terminal closes) asks the build to stop:
-schedulers stop starting work and running container steps are removed. A signal that was already
-ignored when the build started, such as SIGHUP under <code>nohup</code>, stays ignored and does not stop it. Steps blocked in a native or Docker call cannot observe the request,
-so the CLI prints <code>Stopping build; waiting up to 10s for running steps. Press Ctrl-C again to force exit.</code> A second Ctrl+C, or the end of the 10-second grace period, removes the containers this
-invocation started (named <code>oyzu-*</code> or the build worker names), ends the process tree and exits.
-On Windows the exit status of a forced exit is 1; on Unix it is 130. Unix forced exit does not
-yet kill native child processes in other process groups. Containers started before an earlier
-hard kill are not cleaned up by this mechanism.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="steps-and-timings">Steps and timings<a href="#steps-and-timings" class="hash-link" aria-label="Direct link to Steps and timings" title="Direct link to Steps and timings" translate="no">​</a></h2>
-<p>Preparation is tracked as named steps. Fast routine success is collapsed by default;
-<code>-v</code> shows each successful step in completion order. A finished step has a
-mark, a name, a short result and its duration in a right-aligned column. A step of ten seconds or
-more remains visible; successful work retains its success marker. Durations read <code>&lt;0.1s</code>, <code>5.9s</code>,
-<code>149s</code> and <code>10m 06s</code>.</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Source captured          2781 files · sha256:668b3844b9d7                          13.0s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Rust compiler            1.95.0 · reused the packaged copy from an earlier build    0.8s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Compiler in container    restored into a read-only volume                          19.5s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Cargo crates             371 locked · all from the cache                            5.6s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Project metadata         8 container runs · slowest `cargo metadata` 9.0s          25.0s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Build inputs ready       compiler, crates and project metadata                     60.8s</span><br></div></code></pre></div></div>
-<p>In a terminal a running step shows in the live pane (<code>› name  detail</code>); its tail
-collapses when it completes. Redirected output prints a step when it finishes, and a heartbeat line while a step
-is slow. With more than one target a step carries its target (<code>Cargo crates · cli · linux/x86_64</code>).
-Actions (<code>prepare</code>, <code>build</code>, <code>archive</code>, <code>package</code>) use the same column. While <code>cargo</code> compiles,
-the individual <code>Compiling</code>/<code>Compiled</code> lines are not printed: the running status shows the count and
-the latest crate (<code>Running · 60s elapsed · 271 crates compiled · latest oxc_ast_visit</code>), the
-completed line reports the total (<code>Succeeded · 276 crates compiled</code>), and warnings and errors still
-print in full. <code>-v</code> prints every crate line. With <code>-v</code>, the headline of a finished
-build is followed by where the time went (<code>Preflight 71s · Build 174s · Collect 4s</code>).</p>
-<p>What an isolated build&#x27;s preflight does, per target:</p>
+<p>The heading names the project, the host or platform selection, the execution mode
+and the requested checks. Which targets were selected, and why, is in the
+<a class="" href="/docs/reference/cli-output#selection">Selection section</a>; stage status is in the plan table.</p>
+<p>Preparation runs as named steps: configuration, tools, dependencies, output bundle,
+compiler cache, source snapshot, CLI identity and report setup.</p>
 <ul>
-<li class=""><strong>Rust compiler.</strong> The locked Rust installation is unpacked once per build, shared by all
-platforms, and packaged for the build container. The package is cached across builds under
-<code>cache/rust-packaged</code> in the Oyzu user-data directory, so a repeat build only reuses it.</li>
-<li class=""><strong>Compiler in container.</strong> The package is restored into a read-only Docker volume named
-<code>oyzu-tools-&lt;hash&gt;</code> (the hash covers the worker image, compiler archive digest and restoration
-format). The restored copy grants read/search access while preserving executable bits, so
-actions assigned the source owner&#x27;s UID can use compilers installed privately with <code>0700</code>
-modes. The original installation and archive are unchanged. Older private-mode volumes are
-retained; the new restoration format uses a separate derived key. The volume
-persists across builds, so a repeat build reuses it in under a second instead of re-extracting the
-compiler (about 20 s). A second volume, <code>oyzu-tools-&lt;hash&gt;-ok</code>, is created only after extraction
-and accessibility normalization succeed; a volume without it is treated as unfinished and rebuilt. A lock file under <code>cache/</code> in
-the Oyzu user-data directory serializes concurrent builds. Each compiler or worker-image change
-adds one volume (about a gigabyte). After a build restores or reuses its volume, it removes
-superseded <code>oyzu-tools-&lt;hash&gt;</code> and <code>-ok</code> pairs, keeping that volume and the three most recently
-created others; the same pass clears volumes leaked by earlier releases. Docker refuses to remove
-a volume a running container mounts, so concurrent builds are unaffected; failures are retried by
-the next build. Other Docker storage Oyzu creates is bounded by the <a class="" href="/docs/reference/docker-images#docker-storage-budget">Docker storage budget</a>. Without the lock the
-volume is private to the build and removed afterwards.</li>
-<li class=""><strong>Cargo crates.</strong> Every crate in <code>Cargo.lock</code> is captured into a registry the container uses
-offline (the build container has no network). Archives are verified against the lock&#x27;s checksums
-and cached across builds under <code>cache/cargo-crates</code>; registry index entries are cached for seven
-days.</li>
-<li class=""><strong>Project metadata.</strong> Several short container runs (<code>cargo metadata</code>, <code>rustc -vV</code>, lockfile
-generation) read facts about the project. They are one step that names the slowest run; every run
-is listed at debug verbosity (<code>-v</code>).</li>
-<li class=""><strong>Source snapshot</strong> and <strong>Dependency snapshot.</strong> Private, hashed copies the offline build uses.</li>
-<li class=""><strong>Version.</strong> The version stamped into the artifacts (see the facts block below).</li>
+<li class=""><code>›</code> running, <code>✓</code> done, <code>✗</code> stopped by an error. A step that&#x27;s still running when an
+error stops the build is shown as stopped, not done.</li>
+<li class="">Fast successful steps collapse. Steps that take ten seconds or more, and failures,
+stay visible. A slow step that succeeds is still a success.</li>
+<li class="">Tool installation shows the requested version. A reused tool collapses to one
+<code>Ready</code> line; a real download stays visible.</li>
+<li class="">Host prerequisites say they&#x27;re checked during compilation.</li>
+<li class="">Optional tools that aren&#x27;t used aren&#x27;t listed.</li>
 </ul>
-<p>A native (non-isolated) build shows <code>Source workspaces</code> (a private copy of the sources) and one
-step per executor prerequisite (a small compile-and-link probe of the linker) in the same form. The
-live <code>› Tools determining…</code> line is a placeholder while any of this runs.</p>
-<p>Long lines wrap under a hanging indent aligned with the message column, and a generated platform
-id such as <code>cli-platform-windows_x86_64-157f0d1f6adb</code> is shown as <code>cli · windows/x86_64</code>. The same
-steps and durations are in the event journal (<code>Step</code> events with <code>duration_ms</code>).</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-context-and-receipts">Build context and receipts<a href="#build-context-and-receipts" class="hash-link" aria-label="Direct link to Build context and receipts" title="Direct link to Build context and receipts" translate="no">​</a></h2>
-<p>The ordinary build transcript shows the shared
-<a class="" href="/docs/reference/cli-output#discovered-build-facts">Facts section</a> before its plan and actions.
-<code>-v</code> adds full hashes and other context records; structured facts are also
-retained in plan events and the journal. The optional dashboard
-keeps its context inspection panel. Snapshot version facts do not confer release
-or publication authority.</p>
-<p>The final receipt leads with the outcome and elapsed time, then target/action
-counts and nonzero disjoint outcomes. Successful targets do not generate a second
-result table. Executed and reused tests stay separate; accepted test details
-collapse while reused evidence keeps its producing run/time and cache origin.
-Incomplete, rejected or unknown test evidence stays visible; <code>-v</code> includes accepted
-per-action details too. Root failures precede dependent impact, and error diagnostics
-precede warnings within bounded excerpts. Omitted actions, evidence and diagnostics
-have explicit counts and inspection routes.</p>
-<p>Artifact records give copyable paths under the published <code>dist</code> directory without
-padding to the longest path. Invocation identity, available manifest/event paths,
-missing evidence, cache fallback and failure recovery remain visible under quiet
-output. Help, shell code, selected-path and native pass-through contracts are
-unchanged. See <a class="" href="/docs/reference/cli-output#which-executable-is-running">executable selection</a>
-when comparing installed and compiled output.</p>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="state-focus-and-inspection">State, focus and inspection<a href="#state-focus-and-inspection" class="hash-link" aria-label="Direct link to State, focus and inspection" title="Direct link to State, focus and inspection" translate="no">​</a></h3>
-<p>Waiting means a known dependency has not satisfied the action; ready means its
-dependencies are satisfied and it has not started. Neither means a process ran.
-Success/reuse/failure/blocking remain separate in the shared snapshot. Pending
-work prevented from launching by an interrupt is <code>not-started</code>, with a reason;
-the invocation is <code>interrupted</code>. Unix native tasks killed by the cooperative
-interrupt and reaped with SIGTERM/SIGKILL report confirmed <code>cancelled</code>; other
-platforms retain native outcome facts without inferring cancellation. Required
-checks, scheduling, permissions and exit semantics are unchanged.</p>
-<p>The dashboard keeps its selected task until the user changes it. New failures
-raise a notice; <code>n</code> selects the next failed task, arrows select tasks, and the
-existing log keys inspect complete retained view detail. Ctrl-C uses the same
-cooperative interruption path as plain output and restores terminal state.
-<code>oyzu history &lt;invocation-id&gt; --json</code> provides a bounded summary after a local
-bundle is published; <code>oyzu inspect &lt;bundle-directory&gt; --json</code> verifies the full
-bundle. See <a class="" href="/docs/reference/build-bundles#retained-invocation-lookup">history scope and limits</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/cli-output"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLI output</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/local-builds"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Native local builds</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#presentation-selection" class="table-of-contents__link toc-highlight">Presentation selection</a></li><li><a href="#persistent-terminal-view" class="table-of-contents__link toc-highlight">Persistent terminal view</a></li><li><a href="#forced-cancellation" class="table-of-contents__link toc-highlight">Forced cancellation</a></li><li><a href="#ci-and-redirected-output" class="table-of-contents__link toc-highlight">CI and redirected output</a><ul><li><a href="#sectioned-build-view" class="table-of-contents__link toc-highlight">Sectioned build view</a></li><li><a href="#stage-overview" class="table-of-contents__link toc-highlight">Stage overview</a></li></ul></li><li><a href="#final-receipt-and-retained-evidence" class="table-of-contents__link toc-highlight">Final receipt and retained evidence</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li><li><a href="#shared-verbosity" class="table-of-contents__link toc-highlight">Shared verbosity</a><ul><li><a href="#preflight-status-and-native-styling" class="table-of-contents__link toc-highlight">Preflight status and native styling</a></li><li><a href="#managed-installation-and-long-running-native-output" class="table-of-contents__link toc-highlight">Managed installation and long-running native output</a></li></ul></li><li><a href="#interrupting-a-build" class="table-of-contents__link toc-highlight">Interrupting a build</a></li><li><a href="#steps-and-timings" class="table-of-contents__link toc-highlight">Steps and timings</a></li><li><a href="#build-context-and-receipts" class="table-of-contents__link toc-highlight">Build context and receipts</a><ul><li><a href="#state-focus-and-inspection" class="table-of-contents__link toc-highlight">State, focus and inspection</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<p>Each running subprocess (formatting, linting, tests, compilation, hooks, tool
+installation) gets a short preview under its row, showing its latest eight lines in
+dim text. Each parallel task has its own preview. The preview area is limited by the
+terminal height and says when activity is hidden.</p>
+<ul>
+<li class="">On success, the preview collapses into the totals.</li>
+<li class="">On failure, the first useful eight lines of error context are kept (or the last
+eight lines if no error marker is found), with the exit code. The receipt names the
+saved log.</li>
+<li class=""><code>-v</code> shows the full captured output, including successful preparation.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="steps-and-timings">Steps and timings<a href="#steps-and-timings" class="hash-link" aria-label="Direct link to Steps and timings" title="Direct link to Steps and timings" translate="no">​</a></h2>
+<p>A finished step shows a mark, a name, a short result and its duration. Durations read
+<code>&lt;0.1s</code>, <code>5.9s</code>, <code>149s</code> and <code>10m 06s</code>.</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Source captured          2781 files · sha256:668b3844b9d7                          13.0s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Rust compiler            1.95.0 · reused the packaged copy from an earlier build    0.8s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Compiler in container    restored into a read-only volume                          19.5s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Cargo crates             371 locked · all from the cache                            5.6s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Project metadata         8 container runs · slowest `cargo metadata` 9.0s          25.0s</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ Build inputs ready       compiler, crates and project metadata                     60.8s</span><br></div></code></pre></div></div>
+<ul>
+<li class="">On a terminal, a running step shows in the live pane (<code>› name  detail</code>).
+Redirected output prints a step when it finishes, with heartbeats while it&#x27;s slow.</li>
+<li class="">With several targets, each step names its target
+(<code>Cargo crates · cli · linux/x86_64</code>).</li>
+<li class="">While Cargo compiles, individual <code>Compiling</code> lines aren&#x27;t printed. The running
+status shows the count and latest crate
+(<code>Running · 60s elapsed · 271 crates compiled · latest oxc_ast_visit</code>), and the
+finished line shows the total (<code>Succeeded · 276 crates compiled</code>). Warnings and
+errors still print in full. <code>-v</code> prints every crate.</li>
+<li class="">With <code>-v</code>, a finished build also shows where the time went
+(<code>Preflight 71s · Build 174s · Collect 4s</code>).</li>
+<li class="">After the last action finishes, Collect does its own work: it saves the private
+source copies for the next build (<code>Source workspaces</code>), records results and
+verification evidence (<code>Build records</code>), and writes the local bundle
+(<code>Output bundle</code>). Each is a step like the ones above. It shows in the live pane
+while it runs, a redirected run prints <code>› Source workspaces  saving private copies for the next build · 10s</code> every ten seconds while it is slow, and a finished step
+appears only if it took ten seconds or more, failed or warned.</li>
+<li class="">Generated platform IDs such as <code>cli-platform-windows_x86_64-157f0d1f6adb</code> are shown
+as <code>cli · windows/x86_64</code>.</li>
+<li class="">The event journal has the same steps and durations (<code>Step</code> events with
+<code>duration_ms</code>).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-build-preparation">Isolated build preparation<a href="#isolated-build-preparation" class="hash-link" aria-label="Direct link to Isolated build preparation" title="Direct link to Isolated build preparation" translate="no">​</a></h3>
+<p>An isolated (container) build prepares these steps for each target:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Step</th><th>What it does</th></tr></thead><tbody><tr><td>Rust compiler</td><td>Unpacks the locked Rust installation once per build and packages it for the container. The package is cached under <code>cache/rust-packaged</code> in the Oyzu user data directory.</td></tr><tr><td>Compiler in container</td><td>Restores the package into a read-only Docker volume named <code>oyzu-tools-&lt;hash&gt;</code> (the hash covers the worker image, compiler archive and format). The volume is kept between builds, so a repeat build reuses it in under a second instead of about 20 seconds.</td></tr><tr><td>Cargo crates</td><td>Captures every crate in <code>Cargo.lock</code> into an offline registry for the container, which has no network. Archives are checked against the lock&#x27;s checksums and cached under <code>cache/cargo-crates</code>; registry index entries are cached for seven days.</td></tr><tr><td>Project metadata</td><td>A few short container runs (<code>cargo metadata</code>, <code>rustc -vV</code>, lock file generation). Shown as one step naming the slowest run; <code>-v</code> lists them all.</td></tr><tr><td>Source snapshot, Dependency snapshot</td><td>Private, hashed copies the offline build uses.</td></tr><tr><td>Version</td><td>The version stamped into the artifacts.</td></tr></tbody></table></div>
+<p>About the compiler volumes:</p>
+<ul>
+<li class="">A companion volume, <code>oyzu-tools-&lt;hash&gt;-ok</code>, marks a finished restore. A volume
+without it is rebuilt.</li>
+<li class="">A lock file under <code>cache/</code> in the user data directory stops concurrent builds from
+restoring the same volume twice.</li>
+<li class="">Each new compiler or worker image adds a volume of about a gigabyte. After each
+build, Oyzu removes older <code>oyzu-tools-*</code> pairs, keeping the current one and the
+three most recent others. Volumes in use by a running container are skipped and
+retried next time.</li>
+<li class="">Other Docker storage is limited by the
+<a class="" href="/docs/reference/docker-images#docker-storage-budget">Docker storage budget</a>.</li>
+</ul>
+<p>A native (non-isolated) build shows <code>Source workspaces</code> (a private copy of the
+sources) and one step per executor prerequisite (a small compile-and-link check of the
+linker). The <code>› Tools determining…</code> line is a placeholder while this runs.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-output-and-warnings">Native output and warnings<a href="#native-output-and-warnings" class="hash-link" aria-label="Direct link to Native output and warnings" title="Direct link to Native output and warnings" translate="no">​</a></h2>
+<ul>
+<li class="">Native output is shown as it arrives. Oyzu can&#x27;t show output a tool hasn&#x27;t written
+yet, and Cargo can be quiet for a long time while compiling or linking. Silent
+tasks show elapsed time every ten seconds.</li>
+<li class="">Each excerpt names its task once and keeps the tool&#x27;s own indentation and carets.</li>
+<li class="">Color codes from tools are removed in the human view; other terminal controls are
+escaped. The saved logs keep the original output.</li>
+<li class="">Parallel tasks never interleave within a line. Lines from one stream stay in order;
+the order between different tasks or between stdout and stderr isn&#x27;t a strict
+cause-and-effect order.</li>
+<li class="">Cargo JSON is shown as short compiled-target and status lines. <code>go test -json</code>
+shows native output and failed test names instead of JSON. A single record over
+1 MiB isn&#x27;t shown; read the saved log instead.</li>
+<li class="">Native warnings appear once, in the receipt&#x27;s <code>Warnings</code> section, and as
+<code>NATIVE_WARNING</code> diagnostics in JSON. Cargo warnings keep their source location,
+and Cargo&#x27;s repeated summary line doesn&#x27;t add another warning. npm and Node
+warnings are recognized too. Oyzu never decides an action&#x27;s result from warning or
+error text.</li>
+<li class="">Warning and error excerpts have separate budgets, so warnings can&#x27;t hide a later
+failure.</li>
+<li class="">Installer messages from rustup go through the same view. Its advice to add a
+temporary folder to <code>PATH</code> is hidden, because Oyzu activates the installed tools
+itself; JSON and saved events keep it.</li>
+<li class="">Rust doctests stream live; see <a class="" href="/docs/reference/rust#direct-test-evidence">Rust direct test evidence</a>.</li>
+<li class="">The command shown for an action is redacted for display. It isn&#x27;t a portable shell
+script.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-receipt-and-retained-evidence">Final receipt and retained evidence<a href="#final-receipt-and-retained-evidence" class="hash-link" aria-label="Direct link to Final receipt and retained evidence" title="Direct link to Final receipt and retained evidence" translate="no">​</a></h2>
+<p>The receipt is the summary at the end of a build. See
+<a class="" href="/docs/reference/cli-output#receipts-and-history">receipts and history</a> for what it counts.</p>
+<ul>
+<li class="">A build that fails during preparation says <code>Build failed during preparation</code> and
+<code>No build actions started</code>, and keeps the count of selected targets.</li>
+<li class="">Fresh tests and reused test results are counted separately. Reused results name
+where they came from and never count as tests run now.</li>
+<li class="">Missing reports never mean zero failures or 100% coverage. Coverage isn&#x27;t averaged
+across unrelated measures.</li>
+<li class="">Receipt sections show up to eight entries and say how many were left out. <code>-v</code> adds
+the manifest and report paths.</li>
+<li class="">An empty result says <code>No artifacts produced</code>.</li>
+<li class="">Error and recovery paragraphs wrap at word boundaries (100 columns if the terminal
+width is unknown).</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="saved-logs">Saved logs<a href="#saved-logs" class="hash-link" aria-label="Direct link to Saved logs" title="Direct link to Saved logs" translate="no">​</a></h3>
+<p>Every build saves these files in its bundle (<code>dist/</code> by default):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Path</th><th>Contents</th></tr></thead><tbody><tr><td><code>logs/events.jsonl</code></td><td>The event journal, including preparation output.</td></tr><tr><td><code>logs/&lt;target&gt;/…</code></td><td>Numbered stdout and stderr files for each action.</td></tr><tr><td><code>manifest.json</code>, <code>plan.json</code></td><td>The build&#x27;s result and plan.</td></tr><tr><td><code>plans/</code></td><td>Sealed plans for independent branches.</td></tr></tbody></table></div>
+<ul>
+<li class="">If setup fails before the bundle exists, no journal is saved. The terminal, JSON
+and redirected output still have the error.</li>
+<li class=""><code>oyzu run test</code> and other bundled tasks also save their full stdout and stderr, in
+text and JSON modes. A task marked <code>interactive = true</code> uses your terminal
+directly, so its log files are empty. See
+<a class="" href="/docs/reference/build-tasks#live-development-task-output">task output</a>.</li>
+<li class=""><code>oyzu build --plan</code> creates no bundle; see
+<a class="" href="/docs/reference/local-builds#read-only-build-preview">read-only build preview</a>.</li>
+<li class="">See <a class="" href="/docs/reference/build-bundles">build bundles</a> for how bundles are kept.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="event-records">Event records<a href="#event-records" class="hash-link" aria-label="Direct link to Event records" title="Direct link to Event records" translate="no">​</a></h3>
+<p>Each line of <code>events.jsonl</code> (and each JSON event on stderr) has <code>schemaVersion</code>,
+<code>sequence</code>, <code>elapsedMs</code>, <code>scope</code>, <code>severity</code>, <code>target</code>, <code>invocationId</code>,
+<code>operationId</code>, <code>parentOperationId</code> and an <code>event</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th><code>event</code></th><th>Contents</th></tr></thead><tbody><tr><td><code>diagnostic</code></td><td>A warning, error or other message, with <code>code</code>.</td></tr><tr><td><code>heading</code>, <code>fact</code>, <code>inventory</code></td><td>The build heading, context facts, and the selected targets, platforms, check mode and color preference.</td></tr><tr><td><code>preparation</code>, <code>phase</code>, <code>task</code>, <code>progress</code></td><td>Lifecycle changes.</td></tr><tr><td><code>plan</code></td><td>Target IDs and builders, action IDs, dependencies and artifact versions. Never action environments.</td></tr><tr><td><code>command</code></td><td>The redacted command.</td></tr><tr><td><code>output</code></td><td><code>stream</code>, <code>text</code> and <code>continued</code>.</td></tr><tr><td><code>finished</code></td><td><code>status</code>, and optional <code>exit_code</code> and <code>duration_ms</code>.</td></tr></tbody></table></div>
+<ul>
+<li class="">Every warning and error is saved, whatever the console showed. Debug and trace
+messages are saved only when enabled.</li>
+<li class="">Environment maps are never included.</li>
+<li class="">New event types may be added; ignore ones you don&#x27;t recognize.</li>
+<li class="">The format is experimental and separate from the plan&#x27;s identity and from release
+records.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="privacy">Privacy<a href="#privacy" class="hash-link" aria-label="Direct link to Privacy" title="Direct link to Privacy" translate="no">​</a></h3>
+<p>Logging uses no network. Your project&#x27;s commands can print sensitive values, and
+Oyzu doesn&#x27;t try to detect secrets in arbitrary output. Credentials Oyzu uses for
+downloads are never passed in a command&#x27;s arguments or environment. A failure to write
+a log never changes a tool&#x27;s result.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="shared-verbosity">Shared verbosity<a href="#shared-verbosity" class="hash-link" aria-label="Direct link to Shared verbosity" title="Direct link to Shared verbosity" translate="no">​</a></h2>
+<p>Builds use the <a class="" href="/docs/reference/cli-output#diagnostic-controls">global diagnostic controls</a>.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Event</th><th>Level</th></tr></thead><tbody><tr><td>Routine lifecycle</td><td>info</td></tr><tr><td>Command details</td><td>debug</td></tr><tr><td>Failed step</td><td>error</td></tr><tr><td>Blocked task</td><td>warn</td></tr></tbody></table></div>
+<p>Native stdout and stderr are always saved, whatever the threshold. A line on a tool&#x27;s
+stderr isn&#x27;t an Oyzu error.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="interrupting-a-build">Interrupting a build<a href="#interrupting-a-build" class="hash-link" aria-label="Direct link to Interrupting a build" title="Direct link to Interrupting a build" translate="no">​</a></h2>
+<p>The first Ctrl+C (or SIGTERM, or SIGHUP when the terminal closes) asks the build to
+stop. No new work starts and running container steps are removed. A signal that was
+already ignored when the build started (such as SIGHUP under <code>nohup</code>) stays ignored.</p>
+<p>Steps blocked inside a native tool or Docker call can&#x27;t respond right away, so Oyzu
+prints a notice ending <code>waiting up to 10s for running steps. Press Ctrl-C again to force exit.</code> The notice goes through the normal log, so it&#x27;s a JSON line with
+<code>--json</code>.</p>
+<p>After an interrupt:</p>
+<ul>
+<li class="">Actions that never started are <code>not-started</code>, and the build is <code>interrupted</code>.</li>
+<li class="">On Unix, native tasks that were stopped report <code>cancelled</code>. On other platforms the
+tool&#x27;s own exit is reported.</li>
+<li class="">In the dashboard, Ctrl+C restores your terminal first.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="forced-cancellation">Forced cancellation<a href="#forced-cancellation" class="hash-link" aria-label="Direct link to Forced cancellation" title="Direct link to Forced cancellation" translate="no">​</a></h3>
+<p>A second Ctrl+C, or the end of the 10-second grace period, forces exit:</p>
+<ul>
+<li class="">Oyzu removes the containers this build started (named <code>oyzu-*</code> or the build worker
+names). On Windows it also ends tracked child process trees. All of this shares one
+five-second deadline; cleanup that doesn&#x27;t finish in time is abandoned.</li>
+<li class="">It names any container or process tree it couldn&#x27;t remove, then exits with status
+130, even if Docker isn&#x27;t responding.</li>
+<li class="">These time limits are fixed.</li>
+</ul>
+<p>Forced exit is best effort. It can leave containers, processes and partial staging
+behind, and there may be no failure bundle. Once Docker is responsive again, remove the
+named leftovers before retrying, and see <a class="" href="/docs/reference/build-bundles#finalization-and-recovery">bundle recovery</a>.
+Cleanup messages go to stderr even with <code>--json</code> and aren&#x27;t a JSON result.</p>
+<p>Limits:</p>
+<ul>
+<li class="">On Unix, forced exit doesn&#x27;t kill native child processes in other process groups.</li>
+<li class="">Containers left by an earlier hard kill (for example <code>kill -9</code>) aren&#x27;t cleaned up.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/cli-output">CLI output</a> for the section layout, JSON and diagnostic controls.</li>
+<li class=""><a class="" href="/docs/reference/build-bundles">Build bundles</a> for <code>inspect</code> and <code>history</code>.</li>
+<li class=""><a class="" href="/docs/reference/local-builds">Local builds</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/cli-output"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLI output</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/local-builds"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Native local builds</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#presentation-selection" class="table-of-contents__link toc-highlight">Presentation selection</a></li><li><a href="#persistent-terminal-view" class="table-of-contents__link toc-highlight">Persistent terminal view</a></li><li><a href="#ci-and-redirected-output" class="table-of-contents__link toc-highlight">CI and redirected output</a><ul><li><a href="#stage-overview" class="table-of-contents__link toc-highlight">Stage overview</a></li></ul></li><li><a href="#steps-and-timings" class="table-of-contents__link toc-highlight">Steps and timings</a><ul><li><a href="#isolated-build-preparation" class="table-of-contents__link toc-highlight">Isolated build preparation</a></li></ul></li><li><a href="#native-output-and-warnings" class="table-of-contents__link toc-highlight">Native output and warnings</a></li><li><a href="#final-receipt-and-retained-evidence" class="table-of-contents__link toc-highlight">Final receipt and retained evidence</a><ul><li><a href="#saved-logs" class="table-of-contents__link toc-highlight">Saved logs</a></li><li><a href="#event-records" class="table-of-contents__link toc-highlight">Event records</a></li><li><a href="#privacy" class="table-of-contents__link toc-highlight">Privacy</a></li></ul></li><li><a href="#shared-verbosity" class="table-of-contents__link toc-highlight">Shared verbosity</a></li><li><a href="#interrupting-a-build" class="table-of-contents__link toc-highlight">Interrupting a build</a><ul><li><a href="#forced-cancellation" class="table-of-contents__link toc-highlight">Forced cancellation</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

@@ -4,18 +4,21 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/cli-output">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-help"><span class="linkLabel_WmDU">CLI help</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/cli-output"><span class="linkLabel_WmDU">CLI output</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-logging"><span class="linkLabel_WmDU">Build logging</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Commands and output</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">CLI output</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>CLI output</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/cli-output">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/install-script"><span class="linkLabel_WmDU">Install script</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/cli-help"><span class="linkLabel_WmDU">CLI help</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/cli-output"><span class="linkLabel_WmDU">CLI output</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-logging"><span class="linkLabel_WmDU">Build logging</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Commands and output</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">CLI output</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>CLI output</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/cli-output.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>Every public command defaults to readable text for people and accepts the global <code>--json</code> flag for machine-readable output. This page describes what each kind of output looks like, which flags and environment variables control it, and what scripts can rely on.</p>
-<p>Output selection never changes policy, configuration, lock contents or exit codes. DEC-033 and <code>AGENTS.md</code> record this product rule.</p>
-<p>The CLI design guide is the draft shared standard for mission, guardrails, state meanings, large-repository presentation and review criteria. This reference describes current interfaces, including bounded retained build history. Other target experiences in the guide require their own implementation evidence.</p>
+<p>Every public command prints readable text for people by default and accepts the
+global <code>--json</code> flag for machine-readable output. This page shows what each kind of
+output looks like, which flags and environment variables control it, and what
+scripts can rely on.</p>
+<p>Choosing an output mode never changes policy, configuration, lock contents or exit
+codes.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="output-controls-at-a-glance">Output controls at a glance<a href="#output-controls-at-a-glance" class="hash-link" aria-label="Direct link to Output controls at a glance" title="Direct link to Output controls at a glance" translate="no">​</a></h2>
 
 
@@ -58,66 +61,76 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Control</th><th>Effect</th></tr></thead><tbody><tr><td><code>--json</code> (before or after the subcommand)</td><td>One machine-readable result on stdout; diagnostics on stderr as JSON Lines. See <a href="#json-results-and-errors" class="">JSON results and errors</a>.</td></tr><tr><td><code>-v</code>, <code>-vv</code></td><td>Debug and trace diagnostics; deeper detail in build output.</td></tr><tr><td><code>-q</code>, <code>--quiet</code></td><td>Warn threshold; hides routine progress, keeps results, warnings and errors.</td></tr><tr><td><code>--log-level error|warn|info|debug|trace</code></td><td>Explicit threshold. See <a href="#diagnostic-controls" class="">Diagnostic controls</a>.</td></tr><tr><td><code>OYZU_LOG</code></td><td>Per-target log directives.</td></tr><tr><td><code>NO_COLOR</code></td><td>Disables color.</td></tr><tr><td><code>CLICOLOR_FORCE</code></td><td>Forces color (nonzero value); <code>NO_COLOR</code> overrides forcing.</td></tr><tr><td><code>ui.color</code></td><td>Project/user setting: <code>always</code>, <code>never</code> or auto. Does not apply to help.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Control</th><th>Effect</th></tr></thead><tbody><tr><td><code>--json</code> (before or after the subcommand)</td><td>One machine-readable result on stdout; diagnostics on stderr as JSON Lines. See <a href="#json-results-and-errors" class="">JSON results and errors</a>.</td></tr><tr><td><code>-v</code>, <code>-vv</code></td><td>Debug and trace diagnostics; more detail in build output.</td></tr><tr><td><code>-q</code>, <code>--quiet</code></td><td>Hide routine progress. Results, warnings and errors stay.</td></tr><tr><td><code>--log-level error|warn|info|debug|trace</code></td><td>Set the threshold explicitly. See <a href="#diagnostic-controls" class="">Diagnostic controls</a>.</td></tr><tr><td><code>OYZU_LOG</code></td><td>Per-area log levels.</td></tr><tr><td><code>NO_COLOR</code></td><td>Turn color off.</td></tr><tr><td><code>CLICOLOR_FORCE</code></td><td>Force color (any nonzero value). <code>NO_COLOR</code> wins over it.</td></tr><tr><td><code>ui.color</code></td><td>Project or user setting: <code>always</code>, <code>never</code> or auto. Doesn&#x27;t apply to help.</td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="command-help">Command help<a href="#command-help" class="hash-link" aria-label="Direct link to Command help" title="Direct link to Command help" translate="no">​</a></h2>
-<p>Run <code>oyzu</code> or <code>oyzu --help</code> for a workflow-oriented overview. Its groups are <strong>Develop &amp; build</strong>, <strong>Project tools</strong>, <strong>Environment &amp; configuration</strong>, <strong>Platform</strong> and <strong>Diagnostics</strong>, with common examples.</p>
-<ul>
-<li class=""><code>oyzu &lt;command&gt; --help</code> or <code>oyzu help &lt;command&gt;</code> shows command-specific arguments and options, including nested commands such as <code>oyzu config set --help</code>.</li>
-<li class="">Help works offline without a project, installed tool selection or platform account. Hidden shell hooks stay out of the public command list.</li>
-<li class="">Bare <code>oyzu</code> exits successfully and uses the same stdout, color controls and static startup path as <code>oyzu --help</code>; neither opens project configuration or initializes a runtime.</li>
-<li class="">Use <code>oyzu --json --help</code> for the overview in a JSON envelope.</li>
-<li class="">The help masthead uses the compact lowercase <code>oyzu.</code> wordmark. Terminals choose their own fonts; no Segoe UI or point-size claim is made for terminal output.</li>
-</ul>
-<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="help-color">Help color<a href="#help-color" class="hash-link" aria-label="Direct link to Help color" title="Direct link to Help color" translate="no">​</a></h3>
-<ul>
-<li class="">Help uses cyan headings, green command/option names and yellow placeholders on color-capable terminals. Redirected help is plain text by default.</li>
-<li class="">Set <code>NO_COLOR=1</code> to disable help color or <code>CLICOLOR_FORCE=1</code> to request it explicitly (avoid setting both). These are clap&#x27;s help-rendering controls; project <code>ui.color</code> does not apply because help runs before project configuration is loaded.</li>
-<li class="">JSON help always contains unstyled text.</li>
-<li class="">The layout and palette use the same CLI implementation on Windows, macOS and Linux; native verification is recorded in the implementation status.</li>
-<li class="">This design draws on <a href="https://cli.github.com/manual/gh" target="_blank" rel="noopener noreferrer" class="">GitHub CLI&#x27;s command groups</a>, <a href="https://docs.astral.sh/uv/getting-started/help/" target="_blank" rel="noopener noreferrer" class="">uv&#x27;s help navigation</a> and the <a href="https://clig.dev/#color" target="_blank" rel="noopener noreferrer" class="">CLI Guidelines&#x27; restrained color guidance</a>. No upstream source or new dependencies are included.</li>
-</ul>
+<p>Run <code>oyzu</code> or <code>oyzu --help</code> for an overview of every command. Bare <code>oyzu</code> prints the
+same help and exits 0. See <a class="" href="/docs/reference/cli-help">CLI help</a> for nested help, help color and
+JSON help.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="shim-refresh-and-shell-profiles">Shim refresh and shell profiles<a href="#shim-refresh-and-shell-profiles" class="hash-link" aria-label="Direct link to Shim refresh and shell profiles" title="Direct link to Shim refresh and shell profiles" translate="no">​</a></h3>
-<p><code>oyzu reshim</code> appears under <strong>Project tools</strong> and refreshes the fixed shim folder and existing activation launchers owned by this frontend. Human output reports the shims folder and recorded commands; <code>--json</code> returns <code>directory</code> and <code>commands</code>. See <a class="" href="/docs/reference/tool-shell-environment#the-shims-folder-no-activation">shim refresh</a> for store selection, Windows prerequisites and recovery. <code>shell</code> groups startup profile <code>install</code> and <code>remove</code>; shim refresh has no nested spelling or alias.</p>
+<p><code>oyzu reshim</code> (under <strong>Project tools</strong>) refreshes the shims folder and existing
+activation launchers. Human output shows the shims folder and the commands it holds;
+<code>--json</code> returns <code>directory</code> and <code>commands</code>. See
+<a class="" href="/docs/reference/tool-shell-environment#the-shims-folder-no-activation">the shims folder</a>.
+<code>oyzu shell install</code> and <code>oyzu shell remove</code> manage shell startup profiles.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-identity">Build identity<a href="#build-identity" class="hash-link" aria-label="Direct link to Build identity" title="Direct link to Build identity" translate="no">​</a></h2>
-<p><code>oyzu --version</code> identifies the compiled local build, for example:</p>
+<p><code>oyzu --version</code> identifies the executable you&#x27;re running:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu 0.1.0-local.8aee8560a0ca.dirty (debug; x86_64-pc-windows-gnu; build 1791211857)</span><br></div></code></pre></div></div>
-<p>The suffix records:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody><tr><td><code>8aee8560a0ca</code></td><td>Short source commit (<code>unknown.source-unknown</code> without Git metadata).</td></tr><tr><td><code>.dirty</code></td><td>The worktree had uncommitted changes when it was compiled.</td></tr><tr><td><code>debug</code></td><td>Cargo profile.</td></tr><tr><td><code>x86_64-pc-windows-gnu</code></td><td>Target triple.</td></tr><tr><td><code>build 1791211857</code></td><td>Build time in Unix seconds. <code>SOURCE_DATE_EPOCH</code> sets it at compile time.</td></tr></tbody></table></div>
 <ul>
-<li class="">the abbreviated source commit;</li>
-<li class="">whether the worktree was dirty when compilation captured its identity;</li>
-<li class="">Cargo profile and target triple;</li>
-<li class="">the build Unix timestamp (seconds since the UTC epoch). <code>SOURCE_DATE_EPOCH</code> overrides that timestamp at compilation for reproducible inputs.</li>
-</ul>
-<p>Without Git metadata, source identity is explicitly <code>unknown.source-unknown</code>.</p>
-<ul>
-<li class="">This is diagnostic identity, not a release version, source attestation or production eligibility claim.</li>
-<li class="">All current builds are labelled local, including optimized release-profile builds (<code>oyzu build --optimized</code>); optimized never implies a release or publication eligibility.</li>
-<li class="">Identity is embedded at compile time. Version/help never opens project configuration, starts a worker, runs Git or contacts a service.</li>
-<li class=""><code>--version --json</code> uses the existing structured output/exit-code envelope.</li>
+<li class="">Locally compiled builds are labelled <code>local</code>, including optimized ones. This is
+diagnostic identity, not a release version or a signed statement.</li>
+<li class=""><code>--version</code> never opens project configuration, runs Git or contacts a service.</li>
+<li class=""><code>--version --json</code> returns the text in the usual JSON envelope.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-executable-is-running">Which executable is running<a href="#which-executable-is-running" class="hash-link" aria-label="Direct link to Which executable is running" title="Direct link to Which executable is running" translate="no">​</a></h2>
-<p>A pull changes source; it does not replace an installed executable. <code>oyzu --version</code> reports the identity compiled into the selected executable.</p>
+<p>Pulling new source doesn&#x27;t replace an installed <code>oyzu</code>. To see which one your shell
+runs, use <code>command -v oyzu</code> (POSIX shells) or <code>Get-Command oyzu -All</code> (PowerShell),
+then compare versions:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">./.oyzu/bin/oyzu </span><span class="token parameter variable" style="color:#36acaa">--version</span><br></div></code></pre></div></div>
+<p>On Windows, use <code>.\.oyzu\bin\oyzu.exe</code>.</p>
 <ul>
-<li class="">Use <code>command -v oyzu</code> in POSIX shells or <code>Get-Command oyzu -All</code> in PowerShell to inspect command routing.</li>
-<li class="">Compare it with the project-local binary directly:</li>
-</ul>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">./.oyzu/bin/oyzu </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">./.oyzu/bin/oyzu build </span><span class="token parameter variable" style="color:#36acaa">--output</span><span class="token plain"> plain</span><br></div></code></pre></div></div>
-<p>On Windows use <code>.\.oyzu\bin\oyzu.exe</code>.</p>
-<ul>
-<li class=""><code>oyzu build</code> publishes collected artifacts under <code>dist</code> and promotes executable artifacts into the current project&#x27;s <code>.oyzu/bin</code> only after a successful native build. Failed builds retain the previous binaries.</li>
-<li class="">A direct Cargo compilation through <code>oyzu exec</code> writes Cargo&#x27;s target output and does not perform that promotion.</li>
-<li class="">Do not assume <code>target/debug/oyzu</code> identifies the executable selected by your shell.</li>
-</ul>
-<p>The repository bootstrap reuses an existing executable; it is not an update command.</p>
-<ul>
-<li class="">Activation can prepend the configured project-local <code>.oyzu/bin</code> to PATH; ordinary shell-wrapper commands select the application on PATH, while lifecycle hooks retain the bootstrap frontend.</li>
-<li class="">Preserve this architecture when updating: verify the successful build&#x27;s artifact, promoted binary and selected version before changing any installation.</li>
-<li class="">No global bootstrap replacement is required for a project-local build.</li>
-<li class="">Native Windows routing qualification is recorded separately from cross-platform source/tests.</li>
+<li class=""><code>oyzu build</code> copies executable artifacts into the project&#x27;s <code>.oyzu/bin</code> only after
+a successful native build. A failed build keeps the previous binaries.</li>
+<li class="">Compiling with Cargo through <code>oyzu exec</code> writes Cargo&#x27;s own <code>target/</code> output and
+doesn&#x27;t update <code>.oyzu/bin</code>. Don&#x27;t assume <code>target/debug/oyzu</code> is the one your shell
+runs.</li>
+<li class="">In an activated shell, ordinary commands run the first <code>oyzu</code> on <code>PATH</code>, so a
+project-local <code>.oyzu/bin</code> on <code>PATH</code> takes over. See
+<a class="" href="/docs/reference/shell-activation#activate-and-unload">shell activation</a>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="result-output">Result output<a href="#result-output" class="hash-link" aria-label="Direct link to Result output" title="Direct link to Result output" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="discovered-build-facts">Discovered build facts<a href="#discovered-build-facts" class="hash-link" aria-label="Direct link to Discovered build facts" title="Direct link to Discovered build facts" translate="no">​</a></h3>
-<p>Ordinary builds show <code>Facts</code> after preparation and before Selection, Plan and the corresponding actions. No extra flag, builder setting, login or network access is needed. The shared view reads existing frozen plan records; it does not rerun discovery or query source-control APIs.</p>
+<p>Ordinary builds show a <strong>Facts</strong> section after preparation and before Selection,
+Plan and the actions. It needs no flag, login or network.</p>
 
 
 
@@ -159,23 +172,24 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Fact</th><th>Meaning and limits</th></tr></thead><tbody><tr><td>Branch / Commit</td><td>Local branch observation and commits recorded by version history/decisions; different target commits keep their attribution. They do not attest that Git HEAD equals the captured input tree.</td></tr><tr><td>Git state</td><td>Explicitly not verified. Existing source records use conservative dirty/commit placeholders; display does not interpret those as a clean/dirty Git observation.</td></tr><tr><td>Source digest</td><td>Content identity of admitted build inputs. Ordinary output abbreviates hashes; <code>-v</code> and structured evidence retain full values.</td></tr><tr><td>Version / Basis</td><td>Each target/package&#x27;s planned version and recorded reason. Identical versions/bases within a target are grouped (package count normally, names with <code>-v</code>); differing package versions stay separate. Artifact intent versions are a fallback when decisions are absent, with the missing basis stated. Distinct native artifact coordinates remain visible in an <code>Artifact</code> row even when logical version decisions exist.</td></tr><tr><td>Kind</td><td>Recorded version intent, currently snapshots; a release context does not establish release classification.</td></tr><tr><td>Context</td><td>Effective local/PR/CI/release context with its detection or override source.</td></tr><tr><td>Protection</td><td><code>unknown · not queried</code>; display adds no provider API discovery.</td></tr><tr><td>Release</td><td>Recorded production ineligibility and its target scope, or explicit unknown where decisions are missing. Version facts never authorize publication.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Fact</th><th>Meaning</th></tr></thead><tbody><tr><td>Branch / Commit</td><td>The local branch and the commits recorded for versioning. Different targets keep their own commit. This doesn&#x27;t prove that Git <code>HEAD</code> matches the files that were built.</td></tr><tr><td>Git state</td><td>Always shown as not verified.</td></tr><tr><td>Source digest</td><td>Content identity of the build inputs. Shortened by default; <code>-v</code> and JSON show it in full.</td></tr><tr><td>Version / Basis</td><td>Each target&#x27;s or package&#x27;s planned version and why. Packages in a target that share a version and basis are grouped: by count, or by name with <code>-v</code>. When some differ, each differing package gets its own row, the rest are grouped as <code>others</code>, and a basis they all share is shown once; <code>-v</code> lists every package with its own Version and Basis rows. Distinct native artifact versions get their own <code>Artifact</code> row.</td></tr><tr><td>Kind</td><td>The version kind; currently snapshots. A release context alone doesn&#x27;t make a release.</td></tr><tr><td>Context</td><td>The build context (<code>local</code>, <code>pr</code>, <code>ci</code>, <code>release</code>) and where it came from.</td></tr><tr><td>Protection</td><td><code>unknown · not queried</code>. Oyzu doesn&#x27;t ask your Git host.</td></tr><tr><td>Release</td><td>Whether the build is eligible for release, or unknown. Version facts never allow publishing on their own.</td></tr></tbody></table></div>
 <ul>
-<li class="">Captured independent targets may execute while others are preparing. Each newly prepared plan shows new/changed facts before its actions; unchanged rows are not repeated.</li>
-<li class="">Hook-dependent versions say <code>pending post-hook finalization</code>; the existing post-hook event displays the final version under Build. Initial facts describe the initial plan; final bundle records describe produced artifacts.</li>
-<li class="">Quiet builds suppress this routine section.</li>
-<li class="">JSON contains no human heading: the allowlisted <code>buildFacts</code> field of each plan event carries structured inputs, alongside context fact events and bundle records. Environments, credentials and arbitrary extensions are excluded.</li>
-<li class="">Terminal controls are escaped; narrow text uses labelled records and hanging indents.</li>
-<li class="">Git/protection uncertainty does not change exit status, action/cache identity or release rules.</li>
+<li class="">When independent targets prepare at different times, each new plan shows only new
+or changed facts before its actions.</li>
+<li class="">A version set by a hook shows <code>pending post-hook finalization</code>; the final version
+appears under Build.</li>
+<li class=""><code>--quiet</code> hides this section.</li>
+<li class="">In JSON, each plan event carries the facts in <code>buildFacts</code>. Environments,
+credentials and arbitrary extensions are never included.</li>
+<li class="">Uncertain Git or protection facts don&#x27;t change the exit status, cache identity or
+release rules.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-transcript">Build transcript<a href="#build-transcript" class="hash-link" aria-label="Direct link to Build transcript" title="Direct link to Build transcript" translate="no">​</a></h3>
-<p>Default builds use compact linear progress, preceded by one plan table (targets by stages, or platforms by stages for a single target) shown before work starts. The dashboard remains an explicit option.</p>
-<ul>
-<li class="">The old linear preparation/context/stage tables and the per-stage <code>Skipped</code> lines are removed.</li>
-<li class="">Routine successes and accepted per-action test details collapse. <code>-v</code>, planning, inspection, history and JSON retain deeper detail.</li>
-<li class="">A build prints named sections in a fixed order and omits any that has nothing to say.</li>
-<li class="">Every row, the title and the section rules share one width (80 columns, or less on a narrower terminal).</li>
-</ul>
+<p>A default build shows compact linear progress, with one plan table before work
+starts. Sections always appear in the same order, and any section with nothing to say
+is left out. Every row, the title and the section rules share one width (80 columns,
+or less on a narrower terminal). Routine successes are collapsed; <code>-v</code>, <code>--plan</code>,
+<code>oyzu inspect</code>, <code>oyzu history</code> and <code>--json</code> keep the detail.</p>
 
 
 
@@ -221,25 +235,57 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Section</th><th>What it shows</th></tr></thead><tbody><tr><td>Title line</td><td>Project name and, right-aligned, the facts listed under <a href="#title-line" class="">Title line</a>.</td></tr><tr><td><code>── Prepare ──</code></td><td>One row per preparation step, then the pinned tools.</td></tr><tr><td><code>── Selection ──</code></td><td>Plugin builder selection, and why the build is not every declared target.</td></tr><tr><td><code>── Plan ──</code></td><td>A table of targets by stages, with reason lines.</td></tr><tr><td><code>── Build ──</code></td><td>One row per finished action.</td></tr><tr><td><code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code></td><td>The native cause of a failed action.</td></tr><tr><td><code>── Outputs ──</code></td><td>Artifacts with sizes and build profile.</td></tr><tr><td><code>── Warnings (N) ──</code></td><td>Each distinct warning once, with its owner.</td></tr><tr><td>Summary</td><td>The outcome and counts, then a dim <code>Details</code> line.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Section</th><th>What it shows</th></tr></thead><tbody><tr><td>Title line</td><td>Project name and, right-aligned, the facts under <a href="#title-line" class="">Title line</a>.</td></tr><tr><td><code>── Prepare ──</code></td><td>One row per preparation step, then the pinned tools.</td></tr><tr><td><code>── Selection ──</code></td><td>Plugin builder selection, and why the build isn&#x27;t every declared target.</td></tr><tr><td><code>── Plan ──</code></td><td>A table of targets by stages, with reason lines.</td></tr><tr><td><code>── Build ──</code></td><td>One row per finished action.</td></tr><tr><td><code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code></td><td>The native cause of a failed action.</td></tr><tr><td><code>── Outputs ──</code></td><td>Artifacts with sizes and build profile.</td></tr><tr><td><code>── Warnings (N) ──</code></td><td>Each distinct warning once, with its owner.</td></tr><tr><td>Summary</td><td>The outcome and counts, then a dim <code>Details</code> line.</td></tr></tbody></table></div>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="title-line">Title line<a href="#title-line" class="hash-link" aria-label="Direct link to Title line" title="Direct link to Title line" translate="no">​</a></h4>
-<p>The title line names the project and, right-aligned:</p>
+<p>The title line names the project and, right-aligned, shows:</p>
 <ul>
 <li class="">the host platform;</li>
 <li class=""><code>local</code> or the CI provider;</li>
-<li class="">the build <code>context</code> value only (<code>context pr</code>, <code>context local</code>). The deciding signal or pin is shown in Facts and by <code>config explain context</code>, see <a class="" href="/docs/reference/configuration#build-context">Build context</a>;</li>
-<li class=""><code>fast</code> or <code>full</code>, followed by <code>optimized</code> or <code>development</code> when <code>--optimized</code> or <code>--no-optimized</code> asks for one.</li>
+<li class="">the build context (<code>context pr</code>, <code>context local</code>). Where it came from is shown in
+Facts and by <code>oyzu config explain context</code>; see <a class="" href="/docs/reference/configuration#build-context">build context</a>;</li>
+<li class=""><code>fast</code> or <code>full</code>, then <code>optimized</code> or <code>development</code> when you passed <code>--optimized</code>
+or <code>--no-optimized</code>.</li>
 </ul>
-<p>The CI provider label alone nearly fills 80 columns, so under a CI provider the subtitle may continue on the line below the project. A pin that a CI provider marker forbids lowering prints a <code>CONTEXT_OVERRIDE_IGNORED</code> warning.</p>
+<p>Under a CI provider the right-hand side may wrap onto the next line. If you pin a
+lower context while a CI provider marker is present, you get a
+<code>CONTEXT_OVERRIDE_IGNORED</code> warning.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="prepare">Prepare<a href="#prepare" class="hash-link" aria-label="Direct link to Prepare" title="Direct link to Prepare" translate="no">​</a></h4>
-<p><code>── Prepare ──</code> lists every preparation step as a row: mark, name, detail, duration, and the warning count of the work that raised them.</p>
+<p><code>── Prepare ──</code> shows each preparation step as a row: mark, name, detail, duration
+and warning count.</p>
 <ul>
-<li class="">The <code>Tools</code> row summarizes the pinned tools (<code>2 tools pinned · 0 installed now</code>) and lists each beneath it with its version, <code>already installed</code> or <code>installed now</code>, and the detected requirement that needs it (or <code>pinned in oyzu.toml</code>), followed by detected toolchain <code>components</code> and <code>host</code> prerequisites of the selected targets.</li>
-<li class="">With several targets the block prints once, when Prepare closes, listing each tool once. A tool whose reason differs between targets shows each reason (<code>detected from …; pinned in … · not detected for &lt;target&gt;</code>).</li>
-<li class="">When another build holds the workspace, a <code>Build lock</code> row waits for it (<code>waiting for pid N, started Ns ago</code>) before any other preparation instead of failing; Ctrl-C stops the wait.</li>
-<li class="">Routine housekeeping that finishes after Prepare closes (end-of-build cache retention) is shown only when slow, failed or warned, or with <code>-v</code>.</li>
+<li class="">The <code>Tools</code> row summarizes the tools (<code>2 tools pinned · 0 installed now</code>) and lists
+each one with its version, <code>already installed</code> or <code>installed now</code>, and why it&#x27;s
+needed (the detected requirement, or <code>pinned in oyzu.toml</code>). Toolchain
+<code>components</code> and <code>host</code> prerequisites follow.</li>
+<li class="">With several targets, the tool list prints once and each tool appears once. If the
+reason differs by target, each reason is shown
+(<code>detected from …; pinned in … · not detected for &lt;target&gt;</code>).</li>
+<li class="">The <code>Plugins</code> row follows the tools on every build that uses a builder plugin
+(<code>2 plugins · 1 installed now</code>). Each plugin release gets one line with its
+version, where it came from this time and the targets it builds:
+<code>plugin store</code>, <code>installed now from &lt;registry&gt;</code> (with its size when known),
+<code>local package binding</code>, or <code>local development executable · not locked</code>. A newly
+locked plugin adds <code>recorded in oyzu.lock now</code>. A plugin missing from the store, or
+not yet adopted, gets a <code>warn</code> mark and says what the next build does. Why each
+plugin was chosen stays in Selection. <code>-v</code> adds the release digest and the full
+route.</li>
+<li class="">The <code>Images</code> row follows on every build that runs in an execution image, such as
+<code>--isolated</code> (<code>1 image · 1 pulled now</code>). Each image gets one line with its digest,
+where it came from and the targets it runs: <code>local Docker engine</code>,
+<code>pulled now from &lt;registry&gt;</code>, <code>unpacked now from …</code> or <code>unpacked root reused (from …)</code>
+for the <a class="" href="/docs/reference/local-builds#the-daemonless-sandbox">daemonless sandbox</a>, or
+<code>no image; built in process</code>. <code>-v</code> shows full digests and sources. Plugin and image
+lines wrap rather than being cut, so no target or source is lost. In <code>--json</code> runs,
+the event stream carries the same facts as an <code>executionImages</code> inventory event
+(<code>target</code>, <code>reference</code>, <code>digest</code>, and <code>origin</code> with its <code>kind</code>).</li>
+<li class="">If another build holds the workspace, a <code>Build lock</code> row waits for it
+(<code>waiting for pid N, started Ns ago</code>) instead of failing. Ctrl-C stops waiting.</li>
+<li class="">Housekeeping after Prepare (such as cache cleanup at the end) is shown only when
+it&#x27;s slow, fails or warns, or with <code>-v</code>.</li>
 </ul>
-<p><strong>Attention rows.</strong> Best-effort detection adds attention rows (yellow <code>!</code>) beneath the tools. They warn and never fail the build; <code>tools.ignore</code> silences a detection, visible only with <code>-v</code>.</p>
+<p><strong>Attention rows.</strong> Tool detection is best-effort. Problems show as yellow <code>!</code> rows
+under the tools. They warn and never fail the build (only an explicit pin can).
+<code>tools.ignore</code> silences a detection; ignored detections show with <code>-v</code>.</p>
 
 
 
@@ -269,27 +315,40 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Row</th><th>Meaning</th></tr></thead><tbody><tr><td><code>! protoc  needed by prost-build · no catalog entry; pin or provide it</code></td><td>An unknown tool. A detected tool that Oyzu can manage, pinned or not, is an ordinary <code>detected from Cargo.lock</code> row that resolves, locks and installs.</td></tr><tr><td><code>! protoc  needed by prost-build in Cargo.lock · no usable checksum; pin it in oyzu.toml or silence it with tools.ignore</code></td><td>A detected tool that could not be resolved or installed; the build continues, only an explicit pin fails.</td></tr><tr><td><code>host prerequisite … · not found on PATH</code></td><td>A host prerequisite is missing.</td></tr><tr><td><code>fetches &lt;what&gt; outside the lock (&lt;file&gt;)</code></td><td>The build fetches something outside the lock.</td></tr><tr><td><code>detection failed: &lt;reason&gt; · nothing extra detected</code></td><td>Detection could not run.</td></tr></tbody></table></div>
-<p>Rules and patterns: build tool scope.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Row</th><th>Meaning</th></tr></thead><tbody><tr><td><code>! protoc  needed by prost-build · no catalog entry; pin or provide it</code></td><td>Oyzu doesn&#x27;t know this tool. A tool Oyzu can manage shows as an ordinary <code>detected from Cargo.lock</code> row and is locked and installed.</td></tr><tr><td><code>! protoc  needed by prost-build in Cargo.lock · no usable checksum; pin it in oyzu.toml or silence it with tools.ignore</code></td><td>A detected tool couldn&#x27;t be resolved or installed. The build continues.</td></tr><tr><td><code>host prerequisite … · not found on PATH</code></td><td>A host prerequisite is missing.</td></tr><tr><td><code>fetches &lt;what&gt; outside the lock (&lt;file&gt;)</code></td><td>The build downloads something the lock doesn&#x27;t cover.</td></tr><tr><td><code>detection failed: &lt;reason&gt; · nothing extra detected</code></td><td>Detection couldn&#x27;t run.</td></tr></tbody></table></div>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="live-and-redirected-progress">Live and redirected progress<a href="#live-and-redirected-progress" class="hash-link" aria-label="Direct link to Live and redirected progress" title="Direct link to Live and redirected progress" translate="no">​</a></h4>
 <ul>
-<li class="">In an interactive terminal, work in progress shows under its section heading as one line per step or action with an animated spinner, redrawn several times a second. Long status is shortened with <code>…</code> rather than wrapped.</li>
-<li class="">Redirected and CI output never redraws. Each action prints a start line (<code>..  target  stage  started</code>) and an end line with its outcome and duration, both led by the elapsed <code>mm:ss</code>. The ten-second heartbeat names what is still running, for example <code>still running: api build 10s · auth-lib test 12s · 6 waiting</code>.</li>
-<li class="">Redirected output is rendered at 100 columns on every host. Failure text wraps instead of exceeding it, Windows extended-length (<code>\\?\</code>) prefixes are not shown, and a long log path keeps its tail.</li>
-<li class="">In a narrow terminal or without color every table falls back to records and nothing is dropped.</li>
-<li class="">On a terminal the live pane shows <code>○ &lt;target&gt; · &lt;stage&gt;  waits for &lt;target&gt; · &lt;stage&gt;</code> for queued actions with unfinished prerequisites (at most three, then <code>+ N more waiting</code>) and an <code>N of M finished</code> line.</li>
-<li class="">Interrupted, <code>--plan</code> and <code>--check</code> builds keep their existing receipts.</li>
+<li class=""><strong>Interactive terminal.</strong> Work in progress shows under its section as one line per
+step or action with a spinner. Long status is shortened with <code>…</code>, never wrapped.
+Queued actions waiting on others show as
+<code>○ &lt;target&gt; · &lt;stage&gt;  waits for &lt;target&gt; · &lt;stage&gt;</code> (at most three, then
+<code>+ N more waiting</code>), with an <code>N of M finished</code> line.</li>
+<li class=""><strong>Redirected and CI output</strong> never redraws. Each action prints a start line
+(<code>..  target  stage  started</code>) and an end line with outcome and duration, both led
+by the elapsed <code>mm:ss</code>. Every ten seconds a heartbeat names what&#x27;s still running,
+for example <code>still running: api build 10s · auth-lib test 12s · 6 waiting</code>.</li>
+<li class="">Redirected output uses 100 columns on every host. Failure text wraps, Windows
+<code>\\?\</code> prefixes are hidden, and long log paths keep their tail.</li>
+<li class="">On a narrow terminal or without color, every table turns into records. Nothing is
+dropped.</li>
+<li class="">Interrupted, <code>--plan</code> and <code>--check</code> builds have their own summaries.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="selection">Selection<a href="#selection" class="hash-link" aria-label="Direct link to Selection" title="Direct link to Selection" translate="no">​</a></h4>
-<p><code>── Selection ──</code> prints when a target is built by a plugin and when the build is not every declared target.</p>
+<p><code>── Selection ──</code> appears when a target is built by a plugin or when the build isn&#x27;t
+every declared target.</p>
 <ul>
-<li class=""><strong>Plugin-built target:</strong> its builder selection: the full record with remedies when the build adopted or installed one, otherwise one line per target; see <a class="" href="/docs/reference/plugin-catalog#the-selection-section">plugin catalog</a>.</li>
-<li class=""><strong><code>--affected</code>:</strong> shows what it was compared with (<code>compared with origin/main at 0123456</code>), the <code>changed</code> targets and changed paths, their <code>dependents</code> and the <code>unaffected</code> count.</li>
-<li class=""><strong>Conservative fallback:</strong> shows <code>! Not narrowed</code> with its reason, the recorded code and a fix only when one is known.</li>
-<li class=""><strong>Explicit request:</strong> shows <code>requested</code> and <code>required</code> (prerequisites pulled in).</li>
+<li class=""><strong>Plugin-built target:</strong> the builder selection. The full record with fixes appears
+when the build adopted or installed a plugin; otherwise one line per target. See
+<a class="" href="/docs/reference/plugin-catalog#the-selection-section">plugin catalog</a>.</li>
+<li class=""><strong><code>--affected</code>:</strong> what it compared with (<code>compared with origin/main at 0123456</code>),
+the <code>changed</code> targets and paths, their <code>dependents</code> and the <code>unaffected</code> count.</li>
+<li class=""><strong>Fallback:</strong> <code>! Not narrowed</code> with the reason, the code, and a fix when one is
+known.</li>
+<li class=""><strong>Explicit request:</strong> <code>requested</code> and <code>required</code> (prerequisites pulled in).</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="plan">Plan<a href="#plan" class="hash-link" aria-label="Direct link to Plan" title="Direct link to Plan" translate="no">​</a></h4>
-<p><code>── Plan ──</code> then prints once. Rows are targets; columns are the stages the builders declare, in the order format, lint, test, build, package and then any other stage.</p>
+<p><code>── Plan ──</code> prints once. Rows are targets; columns are the stages the builders
+declare, in the order format, lint, test, build, package, then any others.</p>
 
 
 
@@ -315,8 +374,8 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Cell</th><th>Meaning</th></tr></thead><tbody><tr><td><code>run</code></td><td>Selected.</td></tr><tr><td><code>skip</code></td><td>The builder has the stage but this build does not run it (for example a fast local build), or it is not available.</td></tr><tr><td><code>off</code></td><td>A <a class="" href="/docs/reference/configuration#check-levels">check level</a> of <code>off</code>: never run and its tools not prepared.</td></tr><tr><td><code>-</code></td><td>The builder declares no such stage.</td></tr></tbody></table></div>
-<p>Below the table, after a blank line, one dim line per distinct reason names the stages it covers:</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Cell</th><th>Meaning</th></tr></thead><tbody><tr><td><code>run</code></td><td>Runs in this build.</td></tr><tr><td><code>skip</code></td><td>The builder has the stage but this build doesn&#x27;t run it (for example a fast local build), or it isn&#x27;t available.</td></tr><tr><td><code>off</code></td><td>The <a class="" href="/docs/reference/configuration#check-levels">check level</a> is <code>off</code>: never run, and its tools aren&#x27;t prepared.</td></tr><tr><td><code>-</code></td><td>The builder has no such stage.</td></tr></tbody></table></div>
+<p>Under the table, one dim line per distinct reason names the stages it covers:</p>
 
 
 
@@ -362,143 +421,221 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Label</th><th>What the line says</th></tr></thead><tbody><tr><td><code>off</code></td><td>Where the check was turned off (<code>format · disabled in oyzu.toml</code>, <code>test · disabled in oyzu.toml [context.pr]</code>).</td></tr><tr><td><code>skipped</code></td><td>Why stages were skipped (<code>lint and test · fast local build</code>).</td></tr><tr><td><code>advisory</code></td><td>Run stages whose failure is only a warning (<code>lint · failures are warnings; the build still succeeds</code>).</td></tr><tr><td><code>profile</code></td><td>One line per distinct <a class="" href="/docs/reference/configuration#optimized-builds">build profile</a>, naming its targets with the profile and why (<code>cli · optimized · --optimized</code>, <code>cli and docs · development · local dist only</code>, <code>cli · optimized · release builds are published</code>).</td></tr><tr><td><code>policy</code></td><td>One line per distinct <a class="" href="/docs/reference/configuration#policy-constraints-and-selectors">policy override</a>: the setting (a check reads as its name), the value policy made effective and why (<code>format enforce · admin policy minimum in pr, release (project oyzu.toml sets off)</code>), prefixed with the targets it applies to when not every target shares it.</td></tr><tr><td><code>project</code></td><td>Overrides by the root <code>oyzu.toml</code>&#x27;s <a class="" href="/docs/reference/configuration#project-constraints">project constraints</a>, in the same form (<code>tests required · project constraint minimum in release (project app/oyzu.toml sets advisory)</code>).</td></tr><tr><td><code>lowered</code></td><td>In a release build, each check a nearer folder <a class="" href="/docs/reference/configuration#per-context-values">lowered</a> below a farther <code>[context.release]</code> value (<code>tests advisory · app/oyzu.toml:2 lowers required from oyzu.toml:5 [context.release]</code>).</td></tr><tr><td><code>task</code></td><td>One line per <a class="" href="/docs/reference/build-tasks#task-and-hook-conditions">conditional task or hook</a>, prefixed with its target when the plan has several: whether it runs (and for which artifacts) or why it was skipped (<code>pre_build · skip · unless context = local</code>, <code>post_build · run for bin-oyzu · unless artifact = bin-oyzu-shim</code>). A per-artifact run&#x27;s Build row names its artifact (<code>post_build[bin-oyzu]</code>).</td></tr><tr><td><code>note</code></td><td>Table notes, so none reads as a table row.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Label</th><th>What the line says</th></tr></thead><tbody><tr><td><code>off</code></td><td>Where the check was turned off (<code>format · disabled in oyzu.toml</code>, <code>test · disabled in oyzu.toml [context.pr]</code>).</td></tr><tr><td><code>skipped</code></td><td>Why stages were skipped (<code>lint and test · fast local build</code>).</td></tr><tr><td><code>advisory</code></td><td>Stages whose failure is only a warning (<code>lint · failures are warnings; the build still succeeds</code>).</td></tr><tr><td><code>profile</code></td><td>Each <a class="" href="/docs/reference/configuration#optimized-builds">build profile</a> in use, its targets and why (<code>cli · optimized · --optimized</code>, <code>cli and docs · development · local dist only</code>, <code>cli · optimized · release builds are published</code>).</td></tr><tr><td><code>policy</code></td><td>Each <a class="" href="/docs/reference/configuration#policy-constraints-and-selectors">policy override</a>: the setting, the value policy enforced and why (<code>format enforce · admin policy minimum in pr, release (project oyzu.toml sets off)</code>), prefixed with its targets when not all targets share it.</td></tr><tr><td><code>project</code></td><td>Overrides from the root <code>oyzu.toml</code>&#x27;s <a class="" href="/docs/reference/configuration#project-constraints">project constraints</a>, in the same form (<code>tests required · project constraint minimum in release (project app/oyzu.toml sets advisory)</code>).</td></tr><tr><td><code>lowered</code></td><td>In a release build, each check a nearer folder <a class="" href="/docs/reference/configuration#per-context-values">lowered</a> below a farther <code>[context.release]</code> value (<code>tests advisory · app/oyzu.toml:2 lowers required from oyzu.toml:5 [context.release]</code>).</td></tr><tr><td><code>task</code></td><td>Each <a class="" href="/docs/reference/build-tasks#task-and-hook-conditions">conditional task or hook</a>: whether it runs (and for which artifacts) or why it&#x27;s skipped (<code>pre_build · skip · unless context = local</code>, <code>post_build · run for bin-oyzu · unless artifact = bin-oyzu-shim</code>). A per-artifact run&#x27;s Build row names its artifact (<code>post_build[bin-oyzu]</code>).</td></tr><tr><td><code>note</code></td><td>Notes about the table.</td></tr></tbody></table></div>
 <p><code>oyzu build --plan</code> prints the same <code>task</code> lines as <code>Task:</code> lines under each target.</p>
 <p><strong>Large and multi-platform plans</strong></p>
 <ul>
-<li class="">A single target built for several platforms (<code>--all-platforms</code>) pivots to one row per platform and says <code>1 target · N platforms</code>.</li>
-<li class="">Above twelve rows, targets with identical stages share a counted row (<code>29 targets</code>) and a <code>note</code> line says so. A narrowed build&#x27;s trailer reads <code>N of M targets</code>, and an affected build adds a <code>why</code> column (<code>changed</code>, <code>uses &lt;target&gt;</code>). <code>-v</code> lists every target.</li>
-<li class="">When the table would not fit the terminal width each row becomes a record (<code>cli  build run · package -</code>, then its skipped stages on the next line) so no value is lost.</li>
-<li class="">When a build routes a platform off the host, or a target declares platforms this run does not build, every row names its platform (<code>hello · linux/arm64</code>) and a <code>built by</code> column names the executor (<code>host</code>, <code>cross toolchain (rust-lld)</code>); when it does not fit, a <code>built by</code> footnote carries it instead.</li>
-<li class="">An <code>other</code> footnote lists declared platforms this machine could build with <code>--platform</code> and a <code>not here</code> footnote lists the rest with the reason (<code>darwin/arm64 · needs a macOS runner (Apple SDK and linker)</code>). A host-only build keeps the plain table. See <a class="" href="/docs/reference/local-builds#platforms-and-executors">platforms and executors</a>.</li>
-<li class="">The table renders the planner&#x27;s recorded stage, check-selection and platform routing facts and does not recompute them.</li>
-<li class="">The read-only <code>--plan</code> preview adds a <code>Platforms · how each is built here</code> table (target, platform, what builds it here, the CI runner it needs, and the reason).</li>
+<li class="">One target built for several platforms (<code>--all-platforms</code>) shows one row per
+platform and says <code>1 target · N platforms</code>.</li>
+<li class="">Above twelve rows, targets with identical stages share a counted row
+(<code>29 targets</code>) with a <code>note</code>. A narrowed build says <code>N of M targets</code>, and an
+affected build adds a <code>why</code> column (<code>changed</code>, <code>uses &lt;target&gt;</code>). <code>-v</code> lists every
+target.</li>
+<li class="">If the table doesn&#x27;t fit, each row becomes a record (<code>cli  build run · package -</code>,
+then its skipped stages on the next line).</li>
+<li class="">When a platform is built off the host, or a target declares platforms this run
+doesn&#x27;t build, each row names its platform (<code>hello · linux/arm64</code>) and a
+<code>built by</code> column names the executor (<code>host</code>, <code>cross toolchain (rust-lld)</code>), or a
+footnote if it doesn&#x27;t fit.</li>
+<li class="">An <code>other</code> footnote lists declared platforms you could build here with
+<code>--platform</code>; a <code>not here</code> footnote lists the rest with the reason
+(<code>darwin/arm64 · needs a macOS runner (Apple SDK and linker)</code>). See
+<a class="" href="/docs/reference/local-builds#platforms-and-executors">platforms and executors</a>.</li>
+<li class=""><code>--plan</code> adds a <code>Platforms · how each is built here</code> table: target, platform, what
+builds it here, the CI runner it needs, and why.</li>
 </ul>
-<p><strong>Grouping by directory.</strong> When the selected targets live in more than one top-level directory below the project root (<code>./</code> for targets at the root):</p>
+<p><strong>Grouping by directory.</strong> When targets live in more than one top-level folder
+(<code>./</code> for targets at the root):</p>
 <ul>
-<li class="">the plan table groups its rows under a dim <code>services/</code> heading;</li>
-<li class="">a prerequisite in another directory shows in a final <code>needs</code> column when it fits;</li>
-<li class="">Outputs are listed under their directory;</li>
-<li class="">the summary gains one line per directory (<code>services/  ✓ 2 targets  58.1s</code>, where the time is the sum of that directory&#x27;s action durations);</li>
-<li class="">identical-stage grouping above twelve rows applies within each directory.</li>
+<li class="">plan rows are grouped under a dim folder heading such as <code>services/</code>;</li>
+<li class="">a prerequisite in another folder shows in a final <code>needs</code> column when it fits;</li>
+<li class="">Outputs are listed by folder;</li>
+<li class="">the summary adds one line per folder (<code>services/  ✓ 2 targets  58.1s</code>, the sum of
+that folder&#x27;s action times);</li>
+<li class="">the twelve-row grouping applies within each folder.</li>
 </ul>
-<p>A build in a single directory is unchanged.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="build">Build<a href="#build" class="hash-link" aria-label="Direct link to Build" title="Direct link to Build" translate="no">​</a></h4>
-<p><code>── Build ──</code> has one row per finished action: mark, target, stage, the command shortened with <code>…</code> to fit the width, <code>executed</code> or <code>reused</code>, and its duration.</p>
+<p><code>── Build ──</code> has one row per finished action: mark, target, stage, the command
+(shortened with <code>…</code>), <code>executed</code> or <code>reused</code>, and the duration.</p>
 <ul>
-<li class="">In a build of more than twelve actions, clean successes fold into one <code>✓ 91 finished · 78 reused · 13 executed</code> tally (<code>-v</code> lists every action). Running, warned, waiting, blocked and failed actions keep their rows, and the Build heading says <code>143 actions</code>.</li>
-<li class="">A failed advisory check is shown once, as a warning: its Build row reads <code>warn … failed · advisory</code>, it gets no Failure block, Warnings holds one <code>CHECK_ADVISORY</code> entry with the action, exit code and native cause, and the summary counts it apart from failures (<code>1 advisory failed</code>). The build still succeeds.</li>
+<li class="">With more than twelve actions, clean successes fold into one tally such as
+<code>✓ 91 finished · 78 reused · 13 executed</code> (<code>-v</code> lists them all). Running, warned,
+waiting, blocked and failed actions keep their rows, and the heading says
+<code>143 actions</code>.</li>
+<li class="">A failed advisory check is shown once, as a warning: its row reads
+<code>warn … failed · advisory</code>, it gets no Failure section, Warnings has one
+<code>CHECK_ADVISORY</code> entry with the exit code and cause, and the summary counts it
+separately (<code>1 advisory failed</code>). The build still succeeds.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="failure">Failure<a href="#failure" class="hash-link" aria-label="Direct link to Failure" title="Direct link to Failure" translate="no">​</a></h4>
-<p>A failed action&#x27;s Build row reads <code>✗ … failed &lt;duration&gt;</code> (<code>FAIL</code> without color).</p>
+<p>A failed action&#x27;s row reads <code>✗ … failed &lt;duration&gt;</code> (<code>FAIL</code> without color).</p>
 <ul>
-<li class="">After Build, a <code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code> section shows the native cause (line breaks kept, terminal controls escaped, the first error context or the last lines written), the exit code, <code>Log</code> with the retained log path, and <code>Next  oyzu build &lt;target&gt;   re-run only this target</code>.</li>
-<li class="">Actions that did not run because a prerequisite failed are <code>blocked</code> (<code>⊘</code>), counted apart from failed. A blocked row says <code>needs &lt;target&gt; · &lt;stage&gt;</code>; only the first three get a row and the rest become <code>+ N more blocked · -v lists them</code>.</li>
-<li class="">The summary counts only non-zero outcomes (<code>✗ Build failed   1 failed · 12 blocked · 130 succeeded · 4m 02s</code>) and is followed by <code>Details</code> and, for a host build, the note that local binaries were not updated.</li>
-<li class="">A preparation failure ends after Prepare with a <code>── Failure: preparation ──</code> block and no Build section.</li>
+<li class="">After Build, a <code>── Failure: &lt;target&gt; · &lt;stage&gt; ──</code> section shows the native cause
+(line breaks kept, terminal controls escaped), the exit code, <code>Log</code> with the log
+path, and <code>Next  oyzu build &lt;target&gt;   re-run only this target</code>.</li>
+<li class="">Actions that didn&#x27;t run because a prerequisite failed are <code>blocked</code> (<code>⊘</code>) and
+counted separately. A blocked row says <code>needs &lt;target&gt; · &lt;stage&gt;</code>. Only the first
+three get a row; the rest become <code>+ N more blocked · -v lists them</code>.</li>
+<li class="">The summary counts only outcomes that happened
+(<code>✗ Build failed   1 failed · 12 blocked · 130 succeeded · 4m 02s</code>), then
+<code>Details</code> and, for a host build, a note that local binaries weren&#x27;t updated.</li>
+<li class="">A preparation failure ends after Prepare with a <code>── Failure: preparation ──</code>
+section and no Build section.</li>
 <li class=""><code>-q</code> prints only Failure, Warnings and the summary line.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="outputs-warnings-and-summary">Outputs, warnings and summary<a href="#outputs-warnings-and-summary" class="hash-link" aria-label="Direct link to Outputs, warnings and summary" title="Direct link to Outputs, warnings and summary" translate="no">​</a></h4>
-<p><strong>Outputs.</strong> <code>── Outputs ──</code> lists artifacts as project-relative paths under <code>dist/&lt;target&gt;/&lt;platform&gt;/</code> (<code>any</code> for a platform-independent target; see the <a class="" href="/docs/reference/build-bundles#layout">bundle layout</a>) with sizes and the build profile each was built with, <code>development</code> or <code>optimized</code> (<code>cli  dist/cli/windows/x86_64/oyzu.exe  64.1 MB  development</code>). <code>-v</code> and <code>--json</code> keep absolute paths, and the JSON artifact record carries the label as <code>profile</code>.</p>
-<p><strong>Warnings.</strong> <code>── Warnings (N) ──</code> lists each distinct warning once, with its owner (for example <code>docs · npm</code>); it is not repeated inline during the run. The generic <code>NATIVE_WARNING</code> code is hidden in the default view and shown with <code>-v</code> and in JSON, while Oyzu-owned diagnostic codes are always shown.</p>
-<p><strong>Summary.</strong> The summary line carries the outcome and counts only the outcomes that happened (<code>2 targets · 1 executed · 1 reused · 235.3s</code>), followed by a dim <code>Details</code> line with the manifest and event paths and the invocation id.</p>
-<ul>
-<li class="">The separate <code>Action cache</code> line, the &quot;counts do not estimate time remaining&quot; sentence and the &quot;Check selection unavailable … retained evidence is incomplete&quot; sentence are not part of the default build view.</li>
-<li class=""><code>-v</code> adds the <code>Reuse</code> and <code>Cache</code> facts, history keeps the selection caveat, and JSON is unchanged.</li>
-</ul>
+<p><strong>Outputs.</strong> <code>── Outputs ──</code> lists artifacts as project-relative paths under
+<code>dist/&lt;target&gt;/&lt;platform&gt;/</code> (<code>any</code> for platform-independent output; see the
+<a class="" href="/docs/reference/build-bundles#layout">bundle layout</a>), with size and build profile
+(<code>cli  dist/cli/windows/x86_64/oyzu.exe  64.1 MB  development</code>). <code>-v</code> and <code>--json</code>
+show absolute paths; the JSON artifact record has the profile as <code>profile</code>.</p>
+<p><strong>Warnings.</strong> <code>── Warnings (N) ──</code> lists each distinct warning once, with its owner
+(for example <code>docs · npm</code>). Warnings aren&#x27;t repeated inline during the run. The
+generic <code>NATIVE_WARNING</code> code is hidden by default and shown with <code>-v</code> and in JSON;
+Oyzu&#x27;s own codes are always shown.</p>
+<p><strong>Summary.</strong> The summary counts only outcomes that happened
+(<code>2 targets · 1 executed · 1 reused · 235.3s</code>), followed by a dim <code>Details</code> line
+with the manifest and event paths and the invocation ID. <code>-v</code> adds reuse and cache
+details.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="marks-and-colors">Marks and colors<a href="#marks-and-colors" class="hash-link" aria-label="Direct link to Marks and colors" title="Direct link to Marks and colors" translate="no">​</a></h4>
 <ul>
-<li class="">With color, state is a glyph: <code>✓</code> ok, <code>↺</code> reused, <code>!</code> warning, <code>✗</code> failed.</li>
-<li class="">Without color (<code>NO_COLOR</code>, <code>TERM=dumb</code>, redirected output) every mark becomes a padded word (<code>ok</code>, <code>reused</code>, <code>warn</code>, <code>FAIL</code>) and headings use <code>-- Name ---</code>, so no state depends on color.</li>
-<li class=""><code>-q</code> prints only warnings and the summary line (failures keep their existing receipt).</li>
-<li class="">The titles, rows and receipt are produced by the shared presentation and logging layer; JSON stdout, JSON events and exit status are unchanged.</li>
+<li class="">With color, state is a symbol: <code>✓</code> ok, <code>↺</code> reused, <code>!</code> warning, <code>✗</code> failed.</li>
+<li class="">Without color (<code>NO_COLOR</code>, <code>TERM=dumb</code>, redirected output), marks become padded
+words (<code>ok</code>, <code>reused</code>, <code>warn</code>, <code>FAIL</code>) and headings become <code>-- Name ---</code>. No state
+depends on color.</li>
+<li class=""><code>-q</code> prints only warnings and the summary line (failures keep their full report).</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="receipts-and-history">Receipts and history<a href="#receipts-and-history" class="hash-link" aria-label="Direct link to Receipts and history" title="Direct link to Receipts and history" translate="no">​</a></h4>
-<p>Build receipts include separate target/action totals and nonzero disjoint action outcomes, fresh tests, reused test evidence, warnings and available evidence references.</p>
+<p>The final summary of a build is its receipt.</p>
 <ul>
-<li class="">Receipts distinguish captured checks selected (with their action outcomes) from checks not requested. Selection comes from the executed graph&#x27;s retained target facts, including required checks in fast mode; a fast/full label or missing report never establishes that tests were not requested.</li>
-<li class="">A native report with an explicit zero total is labeled <code>Native zero-test reports</code>; native skips keep their own counts. Missing numeric facts display <code>unavailable</code>, not zero.</li>
-<li class="">Legacy records without captured selection say <code>Check selection unavailable</code> in history and failed receipts.</li>
-<li class="">Required report validation still fails the build, and a successful build does not itself establish release eligibility. Selected history uses the same labels.</li>
-<li class="">Successful target totals remain separate from actions labeled <code>executed</code> or <code>reused</code>.</li>
-<li class="">Expanded <code>build --explain</code> and selected history retain recorded selection and reuse decisions, source comparison context when available, native provenance and explicit uncertainty; they do not recompute causes from the current checkout.</li>
-<li class="">Ordinary misses remain ordinary execution, while material fallback warnings and required failures keep their existing visibility and exit semantics.</li>
-<li class="">Successful receipts say <code>Build succeeded</code>, including <code>with warnings</code> when warning diagnostics are present. Native warnings are listed once in the Warnings section, and both human views share compiler/test output projection; raw native records remain in JSON events and retained logs.</li>
-<li class="">Intentional stage skips use neutral grouped reasons; missing required work still receives attention.</li>
-<li class="">Lifecycle records use compact spacing and a simpler nested description at narrow widths; source excerpts preserve native indentation rather than repeated columns.</li>
-<li class=""><code>invocationId</code> correlates a build result with its live and retained events; <code>runId</code> remains the producing build identity.</li>
-<li class=""><code>oyzu history</code> lists up to twenty retained build summaries; <code>oyzu history &lt;invocation-or-run-id&gt; --json</code> is a bounded agent-readable result with causes and evidence availability. See <a class="" href="/docs/reference/build-bundles#retained-invocation-lookup">retained invocation lookup</a> for scope, limits, access and retention. This does not create an agent-only output mode or a general history service for every command.</li>
+<li class="">It counts targets and actions separately, and shows fresh tests, reused test
+results, warnings and where the records are.</li>
+<li class="">It separates checks that were selected (with their outcomes) from checks that
+weren&#x27;t requested. That comes from the recorded build, not from a fast/full label
+or a missing report.</li>
+<li class="">Reports that recorded zero tests are labelled <code>Native zero-test reports</code>. Skipped
+tests keep their own count. Missing numbers show as <code>unavailable</code>, not zero.</li>
+<li class="">Old records without check selection say <code>Check selection unavailable</code>.</li>
+<li class="">A missing required report still fails the build. A successful build doesn&#x27;t by
+itself make it eligible for release.</li>
+<li class="">A successful build says <code>Build succeeded</code>, or <code>Build succeeded with warnings</code>.</li>
+<li class=""><code>invocationId</code> ties a build result to its live and saved events; <code>runId</code> identifies
+the build that produced the bundle.</li>
+<li class=""><code>oyzu build --explain</code> and <code>oyzu history &lt;id&gt;</code> show recorded selection and reuse
+decisions; they never recompute causes from your current checkout.</li>
+<li class=""><code>oyzu history</code> lists up to twenty builds, and
+<code>oyzu history &lt;invocation-or-run-id&gt; --json</code> gives a compact summary with causes.
+See <a class="" href="/docs/reference/build-bundles#retained-invocation-lookup">retained invocation lookup</a>.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contract-check">Contract check<a href="#contract-check" class="hash-link" aria-label="Direct link to Contract check" title="Direct link to Contract check" translate="no">​</a></h4>
-<p><code>oyzu build --verify-contract</code> adds a <strong>Contract check</strong> block after the Outputs of the final receipt.</p>
+<p><code>oyzu build --verify-contract</code> adds a <strong>Contract check</strong> block after Outputs.</p>
 <ul>
-<li class="">It shows the outcome (<code>passed</code>, <code>failed</code>, <code>nothing to verify</code>), how many confined actions ran again with their whole target visible, how many matched, diverged or were not confined, and one <code>Diverged</code> row per mismatch naming the extra files and the declaration that fixes them.</li>
-<li class="">The same data is <code>manifest.extensions[&quot;oyzu.dev/contract-verification&quot;]</code> in <code>--json</code>. A divergence is also an <code>error</code> diagnostic and a non-zero exit.</li>
-<li class="">A confined action&#x27;s undeclared read is the diagnostic <code>confined-read-outside-contract</code> with the stage, path, missing fact and fix as indented lines (plain text; no color is needed to read it).</li>
-<li class="">See <a class="" href="/docs/reference/action-cache#verifying-a-contract">Local action cache</a>.</li>
+<li class="">It shows the outcome (<code>passed</code>, <code>failed</code>, <code>nothing to verify</code>), how many confined
+actions ran again with the whole target visible, how many matched, diverged or
+weren&#x27;t confined, and one <code>Diverged</code> row per mismatch naming the extra files and
+the declaration that fixes them.</li>
+<li class=""><code>--json</code> has the same data in <code>manifest.extensions[&quot;oyzu.dev/contract-verification&quot;]</code>.
+A divergence is also an <code>error</code> diagnostic and a nonzero exit.</li>
+<li class="">An undeclared read by a confined action is the diagnostic
+<code>confined-read-outside-contract</code>, with the stage, path, missing fact and fix on
+indented lines.</li>
+<li class="">See <a class="" href="/docs/reference/action-cache#verifying-a-contract">verifying a contract</a>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="human-views-for-other-commands">Human views for other commands<a href="#human-views-for-other-commands" class="hash-link" aria-label="Direct link to Human views for other commands" title="Direct link to Human views for other commands" translate="no">​</a></h3>
-<p>Inspection, configuration and discovery use titled, indented human views; <code>pin</code> shows a concise requirement inventory. Builds retain their progress and receipt, task lists retain readable labels, and <code>which</code> prints the selected path.</p>
+<p>Inspection, configuration and discovery commands use titled, indented views. <code>pin</code>
+shows a compact requirements table, task lists show readable labels, and <code>which</code>
+prints the selected path.</p>
 <ul>
-<li class="">All human diagnostics use the shared status/subject/message renderer, including <code>env -v</code>, <code>which -v</code> and shell/payload commands. The old severity/target/timestamp logger envelope and separate build timeline renderer are removed.</li>
-<li class="">Verbosity expands observations within the same design. Multiline causes keep their line boundaries.</li>
-<li class="">Lookup and payload diagnostics are append-only and create no preparation spool, redraw worker or cursor controls; their stdout contracts (selected paths, environment data and shell code) are unchanged.</li>
-<li class="">Plain command views render events without a background redraw worker. Build views retain their ten-second progress heartbeat; interactive builds redraw at up to ten frames per second. Closing either timed build view wakes its wait immediately, so command completion does not wait for the next redraw or heartbeat.</li>
+<li class="">Diagnostics from every command use the same status / subject / message layout,
+including <code>env -v</code>, <code>which -v</code> and shell payload commands.</li>
+<li class=""><code>-v</code> adds detail within the same layout. Multiline causes keep their line breaks.</li>
+<li class="">Lookup and payload commands print diagnostics append-only, with no redraws or
+cursor movement. Their stdout (paths, environment data, shell code) is unchanged.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="json-results-and-errors">JSON results and errors<a href="#json-results-and-errors" class="hash-link" aria-label="Direct link to JSON results and errors" title="Direct link to JSON results and errors" translate="no">​</a></h2>
-<p>The flag works before or after the subcommand. Arguments after <code>--</code> belong to the invoked task/program, so its own <code>--json</code> does not select Oyzu&#x27;s output mode.</p>
+<p><code>--json</code> works before or after the subcommand. Arguments after <code>--</code> belong to the
+task or program, so its own <code>--json</code> doesn&#x27;t affect Oyzu.</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu pin --dry-run</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu pin --dry-run </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"> config show</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu tools inspect-lock </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"> tools resolve </span><span class="token parameter variable" style="color:#36acaa">--registry</span><span class="token plain"> registry.yaml </span><span class="token parameter variable" style="color:#36acaa">--tool</span><span class="token plain"> hashicorp/terraform </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"> v1.16.5</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"> -- ./my-program argument</span><br></div></code></pre></div></div>
-<p>JSON stdout contains one result without Oyzu-added headings, ANSI styling or progress.</p>
 <ul>
-<li class="">Existing structured result shapes are retained where available.</li>
-<li class="">Oyzu diagnostics on stderr use JSON Lines, including non-build warnings. Read stdout for the command result. Native pass-through streams retain their documented behavior.</li>
-<li class="">Setup, operation and argument-parsing errors contain <code>error</code> and <code>exitCode</code>, with a nonzero process exit.</li>
-<li class="">JSON help/version return their text in <code>output</code> with <code>exitCode: 0</code>.</li>
+<li class="">Stdout holds one result, with no headings, color or progress.</li>
+<li class="">Oyzu&#x27;s diagnostics go to stderr as JSON Lines, including warnings. Read stdout for
+the result. Native pass-through streams keep their own behavior.</li>
+<li class="">Errors (setup, operation or argument parsing) contain <code>error</code> and <code>exitCode</code>, and
+the process exits nonzero.</li>
+<li class="">JSON help and version return their text in <code>output</code> with <code>exitCode: 0</code>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exec---json-and-run"><code>exec --json</code> and <code>run</code><a href="#exec---json-and-run" class="hash-link" aria-label="Direct link to exec---json-and-run" title="Direct link to exec---json-and-run" translate="no">​</a></h3>
 <ul>
-<li class=""><code>exec --json</code> captures child output in <code>stdout</code> and <code>stderr</code> strings and returns <code>exitCode</code>, also preserving that exit code in Oyzu. Input remains inherited; captured output appears when the child exits, not as a live terminal.</li>
-<li class="">The result&#x27;s <code>capture</code> object discloses inherited stdin, piped stdout/stderr, no output TTY, non-streaming delivery and lossy UTF-8 decoding; <code>invocationId</code> correlates diagnostics. Non-UTF-8 bytes use replacement characters.</li>
-<li class="">JSON <code>run</code> outcome records disclose file-based stdout/stderr capture, inherited stdin, non-TTY/non-streaming output, lossy decoding and invocation correlation. Default execution remains pass-through.</li>
+<li class=""><code>exec --json</code> captures the child&#x27;s output in <code>stdout</code> and <code>stderr</code> strings and
+returns its <code>exitCode</code>, which Oyzu also exits with. Input is still inherited.
+Output appears when the child exits, not live.</li>
+<li class="">The <code>capture</code> object says how streams were handled: inherited stdin, piped
+stdout and stderr, no terminal, not streamed, and UTF-8 decoding with replacement
+characters for invalid bytes. <code>invocationId</code> ties it to diagnostics.</li>
+<li class=""><code>run --json</code> outcome records describe capture the same way. Without <code>--json</code>, task
+output passes straight through.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="shell-payloads">Shell payloads<a href="#shell-payloads" class="hash-link" aria-label="Direct link to Shell payloads" title="Direct link to Shell payloads" translate="no">​</a></h2>
-<p><code>activate</code>, <code>deactivate</code>, environment hooks and <code>env --shell SHELL</code> emit executable shell code by default: headings would break evaluation.</p>
+<p><code>activate</code>, <code>deactivate</code>, environment hooks and <code>env --shell SHELL</code> print shell code
+by default, because headings would break evaluation.</p>
 <ul>
-<li class="">With <code>--json</code>, they return <code>{ &quot;shell&quot;: &quot;…&quot;, &quot;script&quot;: &quot;…&quot; }</code>. Evaluate raw code, never the JSON envelope. JSON mode retains the same activation/session-record effects.</li>
-<li class=""><code>env</code> inspection stays redacted; explicitly requested shell payloads contain actual assignments in both modes.</li>
-<li class=""><code>oyzu config schema build.yaml</code> and <code>oyzu config schema oyzu.toml</code> emit one JSON Schema document as their payload in human mode too, so the output can be redirected to a file. With <code>--json</code> they return the <code>config-schema</code> record that holds it under <code>schema</code>. <code>oyzu config schema</code> without a file is an ordinary listing. See <a class="" href="/docs/reference/configuration#editor-schemas">editor schemas</a>.</li>
+<li class="">With <code>--json</code> they return <code>{ &quot;shell&quot;: &quot;…&quot;, &quot;script&quot;: &quot;…&quot; }</code>. Evaluate the raw code,
+never the JSON envelope.</li>
+<li class=""><code>oyzu env</code> inspection redacts credential-like values; shell payloads you ask for
+contain the real assignments in both modes.</li>
+<li class=""><code>oyzu config schema build.yaml</code> and <code>oyzu config schema oyzu.toml</code> print a JSON
+Schema document even in human mode, so you can redirect it to a file. With
+<code>--json</code> they return a <code>config-schema</code> record with it under <code>schema</code>. See
+<a class="" href="/docs/reference/configuration#editor-schemas">editor schemas</a>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tool-lifecycle-results">Tool lifecycle results<a href="#tool-lifecycle-results" class="hash-link" aria-label="Direct link to Tool lifecycle results" title="Direct link to Tool lifecycle results" translate="no">​</a></h2>
-<p><code>install SPEC</code>, <code>update</code> and <code>uninstall</code> lead with the outcome (<code>✓ Installed go 1.26.8</code>), then indented facts: what was declared and where, the lock and its platforms, replaced requirements and notes about other scopes. <code>--dry-run</code> starts with <code>Dry run · no files were changed</code>.</p>
+<p><code>install SPEC</code>, <code>update</code> and <code>uninstall</code> lead with the outcome
+(<code>✓ Installed go 1.26.8</code>), then what was declared and where, the lock and its
+platforms, replaced requirements and notes about other scopes. <code>--dry-run</code> starts
+with <code>Dry run · no files were changed</code>.</p>
 <ul>
-<li class="">The inspection commands use an outcome line, an aligned table and an <code>Attention</code> section for unresolved rows.</li>
-<li class="">Statuses are words (<code>ok</code>, <code>not installed</code>, <code>blocked</code>, <code>deprecated</code>, <code>stale lock</code>, <code>ambiguous</code>), never colour alone.</li>
-<li class="">All of them support <code>--json</code>. See <a class="" href="/docs/reference/tool-commands">tool commands</a>.</li>
+<li class="">Inspection commands show an outcome line, a table and an <code>Attention</code> section for
+unresolved rows.</li>
+<li class="">Statuses are words (<code>ok</code>, <code>not installed</code>, <code>blocked</code>, <code>deprecated</code>, <code>stale lock</code>,
+<code>ambiguous</code>), never color alone.</li>
+<li class="">All support <code>--json</code>. See <a class="" href="/docs/reference/tool-commands">tool commands</a>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="installed-tools">Installed tools<a href="#installed-tools" class="hash-link" aria-label="Direct link to Installed tools" title="Direct link to Installed tools" translate="no">​</a></h3>
-<p><code>oyzu tools list</code> groups installations by tool (<code>rust (core) · 12 installations · 17.0 GB</code>), each with a Version / Platform / Size / Used by / ID table.</p>
+<p><code>oyzu tools list</code> groups installations by tool
+(<code>rust (core) · 12 installations · 17.0 GB</code>), each with a Version / Platform / Size /
+Used by / ID table.</p>
 <ul>
-<li class=""><strong>ID</strong> is the start of the installation digest: it tells apart installs of one version that differ by recipe or platform ABI.</li>
-<li class=""><code>--details</code> adds location, tool identity and the full installation digest per row.</li>
-<li class="">The lead line totals installations, tools, unreferenced installs and disk use.</li>
+<li class=""><strong>ID</strong> is the start of the installation digest. It tells apart installs of one
+version that differ by recipe or platform ABI.</li>
+<li class=""><code>--details</code> adds location, tool identity and the full digest.</li>
+<li class="">The first line totals installations, tools, unreferenced installs and disk use.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="recipe-resolution-and-evidence">Recipe resolution and evidence<a href="#recipe-resolution-and-evidence" class="hash-link" aria-label="Direct link to Recipe resolution and evidence" title="Direct link to Recipe resolution and evidence" translate="no">​</a></h3>
-<p><code>tools resolve</code> and <code>tools evidence</code> (see <a class="" href="/docs/reference/tool-resolve">reference</a>) use the inspection pattern: a title, an outcome line (<code>✓</code> complete, <code>!</code> attention), the snapshot, an aligned table of records (status words, never colour alone), then <code>Unsupported platforms</code>, <code>Errors</code>, <code>Needs attention</code> and <code>Next steps</code> sections.</p>
+<p><code>tools resolve</code> and <code>tools evidence</code> (see <a class="" href="/docs/reference/tool-resolve">tool resolve</a>) show a
+title, an outcome line (<code>✓</code> complete, <code>!</code> attention), the snapshot, a table of
+records, then <code>Unsupported platforms</code>, <code>Errors</code>, <code>Needs attention</code> and <code>Next steps</code>.</p>
 <ul>
-<li class=""><code>--json</code> prints exactly one artifact-set document on stdout (the diagnostic lines of <code>evidence</code>, such as <code>EVIDENCE_FETCH</code>, go to stderr).</li>
-<li class="">Exit 3 means a complete document with undecided or unverified items.</li>
-<li class="">Recipe-supplied text is control-character escaped.</li>
-<li class="">Verified by the compiled-CLI tests in <code>tests/integration/recipe_resolve.rs</code> (human no-colour text, both JSON exit codes and error envelopes) and the proof runner. Narrow-terminal wrapping reuses the shared table and was observed at 80 columns only.</li>
+<li class=""><code>--json</code> prints exactly one document on stdout. Diagnostics such as
+<code>EVIDENCE_FETCH</code> go to stderr.</li>
+<li class="">Exit 3 means the document is complete but some items are undecided or unverified.</li>
+<li class="">Text from recipes has control characters escaped.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="project-discovery">Project discovery<a href="#project-discovery" class="hash-link" aria-label="Direct link to Project discovery" title="Direct link to Project discovery" translate="no">​</a></h2>
-<p><code>oyzu discover</code> answers &quot;what does Oyzu see here?&quot;. It prints one block per <strong>target</strong> (the name <code>oyzu build &lt;target&gt;</code> accepts): builder, whether <code>build.yaml</code> or detection from native files chose it, package manager, version, location relative to the project root, which tasks are part of builds and which are development-only (with the reason when one is unavailable).</p>
+<p><code>oyzu discover</code> answers &quot;what does Oyzu see here?&quot;. It prints one block per
+<strong>target</strong> (the name <code>oyzu build &lt;target&gt;</code> accepts): builder, whether <code>build.yaml</code> or
+native files chose it, package manager, version, location, which tasks are part of
+builds and which are for development only.</p>
 <ul>
 <li class="">It reads configuration and native files without running project code.</li>
-<li class="">The task catalogue and commands belong to <code>oyzu run list</code>; <code>--json</code> returns the complete discovery record.</li>
-<li class="">With no targets it explains what to add or where to run. See <a class="" href="/docs/reference/build-tasks">build tasks</a>.</li>
+<li class=""><code>oyzu run list</code> shows tasks and their commands. <code>--json</code> returns the full
+discovery record.</li>
+<li class="">With no targets, it explains what to add or where to run. See
+<a class="" href="/docs/reference/build-tasks">build tasks</a>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="with-a-buildyaml">With a <code>build.yaml</code><a href="#with-a-buildyaml" class="hash-link" aria-label="Direct link to with-a-buildyaml" title="Direct link to with-a-buildyaml" translate="no">​</a></h3>
-<p>A <strong>Not in build.yaml</strong> section lists every folder where discovery recognizes a build the file leaves out, as a Folder / Recognized by / Line to add table, and <code>--json</code> adds the <code>inventory</code> object.</p>
+<p>A <strong>Not in build.yaml</strong> section lists each folder where discovery recognizes a build
+the file leaves out, as a Folder / Recognized by / Line to add table. <code>--json</code> adds
+an <code>inventory</code> object.</p>
 
 
 
@@ -516,101 +653,177 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>Human output</th></tr></thead><tbody><tr><td><code>oyzu discover --check</code></td><td>Leads with <code>Build inventory is current</code> (exit 0) or <code>error[INVENTORY_UNDECLARED]</code> with the same table and a <code>fix:</code> line (exit 1).</td></tr><tr><td><code>oyzu discover --write</code></td><td>Leads with what it declared (<code>Declared 1 build in …</code>, <code>Created build.yaml with 2 builds</code>, <code>Nothing to write</code>, or, in yellow, <code>A choice is needed: …; nothing was written</code>), a Build / Uses / Folder table, and a <strong>Needs a choice</strong> table (exit 1) for folders several builders recognize. A row for such a folder is marked <code>example:</code> with a <code>&lt;…&gt;</code> placeholder for <code>uses</code>.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>Human output</th></tr></thead><tbody><tr><td><code>oyzu discover --check</code></td><td><code>Build inventory is current</code> (exit 0), or <code>error[INVENTORY_UNDECLARED]</code> with the table and a <code>fix:</code> line (exit 1).</td></tr><tr><td><code>oyzu discover --write</code></td><td>What it declared (<code>Declared 1 build in …</code>, <code>Created build.yaml with 2 builds</code>, <code>Nothing to write</code>, or, in yellow, <code>A choice is needed: …; nothing was written</code>), a Build / Uses / Folder table, and a <strong>Needs a choice</strong> table (exit 1) for folders several builders recognize, with an <code>example:</code> row and a <code>&lt;…&gt;</code> placeholder for <code>uses</code>.</td></tr></tbody></table></div>
 <ul>
-<li class="">Folders a declared build&#x27;s workspace manifest lists are counted, never tabled: <code>Build inventory is current · 2 builds declared, 10 workspace members</code>, <code>(10 workspace members)</code> after plain <code>oyzu discover</code>&#x27;s all-declared line, and <code>Covered as workspace members: cli 10 folders.</code> below a table of undeclared folders.</li>
-<li class="">A workspace manifest that exists but cannot be read adds a yellow <code>warning: build web: cannot read the workspace manifest package.json: …</code> line, and its members stay in the table.</li>
-<li class="">Both print the <code>build-inventory</code> record with <code>--json</code> (<code>workspaceMembers</code>, <code>warnings</code>). See <a class="" href="/docs/reference/discovery-selection#builds-buildyaml-leaves-out">builds build.yaml leaves out</a>.</li>
+<li class="">Folders listed as workspace members of a declared build are counted, not tabled:
+<code>Build inventory is current · 2 builds declared, 10 workspace members</code>, or
+<code>Covered as workspace members: cli 10 folders.</code> below a table.</li>
+<li class="">An unreadable workspace manifest adds a yellow
+<code>warning: build web: cannot read the workspace manifest package.json: …</code> line, and
+its members stay in the table.</li>
+<li class="">Both print a <code>build-inventory</code> record with <code>--json</code> (<code>workspaceMembers</code>,
+<code>warnings</code>). See <a class="" href="/docs/reference/discovery-selection#builds-buildyaml-leaves-out">builds build.yaml leaves out</a>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inspecting-a-build">Inspecting a build<a href="#inspecting-a-build" class="hash-link" aria-label="Direct link to Inspecting a build" title="Direct link to Inspecting a build" translate="no">​</a></h2>
-<p>A <em>bundle</em> is the directory <code>oyzu build</code> writes (<code>dist/</code> by default) or an exported OCI archive. <code>oyzu inspect</code> with no argument verifies the current project&#x27;s <code>dist/</code>; a project root is accepted for its <code>dist/</code>.</p>
+<p>A <em>bundle</em> is the folder <code>oyzu build</code> writes (<code>dist/</code> by default) or an exported OCI
+archive. <code>oyzu inspect</code> with no argument checks the current project&#x27;s bundle; a
+project root also works.</p>
 <ul>
-<li class="">A missing bundle names where Oyzu looked and suggests <code>oyzu build</code>.</li>
-<li class="">On success the human view leads with <code>✓ Bundle contents verified · build succeeded|failed</code>, then the run and source identity and tables of targets (builder, platform), actions (status, exit, gate), artifacts (path, size, platform, short digest), reports and diagnostics.</li>
-<li class="">It states that verification checks recorded digests, not who produced the build.</li>
+<li class="">A missing bundle says where Oyzu looked and suggests <code>oyzu build</code>.</li>
+<li class="">On success the view starts with <code>✓ Bundle contents verified · build succeeded|failed</code>,
+then the run and source identity and tables of targets, actions, artifacts (path,
+size, platform, short digest), reports and diagnostics.</li>
+<li class="">It says that it checked recorded digests, not who produced the build.</li>
 <li class="">An OCI archive shows kind, platforms, size and digests.</li>
-<li class=""><code>--json</code> keeps the full manifest. See <a class="" href="/docs/reference/build-bundles">build bundles</a>.</li>
+<li class=""><code>--json</code> returns the full manifest. See <a class="" href="/docs/reference/build-bundles">build bundles</a>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="task-listing">Task listing<a href="#task-listing" class="hash-link" aria-label="Direct link to Task listing" title="Direct link to Task listing" translate="no">​</a></h2>
-<p><code>oyzu run list</code> opens with a count (<code>Available tasks · 8 across 1 target</code>), then shows one table: the <strong>Task / Source / Command</strong> header appears once and every group shares its column widths.</p>
+<p><code>oyzu run list</code> starts with a count (<code>Available tasks · 8 across 1 target</code>), then one
+table with a <strong>Task / Source / Command</strong> header shared by every group.</p>
 <ul>
-<li class="">Tasks are grouped by target (for example <code>cli</code> and <code>docs</code>), with ungrouped user tasks under <strong>Project</strong>; each group heading shows its builder and task count.</li>
-<li class="">Listing is a quick lookup, so it prints no progress or logger lines.</li>
-<li class="">Each row shows the qualified runnable name, source and effective command arguments.</li>
-<li class="">Builder-discovered tasks are labeled <strong>Inferred</strong> with their provider; TOML-defined tasks show the effective source file, relative to the project when possible. <strong>(override)</strong> indicates a replacement of an inferred task or an earlier configuration definition.</li>
-<li class="">Native package scripts discovered through a builder are also labeled inferred; this distinguishes discovery from an Oyzu TOML definition, not script authorship.</li>
+<li class="">Tasks are grouped by target (for example <code>cli</code> and <code>docs</code>); your own ungrouped
+tasks are under <strong>Project</strong>. Each group heading shows its builder and task count.</li>
+<li class="">Listing prints no progress.</li>
+<li class="">Each row shows the full task name, its source and its command arguments.</li>
+<li class="">Tasks found by a builder (including package scripts) are labelled <strong>Inferred</strong>
+with their provider. Tasks from TOML show their file, relative to the project when
+possible. <strong>(override)</strong> marks a task that replaces an inferred or earlier one.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="color-and-layout">Color and layout<a href="#color-and-layout" class="hash-link" aria-label="Direct link to Color and layout" title="Direct link to Color and layout" translate="no">​</a></h3>
 <ul>
-<li class="">Cyan headings separate groups, inferred sources are muted and authored sources are purple.</li>
-<li class=""><code>ui.color</code>, <code>NO_COLOR</code> and terminal detection control color. Explicit <code>ui.color=always/never</code> wins; in auto mode <code>NO_COLOR</code> disables color and <code>CLICOLOR_FORCE=1</code> enables it when <code>NO_COLOR</code> is absent.</li>
-<li class="">Long rows use lossless labeled records on narrow terminals. Unavailable tasks retain their reason.</li>
-<li class="">Commands quote arguments descriptively; they are not a portable shell script. Dependencies and hooks may add execution beyond that row.</li>
-<li class="">Credential-like command previews are withheld and terminal controls escaped. Do not embed credentials in task command arguments; use the supported environment or secret mechanisms instead.</li>
+<li class="">Cyan headings separate groups; inferred sources are muted and your own are purple.</li>
+<li class=""><code>ui.color</code>, <code>NO_COLOR</code> and terminal detection control color. <code>ui.color=always</code> or
+<code>never</code> wins; in auto mode <code>NO_COLOR</code> turns color off and <code>CLICOLOR_FORCE=1</code> turns
+it on when <code>NO_COLOR</code> isn&#x27;t set.</li>
+<li class="">Long rows become labelled records on narrow terminals. Unavailable tasks show why.</li>
+<li class="">Commands are shown for reading, not as a portable shell script. Dependencies and
+hooks may run more than the row shows.</li>
+<li class="">Command previews that look like they contain credentials are hidden, and terminal
+controls are escaped. Don&#x27;t put credentials in task arguments.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="json-and-effects">JSON and effects<a href="#json-and-effects" class="hash-link" aria-label="Direct link to JSON and effects" title="Direct link to JSON and effects" translate="no">​</a></h3>
-<p>Listing reads discovery and resolved configuration but executes no tasks or native tools. JSON retains the task map and adds each task&#x27;s <code>origin</code> object: <code>kind</code> (<code>inferred</code> or <code>user-defined</code>), <code>source</code> (full configuration source or null) and <code>override</code> (boolean). Existing argv and redacted environment fields retain their contracts. No configuration or lock files are changed by listing.</p>
+<p>Listing runs no tasks or tools and changes no files. JSON has the task map, and each
+task has an <code>origin</code> object: <code>kind</code> (<code>inferred</code> or <code>user-defined</code>), <code>source</code> (the
+configuration source, or <code>null</code>) and <code>override</code> (boolean).</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="outside-a-project-and-unknown-tasks">Outside a project and unknown tasks<a href="#outside-a-project-and-unknown-tasks" class="hash-link" aria-label="Direct link to Outside a project and unknown tasks" title="Direct link to Outside a project and unknown tasks" translate="no">​</a></h3>
-<p>Outside a project, <code>oyzu run</code> lists nearby projects by relative directory rather than importing their tasks under generated identifiers.</p>
+<p>Outside a project, <code>oyzu run</code> lists nearby projects by folder.</p>
 <ul>
-<li class="">The navigation lookup searches at most three directory levels, skips hidden/generated directories, stops below a project boundary and returns at most 32 projects. It reads no child configuration or native metadata and runs no tools.</li>
+<li class="">It searches up to three levels down, skips hidden and generated folders, stops at
+each project and lists at most 32. It reads no child configuration and runs
+nothing.</li>
 <li class="">Change into a listed project or use <code>oyzu -C &lt;project&gt; run</code>.</li>
-<li class="">JSON returns <code>status: &quot;outside-project&quot;</code>, <code>directory</code>, <code>projects</code>, <code>searchDepth</code>, <code>limit</code> and <code>nextStep</code>.</li>
-<li class="">An empty lookup fails with <code>PROJECT_NOT_FOUND</code> and the searched directory; requesting a task from the parent fails with <code>TASK_PROJECT_REQUIRED</code> before loading a child project.</li>
-<li class="">Explicit workspace roots remain workspaces and use the ordinary task listing.</li>
+<li class="">JSON returns <code>status: &quot;outside-project&quot;</code>, <code>directory</code>, <code>projects</code>, <code>searchDepth</code>,
+<code>limit</code> and <code>nextStep</code>.</li>
+<li class="">With nothing found, it fails with <code>PROJECT_NOT_FOUND</code>. Asking for a task from the
+parent folder fails with <code>TASK_PROJECT_REQUIRED</code>.</li>
 </ul>
-<p>An unknown task returns <code>TASK_NOT_FOUND</code>, the selected project directory, available task names and a close spelling suggestion when one exists. It also points to <code>oyzu run</code> and <code>oyzu -C &lt;project&gt; run &lt;task&gt;</code> for recovery. No task-running preamble appears for this failure.</p>
-<p>Native execution is announced only after task selection and preparation. Completed task rows include the exit code and duration, for example <code>Failed (exit 7 after 0.20s)</code>. The process preserves the failed child&#x27;s exit code; task JSON records retain <code>exit_code</code> and add <code>duration_ms</code> (execution time excluding discovery and tool preparation).</p>
+<p>An unknown task fails with <code>TASK_NOT_FOUND</code>, the project folder, available task names
+and a spelling suggestion when there&#x27;s a close match.</p>
+<p>When a task runs, its result row includes the exit code and duration, for example
+<code>Failed (exit 7 after 0.20s)</code>. Oyzu exits with the task&#x27;s exit code. JSON records have
+<code>exit_code</code> and <code>duration_ms</code> (run time only, not discovery or tool setup).</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="task-streams">Task streams<a href="#task-streams" class="hash-link" aria-label="Direct link to Task streams" title="Direct link to Task streams" translate="no">​</a></h3>
-<p>Local <code>run</code> tasks retain stdin.</p>
+<p>Local tasks keep stdin.</p>
 <ul>
-<li class="">In text mode, tasks recording a bundle tee full stdout/stderr to the caller and <code>dist/logs</code>, including in quiet mode, without replaying output at completion. Their output descriptors are pipes.</li>
-<li class="">Tasks marked <code>interactive = true</code> instead inherit terminal stdout/stderr; those streams cannot also be captured, so their bundle stdout/stderr files are empty.</li>
-<li class="">Non-bundled tasks also inherit output directly.</li>
-<li class="">JSON captures task output and keeps stdout as the final result. See <a class="" href="/docs/reference/build-tasks#live-development-task-output">task streams</a>.</li>
+<li class="">In text mode, tasks that record a bundle copy stdout and stderr both to your
+terminal and to <code>dist/logs</code>, even with <code>--quiet</code>. Their output is a pipe, not a
+terminal.</li>
+<li class="">Tasks with <code>interactive = true</code> get your terminal directly; their output can&#x27;t be
+saved, so their bundle log files are empty.</li>
+<li class="">Tasks that don&#x27;t record a bundle also get your terminal directly.</li>
+<li class="">With <code>--json</code>, task output is captured and stdout holds only the final result. See
+<a class="" href="/docs/reference/build-tasks#live-development-task-output">task output</a>.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="diagnostic-controls">Diagnostic controls<a href="#diagnostic-controls" class="hash-link" aria-label="Direct link to Diagnostic controls" title="Direct link to Diagnostic controls" translate="no">​</a></h2>
-<p>Global <code>-v</code>/<code>--verbose</code> enables debug, <code>-vv</code> enables trace, <code>-q</code>/<code>--quiet</code> selects warn, and <code>--log-level error|warn|info|debug|trace</code> selects an explicit threshold. Default is info.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Flag</th><th>Threshold</th></tr></thead><tbody><tr><td>(none)</td><td><code>info</code></td></tr><tr><td><code>-v</code>, <code>--verbose</code></td><td><code>debug</code></td></tr><tr><td><code>-vv</code></td><td><code>trace</code></td></tr><tr><td><code>-q</code>, <code>--quiet</code></td><td><code>warn</code></td></tr><tr><td><code>--log-level error|warn|info|debug|trace</code></td><td>As given</td></tr></tbody></table></div>
 <ul>
-<li class="">Options work on either side of a subcommand; arguments after <code>--</code> belong to the child.</li>
-<li class="">More than two <code>-v</code> or one <code>-q</code>, or combining these controls, is an argument error before project loading.</li>
-<li class="">One explicit CLI control overrides all of <code>OYZU_LOG</code>.</li>
+<li class="">Flags work on either side of the subcommand. Arguments after <code>--</code> belong to the
+child.</li>
+<li class="">More than two <code>-v</code>, more than one <code>-q</code>, or combining these flags is an argument
+error.</li>
+<li class="">Any of these flags overrides <code>OYZU_LOG</code> entirely.</li>
 </ul>
-<p>Otherwise this optional UTF-8 environment value accepts a level or comma-separated <code>target=level</code> directives, optionally preceded by a default level (info when omitted):</p>
+<p>Without a flag, <code>OYZU_LOG</code> can set a level or comma-separated <code>area=level</code> entries,
+optionally starting with a default level (<code>info</code> if omitted):</p>
 <div class="language-powershell codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-powershell codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token variable" style="color:#36acaa">$env</span><span class="token plain">:OYZU_LOG = </span><span class="token string" style="color:#e3116c">&#x27;warn,oyzu::executor=trace&#x27;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run foo</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run foo </span><span class="token operator" style="color:#393A34">--</span><span class="token plain">json </span><span class="token operator" style="color:#393A34">-</span><span class="token plain">v</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token function" style="color:#d73a49">Remove-Item</span><span class="token plain"> Env:OYZU_LOG</span><br></div></code></pre></div></div>
 <ul>
-<li class="">Targets are <code>oyzu::commands</code>, <code>oyzu::config</code>, <code>oyzu::discovery</code>, <code>oyzu::tools</code>, <code>oyzu::acquisition</code>, <code>oyzu::executor</code>, <code>oyzu::builders</code> and <code>oyzu::reports</code>. An exact target directive overrides the default.</li>
-<li class="">Unknown or duplicate targets, empty directives and invalid levels fail. Overridden environment filters are not read.</li>
-<li class="">Help/version ignore <code>OYZU_LOG</code>, including invalid values.</li>
-<li class="">These are invocation presentation options, not <code>oyzu.toml</code> settings. <code>RUST_LOG</code> does not control Oyzu diagnostics or enable dependency payload logging.</li>
+<li class="">Areas: <code>oyzu::commands</code>, <code>oyzu::config</code>, <code>oyzu::discovery</code>, <code>oyzu::tools</code>,
+<code>oyzu::acquisition</code>, <code>oyzu::executor</code>, <code>oyzu::builders</code>, <code>oyzu::reports</code>.</li>
+<li class="">Unknown or repeated areas, empty entries and invalid levels are errors.</li>
+<li class="">Help and version ignore <code>OYZU_LOG</code>, even invalid values.</li>
+<li class="">These aren&#x27;t <code>oyzu.toml</code> settings. <code>RUST_LOG</code> has no effect on Oyzu.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-the-controls-change">What the controls change<a href="#what-the-controls-change" class="hash-link" aria-label="Direct link to What the controls change" title="Direct link to What the controls change" translate="no">​</a></h3>
 <ul>
-<li class="">Quiet hides routine Oyzu progress and the interactive dashboard. It preserves command results, warnings, errors and native child output.</li>
-<li class="">Verbosity does not change native flags/environment, plans, cache inputs, report gates or production eligibility.</li>
-<li class="">Logging is local, offline-capable and needs no account, service or new persistent sink.</li>
-<li class="">All thresholds use the same field admission. No environment/header maps or unrestricted argument arrays are logged. Command events withhold arguments; credential-bearing parts of diagnostic prose are redacted (see <a href="#redaction" class="">Redaction</a>).</li>
-<li class="">Arbitrary child output and explicitly requested shell payloads are not rewritten and may contain secrets. Trace is not an HTTP dump or a secret-inspection mode.</li>
+<li class=""><code>--quiet</code> hides routine progress and the interactive dashboard. Results, warnings,
+errors and child output stay.</li>
+<li class="">Verbosity never changes native flags, environment, plans, cache inputs, report
+checks or release eligibility.</li>
+<li class="">Logging is local and works offline.</li>
+<li class="">Environment variables, headers and full argument lists are never logged.
+Credential-bearing parts of messages are redacted (see <a href="#redaction" class="">Redaction</a>).</li>
+<li class="">Child output and shell payloads you ask for aren&#x27;t rewritten and may contain
+secrets. Trace isn&#x27;t an HTTP dump.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="diagnostic-content-and-json-events">Diagnostic content and JSON events<a href="#diagnostic-content-and-json-events" class="hash-link" aria-label="Direct link to Diagnostic content and JSON events" title="Direct link to Diagnostic content and JSON events" translate="no">​</a></h3>
 <ul>
-<li class="">Human diagnostics identify severity and the affected work. Operational failures also identify the running executable/version, selected directory, host platform and observation identity when available. Help/version/syntax remain independent of runtime initialization.</li>
-<li class="">JSON diagnostic envelopes retain the existing event fields and add <code>severity</code>, <code>target</code>, <code>invocationId</code>, <code>operationId</code> and <code>parentOperationId</code>. Diagnostic events contain <code>type</code>, <code>code</code> and <code>message</code>, with numeric <code>duration_ms</code> for completed operations.</li>
-<li class="">Retained build journals now carry the same correlation fields and observed warning/error diagnostics, independently of console detail filtering. Filtered console projections may have sequence gaps.</li>
-<li class="">Sequence orders observations within an invocation; it does not establish causal ordering between native processes. Consumers must tolerate additive fields and event kinds.</li>
-<li class="">The existing unreleased manifest/envelope schemas gain optional <code>invocationId</code> in place; actions can carry namespaced log references and the explicit <code>not-started</code> outcome for interruption before launch. Reuse can identify the serving cache tier (<code>local</code> or <code>remote</code>), independently of its producer.</li>
-<li class="">Pin&#x27;s human output includes a deduplicated execution-platform coverage section. It describes resolved metadata, not installed availability or platform execution qualification. JSON retains the full platform-specific <code>compiler_metadata</code> recipes.</li>
+<li class="">Human diagnostics name the severity and the affected work. Operational failures
+also name the executable and version, the folder, the host platform and an ID
+when available.</li>
+<li class="">JSON diagnostic events have <code>type</code>, <code>code</code> and <code>message</code>, plus <code>severity</code>,
+<code>target</code>, <code>invocationId</code>, <code>operationId</code> and <code>parentOperationId</code>. Completed
+operations add <code>duration_ms</code>.</li>
+<li class="">Saved build logs carry the same IDs and every warning and error, whatever the
+console showed. Filtered console output can have gaps in its sequence numbers.</li>
+<li class="">Sequence numbers order events within one command; they don&#x27;t show cause and
+effect between processes. New fields and event kinds may be added, so tolerate
+unknown ones.</li>
+<li class="">Reused actions can say which cache tier served them (<code>local</code> or <code>remote</code>).</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-lifecycle-labels">Failures and lifecycle labels<a href="#failures-and-lifecycle-labels" class="hash-link" aria-label="Direct link to Failures and lifecycle labels" title="Direct link to Failures and lifecycle labels" translate="no">​</a></h2>
-<p>Human failures from a command print <code>✗ &lt;what failed and how to recover&gt;</code> with the diagnostic code underneath (for example <code>COMMAND_FAILED</code>), not a raw <code>[Error] [oyzu::commands]</code> envelope.</p>
+<p>A failed command prints <code>✗ &lt;what failed and how to recover&gt;</code> with the diagnostic code
+underneath (for example <code>COMMAND_FAILED</code>).</p>
 <ul>
-<li class="">A message that already leads with its own stable code (<code>✗ CONFIG_SYNTAX: …</code>, <code>✗ REMOTE_COMMIT_NOT_PUSHED: …</code>) omits the generic code underneath.</li>
-<li class=""><code>--json</code> keeps its <code>{&quot;error&quot;, &quot;exitCode&quot;}</code> object and <code>-q</code> keeps the plain error line.</li>
-<li class="">Internal pipeline scopes are shown as words (<code>Setup</code>, <code>Preflight</code>, <code>Source</code>, <code>Plan</code>); generated platform target ids are shown as <code>target · os/arch</code>.</li>
-<li class="">Running a task prints a heading, shared lifecycle rows and the task result, followed by the native tool output unchanged.</li>
+<li class="">A message that already starts with its own code (<code>✗ CONFIG_SYNTAX: …</code>,
+<code>✗ REMOTE_COMMIT_NOT_PUSHED: …</code>) doesn&#x27;t repeat it underneath.</li>
+<li class=""><code>--json</code> prints <code>{&quot;error&quot;, &quot;exitCode&quot;}</code>, and <code>-q</code> prints the plain error line.</li>
+<li class="">Internal phases are shown as words (<code>Setup</code>, <code>Preflight</code>, <code>Source</code>, <code>Plan</code>), and
+platform-specific targets as <code>target · os/arch</code>.</li>
+<li class="">Running a task prints a heading, the shared lifecycle rows and the result, followed
+by the tool&#x27;s own output, unchanged.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="redaction">Redaction<a href="#redaction" class="hash-link" aria-label="Direct link to Redaction" title="Direct link to Redaction" translate="no">​</a></h2>
-<p>Diagnostic prose redacts only the credential-bearing part. Ordinary URLs and prose stay readable.</p>
+<p>Messages redact only the credential-bearing part. Ordinary URLs and text stay
+readable.</p>
 
 
 
@@ -636,35 +849,69 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Pattern</th><th>Result</th></tr></thead><tbody><tr><td>A URL with userinfo</td><td><code>[sensitive diagnostic detail withheld]</code></td></tr><tr><td>URL queries and fragments</td><td><code>?[redacted]</code></td></tr><tr><td><code>key=value</code> / <code>key: value</code> forms for credential names</td><td>The name is kept; the value is replaced.</td></tr><tr><td><code>Authorization:</code> or <code>Bearer</code></td><td>The rest of the line is redacted.</td></tr></tbody></table></div>
-<p>Configuration display still hides any value that looks credential-bearing. Native child output is not rewritten.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Pattern</th><th>Result</th></tr></thead><tbody><tr><td>A URL with a user name or password</td><td><code>[sensitive diagnostic detail withheld]</code></td></tr><tr><td>URL query and fragment</td><td><code>?[redacted]</code></td></tr><tr><td><code>key=value</code> or <code>key: value</code> with a credential-like name</td><td>The name stays; the value is replaced.</td></tr><tr><td><code>Authorization:</code> or <code>Bearer</code></td><td>The rest of the line is redacted.</td></tr></tbody></table></div>
+<p>Configuration display hides any value that looks like a credential. Child output
+isn&#x27;t rewritten.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="human-presentation-standard">Human presentation standard<a href="#human-presentation-standard" class="hash-link" aria-label="Direct link to Human presentation standard" title="Direct link to Human presentation standard" translate="no">​</a></h2>
-<p>This section is the normative style guide for every public command&#x27;s human experience: startup, progress, subprocess output, results and failures. Command-specific presenters must follow it; a generic recursive data dump or raw diagnostic envelope is not a finished public interface. These are review requirements, not a claim that all existing commands have been audited.</p>
+<p>This is the style guide for every public command&#x27;s human output: startup, progress,
+child output, results and failures. New and changed commands must follow it. A
+generic data dump or raw diagnostic envelope isn&#x27;t a finished interface. Not every
+existing command has been reviewed against it yet.</p>
 <ul>
-<li class="">Lead with the outcome and relevant selection (such as the active profile).</li>
-<li class="">Use short, descriptive section headings and aligned columns for comparable records. Keep empty collections compact (<code>[]</code> for configuration values); omit empty diagnostic sections. Do not omit failures or unresolved requirements.</li>
-<li class="">Preserve identifiers exactly: <code>env.CARGO_HOME</code>, <code>env._.path</code>, <code>checks.coverageMinimum</code> and <code>cargo-llvm-cov</code> are copyable identifiers, not prose. Never title-case, split capitals, or replace their underscores and punctuation.</li>
-<li class="">Humanize only labels owned by the presenter. Group configuration settings by namespace, retaining full setting keys. Render booleans as <code>true</code>/<code>false</code> in configuration tables to match their authored types.</li>
-<li class="">Put long identities and low-priority metadata after the useful settings. Wrap long cells without losing characters; use labeled records on narrow terminals. Normalize Windows extended-path notation for human display, while preserving machine payloads.</li>
-<li class="">Use cyan headings, green success, yellow attention and red failures. Always include textual meaning; color cannot be the only signal. Preserve readable no-color output, escape terminal controls, and honor each command&#x27;s redaction contract. Presentation must not recover upstream-redacted values.</li>
-<li class="">Verify the compiled command in human, no-color and JSON modes. Cover long identifiers and narrow layouts with focused rendering checks. JSON schemas and executable/native payloads are independent of presentation.</li>
+<li class="">Lead with the outcome and the relevant selection (such as the active profile).</li>
+<li class="">Use short, descriptive section headings and aligned columns for comparable records.
+Keep empty collections compact (<code>[]</code> for configuration values) and leave out empty
+diagnostic sections. Never leave out failures or unresolved requirements.</li>
+<li class="">Keep identifiers exact: <code>env.CARGO_HOME</code>, <code>env._.path</code>, <code>checks.coverageMinimum</code> and
+<code>cargo-llvm-cov</code> are copyable identifiers, not prose. Never title-case them, split
+them, or change their underscores and punctuation.</li>
+<li class="">Humanize only labels the presenter owns. Group configuration settings by namespace,
+keeping full keys. Show booleans as <code>true</code>/<code>false</code> in configuration tables.</li>
+<li class="">Put long identities and low-priority metadata after the useful settings. Wrap long
+cells without dropping characters, and use labelled records on narrow terminals.
+Show Windows extended paths in normal form for people, but keep machine payloads
+unchanged.</li>
+<li class="">Use cyan headings, green success, yellow attention and red failures. Always include
+the meaning in text; color is never the only signal. Keep no-color output readable,
+escape terminal controls, and follow each command&#x27;s redaction rules. Presentation
+must never reveal a value that was redacted upstream.</li>
+<li class="">Check the compiled command in human, no-color and JSON modes. Cover long
+identifiers and narrow layouts. JSON schemas and executable or native payloads
+don&#x27;t depend on presentation.</li>
 </ul>
-<p>Human output leads with the operation outcome, then groups details into named sections. Comparable records use aligned tables; nested or long records use labeled fields without dropping values. The shared renderer uses terminal width when available (100 columns otherwise), falling back to labeled records when a table would overflow. Color is supplementary: headings use cyan, success uses green and attention uses yellow; errors retain explicit severity labels.</p>
+<p>Human output leads with the outcome, then groups details into named sections.
+Comparable records use aligned tables; nested or long records use labelled fields
+without dropping values. The shared renderer uses the terminal width when it&#x27;s known
+(100 columns otherwise) and switches to labelled records when a table would overflow.
+Color is extra: cyan headings, green success, yellow attention; errors keep explicit
+severity labels.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="color-controls">Color controls<a href="#color-controls" class="hash-link" aria-label="Direct link to Color controls" title="Direct link to Color controls" translate="no">​</a></h3>
 <ul>
-<li class="">Shared result views enable color on terminals, omit it for redirected output or <code>TERM=dumb</code>, accept nonzero <code>CLICOLOR_FORCE</code> to force color, and let <code>NO_COLOR</code> override forcing.</li>
-<li class="">No project configuration is opened solely to style a result.</li>
-<li class="">JSON never gains ANSI sequences. Shell code, native streams and <code>which</code> path output retain their payload contracts.</li>
-<li class="">Untrusted control characters in shared human result values are escaped before styling.</li>
+<li class="">Shared result views use color on terminals and drop it for redirected output or
+<code>TERM=dumb</code>. A nonzero <code>CLICOLOR_FORCE</code> forces color, and <code>NO_COLOR</code> overrides
+forcing.</li>
+<li class="">No project configuration is opened just to style a result.</li>
+<li class="">JSON never contains ANSI sequences. Shell code, native streams and <code>which</code> paths
+keep their payload formats.</li>
+<li class="">Untrusted control characters in result values are escaped before styling.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pin-output">Pin output<a href="#pin-output" class="hash-link" aria-label="Direct link to Pin output" title="Direct link to Pin output" translate="no">​</a></h3>
-<p><code>pin</code> shows one compact setup table per target. For Rust it lists each compiler component and test/coverage helper separately, with a purpose column.</p>
+<p><code>pin</code> shows one compact setup table per target. For Rust it lists each compiler
+component and test or coverage helper separately, with a purpose column.</p>
 <ul>
-<li class="">Formatting, linting, testing and coverage tools are required when those checks are enabled by the build or policy; the labels do not make selected checks optional.</li>
-<li class="">Installation support is distinct from installed availability: pin does not probe or install tools.</li>
-<li class="">Sources, profiles, compatibility constraints, configured requests and discovery limitations remain in <code>--json</code>, rather than repeated human tables. Unknown requirements remain visible. Existing resolution-conflict diagnostics are unchanged.</li>
-<li class="">Preview/pinned outcomes distinguish completed and incomplete resolution. Incomplete resolution includes actionable diagnostics below the setup table.</li>
-<li class="">Environment inspection and shell-profile receipts also use the shared layout.</li>
+<li class="">Formatting, linting, testing and coverage tools are required when those checks are
+enabled by the build or policy. The labels don&#x27;t make checks optional.</li>
+<li class="">Being installable isn&#x27;t the same as being installed. <code>pin</code> doesn&#x27;t check for or
+install tools.</li>
+<li class="">Sources, profiles, compatibility constraints, configured requests and discovery
+limits are in <code>--json</code> rather than extra human tables. Unknown requirements stay
+visible.</li>
+<li class="">Results say whether resolution completed. Incomplete resolution lists what to do
+below the table.</li>
+<li class="">A platform coverage section lists the execution platforms the resolved metadata
+covers. That isn&#x27;t a statement that tools are installed or run there. JSON keeps the
+full per-platform <code>compiler_metadata</code>.</li>
+<li class="">Environment inspection and shell profile results use the same layout.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="choose-an-existing-output-pattern">Choose an existing output pattern<a href="#choose-an-existing-output-pattern" class="hash-link" aria-label="Direct link to Choose an existing output pattern" title="Direct link to Choose an existing output pattern" translate="no">​</a></h3>
 
@@ -700,62 +947,111 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Command behavior</th><th>Required human presentation</th></tr></thead><tbody><tr><td>Quick lookup (<code>which</code>, version)</td><td>Preserve its concise documented payload; no artificial progress or decorative wrapper</td></tr><tr><td>Inspection/listing (<code>env</code>, config, <code>tools current/list/versions/info</code>, <code>tools resolve</code>, <code>tools evidence</code>, task list, pin preview)</td><td>Descriptive title, useful selection context, grouped tables or labeled records, actionable unresolved items</td></tr><tr><td>Work (<code>install</code>, <code>update</code>, build, acquisition)</td><td>Operation heading, named live steps, scoped subprocess output, final outcome/receipt</td></tr><tr><td>Task/child execution (<code>run</code>, <code>exec</code>)</td><td>Shared Oyzu preparation/progress; preserve the documented native stream/pass-through behavior</td></tr><tr><td>Failure</td><td>Failed operation and affected item, readable cause, recovery when known; preserve exit status and diagnostic code. A build summary shows each failed action&#x27;s cause as an <code>ERROR</code> line even when the task never started (for example a rejected artifact handoff); text quoting native tools has its terminal controls escaped and its line breaks kept</td></tr><tr><td>Shell code/private protocols</td><td>Exact executable/protocol payload; never add human decoration</td></tr></tbody></table></div>
-<p>Consistency means shared hierarchy, vocabulary and state semantics, not adding identical headings to payload commands. Select the pattern in the CLI presenter before starting effects. Application commands return outcomes and lifecycle facts; they do not select colors, terminal modes or human/JSON formatting.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Command behavior</th><th>Required human presentation</th></tr></thead><tbody><tr><td>Quick lookup (<code>which</code>, version)</td><td>Keep its short documented payload. No progress or decoration.</td></tr><tr><td>Inspection or listing (<code>env</code>, config, <code>tools current/list/versions/info</code>, <code>tools resolve</code>, <code>tools evidence</code>, task list, pin preview)</td><td>Descriptive title, useful selection context, grouped tables or labelled records, actionable unresolved items.</td></tr><tr><td>Work (<code>install</code>, <code>update</code>, build, acquisition)</td><td>Operation heading, named live steps, scoped child output, final outcome or receipt.</td></tr><tr><td>Task or child execution (<code>run</code>, <code>exec</code>)</td><td>Shared Oyzu preparation and progress; keep the documented native stream or pass-through behavior.</td></tr><tr><td>Failure</td><td>The failed operation and item, a readable cause, and recovery when known; keep the exit status and diagnostic code. A build summary shows each failed action&#x27;s cause as an <code>ERROR</code> line even when the task never started (for example a rejected artifact handoff). Native text keeps its line breaks and has terminal controls escaped.</td></tr><tr><td>Shell code and private protocols</td><td>The exact payload, never decorated.</td></tr></tbody></table></div>
+<p>Consistency means a shared hierarchy, vocabulary and state meanings, not identical
+headings on payload commands. Choose the pattern in the presenter before any work
+starts. Application commands return outcomes and lifecycle facts; they don&#x27;t choose
+colors, terminal modes or human versus JSON formatting.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="operation-lifecycle">Operation lifecycle<a href="#operation-lifecycle" class="hash-link" aria-label="Direct link to Operation lifecycle" title="Direct link to Operation lifecycle" translate="no">​</a></h3>
 <ul>
-<li class="">Before potentially slow work, show the operation and what is currently being checked or performed. Do not delay all feedback until the final result. Immediate lookups need no synthetic progress.</li>
-<li class="">Name the item or step (<code>rust</code>, <code>Dependencies</code>, <code>Source evidence</code>), not an internal scope such as <code>command</code> or a repeated generic <code>build</code> label. Context statements belong in subtitles or explanatory text; do not make them look like work items.</li>
-<li class="">Use one shared state vocabulary: <code>›</code> running, <code>✓</code> completed/ready, <code>✗</code> failed, <code>!</code> attention, and explicit <code>Skipped</code>, <code>Blocked</code>, or <code>Unresolved</code> labels. Starting verification is not completion. Mark ready only after the owning operation confirms its required checks. Close started steps on failure as well as success; never leave an apparently running step in a completed receipt.</li>
-<li class="">Use elapsed/still-working feedback for genuinely long operations. Use a percentage only when the operation supplies a meaningful total. Do not invent progress or claim stalled work is healthy merely because a heartbeat exists.</li>
-<li class="">Keep the default linear. Small redraws may update active rows and bounded subprocess tails on capable terminals; persistent panes, alternate screens and interactive input must not be prerequisites for ordinary use.</li>
-<li class="">Group concurrent work by stable target/task/tool identity. Indent and dim each captured subprocess tail beneath its owner, allowing about eight lines subject to the shared terminal budget. Collapse successful tails; retain relevant failure context. Never merge unattributed lines from parallel processes. Native pass-through commands retain their documented stream contract.</li>
-<li class="">Finish with a concise outcome and useful results, artifacts or recovery steps. Avoid repeating the complete progress history in the receipt. Partial success, failed verification and missing requirements must remain visible.</li>
+<li class="">Before slow work, show the operation and what is being checked or done. Don&#x27;t hold
+all feedback until the end. Instant lookups need no progress.</li>
+<li class="">Name the item or step (<code>rust</code>, <code>Dependencies</code>, <code>Source evidence</code>), not an internal
+scope like <code>command</code> or a repeated generic <code>build</code>. Context belongs in subtitles or
+explanatory text, not in something that looks like a work item.</li>
+<li class="">Use one state vocabulary: <code>›</code> running, <code>✓</code> done or ready, <code>✗</code> failed, <code>!</code>
+attention, and the words <code>Skipped</code>, <code>Blocked</code> or <code>Unresolved</code>. Starting a check
+isn&#x27;t finishing it: mark ready only after the owning operation confirms its checks.
+Close started steps on failure as well as success; never leave a step looking like
+it&#x27;s still running in a finished receipt.</li>
+<li class="">Show elapsed or still-working feedback for long operations. Show a percentage only
+when there&#x27;s a real total. Don&#x27;t invent progress, and don&#x27;t imply stalled work is
+healthy just because a heartbeat is printing.</li>
+<li class="">Keep the default linear. Small redraws may update active rows and short child
+output on capable terminals. Persistent panes, alternate screens and interactive
+input must never be required.</li>
+<li class="">Group concurrent work by target, task or tool. Indent and dim each child&#x27;s recent
+output under its owner (about eight lines, within the shared terminal budget).
+Collapse it on success and keep the relevant part on failure. Never mix
+unattributed lines from parallel processes. Native pass-through commands keep their
+documented stream behavior.</li>
+<li class="">Finish with a short outcome and the useful results, artifacts or recovery steps.
+Don&#x27;t repeat the whole progress history. Partial success, failed checks and missing
+requirements must stay visible.</li>
 </ul>
-<p>Routine human progress must not default to envelopes such as <code>[Info] [oyzu::commands] [00:00.045] [command]</code>. Subsystem identifiers, timestamps and diagnostic metadata belong in explicitly requested diagnostic detail and structured logging. Warnings/errors still explain severity and retain useful codes; do not suppress them to make a display look clean.</p>
-<p>Illustrative shared lifecycle (values are examples, not measured output):</p>
+<p>Routine progress must never default to envelopes like
+<code>[Info] [oyzu::commands] [00:00.045] [command]</code>. Subsystem names, timestamps and
+diagnostic metadata belong in requested diagnostic detail and structured logs.
+Warnings and errors still state their severity and keep useful codes; don&#x27;t hide them
+to make output look clean.</p>
+<p>Example lifecycle (illustrative):</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">Installing tools</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  › rust                   Checking pinned installation…</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ rust                   Ready · 1.95.0 · reused</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  › cargo-nextest          Installing…</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      Downloading package…</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  ✓ cargo-nextest          Ready · installed</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Installation complete</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">2 tools verified · 1 installed · 1 reused</span><br></div></code></pre></div></div>
-<p>The live terminal may replace the running rows; a redirected stream keeps a readable start/completion sequence. Both must communicate the same outcome.</p>
+<p>A live terminal may replace the running rows; redirected output keeps a readable
+start and finish sequence. Both must show the same outcome.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="terminal-diagnostics-and-data-contracts">Terminal, diagnostics and data contracts<a href="#terminal-diagnostics-and-data-contracts" class="hash-link" aria-label="Direct link to Terminal, diagnostics and data contracts" title="Direct link to Terminal, diagnostics and data contracts" translate="no">​</a></h3>
 <ul>
-<li class="">Use the shared renderer&#x27;s semantic palette and color controls above. Never add command-local ANSI strings or a second styling policy.</li>
-<li class="">Dim native previews, not essential status or recovery instructions.</li>
-<li class="">When terminal capabilities are absent, use append-only text with no cursor controls; disabling color alone must not remove information. Forced color may style redirected output without enabling redraws.</li>
-<li class="">Handle narrow widths without truncating copyable identifiers or paths.</li>
-<li class="">Keep progress/diagnostics on stderr and final results on stdout. Preserve the JSON, shell-payload and native-stream exceptions documented above.</li>
-<li class="">Quiet removes routine progress, not results or failures; verbosity adds diagnostics without changing execution.</li>
-<li class="">Preserve legitimate values under the owning sensitive-field policy: do not blanket-redact ordinary configuration, paths or version information, and never reveal protected values merely because verbose output is enabled.</li>
+<li class="">Use the shared renderer&#x27;s palette and color controls. Never add command-specific
+ANSI codes or a second styling policy.</li>
+<li class="">Dim native previews, not essential status or recovery steps.</li>
+<li class="">Without terminal capabilities, print append-only text with no cursor movement.
+Turning off color must not remove information. Forced color may style redirected
+output without turning on redraws.</li>
+<li class="">Never truncate copyable identifiers or paths at narrow widths.</li>
+<li class="">Keep progress and diagnostics on stderr and final results on stdout, apart from the
+JSON, shell payload and native stream exceptions above.</li>
+<li class=""><code>--quiet</code> removes routine progress, not results or failures. Verbosity adds
+diagnostics without changing what runs.</li>
+<li class="">Follow the owning redaction rules: don&#x27;t redact ordinary configuration, paths or
+versions, and never reveal protected values just because verbose output is on.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="implementation-and-review-checklist">Implementation and review checklist<a href="#implementation-and-review-checklist" class="hash-link" aria-label="Direct link to Implementation and review checklist" title="Direct link to Implementation and review checklist" translate="no">​</a></h3>
 <p>For every new or changed public command:</p>
 <ol>
-<li class="">Identify its output pattern and reuse <code>presentation</code> result primitives plus the invocation-owned logging/linear view. Search existing renderers first; extend the shared owner when behavior is missing instead of building a local spinner, logger, color palette or table formatter.</li>
-<li class="">Exercise the real compiled entry point. Check startup feedback, one successful outcome and an applicable failure, including meaningful terminal step closure. A renderer unit test alone does not prove the command selected that renderer.</li>
-<li class="">Check ordinary human output, redirected/no-color output, JSON stdout/stderr separation and quiet behavior. Use focused rendering checks for narrow/long layouts and concurrent output when relevant; use a capable terminal for changed redraw behavior. State unavailable terminal/platform qualification explicitly.</li>
-<li class="">Confirm the payload exceptions, exit codes, sensitive-field handling and help/version fast path remain intact. Presentation must not change tool flags, plans, cache identity, evidence or policy.</li>
-<li class="">Update the owning reference and record actual verification. Fix inconsistencies in the changed command; record unrelated command-family gaps rather than claiming repository-wide compliance or launching an unbounded visual rewrite.</li>
+<li class="">Pick its output pattern and reuse the shared presentation layer and invocation
+logging view. Look for an existing renderer first; extend the shared one rather
+than adding a local spinner, logger, palette or table formatter.</li>
+<li class="">Run the real compiled command. Check startup feedback, one successful outcome and
+a relevant failure, including that started steps are closed. A renderer unit test
+alone doesn&#x27;t prove the command uses that renderer.</li>
+<li class="">Check normal human output, redirected or no-color output, JSON stdout/stderr
+separation and quiet mode. Check narrow and long layouts, and concurrent output
+where relevant. Use a real terminal for redraw changes. Say which terminals or
+platforms you couldn&#x27;t check.</li>
+<li class="">Confirm payload exceptions, exit codes, redaction and the fast help/version path
+still work. Presentation must not change tool flags, plans, cache identity,
+recorded results or policy.</li>
+<li class="">Update the owning reference page and record what you checked. Fix inconsistencies
+in the command you changed; note unrelated gaps rather than claiming the whole CLI
+complies.</li>
 </ol>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="help-and-startup">Help and startup<a href="#help-and-startup" class="hash-link" aria-label="Direct link to Help and startup" title="Direct link to Help and startup" translate="no">​</a></h2>
-<p><code>oyzu --help</code>, <code>oyzu help build</code>, nested <code>--help</code>, <code>--version</code> and unknown-command diagnostics use the built-in command catalog.</p>
+<p><code>oyzu --help</code>, <code>oyzu help build</code>, nested <code>--help</code>, <code>--version</code> and unknown-command
+errors come from the built-in command list.</p>
 <ul>
-<li class="">They work with an empty PATH, malformed project files and a nonexistent <code>-C</code> directory.</li>
-<li class="">They do not load project configuration, refresh enterprise policy, open tool stores, initialize backend workers or contact services. No installation or platform account is required.</li>
-<li class="">The operating system still loads the binary and Oyzu checks its executable identity to distinguish native tool shims.</li>
-<li class="">Actual <code>run list</code>/<code>discover</code> inspect a project; <code>which</code> validates the frozen tool selection. Those are explicit operations, not static command help, and retain their configuration and verification requirements.</li>
-<li class="">A native tool shim&#x27;s help continues to invoke that selected tool.</li>
-<li class="">The public CLI and reusable application command layer share execution behavior; see the architecture boundary.</li>
+<li class="">They work with an empty <code>PATH</code>, broken project files and a <code>-C</code> folder that
+doesn&#x27;t exist.</li>
+<li class="">They don&#x27;t load project configuration, refresh policy, open tool stores, start
+workers or contact services. No installation or account is needed.</li>
+<li class="">A native tool shim&#x27;s <code>--help</code> still runs that tool&#x27;s help.</li>
+<li class=""><code>oyzu run list</code>, <code>oyzu discover</code> and <code>oyzu which</code> are real operations, not help;
+they read the project and its configuration.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="configuration-inheritance-in-nested-projects">Configuration inheritance in nested projects<a href="#configuration-inheritance-in-nested-projects" class="hash-link" aria-label="Direct link to Configuration inheritance in nested projects" title="Direct link to Configuration inheritance in nested projects" translate="no">​</a></h2>
-<p><code>oyzu.toml</code> settings (including <code>tools.*</code> pins) inherit from the Git worktree root, while <code>build.yaml</code> does not inherit: the nearest ancestor <code>build.yaml</code> inventory selects the build (another tool&#x27;s <code>build.yaml</code> never does).</p>
-<p>A project nested in a repository therefore sees the repository&#x27;s tool pins. Pass <code>--root .</code> to fix both roots at the current directory and stop inheritance (see <a class="" href="/docs/reference/configuration">configuration</a>).</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="migration-and-verification">Migration and verification<a href="#migration-and-verification" class="hash-link" aria-label="Direct link to Migration and verification" title="Direct link to Migration and verification" translate="no">​</a></h2>
-<p>Scripts parsing formerly JSON-only pin, discovery, bundle/tool inspection or configuration output must now pass <code>--json</code>. Human formatting is not a parsing contract. Result schemas remain command-specific; this does not change build evidence or introduce a universal result schema.</p>
-<p>CLI tests cover human defaults, both flag positions, structured errors, help/version, child execution and shell payloads. Measured results and outstanding checks are in <a class="" href="/docs/support/capabilities">implementation status</a>. Windows verification does not qualify other hosts.</p>
+<p><code>oyzu.toml</code> settings, including tool pins, inherit from the Git worktree root.
+<code>build.yaml</code> doesn&#x27;t inherit: the nearest <code>build.yaml</code> up the tree decides the builds
+(a <code>build.yaml</code> belonging to another tool never does).</p>
+<p>So a project nested in a repository sees the repository&#x27;s tool pins. Pass <code>--root .</code>
+to make the current folder the root for both and stop inheritance. See
+<a class="" href="/docs/reference/configuration">configuration</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="scripts-and-parsing">Scripts and parsing<a href="#scripts-and-parsing" class="hash-link" aria-label="Direct link to Scripts and parsing" title="Direct link to Scripts and parsing" translate="no">​</a></h2>
+<p>Human output can change between releases; don&#x27;t parse it. Pass <code>--json</code> for pin,
+discovery, bundle and tool inspection, and configuration output. Each command has its
+own result shape; there&#x27;s no universal result schema.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
 <ul>
-<li class=""><a class="" href="/docs/reference/build-logging">Build logging</a> for live build presentation and heartbeat details.</li>
+<li class=""><a class="" href="/docs/reference/build-logging">Build logging</a> for live build progress and the heartbeat.</li>
 <li class=""><a class="" href="/docs/reference/build-bundles">Build bundles</a> for <code>inspect</code> and <code>history</code>.</li>
 <li class=""><a class="" href="/docs/reference/cli-help">CLI help</a> for the help overview.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/cli-help"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLI help</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-logging"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build logging</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#output-controls-at-a-glance" class="table-of-contents__link toc-highlight">Output controls at a glance</a></li><li><a href="#command-help" class="table-of-contents__link toc-highlight">Command help</a><ul><li><a href="#help-color" class="table-of-contents__link toc-highlight">Help color</a></li><li><a href="#shim-refresh-and-shell-profiles" class="table-of-contents__link toc-highlight">Shim refresh and shell profiles</a></li></ul></li><li><a href="#build-identity" class="table-of-contents__link toc-highlight">Build identity</a></li><li><a href="#which-executable-is-running" class="table-of-contents__link toc-highlight">Which executable is running</a></li><li><a href="#result-output" class="table-of-contents__link toc-highlight">Result output</a><ul><li><a href="#discovered-build-facts" class="table-of-contents__link toc-highlight">Discovered build facts</a></li><li><a href="#build-transcript" class="table-of-contents__link toc-highlight">Build transcript</a></li><li><a href="#human-views-for-other-commands" class="table-of-contents__link toc-highlight">Human views for other commands</a></li></ul></li><li><a href="#json-results-and-errors" class="table-of-contents__link toc-highlight">JSON results and errors</a><ul><li><a href="#exec---json-and-run" class="table-of-contents__link toc-highlight"><code>exec --json</code> and <code>run</code></a></li></ul></li><li><a href="#shell-payloads" class="table-of-contents__link toc-highlight">Shell payloads</a></li><li><a href="#tool-lifecycle-results" class="table-of-contents__link toc-highlight">Tool lifecycle results</a><ul><li><a href="#installed-tools" class="table-of-contents__link toc-highlight">Installed tools</a></li><li><a href="#recipe-resolution-and-evidence" class="table-of-contents__link toc-highlight">Recipe resolution and evidence</a></li></ul></li><li><a href="#project-discovery" class="table-of-contents__link toc-highlight">Project discovery</a><ul><li><a href="#with-a-buildyaml" class="table-of-contents__link toc-highlight">With a <code>build.yaml</code></a></li></ul></li><li><a href="#inspecting-a-build" class="table-of-contents__link toc-highlight">Inspecting a build</a></li><li><a href="#task-listing" class="table-of-contents__link toc-highlight">Task listing</a><ul><li><a href="#color-and-layout" class="table-of-contents__link toc-highlight">Color and layout</a></li><li><a href="#json-and-effects" class="table-of-contents__link toc-highlight">JSON and effects</a></li><li><a href="#outside-a-project-and-unknown-tasks" class="table-of-contents__link toc-highlight">Outside a project and unknown tasks</a></li><li><a href="#task-streams" class="table-of-contents__link toc-highlight">Task streams</a></li></ul></li><li><a href="#diagnostic-controls" class="table-of-contents__link toc-highlight">Diagnostic controls</a><ul><li><a href="#what-the-controls-change" class="table-of-contents__link toc-highlight">What the controls change</a></li><li><a href="#diagnostic-content-and-json-events" class="table-of-contents__link toc-highlight">Diagnostic content and JSON events</a></li></ul></li><li><a href="#failures-and-lifecycle-labels" class="table-of-contents__link toc-highlight">Failures and lifecycle labels</a></li><li><a href="#redaction" class="table-of-contents__link toc-highlight">Redaction</a></li><li><a href="#human-presentation-standard" class="table-of-contents__link toc-highlight">Human presentation standard</a><ul><li><a href="#color-controls" class="table-of-contents__link toc-highlight">Color controls</a></li><li><a href="#pin-output" class="table-of-contents__link toc-highlight">Pin output</a></li><li><a href="#choose-an-existing-output-pattern" class="table-of-contents__link toc-highlight">Choose an existing output pattern</a></li><li><a href="#operation-lifecycle" class="table-of-contents__link toc-highlight">Operation lifecycle</a></li><li><a href="#terminal-diagnostics-and-data-contracts" class="table-of-contents__link toc-highlight">Terminal, diagnostics and data contracts</a></li><li><a href="#implementation-and-review-checklist" class="table-of-contents__link toc-highlight">Implementation and review checklist</a></li></ul></li><li><a href="#help-and-startup" class="table-of-contents__link toc-highlight">Help and startup</a></li><li><a href="#configuration-inheritance-in-nested-projects" class="table-of-contents__link toc-highlight">Configuration inheritance in nested projects</a></li><li><a href="#migration-and-verification" class="table-of-contents__link toc-highlight">Migration and verification</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/cli-help"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">CLI help</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-logging"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build logging</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#output-controls-at-a-glance" class="table-of-contents__link toc-highlight">Output controls at a glance</a></li><li><a href="#command-help" class="table-of-contents__link toc-highlight">Command help</a><ul><li><a href="#shim-refresh-and-shell-profiles" class="table-of-contents__link toc-highlight">Shim refresh and shell profiles</a></li></ul></li><li><a href="#build-identity" class="table-of-contents__link toc-highlight">Build identity</a></li><li><a href="#which-executable-is-running" class="table-of-contents__link toc-highlight">Which executable is running</a></li><li><a href="#result-output" class="table-of-contents__link toc-highlight">Result output</a><ul><li><a href="#discovered-build-facts" class="table-of-contents__link toc-highlight">Discovered build facts</a></li><li><a href="#build-transcript" class="table-of-contents__link toc-highlight">Build transcript</a></li><li><a href="#human-views-for-other-commands" class="table-of-contents__link toc-highlight">Human views for other commands</a></li></ul></li><li><a href="#json-results-and-errors" class="table-of-contents__link toc-highlight">JSON results and errors</a><ul><li><a href="#exec---json-and-run" class="table-of-contents__link toc-highlight"><code>exec --json</code> and <code>run</code></a></li></ul></li><li><a href="#shell-payloads" class="table-of-contents__link toc-highlight">Shell payloads</a></li><li><a href="#tool-lifecycle-results" class="table-of-contents__link toc-highlight">Tool lifecycle results</a><ul><li><a href="#installed-tools" class="table-of-contents__link toc-highlight">Installed tools</a></li><li><a href="#recipe-resolution-and-evidence" class="table-of-contents__link toc-highlight">Recipe resolution and evidence</a></li></ul></li><li><a href="#project-discovery" class="table-of-contents__link toc-highlight">Project discovery</a><ul><li><a href="#with-a-buildyaml" class="table-of-contents__link toc-highlight">With a <code>build.yaml</code></a></li></ul></li><li><a href="#inspecting-a-build" class="table-of-contents__link toc-highlight">Inspecting a build</a></li><li><a href="#task-listing" class="table-of-contents__link toc-highlight">Task listing</a><ul><li><a href="#color-and-layout" class="table-of-contents__link toc-highlight">Color and layout</a></li><li><a href="#json-and-effects" class="table-of-contents__link toc-highlight">JSON and effects</a></li><li><a href="#outside-a-project-and-unknown-tasks" class="table-of-contents__link toc-highlight">Outside a project and unknown tasks</a></li><li><a href="#task-streams" class="table-of-contents__link toc-highlight">Task streams</a></li></ul></li><li><a href="#diagnostic-controls" class="table-of-contents__link toc-highlight">Diagnostic controls</a><ul><li><a href="#what-the-controls-change" class="table-of-contents__link toc-highlight">What the controls change</a></li><li><a href="#diagnostic-content-and-json-events" class="table-of-contents__link toc-highlight">Diagnostic content and JSON events</a></li></ul></li><li><a href="#failures-and-lifecycle-labels" class="table-of-contents__link toc-highlight">Failures and lifecycle labels</a></li><li><a href="#redaction" class="table-of-contents__link toc-highlight">Redaction</a></li><li><a href="#human-presentation-standard" class="table-of-contents__link toc-highlight">Human presentation standard</a><ul><li><a href="#color-controls" class="table-of-contents__link toc-highlight">Color controls</a></li><li><a href="#pin-output" class="table-of-contents__link toc-highlight">Pin output</a></li><li><a href="#choose-an-existing-output-pattern" class="table-of-contents__link toc-highlight">Choose an existing output pattern</a></li><li><a href="#operation-lifecycle" class="table-of-contents__link toc-highlight">Operation lifecycle</a></li><li><a href="#terminal-diagnostics-and-data-contracts" class="table-of-contents__link toc-highlight">Terminal, diagnostics and data contracts</a></li><li><a href="#implementation-and-review-checklist" class="table-of-contents__link toc-highlight">Implementation and review checklist</a></li></ul></li><li><a href="#help-and-startup" class="table-of-contents__link toc-highlight">Help and startup</a></li><li><a href="#configuration-inheritance-in-nested-projects" class="table-of-contents__link toc-highlight">Configuration inheritance in nested projects</a></li><li><a href="#scripts-and-parsing" class="table-of-contents__link toc-highlight">Scripts and parsing</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

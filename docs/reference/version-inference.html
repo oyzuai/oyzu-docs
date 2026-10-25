@@ -4,213 +4,47 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Artifact version inference | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/version-inference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Artifact version inference | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/version-inference"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Artifact version inference","item":"https://docs.oyzu.ai/docs/reference/version-inference"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/version-inference">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Experimental scan command</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Publishing and releases</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Artifact version inference</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Artifact version inference</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/version-inference">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/publish"><span class="linkLabel_WmDU">Publishing finalized artifacts</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-check"><span class="linkLabel_WmDU">Checking whether a build would ship</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/version-inference"><span class="linkLabel_WmDU">Artifact version inference</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/release-provenance"><span class="linkLabel_WmDU">Release provenance verification</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/scan"><span class="linkLabel_WmDU">Scanning a build</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Publishing and releases</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Artifact version inference</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Artifact version inference</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/version-inference.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>Version inference is being connected to the captured build path. The current
-increment supports Cargo, Node and Helm package snapshots from native SemVer, exact local tags,
-nearest first-parent release tags and Conventional Commit impacts. Full OEP-0013
-release/candidate operation authorization is not implemented. Go applications and
-Docker images use the same tag/bump inference without requiring a native version.
-Python maps compatible native PEP 440 versions into the same logical inference,
-then encodes the result for its wheel, source archive and application artifact.
-Maven, Gradle and Ant now consume the shared resolver through native JVM metadata.</p>
+<p><code>oyzu build</code> works out a version for every artifact from your native version
+declarations, your Git tags and your Conventional Commit messages. You don&#x27;t
+configure anything: build as usual and each artifact gets a version that says which
+release it&#x27;s heading for and exactly which source it came from.</p>
+<p>Supported builders: Cargo, Node (npm, pnpm, Yarn), Helm, Go, Docker, Python, Maven,
+Gradle and Ant.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example" translate="no">​</a></h2>
+<p>A single-package repository declares version <code>1.4.2</code>, has the tag <code>v1.4.2</code>, and one
+newer commit <code>feat: add endpoint</code>. <code>oyzu build</code> resolves the next version to <code>1.5.0</code>,
+and artifacts get:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">1.5.0-dev.g&lt;12-character-source-hash&gt;</span><br></div></code></pre></div></div>
+<ul>
+<li class="">The suffix comes from the content of the build&#x27;s source files, not the Git commit
+SHA. There&#x27;s no counter or timestamp, so the same source always gives the same
+version.</li>
+<li class="">Artifact digests, not version strings, identify the exact bytes.</li>
+<li class="">Every ordinary build produces a snapshot version like this. Only
+<a href="#authenticated-release-staging" class="">release staging</a> produces exact release versions.</li>
+</ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage-and-prerequisites">Usage and prerequisites<a href="#usage-and-prerequisites" class="hash-link" aria-label="Direct link to Usage and prerequisites" title="Direct link to Usage and prerequisites" translate="no">​</a></h2>
-<p>Run <code>oyzu build</code> in a supported project with its existing native inputs and the
-corresponding provisioned build image. No new Oyzu configuration is required. Git must be available on
-the host. Git metadata is observed locally before native preparation; no automatic
-fetch occurs. An exported directory without Git uses native source snapshots,
-or <code>0.0.0</code> snapshots when the builder has no native application version.
-See <a class="" href="/docs/reference/rust">Rust builds</a> and <a class="" href="/docs/reference/build-verification">build verification</a> for native preparation and execution prerequisites.
-The implementation uses portable Git subprocesses; cross-host acceptance is pending.</p>
-<p>An ordinary single-package repository at version <code>1.4.2</code>, with ancestor tag
-<code>v1.4.2</code> and a subsequent <code>feat: add endpoint</code> commit, resolves the next base to
-<code>1.5.0</code>. Artifacts receive <code>1.5.0-dev.g&lt;12-character-source-hash&gt;</code>. The suffix remains
-content-derived, not the Git commit SHA. No wall-clock counter is used. Artifact
-digests, not version strings, identify final bytes.</p>
-<p><strong>Versions finalized after hooks</strong> (captured Node builds, OEP-0011 handoff K2). For a target with a
-<code>pre_build</code> hook that declares <code>outputs</code>, the hash covers the target&#x27;s source scope <strong>without the hook&#x27;s own
-script</strong> plus the digest of the files the hook wrote under its declared outputs. The hook therefore counts as a
-generator: editing its script without changing what it writes keeps the version, and a change in what it writes
-changes the version and the package. The script stays in the hash when a builder stage reads or writes it, or
-when it is not named as an argument of the hook&#x27;s command. <code>plan.json</code> records the <strong>pre-hook source version</strong>
-(the hash without the hook output), which the actions before the hook run with; the final version is recorded in
-the target&#x27;s post-hook plan (<code>plans/&lt;target&gt;.post-hooks.json</code>) and the manifest. See
-<a class="" href="/docs/reference/action-cache#hooks-as-always-run-actions">hooks as always-run actions</a>. The same version results with
-and without <code>--no-cache</code>. Other builders, other hook phases and the native host path keep the plain
-source hash.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-command-development-scope">Final-command development scope<a href="#final-command-development-scope" class="hash-link" aria-label="Direct link to Final-command development scope" title="Direct link to Final-command development scope" translate="no">​</a></h2>
-<p>On the captured Unix executor path, a target can refine its development source
-suffix after preparation and final command selection. Every selected command
-must have a complete, bounded, confinable stage contract and remain cacheable.
-The source membership is the union of shipping-command reads, declared inputs,
-and configuration/build/lock paths captured by their existing inventory owners.
-Check-only reads can leave the version scope only when their complete writes
-cannot reach a shipping read, directly or through another check.</p>
-<p>This is a positive native read boundary: unowned shared files need a consumer
-instead of changing every eligible target&#x27;s version. Literal optional reads stay
-in the boundary while absent, so creating the file changes its consumers&#x27; source
-suffix. Source identity and native dependency captures remain whole-tree facts.</p>
-<p>The existing builder version-revision and plan compiler bind the revised version
-before execution, including independent target branches. Membership and command
-contracts must remain stable when the plan is rebuilt; otherwise the original
-plan, dependencies and versions remain together. Acquisition is not repeated.
-Reuse-disabled execution retains the same private views and source boundary.</p>
-<p>Windows, unsupported host paths, cross-target prerequisites, hooks, authored
-replacements, projected sources and materialized artifact inputs retain their
-established conservative scope. Missing captured control provenance or incomplete
-command evidence also keeps that scope. Existing hook finalization remains a
-separate supported path. The connected shared-source candidate is still awaiting
-its unchanged Linux acceptance run; see the
-qualification record.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="declared-cross-target-inputs">Declared cross-target inputs<a href="#declared-cross-target-inputs" class="hash-link" aria-label="Direct link to Declared cross-target inputs" title="Direct link to Declared cross-target inputs" translate="no">​</a></h2>
-<p>The captured Node cross-target flow is demonstrated on Windows with Linux Docker
-workers, and ordinary native Go and Rust pairs are demonstrated on Windows.
-The authored/deleted/transitive and frozen historical-root regressions pass.
-F2&#x27;s agreed functional scope is complete on those recorded profiles, including
-full workspace tests, strict Clippy, the current captured pair and all nine real
-CLI task behaviors. Broader hosts, native check-selection qualification and
-hardening remain separate; this does not complete F1, F3 or F4.
-Its existing <code>depends_on</code>, task
-and artifact relationships supply the prerequisite closure, and <code>build.yaml</code>
-<code>inputs</code> supply authored paths, including paths authored by a prerequisite
-outside that prerequisite&#x27;s directory. Each consumer retains its own native package
-scope and tag baseline; a producer feature can advance the consumer against
-that baseline without advancing an unrelated target. No import inference or
-coordinated release-group policy is added.</p>
-<p>Commit impact intersects native/declared ownership with the build&#x27;s frozen
-source selection, including authored ignore overrides. Deleted paths are tested
-against captured rules rather than dropped because they are absent from the
-current tree. Git paths remain relative to the repository root even when the
-workspace is nested. Editing live ignore rules after capture does not change
-the inference inputs. Plan/manifest <code>source.selection</code> and version-history
-evidence retain replay inputs; version decisions record <code>inputScope.declaredPaths</code>.
-Inputs in a different Git repository fail with
-<code>version-inputs-outside-repository</code>; keep the declared closure within the
-captured repository. History acquisition and release authority remain unchanged.</p>
-<p>The bounded real-Git scope/history and Source execution regressions pass in the
-full workspace run at <code>5d22a8ac</code>: 1,838 passed, zero failed, 37 existing prerequisite
-skips and zero filtered. Every workspace/doc-test target completed. Corrected
-artifact, prerequisite and timing cases pass with their original assertions;
-the shared path-wrapping regression and unchanged environment-inspection assertion
-also pass. Strict workspace/all-target Clippy passed at <code>c503a2d8</code> with warnings
-treated as errors. The final captured regression against the manifest-verified
-<code>82400b4d</code> CLI passes, as do all nine original real CLI task behaviors using that
-same pair at <code>718a350b</code>. Earlier failures and revision-specific
-evidence remain in the completion record.
-The real
-<code>tooling/test-cross-target-version.py</code> captured pair passed with the <code>82400b4d</code>
-CLI and unchanged compiled inputs at <code>68026056</code>:</p>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Declared relationship</th><th>Producer base</th><th>Consumer base</th><th>Unrelated base</th></tr></thead><tbody><tr><td>Consumer depends on producer</td><td><code>1.5.0</code></td><td><code>2.4.0</code></td><td><code>4.1.0</code></td></tr><tr><td>Edge removed</td><td><code>1.5.0</code></td><td><code>2.3.1</code></td><td><code>4.1.0</code></td></tr></tbody></table></div>
-<p>Both builds produced snapshot coordinates derived from these bases, using each
-subject&#x27;s own baseline. The pair passed in 218.0 seconds. Each executed 21 actions,
-passed nine native checks and seven tests, collected three JUnit and three LCOV
-reports and delivered three npm archives. Bundle inspection and installation and
-execution in independent offline native consumers passed. Authored files, Git
-state and tool locks remained unchanged by each build. This fixture declares no
-authored <code>inputs</code>, so it does not qualify authored ignore overrides.
-See the F2 proof boundary
-for the required native artifact, independent-consumer and unchanged-input proof.</p>
-<p>The prepared probe explicitly selects captured execution with <code>--isolated --full --jobs 1 --no-cache</code>, checks collected native test/coverage reports and
-bundle inspection, then installs the delivered archives into an independent
-native consumer. It requires a provisioned npm/Node quality image, its captured
-executor and Oyzu-managed Python/Node/npm. The first attempt failed before
-execution with <code>NEEDS_USER_NAMESPACES</code> (exit 3) when its session could not access
-Docker and automatic isolation selected Linux-only <code>crun</code>. The pair passed from
-a Docker-capable managed runner with the same CLI, fixture and lock. Verify
-Docker access from the actual managed runner session on Windows. Captured proof
-does not establish ordinary native-host version behavior.</p>
-<p>Supply a genuine already-provisioned <code>node = &quot;22&quot;</code> tool lock with the probe&#x27;s
-required <code>--tool-lock</code> argument and its matching managed store with <code>--store</code>.
-The harness copies the original lock before creating Git baselines and preserves
-it in both the producer checkout and independent consumer; it never pins or
-installs tools. A captured Linux build alone does not prove that the pinned
-Node/npm is installed for the consumer&#x27;s host platform.
-The probe writes generated JavaScript with LF line endings on every host so
-Windows fixture authoring preserves the mandatory native format-check contract.</p>
-<p>The separate prepared native probe is
-<code>tooling/test-native-cross-target-version.py --cli &lt;compiled-cli&gt; --store &lt;managed-store&gt; --tool-lock &lt;genuine-go-lock&gt; --evidence-dir &lt;new-directory&gt;</code>.
-It requires already-installed Go 1.24.13 and managed Python, uses the ordinary
-host build with <code>--full --no-docker --jobs 1 --no-cache --offline</code>, and executes
-the exported binaries outside the generated checkout. It checks native reports,
-per-subject baselines, artifact filenames and unchanged source/lock bytes with
-and without the declared edge. Go versions are artifact coordinates; this probe
-does not require application version injection. Source&#x27;s frozen host
-<code>source.projections</code> contract is now integrated, preserving its aggregate
-identity. The imported contracts pass the structural checker after its earlier
-nonlocal-reference failure.</p>
-<p>The native Go implementation now receives original local Git history, the
-configured strategy and the declared closure&#x27;s frozen projection admission and
-captured bytes. It uses the shared resolver and binds its decision to the native
-output filename and command, plan and manifest. History records are frozen into
-the plan before its digest is computed. The version-scope digest does not replace
-Source&#x27;s aggregate projection identity. This wiring compiled on Windows at
-<code>6428b146</code>; both CLI exports matched their manifest hashes, and preserved-bundle
-inspection passed. The native probe then passed both cases in 58.3 seconds:
-the consumer base was <code>2.4.0</code> with the edge and <code>2.3.1</code> without it, while the
-producer remained <code>1.5.0</code> and the unrelated subject <code>4.1.0</code>. Each build executed
-12 actions, passed four native tests, collected three JUnit and three coverage
-reports, and delivered three versioned binaries. Both bundle inspections and all
-six copied binary executions outside the checkout passed. Source, Git and locks
-remained unchanged. The native output still reports incomplete check-selection
-evidence; this proof does not establish complete selected-check coverage.</p>
-<p>Rust native projection is demonstrated on the Windows three-application pair.
-Private native Cargo paths
-reuse the existing manifest/dependency projector, private lock reconciliation
-runs offline, and native metadata supplies artifact versions. Stable executable
-names remain unchanged. Full/CI, explicit tags/conventional strategies, optimized and distributed builds stamp the
-inferred version into <code>CARGO_PKG_VERSION</code>. Local fast development builds retain
-declared Cargo package identities for incremental reuse and record the actual
-<code>compiledVersion</code> beside the source-specific artifact <code>version</code>; see
-<a class="" href="/docs/reference/local-builds">local compilation versions</a>.
-Run <code>tooling/test-native-rust-cross-target-version.py</code> with the same
-required probe arguments and already-installed Rust 1.99.1, rustfmt, Clippy,
-LLVM tools, cargo-nextest and cargo-llvm-cov. The probe checks actual binaries,
-native reports and per-subject decisions with and without the edge; it never
-installs tools. The new wiring compiled on Windows at <code>4ede08d1</code>; both CLI exports
-matched their manifest hashes, and preserved-bundle inspection passed. The native
-Rust pair then passed in 44.3 seconds: consumer base <code>2.4.0</code> with the edge and
-<code>2.3.1</code> without it, producer <code>1.5.0</code> and unrelated <code>4.1.0</code> in both cases. Each
-build passed 12 actions and four tests, collected three JUnit and three Cobertura
-reports, and delivered three binaries. Both inspections and six independent
-binary executions passed. The binaries&#x27; compiled <code>CARGO_PKG_VERSION</code> matched
-the inferred snapshot versions and artifact metadata, including the producer&#x27;s
-new capability. Authored manifests, native/tool locks and Git remained unchanged.
-The launcher restored child-only Temp and compiler-job environment values and
-their presence. Native check-selection evidence is still incomplete; this fixture
-has no authored inputs. Other host adapters retain their existing version behavior.</p>
+<ul>
+<li class="">Run <code>oyzu build</code> in a supported project. No Oyzu configuration is needed.</li>
+<li class="">Git must be on the host. Oyzu reads your repository before the build starts.</li>
+<li class="">If history is missing (for example in a shallow CI clone), Oyzu can
+<a href="#acquiring-missing-history" class="">fetch it read-only</a>.</li>
+<li class="">A folder exported without Git uses the native version, or <code>0.0.0</code> when the builder
+has no native version, plus the source suffix.</li>
+<li class="">Oyzu never edits your checkout. Inferred versions are written only into the
+private copies of manifests used for the build.</li>
+</ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="resolution-and-evidence">Resolution and evidence<a href="#resolution-and-evidence" class="hash-link" aria-label="Direct link to Resolution and evidence" title="Direct link to Resolution and evidence" translate="no">​</a></h2>
-<p>The default is <code>auto</code>. An optional ordinary setting in <code>oyzu.toml</code> selects one
-of four fixed strategies; this is not an expression language:</p>
+<p>Choose a strategy in <code>oyzu.toml</code> if the default doesn&#x27;t suit you:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">version</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">strategy</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;tags&quot;</span><br></div></code></pre></div></div>
 
 
@@ -237,230 +71,480 @@ of four fixed strategies; this is not an expression language:</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Strategy</th><th>Base selection</th></tr></thead><tbody><tr><td><code>auto</code></td><td>Reconcile native metadata, exact tags, nearest stable tags and Conventional Commit impacts; fall back to native metadata or <code>0.0.0</code> when history cannot supply a baseline</td></tr><tr><td><code>native</code></td><td>Use the native version and ignore tag/bump selection; fail if the project has no native version</td></tr><tr><td><code>tags</code></td><td>Use an exact applicable tag, otherwise the nearest stable first-parent tag; do not infer a bump or require native metadata to match</td></tr><tr><td><code>conventional</code></td><td>Use the auto reconciliation rules, requiring complete history and an applicable baseline or exact tag; reject unclassified relevant commits after the baseline</td></tr></tbody></table></div>
-<p>All four still generate source snapshots. A strategy never changes publication or
-signing authority. The setting follows the normal <a class="" href="/docs/reference/configuration">configuration cascade</a>,
-profiles, local-override eligibility and administrative constraints. Builders consume
-the frozen effective value, and it participates in computation identity. Omit the
-setting for existing behavior. Unknown values fail configuration validation.</p>
-<p><code>version-needs-native</code>, <code>version-needs-tags</code> and <code>version-needs-history</code> identify
-missing strategy inputs. Supply the native declaration or complete local Git
-history/tags, or select a suitable strategy. <code>version-unclassified-commits</code> requires
-clarifying commit intent or selecting a less strict strategy. For native version
-schemes without a supported logical mapping, <code>auto</code> and <code>native</code> retain native
-snapshots; <code>tags</code> and <code>conventional</code> fail with <code>unsupported-version-strategy</code>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-history-is-read-and-when">What history is read, and when<a href="#what-history-is-read-and-when" class="hash-link" aria-label="Direct link to What history is read, and when" title="Direct link to What history is read, and when" translate="no">​</a></h2>
-<p>Git history is observed once per repository per build, shared by every target in it. How much
-commit detail is read depends on what can change the result:</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Strategy</th><th>How the base version is chosen</th></tr></thead><tbody><tr><td><code>auto</code> (default)</td><td>Combine the native version, exact tags, the nearest stable tag and commit impacts. Fall back to the native version or <code>0.0.0</code> when history can&#x27;t supply a baseline.</td></tr><tr><td><code>native</code></td><td>Use the native version. Ignore tags and commit bumps. Fails if there&#x27;s no native version.</td></tr><tr><td><code>tags</code></td><td>Use an exact tag on the commit, otherwise the nearest stable tag. No bump is inferred and the native version doesn&#x27;t have to match.</td></tr><tr><td><code>conventional</code></td><td>Like <code>auto</code>, but requires complete history and a baseline or exact tag, and rejects relevant commits that aren&#x27;t Conventional Commits.</td></tr></tbody></table></div>
+<p>Every strategy still produces snapshot versions, and none changes who may publish or
+sign. The setting follows the normal <a class="" href="/docs/reference/configuration">configuration cascade</a>,
+including profiles and administrative constraints. Unknown values fail validation.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-the-version-is-computed">How the version is computed<a href="#how-the-version-is-computed" class="hash-link" aria-label="Direct link to How the version is computed" title="Direct link to How the version is computed" translate="no">​</a></h3>
 <ul>
-<li class=""><strong>Bounded (CI, <code>--full</code>, a <code>ci</code> profile, and the <code>tags</code> and <code>conventional</code> strategies).</strong> Commit
-messages and changed paths are read only for commits after the oldest of every tag subject&#x27;s
-nearest stable first-parent release tag. Resolution excludes ancestors of each baseline, so older
-history cannot change a decision; the bounded read gives the same decisions as reading everything
-(tested against the full history, including merges and subject-scoped tags). Without any stable
-release tag no baseline exists and no commit detail is read. A shallow clone is read as it is.</li>
-<li class=""><strong>Head only (local fast builds on the default <code>auto</code> strategy, and <code>native</code>).</strong> The head commit,
-prefix, shallow state and tag list are still recorded, and an exact tag on the built commit still
-sets the version, but no commit messages are read. The version falls back to the native version
-(or <code>0.0.0</code>) plus the source suffix, with reason <code>native-fallback-local-history-skipped</code> and
-<code>historyComplete: false</code>; the history record&#x27;s traversal is <code>head-only</code>. Use <code>--full</code>, the CI
-context or an explicit <code>tags</code>/<code>conventional</code> strategy for the commit-driven version a release
-build would stamp. A local artifact&#x27;s version can therefore differ from CI&#x27;s for the same commit.</li>
+<li class="">The first stable tag that applies to the package, walking first-parent history, is
+the baseline.</li>
+<li class="">Commits after it (including merged ones) bump the version once, by the largest
+impact: a breaking change bumps major, <code>feat</code> bumps minor, <code>fix</code> bumps patch. Other
+Conventional Commit types don&#x27;t bump.</li>
+<li class="">A native version already ahead of the baseline is kept if it&#x27;s at least the
+computed minimum.</li>
+<li class="">An RC tag matching a stable native version keeps its prerelease label in the
+snapshot.</li>
 </ul>
-<p>The first applicable stable tag walking first-parent ancestry is the baseline.
-Merged commits still contribute declared impacts: breaking change, feature and
-fix choose the maximum major/minor/patch increment once. Other conventional types
-have no bump. Unclassified relevant commits are retained in evidence; this increment
-never claims sufficient release evidence. A native version already ahead of the
-baseline is retained if it meets the computed minimum. Incompatible exact tags,
-ambiguous versions on one tagged commit and insufficient explicit version advances
-fail with <code>version-conflict</code> or <code>ambiguous-version-tags</code> diagnostics. Correct the
-native declaration/tag intent and rerun; the builder never edits checkout metadata.</p>
-<p>Exact local tags still produce source snapshots and cannot authorize publication.
-They do name the release: <code>oyzu publish</code> reads the <code>exactTags</code> a published build
-records as its GitHub release tag, so the version and the release tag come from
-the same fact and no tag is committed. Builds of one destination must agree, and
-<code>oyzu publish --tag</code> overrides; see
-<a class="" href="/docs/reference/publish#which-release-the-release-tag">which release</a>. Only a tag that
-applies to the package is recorded (the tag namespace rules below): an unscoped
-<code>v1.4.0</code> on a member of a multi-package Cargo workspace records nothing, so such
-a release passes <code>--tag</code>. Artifact records of the Rust builder and Node workspace
-package archives carry <code>extensions[&quot;oyzu.dev/versioning&quot;].package</code>, naming the
-package whose decision they come from.
-An RC tag matching a stable native core retains its prerelease label in the snapshot.
-Shallow history conservatively falls back to native source snapshots with an explicit
-reason; users can provision complete history before retrying. No network request is
-made to repair history. An unresolvable repository error is reported rather than
-being interpreted as an unversioned export.</p>
-<p>Cargo evaluates original metadata and then projects inferred versions and local
-package references only in its private preparation tree. Node managers capture
-native package/workspace facts and project the same decisions during isolated
-execution, including the root and member package metadata and local references. The native package version,
-planned coordinate and collected artifact version agree. Build output explains each
-package decision. Target records in <code>dist/plan.json</code> and <code>dist/manifest.json</code> retain
-<code>extensions[&quot;oyzu.dev/versioning&quot;]</code>: native version, resolved base/version, source
-digest, commit, baseline tag/commit, exact tags, contributing/unclassified commits,
-history completeness, reason, algorithm <code>strategy</code>, configured <code>requestedStrategy</code>, snapshot intent and denied production
-eligibility. These are local observations, not authenticated source-control facts.</p>
-<p>The plan and manifest also retain <code>extensions[&quot;oyzu.dev/version-history&quot;]</code>, keyed
-by build target. Each entry contains a digest and the captured local history record:
-HEAD, repository prefix, shallow status, local tag names/object IDs/peeled commits,
-annotated-versus-lightweight identity, and reachable commit parents/messages/paths.
-Decisions reference this record through <code>historyDigest</code> and record first-parent
-<code>baselineDistance</code> and scoped <code>analyzedCommits</code>. The plan digest binds these inputs.
-The record labels remote freshness <code>unknown</code> and verification <code>local-observation</code>;
-a full local clone is not proof of the remote tag inventory. Failed preparation
-retains any history already captured in the failed manifest. History records include
-commit messages and paths; treat bundles as repository information when sharing.</p>
-<p>Helm projects the root chart version in private preparation; <code>appVersion</code> and
-dependency chart versions keep their native meanings. Go uses inferred versions
-for application artifact names and the manifest; it does not inject a version
-variable into compiled application code. Docker uses the version in the OCI
-archive name, exported image reference and manifest. Go and Docker record
-<code>nativeVersion: null</code>: an exact tag supplies their base, while an ancestor tag
-supplies the baseline for impact analysis. Without either, the base is <code>0.0.0</code>.
-Go resolves each native workspace module independently using captured import and
-test-import edges. Directory-scoped tags supply module baselines, binary coordinates
-use their owning module&#x27;s decision, and module zip/mod/info outputs retain native
-<code>v</code> prefixes and RC snapshot qualifiers. A path-major fallback is permitted only
-without a selected version baseline; incompatible explicit versions fail native
-module validation. See <a class="" href="/docs/reference/go#native-module-artifacts">Go versions</a>.</p>
-<p>Python&#x27;s native <code>packaging.version.Version</code> supplies normalized facts; the shared
-resolver does not parse PEP 440. Stable versions with up to three release components
-and alpha/beta/RC versions can participate in SemVer tag inference. For example,
-base <code>1.5.0-rc.2</code> becomes <code>1.5.0rc2.dev0+g&lt;source-hash&gt;</code>. Unrepresentable tag
-prerelease labels fail rather than losing their qualifier. Native epochs,
-postreleases, existing development versions and longer release tuples retain a
-native snapshot with reason <code>native-ecosystem-source</code>; Git bump inference for
-those version schemes is pending. Snapshots use development counter zero and
-replace original local labels with source identity; the original normalized native
-version remains recorded. The native parser&#x27;s <a href="https://packaging.pypa.io/en/stable/version.html" target="_blank" rel="noopener noreferrer" class="">version API</a>
-owns normalization and validity.</p>
-<p>Static PEP 621 pip/uv/Poetry projects project the selected version in their private
-<code>pyproject.toml</code>. A project that lists <code>version</code> in <code>project.dynamic</code> has no native
-version during preparation: its base comes from tags (or <code>0.0.0</code>) and maps to a PEP 440
-snapshot, which the private <code>pyproject.toml</code> receives as a static version; see
-<a class="" href="/docs/reference/python-preparation#dynamic-versions">dynamic versions</a>. Legacy setuptools captures native facts offline, then projects the
-version through its distribution metadata. Its sdist stages a generated <code>setup.py</code>
-wrapper containing the original program and a fixed version override so rebuilding
-the source archive retains the artifact&#x27;s version. Checkout sources and the source
-used by test/quality tasks remain unchanged. The wrapper supports native setuptools
-and distutils setup entry points; arbitrary custom distribution construction is not
-a qualified version provider. Requirements-only applications have no native version
-and retain SemVer application coordinates, including tag inference. Python dependency
-captures use adapter layout version 2; recreate older captures for version evidence.</p>
-<p>JVM preparation removes the conventional native <code>-SNAPSHOT</code> suffix when the
-remaining value is SemVer, while retaining the original declaration in evidence.
-Other native version forms keep their existing base and receive a source snapshot
-with reason <code>native-ecosystem-source</code>; arbitrary Maven/Gradle qualifiers are not
-silently reinterpreted as SemVer. Gradle&#x27;s <code>unspecified</code> version permits a tag-derived
-base. Ant retains its native metadata adapter&#x27;s <code>0.0.0</code> fallback when no version
-property exists.</p>
-<p>Maven and Gradle first capture native models in an isolated preparation worker.
-The host resolves versions and writes a frozen <code>version-plan.json</code>; native tooling
-then applies it in the same private workspace before dependency capture is frozen.
-Maven makes inherited module versions explicit using its native raw model writer
-in the private copy, then uses the versions plugin for module/parent/dependency
-projection and checks the resulting reactor coordinates. Gradle uses project directory identities
-across the root and included builds; archive tasks consume each selected version
-again during offline execution. Ant reevaluates its native model using the selected
-version properties and records the version in the exported JAR manifest.</p>
-<p>Maven modules use unique artifact IDs as tag subjects, or <code>groupId.artifactId</code> when
-artifact IDs collide. Gradle projects use unique native names, or project directory
-paths when names collide. Root tags are admitted only for a single native project;
-multi-project builds use scoped tags such as <code>library/v1.4.2</code>. Equal native versions
-alone do not imply a coordinated group. Maven captures local upstream projects from
-the native reactor graph, including reactor parent relationships. Gradle captures
-resolved project-component identities across root and included builds, using native
-build-tree paths to distinguish projects. Both feed the same transitive input-scope
-resolver as Cargo and Node; no dependency resolver is recreated in Rust. Gradle
-resolves these edges only during captured preparation/execution, through its existing
-repository boundary. Lightweight host metadata observation does not resolve them.
-Unresolved Gradle graph results fail preparation rather than omit a dependency.
-This requires the provisioned Gradle 8.14.3 profile and the current Maven metadata
-extension. Reprovision an older Maven image if native reactor edges are missing.
-Maven/Gradle dependency adapter layouts are now 4/3 respectively; older captures
-must be recreated. Coordinated inherited-version release groups remain unfinished.</p>
-<p>Independent Cargo and Node members admit package-name tag namespaces. Unscoped root tags are
-used only for a single Cargo workspace package or standalone Node package at the
-Git repository root. Cargo and Node use captured native local dependency edges to
-compute each member&#x27;s transitive input scope before commit analysis. Development,
-build, optional and peer edges participate when represented by the native model;
-this is conservative build-input impact, not a claim that every dependency change
-changes the consumer&#x27;s public API. Cycles form a finite input closure and do not
-imply that packages share a release version.</p>
-<p>For example, with <code>app -&gt; bridge -&gt; shared</code> and a separate <code>independent</code> package,
-a <code>feat</code> changing only <code>shared</code> advances the first three bases from <code>1.4.2</code> to
-<code>1.5.0</code>; <code>independent</code> remains <code>1.4.2</code>. Each package evaluates impacts against its
-own scoped baseline. Native packaging projects each dependency&#x27;s chosen version
-into the consumer&#x27;s metadata, even when their versions differ. Checkout manifests
-and locks remain unchanged.</p>
-<p>The most specific native member directory owns a changed path. Paths outside member
-directories, such as workspace manifests, lock files and root build inputs, count
-as shared inputs for all members. This deliberately favors conservative impact over
-guessing file imports. The decision&#x27;s <code>inputScope</code> records selected <code>directories</code>
-and <code>workspaceDirectories</code>, making the scope inspectable. A root package does not
-implicitly own every sibling member; its declared local edges select those inputs.
-This does not yet infer undeclared cross-member imports, Oyzu task-input closures
-across separate targets, or coordinated release groups. Other builders&#x27; native
-dependency closures and explicit tag namespace settings remain unfinished.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remaining-scope-and-verification">Remaining scope and verification<a href="#remaining-scope-and-verification" class="hash-link" aria-label="Direct link to Remaining scope and verification" title="Direct link to Remaining scope and verification" translate="no">​</a></h2>
-<p>The implementation finish line is recorded in the audited
-completion checklist.
-It distinguishes missing functional behavior and its acceptance evidence from
-broader compatibility, hardening and the separate publication implementation.</p>
-<p>Native dynamic version providers beyond the captured native adapters, verified
-CI release/candidate versions, provider evidence, history acquisition, remote tag
-inventory verification and destination-specific mappings are pending. No release or
-publication capability follows from this increment.</p>
-<p><code>tooling/test-version-inference.py --cli &lt;compiled-cli&gt; --evidence-dir &lt;new-directory&gt;</code>
-creates a real Git repository, invokes the compiled CLI, opens the resulting Cargo
-archive, verifies plan/manifest versions and reports, changes source without a commit,
-and checks exact-tag conflict failure. The default uses the provisioned Rust build image. <code>--builder node</code> runs the
-corresponding npm package flow and inspects the <code>.tgz</code> package metadata.
-<code>--strategy native</code>, <code>tags</code> or <code>conventional</code> writes the corresponding <code>oyzu.toml</code>
-setting and checks its recorded selection, artifact version, dirty-source identity
-and exact-tag behavior. The default leaves configuration absent to prove inference.
-<code>--builder helm</code> inspects packaged <code>Chart.yaml</code>; <code>--builder go</code> checks the produced
-binary and its versioned coordinate; <code>--builder docker</code> checks the exported OCI
-reference. Each compares plan/manifest versions, checks required reports and
-preserves checkout metadata. Go/Docker also exercise an exact tag without native
-version metadata, verifying that it still produces a snapshot. <code>--builder python</code>,
-<code>python-uv</code>, <code>python-poetry</code> and <code>python-legacy</code> inspect wheel METADATA and sdist
-PKG-INFO; <code>python-pip</code> checks the requirements application&#x27;s embedded manifest.
-The native legacy probe separately rebuilds a wheel from the sdist offline and
-executes the installed artifact. <code>java-ant</code>, <code>java-maven</code> and <code>java-gradle</code> exercise
-Ant, a Maven reactor and a Gradle composite respectively, checking versioned
-artifacts, native Maven/Ant embedded metadata, module decisions and collected
-reports. Gradle archive filenames/coordinates are checked; arbitrary JAR manifest
-attributes remain native Gradle behavior. Native
-workspace inference and pnpm/Yarn packaging use the workspace probe below; measured
-results and remaining manager limitations are recorded in implementation status.
-Unit checks cover real Git ancestry, merged features, exact-tag conflicts and bump
-selection. Results are recorded in <a class="" href="/docs/support/capabilities">implementation status</a>
-after execution; this description alone is not acceptance evidence.</p>
-<p><code>tooling/test-workspace-version-inference.py --builder node|rust --cli &lt;compiled-cli&gt; --evidence-dir &lt;new-directory&gt;</code> exercises dependency changes, a separately changed
-member and a shared root input through real scoped-tag repositories. It checks
-independent native archive versions, rewritten local dependency references,
-plan/manifest scopes, reports, bundle inspection and unchanged checkout metadata.
-For Node, <code>--manager npm|pnpm|yarn</code> selects the native lock and packaging flow
-(<code>npm</code> is the default). pnpm and Yarn locks are generated offline using the
-explicitly provisioned host manager before capture; Node fixture sources are
-formatted with the provisioned native Prettier. The corresponding build images
-must also be provisioned. This is test setup, not installation during a build.</p>
-<p>The same probe accepts <code>--builder java-maven|java-gradle --scenario dependency-feature</code>
-for a Maven reactor or Gradle composite. It adds an unrelated module and scoped tags,
-changes a shared library, then checks consumers&#x27; inferred versions and unchanged
-unrelated bases. Maven checks seven POM/JAR artifacts, embedded package versions,
-parent and local dependency references; Gradle checks four versioned JARs, including
-the included build. Both check recorded scopes, reports, bundle inspection and
-unchanged native source files. This representative JVM acceptance does not claim
-the later independent-fix/shared-root scenarios have been executed on those managers.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="third-party-impact">Third-party impact<a href="#third-party-impact" class="hash-link" aria-label="Direct link to Third-party impact" title="Direct link to Third-party impact" translate="no">​</a></h2>
-<p>The resolver uses semver 1.0.28, already present in Cargo.lock and now a direct
-dependency. Its registry source declares <code>MIT OR Apache-2.0</code>, Rust 1.68, and includes
-LICENSE-MIT and LICENSE-APACHE. No upstream source is copied or modified and no
-license alternative or distribution approval is selected. The factual compliance
-baseline tracks the direct dependency; release audit obligations remain unchanged.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/release-check"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Checking whether a build would ship</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/scan"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Experimental scan command</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage-and-prerequisites" class="table-of-contents__link toc-highlight">Usage and prerequisites</a></li><li><a href="#final-command-development-scope" class="table-of-contents__link toc-highlight">Final-command development scope</a></li><li><a href="#declared-cross-target-inputs" class="table-of-contents__link toc-highlight">Declared cross-target inputs</a></li><li><a href="#resolution-and-evidence" class="table-of-contents__link toc-highlight">Resolution and evidence</a></li><li><a href="#what-history-is-read-and-when" class="table-of-contents__link toc-highlight">What history is read, and when</a></li><li><a href="#remaining-scope-and-verification" class="table-of-contents__link toc-highlight">Remaining scope and verification</a></li><li><a href="#third-party-impact" class="table-of-contents__link toc-highlight">Third-party impact</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exact-tags-and-publishing">Exact tags and publishing<a href="#exact-tags-and-publishing" class="hash-link" aria-label="Direct link to Exact tags and publishing" title="Direct link to Exact tags and publishing" translate="no">​</a></h3>
+<p>An exact tag on the built commit still produces a snapshot version and doesn&#x27;t allow
+publishing by itself. It does name the release: <code>oyzu publish</code> uses the <code>exactTags</code>
+a build records as its GitHub release tag, so the version and the release tag always
+agree. Builds for one destination must agree, and <code>oyzu publish --tag</code> overrides it.
+See <a class="" href="/docs/reference/publish#which-release-the-release-tag">which release</a>.</p>
+<p>Only tags that apply to the package are recorded (see <a href="#tag-names-in-monorepos" class="">tag names</a>).
+For example, an unscoped <code>v1.4.0</code> on a member of a multi-package Cargo workspace
+records nothing, so publishing it needs <code>--tag</code>. Artifacts from the Rust builder and
+Node workspace packages carry <code>extensions[&quot;oyzu.dev/versioning&quot;].package</code>, naming the
+package their version came from.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-recorded">What is recorded<a href="#what-is-recorded" class="hash-link" aria-label="Direct link to What is recorded" title="Direct link to What is recorded" translate="no">​</a></h3>
+<p>Each target in <code>dist/plan.json</code> and <code>dist/manifest.json</code> has
+<code>extensions[&quot;oyzu.dev/versioning&quot;]</code> with the native version, resolved base and
+version, source digest, commit, baseline tag and commit, exact tags, contributing and
+unclassified commits, whether history was complete, the reason, the <code>strategy</code> used
+and the configured <code>requestedStrategy</code>.</p>
+<p><code>extensions[&quot;oyzu.dev/version-history&quot;]</code> records the Git facts each decision used:
+<code>HEAD</code>, the repository prefix, shallow status, tags (names, object IDs and commits),
+and the commits read (parents, messages, paths). Decisions point to it with
+<code>historyDigest</code>, and record <code>baselineDistance</code> and <code>analyzedCommits</code>.</p>
+<p>These are local observations. They aren&#x27;t authenticated source-control facts and
+don&#x27;t make a build releasable. History records include commit messages and paths,
+so treat bundles as repository information when you share them.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="errors">Errors<a href="#errors" class="hash-link" aria-label="Direct link to Errors" title="Direct link to Errors" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Code</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td><code>version-needs-native</code></td><td>The strategy needs a native version and there isn&#x27;t one.</td><td>Declare the version natively, or pick another strategy.</td></tr><tr><td><code>version-needs-tags</code>, <code>version-needs-history</code></td><td>The strategy needs tags or complete history.</td><td>Fetch complete history and tags, or pick another strategy.</td></tr><tr><td><code>version-unclassified-commits</code></td><td><code>conventional</code> found relevant commits that aren&#x27;t Conventional Commits.</td><td>Reword the commits&#x27; intent, or pick a less strict strategy.</td></tr><tr><td><code>unsupported-version-strategy</code></td><td><code>tags</code> or <code>conventional</code> on a native version scheme Oyzu can&#x27;t map. (<code>auto</code> and <code>native</code> keep a native snapshot instead.)</td><td>Use <code>auto</code> or <code>native</code>.</td></tr><tr><td><code>version-conflict</code>, <code>ambiguous-version-tags</code></td><td>An exact tag conflicts with the native version, one commit has two version tags, or the native version is too low.</td><td>Fix the native declaration or the tags and rerun.</td></tr></tbody></table></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-history-is-read-and-when">What history is read, and when<a href="#what-history-is-read-and-when" class="hash-link" aria-label="Direct link to What history is read, and when" title="Direct link to What history is read, and when" translate="no">​</a></h2>
+<p>Oyzu reads Git history once per repository per build. How much it reads depends on
+the build:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Build</th><th>What is read</th></tr></thead><tbody><tr><td>CI, <code>--full</code>, a <code>ci</code> profile, or the <code>tags</code> / <code>conventional</code> strategy</td><td>Commit messages and changed paths back to each package&#x27;s nearest stable tag. Older history can&#x27;t change the result. If an <code>origin</code> is configured and the build is online, Oyzu also <a href="#acquiring-missing-history" class="">fetches</a> complete ancestry and a fresh tag list first.</td></tr><tr><td>Local fast build with <code>auto</code>, or <code>native</code></td><td>Only the head commit, shallow state and tag list. No commit messages.</td></tr></tbody></table></div>
+<p>So in a local fast build with <code>auto</code>, an exact tag can still set the version, but
+otherwise the version falls back to the native version (or <code>0.0.0</code>) plus the source
+suffix, with reason <code>native-fallback-local-history-skipped</code> and
+<code>historyComplete: false</code>. A local artifact&#x27;s version can therefore differ from CI&#x27;s
+for the same commit. Use <code>--full</code>, the CI context or the <code>tags</code>/<code>conventional</code>
+strategy to get the version a release build would use.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="acquiring-missing-history">Acquiring missing history<a href="#acquiring-missing-history" class="hash-link" aria-label="Direct link to Acquiring missing history" title="Direct link to Acquiring missing history" translate="no">​</a></h3>
+<p>When a build needs history it doesn&#x27;t have, Oyzu can fetch it read-only from a public
+<code>https://github.com/owner/repository</code> origin.</p>
+<ul>
+<li class="">Credentials, SSH and file URLs, queries and fragments are refused. Plain HTTP is
+allowed only for loopback hosts. The administrative <code>fetches.sources</code> allowlist also
+applies.</li>
+<li class="">Fetching is refused whenever organization management or <code>registries.routes</code> is
+in effect. Authenticated or managed Git connections aren&#x27;t supported; provide
+complete history locally instead.</li>
+<li class="">History is fetched into a private store under <code>cache/git-history</code> in the user data
+directory. Your checkout&#x27;s refs, tags, index and commit are never touched.</li>
+<li class="">A checkout that moves during the build, or a local tag that disagrees with the
+remote one, stops the build. Fetched tags never grant release permission.</li>
+<li class=""><code>--offline</code> never fetches, but reuses earlier fetched history for the same origin
+and <code>HEAD</code>.</li>
+<li class="">Local fast <code>auto</code> builds, <code>native</code> and <code>--plan</code> never fetch.</li>
+</ul>
+<p>If history can&#x27;t be fetched, <code>auto</code> keeps its snapshot fallback; <code>tags</code> and
+<code>conventional</code> stop before any build actions if their inputs are still missing.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Diagnostic</th><th>Cause</th><th>Fix</th></tr></thead><tbody><tr><td><code>SOURCE_DENIED</code></td><td>The origin URL or <code>fetches.sources</code> doesn&#x27;t allow this source.</td><td>Use a credential-free HTTPS GitHub origin, or ask your administrator to allow it.</td></tr><tr><td><code>CONFIG_OVERRIDE_DENIED</code></td><td>Organization management or registry routing is in effect.</td><td>Provide complete history and tags locally.</td></tr><tr><td><code>HISTORY_INPUT_MISSING</code></td><td>Offline, with no earlier fetch for this origin and <code>HEAD</code>.</td><td>Run once online, or provide complete history.</td></tr><tr><td><code>HISTORY_ACQUISITION_UNAVAILABLE</code></td><td>The source couldn&#x27;t be reached or exceeded its limits.</td><td>Restore access or provide complete history.</td></tr><tr><td><code>HISTORY_INTEGRITY_CONFLICT</code></td><td>Fetched or stored history failed validation. The build stops.</td><td>Investigate, remove the bad stored copy and retry.</td></tr><tr><td><code>version-conflict</code></td><td>Local and remote tags disagree, or the checkout moved.</td><td>Reconcile the tags and retry from a stable checkout.</td></tr></tbody></table></div>
+<p>The manifest records fetch outcomes and times in
+<code>extensions[&quot;oyzu.dev/history-acquisition&quot;]</code>; they don&#x27;t affect the version.</p>
+<p>Each online fetch currently downloads a full fresh copy, even if an earlier one had
+the same objects, and old copies aren&#x27;t cleaned up. This can add network and disk
+use to full builds.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tag-names-in-monorepos">Tag names in monorepos<a href="#tag-names-in-monorepos" class="hash-link" aria-label="Direct link to Tag names in monorepos" title="Direct link to Tag names in monorepos" translate="no">​</a></h2>
+<ul>
+<li class="">A standalone package at the repository root, or a single-package Cargo workspace,
+uses unscoped tags such as <code>v1.4.2</code>.</li>
+<li class="">Independent Cargo and Node members use package-name tags. Maven modules use the
+artifact ID (or <code>groupId.artifactId</code> when IDs collide). Gradle projects use the
+project name (or directory path when names collide). Multi-project builds need
+scoped tags such as <code>library/v1.4.2</code>.</li>
+<li class="">Go workspace modules use directory-scoped tags.</li>
+<li class="">Equal native versions never imply that packages are released together. For that,
+see <a href="#cargo-fixed-release-subjects" class="">Cargo fixed release subjects</a>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="dependencies-between-packages">Dependencies between packages<a href="#dependencies-between-packages" class="hash-link" aria-label="Direct link to Dependencies between packages" title="Direct link to Dependencies between packages" translate="no">​</a></h3>
+<p>Within a workspace, a change to a package also bumps the packages that depend on it.</p>
+<p>For example, with <code>app -&gt; bridge -&gt; shared</code> and a separate <code>independent</code> package, a
+<code>feat</code> that changes only <code>shared</code> moves the first three from <code>1.4.2</code> to <code>1.5.0</code>;
+<code>independent</code> stays at <code>1.4.2</code>. Each package is compared with its own tag, and each
+consumer&#x27;s metadata gets its dependencies&#x27; chosen versions.</p>
+<ul>
+<li class="">Dependencies come from the native model (Cargo and Node local dependency edges,
+Maven&#x27;s reactor, Gradle&#x27;s resolved project graph, Go imports). Development, build,
+optional and peer dependencies count. This is a cautious view of build inputs, not
+a claim about public API changes.</li>
+<li class="">A changed file belongs to the most specific member folder that contains it. Files
+outside every member (workspace manifests, lock files, root build inputs) count for
+all members.</li>
+<li class=""><code>inputScope</code> in each decision records the <code>directories</code> and <code>workspaceDirectories</code>
+used.</li>
+<li class="">Oyzu doesn&#x27;t guess undeclared imports between members.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="declared-cross-target-inputs">Declared cross-target inputs<a href="#declared-cross-target-inputs" class="hash-link" aria-label="Direct link to Declared cross-target inputs" title="Direct link to Declared cross-target inputs" translate="no">​</a></h2>
+<p>Separate targets can depend on each other through <code>depends_on</code>, tasks and artifact
+relationships, and through <code>inputs</code> paths in <code>build.yaml</code> (including paths outside the
+producer&#x27;s folder). A change in a producer can then bump its consumer&#x27;s version
+against the consumer&#x27;s own tag, without bumping unrelated targets.</p>
+<ul>
+<li class="">Changed paths are matched against the build&#x27;s recorded source selection, including
+your ignore overrides. Deleted paths count too.</li>
+<li class="">Git paths are relative to the repository root, even in a nested workspace.</li>
+<li class="">Decisions record <code>inputScope.declaredPaths</code>.</li>
+<li class="">Inputs in a different Git repository fail with
+<code>version-inputs-outside-repository</code>.</li>
+</ul>
+<p>This works for Node (isolated builds), and for native Go and Rust builds.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="final-command-development-scope">Final-command development scope<a href="#final-command-development-scope" class="hash-link" aria-label="Direct link to Final-command development scope" title="Direct link to Final-command development scope" translate="no">​</a></h2>
+<p>For isolated builds on Unix, Oyzu can narrow a target&#x27;s source suffix to the files
+its shipping commands actually read, so an unrelated shared file doesn&#x27;t change every
+target&#x27;s version.</p>
+<ul>
+<li class="">It applies only when every selected command has a complete, confinable stage
+contract and stays cacheable.</li>
+<li class="">The scope includes files the shipping commands read, declared inputs, and the
+configuration, build and lock files. Files only checks read are left out when the
+checks&#x27; outputs can&#x27;t reach a shipping command.</li>
+<li class="">An optional file that a command would read stays in scope while absent, so creating
+it changes the version.</li>
+<li class="">Windows, native host builds, cross-target prerequisites, hooks, custom
+replacements and materialized inputs keep the full source scope. So does any target
+whose command details are incomplete.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="versions-finalized-after-hooks">Versions finalized after hooks<a href="#versions-finalized-after-hooks" class="hash-link" aria-label="Direct link to Versions finalized after hooks" title="Direct link to Versions finalized after hooks" translate="no">​</a></h2>
+<p>For isolated Node builds, a <code>pre_build</code> hook that declares <code>outputs</code> counts as a
+generator.</p>
+<ul>
+<li class="">The version hash covers the target&#x27;s source without the hook&#x27;s own script, plus
+the files the hook wrote to its declared outputs. Editing the script without
+changing what it writes keeps the version; changing what it writes changes it.</li>
+<li class="">The script stays in the hash if a build stage reads or writes it, or if it isn&#x27;t
+an argument of the hook&#x27;s command.</li>
+<li class=""><code>plan.json</code> records the version before the hook runs; the final version is in
+<code>plans/&lt;target&gt;.post-hooks.json</code> and the manifest. See
+<a class="" href="/docs/reference/action-cache#hooks-as-always-run-actions">hooks as always-run actions</a>.</li>
+<li class=""><code>--no-cache</code> gives the same version. Other builders and hook phases use the plain
+source hash.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="builder-notes">Builder notes<a href="#builder-notes" class="hash-link" aria-label="Direct link to Builder notes" title="Direct link to Builder notes" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-cargo">Rust (Cargo)<a href="#rust-cargo" class="hash-link" aria-label="Direct link to Rust (Cargo)" title="Direct link to Rust (Cargo)" translate="no">​</a></h3>
+<ul>
+<li class="">Inferred versions and local package references are written only into Cargo&#x27;s
+private build copy.</li>
+<li class="">Full, CI, <code>tags</code>/<code>conventional</code>, optimized and distributed builds compile the
+inferred version into <code>CARGO_PKG_VERSION</code>.</li>
+<li class="">Local fast development builds keep the declared Cargo versions so incremental
+compilation can reuse work, and record the actual <code>compiledVersion</code> beside the
+artifact <code>version</code>. <code>--full</code> alone doesn&#x27;t change this. See
+<a class="" href="/docs/reference/local-builds">local builds</a>.</li>
+<li class="">Executable names don&#x27;t change.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="node">Node<a href="#node" class="hash-link" aria-label="Direct link to Node" title="Direct link to Node" translate="no">​</a></h3>
+<ul>
+<li class="">The native package name and version from <code>package.json</code> drive the version, for
+isolated and native host builds alike.</li>
+<li class="">With <code>native</code>, a package without a version fails before the build; add the version
+to <code>package.json</code>.</li>
+<li class="">Native host builds never change <code>package.json</code>. Isolated builds write the version
+into private copies of the root and member manifests and their local references.</li>
+</ul>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-node-facts-and-host-policy">Native Node facts and host policy<a href="#native-node-facts-and-host-policy" class="hash-link" aria-label="Direct link to Native Node facts and host policy" title="Direct link to Native Node facts and host policy" translate="no">​</a></h4>
+<p>Node plugins report the native package name and version with their source path and
+digest. A target&#x27;s alias is separate from the package name. The decision sets the plan
+version, the artifact file name and version, and the default <code>OYZU_VERSION</code>. The
+native compiled version may differ from the artifact&#x27;s snapshot; both are recorded.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="helm">Helm<a href="#helm" class="hash-link" aria-label="Direct link to Helm" title="Direct link to Helm" translate="no">​</a></h3>
+<p>The root chart version is written into the private build copy. <code>appVersion</code> and
+dependency chart versions keep their native meaning.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="go-and-docker">Go and Docker<a href="#go-and-docker" class="hash-link" aria-label="Direct link to Go and Docker" title="Direct link to Go and Docker" translate="no">​</a></h3>
+<ul>
+<li class="">Go uses the version in artifact names and the manifest. It doesn&#x27;t inject a version
+into compiled code. Docker uses it in the OCI archive name, image reference and
+manifest.</li>
+<li class="">Both record <code>nativeVersion: null</code>. An exact tag supplies the base; otherwise an
+ancestor tag is the baseline for commit impact, or <code>0.0.0</code>.</li>
+<li class="">Go resolves each workspace module separately, using imports and test imports. Module
+zip, mod and info outputs keep native <code>v</code> prefixes and RC qualifiers. See
+<a class="" href="/docs/reference/go#native-module-artifacts">Go native module artifacts</a>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="python">Python<a href="#python" class="hash-link" aria-label="Direct link to Python" title="Direct link to Python" translate="no">​</a></h3>
+<ul>
+<li class="">Native PEP 440 versions are normalized by Python&#x27;s <code>packaging</code> library. Stable
+versions with up to three components, and alpha, beta and RC versions, take part in
+tag inference. For example, base <code>1.5.0-rc.2</code> becomes
+<code>1.5.0rc2.dev0+g&lt;source-hash&gt;</code>.</li>
+<li class="">Epochs, post-releases, existing dev versions and longer version tuples keep a
+native snapshot (reason <code>native-ecosystem-source</code>).</li>
+<li class="">Static PEP 621 projects (pip, uv, Poetry) get the version in their private
+<code>pyproject.toml</code>. Projects with a dynamic <code>version</code> take it from tags (or <code>0.0.0</code>);
+see <a class="" href="/docs/reference/python-preparation#dynamic-versions">dynamic versions</a>.</li>
+<li class="">Legacy setuptools projects get the version through their distribution metadata. The
+source archive includes a generated <code>setup.py</code> wrapper so rebuilding it keeps the
+version. Custom distribution code beyond standard setuptools and distutils entry
+points isn&#x27;t supported.</li>
+<li class="">Requirements-only applications have no native version and use SemVer application
+versions.</li>
+<li class="">Recreate dependency captures made by older Oyzu versions.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="maven-gradle-and-ant">Maven, Gradle and Ant<a href="#maven-gradle-and-ant" class="hash-link" aria-label="Direct link to Maven, Gradle and Ant" title="Direct link to Maven, Gradle and Ant" translate="no">​</a></h3>
+<ul>
+<li class="">A trailing <code>-SNAPSHOT</code> is removed when the rest is SemVer. Other forms keep their
+value and get a native snapshot. Gradle&#x27;s <code>unspecified</code> lets tags set the base. Ant
+falls back to <code>0.0.0</code> when there&#x27;s no version property.</li>
+<li class="">Maven and Gradle read native models in an isolated step, then apply the chosen
+versions in the private workspace. Maven writes module, parent and dependency
+versions; Gradle archive tasks use the chosen versions; Ant records it in the JAR
+manifest.</li>
+<li class="">Requires the Gradle 8.14.3 profile and a current Maven image. Reprovision an older
+Maven image if reactor dependencies are missing. Recreate older dependency captures.</li>
+<li class="">Releasing inherited Maven versions together isn&#x27;t supported.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cargo-fixed-release-subjects">Cargo fixed release subjects<a href="#cargo-fixed-release-subjects" class="hash-link" aria-label="Direct link to Cargo fixed release subjects" title="Direct link to Cargo fixed release subjects" translate="no">​</a></h2>
+<p>Cargo workspaces can declare packages that always share one version, using
+cargo-release&#x27;s <code>shared-version</code> setting:</p>
+<ul>
+<li class=""><code>shared-version = true</code> joins the shared group.</li>
+<li class="">A string names a separate group.</li>
+<li class=""><code>false</code> opts out of an inherited group.</li>
+</ul>
+<p>See <a class="" href="/docs/reference/rust#cargo-fixed-version-groups">Rust fixed version groups</a> for an example,
+field precedence, and the supported <code>tag-prefix</code> and <code>tag-name</code> forms. Membership
+comes from all packages in the workspace, including private and unselected ones.
+Other ecosystems don&#x27;t support fixed groups.</p>
+<ul>
+<li class="">A change to any member bumps the whole group once, by the largest impact. A package
+that depends on a member sees that change too, while keeping its own tag.</li>
+<li class="">Every member must declare the same native version, including qualifiers.</li>
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Strategy</th><th>Group behavior</th></tr></thead><tbody><tr><td><code>auto</code>, fast local</td><td>Common native snapshot, with exact group tags. No commit history read.</td></tr><tr><td><code>auto</code>, full or CI</td><td>Common exact tag or nearest stable baseline, and the combined commit impact.</td></tr><tr><td><code>native</code></td><td>Common native snapshot. Ignores tags and commits.</td></tr><tr><td><code>tags</code></td><td>Needs a declared tag prefix and enough tags.</td></tr><tr><td><code>conventional</code></td><td>Needs a tag prefix, complete history and Conventional Commits.</td></tr></tbody></table></div>
+<ul>
+<li class="">If no member declares a tag prefix, <code>auto</code> and <code>native</code> record a native snapshot
+with reason <code>native-group-missing-namespace</code>, and strict strategies refuse. A prefix
+on only some members is refused.</li>
+<li class="">Non-native strategies reject conflicting per-package tags on <code>HEAD</code> or the
+baseline commit.</li>
+<li class="">Private Cargo manifests, local requirements and the lock get the chosen versions.
+Your checkout isn&#x27;t changed. Fast local builds report <code>compiledVersion</code> as usual.</li>
+<li class=""><code>extensions[&quot;oyzu.dev/version-subjects&quot;]</code> records the group, members, tag prefixes
+and resolution; each member&#x27;s <code>oyzu.dev/versioning</code> entry points to it with
+<code>releaseSubject</code>.</li>
+<li class=""><code>--plan</code> never runs Cargo or fetches history to fill in missing facts.</li>
+</ul>
+<p>Fixed groups are supported on Linux x86_64.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="authenticated-release-staging">Authenticated release staging<a href="#authenticated-release-staging" class="hash-link" aria-label="Direct link to Authenticated release staging" title="Direct link to Authenticated release staging" translate="no">​</a></h2>
+<p>Release staging builds exact release-candidate or stable versions, instead of
+snapshots, in a CI job triggered by a tag push. Use <code>--require-release</code> when the job
+must fail rather than fall back to a snapshot.</p>
+<blockquote>
+<p><strong>Note:</strong> Release staging is experimental. It supports only a GitHub Actions job
+triggered by a tag push in the same repository, building Cargo for Linux x86_64,
+and it hasn&#x27;t been run end to end on GitHub yet. Staged versions are never marked
+production-eligible.</p>
+</blockquote>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">-C</span><span class="token plain"> app build app --require-release </span><span class="token parameter variable" style="color:#36acaa">--full</span><br></div></code></pre></div></div>
+<p>The native version and the tag together choose the version. Native <code>1.5.0-rc.1</code>
+with a matching exact tag stages a release candidate; native <code>1.5.0</code> with its tag
+stages a stable release. Each needs a fresh build: renaming an RC archive doesn&#x27;t
+make it stable. A native/tag conflict fails, and <code>native</code> doesn&#x27;t let a tag override
+the native version.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Option</th><th>Behavior</th></tr></thead><tbody><tr><td>(none)</td><td>If the job&#x27;s facts match, the build can stage exact versions. Otherwise it keeps snapshot versions and records why.</td></tr><tr><td><code>--require-release</code></td><td>Missing, offline, unsupported or contradictory evidence refuses the build before any build, check or package action runs.</td></tr><tr><td><code>--release-profile FILE</code></td><td>Accept only the exact reusable workflow and source in this <a class="" href="/docs/reference/release-provenance#staging-a-release-build-with-a-profile">release profile</a>.</td></tr><tr><td><code>--context release</code>, <code>OYZU_CONTEXT</code></td><td>Only set the context. They never authenticate a release.</td></tr><tr><td><code>--optimized</code></td><td>Only chooses the build profile.</td></tr><tr><td><code>--plan</code></td><td>Read-only preview. Shows what evidence is missing.</td></tr><tr><td><code>--check --require-release</code></td><td>Reports missing release evidence as a blocking finding.</td></tr></tbody></table></div>
+<p>A staged build always runs every required check, including real test and coverage
+reports. A nested target can&#x27;t turn those off.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requirements">Requirements<a href="#requirements" class="hash-link" aria-label="Direct link to Requirements" title="Direct link to Requirements" translate="no">​</a></h3>
+<ul>
+<li class="">Job permissions: <code>contents: read</code>, <code>actions: read</code> and <code>id-token: write</code>.</li>
+<li class="">Oyzu requests a fresh GitHub OIDC token and checks the signed repository, ref,
+commit, workflow, run attempt and job against GitHub&#x27;s API (using the job&#x27;s
+<code>GITHUB_TOKEN</code>). CI variables, a local tag, a JWT file or <code>OYZU_ID_TOKEN</code> can&#x27;t stand
+in for this.</li>
+<li class="">The built files and their modes must match the tagged commit exactly, and the tag
+must stay the same until the build finishes.</li>
+<li class="">Refused: uncommitted changes, forks, the wrong job or attempt, a moved tag,
+repository hooks, Git symlinks or submodules in the selected source, and inputs
+outside the repository.</li>
+<li class="">Reusable workflows need <code>--release-profile</code>, and both signed workflow claims must
+match.</li>
+</ul>
+<p>The manifest records GitHub&#x27;s answers and any unresolved reasons in
+<code>extensions[&quot;oyzu.dev/release-staging&quot;]</code>. If a check fails, or the source or tag
+changes before the end, no final output is accepted.</p>
+<p>A job token proves the job&#x27;s identity and event. It doesn&#x27;t prove where Oyzu ran, who
+built the artifact, that checks were correct, or that the build was isolated.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-staging-cant-run">When staging can&#x27;t run<a href="#when-staging-cant-run" class="hash-link" aria-label="Direct link to When staging can&#x27;t run" title="Direct link to When staging can&#x27;t run" translate="no">​</a></h3>
+<p>If GitHub is unavailable or permissions are missing, a build without
+<code>--require-release</code> keeps snapshot versions. With <code>--require-release</code> it fails, naming
+the missing fact. Retry online in the matching job after fixing access. Saved
+manifests and earlier attempts can&#x27;t be reused, and offline builds can&#x27;t stage.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
+<ul>
+<li class="">Release staging is limited as described <a href="#authenticated-release-staging" class="">above</a>.
+No other CI providers, events, builders or platforms are supported.</li>
+<li class="">Fixed release groups are Cargo-only.</li>
+<li class="">Native version schemes Oyzu can&#x27;t map to SemVer (some Python, Maven and Gradle
+forms) keep native snapshots and don&#x27;t get tag or commit bumps.</li>
+<li class="">History can be fetched only from public GitHub HTTPS origins.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/rust">Rust</a>, <a class="" href="/docs/reference/go">Go</a>, <a class="" href="/docs/reference/python-preparation">Python preparation</a></li>
+<li class=""><a class="" href="/docs/reference/publish">Publishing</a></li>
+<li class=""><a class="" href="/docs/reference/release-provenance">Release provenance verification</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/release-check"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Checking whether a build would ship</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/release-provenance"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Release provenance verification</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#example" class="table-of-contents__link toc-highlight">Example</a></li><li><a href="#usage-and-prerequisites" class="table-of-contents__link toc-highlight">Usage and prerequisites</a></li><li><a href="#resolution-and-evidence" class="table-of-contents__link toc-highlight">Resolution and evidence</a><ul><li><a href="#how-the-version-is-computed" class="table-of-contents__link toc-highlight">How the version is computed</a></li><li><a href="#exact-tags-and-publishing" class="table-of-contents__link toc-highlight">Exact tags and publishing</a></li><li><a href="#what-is-recorded" class="table-of-contents__link toc-highlight">What is recorded</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a></li></ul></li><li><a href="#what-history-is-read-and-when" class="table-of-contents__link toc-highlight">What history is read, and when</a><ul><li><a href="#acquiring-missing-history" class="table-of-contents__link toc-highlight">Acquiring missing history</a></li></ul></li><li><a href="#tag-names-in-monorepos" class="table-of-contents__link toc-highlight">Tag names in monorepos</a><ul><li><a href="#dependencies-between-packages" class="table-of-contents__link toc-highlight">Dependencies between packages</a></li></ul></li><li><a href="#declared-cross-target-inputs" class="table-of-contents__link toc-highlight">Declared cross-target inputs</a></li><li><a href="#final-command-development-scope" class="table-of-contents__link toc-highlight">Final-command development scope</a></li><li><a href="#versions-finalized-after-hooks" class="table-of-contents__link toc-highlight">Versions finalized after hooks</a></li><li><a href="#builder-notes" class="table-of-contents__link toc-highlight">Builder notes</a><ul><li><a href="#rust-cargo" class="table-of-contents__link toc-highlight">Rust (Cargo)</a></li><li><a href="#node" class="table-of-contents__link toc-highlight">Node</a></li><li><a href="#helm" class="table-of-contents__link toc-highlight">Helm</a></li><li><a href="#go-and-docker" class="table-of-contents__link toc-highlight">Go and Docker</a></li><li><a href="#python" class="table-of-contents__link toc-highlight">Python</a></li><li><a href="#maven-gradle-and-ant" class="table-of-contents__link toc-highlight">Maven, Gradle and Ant</a></li></ul></li><li><a href="#cargo-fixed-release-subjects" class="table-of-contents__link toc-highlight">Cargo fixed release subjects</a></li><li><a href="#authenticated-release-staging" class="table-of-contents__link toc-highlight">Authenticated release staging</a><ul><li><a href="#requirements" class="table-of-contents__link toc-highlight">Requirements</a></li><li><a href="#when-staging-cant-run" class="table-of-contents__link toc-highlight">When staging can&#39;t run</a></li></ul></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

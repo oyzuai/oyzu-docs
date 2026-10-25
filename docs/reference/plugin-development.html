@@ -3,97 +3,44 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Local development plugin bindings (experimental) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Local development plugin bindings (experimental) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Local development plugin bindings (experimental)","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.a4d52ce5.js" defer="defer"></script>
-<script src="/assets/js/main.290cc065.js" defer="defer"></script>
+<title data-rh="true">Writing and testing builder plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Writing and testing builder plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing and testing builder plugins","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
+<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
+<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/plugin-development">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: from an empty folder to a verified build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your first tool</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Understand your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/cli-help"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog, detection and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview: terms, support and recovery</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Local development plugin bindings (experimental)</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-management-development"><span class="categoryLinkLabel_W154">Internals</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Plugins</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Local development plugin bindings (experimental)</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Local development plugin bindings (experimental)</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/plugin-development">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Writing and testing builder plugins</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Plugins</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Writing and testing builder plugins</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Writing and testing builder plugins</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/plugin-development.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
-<p>A local development binding makes <code>oyzu build</code> and <code>oyzu run</code> use an external
-builder plugin executable in place of a built-in builder profile. It exists to
-develop and compare external builders against the draft
-<code>plugins-v1alpha1</code> builder contract
-before plugin packages, sources and locks exist. Two plugins are developed this
-way: <code>oyzu-plugin-go</code>, the Go host lane extracted from the built-in Go builder
-(Milestone A of issue #582), and
-<code>oyzu-plugin-node</code>, the native npm/pnpm single-root application lane
-(slice N1 of Node externalization,
-issues #743 and
-#772, extended for native pnpm by
-#811).</p>
-<p>Without a binding nothing changes: every builder id resolves to its built-in
-builder exactly as before.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="status-and-scope">Status and scope<a href="#status-and-scope" class="hash-link" aria-label="Direct link to Status and scope" title="Direct link to Status and scope" translate="no">​</a></h2>
-<ul>
-<li class=""><strong>Experimental, for builder development.</strong> The setting, the protocol and the
-recorded fields are draft and may change in place.</li>
-<li class=""><strong>Native host lane only.</strong> A bound target builds with native host tools through
-<code>native-admission</code>, <code>native-build</code>, <code>native-test</code> and <code>task-command</code>.
-A raw executable binding cannot establish an execution-platform payload for
-captured builds. That path requires an admitted
-<a class="" href="/docs/reference/plugin-packages#captured-go-application-planning-draft-implementation">multi-platform package with captured-plan</a>
-and exact engine assets; otherwise it fails before preparation or build actions.
-There is no fallback to the built-in builder. When the plugin declines a
-target for the native host lane, the failure carries the plugin&#x27;s own reason
-(see <a href="#failures-and-recovery" class="">Failures and recovery</a>).</li>
-<li class=""><strong>Replaces a built-in profile.</strong> The bound id must be one a built-in builder
-serves (for example <code>go/app</code>). Detection, builder settings and dependency
-providers stay with that built-in builder; tasks, requirements, admission,
-build, test and task-command answers come from the plugin.</li>
-<li class=""><strong>No plugin packages.</strong> There is no download, signature, manifest admission or
-<code>oyzu.lock</code> entry. The executable is local development content, recorded by
-path and SHA-256 digest only.</li>
-</ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="prerequisites">Prerequisites<a href="#prerequisites" class="hash-link" aria-label="Direct link to Prerequisites" title="Direct link to Prerequisites" translate="no">​</a></h2>
-<ul>
-<li class="">
-<p>An Oyzu CLI built from a revision containing this feature.</p>
-</li>
-<li class="">
-<p>A plugin executable. Build the Go or Node plugin from this repository:</p>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> -- </span><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> build </span><span class="token parameter variable" style="color:#36acaa">--locked</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"> oyzu-plugin-go </span><span class="token parameter variable" style="color:#36acaa">--features</span><span class="token plain"> plugin</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># target/debug/oyzu-plugin-go (oyzu-plugin-go.exe on Windows)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> -- </span><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> build </span><span class="token parameter variable" style="color:#36acaa">--locked</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"> oyzu-plugin-node </span><span class="token parameter variable" style="color:#36acaa">--features</span><span class="token plain"> plugin</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># target/debug/oyzu-plugin-node (oyzu-plugin-node.exe on Windows)</span><br></div></code></pre></div></div>
-<p>The executable requires the <code>plugin</code> feature so the repository&#x27;s own <code>cli</code>
-build, which collects every enabled workspace binary, never ships it. Check the
-plugin against the contract with its conformance test, which runs the
-canonical requests through core&#x27;s process host against temporary Go projects:</p>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token builtin class-name">exec</span><span class="token plain"> -- </span><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> </span><span class="token builtin class-name">test</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--locked</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"> oyzu-plugin-go </span><span class="token parameter variable" style="color:#36acaa">--features</span><span class="token plain"> plugin</span><br></div></code></pre></div></div>
-<p>The Node plugin&#x27;s tests (<code>--features plugin</code>) also drive the compiled CLI, so
-build it first (<code>oyzu exec -- cargo build --locked --bin oyzu</code>) or set
-<code>OYZU_CLI</code>. CI does not run them.</p>
-</li>
-<li class="">
-<p>The native tools the target needs, provisioned as usual. Core resolves, locks
-and installs <code>oyzu:go</code> or <code>oyzu:node</code> from the plugin&#x27;s <code>requirements</code> answer,
-as it does for the built-in builder.</p>
-</li>
-</ul>
-<p>For a verified, locked package instead of a local path, see
-<a class="" href="/docs/reference/plugin-packages">plugin packages</a>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
-<p>Add the binding to your user configuration (<code>~/.config/oyzu/config.toml</code> on
-Linux, <code>~/Library/Application Support/Oyzu/config.toml</code> on macOS,
-<code>%APPDATA%\Oyzu\config.toml</code> on Windows, or the file <code>OYZU_USER_CONFIG</code> names):</p>
+<p>A builder plugin is a separate program that tells <code>oyzu</code> how to build one kind of
+project: which tasks it has, which tools it needs, which command builds it and where the
+output lands. This page shows how to run a plugin from a local path while you develop
+it, how plugins work, what a plugin has to provide, and how to package it. It also covers
+the Node plugin&#x27;s behavior, since it&#x27;s the largest first-party plugin.</p>
+<blockquote>
+<p><strong>Note:</strong> The plugin interface (<code>plugins-v1alpha1</code>) is experimental. It&#x27;s edited in
+place and can change without a new version. The Rust crates in the oyzu repository that
+help write plugins are internal and not a supported SDK. You can write a plugin in any
+language that speaks the JSON contract below.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="run-a-local-plugin">Run a local plugin<a href="#run-a-local-plugin" class="hash-link" aria-label="Direct link to Run a local plugin" title="Direct link to Run a local plugin" translate="no">​</a></h2>
+<p>Bind your executable to a builder reference in your <strong>user</strong> configuration
+(<code>~/.config/oyzu/config.toml</code> on Linux, <code>~/Library/Application Support/Oyzu/config.toml</code>
+on macOS, <code>%APPDATA%\Oyzu\config.toml</code> on Windows, or the file <code>OYZU_USER_CONFIG</code> names):</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins.development</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;go/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/target/debug/oyzu-plugin-go&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;node/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/target/debug/oyzu-plugin-node&quot;</span><br></div></code></pre></div></div>
-<p>Then build or run tasks as usual in a Go project:</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --full</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run test</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run build</span><br></div></code></pre></div></div>
-<p>The build shows the core-allocated plugin output directory in its build command
-(<code>go build -trimpath -buildvcs=false -o .oyzu/native/plugin/…</code>). The <code>Context</code>
-facts in <code>dist/logs/events.jsonl</code> include
-<code>Plugins  go/app → local development &lt;path&gt; (sha256:…)</code>, and the retained
-inventory records <code>{&quot;reference&quot;,&quot;content&quot;:&quot;local-development&quot;,&quot;executable&quot;,&quot;digest&quot;}</code>
-for each binding. The executable that runs is a private per-invocation copy of
-the file whose digest was recorded, and the plan, envelope and manifest carry
-<code>extensions[&quot;oyzu.dev/plugins&quot;]</code>; see <a class="" href="/docs/reference/plugin-packages#which-bytes-run-and-how-output-records-them">plugin packages</a>.</p>
-<p>A Node project builds when it is an admitted npm, pnpm or Yarn application declared
-<code>uses: node/app</code> in <code>build.yaml</code> whose own <code>build</code> script writes <code>dist</code>; see
-<a href="#the-node-plugin" class="">the Node plugin</a> for what it runs and how it differs from the
-built-in builder.</p>
-<p>Remove the table (or the entry) to return to the built-in builder.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="setting">Setting<a href="#setting" class="hash-link" aria-label="Direct link to Setting" title="Direct link to Setting" translate="no">​</a></h2>
+<p>Then build as usual:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --full</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run test</span><br></div></code></pre></div></div>
+<p>Oyzu runs your executable for that reference instead of a catalog package. The build
+shows the plugin-owned output directory in its commands (for example
+<code>go build -trimpath -buildvcs=false -o .oyzu/native/plugin/…</code>), the <code>Context</code> facts in
+<code>dist/logs/events.jsonl</code> include <code>Plugins  go/app → local development &lt;path&gt; (sha256:…)</code>,
+and the plan, envelope and manifest carry <code>extensions[&quot;oyzu.dev/plugins&quot;]</code> (see
+<a class="" href="/docs/reference/plugin-packages#which-bytes-run-and-how-output-records-them">plugin packages</a>).</p>
+<p>Remove the entry to stop using the local executable. The next build then has to find the
+package some other way: the catalog, a <code>plugins.packages</code> binding or the lock. There&#x27;s no
+built-in fallback.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="setting">Setting<a href="#setting" class="hash-link" aria-label="Direct link to Setting" title="Direct link to Setting" translate="no">​</a></h3>
 
 
 
@@ -111,20 +58,90 @@ built-in builder.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Key</th><th>Type</th><th>Default</th><th>Scopes</th></tr></thead><tbody><tr><td><code>plugins.development</code></td><td>table of builder id to absolute executable path</td><td>none</td><td>user, machine, administrative</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Key</th><th>Type</th><th>Default</th><th>Where</th></tr></thead><tbody><tr><td><code>plugins.development</code></td><td>Table of builder reference to absolute executable path</td><td>none</td><td>User, machine or administrative configuration</td></tr></tbody></table></div>
 <ul>
-<li class="">Keys are short builder references without a major version (<code>go/app</code>, not
-<code>go@1/app</code> or an OCI reference). Values are absolute paths. At most 64 entries.</li>
-<li class="">The setting selects executable code, so project <code>oyzu.toml</code>, <code>oyzu.local.toml</code>
-and profile overlays are refused with <code>CONFIG_SCOPE: plugins.development is not permitted in this scope</code>. Administrative constraints apply as for any setting.</li>
-<li class="">In CI, user configuration is excluded as usual; a machine-scope binding still
-applies.</li>
-<li class="">The table is atomic: a later source replaces the whole table.</li>
+<li class="">Keys are short builder references without a major version (<code>go/app</code>, not <code>go@1/app</code>
+or an OCI reference). Values are absolute paths. At most 64 entries.</li>
+<li class="">The setting selects code to run, so a project <code>oyzu.toml</code>, <code>oyzu.local.toml</code> or a
+profile is refused with <code>CONFIG_SCOPE: plugins.development is not permitted in this scope</code>.</li>
+<li class="">In CI, user configuration is ignored as usual; a machine-level binding still applies.
+Pass <code>--ci-machine-binding</code> to the repository bootstrap to create one on an ephemeral
+runner (see <a href="#ci-machine-binding" class="">CI machine binding</a>).</li>
+<li class="">The table is replaced as a whole by a later source.</li>
+<li class="">Bindings are read once per command, before targets are discovered. A missing or
+unreadable executable fails with <code>PLUGIN_BINDING_INVALID</code>; a malformed or versioned
+key fails with <code>CONFIG_INVALID_VALUE</code>.</li>
+<li class="">A local binding has no download, signature check, manifest check or <code>oyzu.lock</code> entry.
+The executable is recorded by file name and SHA-256 digest only.</li>
 </ul>
-<p>Bindings are resolved once per invocation, before targets are discovered. A
-missing or unreadable executable, or an id no built-in builder serves, fails
-discovery with <code>PLUGIN_BINDING_INVALID</code>.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-core-does-and-what-the-plugin-does">What core does and what the plugin does<a href="#what-core-does-and-what-the-plugin-does" class="hash-link" aria-label="Direct link to What core does and what the plugin does" title="Direct link to What core does and what the plugin does" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="independent-profiles">Independent profiles<a href="#independent-profiles" class="hash-link" aria-label="Direct link to Independent profiles" title="Direct link to Independent profiles" translate="no">​</a></h3>
+<p>A plugin doesn&#x27;t have to match a built-in family. To develop a new profile such as
+<code>independent/app</code>, bind its id and name it in <code>build.yaml</code>. The names and path are
+illustrative:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins.development</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;independent/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/plugin/target/debug/independent-plugin&quot;</span><br></div></code></pre></div></div>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">app</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> independent/app</span><br></div></code></pre></div></div>
+<p>Run <code>oyzu build app</code> to build with it. An independent profile must be named in <code>uses</code>;
+the binding adds no detection, no <code>with</code> options, no dependency preparation and no
+isolated execution. Tool versions still come from your configuration or native files, and
+oyzu installs the tools the plugin&#x27;s <code>requirements</code> answer names under the usual policy.
+A local binding can&#x27;t ask oyzu to run <code>task-command</code> observations (see below), even for
+an installed tool.</p>
+<p>When <code>tools.allowed</code> is set, <code>oyzu run</code> admits a task of a plugin-built target only if
+every tool the plugin&#x27;s requirements declare for that task is on the list. A task whose
+binding declares no tool for it is refused with <code>CONFIG_OVERRIDE_DENIED</code> before anything
+launches. Registry routes and approved catalogs stay fail-closed for local bindings, as
+for any other builder.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-plugin-works">How a plugin works<a href="#how-a-plugin-works" class="hash-link" aria-label="Direct link to How a plugin works" title="Direct link to How a plugin works" translate="no">​</a></h2>
+<p>For every operation, oyzu starts your executable once, with no arguments, a minimal
+environment and a fresh scratch directory as its working directory. It writes one JSON
+request to standard input and reads one JSON result from standard output. The process
+gets no credentials.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Stream</th><th>Content</th></tr></thead><tbody><tr><td>Standard input</td><td>One request, then end of input</td></tr><tr><td>Standard output</td><td>One result and nothing else</td></tr><tr><td>Standard error</td><td>Diagnostic lines as JSON. Other lines are kept only for troubleshooting</td></tr></tbody></table></div>
+<ul>
+<li class="">Documents use snake_case, <code>schema_version: &quot;v1alpha1&quot;</code> and a constant <code>type</code>. Unknown
+members, duplicate keys, <code>null</code> members and numbers written with a fraction or exponent
+are invalid.</li>
+<li class="">A request carries an <code>operation_id</code>, <code>role</code> (<code>builder</code>), <code>operation</code>,
+<code>required_features</code>, <code>deadline_ms</code>, the <code>target</code> (name, <code>uses</code>, whether the reference
+was inferred or explicit, absolute source <code>root</code> for reading, and the base version) and
+the operation&#x27;s <code>input</code>. Your result echoes <code>operation_id</code> and <code>operation</code> and has an
+<code>outcome</code>: <code>completed</code> (with <code>output</code>), <code>failed</code> (with <code>error{code, message}</code>),
+<code>unsupported</code> (with <code>reason</code>) or, for <code>task-command</code>, <code>observe</code>.</li>
+<li class="">Oyzu accepts a result only if it&#x27;s valid, the process exited with status 0 and the ids
+match. A valid result followed by a nonzero exit is a failure.</li>
+<li class="">Limits: 16 MiB for a request or result, 1 MiB of kept diagnostics, at most 64
+observations. Oyzu never truncates and accepts.</li>
+<li class="">Each operation has a deadline (60 seconds by default). At the deadline, or when the
+build is cancelled, oyzu terminates the whole process tree (SIGTERM, then SIGKILL after
+2 seconds on Unix; the job object on Windows). Termination is a failure whatever the
+process wrote.</li>
+<li class="">Plugins keep no state between calls. Oyzu supplies every fact each time.</li>
+<li class="">Target-relative paths use <code>/</code>, never <code>..</code> or spaces, and at most one leading dot per
+segment.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="operations">Operations<a href="#operations" class="hash-link" aria-label="Direct link to Operations" title="Direct link to Operations" translate="no">​</a></h3>
+<p>An operation you don&#x27;t implement answers <code>unsupported</code>.</p>
 
 
 
@@ -170,17 +187,33 @@ discovery with <code>PLUGIN_BINDING_INVALID</code>.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Decision</th><th>Owner</th></tr></thead><tbody><tr><td>Detection, <code>with</code> validation (non-empty options refused), settings</td><td>Core and the built-in builder</td></tr><tr><td>Conventional tasks, tool requirements, host admission, build commands, artifacts, test command and reports, workspace expansion</td><td>Plugin</td></tr><tr><td>Build version</td><td>Core resolves it (versioning owner) and sends it; the plugin must echo it</td></tr><tr><td>Output directory</td><td>Core allocates <code>.oyzu/native/plugin/&lt;fresh&gt;</code> in the target&#x27;s private execution directory per build</td></tr><tr><td>Project-written outputs (<code>origin: target</code>)</td><td>The plugin names the path the project&#x27;s own script writes (a Node <code>dist</code>); core checks it, retires earlier output in the private workspace before authored operations and collects what the build wrote (<a href="#project-written-outputs" class="">below</a>)</td></tr><tr><td>Report directory</td><td>Core sends <code>.oyzu/plugin-reports</code> and binds each argument naming <code>&lt;report_dir&gt;/&lt;file&gt;</code> to the run&#x27;s fresh report directory before execution</td></tr><tr><td>Requirement origin digests</td><td>Core rereads the cited file and refuses a mismatch</td></tr><tr><td><code>task-command</code> observations</td><td>Core checks the tool is one the builder admits (<code>oyzu:go</code>) and that <code>argv[0]</code> is that tool&#x27;s command, runs it once on the task&#x27;s provisioned PATH, then re-invokes the plugin</td></tr><tr><td>Scheduling, execution, artifact collection, report gates</td><td>Core, unchanged</td></tr></tbody></table></div>
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Operation</th><th>Called to</th><th>Your answer</th></tr></thead><tbody><tr><td><code>describe</code></td><td>Confirm identity and roles</td><td>Protocol generations, plugin identity, roles with their profiles, operations and features</td></tr><tr><td><code>tasks</code></td><td>Discover conventional tasks</td><td>The package manager, optional native package name and version (with the file they came from), and tasks (<code>name</code>, <code>argv</code>, build stage, whether it changes source, optional environment defaults)</td></tr><tr><td><code>requirements</code></td><td>Find the tools a target needs</td><td>Tools (for example <code>oyzu:go</code>), stages, components, version constraints with their source files, and why. Read-only</td></tr><tr><td><code>native-admission</code></td><td>Decide whether the plugin can build this target on the host</td><td><code>{admitted, reason}</code>. Read-only</td></tr><tr><td><code>native-build</code></td><td>Plan a host build</td><td>The build operations and the artifacts. Oyzu supplies the version, a fresh <code>output_dir</code>, <code>offline</code> and the execution platform</td></tr><tr><td><code>native-test</code></td><td>Plan the direct test run</td><td>An optional test command and the reports it must write, into a fresh <code>report_dir</code></td></tr><tr><td><code>task-command</code></td><td>Adjust a task&#x27;s command</td><td>An optional replacement command, or <code>observe</code> to ask oyzu to run tool commands and call again once</td></tr><tr><td><code>captured-plan</code></td><td>Plan an <a class="" href="/docs/reference/plugin-packages#isolated-builds-with-plugins">isolated build</a></td><td>Build and test intent, from read-only source. No observations or downloads</td></tr></tbody></table></div>
+<p>What oyzu keeps for itself: the build version (the plugin must echo it), where output is
+written, scheduling, tool installation, running processes, collecting artifacts and the
+report gates. The plugin supplies intent: tasks, requirements, commands, artifact paths
+and report formats. Report formats are <code>junit</code>, <code>cobertura</code>, <code>lcov</code>, <code>go-cover</code> and
+<code>jacoco</code>; sources are <code>file</code>, <code>go-test-events</code>, <code>jest-json</code> and <code>jest-lcov</code>. A plugin
+that needs nonempty <code>with</code> options must declare the <code>build-options</code> feature.</p>
+<p>A <code>task-command</code> observation names a core tool identity and its command line. Oyzu
+checks that the tool is one the builder may use and that <code>argv[0]</code> is that tool&#x27;s
+command, runs it once on the task&#x27;s PATH (stdout up to 1 MiB, stderr up to 64 KiB), then
+calls <code>task-command</code> again in a new process with the results. One round only. A local
+development binding may not use observations.</p>
+<p>Artifacts must have unique names and sources (compared without regard to case). A
+default artifact lives inside <code>output_dir</code>. An artifact marked <code>executable</code> is promoted
+to <code>.oyzu/bin</code> after a successful build.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="project-written-outputs">Project-written outputs<a href="#project-written-outputs" class="hash-link" aria-label="Direct link to Project-written outputs" title="Direct link to Project-written outputs" translate="no">​</a></h3>
-<p>A plugin whose ecosystem&#x27;s build script decides where its output goes, as
-<code>npm run build</code> writes <code>dist</code>, cannot steer that output into the core-allocated
-output directory. Its <code>native-build</code> or <code>captured-plan</code> result instead marks the artifact
-<code>&quot;origin&quot;: &quot;target&quot;</code> with a target-relative <code>source</code>, and its build operation
-runs the selected task&#x27;s own command (core sends it as <code>input.task.argv</code>):</p>
+<p>Some builds decide their own output location: <code>npm run build</code> writes <code>dist</code>, and the
+plugin can&#x27;t steer it into <code>output_dir</code>. For those, the plugin marks the artifact
+<code>&quot;origin&quot;: &quot;target&quot;</code> with a target-relative <code>source</code>, and the build operation runs the
+task&#x27;s own command (oyzu sends it as <code>input.task.argv</code>):</p>
 <div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;name&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;primary&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;producer&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;build&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;directory&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;filename&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application-1.4.0&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;media_type&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;application/octet-stream&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;source&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;dist&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;executable&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">false</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;origin&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;target&quot;</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
-<p>The default origin, <code>output-dir</code>, is omitted when encoded, so an existing
-plugin&#x27;s results (the Go plugin&#x27;s) are unchanged. Core enforces, before any
-build action runs:</p>
+<p>Before any build action runs, oyzu checks the source and refuses it otherwise:</p>
 
 
 
@@ -195,121 +228,6 @@ build action runs:</p>
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Rule</th><th>Refused with</th></tr></thead><tbody><tr><td>The source names something below the target: not <code>.</code>, and no segment that starts or ends with a dot (<code>.git</code>, <code>.oyzu</code>), is <code>node_modules</code> (any case) or is a Windows device name (<code>con</code>, <code>nul</code>, <code>COM1.txt</code>)</td><td><code>PLUGIN_OPERATION_FAILED: … invalid result</code></td></tr><tr><td>Sources are unique, ignoring case</td><td><code>PLUGIN_OPERATION_FAILED: … invalid result</code></td></tr><tr><td>The source neither equals, contains nor lies inside <code>output_dir</code></td><td><code>PLUGIN_OPERATION_FAILED: … overlaps the output directory</code></td></tr><tr><td>The source neither equals, contains nor lies inside a file or directory of the target&#x27;s frozen source selection, ignoring case</td><td><code>PLUGIN_ARTIFACT_REFUSED: … overlaps the frozen source selection at &lt;path&gt;</code></td></tr><tr><td>No existing segment of the path is a symbolic link or reparse point, and none above the last is a file</td><td><code>PLUGIN_ARTIFACT_REFUSED: artifact … names …</code> with the cause</td></tr></tbody></table></div>
-<p>Then core retires the path: whatever exists there is renamed into a fresh
-core-owned directory beside the output directory, never deleted in place, and
-is discarded with that directory after collection. The build plan records each
-retired path under <code>extensions[&quot;oyzu.dev/retired-outputs&quot;]</code>, for example
-<code>{&quot;web&quot;:[{&quot;artifact&quot;:&quot;primary&quot;,&quot;path&quot;:&quot;dist&quot;,&quot;previous&quot;:false}]}</code>. A build
-whose script writes nothing fails with <code>native artifact collection failed</code>
-rather than republishing an earlier output. Collection then applies the usual
-rules (no links, no reserved names, a directory inventory or a regular file).</p>
-<p>On the native host lane, retirement never
-moves anything and <code>previous</code> is always <code>false</code>: the target directory is a
-private projection that core rebuilds from the frozen source selection before
-each build, so anything already at the path would be source, which the
-overlap rule refuses first. What keeps an earlier output from being
-republished here is that rebuild; retirement is kept so the guarantee does not
-depend on it. The record is not part of action cache keys.
-Captured planning checks the frozen source selection without changing it.
-The frozen plan retires output in the mutable private execution workspace
-before dependency setup and authored operations, then exports the fresh
-artifact through the common containment and no-link checks. It never retires
-files in the original project or the read-only planning mount.
-To recover from a refusal, have the plugin name a project output that is not
-source, not core or version-control state and not dependency trees, and remove
-any link at that location.</p>
-<p>Each operation runs one fresh plugin process through core&#x27;s
-plugin process host:
-no arguments, a minimal environment, a fresh scratch working directory and a
-60-second deadline, after which the whole process tree is terminated.</p>
-<p>Bound targets are reused from the local action cache like built-in ones: the
-action key binds the plugin&#x27;s executable digest and runtime, so rebuilding the
-plugin re-runs its targets. Bind the plugin executable itself: a binding to a
-wrapper script is never reused, because the digest covers only the script and
-not the program it starts (see
-<a class="" href="/docs/reference/action-cache#external-builder-targets">external builder targets</a>). An
-unchanged one-module repeat build launches the plugin 5 times: <code>tasks</code>,
-<code>requirements</code> (asked once per distinct request and stage set and reused for the
-invocation), <code>native-admission</code>, <code>native-build</code> and one <code>task-command</code> per frozen
-command (two when it asks for an observation). Core asks <code>task-command</code> for
-every command, including the ones the plugin produced, because the plugin may
-expand them (the Go plugin expands its own instrumented test command under a
-<code>go.work</code>). Launch counts scale with the number of bound targets.</p>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-node-plugin">The Node plugin<a href="#the-node-plugin" class="hash-link" aria-label="Direct link to The Node plugin" title="Direct link to The Node plugin" translate="no">​</a></h2>
-<p>The native host lane of <code>oyzu-plugin-node</code> serves <code>node/app</code>: manager npm, pnpm or the bounded Yarn
-lane below, the target declared
-<code>uses: node/app</code>, no workspaces, and a non-empty <code>scripts.build</code> that writes
-<code>dist</code>. The native npm integration also admits the exact two-token
-<code>vite build</code> command with a declared Vite dependency and no <code>vite.config.js</code>,
-<code>.ts</code>, <code>.mjs</code>, <code>.mts</code>, <code>.cjs</code> or <code>.cts</code> file. Vite 8.3.3/npm 11.11.0 with
-Node 24.22.1 passed the Windows x64 and Linux x64 GNU native directory/report/
-failure flows and output-only limited-DOM bundle consumers; see the
-qualification record. Literal <code>--outDir</code>, other Vite flags,
-configured Vite, pnpm/Yarn Vite and captured Vite remain refused. Ordinary npm/pnpm
-applications retain their existing native and captured boundaries. See the
-N4a brief.
-Any other <code>node/app</code> target is refused with the
-plugin&#x27;s reason (admission reasons);
-while the binding exists such a target cannot build at all, because a bound id
-has no fallback to the built-in builder. The candidate also describes
-<code>node/package</code> for <a class="" href="/docs/reference/plugin-packages#captured-npm-packages">captured npm package execution</a>,
-with its bounded Windows coordinator/Linux captured worker functional flow
-demonstrated and its scoped repository
-checks passed. Published-plugin qualification is separate. Native package admission remains
-refused; a raw executable binding does not make that captured lane available.</p>
-<p>For admitted non-workspace npm/pnpm/Yarn targets, <code>oyzu run test</code> instruments a default
-<code>node --test</code> or the existing recognized flag-only test script with native
-JUnit and lcov reporters. Opaque commands keep their exact argv and may write
-reports to <code>OYZU_TEST_REPORT</code> and <code>OYZU_COVERAGE_REPORT</code> or declared report paths.
-Missing optional reports produce incomplete evidence; required missing reports,
-malformed present reports and native failures fail the command. Other managers
-and workspace tests fail explicitly with <code>node.test-lane</code>. Direct tasks require
-already prepared native dependencies and a selected Node runtime.</p>
-<p>The native pnpm lane requires an exact stable <code>packageManager</code> declaration
-when that field exists, for example <code>&quot;packageManager&quot;: &quot;pnpm@10.11.0&quot;</code>.
-Core resolves that existing native requirement and checks it against explicit
-tool configuration; a conflicting configured release fails before actions.
-Ranges, tags and prereleases are refused by native-build admission and
-native-test adaptation, because they cannot use that existing constraint
-contract. Without <code>packageManager</code>, select pnpm through the ordinary <code>[tools]</code> configuration.
-No separate manager-selection flag is needed. This restriction leaves npm&#x27;s
-existing behavior unchanged.</p>
-<p>A <code>pnpm-workspace.yaml</code> containing a recognized plain settings mapping is
-allowed. A <code>packages</code> key or syntax the bounded classifier cannot establish
-as settings-only is refused as a workspace; the plugin does not resolve
-workspace membership. Competing manager evidence is also refused.</p>
-<p>The experimental native Yarn lane accepts exact <code>packageManager</code> releases
-<code>yarn@1.22.22</code> (Classic) and <code>yarn@4.17.1</code> (Berry). Berry projects must already
-declare <code>nodeLinker: node-modules</code>; Plug-and-Play is refused. The
-<a class="" href="/docs/reference/tool-npm-pnpm-installation#managed-yarn">managed Yarn reference</a> owns tool
-selection, configuration preflight and source restrictions. Windows x64 and
-Linux x64 native proofs passed with
-managed Node <code>22.23.3</code>, consumed application output, actual JUnit/LCOV and
-required refusal gates. Berry warm-cache offline builds passed on both hosts.
-Direct tests require native installation in their source project; an earlier
-full build installs into a private workspace. For Berry, prepare with
-<code>oyzu exec -- yarn install --immutable</code>, then run <code>oyzu run test</code>.
-Captured Yarn, additional rc settings, workspaces, project plugins, <code>yarnPath</code>,
-custom registries and non-registry sources remain outside this lane. These x64
-proofs establish no Windows ARM64, macOS or Linux ARM64 support.</p>
-<p>An admitted application build offers these ordered actions. The shared check
-levels decide which checks run; <code>--full</code> selects every check that is not off.</p>
 
 
 
@@ -325,6 +243,36 @@ levels decide which checks run; <code>--full</code> selects every check that is 
 
 
 
+<div class="oyzu-table-scroll"><table><thead><tr><th>Rule</th><th>Refused with</th></tr></thead><tbody><tr><td>It names something below the target: not <code>.</code>, no segment that starts or ends with a dot (<code>.git</code>, <code>.oyzu</code>), is <code>node_modules</code> (any case) or is a Windows device name (<code>con</code>, <code>nul</code>, <code>COM1.txt</code>)</td><td><code>PLUGIN_OPERATION_FAILED: … invalid result</code></td></tr><tr><td>Sources are unique, ignoring case</td><td><code>PLUGIN_OPERATION_FAILED: … invalid result</code></td></tr><tr><td>It doesn&#x27;t equal, contain or lie inside <code>output_dir</code></td><td><code>PLUGIN_OPERATION_FAILED: … overlaps the output directory</code></td></tr><tr><td>It doesn&#x27;t equal, contain or lie inside a file or directory of the target&#x27;s source selection</td><td><code>PLUGIN_ARTIFACT_REFUSED: … overlaps the frozen source selection at &lt;path&gt;</code></td></tr><tr><td>No existing segment is a symbolic link or reparse point, and none above the last is a file</td><td><code>PLUGIN_ARTIFACT_REFUSED: artifact … names …</code></td></tr></tbody></table></div>
+<p>Oyzu then moves anything already at the path into a fresh directory beside the output
+(never deleting in place) and discards that directory after collection. The plan records
+moved paths under <code>extensions[&quot;oyzu.dev/retired-outputs&quot;]</code>. A build whose script writes
+nothing fails with <code>native artifact collection failed</code> rather than republishing an old
+output. Collection then applies the usual rules: no links, no reserved names.</p>
+<p>On the native host lane the target directory is a private copy rebuilt from the selected
+source before each build, so nothing is ever moved there and <code>previous</code> is always
+<code>false</code>. In an isolated build, the output is moved aside in the private execution
+workspace, never in your project. To recover from a refusal, name a project output that
+isn&#x27;t source, version control state or a dependency tree, and remove any link in its path.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-package-facts">Native package facts<a href="#native-package-facts" class="hash-link" aria-label="Direct link to Native package facts" title="Direct link to Native package facts" translate="no">​</a></h3>
+<p><code>tasks</code> can report <code>native_package</code> with an optional <code>name</code> and <code>version</code> and the file
+(<code>origin{path,digest,location}</code>) they came from. Oyzu checks that the file is inside the
+supplied source and that its digest matches. A missing declaration stays unknown, even
+when the target&#x27;s version is <code>0.0.0</code>. The Node plugin reports <code>package.json</code>; the Go
+plugin doesn&#x27;t. See <a class="" href="/docs/reference/version-inference#native-node-facts-and-host-policy">version inference</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="caching-and-cost">Caching and cost<a href="#caching-and-cost" class="hash-link" aria-label="Direct link to Caching and cost" title="Direct link to Caching and cost" translate="no">​</a></h3>
+<p>Targets built by a plugin are reused from the local action cache like other targets.
+The cache key includes the plugin&#x27;s executable digest and runtime, so rebuilding the
+plugin reruns its targets. Bind the executable itself, not a wrapper script, because a
+script&#x27;s digest doesn&#x27;t cover the program it starts (see
+<a class="" href="/docs/reference/action-cache#external-builder-targets">external builder targets</a>). An unchanged
+one-module rebuild launches the plugin five times (<code>tasks</code>, <code>requirements</code>,
+<code>native-admission</code>, <code>native-build</code>, and one <code>task-command</code> per command; two when the
+command asks for an observation). Launches scale with the number of plugin targets.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="package-and-sign-your-plugin">Package and sign your plugin<a href="#package-and-sign-your-plugin" class="hash-link" aria-label="Direct link to Package and sign your plugin" title="Direct link to Package and sign your plugin" translate="no">​</a></h2>
+<p>A package is the archive described in <a class="" href="/docs/reference/plugin-packages#package-format">plugin packages</a>:
+<code>plugin.json</code> plus one executable per platform.</p>
+<p>The manifest (schema) requires:</p>
 
 
 
@@ -345,102 +293,51 @@ levels decide which checks run; <code>--full</code> selects every check that is 
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Action</th><th>Command</th><th>When</th></tr></thead><tbody><tr><td><code>&lt;target&gt;:install</code></td><td><code>npm ci</code>, <code>pnpm install --frozen-lockfile</code>, Classic <code>yarn install --frozen-lockfile</code> or Berry <code>yarn install --immutable</code>; offline handling follows the selected manager</td><td>Nonempty dependencies, devDependencies or optionalDependencies</td></tr><tr><td><code>&lt;target&gt;:build</code></td><td>Selected authored build task, normally <code>&lt;manager&gt; run build</code></td><td>Always</td></tr><tr><td><code>&lt;target&gt;:test</code></td><td>Authored test script or detected default</td><td>Tests selected</td></tr><tr><td><code>&lt;target&gt;:lint</code></td><td>Authored lint script or native ESLint/Biome adapter</td><td>Lint selected</td></tr><tr><td><code>&lt;target&gt;:format-check</code> or <code>&lt;target&gt;:format:check</code></td><td>Authored check script or native Prettier/Biome adapter</td><td>Format selected; mutating <code>format</code> is never selected</td></tr></tbody></table></div>
-<p>Default quality commands reuse the built-in native API adapter. Install the
-project&#x27;s selected ESLint/Prettier/Biome dependencies first; an explicitly
-provisioned <code>OYZU_NODE_QUALITY_HOME</code> may supply undeclared fallback packages.
-Declared-but-uninstalled packages fail rather than falling back. Native config
-and ignores remain authoritative; generated output and symlinks are excluded by
-the existing adapter. <code>oyzu run format</code> mutates source; <code>format-check</code> does not.
-Authored scripts win over defaults. <code>format:check</code>, <code>build:prod</code> and other
-portable colon names are retained; unsupported names fail discovery explicitly.
-Use <code>oyzu run app:format:check</code> or <code>[tasks.&quot;app:format:check&quot;]</code> when qualifying
-a name. Native task environment defaults enter the ordinary configuration and
-policy pipeline; reserved <code>OYZU_*</code> names remain unavailable to authored config.</p>
-<p>The plugin automatically instruments Node&#x27;s built-in runner and exact <code>vitest</code> /
-<code>vitest run</code> tasks, including the inferred Vitest command. Vitest uses the shared
-native <a class="" href="/docs/reference/node-quality#vitest-execution">reporting configuration</a>, preserving
-native npm script lifecycle and writing actual JUnit and LCOV at core-resolved
-destinations. Its selected matching coverage provider must already be installed;
-the adapter does not acquire it. Native npm with Vitest/V8 5.0.3 is demonstrated
-on Windows and Linux x86_64. See the
-Vitest qualification. Jest and Mocha
-remain opaque and must produce authored reports to satisfy required gates.
-This Vitest evidence covers native npm only; it does not qualify Vitest with
-pnpm/Yarn, workspaces or captured execution. The separate native Yarn evidence
-above uses Node&#x27;s built-in runner. pnpm and Yarn use their own argument
-forwarding: reporter flags follow <code>&lt;manager&gt; run test</code> directly, with no npm
-<code>--</code> separator.
-Captured planning also connects pnpm&#x27;s existing provider, retaining the selected
-Node/pnpm archives, fixed environment, scratch reservation and mandatory native
-offline install before authored operations. Its provider currently requires
-pnpm <strong>10.11.0</strong> for native-store export. The bounded Linux amd64 application,
-independent consumer and both refusal gates
-passed under
-#835. Supply the
-<a class="" href="/docs/reference/plugin-packages#captured-npm-applications">compatible image and YAML prerequisite</a>.
-See the
-native checks qualification and the
-separate captured npm proof.
-The native pnpm qualification
-records the separate Windows and Linux native functional proofs; neither
-native admission nor this captured proof qualifies additional platforms.</p>
-<p>The plugin echoes the build task&#x27;s argv in its <code>build</code> operation because the
-host requires a command for <code>build</code> (&quot;native build invocation missing&quot;
-otherwise). This contradicts the
-wire contract, which
-says an operation without <code>command</code> runs the target&#x27;s own task; the mismatch is
-tracked as a follow-up issue.</p>
-<p>The artifact is the <code>dist</code> directory the build script writes (<code>origin: target</code>,
-<a href="#project-written-outputs" class="">subject to fresh-output checks</a>), named
-<code>application-&lt;version&gt;</code> from the version core resolved. Dependencies without
-the selected manager&#x27;s lock fail at plan time, before any action, with
-<code>PLUGIN_OPERATION_FAILED: … (NativeBuild): node.lock-file: host npm dependency preparation requires package-lock.json; create it with npm before building</code>
-(an <code>npm-shrinkwrap.json</code> alone is not enough, as for the built-in). pnpm
-requires <code>pnpm-lock.yaml</code>, with the corresponding <code>node.lock-file</code> diagnostic.
-Yarn requires <code>yarn.lock</code>; missing native locks fail before dependency effects.
-Native pnpm validates lock freshness through <code>--frozen-lockfile</code>; a stale
-lock fails installation without rewriting it. Create or update the native
-lock intentionally with the selected manager, then retry. A failed install
-blocks the build action and successful artifact collection.</p>
-<p>pnpm owns native install lifecycle and dependency-script policy; Oyzu adds no
-script approval or blanket script enabling. Offline builds add <code>--offline</code>
-and need the dependencies already present in pnpm&#x27;s native store as well as
-Oyzu&#x27;s selected tools. Missing native dependency bytes fail without online
-recovery. Native execution uses the host&#x27;s ordinary pnpm configuration and
-store; it is not captured or hermetic dependency replay. <code>--no-cache</code> reruns
-actions but does not erase that native store.</p>
-<p>Differences from the built-in builder for the same npm project (native pnpm
-is an added external-plugin capability):</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Field</th><th>Meaning</th></tr></thead><tbody><tr><td><code>identity</code></td><td><code>publisher</code>, <code>name</code> and <code>version</code>. A builder reference is <code>&lt;name&gt;/&lt;profile&gt;</code>. The publisher <code>oyzu</code> is reserved for official releases (see below)</td></tr><tr><td><code>protocol_generations</code></td><td>Must include <code>v1alpha1</code></td></tr><tr><td><code>profiles</code>, <code>roles</code></td><td>The builder profiles you serve and, per role, the contract and features (for example <code>go-test-events</code>, <code>captured-plan</code>, <code>build-options</code>)</td></tr><tr><td><code>runtimes</code></td><td>One entry per platform: <code>os</code> (<code>linux</code>, <code>darwin</code>, <code>windows</code>), <code>arch</code> (<code>amd64</code>, <code>arm64</code>), optional <code>abi</code> (<code>gnu</code>, <code>musl</code>, <code>msvc</code>), <code>entrypoint</code> and its SHA-256 <code>digest</code></td></tr><tr><td><code>requirements</code></td><td>Baseline tools needed whatever the project contains, with stages and a reason</td></tr><tr><td><code>effects</code></td><td>What the plugin needs: <code>source-read</code>, <code>output-write</code>, <code>native-process</code>, <code>native-network</code>. These limit what oyzu brokers; they don&#x27;t remove a native executable&#x27;s own operating system access</td></tr><tr><td><code>provenance</code></td><td>Source revision and maintainer</td></tr></tbody></table></div>
+<p>Example manifests for each
+first-party plugin are in the repository. <code>tooling/package-plugin.py</code> in the oyzu
+repository packages one built executable for the host platform and prints the archive
+digest:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">python3 tooling/package-plugin.py </span><span class="token parameter variable" style="color:#36acaa">--executable</span><span class="token plain"> target/debug/oyzu-plugin-go </span><span class="token parameter variable" style="color:#36acaa">--out</span><span class="token plain"> go.tar.gz</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># prints sha256:&lt;archive digest&gt;</span><br></div></code></pre></div></div>
+<p>To distribute your plugin through an OCI registry, publish a release root laid out as in
+the OCI package contract, with a Sigstore
+signature attached. Users then have two ways to trust it:</p>
 <ul>
-<li class=""><strong>The artifact name</strong> uses core&#x27;s resolved version (for an unversioned
-checkout <code>0.0.0-dev.g&lt;source hash&gt;</code>), not <code>package.json</code>&#x27;s <code>version</code>. The
-directory inventory and content digests are the same.</li>
-<li class=""><strong>The install action is <code>&lt;target&gt;:install</code></strong>, the target&#x27;s <code>install</code> task
-(<code>npm ci</code> with a lock file), where the built-in runs an internal
-<code>&lt;target&gt;:prepare</code> action: core runs a plugin operation only when the target
-has a task of that name. Its environment is the <code>install</code> task&#x27;s admitted
-environment, where the built-in gives <code>npm ci</code> the <code>build</code> task&#x27;s; they are
-the same unless the two tasks&#x27; environments differ. Because it is a task, an
-authored <code>install</code> task in <code>oyzu.toml</code> replaces <code>npm ci</code>, and disabling the
-<code>install</code> stage drops it; the built-in&#x27;s <code>prepare</code> can be neither replaced
-nor disabled. Core runs an authored task on its host path with the ambient
-environment, not the pinned tool environment the plugin&#x27;s <code>install</code>
-operation gets, so an authored <code>npm ci</code> can fail where the plugin&#x27;s own
-install works (on Linux without a global <code>npm</code>: <code>cannot execute npm: No such file or directory</code>).</li>
-<li class=""><strong>Report integration labels and framework adapters.</strong> The plugin supplies
-command/report intent but not the built-in&#x27;s integration-mode metadata or
-Jest/Mocha adapters. Shared Vitest adaptation is available for exact commands;
-its Windows and Linux x86_64 native npm 5.0.3 proofs are recorded in the
-qualification.
-Core records command, report and acceptance
-evidence independently.</li>
-<li class="">Each bound target launches a plugin process for its discovery/planning
-operations and command adaptation. Earlier N1 timings remain historical
-measurements; this checks slice does not claim new performance results.</li>
+<li class=""><strong>Bind it by tag.</strong> A tag outside <code>ghcr.io/oyzuai/plugins/</code> needs a <code>plugins.packages</code>
+entry with the exact signer <code>identity</code> to require. Binding by digest trusts the digest
+instead. See <a class="" href="/docs/reference/plugin-packages#oci-sources">OCI sources</a>.</li>
+<li class=""><strong>List it in an organization catalog.</strong> Your organization&#x27;s tool index can list your
+package. For a publisher other than <code>oyzu</code>, the signed catalog&#x27;s digest is the trust.</li>
 </ul>
-<p>The complete list, with the differential test that holds it, is in
-known differences.</p>
+<p>A package named <code>oyzu/*</code> always needs the official signature, on any registry. You can&#x27;t
+publish under that publisher yourself.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="check-it">Check it<a href="#check-it" class="hash-link" aria-label="Direct link to Check it" title="Direct link to Check it" translate="no">​</a></h3>
+<p>Before you ship a plugin, run it against the sample requests in the repository.
+<code>oyzu-plugin-conformance &lt;plugin-executable&gt; docs/contracts/plugins-v1alpha1/examples</code>
+(from the oyzu repository) sends every <code>request.*.json</code> through oyzu&#x27;s real plugin
+launcher, so limits, deadlines and acceptance are the same as in a build. It checks that
+each result is valid and echoes its request, that the outcomes match the operations
+<code>describe</code> declares, and that the plugin is stateless (every request runs again in a new
+process in reverse order and must answer the same). It checks the protocol only. It runs
+no native tools, so it can&#x27;t tell you whether your commands build anything. Then try the
+plugin in a real project through a local binding.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-recovery">Failures and recovery<a href="#failures-and-recovery" class="hash-link" aria-label="Direct link to Failures and recovery" title="Direct link to Failures and recovery" translate="no">​</a></h2>
 
 
@@ -487,95 +384,247 @@ known differences.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Error</th><th>Cause</th><th>Recovery</th></tr></thead><tbody><tr><td><code>CONFIG_SCOPE: plugins.development is not permitted in this scope</code></td><td>The setting is in a project file or profile</td><td>Move it to user or machine configuration</td></tr><tr><td><code>PLUGIN_BINDING_INVALID: … cannot read plugin executable</code></td><td>The path is missing or not a regular file</td><td>Build the plugin or correct the path</td></tr><tr><td><code>PLUGIN_BINDING_INVALID: … is not a builder id a built-in builder serves</code></td><td>The id is unknown</td><td>Use an id such as <code>go/app</code></td></tr><tr><td><code>PLUGIN_OPERATION_FAILED: &lt;id&gt; plugin &lt;path&gt; (&lt;operation&gt;)</code></td><td>The plugin failed, answered unsupported, broke the protocol, exited nonzero, wrote no result or exceeded its deadline; the cause follows, with the plugin&#x27;s warning and error diagnostics</td><td>Fix the plugin; the cause names the rule broken</td></tr><tr><td><code>PLUGIN_ISOLATED_UNSUPPORTED</code> / <code>ENGINE_ASSET_UNAVAILABLE</code></td><td>Captured execution lacks an admitted package capability, platform member, supported profile or exact engine assets. When the plugin also declined the target for the native host lane in <code>native-admission</code>, the message ends with one clause per such selected target, <code>; target &lt;id&gt; was not admitted to the native host lane: &lt;reason&gt;</code> (for example <code>ENGINE_ASSET_UNAVAILABLE: no admitted execution assets selected; target hello was not admitted to the native host lane: host Go builds require exactly one main package</code>). If <code>native-admission</code> itself failed, it ends with <code>; target &lt;id&gt;: its plugin failed native-admission: &lt;cause&gt;</code></td><td>Fix what the reason names so the plugin admits the target for the native host lane, or supply the documented captured package and engine prerequisites</td></tr><tr><td><code>plugin … sets command env, which the native host lane does not carry yet</code></td><td>A build operation or test command carried <code>env</code></td><td>Use <code>native-build</code> output <code>env</code>; per-command env is a Milestone A limit</td></tr><tr><td><code>PLUGIN_ARTIFACT_REFUSED: artifact … names …</code></td><td>An <code>origin: target</code> artifact overlaps the frozen source selection, passes through a link or reparse point, or lies below a file; or core could not move a previous output aside</td><td>Name a project output that is not source and has no link in its path (<a href="#project-written-outputs" class="">project-written outputs</a>)</td></tr></tbody></table></div>
-<p>A failed operation fails the build or task like any preparation failure; no
-partial plugin result is used.</p>
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Error</th><th>Cause</th><th>Recovery</th></tr></thead><tbody><tr><td><code>CONFIG_SCOPE: plugins.development is not permitted in this scope</code></td><td>The setting is in a project file or profile</td><td>Move it to user or machine configuration</td></tr><tr><td><code>PLUGIN_BINDING_INVALID: … cannot read plugin executable</code></td><td>The path is missing or not a regular file</td><td>Build the plugin or fix the path</td></tr><tr><td><code>CONFIG_INVALID_VALUE: plugins.development</code></td><td>A key isn&#x27;t a short unversioned reference, or a path isn&#x27;t absolute</td><td>Use an id such as <code>independent/app</code> and an absolute path</td></tr><tr><td><code>PLUGIN_OPERATION_FAILED: observation … which this builder does not admit</code></td><td>The plugin asked for an observation with a tool it may not use. Local bindings may use none</td><td>Return command intent without an observation</td></tr><tr><td><code>PLUGIN_OPERATION_FAILED: &lt;id&gt; plugin &lt;path&gt; (&lt;operation&gt;)</code></td><td>The plugin failed, answered unsupported, broke the protocol, exited nonzero, wrote no result or ran past its deadline. The cause and the plugin&#x27;s diagnostics follow</td><td>Fix the plugin</td></tr><tr><td><code>PLUGIN_ISOLATED_UNSUPPORTED</code> or <code>ENGINE_ASSET_UNAVAILABLE</code></td><td>An isolated build lacks a package feature, platform member, supported profile or engine files. If the plugin also declined the target for the host build, the message ends with <code>; target &lt;id&gt; was not admitted to the native host lane: &lt;reason&gt;</code></td><td>Fix what the reason names, or supply the <a class="" href="/docs/reference/plugin-packages#isolated-builds-with-plugins">isolated build prerequisites</a></td></tr><tr><td><code>plugin … sets command env, which the native host lane does not carry yet</code></td><td>A build operation or test command carried <code>env</code></td><td>Set the environment in the <code>native-build</code> output <code>env</code>. Per-command <code>env</code> isn&#x27;t supported</td></tr><tr><td><code>PLUGIN_ARTIFACT_REFUSED: artifact … names …</code></td><td>A project-written artifact overlaps the source, passes through a link, lies below a file, or oyzu couldn&#x27;t move the previous output aside</td><td>Name a project output that isn&#x27;t source and has no link in its path</td></tr></tbody></table></div>
+<p>A failed operation fails the build or task. No partial plugin result is used.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="where-a-refusal-reason-appears">Where a refusal reason appears<a href="#where-a-refusal-reason-appears" class="hash-link" aria-label="Direct link to Where a refusal reason appears" title="Direct link to Where a refusal reason appears" translate="no">​</a></h3>
-<p>A plain <code>oyzu build</code> routes a bound target to the native host lane first. When
-the plugin declines it, the build cannot continue on the captured path without
-execution assets, so it fails during preparation, before any plugin build action
-or tool installation, with the code above and the plugin&#x27;s reason appended. The
-message names every selected bound target the plugin kept off the native host
-lane, one clause each, not only the first target that failed: with an admitted
-<code>api</code> and a refused <code>tools</code>, it ends <code>; target tools was not admitted to the native host lane: &lt;reason&gt;</code>. A plugin that fails <code>native-admission</code> is named the
-same way. The human and <code>--json</code> outputs carry the same message (in JSON, the
-failed result&#x27;s diagnostic message). <code>oyzu build --plan</code> does not fail: its
-&quot;Unresolved until preparation&quot; list (<code>unresolved</code> in JSON) adds the same clause
-for each such target (<code>Target &lt;id&gt; was not admitted to the native host lane: &lt;reason&gt;</code>).</p>
-<p>A refused target that captured planning would admit still gets its clause when
-a different target is the one that fails; the remedy in the table applies to the
-refused targets named, not to the one that happened to fail first.</p>
-<p>The clauses are asked of the plugins only after a failure. A target that
-captured planning takes is planned exactly as before, and a build in which every
-bound target is admitted launches nothing extra. The answers are the ones native
-selection already cached for this invocation; a target native selection never
-reached (it stops at the first refusal) costs one <code>native-admission</code> launch.</p>
-<p>With <code>--isolated</code> or <code>--all-platforms</code>, engine selection runs first and does not
-launch plugins, so the engine&#x27;s own refusal (<code>ENGINE_PIN_MISMATCH</code> when no
-matching engine archive is admitted) is what you see until the engine is
-admitted. Once it is, a target that cannot be planned on the captured path
-fails with its <code>PLUGIN_ISOLATED_UNSUPPORTED</code> message and the same appended
-clauses. That failure now launches each selected bound target&#x27;s plugin on the
-host for <code>native-admission</code> if the answer is not cached, once per target; a
-failing or hanging plugin can add up to its 60-second deadline per target. A
-target the plugin admitted natively gets no clause. The reason is only ever
-added to a failure: a target that captured planning admits proceeds to captured
-planning exactly as before.</p>
+<p>A plain <code>oyzu build</code> tries the host build first. If the plugin declines a target, the
+build continues on the isolated path, as <code>oyzu build --isolated</code> would, with the engine
+that path mounts. Without an <code>[engine]</code> pin in <code>oyzu.lock</code> or an installed engine, a
+Linux <code>oyzu</code> mounts its own executable (see <a class="" href="/docs/reference/execution-image">execution image</a>); on
+Windows and macOS the build stops with <code>ENGINE_ASSET_UNAVAILABLE</code> and how to install
+the Linux engine (<code>oyzu engine install --linux</code>). A pinned engine is installed only by an explicit isolated build, so a plain
+build with a pin stops with <code>ENGINE_ASSET_UNAVAILABLE</code> naming the pin and
+<code>oyzu build --isolated</code>.</p>
+<p>If the isolated path can&#x27;t take the target either (a raw executable binding has no
+isolated package, for example), the build fails during preparation, before any build
+action or tool installation, with the code above and the plugin&#x27;s reason. The message
+lists every target the plugin kept off the host build, not only the first. A plugin that fails <code>native-admission</code> is named the
+same way. Human and <code>--json</code> output carry the same message. <code>oyzu build --plan</code> doesn&#x27;t
+fail; its &quot;Unresolved until preparation&quot; list (<code>unresolved</code> in JSON) adds a
+<code>Target &lt;id&gt; was not admitted to the native host lane: &lt;reason&gt;</code> line for each one.</p>
+<p>With <code>--isolated</code> or <code>--all-platforms</code>, oyzu selects the engine first without launching
+plugins, so you see the engine&#x27;s own refusal until an engine is available:
+<code>ENGINE_PIN_MISMATCH</code> for a pin no admitted engine archive supplies, or
+<code>ENGINE_ASSET_UNAVAILABLE</code> on a host that can&#x27;t mount itself. After that, a
+target that can&#x27;t be planned fails with its <code>PLUGIN_ISOLATED_UNSUPPORTED</code> message and the
+same clauses. This asks each selected plugin for <code>native-admission</code> once if it isn&#x27;t
+cached, and a hanging plugin can cost its full 60-second deadline per target.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="trust">Trust<a href="#trust" class="hash-link" aria-label="Direct link to Trust" title="Direct link to Trust" translate="no">​</a></h2>
-<p>A binding runs the named executable with your user&#x27;s permissions whenever Oyzu
-discovers a workspace. Only bind executables you built or trust. The digest
-records which content ran; it is not a signature and grants nothing. The plugin
-receives no credentials and no inherited environment.</p>
+<p>A binding runs the named executable with your user&#x27;s permissions whenever oyzu discovers
+a workspace. Bind only executables you built or trust. The recorded digest says which
+bytes ran; it isn&#x27;t a signature and grants nothing. The plugin gets no credentials and no
+inherited environment.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
-<li class="">Go <code>go/app</code> with one module and one <code>package main</code> is the only admitted Go
-host build, as for the built-in host path. <code>go/library</code> and workspaces keep
-task execution through the plugin but are not admitted to native builds, so
-<code>oyzu build</code> refuses them while bound.</li>
-<li class="">Node: npm/pnpm single-root <code>node/app</code> applications, including native check/report intent
-(<a href="#the-node-plugin" class="">the Node plugin</a>). The captured npm extension in
-#789
-has a passing local Linux proof.
-Captured pnpm 10.11.0 has a passing local Linux proof
-under #835. Captured Yarn, workspaces and
-framework report adapters remain outside that extension. Native pnpm has the exact-stable declaration and workspace
-restrictions above. Remove the binding for unsupported projects to use the
-built-in builder (a bound id has no fallback).</li>
-<li class="">Per-command <code>env</code> in <code>native-build</code> operations and the <code>native-test</code> command
-is refused (see above).</li>
-<li class="">Observation commands are matched by tool short name (<code>go</code> for <code>oyzu:go</code>) on the
-task PATH; core does not yet verify the resolved file belongs to the locked tool.</li>
-<li class="">Ctrl-C (or SIGTERM/SIGHUP on Unix) terminates a running plugin and its
-descendants on every command. <code>oyzu build</code> reports a cancelled build. On Unix,
-commands without build interrupt handling (<code>oyzu run</code>, <code>oyzu build --plan</code>)
-stop the plugin first and then end with the signal as before. A plugin that
-fails <code>native-admission</code> fails <code>oyzu build --plan</code> as it fails the build.</li>
-<li class="">If <code>oyzu run</code> or <code>oyzu build --plan</code> ends from a signal, the private copy of
-the bound executable (an <code>oyzu-plugin-*</code> temporary directory) is not removed.</li>
-<li class="">Successful operations&#x27; diagnostics are not shown.</li>
+<li class="">The Go plugin builds only <code>go/app</code> with one module and one <code>package main</code> on the host.
+<code>go/library</code> and workspaces keep task execution through the plugin, but <code>oyzu build</code>
+refuses them.</li>
+<li class="">Per-command <code>env</code> in <code>native-build</code> operations and the <code>native-test</code> command is
+refused.</li>
+<li class="">Observation commands are matched by tool short name (<code>go</code> for <code>oyzu:go</code>) on the task&#x27;s
+PATH. Oyzu doesn&#x27;t verify that the resolved file belongs to the locked tool.</li>
+<li class="">Ctrl-C (or SIGTERM and SIGHUP on Unix) stops a running plugin and its child processes.
+<code>oyzu build</code> reports a cancelled build.</li>
+<li class="">If <code>oyzu run</code> or <code>oyzu build --plan</code> ends from a signal, the private copy of the bound
+executable (an <code>oyzu-plugin-*</code> temporary directory) isn&#x27;t removed.</li>
+<li class="">Diagnostics from successful operations aren&#x27;t shown.</li>
 </ul>
-<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="verification">Verification<a href="#verification" class="hash-link" aria-label="Direct link to Verification" title="Direct link to Verification" translate="no">​</a></h2>
-<p>Milestone A was demonstrated on Linux x86_64 with the compiled debug CLI and
-<code>examples/builds/go-app/project</code>: the bound and unbound builds produced the same
-artifact name and byte-identical content, the same test and coverage reports,
-and the bound build recorded the plugin path and digest. A two-module Go
-workspace exercised <code>task-command</code> with one observation round through
-<code>oyzu run build</code> and <code>oyzu run test</code>. Commands and results are in
-the wire contract&#x27;s verification section
-and in <a class="" href="/docs/support/capabilities">implementation status</a>.
-Windows and macOS were not exercised.</p>
-<p>Project-written outputs (issue #746)
-were demonstrated through the compiled CLI on Windows (Linux pending) with the
-reference plugin bound to <code>node/app</code> (its <code>project-output</code> target runs the
-project&#x27;s own script and names the <code>dist</code> it writes):
-<code>oyzu exec -- cargo test --locked --test integration plugin_artifact_origin</code>.
-See the qualification record.</p>
-<p>The Node plugin&#x27;s npm application build (issue #772)
-was demonstrated through the compiled CLI on Windows and Linux (WSL): the
-bound and built-in builds of the same project produced the same directory
-digest, <code>npm ci</code> ran as the <code>install</code> action, and the preparation-boundary
-cases above pass:
-<code>oyzu exec -- cargo test --locked -p oyzu-plugin-node --features plugin</code>.
-See the qualification record.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview: terms, support and recovery</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#status-and-scope" class="table-of-contents__link toc-highlight">Status and scope</a></li><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#what-core-does-and-what-the-plugin-does" class="table-of-contents__link toc-highlight">What core does and what the plugin does</a><ul><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li></ul></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#verification" class="table-of-contents__link toc-highlight">Verification</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-python-plugin">The Python plugin<a href="#the-python-plugin" class="hash-link" aria-label="Direct link to The Python plugin" title="Direct link to The Python plugin" translate="no">​</a></h2>
+<p>The Python plugin (<code>python/package</code>) builds pip and <code>pyproject.toml</code> projects into wheels
+with pytest and Ruff checks, using the same binding. It adds no installer, PATH change or
+<code>PYTHONPATH</code> bridge: dependencies, pytest, coverage and quality tools must already be in
+the project&#x27;s environment, and a target-local <code>.venv</code> is used when present. A mismatched
+environment is refused. Direct <code>oyzu run</code> tasks don&#x27;t use this binding. Tested on Linux
+amd64 (GNU). No Python plugin is published yet. See
+<a class="" href="/docs/reference/python-preparation#native-pip-full-build-environment">Python preparation</a> and, for the
+isolated path, <a class="" href="/docs/reference/plugin-packages#isolated-pip-python-packages">captured pip Python packages</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-node-plugin">The Node plugin<a href="#the-node-plugin" class="hash-link" aria-label="Direct link to The Node plugin" title="Direct link to The Node plugin" translate="no">​</a></h2>
+<p>The Node plugin serves <code>node/app</code> for npm, pnpm and Yarn (Classic and Berry). It&#x27;s
+experimental and isn&#x27;t published yet, so you supply the package or a local binding.</p>
+<p>The host build takes a <code>node/app</code> target that is declared with <code>uses: node/app</code>, isn&#x27;t a
+workspace root, and has a non-empty <code>scripts.build</code> that writes <code>dist</code>. Anything else is
+refused with the plugin&#x27;s reason, and because a plugin-served id has no fallback, that
+target can&#x27;t build until it&#x27;s changed or the binding is removed. Workspace projects and
+package output are covered on <a class="" href="/docs/reference/npm-workspaces">npm workspaces</a>, <a class="" href="/docs/reference/pnpm">pnpm</a>,
+<a class="" href="/docs/reference/yarn">Yarn</a> and <a class="" href="/docs/reference/plugin-packages#isolated-npm-packages">plugin packages</a>.</p>
+<p>It builds on Windows and Linux x86-64. Windows ARM64, macOS and Linux ARM64 aren&#x27;t tested.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-it-runs">What it runs<a href="#what-it-runs" class="hash-link" aria-label="Direct link to What it runs" title="Direct link to What it runs" translate="no">​</a></h3>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Action</th><th>Command</th><th>When</th></tr></thead><tbody><tr><td><code>&lt;target&gt;:install</code></td><td><code>npm ci</code>, <code>pnpm install --frozen-lockfile</code>, Yarn Classic <code>yarn install --frozen-lockfile</code> or Berry <code>yarn install --immutable</code>. Offline handling follows the manager</td><td>The project has dependencies, devDependencies or optionalDependencies</td></tr><tr><td><code>&lt;target&gt;:build</code></td><td>The selected build task, normally <code>&lt;manager&gt; run build</code></td><td>Always</td></tr><tr><td><code>&lt;target&gt;:test</code></td><td>Your test script, or the detected default</td><td>Tests are selected</td></tr><tr><td><code>&lt;target&gt;:lint</code></td><td>Your lint script, or the native ESLint or Biome adapter</td><td>Lint is selected</td></tr><tr><td><code>&lt;target&gt;:format-check</code> or <code>&lt;target&gt;:format:check</code></td><td>Your check script, or the native Prettier or Biome adapter</td><td>Format is selected. A script that changes files is never selected</td></tr></tbody></table></div>
+<p>The shared check levels decide which checks run, and <code>--full</code> runs every check that isn&#x27;t
+off. Your own scripts win over the defaults. <code>format:check</code>, <code>build:prod</code> and similar
+names are kept; unsupported names fail discovery with an explicit error. An authored
+<code>install</code> task in <code>oyzu.toml</code> replaces <code>npm ci</code>, and disabling the <code>install</code> stage drops
+it. Authored tasks run with your ambient environment, not oyzu&#x27;s pinned tools, so an
+authored <code>npm ci</code> can fail where the plugin&#x27;s own install works (on Linux without a global
+<code>npm</code>: <code>cannot execute npm: No such file or directory</code>).</p>
+<p>The artifact is the <code>dist</code> directory your build script writes (<a href="#project-written-outputs" class="">project-written
+outputs</a>), named <code>application-&lt;version&gt;</code> from the version oyzu
+resolved (<code>0.0.0-dev.g&lt;source hash&gt;</code> for an unversioned checkout), not the version in
+<code>package.json</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="lock-files">Lock files<a href="#lock-files" class="hash-link" aria-label="Direct link to Lock files" title="Direct link to Lock files" translate="no">​</a></h3>
+<p>Dependencies need the manager&#x27;s lock file, or planning fails before any action with a
+diagnostic like <code>node.lock-file: host npm dependency preparation requires package-lock.json; create it with npm before building</code>.</p>
+<ul>
+<li class="">npm: <code>package-lock.json</code> (an <code>npm-shrinkwrap.json</code> alone isn&#x27;t enough).</li>
+<li class="">pnpm: <code>pnpm-lock.yaml</code>. A stale lock fails the install (<code>--frozen-lockfile</code>) and isn&#x27;t
+rewritten. Update it with pnpm, then retry.</li>
+<li class="">Yarn: <code>yarn.lock</code>.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pnpm">pnpm<a href="#pnpm" class="hash-link" aria-label="Direct link to pnpm" title="Direct link to pnpm" translate="no">​</a></h3>
+<ul>
+<li class="">If <code>packageManager</code> is present it must be an exact stable release such as
+<code>pnpm@10.11.0</code>. Oyzu checks it against explicit tool configuration, and a conflicting
+release fails before any action. Ranges, tags and prereleases are refused. Without
+<code>packageManager</code>, select pnpm in <code>[tools]</code>.</li>
+<li class="">A <code>pnpm-workspace.yaml</code> that contains only settings is allowed. A <code>packages</code> key, or
+anything oyzu can&#x27;t classify as settings, makes the project a workspace and it&#x27;s
+refused. Competing manager evidence is also refused.</li>
+<li class="">pnpm owns install scripts and their policy. Oyzu adds no script approval.</li>
+<li class="">Offline builds add <code>--offline</code> and need the dependencies already in pnpm&#x27;s own store.
+Missing bytes fail without going online. This is the host&#x27;s ordinary pnpm
+configuration and store, not a hermetic replay, and <code>--no-cache</code> doesn&#x27;t clear it.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="yarn">Yarn<a href="#yarn" class="hash-link" aria-label="Direct link to Yarn" title="Direct link to Yarn" translate="no">​</a></h3>
+<ul>
+<li class="">Accepted exact releases: <code>yarn@1.22.22</code> (Classic) and <code>yarn@4.17.1</code> (Berry). Berry needs
+<code>nodeLinker: node-modules</code> in <code>.yarnrc.yml</code> (a quoted value is fine). Plug&#x27;n&#x27;Play is
+refused. See <a class="" href="/docs/reference/tool-npm-pnpm-installation#managed-yarn">managed Yarn</a>.</li>
+<li class="">Direct tests need dependencies installed in the source project. A full build installs
+into a private workspace. For Berry, run <code>oyzu exec -- yarn install --immutable</code>, then
+<code>oyzu run test</code>.</li>
+<li class="">Not supported: isolated Yarn builds, extra rc settings, workspaces on this path, project
+plugins, <code>yarnPath</code>, custom registries and non-registry sources.</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="vite">Vite<a href="#vite" class="hash-link" aria-label="Direct link to Vite" title="Direct link to Vite" translate="no">​</a></h3>
+<p>An npm project whose build script is recognized <code>vite build</code>, with an optional literal
+<code>--outDir</code>, Vite as a dependency and a native Vite 8 configuration, builds as an
+application. Oyzu keeps the npm lifecycle around one Vite build and stages the output
+after the native postbuild step. Tested with Vite 8.3.3. Other Vite flags, pnpm or Yarn
+with Vite, SSR, library and multi-environment builds, and watch or no-write modes aren&#x27;t
+supported. See <a class="" href="/docs/reference/node-applications#external-npm-execution">Node applications</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tests-and-quality-checks">Tests and quality checks<a href="#tests-and-quality-checks" class="hash-link" aria-label="Direct link to Tests and quality checks" title="Direct link to Tests and quality checks" translate="no">​</a></h3>
+<p>For non-workspace npm, pnpm and Yarn targets, <code>oyzu run test</code> adds JUnit and LCOV
+reporting to a default <code>node --test</code>, to flag-only test scripts it recognizes, and to
+exact <code>vitest</code> and <code>vitest run</code> commands. See <a class="" href="/docs/reference/node-quality#vitest-execution">Vitest</a>
+and <a class="" href="/docs/reference/node-quality#jest-execution">Jest</a> for those frameworks (Vitest was tested with
+npm and Vitest 5.0.3; Jest with npm and Jest 29.7.0). The matching coverage provider
+must already be installed, because oyzu doesn&#x27;t download it. pnpm and Yarn pass reporter
+flags directly after <code>&lt;manager&gt; run test</code>, with no npm-style <code>--</code> separator.</p>
+<ul>
+<li class="">Other test commands run unchanged. They can write to <code>OYZU_TEST_REPORT</code> and
+<code>OYZU_COVERAGE_REPORT</code> or to report paths you declare.</li>
+<li class="">A missing optional report makes the evidence incomplete. A missing required report, a
+malformed report or a failing test fails the command.</li>
+<li class="">Workspace tests and other managers fail with <code>node.test-lane</code>.</li>
+<li class="">Lint and format checks use your project&#x27;s installed ESLint, Prettier or Biome. A
+directory you point <code>OYZU_NODE_QUALITY_HOME</code> at can supply packages the project doesn&#x27;t
+declare. A declared but uninstalled package fails instead of falling back. Native
+configuration and ignore files are authoritative. <code>oyzu run format</code> changes source;
+<code>format-check</code> doesn&#x27;t.</li>
+<li class="">To run a named task such as <code>format:check</code>, use <code>oyzu run app:format:check</code> or
+<code>[tasks.&quot;app:format:check&quot;]</code>. Environment defaults from native files go through the
+normal configuration and policy checks; reserved <code>OYZU_*</code> names stay unavailable.</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="repository-source-bootstrap">Repository source bootstrap<a href="#repository-source-bootstrap" class="hash-link" aria-label="Direct link to Repository source bootstrap" title="Direct link to Repository source bootstrap" translate="no">​</a></h2>
+<p>This section is for people working on the oyzu repository itself. Releases use the
+shared package store instead.</p>
+<p><code>tooling/bootstrap-oyzu.sh</code> builds the CLI, native shim, Rust plugin and Node plugin
+(this repository declares both a <code>cli</code> and a <code>docs</code> build, so both builders must resolve
+before <code>oyzu build cli</code>). It compiles with the pinned Rust, locked and offline, and
+honors <code>CARGO_TARGET_DIR</code> and <code>CARGO_BUILD_TARGET</code>. It needs no Python, Node or <code>jq</code> just
+to read configuration; only the read-back in the CI machine binding below uses Python.</p>
+<p>On a machine with no user configuration file and no existing plugin choices, the script
+writes the two development bindings to <code>.oyzu/bootstrap/config.toml</code> and prints the
+<code>OYZU_USER_CONFIG</code> export (or records it through <code>CLAUDE_ENV_FILE</code>, or through <code>GITHUB_ENV</code> for later GitHub Actions steps). It doesn&#x27;t touch your
+own user configuration, project or local files, or shell profiles. If any step fails,
+it removes the file it created. Running it again with the same unchanged file prints
+<code>Reusing this checkout&#x27;s unchanged bootstrap USER file</code> and the same export.</p>
+<p>If you already have a user configuration file or other plugin choices, the script refuses
+instead of merging. Bind the two plugins yourself, then run it again; with both present
+it passes them through. From the checkout root:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token assign-left variable" style="color:#36acaa">oyzu</span><span class="token operator" style="color:#393A34">=</span><span class="token plain">.oyzu/bin/oyzu        </span><span class="token comment" style="color:#999988;font-style:italic"># .oyzu/bin/oyzu.exe on Windows</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token assign-left variable" style="color:#36acaa">bin</span><span class="token operator" style="color:#393A34">=</span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$(</span><span class="token string variable builtin class-name" style="color:#36acaa">pwd</span><span class="token string variable" style="color:#36acaa"> </span><span class="token string variable parameter variable" style="color:#36acaa">-W</span><span class="token string variable" style="color:#36acaa"> </span><span class="token string variable operator file-descriptor important" style="color:#393A34">2</span><span class="token string variable operator" style="color:#393A34">&gt;</span><span class="token string variable" style="color:#36acaa">/dev/null </span><span class="token string variable operator" style="color:#393A34">||</span><span class="token string variable" style="color:#36acaa"> </span><span class="token string variable builtin class-name" style="color:#36acaa">pwd</span><span class="token string variable" style="color:#36acaa">)</span><span class="token string" style="color:#e3116c">/.oyzu/bin&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$oyzu</span><span class="token string" style="color:#e3116c">&quot;</span><span class="token plain"> config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> plugins.development.rust/app </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$bin</span><span class="token string" style="color:#e3116c">/oyzu-plugin-rust&quot;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic"># add .exe on Windows</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$oyzu</span><span class="token string" style="color:#e3116c">&quot;</span><span class="token plain"> config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> plugins.development.node/app </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$bin</span><span class="token string" style="color:#e3116c">/oyzu-plugin-node&quot;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic"># add .exe on Windows</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">tooling/bootstrap-oyzu.sh</span><br></div></code></pre></div></div>
+<p>Or edit the user file by hand:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins.development</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;rust/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/.oyzu/bin/oyzu-plugin-rust&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;node/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/.oyzu/bin/oyzu-plugin-node&quot;</span><br></div></code></pre></div></div>
+<p>In CI the user file is ignored, so the script refuses fresh user setup there; a CI job
+uses the machine binding below instead.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ci-machine-binding">CI machine binding<a href="#ci-machine-binding" class="hash-link" aria-label="Direct link to CI machine binding" title="Direct link to CI machine binding" translate="no">​</a></h3>
+<p>Pass <code>--ci-machine-binding</code> (used by the repository&#x27;s own setup action and release
+workflows) to bind the two plugins in machine configuration on a GitHub Actions runner
+(<code>GITHUB_ACTIONS=true</code>; anywhere else the switch does nothing). Before the configuration
+check above, the script:</p>
+<ol>
+<li class="">Checks that the runner is ephemeral: a GitHub-hosted runner
+(<code>RUNNER_ENVIRONMENT=github-hosted</code>), or a runner image that declares itself
+ephemeral with a root-owned, read-only <code>/etc/oyzu-runner-ephemeral</code> and provides a
+machine directory owned by the runner user, as the repository&#x27;s self-hosted runner
+image does with <code>/etc/oyzu</code>. Owning the machine directory alone isn&#x27;t enough.
+Otherwise it fails and writes nothing.</li>
+<li class="">Refuses an existing machine <code>config.toml</code> or an existing plugin copy. It never merges
+into or replaces machine configuration.</li>
+<li class="">Builds both plugins from source (and the CLI too, unless a published release&#x27;s <code>oyzu</code> is in use) and copies <code>oyzu-plugin-rust</code> and
+<code>oyzu-plugin-node</code> into the machine directory&#x27;s <code>plugins/</code> folder: <code>/etc/oyzu/plugins</code>
+on Linux, <code>/Library/Application Support/Oyzu/plugins</code> on macOS (both with <code>sudo</code> on a
+GitHub-hosted runner) and <code>%ProgramData%\Oyzu\plugins</code> on Windows. The checkout&#x27;s own
+executables are never bound.</li>
+<li class="">Creates the machine <code>config.toml</code> with only <code>[plugins.development]</code> entries for
+<code>rust/app</code> and <code>node/app</code> naming those copies.</li>
+<li class="">Reads the configuration back with <code>oyzu --json config explain plugins.development</code>
+(parsed with Python, which GitHub-hosted runners and the runner image provide) and
+requires exactly those two values, from machine scope only. The configuration check
+must then report the choices complete (<code>unchanged</code>), or the script fails.</li>
+</ol>
+<p>Machine configuration isn&#x27;t personal configuration, so CI keeps it. The binding lasts as
+long as the runner, and a GitHub-hosted runner or runner container is discarded after
+its job. This applies only to these executable bindings on ephemeral runners.</p>
+<p>A refused run keeps the executables it built in <code>.oyzu/bin</code>. If it used an <code>oyzu</code> already
+on your PATH, it built nothing, so check that both plugin files exist. Remove those
+entries to stop using the checkout&#x27;s plugins; the script never edits or removes them.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
+<ul>
+<li class=""><a class="" href="/docs/reference/plugin-packages">Plugin packages, the store and lock selections</a></li>
+<li class=""><a class="" href="/docs/reference/plugin-catalog">Plugin catalog and builder selection</a></li>
+<li class=""><a class="" href="/docs/reference/plugin-preview">Go builder preview</a></li>
+<li class=""><a class="" href="/docs/reference/configuration">Configuration</a></li>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#run-a-local-plugin" class="table-of-contents__link toc-highlight">Run a local plugin</a><ul><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#independent-profiles" class="table-of-contents__link toc-highlight">Independent profiles</a></li></ul></li><li><a href="#how-a-plugin-works" class="table-of-contents__link toc-highlight">How a plugin works</a><ul><li><a href="#operations" class="table-of-contents__link toc-highlight">Operations</a></li><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li><li><a href="#native-package-facts" class="table-of-contents__link toc-highlight">Native package facts</a></li><li><a href="#caching-and-cost" class="table-of-contents__link toc-highlight">Caching and cost</a></li></ul></li><li><a href="#package-and-sign-your-plugin" class="table-of-contents__link toc-highlight">Package and sign your plugin</a><ul><li><a href="#check-it" class="table-of-contents__link toc-highlight">Check it</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#the-python-plugin" class="table-of-contents__link toc-highlight">The Python plugin</a></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a><ul><li><a href="#what-it-runs" class="table-of-contents__link toc-highlight">What it runs</a></li><li><a href="#lock-files" class="table-of-contents__link toc-highlight">Lock files</a></li><li><a href="#pnpm" class="table-of-contents__link toc-highlight">pnpm</a></li><li><a href="#yarn" class="table-of-contents__link toc-highlight">Yarn</a></li><li><a href="#vite" class="table-of-contents__link toc-highlight">Vite</a></li><li><a href="#tests-and-quality-checks" class="table-of-contents__link toc-highlight">Tests and quality checks</a></li></ul></li><li><a href="#repository-source-bootstrap" class="table-of-contents__link toc-highlight">Repository source bootstrap</a><ul><li><a href="#ci-machine-binding" class="table-of-contents__link toc-highlight">CI machine binding</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>
