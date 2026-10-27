@@ -2,7 +2,7 @@
 # Reference: https://docs.oyzu.ai/docs/reference/install-script
 #
 #   irm https://docs.oyzu.ai/install.ps1 | iex
-#   & ([scriptblock]::Create((irm https://docs.oyzu.ai/install.ps1))) -Version v0.0.3
+#   & ([scriptblock]::Create((irm https://docs.oyzu.ai/install.ps1))) -Channel beta
 #
 # It downloads the release executable for this platform (and its oyzu-shim
 # companion when the release has one), refuses it unless its SHA-256 digest
@@ -13,6 +13,7 @@
 # in your shells and puts oyzu and its shims on your user Path (the registry, so
 # IDEs and new processes see them); -NoModifyPath skips that.
 param(
+  [string]$Channel = $env:OYZU_CHANNEL,
   [string]$Version = $env:OYZU_VERSION,
   [string]$InstallDir = $env:OYZU_INSTALL_DIR,
   [switch]$NoModifyPath,
@@ -24,10 +25,11 @@ function Show-OyzuInstallHelp {
   Write-Host @'
 Install the oyzu CLI from a GitHub release.
 
-Usage: install.ps1 [-Version TAG] [-InstallDir DIR] [-NoModifyPath] [-Help]
+Usage: install.ps1 [-Channel NAME] [-Version TAG] [-InstallDir DIR] [-NoModifyPath] [-Help]
 
-  -Version TAG     install this release tag instead of the newest release
-                   (previews included) that has an executable for this platform
+  -Channel NAME    stable (default), beta (release candidates) or nightly: install
+                   the newest release of that channel and let `oyzu self` follow it
+  -Version TAG     install this release tag (for example oyzu/v0.2.0) and pin it
   -InstallDir DIR  install into DIR (default: %LOCALAPPDATA%\Oyzu\bin)
   -NoModifyPath    do not set up your shells and Path (by default the installer
                    runs `oyzu shell install`: shell activation, oyzu and the
@@ -35,7 +37,7 @@ Usage: install.ps1 [-Version TAG] [-InstallDir DIR] [-NoModifyPath] [-Help]
   -Help            show this help
 
 Environment:
-  OYZU_VERSION, OYZU_INSTALL_DIR, OYZU_NO_MODIFY_PATH=1   same as the options
+  OYZU_CHANNEL, OYZU_VERSION, OYZU_INSTALL_DIR, OYZU_NO_MODIFY_PATH=1   same as the options
   GH_TOKEN or GITHUB_TOKEN   GitHub token, for a private OYZU_RELEASE_REPO or the rate limit
   OYZU_RELEASE_REPO          release repository (default: oyzuai/oyzu-releases)
   OYZU_API_BASE              GitHub API (default: https://api.github.com)
@@ -103,11 +105,25 @@ function Get-OyzuAsset([hashtable]$Ctx, $Release, $Asset, [string]$Stage, [strin
   return $path
 }
 
+# The channel a release tag belongs to, as `oyzu self` reads it: 1 stable (no
+# prerelease part), 2 beta (-rc, -beta, -alpha), 3 nightly (-nightly, or a nightly part after a
+# prerelease number: -alpha.0.nightly, -rc.1.nightly), 9 none of them.
+function Get-OyzuChannelRank([string]$Tag) {
+  $v = $Tag -replace '^oyzu/', '' -replace '^v', ''
+  $dash = $v.IndexOf('-')
+  if ($dash -lt 0) { return 1 }
+  $pre = $v.Substring($dash + 1)
+  if ($pre -match '^nightly(\.|$)' -or $pre -match '^(rc|beta|alpha)\..*\.nightly(\.|$)') { return 3 }
+  if ($pre -match '^(rc|beta|alpha)(\.|$)') { return 2 }
+  return 9
+}
+
 # Runs `oyzu engine install --linux` with the release's Linux oyzu, so isolated
 # builds have their Linux engine. A failure does not undo the install.
 function Initialize-OyzuEngine([string]$Exe, [string]$Linux, [string]$Name) {
   Push-Location (Split-Path -Parent $Linux)
-  try { & $Exe engine install --linux $Linux | Out-Null } finally { Pop-Location }
+  $prior = $env:OYZU_SELF_UPDATE; $env:OYZU_SELF_UPDATE = 'off'  # no update check right after installing
+  try { & $Exe engine install --linux $Linux | Out-Null } finally { Pop-Location; $env:OYZU_SELF_UPDATE = $prior }
   if ($LASTEXITCODE -eq 0) { Write-Host "Installed the Linux engine for isolated builds ($Name)" }
   else { [Console]::Error.WriteLine("oyzu install: oyzu is installed, but setting up the Linux engine for isolated builds failed. Run it again later with the same release's ${Name}: & '$Exe' engine install --linux <file>") }
 }
@@ -122,7 +138,21 @@ function Initialize-OyzuShell([string]$Exe) {
   }
 }
 
-function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath) {
+function Initialize-OyzuPlugins([string]$Exe) {
+  try {
+    & $Exe config show --global *> $null
+    if ($LASTEXITCODE -ne 0) { throw 'could not read user configuration' }
+    & $Exe config get --global plugins.preview *> $null
+    if ($LASTEXITCODE -eq 0) { return }
+    & $Exe config set --global plugins.preview true | Out-Null
+    if ($LASTEXITCODE -ne 0) { throw 'could not enable preview plugins' }
+    Write-Host 'Enabled first-party preview plugins. To undo: oyzu config set --global plugins.preview false'
+  } catch {
+    [Console]::Error.WriteLine("oyzu install: warning: preview plugin setup failed ($($_.Exception.Message)). Run: oyzu config set --global plugins.preview true")
+  }
+}
+
+function Install-Oyzu([string]$Channel, [string]$Version, [string]$InstallDir, [bool]$NoModifyPath) {
   $ErrorActionPreference = 'Stop'
   $ProgressPreference = 'SilentlyContinue'
   if ($PSVersionTable.PSEdition -eq 'Core' -and -not $IsWindows) {
@@ -138,6 +168,11 @@ function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath
     Token = if ($env:GH_TOKEN) { $env:GH_TOKEN } else { $env:GITHUB_TOKEN }
   }
   if (-not $InstallDir) { $InstallDir = Join-Path $env:LOCALAPPDATA 'Oyzu\bin' }
+  if (-not $Channel -and $Version) { $Channel = @{ 2 = 'beta'; 3 = 'nightly' }[(Get-OyzuChannelRank $Version)] }
+  if (-not $Channel) { $Channel = 'stable' }
+  $Channel = $Channel.ToLowerInvariant()
+  $rank = @{ stable = 1; beta = 2; nightly = 3 }[$Channel]
+  if (-not $rank) { Stop-OyzuInstall 2 "unknown channel ${Channel}: use stable, beta or nightly" }
 
   # The native architecture: the registry value is not changed by x64 emulation on ARM64.
   $native = $null
@@ -161,12 +196,13 @@ function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath
   $release = $null; $asset = $null
   foreach ($candidate in $releases) {
     if ($candidate.draft) { continue }
+    if (-not $Version -and (($candidate.tag_name -like '*/*' -and $candidate.tag_name -notlike 'oyzu/v*') -or (Get-OyzuChannelRank $candidate.tag_name) -gt $rank)) { continue }
     $asset = $candidate.assets | Where-Object { $_.name -eq $assetName } | Select-Object -First 1
     if ($asset) { $release = $candidate; break }
   }
   if (-not $release) {
     if ($Version) { Stop-OyzuInstall 1 "release $Version of $($ctx.Repo) has no $assetName, the executable for this platform. Choose another release, or build from source: https://docs.oyzu.ai/docs/get-started/install" }
-    Stop-OyzuInstall 1 "no published release of $($ctx.Repo) has $assetName, the executable for this platform. Build from source instead: https://docs.oyzu.ai/docs/get-started/install"
+    Stop-OyzuInstall 1 "no published $Channel release of $($ctx.Repo) has $assetName, the executable for this platform. Try -Channel beta or nightly, or build from source: https://docs.oyzu.ai/docs/get-started/install"
   }
   $tag = $release.tag_name
   Write-Host "Installing oyzu $tag for windows/$arch from $($ctx.Repo)"
@@ -201,6 +237,13 @@ function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath
       try { Move-Item -LiteralPath $file -Destination $dest -Force }
       catch { Stop-OyzuInstall 1 "cannot write $dest. If oyzu is running, close it and run the installer again. ($($_.Exception.Message))" }
     }
+    # Records the install for `oyzu self` (its channel, pin and digest) beside the binaries.
+    $v = $tag -replace '^oyzu/', '' -replace '^v', ''
+    $receipt = [ordered]@{ type = 'https://oyzu.dev/self-install/v1alpha1'; channel = $Channel; pin = $(if ($Version) { $v } else { $null })
+      mode = 'auto'; repository = $ctx.Repo; version = $v; tag = $tag; digest = [string]$asset.digest
+      installedBy = 'install.ps1'; installedAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ') }
+    try { [IO.File]::WriteAllText((Join-Path $InstallDir '.oyzu-install.json'), ($receipt | ConvertTo-Json -Compress) + "`n") }
+    catch { [Console]::Error.WriteLine("oyzu install: could not record the install for oyzu self in $InstallDir") }
     if ($linux) { Initialize-OyzuEngine (Join-Path $InstallDir 'oyzu.exe') $linux $linuxName }
   } finally {
     Remove-Item -LiteralPath $stage -Recurse -Force -ErrorAction SilentlyContinue
@@ -208,6 +251,7 @@ function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath
 
   Write-Host "Installed oyzu $tag ($assetName, $($asset.digest)) to $target"
   Write-Host $ver
+  Initialize-OyzuPlugins $target
   $onPath = ($env:Path -split ';' | ForEach-Object { $_.TrimEnd('\') }) -contains $InstallDir.TrimEnd('\')
   if (-not $NoModifyPath) {
     Initialize-OyzuShell $target
@@ -223,7 +267,7 @@ function Install-Oyzu([string]$Version, [string]$InstallDir, [bool]$NoModifyPath
 if ($Help) { Show-OyzuInstallHelp; return }
 $oyzuExit = 0
 try {
-  Install-Oyzu $Version $InstallDir ($NoModifyPath -or $env:OYZU_NO_MODIFY_PATH -eq '1')
+  Install-Oyzu $Channel $Version $InstallDir ($NoModifyPath -or $env:OYZU_NO_MODIFY_PATH -eq '1')
 } catch {
   $oyzuExit = $_.Exception.Data['OyzuExit']
   if ($null -eq $oyzuExit) { $oyzuExit = 1 }

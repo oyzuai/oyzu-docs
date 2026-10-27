@@ -2,7 +2,7 @@
 # Installs the oyzu CLI from a GitHub release on macOS and Linux.
 # Reference: https://docs.oyzu.ai/docs/reference/install-script
 #   curl -fsSL https://docs.oyzu.ai/install.sh | sh
-#   curl -fsSL https://docs.oyzu.ai/install.sh | sh -s -- --version v0.0.3
+#   curl -fsSL https://docs.oyzu.ai/install.sh | sh -s -- --channel beta
 # It downloads the release executable for this platform (and its oyzu-shim
 # companion, and on macOS and Windows the Linux oyzu that isolated builds run),
 # refuses it unless its SHA-256 digest matches the digest GitHub reports,
@@ -17,10 +17,11 @@ usage() {
   cat <<'EOF'
 Install the oyzu CLI from a GitHub release.
 
-Usage: install.sh [--version TAG] [--dir DIR] [--no-modify-path] [--help]
+Usage: install.sh [--channel NAME] [--version TAG] [--dir DIR] [--no-modify-path] [--help]
 
-  --version TAG   install this release tag instead of the newest release
-                  (previews included) that has an executable for this platform
+  --channel NAME  stable (default), beta (release candidates) or nightly: install
+                  the newest release of that channel and let `oyzu self` follow it
+  --version TAG   install this release tag (for example oyzu/v0.2.0) and pin it
   --dir DIR       install into DIR (default: ~/.oyzu/bin)
   --no-modify-path  do not set up your shells and PATH (by default the installer
                   runs `oyzu shell install`: shell activation, oyzu and the
@@ -28,7 +29,7 @@ Usage: install.sh [--version TAG] [--dir DIR] [--no-modify-path] [--help]
   --help          show this help
 
 Environment:
-  OYZU_VERSION, OYZU_INSTALL_DIR, OYZU_NO_MODIFY_PATH=1   same as the options
+  OYZU_CHANNEL, OYZU_VERSION, OYZU_INSTALL_DIR, OYZU_NO_MODIFY_PATH=1   same as the options
   GH_TOKEN or GITHUB_TOKEN   GitHub token, for a private OYZU_RELEASE_REPO or the rate limit (needs curl)
   OYZU_RELEASE_REPO          release repository (default: oyzuai/oyzu-releases)
   OYZU_API_BASE              GitHub API (default: https://api.github.com)
@@ -141,9 +142,31 @@ scan_releases() {
   }'
 }
 
-# pick ASSET [TAG]: "tag id digest" of the newest published release (of TAG) with ASSET.
+# rank TAG: the channel a release tag belongs to, as `oyzu self` reads it: 1 stable
+# (no prerelease part), 2 beta (-rc, -beta, -alpha), 3 nightly (-nightly, or a nightly
+# part after a prerelease number: -alpha.0.nightly, -rc.1.nightly), 9 none of them.
+rank_awk='function rank(tag,  v, p) { v = tag; sub(/^oyzu\//, "", v); sub(/^v/, "", v)
+  if (index(v, "-") == 0) return 1; p = substr(v, index(v, "-") + 1)
+  if (p ~ /^nightly(\.|$)/ || p ~ /^(rc|beta|alpha)\..*\.nightly(\.|$)/) return 3
+  if (p ~ /^(rc|beta|alpha)(\.|$)/) return 2; return 9 }'
+
+# pick ASSET [TAG]: "tag id digest" of the newest published release (of TAG, the
+# --version release, or else of the chosen channel or a narrower one) with ASSET.
+# Tags of other components (`plugin/v1`) never count.
 pick() {
-  awk -F '\t' -v a="$1" -v t="${2:-}" '$2 == "false" && $3 == a && (t == "" || $1 == t) { print $1, $4, $5; exit }' "$tmp/assets.tsv"
+  awk -F '\t' -v a="$1" -v t="${2:-}" -v c="$rank" -v pinned="$version" "$rank_awk"'
+    $2 == "false" && $3 == a && (t != "" ? $1 == t : pinned != "" || (($1 !~ /\// || $1 ~ /^oyzu\/v/) && rank($1) <= c)) { print $1, $4, $5; exit }' "$tmp/assets.tsv"
+}
+
+# Records the install for `oyzu self` (its channel, pin and digest) beside the
+# binaries; a failure only means `oyzu self` treats the folder as unmanaged.
+write_receipt() {
+  v=${tag#oyzu/}; v=${v#v}; pin=null
+  [ -z "$version" ] || pin="\"$v\""
+  printf '{"type":"https://oyzu.dev/self-install/v1alpha1","channel":"%s","pin":%s,"mode":"auto","repository":"%s","version":"%s","tag":"%s","digest":"%s","installedBy":"install.sh","installedAt":"%s"}\n' \
+    "$channel" "$pin" "$repo" "$v" "$tag" "$digest" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >"$dir/.oyzu-install.json.new" &&
+    mv -f "$dir/.oyzu-install.json.new" "$dir/.oyzu-install.json" ||
+    say "oyzu install: could not record the install for oyzu self in $dir" >&2
 }
 
 # download NAME ID DIGEST [DIR]: fetch one asset into $tmp/DIR/NAME (DIR: bin) and verify its digest.
@@ -170,12 +193,27 @@ setup_shell() {
   fi
 }
 
+# Preserve an explicit user choice; a failed scoped read must never become a write.
+setup_plugins() {
+  if ! "$dir/oyzu$ext" config show --global >/dev/null 2>&1; then
+    say "oyzu install: warning: could not read user configuration; preview plugins were not enabled. Run: oyzu config set --global plugins.preview true" >&2
+  elif "$dir/oyzu$ext" config get --global plugins.preview >/dev/null 2>&1; then
+    :
+  elif "$dir/oyzu$ext" config set --global plugins.preview true >/dev/null; then
+    say "Enabled first-party preview plugins. To undo: oyzu config set --global plugins.preview false"
+  else
+    say "oyzu install: warning: could not enable preview plugins. Run: oyzu config set --global plugins.preview true" >&2
+  fi
+}
+
 main() {
-  version=${OYZU_VERSION:-}; dir=${OYZU_INSTALL_DIR:-}; skip_setup=${OYZU_NO_MODIFY_PATH:-}
+  version=${OYZU_VERSION:-}; channel=${OYZU_CHANNEL:-}; dir=${OYZU_INSTALL_DIR:-}; skip_setup=${OYZU_NO_MODIFY_PATH:-}
   while [ $# -gt 0 ]; do
     case $1 in
       --version) [ $# -ge 2 ] || die 2 "--version needs a release tag, for example --version v0.0.3"; version=$2; shift ;;
       --version=*) version=${1#*=} ;;
+      --channel) [ $# -ge 2 ] || die 2 "--channel needs stable, beta or nightly"; channel=$2; shift ;;
+      --channel=*) channel=${1#*=} ;;
       --dir) [ $# -ge 2 ] || die 2 "--dir needs a directory"; dir=$2; shift ;;
       --dir=*) dir=${1#*=} ;;
       --no-modify-path) skip_setup=1 ;;
@@ -186,6 +224,13 @@ main() {
     shift
   done
   [ -n "$dir" ] || dir=${HOME:?HOME is not set; pass --dir}/.oyzu/bin
+  if [ -z "$channel" ] && [ -n "$version" ]; then
+    channel=$(printf '%s\n' "$version" | awk "$rank_awk"'{ r = rank($0); print r == 3 ? "nightly" : r == 2 ? "beta" : "stable" }')
+  fi
+  case ${channel:-stable} in
+    stable) channel=stable; rank=1 ;; beta) rank=2 ;; nightly) rank=3 ;;
+    *) die 2 "unknown channel $channel: use stable, beta or nightly" ;;
+  esac
   repo=${OYZU_RELEASE_REPO:-oyzuai/oyzu-releases}
   api=${OYZU_API_BASE:-https://api.github.com}; api=${api%/}
   dl=${OYZU_DOWNLOAD_BASE:-https://github.com}; dl=${dl%/}
@@ -212,7 +257,7 @@ main() {
   found=$(pick "$asset")
   if [ -z "$found" ]; then
     [ -z "$version" ] || die 1 "release $version of $repo has no $asset, the executable for this platform. Choose another release, or build from source: https://docs.oyzu.ai/docs/get-started/install"
-    die 1 "no published release of $repo has $asset, the executable for this platform. Build from source instead: https://docs.oyzu.ai/docs/get-started/install"
+    die 1 "no published $channel release of $repo has $asset, the executable for this platform. Try --channel beta or nightly, or build from source: https://docs.oyzu.ai/docs/get-started/install"
   fi
   set -- $found; tag=$1; digest=$3
   say "Installing oyzu $tag for $os/$arch$abi from $repo"
@@ -232,10 +277,12 @@ main() {
     name=${src##*/}
     { cp "$src" "$dir/.$name.new" && mv -f "$dir/.$name.new" "$dir/$name"; } || die 1 "cannot write $dir/$name"
   done
+  write_receipt
   say "Installed oyzu $tag ($asset, $digest) to $dir/oyzu$ext"
   say "$ver"
+  setup_plugins
   if [ -z "$engine" ]; then [ "$os" = linux ] || say "Release $tag has no $linux, so isolated builds need one: see oyzu engine install --help"
-  elif (cd "$tmp" && "$dir/oyzu$ext" engine install --linux "$tmp/engine/$linux" </dev/null >/dev/null); then say "Installed the Linux engine for isolated builds ($linux)"
+  elif (cd "$tmp" && OYZU_SELF_UPDATE=off "$dir/oyzu$ext" engine install --linux "$tmp/engine/$linux" </dev/null >/dev/null); then say "Installed the Linux engine for isolated builds ($linux)"
   else say "oyzu install: setting up the Linux engine for isolated builds failed; run again later: $dir/oyzu$ext engine install --linux <$linux of $tag>" >&2; fi
   if [ "$skip_setup" != 1 ]; then setup_shell; return; fi
   case ":$PATH:" in *":$dir:"*) return ;; esac

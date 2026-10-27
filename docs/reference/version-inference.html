@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Artifact version inference | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/version-inference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Artifact version inference | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/version-inference"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Artifact version inference","item":"https://docs.oyzu.ai/docs/reference/version-inference"}]}</script><link rel="stylesheet" href="/assets/css/styles.04f7de5f.css">
-<script src="/assets/js/runtime~main.edfb166d.js" defer="defer"></script>
-<script src="/assets/js/main.3127aa81.js" defer="defer"></script>
+<title data-rh="true">Artifact version inference | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/version-inference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Artifact version inference | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/version-inference"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Artifact version inference","item":"https://docs.oyzu.ai/docs/reference/version-inference"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
+<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
+<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -28,6 +28,10 @@ and artifacts get:</p>
 <li class="">The suffix comes from the content of the build&#x27;s source files, not the Git commit
 SHA. There&#x27;s no counter or timestamp, so the same source always gives the same
 version.</li>
+<li class="">The suffix is the same on every platform. It covers file paths and contents but
+not the executable bit, which Windows can&#x27;t see, so a Windows build and a Linux
+build of one commit get the same version. (Action-cache keys still include the
+bit, because changing it can change what a command does.)</li>
 <li class="">Artifact digests, not version strings, identify the exact bytes.</li>
 <li class="">Every ordinary build produces a snapshot version like this. Only
 <a href="#authenticated-release-staging" class="">release staging</a> produces exact release versions.</li>
@@ -104,6 +108,10 @@ package their version came from.</p>
 version, source digest, commit, baseline tag and commit, exact tags, contributing and
 unclassified commits, whether history was complete, the reason, the <code>strategy</code> used
 and the configured <code>requestedStrategy</code>.</p>
+<p>Cargo keeps unselected workspace entries as native facts; they have no inferred
+tag or minimum-version obligation.
+When release subjects are recorded, <code>selectedPackages</code> identifies the selected
+scope, including complete fixed groups.</p>
 <p><code>extensions[&quot;oyzu.dev/version-history&quot;]</code> records the Git facts each decision used:
 <code>HEAD</code>, the repository prefix, shallow status, tags (names, object IDs and commits),
 and the commits read (parents, messages, paths). Decisions point to it with
@@ -242,6 +250,19 @@ and <code>HEAD</code>.</li>
 the same objects, and old copies aren&#x27;t cleaned up. This can add network and disk
 use to full builds.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="tag-names-in-monorepos">Tag names in monorepos<a href="#tag-names-in-monorepos" class="hash-link" aria-label="Direct link to Tag names in monorepos" title="Direct link to Tag names in monorepos" translate="no">​</a></h2>
+<p>For Cargo builds, <code>with.packages</code> limits version inference and release staging to
+the named workspace packages. An unselected package&#x27;s inferred minimum cannot
+block the build. Its native version remains unchanged in the private workspace;
+the complete workspace inventory still determines tag ownership and dependency
+input paths. Omitting <code>with.packages</code> selects the whole workspace.
+Changes to an unselected local dependency still contribute to the selected
+consumer&#x27;s inferred minimum. That dependency keeps its native coordinate rather
+than acquiring a snapshot or release version from the consumer&#x27;s build.</p>
+<p>Selecting one member of an explicitly declared fixed release group selects that
+whole release subject and preserves its common-version requirements. Independent
+packages outside the selection are not staged, even if the event tag names one
+of them. A selected independent package uses its own native version and package
+tag, such as <code>oyzu-plugin-go/v0.1.0</code>; selecting it alone does not admit root tags.</p>
 <ul>
 <li class="">A standalone package at the repository root, or a single-package Cargo workspace,
 uses unscoped tags such as <code>v1.4.2</code>.</li>
@@ -452,13 +473,14 @@ and resolution; each member&#x27;s <code>oyzu.dev/versioning</code> entry points
 <p>Fixed groups are supported on Linux x86_64.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="authenticated-release-staging">Authenticated release staging<a href="#authenticated-release-staging" class="hash-link" aria-label="Direct link to Authenticated release staging" title="Direct link to Authenticated release staging" translate="no">​</a></h2>
 <p>Release staging builds exact release-candidate or stable versions, instead of
-snapshots, in a CI job triggered by a tag push. Use <code>--require-release</code> when the job
-must fail rather than fall back to a snapshot.</p>
+snapshots, in a CI job triggered by a tag push. Request it explicitly with
+<code>--require-release</code>; ordinary builds retain snapshot coordinates.</p>
 <blockquote>
 <p><strong>Note:</strong> Release staging is experimental. It supports only a GitHub Actions job
-triggered by a tag push in the same repository, building Cargo for Linux x86_64,
-and it hasn&#x27;t been run end to end on GitHub yet. Staged versions are never marked
-production-eligible.</p>
+triggered by a tag push in the same repository. Cargo targets support Linux
+x86_64/arm64 (GNU or musl), Darwin x86_64/arm64 and Windows x86_64 MSVC.
+Plugin packages inherit their executable&#x27;s staging. Staged versions are never
+marked production-eligible. Other builders and providers are unsupported.</p>
 </blockquote>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">-C</span><span class="token plain"> app build app --require-release </span><span class="token parameter variable" style="color:#36acaa">--full</span><br></div></code></pre></div></div>
 <p>The native version and the tag together choose the version. Native <code>1.5.0-rc.1</code>
@@ -503,7 +525,7 @@ the native version.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Option</th><th>Behavior</th></tr></thead><tbody><tr><td>(none)</td><td>If the job&#x27;s facts match, the build can stage exact versions. Otherwise it keeps snapshot versions and records why.</td></tr><tr><td><code>--require-release</code></td><td>Missing, offline, unsupported or contradictory evidence refuses the build before any build, check or package action runs.</td></tr><tr><td><code>--release-profile FILE</code></td><td>Accept only the exact reusable workflow and source in this <a class="" href="/docs/reference/release-provenance#staging-a-release-build-with-a-profile">release profile</a>.</td></tr><tr><td><code>--context release</code>, <code>OYZU_CONTEXT</code></td><td>Only set the context. They never authenticate a release.</td></tr><tr><td><code>--optimized</code></td><td>Only chooses the build profile.</td></tr><tr><td><code>--plan</code></td><td>Read-only preview. Shows what evidence is missing.</td></tr><tr><td><code>--check --require-release</code></td><td>Reports missing release evidence as a blocking finding.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Option</th><th>Behavior</th></tr></thead><tbody><tr><td>(none)</td><td>Keeps snapshot versions, including in a tag-event job.</td></tr><tr><td><code>--require-release</code></td><td>Missing, offline, unsupported or contradictory evidence refuses the build before any build, check or package action runs.</td></tr><tr><td><code>--release-profile FILE</code></td><td>Accept only the exact reusable workflow and source in this <a class="" href="/docs/reference/release-provenance#staging-a-release-build-with-a-profile">release profile</a>.</td></tr><tr><td><code>--context release</code>, <code>OYZU_CONTEXT</code></td><td>Only set the context. They never authenticate a release.</td></tr><tr><td><code>--optimized</code></td><td>Only chooses the build profile.</td></tr><tr><td><code>--plan</code></td><td>Read-only preview. Shows what evidence is missing.</td></tr><tr><td><code>--check --require-release</code></td><td>Reports missing release evidence as a blocking finding.</td></tr></tbody></table></div>
 <p>A staged build always runs every required check, including real test and coverage
 reports. A nested target can&#x27;t turn those off.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="requirements">Requirements<a href="#requirements" class="hash-link" aria-label="Direct link to Requirements" title="Direct link to Requirements" translate="no">​</a></h3>
@@ -513,8 +535,11 @@ reports. A nested target can&#x27;t turn those off.</p>
 commit, workflow, run attempt and job against GitHub&#x27;s API (using the job&#x27;s
 <code>GITHUB_TOKEN</code>). CI variables, a local tag, a JWT file or <code>OYZU_ID_TOKEN</code> can&#x27;t stand
 in for this.</li>
-<li class="">The built files and their modes must match the tagged commit exactly, and the tag
-must stay the same until the build finishes.</li>
+<li class="">The built files must match the tagged commit byte for byte, and the tag must
+stay the same until the build finishes. Unix also compares executable bits.
+Windows has no POSIX executable bit: the immutable Git tree supplies that
+identity, recorded as <code>sourceFileModes: git-tree-no-posix-mode</code>. Git&#x27;s CRLF
+conversion is not applied to the comparison; use a byte-preserving checkout.</li>
 <li class="">Refused: uncommitted changes, forks, the wrong job or attempt, a moved tag,
 repository hooks, Git symlinks or submodules in the selected source, and inputs
 outside the repository.</li>
@@ -526,11 +551,68 @@ match.</li>
 changes before the end, no final output is accepted.</p>
 <p>A job token proves the job&#x27;s identity and event. It doesn&#x27;t prove where Oyzu ran, who
 built the artifact, that checks were correct, or that the build was isolated.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="cross-compiled-cargo-checks">Cross-compiled Cargo checks<a href="#cross-compiled-cargo-checks" class="hash-link" aria-label="Direct link to Cross-compiled Cargo checks" title="Direct link to Cross-compiled Cargo checks" translate="no">​</a></h3>
+<p>Required tests and coverage run for the same selected Cargo packages and features
+on the prepared compiler&#x27;s host triple, in the same build invocation. A positive
+passing native test result and all mandatory reports remain required; missing,
+skipped or failing checks refuse staging. Format and lint remain mandatory.
+<code>--require-release</code> disables action-result reuse so earlier runs&#x27; reports cannot
+satisfy this invocation. Native compiler caches can still accelerate the work;
+the test and check commands execute again.</p>
+<p>The staging record&#x27;s <code>testEvidence</code> names the packages, host and target triples,
+and report IDs. For a cross build, <code>targetRuntimeTested</code> is false. These host tests
+do not establish target-specific behavior, linking at runtime, or tests behind
+target-only conditional compilation. Run target-runtime qualification separately.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugin-members-and-composed-roots">Plugin members and composed roots<a href="#plugin-members-and-composed-roots" class="hash-link" aria-label="Direct link to Plugin members and composed roots" title="Direct link to Plugin members and composed roots" translate="no">​</a></h3>
+<p>An <code>oyzu/plugin-package</code> member takes the exact version only from its staged
+executable artifact and package decision. Build each member with
+<code>--require-release --full</code> in the matching package tag event. For a Cargo workspace
+member, use its package tag namespace, for example <code>oyzu-plugin-go/v0.1.0</code>.</p>
+<p>Composition with <code>--compose ... --require-release</code> needs every admitted member&#x27;s
+staging record to agree on repository, tag, peeled commit, package and version.
+The current composing job must independently authenticate that same tag and source;
+saved member records never replace fresh GitHub evidence. The root records the
+exact version in its artifact, plugin metadata and OCI version annotation.
+Composition still enforces ordinary provenance, content integrity and platform
+completeness. Without <code>--require-release</code>, composition produces a snapshot and
+does not carry release staging.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-staging-cant-run">When staging can&#x27;t run<a href="#when-staging-cant-run" class="hash-link" aria-label="Direct link to When staging can&#x27;t run" title="Direct link to When staging can&#x27;t run" translate="no">​</a></h3>
 <p>If GitHub is unavailable or permissions are missing, a build without
 <code>--require-release</code> keeps snapshot versions. With <code>--require-release</code> it fails, naming
 the missing fact. Retry online in the matching job after fixing access. Saved
-manifests and earlier attempts can&#x27;t be reused, and offline builds can&#x27;t stage.</p>
+manifests and earlier attempts can&#x27;t authenticate a new invocation, and offline
+builds can&#x27;t stage. Admitted staged members can be composed only after fresh
+authentication of the composing job.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Error</th><th>Recovery</th></tr></thead><tbody><tr><td><code>release-profile-unsupported</code></td><td>Select a supported Cargo platform and remove repository hooks.</td></tr><tr><td><code>release-member-unstaged</code></td><td>Rebuild every executable and plugin member with <code>--require-release --full</code>.</td></tr><tr><td><code>release-member-mismatch</code></td><td>Rebuild members for one repository, package tag, commit and version.</td></tr><tr><td><code>release-required-check</code></td><td>Restore all mandatory checks and positive passing host test evidence in this invocation.</td></tr><tr><td><code>release-source-mismatch</code>, <code>release-tag-mismatch</code></td><td>Use the members&#x27; unchanged tagged commit in the matching tag-event job.</td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
 <li class="">Release staging is limited as described <a href="#authenticated-release-staging" class="">above</a>.
@@ -545,6 +627,6 @@ forms) keep native snapshots and don&#x27;t get tag or commit bumps.</li>
 <li class=""><a class="" href="/docs/reference/rust">Rust</a>, <a class="" href="/docs/reference/go">Go</a>, <a class="" href="/docs/reference/python-preparation">Python preparation</a></li>
 <li class=""><a class="" href="/docs/reference/publish">Publishing</a></li>
 <li class=""><a class="" href="/docs/reference/release-provenance">Release provenance verification</a></li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/release-check"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Checking whether a build would ship</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/release-provenance"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Release provenance verification</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#example" class="table-of-contents__link toc-highlight">Example</a></li><li><a href="#usage-and-prerequisites" class="table-of-contents__link toc-highlight">Usage and prerequisites</a></li><li><a href="#resolution-and-evidence" class="table-of-contents__link toc-highlight">Resolution and evidence</a><ul><li><a href="#how-the-version-is-computed" class="table-of-contents__link toc-highlight">How the version is computed</a></li><li><a href="#exact-tags-and-publishing" class="table-of-contents__link toc-highlight">Exact tags and publishing</a></li><li><a href="#what-is-recorded" class="table-of-contents__link toc-highlight">What is recorded</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a></li></ul></li><li><a href="#what-history-is-read-and-when" class="table-of-contents__link toc-highlight">What history is read, and when</a><ul><li><a href="#acquiring-missing-history" class="table-of-contents__link toc-highlight">Acquiring missing history</a></li></ul></li><li><a href="#tag-names-in-monorepos" class="table-of-contents__link toc-highlight">Tag names in monorepos</a><ul><li><a href="#dependencies-between-packages" class="table-of-contents__link toc-highlight">Dependencies between packages</a></li></ul></li><li><a href="#declared-cross-target-inputs" class="table-of-contents__link toc-highlight">Declared cross-target inputs</a></li><li><a href="#final-command-development-scope" class="table-of-contents__link toc-highlight">Final-command development scope</a></li><li><a href="#versions-finalized-after-hooks" class="table-of-contents__link toc-highlight">Versions finalized after hooks</a></li><li><a href="#builder-notes" class="table-of-contents__link toc-highlight">Builder notes</a><ul><li><a href="#rust-cargo" class="table-of-contents__link toc-highlight">Rust (Cargo)</a></li><li><a href="#node" class="table-of-contents__link toc-highlight">Node</a></li><li><a href="#helm" class="table-of-contents__link toc-highlight">Helm</a></li><li><a href="#go-and-docker" class="table-of-contents__link toc-highlight">Go and Docker</a></li><li><a href="#python" class="table-of-contents__link toc-highlight">Python</a></li><li><a href="#maven-gradle-and-ant" class="table-of-contents__link toc-highlight">Maven, Gradle and Ant</a></li></ul></li><li><a href="#cargo-fixed-release-subjects" class="table-of-contents__link toc-highlight">Cargo fixed release subjects</a></li><li><a href="#authenticated-release-staging" class="table-of-contents__link toc-highlight">Authenticated release staging</a><ul><li><a href="#requirements" class="table-of-contents__link toc-highlight">Requirements</a></li><li><a href="#when-staging-cant-run" class="table-of-contents__link toc-highlight">When staging can&#39;t run</a></li></ul></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/release-check"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Checking whether a build would ship</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/release-provenance"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Release provenance verification</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#example" class="table-of-contents__link toc-highlight">Example</a></li><li><a href="#usage-and-prerequisites" class="table-of-contents__link toc-highlight">Usage and prerequisites</a></li><li><a href="#resolution-and-evidence" class="table-of-contents__link toc-highlight">Resolution and evidence</a><ul><li><a href="#how-the-version-is-computed" class="table-of-contents__link toc-highlight">How the version is computed</a></li><li><a href="#exact-tags-and-publishing" class="table-of-contents__link toc-highlight">Exact tags and publishing</a></li><li><a href="#what-is-recorded" class="table-of-contents__link toc-highlight">What is recorded</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a></li></ul></li><li><a href="#what-history-is-read-and-when" class="table-of-contents__link toc-highlight">What history is read, and when</a><ul><li><a href="#acquiring-missing-history" class="table-of-contents__link toc-highlight">Acquiring missing history</a></li></ul></li><li><a href="#tag-names-in-monorepos" class="table-of-contents__link toc-highlight">Tag names in monorepos</a><ul><li><a href="#dependencies-between-packages" class="table-of-contents__link toc-highlight">Dependencies between packages</a></li></ul></li><li><a href="#declared-cross-target-inputs" class="table-of-contents__link toc-highlight">Declared cross-target inputs</a></li><li><a href="#final-command-development-scope" class="table-of-contents__link toc-highlight">Final-command development scope</a></li><li><a href="#versions-finalized-after-hooks" class="table-of-contents__link toc-highlight">Versions finalized after hooks</a></li><li><a href="#builder-notes" class="table-of-contents__link toc-highlight">Builder notes</a><ul><li><a href="#rust-cargo" class="table-of-contents__link toc-highlight">Rust (Cargo)</a></li><li><a href="#node" class="table-of-contents__link toc-highlight">Node</a></li><li><a href="#helm" class="table-of-contents__link toc-highlight">Helm</a></li><li><a href="#go-and-docker" class="table-of-contents__link toc-highlight">Go and Docker</a></li><li><a href="#python" class="table-of-contents__link toc-highlight">Python</a></li><li><a href="#maven-gradle-and-ant" class="table-of-contents__link toc-highlight">Maven, Gradle and Ant</a></li></ul></li><li><a href="#cargo-fixed-release-subjects" class="table-of-contents__link toc-highlight">Cargo fixed release subjects</a></li><li><a href="#authenticated-release-staging" class="table-of-contents__link toc-highlight">Authenticated release staging</a><ul><li><a href="#requirements" class="table-of-contents__link toc-highlight">Requirements</a></li><li><a href="#cross-compiled-cargo-checks" class="table-of-contents__link toc-highlight">Cross-compiled Cargo checks</a></li><li><a href="#plugin-members-and-composed-roots" class="table-of-contents__link toc-highlight">Plugin members and composed roots</a></li><li><a href="#when-staging-cant-run" class="table-of-contents__link toc-highlight">When staging can&#39;t run</a></li></ul></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>
