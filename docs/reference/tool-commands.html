@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Tool commands: install, update, uninstall and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-commands"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool commands: install, update, uninstall and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-commands"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool commands: install, update, uninstall and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-commands"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Tool commands: install, update, uninstall and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-commands"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool commands: install, update, uninstall and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-commands"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool commands: install, update, uninstall and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-commands"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -132,7 +132,9 @@
 <p>For example, <code>oyzu install node@14</code> locks Linux and Windows only, because Node 14 has no macOS arm64 build.</p>
 <ul>
 <li class="">This applies when a tool is first declared or its request changes, and only for Node, Go and Java.</li>
-<li class=""><code>update</code> re-resolves only platforms that are already locked.</li>
+<li class=""><code>update</code> uses current lock coverage (the declared build platforms, or
+<code>tools.lockPlatforms</code>, plus the host). Platforms left over from an earlier
+default or declaration do not become new requirements.</li>
 <li class="">A tool with no artifact on any platform fails, as does any other resolution problem (for example a missing checksum file).</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="from-a-resolved-artifact-set">From a resolved artifact set<a href="#from-a-resolved-artifact-set" class="hash-link" aria-label="Direct link to From a resolved artifact set" title="Direct link to From a resolved artifact set" translate="no">​</a></h3>
@@ -145,6 +147,9 @@
 <li class="">A named tool is updated wherever <code>[tools]</code> or a toolset declares it.</li>
 <li class=""><code>--dry-run</code> reports the versions that would be locked.</li>
 <li class="">Tools you removed from configuration by hand aren&#x27;t pruned from the lock.</li>
+<li class="">Only selected tools are re-resolved for current platform coverage. Valid
+recipes for unselected tools stay unchanged; unreferenced recipes are pruned
+without fetching their metadata again.</li>
 <li class=""><code>install --update</code> still works but is deprecated.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="uninstall">uninstall<a href="#uninstall" class="hash-link" aria-label="Direct link to uninstall" title="Direct link to uninstall" translate="no">​</a></h2>
@@ -160,13 +165,139 @@
 <li class=""><code>--dry-run</code> previews the result.</li>
 <li class="">Specs can&#x27;t be combined with <code>--refresh</code> or <code>--offline</code>. Bare <code>oyzu pin</code> locks what your builds need, and accepts <code>--refresh</code> and <code>--offline</code>.</li>
 <li class="">Bare <code>oyzu pin</code> covers every toolset. <code>oyzu --toolset NAME pin</code> locks only that toolset.</li>
+<li class="">Pin removes recipes no request set references, including with <code>--offline</code>.
+Recipes still referenced by other sets stay unchanged. This cleanup does not
+require refreshing their versions or resolving their platforms again.</li>
 <li class="">A separate bare <code>oyzu pin</code> is optional after an online, non-frozen project install. It remains useful for reviewing a resolution without installing, and for preparing a lock before <code>oyzu install --frozen</code>.</li>
 <li class="">Configuration precedence and policy still apply. A request that another scope overrides fails without changing files.</li>
 <li class=""><code>oyzu --json pin ...</code> returns the same facts with <code>status: &quot;pinned&quot;</code>.</li>
 <li class="">Pinning reads publisher metadata or the tool index. For some checksum formats it downloads the archive to compute a SHA-256.</li>
-<li class="">The default platforms include <code>linux/arm64/gnu</code>. A platform the provider doesn&#x27;t publish is left out and reported.</li>
+<li class="">Pin uses the <a class="" href="/docs/reference/tool-lock-inspection#which-platforms-are-locked">current platform coverage</a>.
+Inferred foreign platforms the provider doesn&#x27;t publish are left out and reported.</li>
 </ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="locked-quality-tools">Locked quality tools<a href="#locked-quality-tools" class="hash-link" aria-label="Direct link to Locked quality tools" title="Direct link to Locked quality tools" translate="no">​</a></h2>
+<p>Node, Java and Docker default quality tools are exact stage-tool selections in
+<code>oyzu.lock</code>, under <code>quality.node</code>, <code>quality.java</code> and <code>quality.docker</code>. Bare
+<code>oyzu pin</code> records the sets your enabled checks need. It records versions,
+upstream URLs, upstream integrity and SHA-256 values together with support files
+such as Node&#x27;s package lock and Java&#x27;s default rules. Commit the lock; do not edit
+versions or hashes by hand.</p>
+<p>The pin result lists each locked quality set&#x27;s name, version and snapshot digest
+in the <strong>Locked quality sets</strong> table. A dry run labels these as proposed sets.
+<code>--json</code> exposes the same metadata in <code>qualitySets</code>, an array of
+<code>{name, version, digest}</code> records. These describe the lock snapshot; they do not
+claim the tools are installed or available on the current platform.</p>
+<p><code>pin</code> selects metadata. Before a quality task runs, preparation installs its
+locked bundle in the shared tool store if needed. Local builds, isolated builds
+and <code>oyzu run</code> use the same set. Downloads are admitted and verified at install;
+installed payloads are trusted on reuse. Native project tools and authored task
+replacements retain their documented precedence. No separate checker-home
+environment variable or repository provisioner is required.</p>
+<p>New default sets ship with Oyzu releases. Ordinary builds, runs and <code>oyzu pin</code>
+keep an existing exact selection. Two explicit operations adopt the current
+CLI&#x27;s defaults:</p>
+<ul>
+<li class=""><code>oyzu pin --refresh</code> refreshes default quality sets required by the selected
+build scope while preserving selected native runtime versions.</li>
+<li class=""><code>oyzu update</code> with no tool names in the project scope refreshes its already
+locked quality sets, including Docker projects with no runtime declaration.
+Named tool updates, global updates and toolset-only updates leave them alone.</li>
+</ul>
+<p>Both update the lock; the next task installs any newly selected quality bundle.
+<code>oyzu update --dry-run</code> reports the proposed set versions without writing or
+installing them. Checker eligibility and source restrictions remain binding.
+Offline operation requires the exact lock and the needed installation or admitted
+cached inputs in the same store. Run an online check first to populate it.</p>
+<p>Missing quality pins report <code>QUALITY_LOCK_REQUIRED</code>; run <code>oyzu pin</code> and retry.
+An unavailable complete tool pair reports <code>QUALITY_PLATFORM_UNAVAILABLE</code> rather
+than taking a tool from ambient <code>PATH</code>. Versions, project-tool precedence and
+platform limits are described in <a class="" href="/docs/reference/node-quality">Node quality</a>,
+<a class="" href="/docs/reference/java-quality">Java quality</a> and <a class="" href="/docs/reference/docker-quality">Docker quality</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="maintaining-shipped-quality-defaults">Maintaining shipped quality defaults<a href="#maintaining-shipped-quality-defaults" class="hash-link" aria-label="Direct link to Maintaining shipped quality defaults" title="Direct link to Maintaining shipped quality defaults" translate="no">​</a></h3>
+<p>Repository maintainers regenerate defaults with the compiled
+<code>tooling/refresh-quality-tools</code> operation. Activate Oyzu&#x27;s checks toolset first;
+its npm verifies registry signatures and available package provenance without
+running lifecycle scripts. Refresh, reports and the GitHub bot live in the
+repository-only <code>oyzu-quality-tools</code> binary; they are not shipped with the CLI
+or plugins. Build the non-default target first. Set <code>OYZU_QUALITY_TOOLS</code> to a
+specific maintenance executable when testing a resolver change.</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token builtin class-name">eval</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;</span><span class="token string variable" style="color:#36acaa">$(</span><span class="token string variable" style="color:#36acaa">oyzu </span><span class="token string variable parameter variable" style="color:#36acaa">--toolset</span><span class="token string variable" style="color:#36acaa"> checks activate </span><span class="token string variable function" style="color:#d73a49">bash</span><span class="token string variable" style="color:#36acaa">)</span><span class="token string" style="color:#e3116c">&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build quality-tools</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">tooling/refresh-quality-tools </span><span class="token parameter variable" style="color:#36acaa">--update</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">tooling/refresh-quality-tools </span><span class="token parameter variable" style="color:#36acaa">--check</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">tooling/refresh-quality-tools </span><span class="token parameter variable" style="color:#36acaa">--report</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--json</span><br></div></code></pre></div></div>
+<p><code>--update</code> (the default) selects stable versions in each currently allowed major,
+with a seven-day publication cooldown. Maven formatter selection also preserves
+the existing Java 17 runtime baseline: base classes requiring a newer JVM are
+excluded, while optional multi-release classes do not raise the baseline. This
+bytecode check limits candidate selection but cannot establish compatibility
+with the JDK&#x27;s compiler APIs. The formatter remains capped below 1.29 on its
+Java 17-compatible line; 1.28.0 is the demonstrated default. The native Java
+acceptance suite still verifies the selected formatter on Java 17. Freshness
+reports continue to show newer minor and major releases for maintainer review;
+the cap does not declare those releases current or compatible. Raising the
+baseline or cap requires an explicit compatibility change. <code>--regenerate</code> verifies the versions in
+the native inputs and regenerates their pin records and hashes without selecting
+new versions. <code>--set node|java|docker</code> restricts the refresh; the default is all
+three. <code>--check</code> is an offline consistency gate and directs manual pin/hash drift
+back to this command. It does not download tools or prove upstream freshness.</p>
+<p>Refresh verifies npm SHA-512, Maven checksums and detached OpenPGP signatures,
+and GitHub release SHA-256 values and available artifact attestations. Published
+proofs that cannot be verified fail the operation. Maven signer continuity is
+anchored in the previously pinned artifact and retained signer fingerprint;
+a signer change requires maintainer investigation. npm&#x27;s native signature audit
+also covers optional platform packages, without executing their binaries.
+All verification completes before generated source files are replaced. Project
+locks are never changed by this maintainer operation.</p>
+<p><code>--security</code> may bypass cooldown only when the currently pinned set has an
+affecting advisory and every changed release younger than seven days fixes an
+advisory affecting its prior version. The resulting set must be clear of known
+advisories. A missing date, unavailable advisory service, unsupported proof or
+remaining advisory fails visibly; it is not treated as a clean result.</p>
+<p>The report compares every pinned asset with upstream stable releases, including
+new majors, after checking native-pin consistency. It counts <strong>current</strong>,
+<strong>held</strong> and <strong>stale</strong> rows, plus affecting
+<strong>advisories</strong>. A row is held when newer releases exist but none is permitted
+by all applicable constraints. Reasons come from the recorded native lock&#x27;s
+parent dependency ranges (including optional and peer requirements) and the
+explicit compatibility policies: Checkstyle major 10, google-java-format below
+1.29 for Java 17, and TypeScript major 6 while the quality root pins that line.
+Other direct version pins do not themselves justify holding an update.</p>
+<p>Held rows do not fail the report. Each run recomputes their reasons: widening a
+parent range or lifting a compatibility cap makes newly permitted updates
+actionable. The report still shows unrestricted upstream lag from the earliest
+newer stable release. Its actionable lag starts at the earliest newer release
+permitted by every constraint, even if a later release is blocked. More than
+60 days of actionable lag makes the row stale and fails the report. An affecting
+advisory always fails, including on held and transitive packages. Advisory
+coverage includes npm packages, Maven coordinates, Dockerfmt&#x27;s Go module and
+the release repositories&#x27; published advisories; this is not a complete inventory
+of dependencies embedded inside upstream executable or all-dependencies JARs.</p>
+<p>A completed <code>--report</code> prints the full report on stdout and exits <code>0</code> when the
+check passes, or <code>1</code> when actionable lag or an advisory fails it. Human output
+shows the counts, held rows grouped by reason (one line per tool), and freshness
+and affecting-advisory tables. <code>--json</code> includes <code>counts</code>, the same reason groups
+in <code>held</code>, and each tool&#x27;s <code>status</code>, <code>heldReason</code>, <code>actionableLagDays</code> and
+<code>firstAllowedNewerPublishedAt</code>. It preserves every tool observation and
+advisory in the structured result, including <code>status: &quot;failed&quot;</code>. A transport,
+metadata or advisory-service error remains a failing diagnostic, rather than
+an incomplete report presented as a completed check.</p>
+<p>Dependabot watches the Node native lock on the repository&#x27;s weekly cadence.
+The existing scheduled tool-management job runs this same verifier and opens a
+draft refresh PR, and regenerates hashes for eligible same-repository Dependabot
+PRs. It executes trusted main code and reads only allowlisted PR data. Delivery
+needs a GitHub App installed on this repository only, with Contents and Pull
+requests permissions set to write. Configure the repository variable
+<code>QUALITY_TOOLS_APP_CLIENT_ID</code> and secret <code>QUALITY_TOOLS_APP_PRIVATE_KEY</code>.
+Token creation and refresh delivery skip when the client-ID variable is absent;
+the independent freshness report still runs. The bot adds no CI
+label and grants no release or compliance approval. <code>--pull-request</code> is the
+automation entry point and requires that App&#x27;s token and bot identity. Source
+files, workflows and scripts from the proposed PR are never executed.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inspection">Inspection<a href="#inspection" class="hash-link" aria-label="Direct link to Inspection" title="Direct link to Inspection" translate="no">​</a></h2>
+<p><code>oyzu tools list --details</code> includes <strong>Publisher evidence</strong> for each stored
+installation. The JSON row uses <code>evidenceStrength</code>, with <code>digest-only</code>,
+<code>checksum-file</code>, <code>signature</code> or <code>provenance</code>. These are receipt facts, not a
+fresh integrity check. An older receipt without a strength reports
+<code>digest-only</code>. See <a class="" href="/docs/reference/tool-lock-inspection#publisher-evidence-and-release-age">publisher evidence and release age</a>
+for pin-time verification, the seven-day default cool-down, security exceptions
+and explicit early-version warnings. Human and JSON modes use the same facts.</p>
 <p>These commands are read-only. They install nothing, don&#x27;t re-check installed files (tools are verified when installed, then trusted) and print the store path. All accept <code>--store DIR</code>.</p>
 
 
@@ -316,6 +447,6 @@
 <li class=""><a class="" href="/docs/reference/shell-activation">Shell activation</a> to use installed tools in your shell.</li>
 <li class=""><a class="" href="/docs/reference/configuration">Configuration</a> for <code>[tools]</code>, toolsets and native pin files.</li>
 <li class=""><a class="" href="/docs/reference/tool-index">Tool index</a> and <a class="" href="/docs/reference/tool-catalog">tool catalog</a> for where tools come from and organization policy.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/shell-activation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Shell activation</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-shell-environment"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using tools in your shell</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#scope" class="table-of-contents__link toc-highlight">Scope</a></li><li><a href="#install" class="table-of-contents__link toc-highlight">install</a><ul><li><a href="#installing-with-specs" class="table-of-contents__link toc-highlight">Installing with specs</a></li><li><a href="#flags-that-dont-combine" class="table-of-contents__link toc-highlight">Flags that don&#39;t combine</a></li><li><a href="#result" class="table-of-contents__link toc-highlight">Result</a></li><li><a href="#platforms-without-an-artifact" class="table-of-contents__link toc-highlight">Platforms without an artifact</a></li><li><a href="#from-a-resolved-artifact-set" class="table-of-contents__link toc-highlight">From a resolved artifact set</a></li></ul></li><li><a href="#update" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#uninstall" class="table-of-contents__link toc-highlight">uninstall</a></li><li><a href="#pin-declarations-without-installing" class="table-of-contents__link toc-highlight">Pin declarations without installing</a></li><li><a href="#inspection" class="table-of-contents__link toc-highlight">Inspection</a></li><li><a href="#limitations" class="table-of-contents__link toc-highlight">Limitations</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a><ul><li><a href="#interrupted-publication" class="table-of-contents__link toc-highlight">Interrupted publication</a></li><li><a href="#recipes-and-preparation-failures" class="table-of-contents__link toc-highlight">Recipes and preparation failures</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/shell-activation"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Shell activation</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-shell-environment"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Using tools in your shell</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#scope" class="table-of-contents__link toc-highlight">Scope</a></li><li><a href="#install" class="table-of-contents__link toc-highlight">install</a><ul><li><a href="#installing-with-specs" class="table-of-contents__link toc-highlight">Installing with specs</a></li><li><a href="#flags-that-dont-combine" class="table-of-contents__link toc-highlight">Flags that don&#39;t combine</a></li><li><a href="#result" class="table-of-contents__link toc-highlight">Result</a></li><li><a href="#platforms-without-an-artifact" class="table-of-contents__link toc-highlight">Platforms without an artifact</a></li><li><a href="#from-a-resolved-artifact-set" class="table-of-contents__link toc-highlight">From a resolved artifact set</a></li></ul></li><li><a href="#update" class="table-of-contents__link toc-highlight">update</a></li><li><a href="#uninstall" class="table-of-contents__link toc-highlight">uninstall</a></li><li><a href="#pin-declarations-without-installing" class="table-of-contents__link toc-highlight">Pin declarations without installing</a></li><li><a href="#locked-quality-tools" class="table-of-contents__link toc-highlight">Locked quality tools</a><ul><li><a href="#maintaining-shipped-quality-defaults" class="table-of-contents__link toc-highlight">Maintaining shipped quality defaults</a></li></ul></li><li><a href="#inspection" class="table-of-contents__link toc-highlight">Inspection</a></li><li><a href="#limitations" class="table-of-contents__link toc-highlight">Limitations</a></li><li><a href="#errors" class="table-of-contents__link toc-highlight">Errors</a><ul><li><a href="#interrupted-publication" class="table-of-contents__link toc-highlight">Interrupted publication</a></li><li><a href="#recipes-and-preparation-failures" class="table-of-contents__link toc-highlight">Recipes and preparation failures</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

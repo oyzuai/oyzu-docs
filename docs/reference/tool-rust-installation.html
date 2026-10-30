@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Rust installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust installation","item":"https://docs.oyzu.ai/docs/reference/tool-rust-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Rust installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust installation","item":"https://docs.oyzu.ai/docs/reference/tool-rust-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -66,17 +66,42 @@ already has the selection.</p>
 <ol>
 <li class="">Downloads the official channel manifest for the exact release and its published
 SHA-256, and checks that every needed component has a URL and digest.</li>
-<li class="">Downloads each component and a fixed rustup installer, checking each against its
-digest.</li>
+<li class="">Looks up every pinned input (components, channel manifest and fixed rustup
+installer) in the shared tool store by its locked SHA-256 before creating the
+private distribution mirror. Missing inputs are downloaded and verified before
+entering <code>blobs/sha256</code>; unchanged inputs are reused when one component changes.</li>
 <li class="">Runs rustup against a private local copy of those files, with its own private
 Cargo and rustup homes, a minimal profile, the listed components and targets,
 and self-update turned off. Nothing outside those files is downloaded.</li>
 <li class="">Stores the finished toolchain as an archive in oyzu&#x27;s tool store, with its
 license files.</li>
 </ol>
-<p>Reinstalling from the lock (<code>--frozen</code>) restores that archive and doesn&#x27;t run
-rustup. If both the installation and the archive are gone, run an online update;
-oyzu won&#x27;t silently build a different archive for an existing digest.</p>
+<p>The completed archive is also indexed by the full locked recipe: provider,
+version, execution platform, components and every input URL/digest. With that
+archive available, preparation skips component downloads, rustup staging and
+repacking, and proceeds to the normal final installation. Native installs and
+captured Rust builds use the same resolution index and content-addressed store.
+A changed input or component set cannot select the previous completed archive;
+only missing input digests need downloading. A missing or corrupt cached blob is
+not reused; online acquisition can replace it.</p>
+<p>Installation logs use the same phase names for acquired and reused archives:
+<code>Rust component download</code>, <code>Rust digest verification</code>, <code>Rust install into staging</code>,
+<code>Rust repack</code>, <code>Rust archive store</code>, <code>Rust archive verification</code>, and
+<code>Rust final install</code>. A complete-archive hit explicitly marks component download,
+staging installation, repacking and archive storage as skipped. Archive verification
+and final installation still run. Newly materialized captured Linux compilers also
+pass the Linux restoration step, which stages a candidate and obtains its verified
+installation lease before handoff to the build.
+Skipped work is named explicitly. Input verification includes content-store
+admission and publication. Cached archives are verified before extraction;
+installed payloads remain trusted without re-hashing on reuse. Current catalog
+admission and final archive-layout checks still apply to a cache hit.</p>
+<p>Reinstalling from the lock (<code>--frozen</code>) restores an available completed archive
+without running rustup. Portable input recipes can recreate a missing completed
+archive from their exact inputs. Offline acquisition still refuses missing input
+bytes; it never falls back to the network. For older locks that record only the
+finished archive digest, if both the installation and that archive are gone, run
+an online update: oyzu won&#x27;t substitute different bytes for an existing digest.</p>
 <p>The default profile also installs the standard libraries for the targets the Rust
 builder supports. Having a target&#x27;s standard library doesn&#x27;t mean you have a
 linker for it.</p>
@@ -179,8 +204,11 @@ reuse.</li>
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Error</th><th>Cause</th></tr></thead><tbody><tr><td><code>TOOL_NOT_IN_CATALOG</code></td><td>The release isn&#x27;t approved</td></tr><tr><td><code>TOOL_NOT_IN_INDEX</code></td><td>The tool isn&#x27;t indexed, or its record has no component list</td></tr><tr><td><code>TOOL_CATALOG_MISMATCH</code></td><td>The indexed and locked inputs differ</td></tr></tbody></table></div>
 <p>A downloaded file with the wrong digest fails before rustup starts. <code>cargo:</code>
-helpers are refused under a catalog. Corporate mirror routes for Rust aren&#x27;t
-supported.</p>
+helpers are refused under a catalog. Rust metadata, rustup and component
+archives use the shared <a class="" href="/docs/reference/tool-proxy-acquisition">administrative tool routes</a>:
+a <code>rust</code> family route takes precedence over host routes, and the mirror serves
+the original upstream paths. The native rustup child still reads only the
+verified local distribution staged by the acquisition owner.</p>
 <p>To see what an index entry would contain, run
 <code>oyzu tools evidence --provider rust --version 1.95.0</code> (see
 <a class="" href="/docs/reference/tool-resolve">tools evidence</a>).</p>

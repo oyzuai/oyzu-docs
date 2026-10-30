@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Go builder preview | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-preview"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Go builder preview | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-preview.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-preview.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-preview"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-preview" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-preview" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Go builder preview","item":"https://docs.oyzu.ai/docs/reference/plugin-preview"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Go builder preview | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-preview"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Go builder preview | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-preview.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-preview.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-preview"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-preview" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-preview" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Go builder preview","item":"https://docs.oyzu.ai/docs/reference/plugin-preview"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -44,7 +44,9 @@ a new platform is a new version.</li>
 checks every object by digest (<a class="" href="/docs/reference/plugin-catalog#who-may-sign-a-release">signature rules</a>).</li>
 <li class=""><strong>No surprises.</strong> A lock never silently changes the implementation. A newer release, a
 newer preview or a new catalog serial changes nothing until you run
-<a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update</code></a>.</li>
+<a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update</code></a>. This includes a stable release replacing
+the locked preview; turning previews off also leaves the lock usable unless the
+release is withdrawn or revoked.</li>
 <li class=""><strong>Visible and reversible selection.</strong> The build shows which builder each target got and
 prints the line that undoes it.</li>
 </ul>
@@ -58,8 +60,8 @@ resolution and updates.</p>
 machine or administrative configuration:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">preview</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
 <p>The installer preserves an explicit <code>false</code> as well as <code>true</code>. To opt out, run
-<code>oyzu config set --global plugins.preview false</code>. With previews disabled and no
-usable catalog, builder selection reports <code>PLUGIN_UNAVAILABLE</code>, explains that
+<code>oyzu config set --global plugins.preview false</code>. With previews disabled and a
+catalog offering only previews, builder selection reports <code>PLUGIN_UNAVAILABLE</code>, explains that
 first-party plugins are preview releases, and names the opt-in command in both
 the message and next step. Offline, expired-catalog and fetch failures retain
 their own causes. Existing locked selections follow the normal replay rules.</p>
@@ -80,8 +82,12 @@ revocation still refuses it. <code>oyzu plugins update</code> still never select
 didn&#x27;t name. A digest binding equal to the release the catalog would select counts as
 the official default.</li>
 </ul>
-<p>With <code>plugins.preview</code> off, a build never refreshes the official catalog and can&#x27;t select
-the preview, so a Go build fails with <code>PLUGIN_UNAVAILABLE</code> unless you bind a package.
+<p>When a compatible stable release of the same package is listed, a fresh build selects
+it without the preview opt-in. Enabling previews still selects the newest eligible
+version: <code>0.1.0</code> outranks <code>0.1.0-preview.2</code>. If only previews are eligible and the
+opt-in is off, the build fails with <code>PLUGIN_UNAVAILABLE</code> and names the opt-in.
+A stable release without a payload for this host is excluded with that reason; it
+does not grant permission to use a preview. Existing locks keep their exact release.
 <code>oyzu plugins update</code> never moves a selection to a preview unless you name it
 (<code>go/app@0.1.0-preview.2</code>, which needs the opt-in). A routine update stays inside the
 adopted major version and skips previews.</p>
@@ -154,7 +160,7 @@ its bytes are in your store or on GHCR.</li>
 <li class=""><strong>Transparency log.</strong> Each signature is a public Sigstore (Rekor) entry. It can&#x27;t be
 deleted, and withdrawing a release doesn&#x27;t remove it.</li>
 <li class=""><strong>Freshness.</strong> The catalog is re-signed daily and is never valid for more than 31 days.
-With the opt-in, oyzu refreshes it at most once an hour.</li>
+Oyzu refreshes the primary catalog at most once an hour, even with previews off.</li>
 </ul>
 <p>Oyzu treats these cases differently. A deprecated or unsupported release still replays.
 Missing bytes fail with <code>PLUGIN_PACKAGE_UNAVAILABLE</code>. A withdrawn or revoked release is
@@ -265,7 +271,7 @@ a lock, while <code>withdrawn</code> and <code>revoked</code> always do. Known l
 copy that isn&#x27;t replayed through a lock.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-something-goes-wrong">When something goes wrong<a href="#when-something-goes-wrong" class="hash-link" aria-label="Direct link to When something goes wrong" title="Direct link to When something goes wrong" translate="no">​</a></h2>
-<p>A catalog change reaches you as the next serial of the tool index. With the opt-in, oyzu
+<p>A catalog change reaches you as the next serial of the tool index. Oyzu
 picks it up at its next refresh, at most an hour later, and applies its withdrawals on
 every command.</p>
 

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Declared fetches | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/declared-fetches"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Declared fetches | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/declared-fetches.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/declared-fetches.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/declared-fetches"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/declared-fetches" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/declared-fetches" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Declared fetches","item":"https://docs.oyzu.ai/docs/reference/declared-fetches"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Declared fetches | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/declared-fetches"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Declared fetches | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/declared-fetches.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/declared-fetches.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/declared-fetches"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/declared-fetches" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/declared-fetches" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Declared fetches","item":"https://docs.oyzu.ai/docs/reference/declared-fetches"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -65,7 +65,13 @@ segment may contain only letters, digits, <code>.</code>, <code>_</code>, <code>
 <div class="language-dockerfile codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-dockerfile codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">COPY --from=oyzu-fetch-migrate migrate /usr/local/bin/migrate</span><br></div></code></pre></div></div>
 <p>The context holds the unpacked tree, or the single downloaded file. A Dockerfile
 that reads <code>oyzu-fetch-&lt;name&gt;</code> without a matching declaration fails during
-preparation. These context names are reserved and are never treated as images.</p>
+preparation. These context names are reserved and are never treated as images.
+On the isolated lane, fetches are captured before the Docker plugin plans the
+build. The planner receives each context&#x27;s declared name and verified tree
+digest; the same captured inputs are mounted read-only for the image build.
+The worker receives only each declared subtree. Its private context copies and
+their container parent are readable by rootless BuildKit even when the host uses
+<code>umask 077</code>; permissions on the prepared fetches and their store stay unchanged.</p>
 <p>Command actions (prepare, task and package commands) get <code>OYZU_FETCH_&lt;NAME&gt;</code>,
 the name upper-cased with <code>-</code> replaced by <code>_</code>. It points to the file, such as
 <code>/dependencies/fetches/migrate-cli/migrate</code>, or to the unpacked directory, such
@@ -93,9 +99,14 @@ it. Setting it there fails with <code>CONFIG_SCOPE</code>.</li>
 <p>Verified bytes are stored by digest under <code>&lt;user data&gt;/cache/fetches/sha256-&lt;hex&gt;</code>.
 Bytes are checked before they are stored or unpacked. A mismatch stores nothing,
 and a damaged store entry is replaced rather than trusted.</p>
-<p>A later build reuses the stored file without downloading. With <code>--offline</code>, a
-fetch that is not stored fails with <code>DEPENDENCY_INPUT_MISSING</code>. Run one online
-build to capture it.</p>
+<p>A later build reuses the stored file without downloading. For builders that
+support offline preparation, <code>--offline</code> refuses a fetch that is not stored with
+<code>DEPENDENCY_INPUT_MISSING</code>. Run one online build to capture it.</p>
+<p>Docker image builds with declared fetches still require online preparation, even
+when every fetch is stored. Repeating <code>oyzu build --isolated</code> reuses those bytes;
+adding <code>--offline</code> fails before any action because captured Docker preparation
+does not support that flag. The isolated image build actions themselves run
+without network access.</p>
 <p>When unpacking archives, Oyzu refuses path traversal, links that point outside
 the tree and oversized expansion.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-records">Build records<a href="#build-records" class="hash-link" aria-label="Direct link to Build records" title="Direct link to Build records" translate="no">​</a></h2>
@@ -191,15 +202,14 @@ engine; see <a class="" href="/docs/reference/installer-recipes">installer-asset
 <li class="">Dockerfile <code>ADD &lt;url&gt;</code> with <code>--checksum</code> is still refused. Use a declared fetch
 and <code>COPY --from=oyzu-fetch-&lt;name&gt;</code>.</li>
 <li class="">Native host builds do not receive fetches.</li>
-<li class=""><code>docker/image</code> targets cannot build with <code>--offline</code>, because the Docker builder
-does not support offline preparation yet. Their fetches are still stored and
+<li class=""><code>docker/image</code> targets with declared fetches cannot build with <code>--offline</code>,
+because captured Docker preparation does not support it yet. Their fetches are still stored and
 reused by later online or <code>--isolated</code> builds without downloading again.</li>
 <li class="">Only tar (plain or gzip) and zip can be unpacked.</li>
 <li class="">An offline <code>RUN curl</code> fails when it runs, and the error doesn&#x27;t suggest a
 declared fetch. An npm install in a container build whose lifecycle script tries
 the network does: see <a class="" href="/docs/reference/installer-recipes#downloads-without-a-recipe">downloads without a recipe</a>.</li>
-<li class="">Docker image builds that copy a fetched file aren&#x27;t confirmed end to end yet,
-and Windows and macOS aren&#x27;t supported yet.</li>
+<li class="">Windows and macOS builds with declared fetches aren&#x27;t supported yet.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
 <ul>

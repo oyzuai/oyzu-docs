@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Action cache | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/action-cache"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Action cache | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/action-cache"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Action cache","item":"https://docs.oyzu.ai/docs/reference/action-cache"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Action cache | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/action-cache"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Action cache | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/action-cache"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Action cache","item":"https://docs.oyzu.ai/docs/reference/action-cache"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -26,8 +26,34 @@
 <ul>
 <li class="">Receipts keep reused test evidence apart from fresh tests.</li>
 <li class="">When known, <code>reuse.source</code> records whether the <code>local</code> or <code>remote</code> store served the result.</li>
+</ul>
+<p>Moving an unchanged checkout on the same platform does not by itself change its
+action keys. Before hashing, Oyzu replaces known checkout, private-workspace and
+per-run scratch locations in command arguments, environment values and declared
+paths with stable relative locations. This includes paths inside native JSON
+arguments and Windows drive, separator and verbatim-prefix forms. Paths to inputs
+outside those known roots still affect the key; resolved tool and plugin identities
+remain part of it. Source bytes, build profiles and platforms must still agree.
+Root matches require the end of the value or a directory separator. A sibling
+such as <code>C:\ws)external\input.rs</code> stays distinct from the root <code>C:\ws</code>.
+This also applies inside command text: punctuation alone does not establish
+containment, so ambiguous text retains its original identity.
+Entries written by versions that retained checkout-specific paths can miss once
+after upgrading; the existing cache need not be cleared.</p>
+<ul>
 <li class="">An unavailable cache is different from <code>--no-cache</code>. If the store can&#x27;t be used, permitted native builds continue with a warning and run everything.</li>
 </ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="flaky-tests-and-quarantine">Flaky tests and quarantine<a href="#flaky-tests-and-quarantine" class="hash-link" aria-label="Direct link to Flaky tests and quarantine" title="Direct link to Flaky tests and quarantine" translate="no">​</a></h2>
+<p>Automatic flaky-test detection and quarantine are not available yet. A failed
+test remains a failure under the configured <a class="" href="/docs/reference/configuration#check-levels">check level</a>;
+cache reuse does not retry it until it passes. There is no quarantine setting,
+flaky-test output section or persisted same-input test history.</p>
+<p>Same-input detection requires independently keyed test units and fresh native
+pass/fail reports. A reused result or skipped case is not a new execution, and
+a different input key cannot establish flakiness. A case-level finding requires
+an explicit pass and failure for the same native case identity; missing case
+evidence must not be treated as a pass. See the proposed
+test-unit contract.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="controls">Controls<a href="#controls" class="hash-link" aria-label="Direct link to Controls" title="Direct link to Controls" translate="no">​</a></h2>
 
 
@@ -73,6 +99,13 @@
 <div class="oyzu-table-scroll"><table><thead><tr><th>Control</th><th>Effect</th></tr></thead><tbody><tr><td><code>oyzu build --no-cache</code></td><td>No lookup and no storage for this build. The summary shows <code>disabled (--no-cache)</code>.</td></tr><tr><td><code>cache.local = false</code></td><td>Same, from configuration (default <code>true</code>).</td></tr><tr><td><code>cache.dir</code></td><td>Absolute directory that replaces the default store location. User or system scope only. A project <code>oyzu.toml</code> or <code>oyzu.local.toml</code> that sets it is rejected with <code>CONFIG_SCOPE</code>. User-scope configuration is ignored in CI.</td></tr><tr><td><code>oyzu cache status</code> / <code>clear</code></td><td>Show or empty the store. <code>status</code> also reports the <a class="" href="/docs/reference/docker-images#docker-storage-budget">Docker image budget</a>.</td></tr><tr><td><code>oyzu build --explain</code>, <code>oyzu cache explain &lt;target&gt;</code></td><td><a href="#explaining-reuse" class="">Explain</a> why stages were reused or ran. Read-only.</td></tr><tr><td><code>cache.remote</code>, <code>cache.read</code>, <code>cache.write</code></td><td>The <a href="#remote-oci-cache" class="">remote OCI cache</a>: destination, lookup (default on) and publishing (default off).</td></tr><tr><td><code>cache.ciRemote</code>, <code>cache.immutableTags</code></td><td>The <a href="#ci-and-development-repositories" class="">CI repository</a>, and whether the registry refuses to replace tags (default off).</td></tr><tr><td><code>build.host-workspaces-dir</code></td><td>Absolute directory where native builds park private copies of your source. User or machine configuration only. Doesn&#x27;t affect cache keys.</td></tr></tbody></table></div>
 <p>See <a class="" href="/docs/reference/configuration#registered-settings">configuration</a>. Keys and cache paths are never user-authored.</p>
 <p>Native builds work from a private copy of each target&#x27;s source, kept in a <code>host-workspaces</code> folder next to the action store. It follows the platform cache location, not <code>cache.dir</code>. If that folder is on a different drive than your checkout (for example the cache on <code>C:</code> and the repository on <code>E:</code>), Oyzu parks the copy in the repository&#x27;s Git directory instead (<code>.git/oyzu/host-workspaces</code>, or the linked worktree&#x27;s Git directory), so parking stays a rename rather than a full copy. The first such build moves a copy parked at the old location. Use <code>build.host-workspaces-dir</code> to choose the folder yourself. It must be outside the source tree; the Git directory counts as outside. The path must not pass through a symbolic link, except root-owned top-level links in a root-owned filesystem root that is not writable by group or others, such as macOS <code>/tmp</code> and <code>/var</code>. Oyzu renames the copy into place when it can, and otherwise copies only the pruned source, keeping file times and permissions so native tools such as Cargo still see unchanged files as fresh. A real source edit still invalidates native compilation. Oyzu never copies compiler, dependency or tool caches. Changing the setting doesn&#x27;t move existing parked workspaces.</p>
+<p>The Git fallback requires an existing repository, recognized by the same
+<a class="" href="/docs/reference/configuration#which-project-root-is-used">metadata checks as project discovery</a>.
+Outside Git, parking stays in the native cache even across filesystems, unless
+you set <code>build.host-workspaces-dir</code>. Empty <code>.git</code> markers and directories holding
+only Oyzu state do not expand the host source boundary or select the fallback.
+Oyzu never creates a <code>.git</code> directory for host-workspace state. If a configured
+parking path would require one, the build fails with <code>host workspace storage cannot create a Git directory</code>; select a cache folder outside the source tree.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="location">Location<a href="#location" class="hash-link" aria-label="Direct link to Location" title="Direct link to Location" translate="no">​</a></h3>
 
 
@@ -97,8 +130,41 @@
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Host</th><th>Default store</th></tr></thead><tbody><tr><td>Linux</td><td><code>$XDG_CACHE_HOME/oyzu/actions</code> (fallback <code>~/.cache/oyzu/actions</code>)</td></tr><tr><td>macOS</td><td><code>~/Library/Caches/Oyzu/actions</code></td></tr><tr><td>Windows</td><td><code>%LocalAppData%\Oyzu\cache\actions</code></td></tr></tbody></table></div>
 <p>The store is per user and shared across projects. It holds <code>blobs/sha256/</code> (file bytes), <code>results/&lt;key&gt;.json</code> (result descriptors), <code>quarantine/</code> (rejected data) and <code>tmp/</code>. Output trees are stored as a manifest plus one file per blob, not as a compressed archive.</p>
+<p>Workspace changes and merge-back from private native or confined views are
+detected against a content baseline. The tracker compares
+size, modification time, executable status and link target. On Unix it also compares change time (ctime),
+device and inode; on Windows it reads ChangeTime and the volume/file ID through
+attribute-only handles without following links. These native facts detect
+same-length rewrites even when a tool restores an old modification time.</p>
+<p>Each baseline starts with a temporary probe in the workspace, removed before
+scanning, whose modification time supplies the filesystem clock. An otherwise
+unchanged regular file is content-compared if either its modification time or
+native change time is not strictly older than that stamp. This includes equal
+clock ticks and future timestamps. Unchanged older files keep the stat-only fast
+path. If native change information or a timestamp is unavailable, regular files
+are conservatively content-compared: the modification-time rule alone cannot
+detect a rewrite that restores an old timestamp. Views keep baseline digests only for regular files with racy or unavailable
+clocks. An equal-size, equal-mtime write is merged back before delta capture;
+unchanged older files require no content read. Identical content produces no
+delta. Symbolic links, special files and executable changes retain their existing
+handling; a delta containing links or special files is not restorable.</p>
+<p>Serial confined actions may share files with their private target workspace
+through hard links. Creating and removing those views changes native metadata
+without changing content, so those files still require hashing. Before staging
+a candidate, the tracker compares its digest, executable status and link kind
+with the content baseline. An identical entry produces no delta or staging copy.
+An executable-only change still stores its bytes so it can be restored. Changed
+files use the digest and size returned by verified store admission, which may
+read the file again after the preliminary hash. This avoids unnecessary staging;
+it does not remove link-induced hashing. Preserved-mtime writes and racy or
+unavailable clocks retain their content-comparison rules.</p>
+<p>Workspace restores verify every cached file into private staging before accepting a hit. Deferred restores retain those staged files without keeping a file handle open per file, so large results such as Python virtual environments do not require raising the process file-descriptor limit. Staged files are removed after restore or when the pending restore is discarded. A corrupt blob rejects reuse before the workspace is changed.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="retention">Retention<a href="#retention" class="hash-link" aria-label="Direct link to Retention" title="Direct link to Retention" translate="no">​</a></h3>
-<p>At the end of a build, if the store is over <strong>10 GiB</strong>, Oyzu removes the least recently used results until it fits, then removes blobs no result references. A hit refreshes an entry. Eviction touches only the cache. Bundles in <code>dist</code> hold their own copies. The budget is fixed.</p>
+<p>At the end of a build, if the store is over <strong>10 GiB</strong>, Oyzu removes the least recently used results until it fits, then removes blobs no result references. A hit refreshes an entry. Eviction touches only the cache. Bundles in <code>dist</code> hold their own copies. The budget is fixed.
+Cache history metadata, including definition-keyed native observations, has a
+separate 64 MiB ceiling (bounded further by a smaller maintenance budget). Every
+retention pass prunes its least recently used records, even when result bytes
+are below budget. Pruned observations return native stages to whole-target keys.</p>
 <ul>
 <li class="">Builds hold a shared lock on <code>store.lock</code> while they read or write the cache.</li>
 <li class="">An unused store isn&#x27;t created. Runs with the cache disabled, or with nothing cacheable, leave it alone.</li>
@@ -112,7 +178,7 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-is-reused">What is reused<a href="#what-is-reused" class="hash-link" aria-label="Direct link to What is reused" title="Direct link to What is reused" translate="no">​</a></h2>
 <p>The unit of reuse depends on what Oyzu knows about the target:</p>
 <ul>
-<li class=""><strong>Per action</strong> for targets whose actions carry a stage contract (today <code>node/package</code> on the captured path). Each action (for example <code>api:version</code>, <code>api:build</code>, <code>api:package</code>) has its own key and result. See <a href="#per-action-reuse" class="">Per-action reuse</a>. The target&#x27;s group record lists its action results, so an unchanged repeat restores the whole target in one step.</li>
+<li class=""><strong>Per action</strong> for targets whose actions all carry a stage contract (including captured <code>node/package</code> and <code>node/app</code>). Each action (for example <code>api:version</code>, <code>api:build</code>, <code>api:package</code>) has its own key and result. See <a href="#per-action-reuse" class="">Per-action reuse</a>. The target&#x27;s group record lists its action results, so an unchanged repeat restores the whole target in one step.</li>
 <li class=""><strong>Per target</strong> for every other builder: one key per target, restoring all its actions together or none.</li>
 </ul>
 <p>A reused target or action keeps:</p>
@@ -123,6 +189,34 @@
 </ul>
 <p>Oyzu stores a target only after all its actions succeeded and its reports were collected. Failed, blocked and cancelled targets aren&#x27;t stored.</p>
 <p>Built-in builders declare their own actions, so their stages are cacheable with no configuration. Declared source <a href="#declared-inputs" class=""><code>inputs</code></a> are included in the target&#x27;s key on both native and captured paths.</p>
+<p>Targets with a builder-selected source projection are cacheable too. A projection
+narrows the target&#x27;s own folder to selected target-relative files; it does not
+declare additional source outside that folder. Whole-target keys include the
+projection definition and the captured identities of its selected entries
+(paths, types, content digests and executable bits).</p>
+<p>A stage with an admitted read set keys only its selected reads, including
+directory listings used for discovery. The whole candidate projection is not a
+second input to that stage. Native reuse first finds observations for the same
+command, engine and prediction, then validates a complete observation against
+the current admitted source and computes the result key from those reads.
+Missing, incomplete or out-of-prediction observations cannot narrow a key: the
+stage keeps the whole-target projection and runs normally. Confined captured
+actions use the files available in their view. Key construction reuses captured
+entry digests; it does not walk or hash source files again.</p>
+<p>Explicit builder reads and writes are scoped from the target folder on both
+captured and native paths. Parent traversal (two dots) is refused for paths,
+globs and listings. Declared workspace inputs remain a separate
+source-admission mechanism.</p>
+<p>Conventional native Go compilation writes a stable intermediate executable.
+A final export copies it to the inferred-version filename. An unread README
+content edit can reuse build, vet and format-check; a commit with unchanged
+source reuses those stages. If version metadata changes without source changes,
+only the versioned export runs again. A plain empty commit leaves the
+source-content snapshot version unchanged, so export can reuse too. Artifact
+metadata and receipts retain the current inferred version. Go does not inject
+a version variable into the program. Authored version-bearing commands and
+environment values remain inputs, and other builders need their own final-stage
+version boundary.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="not-cached-by-default">Not cached by default<a href="#not-cached-by-default" class="hash-link" aria-label="Direct link to Not cached by default" title="Direct link to Not cached by default" translate="no">​</a></h3>
 <p>These targets simply run, and the output says why:</p>
 <ul>
@@ -131,7 +225,10 @@
 <li class="">Targets that use secret environment values (<code>{ secret = &quot;…&quot; }</code>).</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-npm-applications">Native npm applications<a href="#native-npm-applications" class="hash-link" aria-label="Direct link to Native npm applications" title="Direct link to Native npm applications" translate="no">​</a></h3>
-<p>For native npm applications with dependencies, the target includes the <code>prepare</code> action (<code>npm ci</code>). A hit restores the successful result without reinstalling. A miss installs into the private target workspace before pre-build hooks. Results stored by an older Oyzu simply miss. Nothing needs clearing.</p>
+<p>For native npm applications with dependencies, the target includes the <code>install</code> action (<code>npm ci</code>). A hit restores the successful result without reinstalling. A miss installs into the private target workspace before pre-build hooks. Results stored by an older Oyzu simply miss. Nothing needs clearing.</p>
+<p>This native path currently reuses whole targets, including when the plugin
+declares bounded install reads. An unread README edit still invalidates the
+target result. A source declaration alone does not enable per-action admission.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-npm-downloads">Isolated npm downloads<a href="#isolated-npm-downloads" class="hash-link" aria-label="Direct link to Isolated npm downloads" title="Direct link to Isolated npm downloads" translate="no">​</a></h3>
 <p>Before looking up actions, the captured npm path validates native metadata and downloads locked dependency bytes with lifecycle scripts turned off. That script-free step can be reused from the local store.</p>
 <ul>
@@ -218,14 +315,30 @@
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Component</th><th>What it covers</th><th>Parts named on a change</th></tr></thead><tbody><tr><td><code>builder</code></td><td>The builder ID and digest (an Oyzu upgrade changes it)</td><td></td></tr><tr><td><code>platform</code>, <code>variant</code></td><td>The target platform and variant</td><td></td></tr><tr><td><code>toolchain</code></td><td>The toolchain: image content digest or resolved tool lock, host platform</td><td></td></tr><tr><td><code>dependencies</code></td><td>The prepared dependencies (for Node, <code>node_modules</code>)</td><td></td></tr><tr><td><code>source</code></td><td>The source digest in scope: the whole target scope, or a confined action&#x27;s predicted reads</td><td></td></tr><tr><td><code>definition</code></td><td>The frozen action definitions, field by field and environment variable by variable: <code>argv</code>, <code>env.&lt;NAME&gt;</code>, <code>cwd</code>, limits, report contracts, configuration digest, input mounts</td><td><code>api:build env.MODE</code> (group key) or <code>env.MODE</code> (action key)</td></tr><tr><td><code>materialized</code></td><td>Digests of artifacts consumed from producer targets</td><td>The artifact ID</td></tr><tr><td><code>upstream</code></td><td>Output digests of the earlier actions an action follows</td><td>The action ID</td></tr></tbody></table></div>
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Component</th><th>What it covers</th><th>Parts named on a change</th></tr></thead><tbody><tr><td><code>builder</code></td><td>The builder ID and digest (an Oyzu upgrade changes it)</td><td></td></tr><tr><td><code>profile</code></td><td>The applied build profile, development or optimized</td><td><code>profile development vs optimized</code></td></tr><tr><td><code>platform</code>, <code>variant</code></td><td>The target platform and variant</td><td></td></tr><tr><td><code>toolchain</code></td><td>The toolchain: image content digest or resolved tool lock, host platform</td><td></td></tr><tr><td><code>dependencies</code></td><td>The prepared dependencies (for Node, <code>node_modules</code>)</td><td></td></tr><tr><td><code>projection</code></td><td>The source projection definition and selected content digest for whole-target fallback keys</td><td></td></tr><tr><td><code>source</code></td><td>The source digest in scope: the whole target scope, or a confined action&#x27;s predicted reads</td><td></td></tr><tr><td><code>definition</code></td><td>The frozen action definitions, field by field and environment variable by variable: <code>argv</code>, <code>env.&lt;NAME&gt;</code>, <code>cwd</code>, limits, report contracts, configuration digest, input mounts</td><td><code>api:build env.MODE</code> (group key) or <code>env.MODE</code> (action key)</td></tr><tr><td><code>materialized</code></td><td>Digests of artifacts consumed from producer targets</td><td>The artifact ID</td></tr><tr><td><code>upstream</code></td><td>Output digests of the earlier actions an action follows</td><td>The action ID</td></tr></tbody></table></div>
 <p>When several components differ, the first is the reason and the rest are listed after it. The key alone decides reuse. Components only explain it. <code>source</code> comes before <code>definition</code> because an action&#x27;s environment can carry values derived from source, such as the development version.</p>
 <p>Every lookup also records the subject&#x27;s latest key in <code>history/</code> under the store: the run that first and last used it, and the distinct key before it. A subject is a target or, for targets reused action by action, each action. History is written even when nothing is stored (a failed build, an always-run target), is a few kilobytes per subject and is removed by <code>oyzu cache clear</code>.</p>
+<p>Key-history persistence is best-effort. A lookup continues if recording its
+history fails, and its action or target explanation includes <code>historyWarning</code>
+with the cause. Fix the backing-store permissions or filesystem issue, then build
+again to record history.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="oyzu-build---explain"><code>oyzu build --explain</code><a href="#oyzu-build---explain" class="hash-link" aria-label="Direct link to oyzu-build---explain" title="Direct link to oyzu-build---explain" translate="no">​</a></h3>
 <p>After the receipt, it shows at most eight action decisions, with a count of the rest. The manifest has complete detail. A blocked or failed action keeps its failure cause. An expanded entry looks like this:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">  Why each stage ran or was reused</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  api:build — Executed</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Recorded selection: api (requested)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Reuse: source files in scope changed</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Source comparison: run previous-observation</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    changed: shared/greeting.mjs (reads-source)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      Native provenance: applications/api/build.mjs:2 (path, exact)</span><br></div></code></pre></div></div>
 <p>Other reasons you may see:</p>
 <ul>
+<li class=""><code>profile development vs optimized</code> (the recorded build used a different applied profile)</li>
+<li class=""><code>source projection changed</code> (its selection definition or selected content changed)</li>
 <li class=""><code>no earlier build of it is recorded in this cache</code> (first build, or after <code>cache clear</code>)</li>
 <li class=""><code>inputs unchanged since run …, but no result is stored</code> (not stored, evicted or cleared)</li>
 <li class=""><code>the stored result was rejected: …</code> (damaged entry)</li>
@@ -233,7 +346,7 @@
 <li class="">a note that the result came from a remote</li>
 </ul>
 <p>A stage of a target that is reused or run whole shares the target&#x27;s reason. A target that isn&#x27;t cacheable shows its <code>not-cached</code> reason.</p>
-<p><code>--explain</code> conflicts with <code>--plan</code> and <code>--remote</code>. It changes only the human output. The reasons are always in the manifest, under <code>manifest.extensions[&quot;oyzu.dev/action-cache&quot;].targets.&lt;target&gt;</code> as <code>explain</code> (<code>{reason, changed?, previousRunId?, sourceChanges?}</code>) and, per action, <code>actionExplain.&lt;action&gt;</code>, so <code>--json</code> carries them without the flag. A failed local lookup is recorded as <code>lookup: unavailable</code> with the cause, which is different from a stored result that failed validation.</p>
+<p><code>--explain</code> conflicts with <code>--plan</code> and <code>--remote</code>. It changes only the human output. The reasons are always in the manifest, under <code>manifest.extensions[&quot;oyzu.dev/action-cache&quot;].targets.&lt;target&gt;</code> as <code>explain</code> (<code>{reason, changed?, previousRunId?, sourceChanges?, historyWarning?}</code>) and, per action, <code>actionExplain.&lt;action&gt;</code>, so <code>--json</code> carries them without the flag. A failed local lookup is recorded as <code>lookup: unavailable</code> with the cause, which is different from a stored result that failed validation.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="source-comparison">Source comparison<a href="#source-comparison" class="hash-link" aria-label="Direct link to Source comparison" title="Direct link to Source comparison" translate="no">​</a></h3>
 <p>Oyzu keeps a source inventory per captured context in the cache history. <code>sourceChanges</code> compares the previous build&#x27;s file identities with the current ones under the action&#x27;s read scope (or the whole target scope), including added and removed files.</p>
 <ul>
@@ -244,6 +357,9 @@
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="oyzu-cache-explain-target"><code>oyzu cache explain &lt;target&gt;</code><a href="#oyzu-cache-explain-target" class="hash-link" aria-label="Direct link to oyzu-cache-explain-target" title="Direct link to oyzu-cache-explain-target" translate="no">​</a></h3>
 <p>Reads the key history for a target ID (its group key and every recorded action) or one action ID such as <code>api:build</code>. For each it shows the latest key, the runs that first and last used it, whether a result is stored and the first component that differs from the previous key. It reads no project and runs nothing, so it works between builds and on another checkout that shares the store. An unknown name exits non-zero with <code>no key history for &lt;name&gt; in this cache</code>.</p>
+<p>A build cached only as a whole target records that target ID. If its builder
+supplies no bounded action contract, use the target ID rather than an action ID;
+whole-target caching does not create per-action history.</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">$ oyzu cache explain api</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">Cache key explanation  api</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  api (whole target)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Key        3608cd663130 · since run 26520-… · last seen run 26520-… (2026-10-10T10:04:22Z)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Result     stored · the next build with these inputs reuses it</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Changed    since run 25996-…: source files in scope changed (also: action definition: api:build env.OYZU_VERSION, api:build env.PROOF_VALUE added and 7 more)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  api:build (stage)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Key        f700515a6d9c · since run 26520-… · last seen run 26520-… (2026-10-10T10:04:23Z)</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Result     stored · the next build with these inputs reuses it</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    Changed    since run 23970-…: source files in scope changed (also: action definition: env.OYZU_VERSION, env.PROOF_VALUE added and 1 more; output of an earlier action: api:version)</span><br></div></code></pre></div></div>
 <p><code>--json</code> returns <code>kind: &quot;action-cache-explain&quot;</code> with <code>subjects[]</code> (<code>id</code>, <code>kind</code>, <code>target</code>, <code>actionKey</code>, <code>firstRunId</code>, <code>lastRunId</code>, <code>lastSeenAt</code>, <code>stored</code>, <code>previous</code>, <code>reason</code>, <code>changed</code>).</p>
 <p>Limits:</p>
@@ -255,10 +371,24 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inputs-and-what-invalidates-a-target">Inputs and what invalidates a target<a href="#inputs-and-what-invalidates-a-target" class="hash-link" aria-label="Direct link to Inputs and what invalidates a target" title="Direct link to Inputs and what invalidates a target" translate="no">​</a></h2>
 <p>Every builder operation declares source reads, an explicit unbounded reason,
 or explicit upstream-only output consumption.
-A bounded stage keys on its selected files, unowned workspace files, configuration
-and locks, and the target&#x27;s declared <code>inputs</code>. A directory read includes its
-listing: adding a source or test file changes the key. An unbounded stage retains
+A bounded captured stage keys on its declared read selection. Native source
+selection also conservatively includes unowned workspace entries. Configuration,
+tool and prepared-input identities remain separate key components. A directory
+read includes its listing: adding a source or test file changes the key. An unbounded stage retains
 the whole-target source key; its reason explains why narrowing is unavailable.</p>
+<p>Analyzed native builders include Rust and Zig. Zig&#x27;s <code>format-check</code> declares
+fixed <code>.zig</code>/<code>.zon</code> file reads and recursive directory listings. Its build and
+test stages remain unbounded because <code>build.zig</code> and runtime tests can read
+arbitrary files without a complete tool-reported read set. See
+<a class="" href="/docs/reference/zig#what-each-stage-reads">Zig stage reads</a>.
+Zig opts its fixed-read formatter into a private workspace with no retained
+files and order-only build/test edges, allowing independent formatter reuse.
+Build and test retain whole-target source keys.</p>
+<p>The Helm plugin also declares <a class="" href="/docs/reference/helm#what-each-stage-reads">per-stage chart read bounds</a>,
+including conservative chart and formatter scan trees and specific reasons for
+image bindings and helm-unittest suites. Its captured execution path retains
+whole-target caching; declaring reads alone does not admit individual stages to
+the action cache.</p>
 <p>An admitted <code>upstream_only</code> export reads no source files. Its key uses its own
 definition, tool/configuration identity and declared upstream output digests,
 without the target source scope or implicit source inputs. Native admission
@@ -272,11 +402,23 @@ their conservative dependency edges, including the export.</p>
 and treats each undeclared operation as unbounded, with the reason
 <code>plugin &lt;reference&gt; &lt;version&gt; declared no reads</code>. The build reports it once the
 plugin answers, with one <code>PLUGIN_READS_UNDECLARED</code> warning per plugin per build
-that asks you to update the plugin. <code>oyzu build --plan</code> never runs the plugin,
-so its <code>Why</code> column (JSON <code>sourceReason</code>) shows only what Oyzu can tell without
-it. These operations
+that asks you to update the plugin. <code>oyzu build --plan</code> never invokes a builder. Its <code>Why</code> column (JSON
+<code>sourceReason</code>) describes stage contracts recorded in that target&#x27;s last retained
+build plan, across current, legacy and historical bundles. Reasons are
+language-neutral and marked as facts from the last build; they do not establish
+current source completeness or cache admission. Stages without a recorded
+contract say <code>reported when the builder answers</code>. A later build of another
+target does not replace this target&#x27;s recorded reasons. These operations
 retain whole-target keys; the SDK and conformance suite require declarations
 from new and updated plugins.</p>
+<p>Read-only preview distinguishes a stage without a retained declaration from a
+plugin that answered without one in the last build. The former says <code>reported when the builder answers</code>; the latter names the plugin and missing stage contract
+as a fact from the last build.
+Node lifecycle fallbacks name arbitrary project/package reads, while script-free
+single-root npm installs can declare their manifest, lock and manager controls.
+Rust&#x27;s final declarations come from Cargo read facts, with specific reasons when
+native inputs cannot be bounded. These explanations do not relax confinement or
+native-observation requirements.</p>
 <p>A target&#x27;s key is a SHA-256 over these inputs and nothing else:</p>
 
 
@@ -311,9 +453,67 @@ from new and updated plugins.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Input</th><th>Notes</th></tr></thead><tbody><tr><td>The target&#x27;s actions</td><td>Command, environment, working directory, platforms, limits, report contracts and configuration digest. Scheduling settings such as <code>build.jobs</code> aren&#x27;t part of it.</td></tr><tr><td>Source in scope</td><td>The target&#x27;s own directory, the directories of every target it declares as a prerequisite (<code>depends_on</code>, <code>materialize</code>, task dependencies, the same edges <code>--affected</code> uses) and every file no target owns (root <code>build.yaml</code>, <code>oyzu.toml</code>, locks)</td></tr><tr><td>Toolchain</td><td>The resolved image&#x27;s content digest, not its tag</td></tr><tr><td>Prepared dependencies</td><td>The dependency snapshot&#x27;s content (lock digests, prepared tree, manager identity), not where or when it was prepared</td></tr><tr><td>Builder</td><td>The builder&#x27;s digest</td></tr><tr><td>Materialized inputs</td><td>Digests of artifacts consumed from producer targets, known once producers finish</td></tr></tbody></table></div>
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Input</th><th>Notes</th></tr></thead><tbody><tr><td>The target&#x27;s actions</td><td>Command, environment, working directory, platforms, limits, report contracts and configuration digest. Scheduling settings such as <code>build.jobs</code> aren&#x27;t part of it.</td></tr><tr><td>Source in scope</td><td>The target&#x27;s own directory, the directories of every target it declares as a prerequisite (<code>depends_on</code>, <code>materialize</code>, task dependencies, the same edges <code>--affected</code> uses) and every file no target owns (root <code>build.yaml</code>, <code>oyzu.toml</code>, locks). Complete admitted tool contracts can replace tool-control bytes with their semantic non-tool content; dependency locks, plugin selections and other settings remain inputs.</td></tr><tr><td>Source projection</td><td>The builder&#x27;s selection definition and captured selected-entry digest for fallback keys; admitted narrow actions key their selected reads</td></tr><tr><td>Toolchain</td><td>The resolved image&#x27;s content digest, not its tag, plus the canonical locked tool identities for a complete admitted stage. The target&#x27;s prepared primary tool and manager stay keyed even if the builder omits their names. Missing declarations or missing admitted records retain the whole-lock fallback.</td></tr><tr><td>Prepared dependencies</td><td>The dependency snapshot&#x27;s content (lock digests, prepared tree, manager identity), not where or when it was prepared</td></tr><tr><td>Builder</td><td>The builder&#x27;s digest</td></tr><tr><td>Materialized inputs</td><td>Digests of artifacts consumed from producer targets, known once producers finish</td></tr></tbody></table></div>
+<p>When a build pins missing tools or quality sets, planning uses the validated,
+newly published lock capture. Its tool inputs therefore match later builds that
+reuse the unchanged lock. Incomplete tool declarations continue to bind the
+captured lock bytes; a real lock-file edit changes that conservative identity.</p>
 <p>Host paths, run IDs, timestamps, credentials and the number of parallel jobs never enter a key. A serial build, a <code>--jobs N</code> build and a host with a different core count share hits, and so do different checkouts, worktrees and branches.</p>
+<p>Source ownership comes from the full static build inventory, even when a named build resolves only the builders it needs. Unselected builds keep ownership of their folders without loading their plugins.</p>
 <p>Changing one target&#x27;s inputs re-runs exactly that target. One thing to know: execution-only settings such as <code>--full</code> are part of the configuration digest, so changing them re-keys every action.</p>
+<p>Prepared dependency identity excludes whole-source provenance, version decision
+evidence and the frozen plugin planner request/answer. The frozen action definition
+still keys version-bearing arguments and <code>OYZU_VERSION</code>; source reads have their own
+key component. Dependency locks, manager/tool identities and prepared content remain
+in the dependency identity. A changed lock or prepared payload therefore remains a
+prepared-dependency cause in <code>oyzu cache explain</code>.</p>
+<p>This exclusion does not remove a version written into a prepared file: those bytes
+remain prepared content. Helm retains the authored <code>Chart.yaml</code> version during
+preparation and projects the resolved version into its private stage workspace.
+Its bounded captured stages use their admitted read contracts; a root README
+outside those reads can change without invalidating the shipping actions. A
+README inside the chart ships unless <code>.helmignore</code> excludes it, so editing it
+normally invalidates the build.</p>
+<p>Prepared capture can record source provenance using the copy roots supplied by
+preparation. A nonempty regular file is copied source only when its prepared
+root-relative path maps to the same source root-relative path, and its captured
+bytes, size and executable mode match. Empty files, dependency locks, files outside
+the declared roots and rewritten files (including stamped chart metadata) remain
+generated. Equal names or bytes elsewhere never establish a copy coordinate.
+Helm keeps dependency-build <code>charts/</code> directories acquired, including committed
+subcharts reproduced byte-for-byte. If preparation has no workspace-relative
+source inventory, it declares no copied files rather than using target-relative
+coordinates that could hide a nested chart&#x27;s templates.</p>
+<p>Provenance is computed from inventories already produced during capture and is
+stored with the dependency record. Reuse reads that record; it adds no prepared
+tree scan or source-byte hashing. Planning decodes it once per prepared target.
+If an action hides no copied files, it retains its ordinary dependency input and
+mount: no extra file list, view, rehash or copy is introduced.</p>
+<p>When a confined captured action must hide a copy outside its source reads,
+dependency identity covers the generated/acquired entries and all
+<code>(prepared path, source path)</code> names. Visible copied bytes and modes remain in the
+bound physical view digest. Each action carries hidden-copy paths and a digest
+reference to a shared table of read-copy diagnostics, not an inventory per action;
+an explicit prepared-file selection still applies. Opening a filtered view
+verifies its selected content, copies it and verifies the resulting tree,
+even with <code>--no-cache</code>. This cost applies only to actions that actually hide
+copies (or already request an explicit prepared-file view).
+Upstream-only actions that consume prepared resources retain the whole prepared
+input and its whole-content identity. An empty source-read set does not mean
+those actions can run with copied files removed from their dependency payload.</p>
+<p><code>oyzu cache explain</code> lists copied source paths as added, removed or changed,
+showing up to three and an <code>and N more</code> count. Whole prepared inputs, including
+upstream-only staging, also separate verified copies from generated dependencies
+in the explanation: for example, <code>copied source chart/templates/pod.yaml changed (whole prepared input)</code>. This diagnostic split uses the captured inventory once
+per target; it does not narrow the input, materialize a view, or change its key.
+Locks, acquired files and rewritten bytes still report prepared dependencies.
+Unbounded actions, native host
+actions and prepared trees containing links retain whole-tree behavior. Native
+observed reads do not yet map prepared copies back to source coordinates.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-host-builds">Native host builds<a href="#native-host-builds" class="hash-link" aria-label="Direct link to Native host builds" title="Direct link to Native host builds" translate="no">​</a></h3>
 <p>The native path has no plan of captured inputs, so its key is built from what the host build actually saw:</p>
 
@@ -345,14 +545,75 @@ from new and updated plugins.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Input</th><th>Notes</th></tr></thead><tbody><tr><td>The target&#x27;s actions</td><td>Each eligible Rust action, otherwise the whole group: command line (per-invocation locations such as temporary output folders become fixed tokens), environment variable names, working directory, report contracts and configuration identity</td></tr><tr><td>Source</td><td>The digest of the target&#x27;s private source copy: its own directory plus declared <code>inputs</code>. Native tools are host processes, so ambient reads outside this are not in the key.</td></tr><tr><td>Tools</td><td>The digest of <code>oyzu.lock</code> and the host platform</td></tr><tr><td>Builder</td><td>The Oyzu executable&#x27;s digest. For a target built by an <a class="" href="/docs/reference/plugin-packages#which-bytes-run-and-how-output-records-them">external builder plugin</a>, also that plugin&#x27;s identity.</td></tr><tr><td>Materialized inputs</td><td>Digests of artifacts consumed from producer targets</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Input</th><th>Notes</th></tr></thead><tbody><tr><td>The target&#x27;s actions</td><td>Each eligible builder action, otherwise the whole group: command line (per-invocation locations such as temporary output folders become fixed tokens), environment variable names, working directory, report contracts and configuration identity</td></tr><tr><td>Source</td><td>The digest of the target&#x27;s private source copy: its own directory plus declared <code>inputs</code>. With a complete admitted tool contract, tool requests in <code>oyzu.toml</code> and tool bindings in <code>oyzu.lock</code> are represented by the selected tool identities instead of whole-file bytes. Non-tool settings and lock content remain binding. Native tools are host processes, so ambient reads outside this are not in the key.</td></tr><tr><td>Tools</td><td>Each completely declared stage keys the locked commands it admits: resolved version, platform, backend, installation and artifact identity, and the corresponding lock binding. Managed quality sets have their own identity. Incomplete or missing declarations retain the whole-lock fallback and host platform.</td></tr><tr><td>Builder</td><td>The Oyzu executable&#x27;s digest. For a target built by an <a class="" href="/docs/reference/plugin-packages#which-bytes-run-and-how-output-records-them">external builder plugin</a>, also that plugin&#x27;s identity.</td></tr><tr><td>Materialized inputs</td><td>Digests of artifacts consumed from producer targets</td></tr></tbody></table></div>
 <ul>
 <li class="">A tool that isn&#x27;t in the lock (a system C compiler used by cgo, or <code>sh</code>) isn&#x27;t part of the key. Use <code>--no-cache</code> after changing such a tool.</li>
+<li class="">Tool identities come from retained verified installations and invocation-captured locks, frozen before execution. Key calculation does not resolve tools, reopen the lock or rehash installed payloads. A quality-set refresh therefore need not invalidate an unrelated admitted Rust stage. Custom commands and configurations without a complete tool declaration retain conservative misses.</li>
+<li class="">A complete builder stage contract keys its named, admitted tools; sibling stages&#x27; leases do not enter that key. Rust compilation names Cargo and rustc; lint names Clippy and formatting names rustfmt. Configured <code>RUSTC_WRAPPER</code> and <code>RUSTC_WORKSPACE_WRAPPER</code> settings retain the whole admitted tool environment and managed PATH for compiler stages: a wrapper may launch another runtime even in a manifest-only project. Core checks the frozen action&#x27;s configured environment names, including redacted values; it conservatively retains this fallback even for an empty authored setting. Arbitrary Rust tests and coverage also retain the whole admitted environment and managed PATH: test code can launch tools such as Node even without build scripts, proc macros or Cargo configuration. Refreshing an admitted user-level runtime lock can invalidate wrapped compilation or test reports even when its configured selector stays the same. Unknown build-script, proc-macro or authored Cargo configuration tools also keep the whole-target fallback. Physical installation locations are normalized, and sibling managed PATH entries are omitted only for complete tool contracts; an explicit PATH read retains its complete value as data.</li>
+<li class="">A complete stage&#x27;s computation configuration omits <code>checks.run</code> and <code>plugins.packages</code>: the former selects work, while the selected builder package release and executable remain independently bound in every key. Other computation, execution, environment and policy values stay binding. Rust tool identity uses the admitted publisher channel-manifest digest, version, backend and platform, rather than an installation key that also names optional components. A missing publisher record retains the installation identity.</li>
+<li class="">Tool policy such as <code>tools.minimumReleaseAgeDays</code> remains configuration identity; it is not removed as a tool-version request.</li>
+<li class="">A control file explicitly read as program data keeps its original bytes in the source key. Unknown read contracts do too. A same-named TOML fixture is ordinary source, rather than a configuration control, unless configuration capture actually consumed it.</li>
+<li class="">Current complete declarations cover ordinary Rust compilation without build scripts, proc macros or authored Cargo configuration, source-free Rust exports, and the owned default Node quality adapter without project plugins or configuration. Other stages keep their existing fallback. Default Node quality reports have bounded outputs and can be reused independently while following the recorded outputs of preceding work.</li>
+<li class=""><code>oyzu cache explain</code> names changed tools and their previous and current versions. JSON differences carry the same names and <code>from</code>/<code>to</code> versions. An artifact or backend change with an unchanged version still changes the tool identity.</li>
 <li class="">A restored native target keeps its materialization receipts, and promoted local binaries (<code>.oyzu/bin</code>) are refreshed from the restored artifact as after a run.</li>
-<li class="">Conventional native Rust stages have independent results. Adding <code>--full</code> to an unchanged build reuses the existing executable and runs only the new checks, and a repeat full build restores the checks with their original reports and compiler warnings (labeled as reused). A compile that succeeded stays reusable if a later check fails. Stdout and stderr logs stay available after reuse.</li>
-<li class="">Independent Rust stages get separate private source copies and Cargo target folders and can overlap within <code>--jobs</code>. Coverage has its own instrumented compile. Hooks, task replacements and materialized inputs stay serial and whole-target. This is host execution, not a sandbox.</li>
+<li class="">Native host targets still try configured remote whole-target results before
+executing individual actions. Per-action cache workspaces are selected once
+for the target; a target without a private root uses whole-target caching.</li>
+<li class="">Native Rust shared-cache writers produce both development and optimized compile stages when the selected output is optimized. A plain reader looks up <code>compile-development</code>; an optimized reader looks up <code>compile-optimized</code>. Each stage records its actual profile and never substitutes the other profile&#x27;s binaries. Both use one preparation and build plan. Profile-independent builders, including Node, keep one entry; this additional-profile publishing is currently limited to host-native Rust.</li>
+<li class="">Stage reuse also requires matching admitted tool environments and computation settings. Full CI writers and plain readers can still differ in those inputs, even when their compile profiles match. Publishing both profiles does not by itself guarantee a shared-cache hit.</li>
+<li class="">Rust test, lint and format stages use declared Cargo manifests and locks, without consuming final binary exports. Their applied profile reflects the actual native command: Cargo&#x27;s development/test profile for checks, independently of the exported binary&#x27;s profile.</li>
+<li class="">Final native compilation applies inferred controls only for that operation, validates them around Cargo, then restores and revalidates declared controls before later checks. This also applies when hooks require stages to share one workspace. A failed native guard remains a failure after restoration; restoring controls never legitimizes a changed manifest or lock.</li>
+<li class="">Rust compile-stage keys bind declared Cargo versions. Plain local development readers export the declared-version compile result directly, recording <code>compiledVersion</code> separately from the inferred artifact version. Stamped paths (full, CI, optimized, shared-cache writer, packaged, handed-off and release) require a separate final Cargo stage binding the inferred version map and projected manifests/lock. Development results cannot satisfy that stage or stamped packaging/publication gates. The final projection is absent from compile-stage payloads. The inferred <code>OYZU_VERSION</code> default still reaches compile commands and remains keyed; removing that binding needs a compatibility decision for code that reads it during compilation. Stage restores do not transfer Cargo compiler state; the final stage can still recompile affected crates.</li>
+<li class="">Conventional native Rust stages have independent results. Adding <code>--full</code> to an unchanged development build may reuse compilation, but also requires the inferred-version final stage and selected checks, and a repeat full build may restore bounded checks with their original reports and compiler warnings (labeled as reused). Arbitrary tests always execute and produce fresh required reports. A compile that succeeded stays reusable if a later check fails. Stdout and stderr logs stay available after reuse.</li>
+<li class="">Builders can opt individual native stages into private source copies by declaring a finite output-file handoff. Core admits private execution when outputs are bounded and producers are admitted. An <code>observed</code> or <code>fixed</code> native read basis separately enables narrow keying. Source-free exports use <code>upstream_only</code> and retain their producer dependencies. A private copy still contains the full target; narrow keys require the separate native read admission described below. This is host execution, not a sandbox.</li>
+<li class="">Private branches start from the frozen pre-run source projection plus the finite outputs of their admitted producers. They never copy later shared-stage changes, even inside their declared reads. The prepared source projection stays immutable while shared stages and deferred cache restores use a separate retained execution root. Private branches are populated only on execution and carry the projection&#x27;s admitted digests without hashing copied source again. Reused private stages do not populate their forks; reused producer bytes are handed off only when a consumer executes. Producer files come from their executed fork or verified cached bytes, not from the live shared root.</li>
+<li class="">Native artifacts are collected from the workspace of their declared producing stage, including shared execution roots beside private checks.</li>
+<li class="">A target can mix private and shared stages. Cached shared-stage changes are captured from and restored into the shared execution root. If a later stage fails, retrying can reuse a successful producer and restore its files before the consumer executes, without changing the source of later private forks. Editing a check&#x27;s declared reads reruns that check. Shared, unconfined native actions follow every <code>dependsOn</code> edge, including order-only edges. Private branches retain the existing order-only non-observation rule and follow real producer dependencies.</li>
+<li class="">Cargo declares these neutral facts for its host stages and indexed binary exports. Compilation and Clippy need complete observations before using narrow keys; rustfmt uses its fixed tool rule. The separately lowered test has no complete native read basis. Its unbounded outputs keep it on the shared execution path with AlwaysRun and no reusable test-result storage; it retains conservative action configuration and whole-target source identity. Hooks, task replacements and materialized inputs retain the serial whole-target fallback. Maven and Gradle formatter admission additionally requires their plugin&#x27;s fixed-read declarations; a private-stage request alone grants no narrow key. Compile, test and package remain whole-target unless their native read and output contracts qualify.</li>
+<li class="">A fixed-read formatter can reuse independently of unbounded build and test stages when its builder opts into a private workspace. Its default pipeline edges are order-only; explicit data dependencies still invalidate it when their outputs change. An unrelated file edit can still change inferred version or whole-target projection identity and cause a conservative miss. The same mechanism admits Go build and vet with complete observed reads and gofmt with fixed reads once their plugin opts in. A successful completion binds its own complete observation before publication, so the next unchanged build can reuse that narrow result.</li>
+<li class="">Admitted test-unit plans can expose independent results; see <a href="#test-unit-evidence" class="">test-unit evidence</a>. Unit reuse remains subject to the stage&#x27;s native read and cache admission.</li>
+<li class="">Cargo integration-test scratch is removed before <a class="" href="/docs/reference/local-builds#native-compiler-cache-retention">native compiler cache retention</a>, even under budget. Compiler state remains available for incremental work, and action results retain their normal reuse rules.</li>
 <li class="">The pinned tools must include the selected check helpers. An incomplete lock reports <code>TOOL_LOCK_STALE</code>; run <code>oyzu pin</code> and retry.</li>
 </ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="test-unit-evidence">Test-unit evidence<a href="#test-unit-evidence" class="hash-link" aria-label="Direct link to Test-unit evidence" title="Direct link to Test-unit evidence" translate="no">​</a></h3>
+<p>A plugin can declare native test units through the optional test-unit plan.
+Captured Python package tests use one pytest file per unit and can select cases
+inside a changed file; see <a href="#python-cases-inside-a-bounded-unit" class="">Python cases inside a bounded unit</a>.
+The Rust-specific Cargo executable producer is deferred to issue #1201. The
+built-in Rust worker does not emit per-executable unit plans; its existing
+native test, coverage and doctest pipeline remains unchanged.</p>
+<p>Core owns unit keys, lookup and passing-result storage. A failed unit is never
+stored. The native adapter prepares its inventory, runs the selected units and
+combines fresh and reused evidence into the operation&#x27;s existing required
+reports. Cancelled preparation preserves the executor&#x27;s cancellation status and
+stops before unit execution or report finalization. An unbounded AlwaysRun
+stage does not gain reusable result storage merely by exposing a unit plan.</p>
+<p>The combined report retains each unit&#x27;s contribution. Summary totals put cases
+from executed units under <strong>Tests run now</strong> and reused cases under <strong>Reused test
+evidence</strong>, marked <strong>not run now</strong>. JSON build reports retain each contribution
+in <code>reports[].summary.units</code>. Invocation summaries (<code>oyzu history &lt;id&gt; --json</code>)
+use <code>tests.fresh</code> and <code>tests.reused</code> for the same counts. Even when all units
+reuse results, the action still executes preparation and finalization. It counts
+in <code>actions.succeededNow</code>; only whole-action reuse counts in <code>actions.reused</code>.</p>
+<p>Each unit&#x27;s key includes the stage&#x27;s non-source inputs, the native artifact&#x27;s
+digest, its runtime-read digest and the declared companion executable digests.
+Runtime reads narrow the key only when the captured-path view enforces them.
+Declared <code>inputs</code> widen reads without enforcing a boundary. Runtime listing
+selectors conservatively include the selected directory&#x27;s contents in unit keys
+and views. Without an enforced boundary, a unit key retains the whole target&#x27;s
+source digest and the ordinary stage&#x27;s admitted upstream outputs. Untracked
+host files retain the native cache limitations described below. Per-run
+inventory paths and coverage environment are not bounded key inputs.</p>
+<p>Targets with hooks or authored tasks retain their existing stage or whole-target
+cache behavior. Their outputs are never narrowed to unit identities. If
+per-action cache facts are unavailable, the ordinary test stage runs instead.
+The native inventory determines what runs: undeclared units execute without
+reuse, known units retain their own entries, and missing predicted units do not
+fail an otherwise valid native inventory.</p>
+<p>The existing test action row shows <code>N ran, M reused</code>, including in redirected
+and no-color output. Its JSON action record lists <code>units</code>, each with <code>name</code>,
+<code>key</code> and <code>outcome</code> (<code>ran</code>, <code>reused</code> or <code>failed</code>). An operation without a unit
+plan retains its existing whole-stage behavior.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="trust-model-and-its-limit">Trust model and its limit<a href="#trust-model-and-its-limit" class="hash-link" aria-label="Direct link to Trust model and its limit" title="Direct link to Trust model and its limit" translate="no">​</a></h3>
 <p>The cache trusts the declared target graph, like <code>--affected</code>. An action that reads another target&#x27;s directory without a declared edge is invisible to the key. For example, if <code>api</code> and <code>web</code> copy <code>../shared</code> but declare no relationship to it, editing <code>shared/</code> reuses their old results, while <code>oyzu build --no-cache</code> rebuilds them. Native cross-root dependency discovery isn&#x27;t implemented. Declare relationships in <code>build.yaml</code> (<code>depends_on: [shared]</code>), or use <code>--no-cache</code>, for builds that read across target directories.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="external-builder-targets">External builder targets<a href="#external-builder-targets" class="hash-link" aria-label="Direct link to External builder targets" title="Direct link to External builder targets" translate="no">​</a></h3>
@@ -372,7 +633,7 @@ verified binding identity; adding another binding does not change that target&#x
 <p>For a development binding, the digest covers only the bound file. If that file isn&#x27;t a native executable (a wrapper script or <code>.cmd</code> file, for example), what it runs is outside the key, so its targets are <code>not-cached</code> with the reason &quot;is built by a development plugin binding that is not a native executable&quot;. Bind the plugin executable itself to get reuse. A native wrapper executable is keyed on its own digest alone, so rebuild or rebind it after changing what it starts.</p>
 <p>A target built by an installed plugin package (a <code>plugins.packages</code> binding, or a package <code>oyzu.lock</code> selects) shares its results through <code>cache.remote</code> and <code>cache.ciRemote</code> like a built-in target: the key binds the package release and executable digest, so only a machine running the same package release reuses them. A development binding&#x27;s results stay in the local store, because its executable exists only on that machine. A slice hands plugin-built results off through its <code>--handoff</code> repository like any other. The usual exclusions still apply: <code>--no-cache</code>, <code>cache.local = false</code>, <code>--verify-contract</code>, secret environment values and hooks without declared outputs keep a target out of the cache.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="per-action-reuse">Per-action reuse<a href="#per-action-reuse" class="hash-link" aria-label="Direct link to Per-action reuse" title="Direct link to Per-action reuse" translate="no">​</a></h2>
-<p>Planning attaches a stage contract to each action of an analyzed target: the reads, writes, environment names and tools the <a class="" href="/docs/reference/node-static-analysis">static analysis</a> found for the stage, the actions it follows, and whether its outputs are bounded. A target whose actions all have a contract is reused action by action. Today that is <code>node/package</code> on the captured path.</p>
+<p>Planning attaches a stage contract to each action of an analyzed target: the reads, writes, environment names and tools the <a class="" href="/docs/reference/node-static-analysis">static analysis</a> found for the stage, the actions it follows, and whether its outputs are bounded. A target whose actions all have a contract is reused action by action. Captured <code>node/package</code> and <code>node/app</code> operations use these contracts when the final command matches the analyzed script or builder-owned command. Ordinary SDK-style <code>dotnet/sdk</code> projects also declare stage reads on the captured path. See <a class="" href="/docs/reference/dotnet#what-each-stage-reads">.NET stage reads</a> for the SDK audit, resolved-package checks and conservative MSBuild fallbacks. Captured .NET targets cannot see ancestor configuration files above their target folder; future native admission must treat those files as unbounded until covered by read evidence. Fixed core-owned stages can supply a contract alongside analyzed builder stages. Docker also declares <a class="" href="/docs/reference/docker-images#what-each-stage-reads">per-stage reads</a> for its captured operations. Projection-aware caching and captured version rebinding require a supporting core release before the updated Docker plugin. Source projections retain conservative version scope, and copied source in prepared dependencies can still prevent reuse after an unread edit. Host-coordinated image workers remain excluded from caching.</p>
 
 
 
@@ -412,6 +673,35 @@ verified binding identity; adding another binding does not change that target&#x
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Step</th><th>Behavior</th></tr></thead><tbody><tr><td>Lookup</td><td>The target&#x27;s group record is tried first (unchanged target: one step). On a miss, each action is looked up when it becomes ready.</td></tr><tr><td>Action key</td><td>The action&#x27;s frozen definition, the target scope, toolchain, builder, variant, platform, prepared dependencies (only if the action reads them), materialized artifacts and the output digests of the earlier actions it follows</td></tr><tr><td>Action result</td><td>The files the action published to the bundle (artifacts, reports), their records and the workspace changes it made (files created, modified and deleted, new folders)</td></tr><tr><td>Reuse</td><td>Records enter the manifest as <code>succeeded</code> with a <code>reuse</code> record. Reports are parsed again and gated by the current contract. Workspace changes are restored before the next action that has to run, so later actions see what running it would have left. A fully reused target never touches its workspace.</td></tr><tr><td>Early cutoff</td><td>A re-run action that produces the same workspace changes leaves its dependents&#x27; keys unchanged, so they are still reused.</td></tr><tr><td>Always runs</td><td>An action without bounded outputs never gets reused on its own. It runs every time, and what it produces still feeds what follows. A target holding such an action isn&#x27;t restored whole.</td></tr><tr><td>Storing</td><td>Results are saved only after the whole target succeeded and its reports were collected.</td></tr></tbody></table></div>
 <p>Without a confining contract (see below), an action&#x27;s key uses the whole target scope. Targets with an authored task or override that doesn&#x27;t set <code>cache = true</code> with <code>outputs</code>, or a hook without declared <code>outputs</code>, are not cached. An action that creates a symbolic link or special file can&#x27;t be restored, so it still runs and feeds its dependents but isn&#x27;t stored. The manifest records each action&#x27;s outcome (<code>reused</code>, <code>executed</code>, <code>always-run</code>) under <code>manifest.extensions[&quot;oyzu.dev/action-cache&quot;].targets.&lt;target&gt;.actions</code>.</p>
+<p>Rust test and coverage stages, including native Cargo test commands under another
+stage name, run whenever scheduled. Arbitrary test code can write outside the
+captured workspace, so these stages declare unbounded outputs and use the
+<code>always-run</code> outcome instead of storing reusable action results. Required test
+and coverage reports are still collected and checked. Compilation and other
+stages with bounded outputs retain their separate cache eligibility.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="core-prepared-input-staging">Core prepared-input staging<a href="#core-prepared-input-staging" class="hash-link" aria-label="Direct link to Core prepared-input staging" title="Direct link to Core prepared-input staging" translate="no">​</a></h3>
+<p>Core&#x27;s <code>prepare-dependencies</code> action can carry a source-free stage contract when
+its provider declares every destination written by its fixed staging command.
+The Cargo overlay copies manifests and lock data into those declared
+paths; Helm declares <code>.oyzu-build</code>, including its prepared chart copy and the
+parent directory it creates. These copies read
+no workspace source and have bounded outputs; the prepared-input
+selection remains keyed, so changing a staged manifest or lock invalidates
+staging. A source-only edit can reuse staging independently of compilation when
+the prepared bytes are unchanged.</p>
+<p>With a Rust package declaring <code>captured-cargo-projection</code>, dependency staging
+copies declared manifests and the original lock from its exact prepared-file
+view. Frozen projected controls are applied in a separate <code>project-version</code>
+action before every Cargo consumer. A source edit changing only the inferred
+version can therefore reuse staging; manifest and lock changes still invalidate
+it. Staging excludes the engine-injected <code>OYZU_VERSION</code> default, while explicit
+user environment values retain their normal precedence and remain keyed.
+Unmarked Rust packages keep the projected overlay, so edits changing the
+projected version still rerun their staging. Local verification of a source
+package does not establish public package adoption.</p>
+<p>Other provider setup commands keep their existing behavior unless they declare
+an equivalent bounded, source-free staging contract. This does not turn staging
+into a network fetch or vendor operation.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="hooks-as-always-run-actions">Hooks as always-run actions<a href="#hooks-as-always-run-actions" class="hash-link" aria-label="Direct link to Hooks as always-run actions" title="Direct link to Hooks as always-run actions" translate="no">​</a></h2>
 <p>A hook (<code>[tasks.&quot;api:pre_build&quot;]</code>, <code>post_&lt;stage&gt;</code>) that declares <code>outputs</code> doesn&#x27;t make a per-action target uncacheable:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tasks.&quot;api:pre_build&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">argv</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;node&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;hook.mjs&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">outputs</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;generated&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain">      </span><span class="token comment" style="color:#999988;font-style:italic"># workspace paths, folders or globs the hook writes</span><br></div></code></pre></div></div>
@@ -520,8 +810,8 @@ verified binding identity; adding another binding does not change that target&#x
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Aspect</th><th>Behavior</th></tr></thead><tbody><tr><td>Opt-in</td><td><code>cache = true</code> and at least one <code>outputs</code> entry. The plan marks the action <code>cacheable: true</code> and records the declaration in <code>extensions[&quot;oyzu.dev/authored-cache&quot;]</code>. <code>cache</code> on a hook is ignored: hooks always run.</td></tr><tr><td>Key</td><td>The task&#x27;s frozen definition (command, environment names, working directory, report contracts, configuration digest) and the target scope, as for a builder stage. Editing a file in the target, or the task, re-runs it.</td></tr><tr><td><code>inputs</code></td><td>Relative to the task&#x27;s directory. Entries inside the target are already covered. An entry outside the target isn&#x27;t supported yet: the target is <code>not-cached</code> (&quot;declares inputs outside its target …&quot;).</td></tr><tr><td>Per-action targets (captured <code>node/package</code>)</td><td>The task is a reusable action. Its workspace changes must lie inside its declared <code>outputs</code>, otherwise nothing is stored and the outcome carries a <code>rejected</code> note. Around a hook it is reused while the hook&#x27;s output is unchanged.</td></tr><tr><td>Whole-target path (native host, other builders)</td><td>The target is reused whole when every action is a builder stage or a cached authored task. Reports are restored and gated again. Declared <code>outputs</code> aren&#x27;t checked here. A target with hooks isn&#x27;t cached on this path.</td></tr><tr><td><code>cache = true</code> without <code>outputs</code></td><td><code>not-cached</code>: &quot;<code>&lt;task&gt;</code> sets cache = true but declares no outputs, so it is not cached&quot;</td></tr><tr><td><code>--no-cache</code>, <code>cache.local = false</code></td><td>Nothing is reused or stored.</td></tr></tbody></table></div>
-<p>A task that leaves nothing in the workspace must still name an output (for example the folder its tool writes logs to). Reusing a task around hooks needs per-action reuse, which only captured <code>node/package</code> targets have. A command the builder doesn&#x27;t recognize for report instrumentation keeps today&#x27;s reporting behavior.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Aspect</th><th>Behavior</th></tr></thead><tbody><tr><td>Opt-in</td><td><code>cache = true</code> and at least one <code>outputs</code> entry. The plan marks the action <code>cacheable: true</code> and records the declaration in <code>extensions[&quot;oyzu.dev/authored-cache&quot;]</code>. <code>cache</code> on a hook is ignored: hooks always run.</td></tr><tr><td>Key</td><td>The task&#x27;s frozen definition (command, environment names, working directory, report contracts, configuration digest) and the target scope, as for a builder stage. Editing a file in the target, or the task, re-runs it.</td></tr><tr><td><code>inputs</code></td><td>Relative to the task&#x27;s directory. Entries inside the target are already covered. An entry outside the target isn&#x27;t supported yet: the target is <code>not-cached</code> (&quot;declares inputs outside its target …&quot;).</td></tr><tr><td>Per-action targets (captured <code>node/package</code> and <code>node/app</code>)</td><td>The task is a reusable action. Its workspace changes must lie inside its declared <code>outputs</code>, otherwise nothing is stored and the outcome carries a <code>rejected</code> note. Around a hook it is reused while the hook&#x27;s output is unchanged.</td></tr><tr><td>Whole-target path (native host, other builders)</td><td>The target is reused whole when every action is a builder stage or a cached authored task. Reports are restored and gated again. Declared <code>outputs</code> aren&#x27;t checked here. A target with hooks isn&#x27;t cached on this path.</td></tr><tr><td><code>cache = true</code> without <code>outputs</code></td><td><code>not-cached</code>: &quot;<code>&lt;task&gt;</code> sets cache = true but declares no outputs, so it is not cached&quot;</td></tr><tr><td><code>--no-cache</code>, <code>cache.local = false</code></td><td>Nothing is reused or stored.</td></tr></tbody></table></div>
+<p>A task that leaves nothing in the workspace must still name an output (for example the folder its tool writes logs to). Reusing a task around hooks needs per-action reuse, which captured Node package and application targets support. A command the builder doesn&#x27;t recognize for report instrumentation keeps today&#x27;s reporting behavior.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="confined-actions-and-narrow-keys">Confined actions and narrow keys<a href="#confined-actions-and-narrow-keys" class="hash-link" aria-label="Direct link to Confined actions and narrow keys" title="Direct link to Confined actions and narrow keys" translate="no">​</a></h2>
 <p>A narrow key is only sound if the action can&#x27;t see anything the key left out. So Oyzu keys an action on the files its contract reads only when the action also runs confined to them. This needs the captured path and a Unix host. Linux is tested. macOS isn&#x27;t supported yet. Windows doesn&#x27;t support confinement, so every action there keeps the whole-target key.</p>
 
@@ -618,15 +908,36 @@ verified binding identity; adding another binding does not change that target&#x
 
 <div class="oyzu-table-scroll"><table><thead><tr><th></th><th>Behavior</th></tr></thead><tbody><tr><td>View</td><td>A check&#x27;s view leaves out what the checks ordered before it left, and checks that may overlap get copied files instead of hard links, so one check&#x27;s in-place write can&#x27;t reach another.</td></tr><tr><td>Key</td><td>A check&#x27;s key follows the actions its view shows, not the checks ordered before it. <code>package</code> still follows every check.</td></tr><tr><td>Failure</td><td>A failed check doesn&#x27;t block the next check. It still blocks <code>package</code> and everything after it.</td></tr></tbody></table></div>
 <p>A check that finishes early is recorded after the checks ordered ahead of it. Different targets still run one action at a time per branch. The native host path and Windows have no views, and <code>oyzu run</code> stays serial.</p>
+<p>Native sequence edges after a check with a complete empty workspace-write bound
+are order-only. The consumer follows the check&#x27;s data predecessors instead, so
+an export after read-only lint still consumes the build output without importing
+lint&#x27;s source reads or result identity. Checks with declared writes or incomplete
+write bounds keep their data edges. Explicit produced-output dependencies and
+authored task dependencies also retain their data semantics.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="development-versions-and-test-files">Development versions and test files<a href="#development-versions-and-test-files" class="hash-link" aria-label="Direct link to Development versions and test files" title="Direct link to Development versions and test files" translate="no">​</a></h3>
+<p>Version narrowing follows the execution admission: all selected actions must have
+contracts, and every shipping action must actually run confined. Non-check steps
+that can feed shipping reads join the version read closure. Source-free shipping
+exports also include their transitive producers. Every omitted check needs a
+complete write bound proving its effects cannot feed shipping. Unconfined checks
+are checked against their observed workspace changes when the target has a narrowed
+version scope; a write outside the declared bound fails that build, including when
+cache storage is disabled. Whole-target version scopes retain ordinary check
+behavior. An unbounded generator therefore retains the whole-target version even
+if build and package are bounded.
+Prepared charts retain their native version; runtime staging projects the final
+version. This change does not supply declared-read prepared-content or hidden-copy
+dependency views. Those are separate work in #1253;
+source confinement alone cannot hide copies in a dependency mount.</p>
 <p>A development snapshot version (<code>1.2.3-dev.g&lt;digest&gt;</code>) is written into <code>package.json</code> by the <code>version</code> action, so it feeds every later action. Oyzu derives it from the target&#x27;s source scope, minus files that only a quality stage (<code>test</code>, <code>lint</code>, <code>format-check</code>) is known to read exactly.</p>
 <ul>
 <li class="">A test-only edit changes neither the version nor the artifact names. A new test file, which only a glob finds, does.</li>
 <li class="">An <code>unknown</code> fact of a shipping stage (<code>build</code>, <code>package</code>) counts as reading its bound, or every file if it has none, so a test-only file that a computed import of <code>build</code> may reach stays in the version.</li>
 <li class="">If several targets share the folder holding a file, the file is left out only if every one of them reads it only from a quality stage.</li>
 <li class="">The script of a followed <code>pre_build</code> hook leaves its own target&#x27;s scope, and what the hook wrote is folded in after it runs (<a href="#version-finalization-after-hooks" class="">version finalization</a>).</li>
-<li class="">For a captured target whose final commands are all bounded, cacheable and confinable, the suffix uses the files its shipping commands read, plus configuration, lock files and declared inputs. This needs Unix view support. Targets with hooks, authored replacements, source projections, materialized inputs or cross-target prerequisites keep the wider scope. See <a class="" href="/docs/reference/version-inference#final-command-development-scope">version inference</a>.</li>
-<li class="">Tagged and history-derived versions don&#x27;t change. The version reaches every action as <code>OYZU_VERSION</code>.</li>
+<li class="">For a captured target whose version-carrying commands (<code>build</code>, <code>package</code>, <code>export</code>, or artifact producers) are bounded, cacheable and confinable, the suffix uses the files those commands read, plus configuration, lock files and declared inputs. Unbounded quality stages retain their own whole-target keys without widening this suffix. This needs Unix view support and per-action eligibility, with the same confinement predicate used by execution. Targets with hooks, authored replacements, source projections, materialized inputs or cross-target prerequisites keep the wider scope. See <a class="" href="/docs/reference/version-inference#final-command-development-scope">version inference</a>.</li>
+<li class="">Tagged and history-derived versions don&#x27;t change. The version reaches every action as <code>OYZU_VERSION</code>. The core rebinds accepted captured commands, native payloads and artifact paths with the decisions before computing keys, so an action that embeds the version still keys on the version it executes.</li>
+<li class="">Textual rebinding requires the old core version&#x27;s recorded per-build hash component. An unmarked plain version such as <code>1.0.0</code> keeps the whole-target version and plan, so equal dependency versions and path fragments remain untouched. <code>oyzu cache explain</code> and <code>build --explain</code> include this fallback reason. This diagnostic does not change the action key.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-a-confined-action-reads-something-undeclared">When a confined action reads something undeclared<a href="#when-a-confined-action-reads-something-undeclared" class="hash-link" aria-label="Direct link to When a confined action reads something undeclared" title="Direct link to When a confined action reads something undeclared" translate="no">​</a></h3>
 <p>If a confined action fails and its output names a file that exists in the target but not in the view, the build reports the stage, the path, the missing fact and the smallest fix, in human, <code>NO_COLOR</code> and <code>--json</code> output (diagnostic <code>confined-read-outside-contract</code>, with details in <code>manifest.extensions[&quot;oyzu.dev/contract-violations&quot;]</code>):</p>
@@ -640,26 +951,169 @@ verified binding identity; adding another binding does not change that target&#x
 <li class="">only adds. It never removes an inferred read, and it never makes an action confinable.</li>
 </ul>
 <p>An input that leaves the workspace (the folder holding <code>build.yaml</code>) or names no captured file is a <code>CONFIG_INVALID_VALUE</code> error before anything runs, so a typo can&#x27;t silently declare nothing. Globs aren&#x27;t accepted. A folder covers everything beneath it. <code>--affected</code> doesn&#x27;t yet treat a change under another target&#x27;s declared input as affecting the declaring target.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="go-source-read-coverage">Go source-read coverage<a href="#go-source-read-coverage" class="hash-link" aria-label="Direct link to Go source-read coverage" title="Direct link to Go source-read coverage" translate="no">​</a></h3>
+<p>The <a class="" href="/docs/reference/go#what-each-stage-reads">Go builder</a> predicts conventional native build
+and vet reads from preparation&#x27;s Go package file lists and writes observed-read
+reports after successful execution. <code>format-check</code> uses fixed gofmt rules,
+content globs and directory listings. Native runtime tests and authored build
+invocations stay unbounded. Incomplete package facts, overlays, cgo headers and
+unsupported embed discovery retain explicit fallbacks. Conventional native
+contracts must cover core&#x27;s prepared file and listing facts; missing coverage
+is rejected. A main-module manifest outside the target root makes prediction
+incomplete. Conventional build and vet also require matching resolved task
+environments before sharing frozen predictions. Conventional native
+builds use <code>-buildvcs=false</code>; Git commits do not add compiler stamping reads.
+The compiler output path is stable and its injected version default is omitted.
+The final export alone carries the inferred version in its filename and receipt.
+Complete native reads allow build, vet and format-check reuse across unread
+README content edits.
+Captured per-package actions keep confined reads; source-free exports and
+grouping gates use <code>upstream_only</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-java-source-reads">Native Java source reads<a href="#native-java-source-reads" class="hash-link" aria-label="Direct link to Native Java source reads" title="Direct link to Native Java source reads" translate="no">​</a></h3>
+<p>The Java builder declares the default Maven and Gradle <code>format-check</code> file
+inventory: each selected Java file and each scanned directory&#x27;s listing.
+google-java-format&#x27;s fixed explicit-file rule establishes this boundary.
+Existing documentation-file content edits do not change those reads; Java
+source edits and new source files do. Configuration, declared inputs, command
+definitions and producer results also contribute to the complete key.</p>
+<p>Native Maven <code>verify</code> includes runtime tests and lifecycle plugins without a
+complete read report, so it stays unbounded. Gradle configuration scripts and
+Ant build files are programs whose complete reads are not reported. Runtime
+tests and Checkstyle retain specific unbounded reasons. Captured Gradle and Ant
+exports consume their producer&#x27;s archives; Maven packaging reads its explicit
+POM and archive copy inputs and depends on its build producer.</p>
+<p>Native Maven and Gradle formatting uses a private stage with no retained
+outputs and order-only lifecycle edges. Private execution alone does not admit
+narrow keys. Inferred versions or whole-target projection identity can still
+cause conservative misses after an unread edit. Unbounded lifecycle and lint
+outputs prevent whole-target restoration, so unchanged builds can still rerun
+those stages. Captured execution is unchanged.</p>
+<p>These declarations reach users with the next Java plugin release and require
+compatible CLI support for private native stages. See
+<a class="" href="/docs/reference/maven#what-each-stage-reads">Maven</a>,
+<a class="" href="/docs/reference/gradle#what-each-stage-reads">Gradle</a>,
+<a class="" href="/docs/reference/ant#what-each-stage-reads">Ant</a> and
+<a class="" href="/docs/reference/java-quality#what-each-stage-reads">Java quality</a>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-host-read-admission">Native host read admission<a href="#native-host-read-admission" class="hash-link" aria-label="Direct link to Native host read admission" title="Direct link to Native host read admission" translate="no">​</a></h3>
+<p>A builder&#x27;s source contract can declare <code>native_reads: {kind: observed}</code> or
+<code>native_reads: {kind: fixed, rule: &quot;…&quot;}</code>. Omission leaves the native stage on
+its whole-target key. Fixed admission names the tool rule that establishes the
+complete boundary; a prediction alone is insufficient.</p>
+<p>For observed stages, core allocates an action-specific report path inside the
+invocation&#x27;s scratch directory, beside its report directories, in
+<code>OYZU_OBSERVED_READS</code>. The exact file is cleared before every process attempt,
+including retries. The action writes a JSON report with <code>complete</code>, <code>paths</code>,
+<code>listings</code> and <code>reasons</code>, relative to its working directory. Core retains up to four recent
+complete observations within the prediction in local action-cache metadata,
+keyed by the structural action definition and core engine identity. Environment
+names belong to that history subject; their current values remain bound to each
+result key. This lets branches share observation history when a source-derived
+value such as <code>OYZU_VERSION</code> changes, without reusing a result built with a different
+value. Known per-invocation argv and environment paths are normalized before
+deriving those identities. A subsequent run can use a narrow native key only
+when that structural definition has an admitted observation. Planning declares observed-read intent before compiler
+records exist; missing or malformed completion records never authorize reuse.
+When an execution completes a valid observation and passes the ordinary
+result-storage checks, core also stores its result under the narrow key computed
+from the pre-execution snapshot and that report. The next unchanged run can hit
+that key immediately, including after the first cold compilation.</p>
+<p>A native key covers the reported files and directory listings, required
+configuration and declared inputs, shared source inputs, and the declared
+environment and resolved tool identities. An edit outside those inputs keeps the
+observation and narrow key. A changed read or listing produces a narrow miss,
+then successful execution records its new observation and result; the next
+unchanged run can hit again. Each execution is stored only under narrow keys
+computed from its own completed report. A lookup key based on an older report
+is not populated when the execution reads a different set, even if another
+build changes the shared observation history concurrently. Whole-source results
+retain their complete source boundary.</p>
+<p>History tries observations in most recently used order, checking each against
+the current prediction, files, listings, environment and tools through the same
+narrow lookup gates. The first valid result wins. Switching between branches
+with different read sets can therefore reuse either branch&#x27;s result after each
+has built once. Each lookup hashes at most four observed sets; a hit or valid
+completion moves its observation to the front, deduplicated by observation
+digest. Adding a fifth evicts the least recently used observation. Concurrent
+updates merge atomically, preserving different observations within this bound.</p>
+<p><code>oyzu cache explain &lt;action&gt;</code> summarizes each attempted candidate&#x27;s miss or
+rejection and names the candidate that hit. JSON also includes
+<code>nativeCandidates</code> and <code>nativeLookupMicros</code> (elapsed candidate lookup time,
+including result admission and restore preparation). Candidate probes do not
+advance key history. Only the selected hit key, or the ordinary request key when
+every candidate misses, is observed. The comparison baseline comes from an
+earlier invocation, never another candidate of this lookup. The same choice
+owns the invocation&#x27;s execution and publication state.</p>
+<p>A cache hit preserves admission without requiring a new report. A missing,
+invalid, empty or incomplete report, or a report with reasons, cannot add an
+observation or authorize narrow publication; other complete observations remain
+available. The prediction remains the admission boundary for
+every report, and required report, artifact and policy checks still apply.
+Core rebases cwd-relative reports by the action cwd and target before checking
+the prediction, including configuration files and declared <code>inputs</code>. On a
+narrowed run, an observed read outside prediction refuses result storage with
+<code>confined-read-outside-contract</code>. A whole-target run retains its covered result
+without adding an observation. These reports grant no isolation or authority.</p>
+<p>A <code>listing</code> selector keys the names and kinds of entries directly in a directory.
+Adding, removing or renaming an entry changes the key; changing its contents
+alone does not. Nested entries are excluded. Captured views expose empty file
+placeholders and empty directories for listing-only entries, so undeclared file
+contents remain hidden. A <code>path</code> on the directory or an ancestor also predicts its listing. A glob must
+provably match every direct child, such as <code>dir/*</code>, <code>dir/**</code>, or an ancestor&#x27;s
+<code>**</code>; merely matching the directory name (for example <code>*</code> matching <code>src</code>) is
+insufficient.
+Ordinary file reads still require a covering path or glob.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="python-source-reads">Python source reads<a href="#python-source-reads" class="hash-link" aria-label="Direct link to Python source reads" title="Direct link to Python source reads" translate="no">​</a></h3>
+<p>The Python plugin analyzes captured setuptools package builds, pip preparation
+and pytest, with output-only packaging. Quality task binding, unknown backends, executable
+configuration and native operations retain specific unbounded reasons. See
+<a class="" href="/docs/reference/python-preparation#what-each-stage-reads">what each Python stage reads</a>.
+Python package snapshot versions still use the whole-target source digest, so an
+unread edit can change build/package definitions even with a narrow read list.
+Supported development-source case tests use their separate native editable
+subject rather than that unused inferred wheel-version default.
+Captured Python <code>prepare</code> and <code>build</code> record their environment and normalized
+distributions in <code>.oyzu-build/python</code> inside the private workspace. Cache hits
+restore these outputs; built-package tests and packaging depend on the built wheel
+bytes, including package data. Development-source tests inventory their own
+editable environment instead. Wheel member timestamps and sdist timestamps are
+normalized before capture so native mtimes do not change downstream output keys.
+Additional setuptools build requirements keep the
+build unbounded because they may install backend plugins.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-rust-source-reads">Native Rust source reads<a href="#native-rust-source-reads" class="hash-link" aria-label="Direct link to Native Rust source reads" title="Direct link to Native Rust source reads" translate="no">​</a></h3>
 <p>Rust predicts each stage&#x27;s reads from Cargo workspace manifests and target source
 folders, Cargo and Rust configuration, build scripts, and literal <code>include_str!</code>,
 <code>include_bytes!</code>, <code>include!</code> and <code>#[path]</code> references. Manifest-relative
 <code>concat!(env!(&quot;CARGO_MANIFEST_DIR&quot;), ...)</code> references with literal suffixes are
 resolved too. Source and discovery directories remain conservative directory reads.</p>
-<p>Native Cargo paths are resolved against the workspace recorded in Cargo metadata,
-including when Cargo ran in a parked source projection. Manifests, source files,
-build-script watches and dep-info are mapped to target-relative read selectors;
-the projection&#x27;s location does not become part of those paths. A Cargo source
-outside that workspace is reported with the offending path.</p>
-<p>Native compiling stages also need complete Cargo dep-info and build-script
-records. Until those records are available, they keep the whole-target key.
+<p>Cargo metadata paths are resolved against the preparation workspace. Compiler
+and build-script records instead use Cargo&#x27;s actual execution workspace, recorded
+beside each build or Clippy target directory before execution. These projections
+can differ: preparation uses a source-only workspace while actions use retained
+private source trees. Manifests, source files, build-script watches and dep-info
+map to target-relative read selectors; projection locations do not become part
+of those paths. Records without an execution-workspace record use the metadata
+workspace conservatively; an unmappable source makes reads incomplete.
+Unbounded source diagnostics show a bounded sample and the omitted count within
+the plugin protocol&#x27;s message limit. Shortening a diagnostic never admits an
+incomplete observation.
+On Windows, dep-info drive, UNC and verbatim (<code>\\?\</code>) paths retain their
+prefixes when mapped to source selectors. Unparseable dep-info paths or unreadable
+records make the observation incomplete with a reason; they cannot silently
+authorize a narrow key.</p>
+<p>Rust native compiling stages declare observed admission. The Rust plugin writes the
+neutral read report from complete Cargo dep-info and build-script records, plus
+Cargo manifests and configuration controls that dep-info does not list. Until
+a previous run of the same action definition has an admitted report, they keep
+the whole-target key.
 After execution, a read outside the prediction prevents result storage and reports
 <code>confined-read-outside-contract</code>, naming the path and the <code>inputs</code> declaration
 that adds it. Human, no-color and JSON diagnostics carry the same fix. A missing
 or incomplete observation never authorizes storage under a narrow key.</p>
 <p><code>format-check</code> uses rustfmt&#x27;s fixed module-tree and configuration rules and does
-not need a runtime observation. Native <code>test</code> and <code>coverage</code> remain unbounded:
-tests may read files at run time.</p>
+not need a runtime observation. Native Rust tests and coverage remain
+unbounded: tests may read files at run time. They retain the current native
+stage&#x27;s conservative execution and cache admission; the Rust per-executable
+producer remains deferred to issue #1201.</p>
 <p>Cargo dep-info never records a proc macro&#x27;s reads. Rust uses an allowlist of
 reviewed implementations identified by package name, version and checksum in
 <code>Cargo.lock</code>. A name match or registry provenance alone grants no allowance.
@@ -719,7 +1173,14 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 <p>A divergence fails the build, including when independent targets run in parallel (diagnostic <code>contract-diverged</code>; <code>manifest.extensions[&quot;oyzu.dev/contract-verification&quot;]</code> has <code>status</code>, counts and one record per action). The check uses a throwaway store, so it reuses and stores nothing. It doesn&#x27;t run on the native path. Each confined action runs at least twice with copies of the workspace, so it is slow on large installed trees. Actions that aren&#x27;t confined are counted, not checked. If the search stops at its budget, the record says <code>minimal: false</code>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote-oci-cache">Remote OCI cache<a href="#remote-oci-cache" class="hash-link" aria-label="Direct link to Remote OCI cache" title="Direct link to Remote OCI cache" translate="no">​</a></h2>
 <p>You can share action results through any OCI registry. Share them from CI to developers, or between a team&#x27;s machines.</p>
-<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># oyzu.toml (project): where results are shared</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;oci://registry.example.com/team/oyzu-cache&quot;</span><br></div></code></pre></div></div>
+<p>Targets built by an installed plugin package participate in <code>cache.remote</code> and
+<code>cache.ciRemote</code>. Keys include the verified package release, executable digest
+and runtime; changing the plugin identity causes a miss. Remote hits pass the
+same digest, artifact and report checks as local hits.</p>
+<p><code>plugins.development</code> bindings never read or write these shared remotes, including
+bindings to native executables or package archives. Their reusable results stay
+local. A slice&#x27;s <code>--handoff</code> repository has its separate handoff contract.</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># user or machine configuration: where results are shared</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;oci://registry.example.com/team/oyzu-cache&quot;</span><br></div></code></pre></div></div>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># user configuration: this machine also publishes what it builds</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">write</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
 <p>Supported registries: zot, CNCF Distribution behind a token service, and a Harbor proxy-cache project, on Linux. Other registries (Artifactory, Nexus, Docker Hub, GHCR) aren&#x27;t supported yet, and neither are Windows and macOS clients.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="settings-and-scope">Settings and scope<a href="#settings-and-scope" class="hash-link" aria-label="Direct link to Settings and scope" title="Direct link to Settings and scope" translate="no">​</a></h3>
@@ -821,6 +1282,171 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-record">Build record<a href="#build-record" class="hash-link" aria-label="Direct link to Build record" title="Direct link to Build record" translate="no">​</a></h3>
 <p>The build record gains <code>manifest.extensions[&quot;oyzu.dev/action-cache&quot;].remote</code>: <code>location</code>, <code>read</code>, <code>write</code>, <code>status</code> (<code>active</code>, <code>unavailable</code> with <code>reason</code>, or <code>unusable</code> for a <code>cache.remote</code> the client can&#x27;t use), counts of <code>hits</code>, <code>pushed</code>, <code>converged</code>, <code>conflicts</code> and <code>rejected</code>, the <code>requests</code> sent by kind, and per target the actions in each list. A result materialized from the remote carries <code>extensions[&quot;oyzu.dev/remote-origin&quot;]</code> in the local store. The summary line adds the remote part, for example <code>remote 7 reused · 0 pushed</code>.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="reapi-servers">REAPI servers<a href="#reapi-servers" class="hash-link" aria-label="Direct link to REAPI servers" title="Direct link to REAPI servers" translate="no">​</a></h3>
+<p>Use a stock Remote Execution API action cache in place of the OCI registry:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;grpc://127.0.0.1:9092/oyzu&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">write</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
+<p><code>grpcs://host[:port]/&lt;instance&gt;</code> uses TLS (default port 443). Plaintext
+<code>grpc://host[:port]/&lt;instance&gt;</code> is accepted only on loopback (default port 80).
+The instance can be empty or contain <code>/</code>. Credentials, queries and fragments
+are forbidden in locations. Standard proxy variables, loopback bypass and
+<code>SSL_CERT_FILE</code> additional trust follow the shared outbound transport settings.
+The user/machine scope restrictions, CI/development selection, offer behavior,
+local verification and report gates are unchanged. <code>cache.immutableTags</code> is
+ignored for REAPI; every push checks for an existing result first.</p>
+<p>Qualification is limited to the provider, client platform and capabilities below.
+It covers cache uploads and reuse in a fresh checkout with an empty local store,
+including the existing artifact and required-report gates. Authentication coverage
+is limited to the modes listed below; remote execution and cross-platform keys
+are not qualified.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Provider</th><th>Client platform</th><th>Cache interoperability</th></tr></thead><tbody><tr><td>bazel-remote 2.6.4</td><td>Linux x86_64</td><td>Qualified for Node package and native Rust builds, TLS with an additional CA bundle, and HTTP CONNECT proxying. Native Rust uploads and fresh-checkout reuse also work with mTLS client authentication. Custom API-key header authentication is unqualified for this provider.</td></tr><tr><td>Buildbarn bb-storage <code>ae61334</code></td><td>Linux x86_64</td><td>Qualified for Node package builds, a read-only instance, and native Rust reuse through TLS and HTTP CONNECT with an additional CA bundle. Native Rust uploads and fresh-checkout reuse also work with mTLS and with a native remote-authentication policy that checks an API-key header.</td></tr><tr><td>bazel-remote / Buildbarn</td><td>Windows x86_64</td><td>Uploads work; native Rust fresh-checkout reuse is not qualified because checkout-specific paths in serialized command arguments change keys.</td></tr><tr><td>bazel-remote / Buildbarn</td><td>macOS</td><td>Unqualified.</td></tr><tr><td>BuildBuddy</td><td>All</td><td>Interoperability target, unqualified. Hosted use requires an account and API key; its header is <code>x-buildbuddy-api-key</code>.</td></tr><tr><td>NativeLink, EngFlow and other REAPI implementations</td><td>All</td><td>Protocol-compatible candidates, unqualified.</td></tr></tbody></table></div>
+<p>Self-hosted servers need no platform account. Configure authentication before
+exposing a server to untrusted clients. CI ID-token acquisition and bearer delivery
+are tested against a local token-checking server; hosted CI/provider interoperability
+is unqualified. Windows fresh-checkout misses are separate from the platform, builder
+and toolchain identities deliberately included in keys. Changing those identities
+or source bytes (including line endings) can change a key; identical keys across
+operating systems are not promised.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>REAPI object</th><th>Oyzu mapping</th></tr></thead><tbody><tr><td><code>Command</code></td><td>Arguments <code>[&quot;oyzu-action-result&quot;]</code>, no environment, output path <code>oyzu</code>.</td></tr><tr><td><code>Action</code></td><td>Command digest, empty Directory input root, 32 raw SHA-256 key bytes as salt, platform property <code>oyzu.dev/key-domain = action-result.v1alpha1</code>. Its serialized SHA-256 and size address the AC entry.</td></tr><tr><td><code>ActionResult</code></td><td>Exit code zero, regular output files only; no output directories or symlinks. Pushes label the worker <code>oyzu</code>; fetch accepts server-modified or omitted worker metadata.</td></tr><tr><td><code>oyzu/result.json</code></td><td>Existing result descriptor, including <code>keyComponents</code>, stored in CAS.</td></tr><tr><td><code>oyzu/blobs/sha256/&lt;hex&gt;</code></td><td>Each blob referenced by that descriptor, stored in CAS.</td></tr></tbody></table></div>
+<p>The client requires advertised SHA256 support. It uploads the Command and Action
+before updating the action cache. Empty blobs are already present by protocol.
+CAS batches account for the encoded request and gRPC framing within the server&#x27;s
+size limit (4 MiB when unset). Read batches also reserve encoded response
+headroom. Blobs that do not fit use ByteStream. Entries are limited to 256 MiB.
+Every digest, size, descriptor and referenced blob set is checked before local
+publication. Corrupt content is quarantined and the action runs normally. CAS eviction is an
+ordinary miss, including when the action-cache record remains: it is not counted
+as a rejection or quarantined. A later push repairs that entry when its descriptor
+or any output blob is missing. Readable, valid entries with equal output identities
+converge without writes; different identities are conflicts and stay in place.
+Worker metadata is not an identity or trust check; the output layout and verified
+descriptor/key identify an entry. REAPI has no atomic create-only AC
+update, so this check does not provide an immutable-tag server guarantee against
+simultaneous writers. Concurrent uploads of the same valid output can both write
+or converge. A writer that sees a different output records a conflict, but racing
+updates can still replace one another after that check. Every read verifies the
+result&#x27;s embedded action key, shape, CAS digests, sizes and complete blob set
+before committing it locally; normal restore and report checks still apply.
+A conflicting AC update that fails those checks is rejected, including during
+concurrent reads. A valid but nondeterministic result for the same key can be
+last-writer-wins: integrity checks do not authenticate a producer or prove that a
+computation was honest.</p>
+<p>The credential is an environment variable, never a setting. <code>OYZU_CACHE_TOKEN</code>,
+when set, is sent as <code>authorization: Bearer &lt;token&gt;</code> metadata. A server requiring
+an API-key header can select its non-secret name with <code>cache.remoteHeader</code>; the
+same token value is then sent verbatim, without a bearer prefix. This setting
+applies only to REAPI and accepts a lowercase application metadata header, not
+reserved <code>grpc-*</code>, binary <code>*-bin</code>, <code>host</code>, <code>content-type</code> or <code>te</code> headers.</p>
+<p>Without that token, <code>OYZU_ID_TOKEN_URL</code> and <code>OYZU_ID_TOKEN_REQUEST_TOKEN</code> use the
+same CI sign-in flow as OCI. The requested audience is the cache endpoint&#x27;s
+origin (scheme, host and port), excluding the instance path. ID tokens always
+use bearer authorization, regardless of <code>cache.remoteHeader</code>. They are reused
+until within 30 seconds of expiry, then fetched again. A denial never triggers
+an anonymous retry. <code>GET id token</code> appears separately in request counts.</p>
+<p>For mutual TLS, set both <code>cache.remoteClientCert</code> and <code>cache.remoteClientKey</code> to
+absolute PEM file paths and use <code>grpcs://</code>. The key must be unencrypted and
+readable by the build account; restrict access to that file. These paths and
+the header name belong only in user, machine or administrative configuration,
+not project files or profiles, and resolve once per build. They apply to all
+configured REAPI remotes; OCI is unchanged. The certificate authenticates to
+the cache server, not to a CONNECT proxy. <code>SSL_CERT_FILE</code> still supplies
+additional server trust.</p>
+<p>Client identity setup errors name the relevant setting and file path and retain
+the filesystem or PEM parsing cause. Correct the path, file permissions or PEM
+contents before trying again; private-key contents are not included in the error.</p>
+<p>Illustrative user configuration for a header-based server with mTLS:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;grpcs://cache.example.com/team&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remoteHeader</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;x-api-key&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remoteClientCert</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/developer/.config/cache/client.pem&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remoteClientKey</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/developer/.config/cache/client.key&quot;</span><br></div></code></pre></div></div>
+<p>Set <code>OYZU_CACHE_TOKEN</code> through the shell or CI secret facility. No token value,
+request token or private-key bytes are written to configuration, logs or build
+records. Server messages are omitted from failure records to protect secrets.
+Do not interpret a successful build as proof that credentials were accepted:
+check the remote status and the build&#x27;s Warnings section.</p>
+<p>Remote failures never fail a build. <code>NOT_FOUND</code> on lookup is a miss.
+<code>UNAVAILABLE</code>, <code>DEADLINE_EXCEEDED</code>, <code>RESOURCE_EXHAUSTED</code>, <code>ABORTED</code>, timeouts and
+connection failures get at most three attempts with exponential backoff and jitter,
+then disable this remote for the invocation. <code>UNAUTHENTICATED</code> and
+<code>PERMISSION_DENIED</code> disable it without retry. <code>FAILED_PRECONDITION</code> on update
+records a push failure and computation continues. When capabilities report
+<code>update_enabled = false</code>, writes are skipped with a read-only reason; reads remain
+available.
+Authentication denial appears in the remote build record as
+<code>status: unavailable</code> with a <code>denied</code> reason while the build computes normally.
+One warning names the location, gRPC status and credential inputs or permissions
+to fix. Transient outages also warn and compute locally. A read-only capability
+skips uploads without disabling reads; a write permission denial disables that
+remote for the build. Fix permissions, provide a fresh token or correct the
+certificate paths, then start a new invocation. Denial does not fail the build.
+TLS handshake failures can surface as gRPC <code>Unknown</code> rather than an authentication
+status. They also disable the remote and warn; check the CA and client certificate
+configuration rather than assuming the token was rejected.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ci-and-development-repositories">CI and development repositories<a href="#ci-and-development-repositories" class="hash-link" aria-label="Direct link to CI and development repositories" title="Direct link to CI and development repositories" translate="no">​</a></h3>
 <p>A project can name a second repository that only CI writes:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># oyzu.toml (project)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">ciRemote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;oci://registry.example.com/team/oyzu-cache/ci&quot;</span><span class="token plain">   </span><span class="token comment" style="color:#999988;font-style:italic"># CI writes, everyone reads</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">remote</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;oci://registry.example.com/team/oyzu-cache/dev&quot;</span><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic"># optional: developers share here</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">immutableTags</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain">                                           </span><span class="token comment" style="color:#999988;font-style:italic"># the registry never replaces a tag</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">write</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token plain">                                                   </span><span class="token comment" style="color:#999988;font-style:italic"># CI ignores user configuration</span><br></div></code></pre></div></div>
@@ -912,6 +1538,62 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Build</th><th>Manifest GET</th><th>Blob GET</th><th>Upload POST</th><th>Blob PUT</th><th>Manifest PUT</th><th>Total</th></tr></thead><tbody><tr><td>Cold push (7 executed, 7 pushed)</td><td>14</td><td>0</td><td>14</td><td>14</td><td>7</td><td>49</td></tr><tr><td>Warm hit, second checkout, empty store (7 reused)</td><td>7</td><td>14</td><td>0</td><td>0</td><td>0</td><td>21</td></tr><tr><td>Partial hit, test-only edit (1 reused, 6 executed and pushed)</td><td>13</td><td>2</td><td>12</td><td>12</td><td>6</td><td>45</td></tr><tr><td>Unchanged repeat after a warm hit</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
 <p>A hit costs 3 requests per action. A miss that pushes costs 7. Signing in adds one token request per repository the build touches. With a storage-backed registry, a push can cost many more storage operations than the 3 objects an entry consists of (about 25 write-class operations per entry on CNCF Distribution&#x27;s S3 driver), which matters if your object store bills per operation. Harbor&#x27;s proxy cache revalidates every manifest with the upstream registry, so it saves blob traffic, not manifest requests.</p>
+<p>REAPI counts use RPC names in the same build record&#x27;s <code>remote.requests</code>.
+For entries fitting one read/update batch, the expected request shapes below
+exclude retries and ByteStream transfers; these are formulas, not measured
+stock-server build results. <code>H</code> is the number of remote hits and <code>M</code> the number
+of misses subsequently pushed. Capabilities are queried once per invocation.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>REAPI build</th><th>GetCapabilities</th><th>GetActionResult</th><th>BatchReadBlobs</th><th>FindMissingBlobs</th><th>BatchUpdateBlobs</th><th>UpdateActionResult</th></tr></thead><tbody><tr><td>Cold push (<code>M</code> actions)</td><td>1</td><td><code>2M</code></td><td>0</td><td><code>M</code></td><td>up to <code>M</code></td><td><code>M</code></td></tr><tr><td>Second checkout, empty store (<code>H</code> hits)</td><td>1</td><td><code>H</code></td><td><code>H</code></td><td>0</td><td>0</td><td>0</td></tr><tr><td>Partial (<code>H</code> hits, <code>M</code> misses)</td><td>1</td><td><code>H + 2M</code></td><td><code>H</code></td><td><code>M</code></td><td>up to <code>M</code></td><td><code>M</code></td></tr><tr><td>Unchanged local reuse, previously offered</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr></tbody></table></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote-failures">Remote failures<a href="#remote-failures" class="hash-link" aria-label="Direct link to Remote failures" title="Direct link to Remote failures" translate="no">​</a></h3>
 <p>Remote failures never fail a build:</p>
 
@@ -954,7 +1636,7 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 <div class="oyzu-table-scroll"><table><thead><tr><th>Situation</th><th>Behavior</th></tr></thead><tbody><tr><td>404 under the tag</td><td>A miss. The action runs (and is pushed when writing).</td></tr><tr><td>5xx, 408, 429, timeout, connection failure</td><td>Retried up to 3 times with exponential backoff and jitter. Then the remote is off for the rest of the build and everything is computed.</td></tr><tr><td>401 / 403</td><td>After sign-in (one token renewal), not retried. The remote is off for the build and no other route is tried. A wrong <code>OYZU_CACHE_TOKEN</code>, no credential where one is required, and a read-only credential with <code>cache.write = true</code> all end here. The build computes and succeeds.</td></tr><tr><td>409 / 412 on the manifest <code>PUT</code></td><td>The registry refused to replace the tag: a conflict. Not retried. The entry there is kept and not read back. The remote stays on.</td></tr><tr><td>Digest, size or shape mismatch, missing blob, conflicting config</td><td>The entry is rejected and its bytes are quarantined in the local store (<code>quarantine/remote-&lt;key&gt;-&lt;part&gt;</code>). The action runs. The remote entry isn&#x27;t repaired.</td></tr><tr><td>Push failure</td><td>The build succeeds. The record says why the entry wasn&#x27;t pushed.</td></tr><tr><td>Push interrupted before the manifest <code>PUT</code></td><td>Uploaded blobs stay unreferenced. Nothing is visible under the tag.</td></tr></tbody></table></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote-limits">Remote limits<a href="#remote-limits" class="hash-link" aria-label="Direct link to Remote limits" title="Direct link to Remote limits" translate="no">​</a></h3>
 <ul>
-<li class="">Sign-in uses only <code>OYZU_CACHE_TOKEN</code> (as a bearer token or through the registry token flow) or a CI job&#x27;s ID tokens. There is no Basic auth to the registry itself, credential helpers, Docker configuration, login command or OAuth2 <code>POST</code> token form.</li>
+<li class="">Sign-in uses only <code>OYZU_CACHE_TOKEN</code> (bearer or the OCI registry token flow; verbatim API-key metadata when REAPI <code>cache.remoteHeader</code> is selected) or the CI job&#x27;s ID-token flow. REAPI can additionally use mTLS through the two client certificate/key file-path settings. There are no credential helpers, Docker configuration, login command or OAuth2 <code>POST</code> token form; Basic auth to an OCI registry itself remains unsupported.</li>
 <li class="">Immutable tags are declared, not detected. Results aren&#x27;t signed and producers aren&#x27;t verified.</li>
 <li class="">Lookups aren&#x27;t batched. Transfers are sequential. Entries above 256 MiB aren&#x27;t pushed.</li>
 <li class="">There is no remote retention or pruning. A damaged remote entry is rejected by every reader but never repaired or replaced. An entry pushed by an older Oyzu without <code>keyComponents</code> in its config is rejected like a damaged one.</li>
@@ -995,14 +1677,13 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Situation</th><th>Behavior</th></tr></thead><tbody><tr><td>No entry</td><td>The target runs and is stored.</td></tr><tr><td>Damaged blob or descriptor, mismatched key, unreadable entry</td><td>Rejected and quarantined. The target runs and replaces it. The summary notes the rejection.</td></tr><tr><td>Report gate fails on restore</td><td>The entry is rejected and the target runs normally.</td></tr><tr><td>Cache location missing, unwritable or unusable</td><td>The build runs normally and stores nothing.</td></tr><tr><td><code>cache.local = false</code> / <code>--no-cache</code></td><td>Everything runs.</td></tr><tr><td>Cancelled or failed build</td><td>Completed actions that are valid on their own can still be reused. Failed or interrupted actions and failed targets have no stored result.</td></tr></tbody></table></div>
 <p>Writes are atomic (stage, then rename), and a descriptor is published only after every blob it references. After a failed build, an eligible action&#x27;s outputs, workspace changes and reports are sealed when it completes, so a later writer or target failure can&#x27;t change them. An action whose required reports are missing or malformed isn&#x27;t stored.</p>
-<p>Upgrading Oyzu invalidates entries, because the builder digest is part of the key. Nothing is migrated, and old entries age out through retention. Python application targets pass the whole-tree digest to the build (<code>OYZU_SOURCE_DIGEST</code>), so they miss on any edit.</p>
+<p>Upgrading Oyzu invalidates entries, because the builder digest is part of the key. Nothing is migrated, and old entries age out through retention. Python application builds receive the prepared-tree content identity in <code>OYZU_SOURCE_DIGEST</code>; source and version changes remain separate key inputs.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
 <li class="">The cache trusts the declared target graph (see <a href="#trust-model-and-its-limit" class="">Trust model</a>).</li>
 <li class="">Targets built by a host-coordinated image worker, and authored tasks around hooks on the native host path, aren&#x27;t cached.</li>
 <li class="">Version finalization after hooks covers only <code>pre_build</code> hooks on captured Node targets.</li>
 <li class="">Narrow keys require a confined action or an admitted native read contract. Stages with an unbounded reason retain the whole-target key.</li>
-<li class="">Python targets miss on any edit until their source digest is scoped.</li>
 <li class="">Execution-only settings such as <code>cache.local</code> and <code>cache.nativeMaxMiB</code> currently change keys.</li>
 <li class="">Windows has no confined actions. macOS isn&#x27;t supported yet.</li>
 </ul>
@@ -1011,6 +1692,138 @@ Changing build identity is a project decision; Oyzu does not remove those watche
 <li class=""><a class="" href="/docs/reference/build-bundles">Build bundles</a> for what reuse records in the manifest, and <a class="" href="/docs/reference/build-logging">build logging</a> for the live view.</li>
 <li class=""><a class="" href="/docs/reference/affected-builds">Affected builds</a> for Git-based selection, and <a class="" href="/docs/reference/node-static-analysis">native Node static analysis</a> for stage contracts.</li>
 <li class=""><a class="" href="/docs/reference/configuration#registered-settings">Configuration</a> for the <code>cache.*</code> settings.</li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/acquisition-transport"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Scoped dependency acquisition transport</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-bundles"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build bundles and retention</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#controls" class="table-of-contents__link toc-highlight">Controls</a><ul><li><a href="#location" class="table-of-contents__link toc-highlight">Location</a></li><li><a href="#retention" class="table-of-contents__link toc-highlight">Retention</a></li><li><a href="#copying-and-verifying-cached-bytes" class="table-of-contents__link toc-highlight">Copying and verifying cached bytes</a></li></ul></li><li><a href="#what-is-reused" class="table-of-contents__link toc-highlight">What is reused</a><ul><li><a href="#not-cached-by-default" class="table-of-contents__link toc-highlight">Not cached by default</a></li><li><a href="#native-npm-applications" class="table-of-contents__link toc-highlight">Native npm applications</a></li><li><a href="#isolated-npm-downloads" class="table-of-contents__link toc-highlight">Isolated npm downloads</a></li><li><a href="#prepared-resources-and-go-tests" class="table-of-contents__link toc-highlight">Prepared resources and Go tests</a></li></ul></li><li><a href="#prerequisites-and-platforms" class="table-of-contents__link toc-highlight">Prerequisites and platforms</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#explaining-reuse" class="table-of-contents__link toc-highlight">Explaining reuse</a><ul><li><a href="#oyzu-build---explain" class="table-of-contents__link toc-highlight"><code>oyzu build --explain</code></a></li><li><a href="#source-comparison" class="table-of-contents__link toc-highlight">Source comparison</a></li><li><a href="#oyzu-cache-explain-target" class="table-of-contents__link toc-highlight"><code>oyzu cache explain &lt;target&gt;</code></a></li></ul></li><li><a href="#inputs-and-what-invalidates-a-target" class="table-of-contents__link toc-highlight">Inputs and what invalidates a target</a><ul><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#trust-model-and-its-limit" class="table-of-contents__link toc-highlight">Trust model and its limit</a></li><li><a href="#external-builder-targets" class="table-of-contents__link toc-highlight">External builder targets</a></li></ul></li><li><a href="#per-action-reuse" class="table-of-contents__link toc-highlight">Per-action reuse</a></li><li><a href="#hooks-as-always-run-actions" class="table-of-contents__link toc-highlight">Hooks as always-run actions</a><ul><li><a href="#version-finalization-after-hooks" class="table-of-contents__link toc-highlight">Version finalization after hooks</a></li></ul></li><li><a href="#authored-tasks-cached-on-request" class="table-of-contents__link toc-highlight">Authored tasks cached on request</a></li><li><a href="#confined-actions-and-narrow-keys" class="table-of-contents__link toc-highlight">Confined actions and narrow keys</a><ul><li><a href="#bounded-unknowns" class="table-of-contents__link toc-highlight">Bounded unknowns</a></li><li><a href="#checks-that-run-at-once" class="table-of-contents__link toc-highlight">Checks that run at once</a></li><li><a href="#development-versions-and-test-files" class="table-of-contents__link toc-highlight">Development versions and test files</a></li><li><a href="#when-a-confined-action-reads-something-undeclared" class="table-of-contents__link toc-highlight">When a confined action reads something undeclared</a></li><li><a href="#declared-inputs" class="table-of-contents__link toc-highlight">Declared inputs</a></li><li><a href="#native-rust-source-reads" class="table-of-contents__link toc-highlight">Native Rust source reads</a></li></ul></li><li><a href="#verifying-a-contract" class="table-of-contents__link toc-highlight">Verifying a contract</a></li><li><a href="#remote-oci-cache" class="table-of-contents__link toc-highlight">Remote OCI cache</a><ul><li><a href="#settings-and-scope" class="table-of-contents__link toc-highlight">Settings and scope</a></li><li><a href="#what-is-shared" class="table-of-contents__link toc-highlight">What is shared</a></li><li><a href="#request-flow" class="table-of-contents__link toc-highlight">Request flow</a></li><li><a href="#sign-in-and-redirects" class="table-of-contents__link toc-highlight">Sign-in and redirects</a></li><li><a href="#entry-layout" class="table-of-contents__link toc-highlight">Entry layout</a></li><li><a href="#build-record" class="table-of-contents__link toc-highlight">Build record</a></li><li><a href="#ci-and-development-repositories" class="table-of-contents__link toc-highlight">CI and development repositories</a></li><li><a href="#requests-per-build" class="table-of-contents__link toc-highlight">Requests per build</a></li><li><a href="#remote-failures" class="table-of-contents__link toc-highlight">Remote failures</a></li><li><a href="#remote-limits" class="table-of-contents__link toc-highlight">Remote limits</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="python-cases-inside-a-bounded-unit">Python cases inside a bounded unit<a href="#python-cases-inside-a-bounded-unit" class="hash-link" aria-label="Direct link to Python cases inside a bounded unit" title="Direct link to Python cases inside a bounded unit" translate="no">​</a></h3>
+<p>Captured pip/pytest package tests can keep passing case results inside a changed
+file-level unit. Native collection supplies each full node ID, including
+parameters. Only the selected cases run, in their original relative order. The
+step combines native IDs, outcomes, durations and failure reasons with reused
+evidence in one JUnit report. Fresh native JUnit contributions are also retained
+with their configured output capture; the combined report does not add captured
+passing output. The action row shows, for example, <code>12 of 140 cases ran, 128 reused</code>.</p>
+<p>A case key compares five inputs: shared unit configuration and tool/dependency
+identities; non-code runtime inputs; code executed during import and collection;
+the case&#x27;s executed code; and its native ID. Shared-input changes rerun every
+case. A changed import-time input reruns the whole unit. Within the bounded
+source shape below, a function-body edit reruns cases that executed that function.
+For <a class="" href="/docs/reference/python-testing#reuse-within-a-test-file">supported captured development-source tests</a>,
+the shared identity names that test subject and its genuine editable environment,
+including native metadata, RECORD and import mapping. It does not inventory the
+separate inferred-version wheel environment or inject its unused version default.
+Built-package tests keep actual wheel-installed facts; subject identities never
+share passing records. Required runtime-read confinement and the guards below
+apply to both subjects. Unsupported source layouts retain built-package testing.
+New cases and cases whose
+last result did not pass always run. Missing input or coverage facts also run the
+case. The stored passing record, rather than diagnostic history, authorizes reuse.
+Its case ID and all current key components must match the requested case. A
+history pointer to a different existing record is a miss, so the requested case
+runs instead of borrowing unrelated passing evidence.</p>
+<p>Coverage facts come from an Oyzu-supplied pytest adapter using coverage.py&#x27;s
+<code>test_function</code> contexts. For parameterized tests, a static native node-ID
+context keeps parameter identities separate. Core hashes admitted source bytes;
+the Python adapter never chooses cases or keys. Python&#x27;s AST supplies current
+UTF-8 byte ranges and stable names for plain top-level functions. Rust hashes each
+executed function&#x27;s entire definition from the admitted runtime view, including
+branches the previous run did not take. It resolves names against the current
+collection instead of reusing old line offsets. An unchanged function can move
+when another body grows or a new case is inserted; reused line/arc evidence is
+relocated to its current position for the combined coverage report.</p>
+<p>This separation currently accepts modules consisting of imports, literal constant
+assignments, docstrings and plain top-level functions. Import statements and whole
+literal assignments, including multiline values, remain shared. Merely creating
+a function during collection does not make its body shared; executing it outside
+a case does. Modules with classes, computed module setup, colliding top-level
+bindings (including native import aliases, constants and function names),
+one-line definitions, decorators, defaults, annotations or unsupported source
+encoding retain whole-file identity. Python&#x27;s native encoding detection honors
+coding cookies; only UTF-8 without a BOM supports function ranges. Other encodings
+stay opaque and execute with their native interpretation, even when their raw
+bytes also happen to decode as UTF-8.
+Missing location facts and case execution outside located functions also retain
+whole-file identity. Syntactic references to namespace
+inspection or evaluation (<code>globals</code>, <code>locals</code>, <code>vars</code>, <code>dir</code>, <code>eval</code>, <code>exec</code>,
+<code>__globals__</code>, <code>__dict__</code> or <code>__builtins__</code>), including imported aliases and
+qualified attributes, keep every source in the bounded unit opaque. The adapter
+does not attempt to resolve which module an observer can inspect. For example,
+an unchanged <code>assert &#x27;test_added&#x27; not in globals()</code> can fail when a new function is added;
+an unchanged <code>assert &#x27;added&#x27; not in vars(api)</code> can likewise observe a new function
+in <code>api</code> without executing it. Both retain whole-file import/collection identities.
+Explicit source reads such as
+<code>inspect.getsource</code> remain shared runtime reads. This is a bounded native source
+contract, not general Python dependency analysis.</p>
+<p>Shared tool, environment and runtime-artifact changes remain binding, including
+the actual installed package version and all <code>.dist-info</code> bytes (<code>METADATA</code> and
+<code>RECORD</code> included). A source edit that changes those inputs still reruns the whole
+unit; function regions do not normalize or discard them. File membership, kinds,
+executable facts and frozen non-code inputs stay shared; only inventoried code
+bytes move into the coverage components. The supported Linux development flow
+has demonstrated selective function-level reuse; see the
+measured acceptance and limits.
+Those results do not qualify full, CI, package or release validation or other
+platforms.</p>
+<p>Selection currently requires Linux crun (<code>--isolated --no-docker</code>), enforced
+captured runtime-read bounds and coverage.py in the
+project environment. Coverage.py is not currently an independently acquired
+Oyzu tool. Missing or incomplete coverage runs the entire unit and gives a
+one-line reason. Native host tests and authored test tasks retain their existing
+whole-unit or whole-stage behavior. Python application archives and other
+languages do not use case selection.</p>
+<p>The <code>release</code> context runs every case when its unit key changes. If fresh
+selective and full executions disagree on an identical case key, the result is
+reported as <strong>order-dependent</strong>, with both run IDs and which run was selective.
+Selection stays disabled for that unit key. A disagreement blocks the unit even
+if the selective child passed; the next build runs it fully. Native outcomes
+remain in the report. Detection does not turn a failure into a pass or run an
+automatic retry.</p>
+<p><code>oyzu cache explain &lt;target&gt;</code> lists each case&#x27;s deciding component or the
+original run record used for reuse. JSON action records add <code>caseSelection</code>
+inside each unit, including fresh/reused counts, decisions and any
+order-dependence finding. Reused cases remain evidence <strong>not run now</strong> in test
+summaries. Existing v1alpha1 records are extended in place; records without case
+facts continue to use unit-level behavior.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="compiler-state-seeds">Compiler-state seeds<a href="#compiler-state-seeds" class="hash-link" aria-label="Direct link to Compiler-state seeds" title="Direct link to Compiler-state seeds" translate="no">​</a></h2>
+<p>Captured Rust compilation can start from a compiler-state seed in an OCI
+<code>cache.ciRemote</code> repository. REAPI remotes do not supply or publish compiler
+seeds: they skip seed filesystem work and requests while ordinary action-result
+caching remains available. This is native compiler state, not a successful
+action result: Cargo still runs, artifacts are validated and the selected
+checks still execute. It does not enable cross-path reuse for host-native
+builds or change their compiler-cache retention.</p>
+<p>Seed keys include the compiler archive digest, native Cargo lockfile digest,
+target triple, absolute compiler-visible workspace and Cargo home, selected
+worker and command, effective-environment digest, tool-lock identity and tool archives.
+Raw environment values are not stored in the seed inventory. A
+path mismatch selects a different lookup before any compiler-state download.
+When native read completeness is unknown, the key also binds the complete
+final staged source and preparation identity: changed inputs then build cold,
+even at matching paths. There are no fingerprint edits, filesystem aliases or new sandbox mappings.</p>
+<p>The seed is an OCI manifest with content-addressed inventory and archive blobs,
+under the configured CI repository&#x27;s <code>compiler-state/v1alpha1</code> segment. For
+example, a CI repository prefix of <code>oyzu-cache/ci</code> keeps seed manifests and
+blobs under <code>oyzu-cache/ci/compiler-state/v1alpha1/&lt;key-shard&gt;</code>.</p>
+<p>Seed publication is disabled in this client, including CI and pool jobs with
+write credentials. There is no configuration or environment switch to enable
+it. Enabling publication and qualifying a trusted producer require a separate
+change; client environment hints cannot authenticate that producer. Developer
+remote repositories are never seed sources. The registry owner manages retention.</p>
+<p>Restoration verifies the key, blob sizes and digests, archive member inventory,
+file contents and containment before committing compiler state. Symlinks,
+hard links and special files refuse the seed. An existing local directory is
+never overwritten. A refusal or unavailable remote causes a cold build;
+offline builds do not contact the seed remote. A seed manifest or blob
+request that fails after transport retries, or is denied, disables that remote
+for the rest of the invocation, including subsequent action-result lookups.
+A missing manifest is an ordinary miss; a missing blob rejects that seed.
+Neither missing response disables the remote. A seed does not provide missing
+tool or dependency archives.</p>
+<p>The inventory preserves native compiler metadata and records source contents
+and times. Identical source contents regain their recorded times; changed
+inputs remain newer than restored compiler work. Compiler fingerprints and
+dep-info retain their original bytes. Capture and restore read the compiler
+tree to verify it and inspect source contents to bind freshness; this work
+happens only for an active, readable OCI CI seed consumer. REAPI-only remotes
+skip it, and installed-tool use does not trigger it. Archive bounds are 1 GiB compressed,
+12 GiB expanded and 32 MiB for the inventory; an oversized seed is refused.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/acquisition-transport"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Scoped dependency acquisition transport</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-bundles"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build bundles and retention</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#flaky-tests-and-quarantine" class="table-of-contents__link toc-highlight">Flaky tests and quarantine</a></li><li><a href="#controls" class="table-of-contents__link toc-highlight">Controls</a><ul><li><a href="#location" class="table-of-contents__link toc-highlight">Location</a></li><li><a href="#retention" class="table-of-contents__link toc-highlight">Retention</a></li><li><a href="#copying-and-verifying-cached-bytes" class="table-of-contents__link toc-highlight">Copying and verifying cached bytes</a></li></ul></li><li><a href="#what-is-reused" class="table-of-contents__link toc-highlight">What is reused</a><ul><li><a href="#not-cached-by-default" class="table-of-contents__link toc-highlight">Not cached by default</a></li><li><a href="#native-npm-applications" class="table-of-contents__link toc-highlight">Native npm applications</a></li><li><a href="#isolated-npm-downloads" class="table-of-contents__link toc-highlight">Isolated npm downloads</a></li><li><a href="#prepared-resources-and-go-tests" class="table-of-contents__link toc-highlight">Prepared resources and Go tests</a></li></ul></li><li><a href="#prerequisites-and-platforms" class="table-of-contents__link toc-highlight">Prerequisites and platforms</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#explaining-reuse" class="table-of-contents__link toc-highlight">Explaining reuse</a><ul><li><a href="#oyzu-build---explain" class="table-of-contents__link toc-highlight"><code>oyzu build --explain</code></a></li><li><a href="#source-comparison" class="table-of-contents__link toc-highlight">Source comparison</a></li><li><a href="#oyzu-cache-explain-target" class="table-of-contents__link toc-highlight"><code>oyzu cache explain &lt;target&gt;</code></a></li></ul></li><li><a href="#inputs-and-what-invalidates-a-target" class="table-of-contents__link toc-highlight">Inputs and what invalidates a target</a><ul><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#test-unit-evidence" class="table-of-contents__link toc-highlight">Test-unit evidence</a></li><li><a href="#trust-model-and-its-limit" class="table-of-contents__link toc-highlight">Trust model and its limit</a></li><li><a href="#external-builder-targets" class="table-of-contents__link toc-highlight">External builder targets</a></li></ul></li><li><a href="#per-action-reuse" class="table-of-contents__link toc-highlight">Per-action reuse</a><ul><li><a href="#core-prepared-input-staging" class="table-of-contents__link toc-highlight">Core prepared-input staging</a></li></ul></li><li><a href="#hooks-as-always-run-actions" class="table-of-contents__link toc-highlight">Hooks as always-run actions</a><ul><li><a href="#version-finalization-after-hooks" class="table-of-contents__link toc-highlight">Version finalization after hooks</a></li></ul></li><li><a href="#authored-tasks-cached-on-request" class="table-of-contents__link toc-highlight">Authored tasks cached on request</a></li><li><a href="#confined-actions-and-narrow-keys" class="table-of-contents__link toc-highlight">Confined actions and narrow keys</a><ul><li><a href="#bounded-unknowns" class="table-of-contents__link toc-highlight">Bounded unknowns</a></li><li><a href="#checks-that-run-at-once" class="table-of-contents__link toc-highlight">Checks that run at once</a></li><li><a href="#development-versions-and-test-files" class="table-of-contents__link toc-highlight">Development versions and test files</a></li><li><a href="#when-a-confined-action-reads-something-undeclared" class="table-of-contents__link toc-highlight">When a confined action reads something undeclared</a></li><li><a href="#declared-inputs" class="table-of-contents__link toc-highlight">Declared inputs</a></li><li><a href="#go-source-read-coverage" class="table-of-contents__link toc-highlight">Go source-read coverage</a></li><li><a href="#native-java-source-reads" class="table-of-contents__link toc-highlight">Native Java source reads</a></li><li><a href="#native-host-read-admission" class="table-of-contents__link toc-highlight">Native host read admission</a></li><li><a href="#python-source-reads" class="table-of-contents__link toc-highlight">Python source reads</a></li><li><a href="#native-rust-source-reads" class="table-of-contents__link toc-highlight">Native Rust source reads</a></li></ul></li><li><a href="#verifying-a-contract" class="table-of-contents__link toc-highlight">Verifying a contract</a></li><li><a href="#remote-oci-cache" class="table-of-contents__link toc-highlight">Remote OCI cache</a><ul><li><a href="#settings-and-scope" class="table-of-contents__link toc-highlight">Settings and scope</a></li><li><a href="#what-is-shared" class="table-of-contents__link toc-highlight">What is shared</a></li><li><a href="#request-flow" class="table-of-contents__link toc-highlight">Request flow</a></li><li><a href="#sign-in-and-redirects" class="table-of-contents__link toc-highlight">Sign-in and redirects</a></li><li><a href="#entry-layout" class="table-of-contents__link toc-highlight">Entry layout</a></li><li><a href="#build-record" class="table-of-contents__link toc-highlight">Build record</a></li><li><a href="#reapi-servers" class="table-of-contents__link toc-highlight">REAPI servers</a></li><li><a href="#ci-and-development-repositories" class="table-of-contents__link toc-highlight">CI and development repositories</a></li><li><a href="#requests-per-build" class="table-of-contents__link toc-highlight">Requests per build</a></li><li><a href="#remote-failures" class="table-of-contents__link toc-highlight">Remote failures</a></li><li><a href="#remote-limits" class="table-of-contents__link toc-highlight">Remote limits</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a><ul><li><a href="#python-cases-inside-a-bounded-unit" class="table-of-contents__link toc-highlight">Python cases inside a bounded unit</a></li></ul></li><li><a href="#compiler-state-seeds" class="table-of-contents__link toc-highlight">Compiler-state seeds</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

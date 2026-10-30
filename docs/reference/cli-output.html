@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -73,8 +73,9 @@ activation launchers. Human output shows the shims folder and the commands it ho
 <a class="" href="/docs/reference/tool-shell-environment#the-shims-folder-no-activation">the shims folder</a>.
 <code>oyzu shell install</code> and <code>oyzu shell remove</code> manage shell startup profiles.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-identity">Build identity<a href="#build-identity" class="hash-link" aria-label="Direct link to Build identity" title="Direct link to Build identity" translate="no">​</a></h2>
-<p><code>oyzu --version</code> identifies the executable you&#x27;re running:</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu 0.1.0-local.8aee8560a0ca.dirty (debug; x86_64-pc-windows-gnu; build 1791211857)</span><br></div></code></pre></div></div>
+<p><code>oyzu --version</code> prints the compiled display label. A development build is
+independent of the checkout&#x27;s commit, dirty state and wall-clock time:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu 0.2.2-dev (development; x86_64-pc-windows-gnu)</span><br></div></code></pre></div></div>
 
 
 
@@ -92,23 +93,25 @@ activation launchers. Human output shows the shims folder and the commands it ho
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody><tr><td><code>8aee8560a0ca</code></td><td>Short source commit (<code>unknown.source-unknown</code> without Git metadata).</td></tr><tr><td><code>.dirty</code></td><td>The worktree had uncommitted changes when it was compiled.</td></tr><tr><td><code>debug</code></td><td>Cargo profile.</td></tr><tr><td><code>x86_64-pc-windows-gnu</code></td><td>Target triple.</td></tr><tr><td><code>build 1791211857</code></td><td>Build time in Unix seconds. <code>SOURCE_DATE_EPOCH</code> sets it at compile time.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Part</th><th>Meaning</th></tr></thead><tbody><tr><td><code>0.2.2-dev</code></td><td>Development display label based on the compiled package version.</td></tr><tr><td><code>x86_64-pc-windows-gnu</code></td><td>Target triple.</td></tr></tbody></table></div>
 <ul>
-<li class="">Locally compiled builds are labelled <code>local</code>, including optimized ones. This is
-diagnostic identity, not a release version or a signed statement.</li>
-<li class=""><code>--version</code> never opens project configuration, runs Git or contacts a service.</li>
+<li class="">Development includes optimized local and CI builds unless release stamping is
+explicitly supplied. Their engine pin/admission identity is a separate
+content fingerprint; see <a class="" href="/docs/reference/plugin-packages#engine-identity-and-pin">engine identity</a>.</li>
+<li class="">Release compilation supplies a full <code>OYZU_RELEASE_COMMIT</code> and Unix seconds in
+<code>SOURCE_DATE_EPOCH</code>. Its existing form is preserved, for example
+<code>0.2.2-local.8aee8560a0ca (release; x86_64-pc-windows-gnu; build 1791211857)</code>.
+Missing or malformed release inputs fail compilation. A timestamp alone does
+not turn a development build into a release build.</li>
+<li class="">A stamped release compilation from a clean checkout of the release tag
+<code>oyzu/v&lt;version&gt;</code> that matches the package
+version reports just that version, for example <code>oyzu 0.2.4 (release; x86_64-unknown-linux-gnu; build 1793100000)</code>. Every platform built from that tag
+reports the same version, whichever oyzu built it, so a Windows install and the
+Linux engine it installs agree. The tag is read from Git at compile time; it isn&#x27;t
+a signature, and release provenance remains the trusted evidence.</li>
+<li class=""><code>--version</code> never opens project configuration, runs Git or contacts a service.
+It does not hash the executable or source tree. Development compilation also
+reads no Git state; its embedded original notices omit the source revision.</li>
 <li class=""><code>--version --json</code> returns the text in the usual JSON envelope.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-executable-is-running">Which executable is running<a href="#which-executable-is-running" class="hash-link" aria-label="Direct link to Which executable is running" title="Direct link to Which executable is running" translate="no">​</a></h2>
@@ -457,6 +460,12 @@ that folder&#x27;s action times);</li>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="build">Build<a href="#build" class="hash-link" aria-label="Direct link to Build" title="Direct link to Build" translate="no">​</a></h4>
 <p><code>── Build ──</code> has one row per finished action: mark, target, stage, the command
 (shortened with <code>…</code>), <code>executed</code> or <code>reused</code>, and the duration.</p>
+<p>Test actions that declare units also show <code>N ran, M reused</code> on that same row.
+These counts remain visible in interactive, redirected and no-color views;
+annotated test rows remain visible when clean successes fold into a tally.
+The JSON action record includes <code>units</code> with each unit&#x27;s <code>name</code>, <code>key</code> and
+<code>outcome</code> (<code>ran</code>, <code>reused</code> or <code>failed</code>). Operations without units retain their
+existing output.</p>
 <ul>
 <li class="">With more than twelve actions, clean successes fold into one tally such as
 <code>✓ 91 finished · 78 reused · 13 executed</code> (<code>-v</code> lists them all). Running, warned,
@@ -490,7 +499,9 @@ section and no Build section.</li>
 (<code>cli  dist/cli/windows/x86_64/oyzu.exe  64.1 MB  development</code>). <code>-v</code> and <code>--json</code>
 show absolute paths; the JSON artifact record has the profile as <code>profile</code>.</p>
 <p><strong>Warnings.</strong> <code>── Warnings (N) ──</code> lists each distinct warning once, with its owner
-(for example <code>docs · npm</code>). Warnings aren&#x27;t repeated inline during the run. The
+(for example <code>docs · npm</code>). Warnings aren&#x27;t repeated inline during the run. Discovery
+summarizes unreadable folders in one warning, naming up to five root-relative
+paths with OS reasons and <code>and N more</code> for the rest. The
 generic <code>NATIVE_WARNING</code> code is hidden by default and shown with <code>-v</code> and in JSON;
 Oyzu&#x27;s own codes are always shown.</p>
 <p><strong>Summary.</strong> The summary counts only outcomes that happened
@@ -509,7 +520,11 @@ depends on color.</li>
 <p>The final summary of a build is its receipt.</p>
 <ul>
 <li class="">It counts targets and actions separately, and shows fresh tests, reused test
-results, warnings and where the records are.</li>
+results, warnings and where the records are. Combined test reports retain each
+unit&#x27;s contribution: reused cases are not counted as run now. A test action
+whose units all reused still counts as executed (<code>actions.succeededNow</code>),
+because preparation, finalization, coverage and any doctests execute. Doctests
+contribute fresh cases. Only whole-action reuse counts in <code>actions.reused</code>.</li>
 <li class="">It separates checks that were selected (with their outcomes) from checks that
 weren&#x27;t requested. That comes from the recorded build, not from a fast/full label
 or a missing report.</li>
@@ -544,7 +559,8 @@ indented lines.</li>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="human-views-for-other-commands">Human views for other commands<a href="#human-views-for-other-commands" class="hash-link" aria-label="Direct link to Human views for other commands" title="Direct link to Human views for other commands" translate="no">​</a></h3>
 <p>Inspection, configuration and discovery commands use titled, indented views. <code>pin</code>
 shows a compact requirements table, task lists show readable labels, and <code>which</code>
-prints the selected path.</p>
+prints the selected path. <code>oyzu self</code> uses the sectioned step view: Download and
+Install work, concise Warnings, a marked outcome and one final <code>Next:</code> command.</p>
 <ul>
 <li class="">Diagnostics from every command use the same status / subject / message layout,
 including <code>env -v</code>, <code>which -v</code> and shell payload commands.</li>
@@ -564,6 +580,20 @@ the result. Native pass-through streams keep their own behavior.</li>
 the process exits nonzero.</li>
 <li class="">JSON help and version return their text in <code>output</code> with <code>exitCode: 0</code>.</li>
 </ul>
+<p>When neither static markers nor eligible catalog detections identify a project
+at the root or in the bounded nearby lookup,
+<code>build</code> reports <code>PROJECT_NOT_FOUND</code> with exit 5 before build
+discovery, workspace preparation, Prepare output or the <code>Building …</code>
+heading. This includes named targets, <code>--plan</code>, <code>--full</code> and <code>--json</code>. The error
+uses <code>run</code>&#x27;s project check and message, with recovery guidance naming
+<code>oyzu -C &lt;project&gt; build</code>. Finding a nearby project within three directory levels
+allows normal build discovery over child projects; <code>run</code> only suggests them.
+Configuration and catalog metadata may be loaded or refreshed before refusal,
+using the same catalog source and refresh rules as normal discovery.
+If discovery inside a recognized project skipped unreadable
+folders, the error includes up to five root-relative paths with OS reasons and
+<code>and N more</code> for the rest. Human output keeps the <code>Next:</code> line; JSON keeps the
+details in its error result. See <a class="" href="/docs/reference/discovery-selection#unreadable-folders-and-missing-projects">unreadable folders</a>.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="exec---json-and-run"><code>exec --json</code> and <code>run</code><a href="#exec---json-and-run" class="hash-link" aria-label="Direct link to exec---json-and-run" title="Direct link to exec---json-and-run" translate="no">​</a></h3>
 <ul>
 <li class=""><code>exec --json</code> captures the child&#x27;s output in <code>stdout</code> and <code>stderr</code> strings and

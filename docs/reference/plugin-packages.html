@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Plugin packages, the plugin store and lock selections | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-packages"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin packages, the plugin store and lock selections | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-packages"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin packages, the plugin store and lock selections","item":"https://docs.oyzu.ai/docs/reference/plugin-packages"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Plugin packages, the plugin store and lock selections | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-packages"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin packages, the plugin store and lock selections | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-packages"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin packages, the plugin store and lock selections","item":"https://docs.oyzu.ai/docs/reference/plugin-packages"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -403,11 +403,40 @@ catalog. Selection refusal doesn&#x27;t delete bytes; use
 <a class="" href="/docs/reference/plugin-inspection#prune-revoked-copies"><code>oyzu plugins prune</code></a>. <code>@vN</code> major selectors
 in bindings aren&#x27;t supported.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="engine-identity-and-pin">Engine identity and pin<a href="#engine-identity-and-pin" class="hash-link" aria-label="Direct link to Engine identity and pin" title="Direct link to Engine identity and pin" translate="no">​</a></h2>
-<p>Every build records the engine that ran it: the version token of <code>oyzu --version</code> (for
-example <code>0.1.0-local.36bdcec27267</code>, without the profile, target and timestamp). It
-appears as <code>Engine</code> in the build <code>Context</code> and in the retained inventory. You can pin it
-by hand:</p>
+<p>Every build records the engine that ran it. A stamped release from a clean,
+matching <code>oyzu/v&lt;version&gt;</code> tag uses that release version, such as <code>0.2.4</code>, even
+when the building oyzu supplies a snapshot suffix. Other stamped builds use a
+token such as <code>0.2.2-local.36bdcec27267</code>. A development engine uses
+<code>&lt;package-version&gt;-dev.engine.&lt;sha256&gt;</code>, independently of its short <code>--version</code>
+display label. Copy the complete <code>Engine</code> value from the build <code>Context</code> or
+retained inventory to pin it by hand:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">engine</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">identity</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;0.1.0-local.36bdcec27267&quot;</span><br></div></code></pre></div></div>
+<p>Compilation captures a deterministic inventory of engine source digests, the
+transitive local runtime/build dependency inputs, Cargo manifests/lock and
+the rustc release and shared profile facts (optimization, debug information,
+debug assertions, overflow checks and panic strategy), plus enabled features.
+Project Cargo profile tables and common <code>CARGO_PROFILE_*</code> overrides are bound too.
+Shared Rust flags (<code>RUSTFLAGS</code>, <code>CARGO_BUILD_RUSTFLAGS</code> and project
+<code>build.rustflags</code>) are bound; effective encoded flags are excluded only when
+identified as a declared target-only selection.
+Local dependency files follow Cargo&#x27;s package include/exclude and ignore rules;
+ignored files and ignored symlinks do not change the identity, and packaged file
+symlinks are read through their targets. Development engine composition verifies
+compiled-file coverage from Cargo dep-info: consuming an omitted file fails with
+<code>ENGINE_INPUTS_UNCOVERED</code>, rather than silently widening that inventory. See
+<a class="" href="/docs/reference/engine-staging#installing-this-oyzu-with-its-linux-member">engine staging</a> for
+the required retained records and the non-Git-tree limit.
+The engine hashes that embedded inventory lazily
+on the first identity request and retains the result for the process.
+Development-only plugin dependencies do not enter this engine fingerprint. A docs-only commit keeps it stable; changed engine
+inputs change it. This is an input identity, not a signature or source attestation.
+Package admission separately binds every platform member&#x27;s executable digest.
+Members packed together must carry the same engine identity. Development
+members need matching compiler releases, features and shared profile facts as well
+as source content. Host triples and target-only rustflags, linkers and C toolchains
+do not enter this shared identity. User <code>[patch]</code> overrides/source replacement and
+C toolchain inputs are not covered. Release members use the shared release stamp across targets.
+No source or executable hashing runs on public help, version or syntax-error paths.</p>
 <p>A protected administrative policy can require this pin and a complete lock
 (<a class="" href="/docs/reference/engine-staging#policy-required-pins">policy-required pins</a>). CI alone doesn&#x27;t make
 the pin mandatory.</p>
@@ -421,7 +450,28 @@ executable and records its actual content and the bypassed pin.</p>
 <code>PLUGIN_ENGINE_REQUIREMENT</code> before any plugin operation, naming the missing feature and
 the running engine. Use an oyzu that supports it, or a compatible plugin release. The
 catalog skips releases whose required features oyzu doesn&#x27;t support.</p>
+<p>Java packages using Gradle&#x27;s compiler observations require
+<code>gradle-compiler-facts</code>. The engine must support that preparation contract as well
+as the package&#x27;s exact native API. Older engines skip that release and can keep
+selecting an eligible earlier package; a direct incompatible package binding
+fails before any plugin role runs. This does not waive preview opt-in, signature,
+withdrawal or platform checks.</p>
+<p>.NET lock preparation requires <code>dotnet-lock-admission</code> on the selected
+package&#x27;s builder role. The engine checks that declaration before admitting its
+native worker for private lock-facts/acquisition. An older exact lock is replayed
+as recorded, then refused at that boundary if the capability is missing; it is
+never silently replaced. Use <code>oyzu plugins update dotnet/sdk</code> to explicitly select
+an admitted capable package. A newer version label alone does not prove support.
+Catalog eligibility still selects the newest eligible release under the existing
+preview and organization-catalog rules; execution failures never trigger a
+downgrade.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-bytes-run-and-how-output-records-them">Which bytes run, and how output records them<a href="#which-bytes-run-and-how-output-records-them" class="hash-link" aria-label="Direct link to Which bytes run, and how output records them" title="Direct link to Which bytes run, and how output records them" translate="no">​</a></h2>
+<p>Windows plugin stores support executable paths longer than 260 characters. No
+shortened store path or additional launch flag is required; filesystem component
+and total path limits still apply. This applies to plugin protocol operations and
+native stage actions. Long absolute application paths use the Windows verbatim
+form at launch without resolving filesystem links; short paths retain their
+existing spelling and require no additional filesystem lookup.</p>
 <p>A package&#x27;s entrypoint runs in place from the store, where its digest was verified at
 installation. A <code>plugins.development</code> executable is copied to a private per-command file
 and hashed as it&#x27;s copied, so the recorded digest is that of the file as launched.
@@ -574,9 +624,7 @@ the Node plugin. Declare only the package intent and keep your npm lock:</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"> build package </span><span class="token parameter variable" style="color:#36acaa">--full</span><span class="token plain"> --no-cache</span><br></div></code></pre></div></div>
 <ul>
 <li class="">The first build records any missing selection in <code>oyzu.lock</code>.</li>
-<li class="">Lint, format and similar quality checks need the project&#x27;s own packages or an
-<code>OYZU_NODE_QUALITY_HOME</code> you provisioned. Oyzu doesn&#x27;t install fallback tools. A build
-with a missing quality tool stops before export.</li>
+<li class="">Lint and format checks prefer project-installed packages. Otherwise preparation installs the exact default quality set in <code>oyzu.lock</code> into the shared tool store. Missing pins or declared-but-uninstalled tools stop the build before export; see <a class="" href="/docs/reference/node-quality">Node quality</a>.</li>
 <li class="">Oyzu applies the version to a private copy, runs your checks and hooks, then runs <code>npm pack --json --ignore-scripts</code> into a fresh scratch directory. Read the artifact&#x27;s path,
 digest and version from the manifest.</li>
 <li class="">Failed checks or missing reports prevent export.</li>

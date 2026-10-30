@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">npm workspace builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/npm-workspaces"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="npm workspace builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/npm-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/npm-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/npm-workspaces"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/npm-workspaces" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/npm-workspaces" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"npm workspace builds","item":"https://docs.oyzu.ai/docs/reference/npm-workspaces"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">npm workspace builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/npm-workspaces"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="npm workspace builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/npm-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/npm-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/npm-workspaces"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/npm-workspaces" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/npm-workspaces" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"npm workspace builds","item":"https://docs.oyzu.ai/docs/reference/npm-workspaces"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -76,7 +76,7 @@
 
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Requirement</th><th>Detail</th></tr></thead><tbody><tr><td>Node and npm</td><td>Provide Node and npm and install the project&#x27;s dependencies yourself. Oyzu does not install them for development tasks. Tested with Node 22 and 24 and npm 11.</td></tr><tr><td>Oyzu configuration</td><td>None required.</td></tr><tr><td>Quality tools</td><td>Default quality tasks need the ESLint and Prettier (or Biome) tools and their packages. Installed project packages take precedence. A declared but missing tool fails.</td></tr></tbody></table></div>
-<p>If your project has no quality tools, you can supply the defaults described in <a class="" href="/docs/reference/node-quality">Node quality</a> by pointing <code>OYZU_NODE_QUALITY_HOME</code> at a directory holding the quality toolchain&#x27;s <code>package.json</code> and <code>node_modules</code>. Oyzu does not fetch missing checkers.</p>
+<p>If your project has no quality tools, <code>oyzu pin</code> records the defaults described in <a class="" href="/docs/reference/node-quality">Node quality</a>. Task preparation installs that exact set in the shared tool store. Project-installed tools win, and a declared but uninstalled dependency fails instead of falling back.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="static-listing-and-installed-workspaces">Static listing and installed workspaces<a href="#static-listing-and-installed-workspaces" class="hash-link" aria-label="Direct link to Static listing and installed workspaces" title="Direct link to Static listing and installed workspaces" translate="no">​</a></h3>
 <p><code>oyzu run list</code> is static. It does not run Node, npm or any project script. Running a task reads the installed workspace using npm&#x27;s own libraries, so missing dependencies or tools let you list tasks but stop you from running them. Install dependencies with your normal npm workflow, then retry.</p>
 <p>Before any member command runs, Oyzu checks that:</p>
@@ -141,6 +141,12 @@
 <li class="">A failing assertion fails the run but lets later suites run. Discovery, missing-runner or selection errors can stop the run before later suites start.</li>
 <li class="">A package with no Node tests fails instead of producing an empty successful suite.</li>
 <li class="">Node test selection handles at most 4,096 files and 24,000 path characters.</li>
+<li class="">A publishable root without a test script joins the conventional workspace
+fan-out as an implicit suite. Its planned command retains the selected workspace
+invocation; the native adapter dispatches the root&#x27;s detected framework without
+recursively running the workspace command. Member report collection remains
+required. Authored task replacements and explicit root scripts retain their
+original invocation and run once as an aggregate.</li>
 </ul>
 <p>Development test commands keep native console output and forward script arguments. Native scripts and framework configuration run on the host during <code>oyzu run test</code>. Only listing runs nothing.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="quality-checks">Quality checks<a href="#quality-checks" class="hash-link" aria-label="Direct link to Quality checks" title="Direct link to Quality checks" translate="no">​</a></h3>
@@ -174,6 +180,11 @@
 <ul>
 <li class="">An explicit root test script owns one aggregate report pair. Otherwise each member has a pair, plus a pair for the root when it is publishable.</li>
 <li class="">Report names use the same package identity as isolated builds.</li>
+<li class="">Each suite&#x27;s allocated filenames include its report identity, such as
+<code>package-api-junit.xml</code> and <code>package-api-coverage.lcov</code>, within that suite&#x27;s
+report directory. Members can use the same native report basenames without
+colliding in the protocol. Bundle manifest paths identify the collected files;
+destinations remain unique ignoring ASCII case, including on Windows.</li>
 <li class="">A failing assertion fails the command but keeps the reports that exist, and Oyzu&#x27;s success-only post hook is skipped.</li>
 <li class="">These bundles hold host test results. They are not versioned build artifacts.</li>
 </ul>

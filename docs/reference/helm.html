@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Helm charts and native chart tests | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/helm"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Helm charts and native chart tests | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/helm"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Helm charts and native chart tests","item":"https://docs.oyzu.ai/docs/reference/helm"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Helm charts and native chart tests | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/helm"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Helm charts and native chart tests | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/helm"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Helm charts and native chart tests","item":"https://docs.oyzu.ai/docs/reference/helm"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -74,7 +74,60 @@
 <p>Oyzu never downloads Helm plugins other than that pinned release. The image identity is recorded in the build&#x27;s evidence. A Linux amd64 isolated <code>--full</code> build of a chart with a unit test suite ran its tests, lint and format checks and packaged the chart.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-helm-plugin-package">The Helm plugin package<a href="#the-helm-plugin-package" class="hash-link" aria-label="Direct link to The Helm plugin package" title="Direct link to The Helm plugin package" translate="no">​</a></h2>
 <p>The Helm builder comes from the compiled <code>oyzu-plugin-helm</code> package. The package finds your chart and declares the Helm commands, the image bindings and the report translation. Oyzu itself captures dependencies, admits the locked Helm, picks the package and image, decides the version and checks reports and artifacts.</p>
+<p>Build staging preserves files already admitted into the prepared chart, including
+payload directories named <code>dist</code>. It changes the private chart&#x27;s version before
+packaging and rendering. Source admission and native <code>.helmignore</code> rules still
+determine which authored files can reach the package. Direct tests retain their
+generated-output exclusions described below.</p>
 <p>Test suites are recorded by the digest of their YAML or archive and their location inside it. Discovery never runs the assertions.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="chart-documentation-and-development-versions">Chart documentation and development versions<a href="#chart-documentation-and-development-versions" class="hash-link" aria-label="Direct link to Chart documentation and development versions" title="Direct link to Chart documentation and development versions" translate="no">​</a></h3>
+<p>A README inside the chart directory is package content unless <code>.helmignore</code>
+excludes it. It is different from a README beside a nested chart at the project
+root. Captured builds with complete read declarations use these expectations:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Edit</th><th>Development version</th><th>Action reuse</th></tr></thead><tbody><tr><td>Chart <code>README.md</code>, stock <code>.helmignore</code></td><td>Changes</td><td>Version-carrying actions rerun</td></tr><tr><td>Chart <code>README.md</code>, <code>.helmignore</code> containing <code>README.md</code></td><td>Unchanged</td><td>Every action reuses</td></tr><tr><td>Project-root <code>README.md</code> outside the chart, in either setup</td><td>Unchanged</td><td>Every action reuses</td></tr><tr><td>Chart source or <code>.helmignore</code></td><td>Changes when admitted inputs change</td><td>Affected actions rerun</td></tr></tbody></table></div>
+<p>Helm&#x27;s source-scope owner refines positive literal ignore entries into a file
+inventory and retains <code>.helmignore</code> as a control. Wildcards, escapes and negations
+keep conservative bounds; this is not a replacement for Helm&#x27;s native ignore
+parser. A new shipped file enters the next captured plan. The inventory reads
+metadata and the ignore control once per chart in each planning request; it does
+not hash source payloads again. The formatter uses its runtime&#x27;s own inventory
+and validation, so README bytes are outside its reads while links and custom
+formatter configuration still fail explicitly.</p>
+<p>Preparation omits those proven exclusions from the private chart when there are
+no helm-unittest suites. Suites can read arbitrary values files, so their
+prepared view and unknown-read fallback remain conservative. These precision
+rules depend on the complete Helm read declarations; they do not admit native
+host execution or arbitrary custom commands.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pinned-helm-in-isolated-builds">Pinned helm in isolated builds<a href="#pinned-helm-in-isolated-builds" class="hash-link" aria-label="Direct link to Pinned helm in isolated builds" title="Direct link to Pinned helm in isolated builds" translate="no">​</a></h3>
 <p>Isolated chart builds need Helm in the lock. Pin the exact version:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># oyzu.toml</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tools</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">helm</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;4.3.0&quot;</span><br></div></code></pre></div></div>
@@ -88,6 +141,64 @@
 <li class="">A tampered lock is refused. Offline builds need the archive already cached, or they fail with <code>TOOL_OFFLINE</code>.</li>
 </ul>
 <p>A pinned Helm must be able to run the helm-unittest plugin.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-each-stage-reads">What each stage reads<a href="#what-each-stage-reads" class="hash-link" aria-label="Direct link to What each stage reads" title="Direct link to What each stage reads" translate="no">​</a></h2>
+<p>The plugin declares these source bounds using the shared <a class="" href="/docs/reference/action-cache#inputs-and-what-invalidates-a-target">read contract</a>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Stage</th><th>Reads</th></tr></thead><tbody><tr><td><code>build</code>, <code>lint</code></td><td>The chart directory, including metadata, locks, values, schema, templates, CRDs, <code>.Files</code> data and vendored charts; captured local <code>file://</code> dependency trees are included</td></tr><tr><td><code>test</code>, without helm-unittest</td><td>The same chart trees for local rendering/schema validation or library lint</td></tr><tr><td><code>test</code>, with helm-unittest</td><td>Unbounded: suites may name values files outside the chart and helm-unittest does not report those reads</td></tr><tr><td><code>format-check</code></td><td>The target tree scanned for chart roots, YAML, links and unsupported formatter configuration</td></tr><tr><td><code>bind</code></td><td>The chart&#x27;s <code>values.yaml</code> plus materialized OCI archives; unbounded until their read/write relationship with the prepared chart is admitted</td></tr></tbody></table></div>
+<p>Helm&#x27;s directory loader fixes the package/lint/template boundary. The declared
+bound conservatively retains <code>.helmignore</code>-excluded files rather than reproducing
+Helm&#x27;s ignore matcher, so an ignored edit can cause an extra miss. Formatting
+also retains file contents beyond the selected YAML because its current read
+prediction uses tree selectors rather than separate directory listings. Adding a source file is
+covered by the tree selectors. No explicit external values files are passed by
+the implicit build commands; chart <code>with</code> options remain unsupported. If local
+dependency traversal needs preparation first (for example, a vendored archive
+has not yet been unpacked), chart-consuming stages stay unbounded with the
+metadata path and traversal failure. Read planning does not reject the build.</p>
+<p>Read analysis supplies the bounds before the captured-path confinement owner
+admits each stage. With captured per-action admission and hidden-copy dependency
+views, bounded <code>build</code>, <code>lint</code> and non-unittest <code>test</code> stages can reuse their own
+results when a file outside the chart changes. The formatter scans the whole
+target, so a root README edit may rerun <code>format-check</code>. A <code>chart/README.md</code> edit
+is inside the chart bound and invalidates chart-consuming stages. Image binding
+remains unbounded.</p>
+<p>This combination requires a core release with hidden-copy dependency views
+(#1253) and the captured confinement/version-identity changes (#1246), followed
+by a Helm plugin release containing these read declarations. Read declarations
+alone do not enable independent stage reuse. Native host builds remain declined;
+no native observed-read collection is claimed. <code>oyzu run</code> tasks are not cached.
+The read-only <code>--plan</code> preview uses stage contracts from the target&#x27;s last
+retained build, marked as facts from the last build. Stages without a retained
+contract say <code>reported when the builder answers</code>. Preview does not invoke Helm
+or the plugin and does not admit cache reuse.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="image-bindings">Image bindings<a href="#image-bindings" class="hash-link" aria-label="Direct link to Image bindings" title="Direct link to Image bindings" translate="no">​</a></h2>
 <p>A chart can use the identity of an image built in the same <code>oyzu build</code>, so a deploy needs no <code>--set image.digest=...</code>:</p>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">image</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> docker/image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">with</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">repository</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> registry.example.com/team/greeting   </span><span class="token comment" style="color:#999988;font-style:italic"># the image&#x27;s eventual repository</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">chart</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> helm/chart</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> chart</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">bindings</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">from</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">artifact</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">type</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> image</span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain">reference</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">repository</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> /image/repository</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token key atrule" style="color:#00a4db">digest</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> /image/digest</span><br></div></code></pre></div></div>
@@ -149,6 +260,7 @@
 <li class="">flat <code>tests/*_test.yaml</code></li>
 <li class="">recursive <code>unittests/**/*.yaml</code> (any <code>.yaml</code> name)</li>
 </ul>
+<p>Packaged suite evidence binds the original binary <code>.tgz</code> bytes and the suite location inside the archive. Text suite files still require UTF-8; discovery retains its bounded reads, path containment and symlink refusal.</p>
 <p><code>.yml</code> files, custom globs and recursive <code>tests/</code> folders are not selected. Each subchart needs a regular <code>Chart.yaml</code>, and chart folders starting with a dot or underscore are ignored. Helm-unittest parses the YAML and runs the assertions, so malformed YAML is a native failure.</p>
 <p>For example, <code>chart/tests/deployment_test.yaml</code>:</p>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">suite</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> deployment contract</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">templates</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> templates/deployment.yaml</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key atrule" style="color:#00a4db">tests</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">it</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> uses one replica</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">asserts</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">      </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">equal</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token key atrule" style="color:#00a4db">path</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> spec.replicas</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">          </span><span class="token key atrule" style="color:#00a4db">value</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">1</span><br></div></code></pre></div></div>
@@ -193,16 +305,91 @@
 <p>An archive needs one chart root with a <code>Chart.yaml</code>. Links, duplicate or case-alias paths, non-portable paths and mixed roots fail. Arbitrary tar layouts aren&#x27;t accepted, only Helm-generated archives.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-outputs-and-failure-handling">Build outputs and failure handling<a href="#build-outputs-and-failure-handling" class="hash-link" aria-label="Direct link to Build outputs and failure handling" title="Direct link to Build outputs and failure handling" translate="no">​</a></h2>
 <p>Preparation unpacks contained subcharts in its private workspace and captures the chart&#x27;s local <code>file://</code> dependencies. It rejects cycles and paths that escape, and runs dependency preparation offline. Existing locks are honored and stale locks fail. Lock timestamps and archive metadata are normalized. If a packed and an unpacked copy of a subchart both exist, the build fails instead of overwriting. Your source archives are never modified.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="locked-https-repositories">Locked HTTPS repositories<a href="#locked-https-repositories" class="hash-link" aria-label="Direct link to Locked HTTPS repositories" title="Direct link to Locked HTTPS repositories" translate="no">​</a></h3>
+<p>A captured chart can use one public, credential-free HTTPS chart repository.
+Declare it in native <code>Chart.yaml</code>, generate <code>Chart.lock</code> with native
+<code>helm dependency update</code>, and commit that lock. Native Helm validates lock
+consistency and selects versions; Oyzu does not resolve chart versions itself.
+For example, a dependency may name <code>vault</code>, version constraint <code>~0.30.0</code>, and
+repository <code>https://helm.releases.hashicorp.com</code> with a lock selecting <code>0.30.1</code>.
+The same repository can be used by a contained sibling <code>file://</code> chart. Its
+acquired archives are expanded and validated at that local chart&#x27;s own path.</p>
+<p>A single dependency can also set <code>alias</code>, for example <code>name: vault</code> with
+<code>alias: secrets</code>. Native Helm applies alias-scoped values under <code>secrets</code> and
+validates the native lock. The lock must uniquely match the raw chart name
+<code>vault</code>; captured index entries, archives, expanded paths and dependency records
+keep that raw identity. Repeated copies of one upstream chart under multiple
+aliases are outside this path&#x27;s supported scope.</p>
+<p>For example, declare the dependency in <code>Chart.yaml</code>:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">dependencies</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token punctuation" style="color:#393A34">-</span><span class="token plain"> </span><span class="token key atrule" style="color:#00a4db">name</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> vault</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">alias</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> secrets</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">version</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> ~0.30.0</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">repository</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> https</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain">//helm.releases.hashicorp.com</span><br></div></code></pre></div></div>
+<p>Put its values under the alias in <code>values.yaml</code>:</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">secrets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">injector</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">enabled</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">false</span><br></div></code></pre></div></div>
+<p>Generate the native lock normally; do not rename the locked chart or its archive
+to <code>secrets</code>.</p>
+<p>The repository index, selected archive URLs and every redirect must remain under
+that repository&#x27;s HTTPS origin and path prefix. Each selected index entry needs
+a SHA-256 archive digest. Oyzu captures the original index and archive, checks the
+complete archive before supplying it to Helm, and validates the acquired chart
+names, versions and vendored dependency closure. Original chart and lock files
+remain unchanged. Dependency records distinguish original archive digests from
+the prepared chart bytes; a chart lock alone is not archive integrity evidence.</p>
+<p>An unchanged selection can reuse its verified acquisition snapshot. This reuses
+the recorded index, without claiming that the current upstream index is
+unchanged. Offline builds require that exact capture, locked tools and execution
+image to be available already. Missing inputs fail with a request to prepare the
+selection online; there is no network fallback during execution.</p>
+<p>Repository aliases (<code>@repo</code> or <code>alias:repo</code> in the repository field), OCI,
+authentication, managed connector routing, multiple remote repositories and
+archives hosted outside the repository prefix are not supported by this path.
+Remote archives must include their complete vendored
+closure; Oyzu does not acquire additional remote dependencies from those charts.
+The index and each compressed archive are limited to 4 MiB, with at most 4,096
+archive URL slots. Existing archive expansion and source containment limits also
+apply. The direct native <code>install</code> task keeps its existing native behavior.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Failure</th><th>Meaning and recovery</th></tr></thead><tbody><tr><td><code>HELM_LOCK_REQUIRED</code> / <code>HELM_LOCK_INVALID</code></td><td>Generate and review an authored native lock matching the declared repository</td></tr><tr><td><code>HELM_SOURCE_UNSUPPORTED</code></td><td>Use the supported single public HTTPS repository form, or vendor the dependency locally</td></tr><tr><td><code>SOURCE_DENIED</code></td><td>An archive or redirect leaves the original repository prefix; use a supported source or vendor it</td></tr><tr><td><code>HELM_INTEGRITY</code></td><td>Captured archive bytes differ from the advertised SHA-256; inspect the repository rather than bypassing verification</td></tr><tr><td><code>HELM_CAPTURE_INVALID</code> / <code>HELM_CLOSURE_INVALID</code></td><td>Required native outputs, identity bindings or vendored dependencies are missing or inconsistent</td></tr><tr><td><code>OFFLINE_ASSET_UNAVAILABLE</code></td><td>Prepare the exact selection online before retrying offline</td></tr></tbody></table></div>
 <p>The chart version comes from <a class="" href="/docs/reference/version-inference">version inference</a> over its native version and Git history, with a suffix from the source snapshot. <code>appVersion</code> and dependency versions keep their own meanings.</p>
 <p>A build packages the chart, runs the tests, strict lint and the read-only YAML format check, and collects the outputs if all pass. Application charts produce a versioned <code>.tgz</code> and <code>rendered.yaml</code>. Library charts produce the <code>.tgz</code> only. Building, generated files and the version change happen in private workspaces, so your checkout stays unchanged. The format check covers your source YAML, not the regenerated dependency chart.</p>
 <p>Reports are collected in <code>dist/</code>, and <code>dist/manifest.json</code> records their paths, digests and summaries:</p>
 <ul>
 <li class=""><code>junit.xml</code> is one render and schema check, or the library validation</li>
 <li class=""><code>unittest.xml</code> is required when suites are selected, and has the native test cases, failures and skips. A render success never covers a failed assertion</li>
-<li class="">Coverage is recorded as <code>inapplicable</code>: chart assertions have no source coverage. No coverage percentage is made up</li>
+<li class="">Coverage is recorded as <code>inapplicable</code> in the target&#x27;s <code>extensions[&quot;oyzu.dev/coverage-applicability&quot;]</code>: chart assertions have no application-source coverage denominator. This applies to isolated builds and direct tests, including named targets and runs with hooks. No coverage percentage is made up, and a required coverage minimum still fails</li>
 </ul>
 <p>The manifest also lists framework discovery, step outcomes and artifacts. Testing fails for missing or invalid required reports, a plugin that won&#x27;t launch, a native failure, a timeout, or a unittest run with zero test cases. Old report files are removed before each run, so an earlier success can&#x27;t cover a failed launch. Validation and unit tests each time out after 120 seconds.</p>
-<p>Task replacements and hooks work as usual. A replacement keeps the required reports, and one that exits 0 without them fails collection. A valid bundle isn&#x27;t a release approval.</p>
+<p>Task replacements and hooks work as usual. A replacement keeps the required reports, and one that exits 0 without them fails collection. Direct tests collect validation and unittest reports once, after the post-test hook; a failing hook still fails the run and retains the test reports. A valid bundle isn&#x27;t a release approval.</p>
 <p>If a build fails, read the retained logs and reports, fix the suite, tool, values or lock, and rebuild. A format difference needs <code>oyzu run format</code> or a task override.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="snapshot-baselines-are-inputs">Snapshot baselines are inputs<a href="#snapshot-baselines-are-inputs" class="hash-link" aria-label="Direct link to Snapshot baselines are inputs" title="Direct link to Snapshot baselines are inputs" translate="no">​</a></h3>
 <p>Helm-unittest can create missing <code>matchSnapshot</code> baselines even without <code>--update-snapshot</code>. Oyzu compares the files under <code>__snapshot__</code> folders before and after the run. Creating, changing or deleting a baseline fails the task and blocks artifacts. The native JUnit can still show a passing assertion, so read both the step status and the reports.</p>
@@ -213,7 +400,7 @@
 <p>Not supported yet:</p>
 <ul>
 <li class="">Custom suite globs, templated test charts, and suites in sibling <code>file://</code> dependencies that aren&#x27;t prepared are not discovered.</li>
-<li class="">Remote and OCI chart dependencies aren&#x27;t downloaded.</li>
+<li class="">OCI, authenticated, cross-origin and managed chart repositories are not supported; see <a href="#locked-https-repositories" class="">Locked HTTPS repositories</a>.</li>
 <li class="">Go-template formatting and custom yamlfmt configuration aren&#x27;t supported.</li>
 <li class="">Publishing and signing aren&#x27;t part of the Helm builder.</li>
 <li class="">Image bindings: see <a href="#image-bindings" class="">Image bindings</a>.</li>
@@ -224,6 +411,6 @@
 <li class=""><a class="" href="/docs/reference/direct-tests">Direct test reports</a></li>
 <li class=""><a class="" href="/docs/reference/version-inference">Version inference</a></li>
 <li class=""><a class="" href="/docs/reference/build-bundles">Build bundles</a></li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/os-package-locks"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OS package locks (oyzu lock)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/publish"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Publishing finalized artifacts</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#quick-start" class="table-of-contents__link toc-highlight">Quick start</a><ul><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li></ul></li><li><a href="#the-helm-plugin-package" class="table-of-contents__link toc-highlight">The Helm plugin package</a><ul><li><a href="#pinned-helm-in-isolated-builds" class="table-of-contents__link toc-highlight">Pinned helm in isolated builds</a></li></ul></li><li><a href="#image-bindings" class="table-of-contents__link toc-highlight">Image bindings</a></li><li><a href="#yaml-formatting" class="table-of-contents__link toc-highlight">YAML formatting</a></li><li><a href="#inference-and-native-assertions" class="table-of-contents__link toc-highlight">Inference and native assertions</a><ul><li><a href="#what-the-test-does" class="table-of-contents__link toc-highlight">What the test does</a></li><li><a href="#suites" class="table-of-contents__link toc-highlight">Suites</a></li></ul></li><li><a href="#build-outputs-and-failure-handling" class="table-of-contents__link toc-highlight">Build outputs and failure handling</a><ul><li><a href="#snapshot-baselines-are-inputs" class="table-of-contents__link toc-highlight">Snapshot baselines are inputs</a></li></ul></li><li><a href="#checking-a-chart-and-current-limits" class="table-of-contents__link toc-highlight">Checking a chart and current limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/os-package-locks"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">OS package locks (oyzu lock)</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/publish"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Publishing finalized artifacts</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#quick-start" class="table-of-contents__link toc-highlight">Quick start</a><ul><li><a href="#prerequisites" class="table-of-contents__link toc-highlight">Prerequisites</a></li></ul></li><li><a href="#the-helm-plugin-package" class="table-of-contents__link toc-highlight">The Helm plugin package</a><ul><li><a href="#chart-documentation-and-development-versions" class="table-of-contents__link toc-highlight">Chart documentation and development versions</a></li><li><a href="#pinned-helm-in-isolated-builds" class="table-of-contents__link toc-highlight">Pinned helm in isolated builds</a></li></ul></li><li><a href="#what-each-stage-reads" class="table-of-contents__link toc-highlight">What each stage reads</a></li><li><a href="#image-bindings" class="table-of-contents__link toc-highlight">Image bindings</a></li><li><a href="#yaml-formatting" class="table-of-contents__link toc-highlight">YAML formatting</a></li><li><a href="#inference-and-native-assertions" class="table-of-contents__link toc-highlight">Inference and native assertions</a><ul><li><a href="#what-the-test-does" class="table-of-contents__link toc-highlight">What the test does</a></li><li><a href="#suites" class="table-of-contents__link toc-highlight">Suites</a></li></ul></li><li><a href="#build-outputs-and-failure-handling" class="table-of-contents__link toc-highlight">Build outputs and failure handling</a><ul><li><a href="#locked-https-repositories" class="table-of-contents__link toc-highlight">Locked HTTPS repositories</a></li><li><a href="#snapshot-baselines-are-inputs" class="table-of-contents__link toc-highlight">Snapshot baselines are inputs</a></li></ul></li><li><a href="#checking-a-chart-and-current-limits" class="table-of-contents__link toc-highlight">Checking a chart and current limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Plugin catalog and builder selection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-catalog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin catalog and builder selection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-catalog"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin catalog and builder selection","item":"https://docs.oyzu.ai/docs/reference/plugin-catalog"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Plugin catalog and builder selection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-catalog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin catalog and builder selection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-catalog"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin catalog and builder selection","item":"https://docs.oyzu.ai/docs/reference/plugin-catalog"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -114,7 +114,7 @@ the CLI.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Tool index</th><th><code>plugins.preview</code></th><th>Catalog used</th><th>A real build fetches it</th></tr></thead><tbody><tr><td>Official (default)</td><td>on</td><td>The official catalog, plus the <a href="#local-preview-supplement" class="">preview supplement</a></td><td>Yes. A copy fetched in the last 3600 seconds is reused</td></tr><tr><td>Official</td><td>off</td><td>Verified cached copies only. No new preview selection</td><td>No</td></tr><tr><td><code>toolIndex.url = false</code></td><td>any</td><td>None</td><td>No</td></tr><tr><td>Organization (<code>toolIndex.identity</code> or <code>toolIndex.trustedRoot</code> set)</td><td>any</td><td>Your organization&#x27;s catalog only</td><td>Yes. A copy fetched in the last 3600 seconds is reused</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Tool index</th><th><code>plugins.preview</code></th><th>Catalog used</th><th>A real build fetches it</th></tr></thead><tbody><tr><td>Official (default)</td><td>on</td><td>The official catalog, plus the <a href="#local-preview-supplement" class="">preview supplement</a></td><td>Yes. A copy fetched in the last 3600 seconds is reused</td></tr><tr><td>Official</td><td>off</td><td>The official catalog; cached preview supplement for lock replay only. No new preview selection</td><td>Yes, primary catalog only. A copy fetched in the last 3600 seconds is reused</td></tr><tr><td><code>toolIndex.url = false</code></td><td>any</td><td>None</td><td>No</td></tr><tr><td>Organization (<code>toolIndex.identity</code> or <code>toolIndex.trustedRoot</code> set)</td><td>any</td><td>Your organization&#x27;s catalog only</td><td>Yes. A copy fetched in the last 3600 seconds is reused</td></tr></tbody></table></div>
 <p>When a builder in the build came from a catalog, build output names that catalog on
 the Selection heading, for example <code>official catalog serial 17</code> or <code>acme catalog serial 3</code>. The serial is the catalog&#x27;s version number. A build whose builders are all
 local development executables or direct bindings names no catalog. The Selection
@@ -181,11 +181,11 @@ state is &quot;Absent&quot;: a lock replays without any withdrawal check.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-official-catalog">The official catalog<a href="#the-official-catalog" class="hash-link" aria-label="Direct link to The official catalog" title="Direct link to The official catalog" translate="no">​</a></h3>
 <p>The official catalog lists the Go preview (<code>oyzu/go 0.1.0-preview.1</code>), its references
 <code>go/app</code> and <code>go/library</code>, and two detections: <code>go-module</code> (a <code>go.mod</code> with a <code>module</code>
-line and no <code>go.work</code>) and <code>go-workspace</code> (a <code>go.work</code>). Without <code>plugins.preview</code>, a
-build reads only the verified cached copy, because there is no stable release to find.
-With it, a real build refreshes the catalog so withdrawals apply.</p>
-<p>On a machine that has never obtained the catalog, a builder reference needs a lock
-entry or a binding.</p>
+line and no <code>go.work</code>) and <code>go-workspace</code> (a <code>go.work</code>). A real build refreshes the
+primary catalog even with <code>plugins.preview</code> off, so stable releases can be discovered
+and withdrawals apply.</p>
+<p>Offline on a machine that has never obtained the catalog, a builder reference needs
+a lock entry or a binding.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="local-preview-supplement">Local Preview supplement<a href="#local-preview-supplement" class="hash-link" aria-label="Direct link to Local Preview supplement" title="Direct link to Local Preview supplement" translate="no">​</a></h3>
 <p>With the default tool index and <code>plugins.preview</code> on, oyzu can also read a second signed
 document, <code>plugins-preview.json</code>, from the public <code>plugins-preview</code> release of
@@ -253,6 +253,15 @@ release is not eligible when it is withdrawn or revoked, is a preview and
 <code>v1alpha1</code> or the builder profile, or has no payload for this machine&#x27;s OS,
 architecture and ABI.</li>
 </ol>
+<p>A release is a preview when its version has a prerelease part or the catalog marks
+it as a preview. A stable release needs no preview opt-in. Selection orders eligible
+versions semantically, so <code>0.1.0</code> outranks its <code>0.1.0-preview.N</code> releases even with
+previews enabled. A missing host payload excludes that release and the refusal names
+the package, version and reason; it never enables a preview implicitly. A lock of a
+preview stays usable after opt-out until withdrawn or revoked. To adopt a stable
+replacement, run <a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update</code></a>; builds never move a lock
+silently. These rules describe selection when such releases are listed, not a claim
+that a stable release is published.</p>
 <p>If nothing serves the reference, the build fails with <code>PLUGIN_UNAVAILABLE</code> and the
 catalog&#x27;s reason.</p>
 <p>Some packages need a supporting plugin. For example, a Python application container
@@ -483,8 +492,9 @@ prompts.</p>
 <ul>
 <li class=""><code>--frozen</code> and <code>--offline</code> never download from a catalog route. A missing locked
 release needs an online build or a binding.</li>
-<li class="">Without <code>plugins.preview</code>, builds don&#x27;t refresh the official catalog. The inspection
-commands have an explicit <code>--refresh</code>, which doesn&#x27;t grant preview selection.</li>
+<li class="">Builds refresh the primary catalog independently of <code>plugins.preview</code>. Only the
+preview supplement requires the opt-in to refresh. Inspection commands have an
+explicit <code>--refresh</code>, which doesn&#x27;t grant preview selection.</li>
 <li class="">A catalog entry lists the platforms a release was built for (macOS, Linux and
 Windows). Go builds through an HTTPS mirror have been tested on Linux x86-64 and
 Windows x86-64. Other platforms in a package aren&#x27;t tested.</li>

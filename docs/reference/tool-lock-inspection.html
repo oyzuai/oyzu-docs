@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Tool lock files and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool lock files and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool lock files and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-lock-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Tool lock files and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool lock files and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool lock files and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-lock-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -27,6 +27,63 @@
 <p><code>oyzu pin</code> updates resolution records and keeps installation records. An online, non-frozen project install also records captured build requirements through pin&#x27;s resolution path, retaining selected versions. Frozen installs keep the lock unchanged; offline installs consume existing recipes. Any other <code>format</code> value fails.</p>
 <p>A set locked for a <a class="" href="/docs/reference/configuration#toolsets">toolset</a> carries <code>toolset = &quot;NAME&quot;</code>. Sets for <code>[tools]</code> carry none. The label only decides which sets a command changes; the same requests get the same identity in every toolset. Entries have no <code>scope</code> or <code>profile</code> field. The format is described by the lock JSON schema.</p>
 <p>If Oyzu rejects a lock written by an older development build, run <code>oyzu pin --refresh</code>, then <code>oyzu install</code>. Existing installed files are kept.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="publisher-evidence-and-release-age">Publisher evidence and release age<a href="#publisher-evidence-and-release-age" class="hash-link" aria-label="Direct link to Publisher evidence and release age" title="Direct link to Publisher evidence and release age" translate="no">​</a></h2>
+<p>New resolution records carry <code>evidence.strength</code>; installed distributions and
+receipts carry <code>verification.strength</code>. The values describe the publisher
+evidence actually verified:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Strength</th><th>Meaning</th></tr></thead><tbody><tr><td><code>digest-only</code></td><td>Pinned SHA-256, with no authenticated publisher identity.</td></tr><tr><td><code>checksum-file</code></td><td>The digest agrees with a publisher checksum file. A file from the same origin is not proof of publisher identity.</td></tr><tr><td><code>signature</code></td><td>A publisher signature, including a signed checksum list or an authenticated checksum-database entry, binds the selected bytes.</td></tr><tr><td><code>provenance</code></td><td>Verified publisher build provenance binds the selected bytes.</td></tr></tbody></table></div>
+<p>The signed tool index records the verdict for a version; it is the weakest
+strength among its resolved platforms. OpenPGP verification happens in index
+production, outside the shipping CLI. At pin time, a supplied Sigstore bundle
+is also verified by the CLI against its subject, certificate identity and trust
+root. A wrong signer or digest fails with <code>TOOL_PUBLISHER_UNTRUSTED</code>.</p>
+<p>An index signature authenticates the index publisher, not the tool publisher.
+Older index/lock records without a strength remain readable and count as
+<code>digest-only</code>; refreshing does not invent signature evidence. Unchanged frozen
+locks retain their identities. Installs consume recorded evidence and check
+the locked archive digest and layout; they do not re-verify publisher signatures
+or scan previously installed payloads.</p>
+<p>Moving default selections wait at least seven days after the index&#x27;s
+<code>released.time</code>. <code>tools.minimumReleaseAgeDays</code> can lengthen that delay; values
+below seven are invalid, and organizational minimum constraints remain binding.
+An exact earlier version is allowed and emits <code>TOOL_RELEASE_COOLDOWN</code>.
+Only a signed index&#x27;s security-release reason, or an advisory fix naming the
+current exact pin, can bypass the delay. The selected reason is frozen in
+<code>evidence.security_exception</code>; there is no user bypass flag.</p>
+<p>If every matching indexed version is too young, selection fails with
+<code>TOOL_RELEASE_COOLDOWN</code>. Moving default selections require
+publication dates from the signed index. Without suitable index metadata they
+fail with <code>TOOL_RELEASE_AGE_UNAVAILABLE</code>; configure an index or request an exact
+version explicitly. Offline operation reuses existing resolution records or a
+previously verified, unexpired index; it does not contact publishers.</p>
+<p>The direct <code>github:</code> adapter has no signed-index release dates and therefore
+requires an exact request. An explicit unindexed version has no authenticated
+publication date to compare; its weaker evidence remains visible.</p>
 <p><code>oyzu pin --dry-run</code> previews what would be locked, and <code>oyzu pin</code> writes it without installing. See <a class="" href="/docs/reference/local-builds#requirement-discovery-and-pinning">requirement discovery</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="checking-a-lock-file">Checking a lock file<a href="#checking-a-lock-file" class="hash-link" aria-label="Direct link to Checking a lock file" title="Direct link to Checking a lock file" translate="no">​</a></h2>
 <p><code>oyzu tools inspect-lock [PATH]</code> checks that a lock file is well formed. It doesn&#x27;t resolve, download, install or run anything, and it doesn&#x27;t check that the tools are installed.</p>
@@ -68,8 +125,9 @@
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-platforms-are-locked">Which platforms are locked<a href="#which-platforms-are-locked" class="hash-link" aria-label="Direct link to Which platforms are locked" title="Direct link to Which platforms are locked" translate="no">​</a></h3>
 <p>By default, the lock covers the platforms declared by every build in the project, plus the host, whatever command you run.</p>
 <ul>
-<li class="">Platforms a provider doesn&#x27;t support are listed in <code>platformsNotLocked</code> (human output: <strong>Inferred platforms not locked</strong>).</li>
+<li class="">Inferred platforms without a matching provider artifact are listed in <code>platformsNotLocked</code> (human output: <strong>Inferred platforms not locked</strong>). This includes a GitHub release whose only applicable asset belongs to another platform, such as the reviewed Darwin gettext xcframework when Linux coverage is inferred.</li>
 <li class="">The host and any platform you list explicitly must be covered. Oyzu never borrows another platform&#x27;s artifact.</li>
+<li class="">Missing coverage is optional only for inferred foreign platforms. Checksum, archive-layout and ambiguous-command failures still fail pin instead of becoming an omission.</li>
 <li class="">Offline pin needs existing matching entries; it may leave other inferred platforms unlocked.</li>
 <li class=""><code>oyzu install</code> installs the host entry and keeps the rest of the lock. A repeat offline install reuses the verified copy in your store.</li>
 </ul>
@@ -80,7 +138,11 @@
 <li class=""><code>tools.platforms</code> is no longer accepted. Remove it, or rename it to <code>lockPlatforms</code>. See <a class="" href="/docs/reference/configuration#tool-lock-execution-platform-coverage">mapping and migration</a>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-platforms">Rust platforms<a href="#rust-platforms" class="hash-link" aria-label="Direct link to Rust platforms" title="Direct link to Rust platforms" translate="no">​</a></h3>
-<p><code>oyzu pin</code> locks Rust for <code>linux/amd64/gnu</code>, <code>linux/arm64/gnu</code>, <code>darwin/amd64/native</code>, <code>darwin/arm64/native</code>, <code>windows/amd64/msvc</code>, <code>windows/arm64/msvc</code>, <code>windows/amd64/gnullvm</code> and <code>windows/arm64/gnullvm</code>.</p>
+<p>Rust uses the current <a href="#which-platforms-are-locked" class="">lock coverage</a>, rather than
+every platform an older lock recorded. Supported execution tuples are
+<code>linux/amd64/gnu</code>, <code>linux/arm64/gnu</code>, <code>darwin/amd64/native</code>,
+<code>darwin/arm64/native</code>, <code>windows/amd64/msvc</code>, <code>windows/arm64/msvc</code>,
+<code>windows/amd64/gnullvm</code> and <code>windows/arm64/gnullvm</code>.</p>
 <ul>
 <li class="">Windows GNU/LLVM entries also lock the <code>rust-mingw</code> component. Windows amd64 installs use MSVC.</li>
 <li class="">Pin resolves every requested platform and its components before writing. Missing publisher data fails without writing a partial lock.</li>
@@ -93,6 +155,18 @@
 <li class=""><a class="" href="/docs/reference/tool-store-inspection">Store inspection</a></li>
 <li class=""><a class="" href="/docs/reference/tool-commands">Tool commands</a></li>
 <li class=""><a class="" href="/docs/reference/configuration">Configuration</a></li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/artifact-sets"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Installing from resolved artifact sets</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-store-inspection"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">The tool store</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-a-lock-contains" class="table-of-contents__link toc-highlight">What a lock contains</a></li><li><a href="#checking-a-lock-file" class="table-of-contents__link toc-highlight">Checking a lock file</a><ul><li><a href="#what-is-checked" class="table-of-contents__link toc-highlight">What is checked</a></li><li><a href="#what-it-reports" class="table-of-contents__link toc-highlight">What it reports</a></li></ul></li><li><a href="#execution-platform-resolutions" class="table-of-contents__link toc-highlight">Execution-platform resolutions</a><ul><li><a href="#which-platforms-are-locked" class="table-of-contents__link toc-highlight">Which platforms are locked</a></li><li><a href="#rust-platforms" class="table-of-contents__link toc-highlight">Rust platforms</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul>
+<p>For Sigstore evidence, locks preserve the signed index&#x27;s <code>issuer</code> and
+<code>runner_environment</code> next to the exact signer <code>identity</code>. Pinning checks the
+issuer against Oyzu&#x27;s allowlist and matches all supplied claims to the signing
+certificate; omission never creates authenticated evidence. Offline inspection
+reads the frozen facts and does not run a producer verifier.</p>
+<p>To impose a fourteen-day organizational minimum, policy uses the existing
+numeric constraint contract:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">constraints.&quot;tools.minimumReleaseAgeDays&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">minimum</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">14</span><br></div></code></pre></div></div>
+<p>A corporate policy constraint wins over a user&#x27;s <code>tools.minimumReleaseAgeDays = 7</code>;
+inspection, moving selections and replacement suggestions use that resolved
+minimum. Values below seven are invalid in settings and policy alike. Exact pins
+retain the documented early-selection warning and signed-index security exceptions.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/artifact-sets"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Installing from resolved artifact sets</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/tool-store-inspection"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">The tool store</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#what-a-lock-contains" class="table-of-contents__link toc-highlight">What a lock contains</a></li><li><a href="#publisher-evidence-and-release-age" class="table-of-contents__link toc-highlight">Publisher evidence and release age</a></li><li><a href="#checking-a-lock-file" class="table-of-contents__link toc-highlight">Checking a lock file</a><ul><li><a href="#what-is-checked" class="table-of-contents__link toc-highlight">What is checked</a></li><li><a href="#what-it-reports" class="table-of-contents__link toc-highlight">What it reports</a></li></ul></li><li><a href="#execution-platform-resolutions" class="table-of-contents__link toc-highlight">Execution-platform resolutions</a><ul><li><a href="#which-platforms-are-locked" class="table-of-contents__link toc-highlight">Which platforms are locked</a></li><li><a href="#rust-platforms" class="table-of-contents__link toc-highlight">Rust platforms</a></li></ul></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

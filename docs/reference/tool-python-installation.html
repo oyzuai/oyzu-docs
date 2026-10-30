@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Python installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-python-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-python-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-python-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-python-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-python-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-python-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python installation","item":"https://docs.oyzu.ai/docs/reference/tool-python-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Python installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-python-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-python-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-python-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-python-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-python-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-python-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python installation","item":"https://docs.oyzu.ai/docs/reference/tool-python-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -51,7 +51,11 @@ builds with it:</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Source</th><th>Role</th></tr></thead><tbody><tr><td><code>.python-version</code> (one release such as <code>3.12</code> or <code>3.12.4</code>), the nearest one from the build folder up to the project root</td><td>The request. It&#x27;s a <a class="" href="/docs/reference/configuration#native-pin-files">native pin file</a></td></tr><tr><td><code>[tools] python</code> in <code>oyzu.toml</code></td><td>The request when no <code>.python-version</code> applies. Otherwise it must agree with the file (<code>3.12</code> agrees with <code>3.12.4</code>). A disagreeing value further from the build than the file loses to it; one in the same folder or nearer fails with <code>TOOL_NATIVE_PIN_CONFLICT</code></td></tr><tr><td><code>[project] requires-python</code> in <code>pyproject.toml</code></td><td>A constraint every selection must meet</td></tr><tr><td>None of these</td><td>The newest stable release</td></tr></tbody></table></div>
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Source</th><th>Role</th></tr></thead><tbody><tr><td><code>.python-version</code> (one release such as <code>3.12</code> or <code>3.12.4</code>), the nearest one from the build folder up to the project root</td><td>The request. It&#x27;s a <a class="" href="/docs/reference/configuration#native-pin-files">native pin file</a></td></tr><tr><td><code>[tools] python</code> in <code>oyzu.toml</code></td><td>The request when no <code>.python-version</code> applies. Otherwise it must agree with the file (<code>3.12</code> agrees with <code>3.12.4</code>). A disagreeing value further from the build than the file loses to it; one in the same folder or nearer fails with <code>TOOL_NATIVE_PIN_CONFLICT</code></td></tr><tr><td><code>[project] requires-python</code> in <code>pyproject.toml</code></td><td>A constraint every selection must meet</td></tr><tr><td><code>[tool.poetry.dependencies] python</code> in <code>pyproject.toml</code>, using supported PEP 440 comparisons</td><td>An additional constraint every selection must meet</td></tr><tr><td>None of these</td><td>The newest stable release</td></tr></tbody></table></div>
 <p>oyzu picks the newest stable CPython that meets the request and every constraint.
 Pre-releases, free-threaded and debug builds are never picked.</p>
 <ul>
@@ -60,10 +64,20 @@ Pre-releases, free-threaded and debug builds are never picked.</p>
 Blank lines and <code>#</code> comments are ignored.</li>
 <li class=""><code>requires-python</code> follows PEP 440: <code>&lt;=3.12</code> means at most <code>3.12.0</code>, and <code>~=3.10</code>
 means <code>&gt;=3.10, &lt;4</code>. <code>!=</code>, <code>===</code> and local or pre-release specifiers can&#x27;t be used
-as a tool range and fail with the specifier named. Set <code>[tools] python</code> instead.</li>
+as a tool range and fail with the specifier named. Use a supported native
+range; a configured tool pin does not bypass an unsupported declaration.</li>
 <li class="">When nothing matches, the error names the request, each constraint and the file
 it came from.</li>
 </ul>
+<p>Poetry&#x27;s native Python declaration accepts the same expressible PEP 440
+comparison form, for example <code>python = &quot;&gt;=3.12,&lt;3.13&quot;</code>. When it accompanies
+<code>project.requires-python</code>, both declarations apply; conflicting ranges fail
+selection. The error identifies <code>tool.poetry.dependencies.python</code> and the
+source file. A configured interpreter never overrides either native constraint.
+Poetry-only <code>^</code>, <code>~</code>, bare wildcards (<code>*</code> or <code>3.12.*</code>) and union forms are not translated. Rewrite an
+unsupported declaration using equivalent supported comparisons before pinning;
+the error includes an example. Oyzu does not run Poetry or install a manager to
+read this declaration.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="source-and-verification">Source and verification<a href="#source-and-verification" class="hash-link" aria-label="Direct link to Source and verification" title="Direct link to Source and verification" translate="no">​</a></h2>
 <p>oyzu installs the <code>install_only</code> builds from
 <a href="https://github.com/astral-sh/python-build-standalone" target="_blank" rel="noopener noreferrer" class="">Python Build Standalone</a>.
@@ -73,8 +87,8 @@ against that digest; no signatures are checked. With a lock in place, oyzu doesn
 need to read the release list again.</p>
 <p>An administrator can route downloads through a corporate mirror with a <code>tools</code>
 route scoped to <code>python</code>, <code>oyzu:python</code> or <code>*</code> (see
-<a class="" href="/docs/reference/tool-proxy-acquisition">proxy acquisition</a>). The mirror must serve
-<code>latest-release.json</code> and the release files under the same relative paths. When a
+<a class="" href="/docs/reference/tool-proxy-acquisition">proxy acquisition</a>). The mirror serves the original upstream paths and queries for metadata and
+release archives; host routes can select their upstream hosts separately. When a
 route is set, oyzu never falls back to the public site. Under an
 <a class="" href="/docs/reference/tool-catalog">organization tool catalog</a>, only approved releases install. If
 the signed <a class="" href="/docs/reference/tool-index">tool index</a> marks a platform unsupported, installation

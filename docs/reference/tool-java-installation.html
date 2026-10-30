@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Java, Maven and Gradle installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-java-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Java, Maven and Gradle installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-java-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Java, Maven and Gradle installation","item":"https://docs.oyzu.ai/docs/reference/tool-java-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Java, Maven and Gradle installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-java-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Java, Maven and Gradle installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-java-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Java, Maven and Gradle installation","item":"https://docs.oyzu.ai/docs/reference/tool-java-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -54,13 +54,42 @@ builds:</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Tool</th><th>Default</th><th>Override</th></tr></thead><tbody><tr><td>JDK</td><td>The Java level in the root POM (<code>maven.compiler.release</code>, <code>maven.compiler.target</code>, <code>maven.compiler.source</code> or <code>java.version</code>; <code>1.8</code> means 8), raised to 17 if lower. Without one, <code>lts</code>: the newest long-term-support release</td><td><code>[tools] java</code></td></tr><tr><td>Maven</td><td><code>3.9</code>, which supports Java 8 and newer</td><td><code>[tools] maven</code></td></tr><tr><td>Gradle</td><td>Gradle 8, or Gradle 9 when the project declares a Java level above 24</td><td><code>[tools] gradle</code></td></tr></tbody></table></div>
-<p>A property that isn&#x27;t a literal number counts as undeclared. The declared level is
-a minimum, not the newest JDK: a project declaring 21 gets JDK 21. A project
+<div class="oyzu-table-scroll"><table><thead><tr><th>Tool</th><th>Default</th><th>Override</th></tr></thead><tbody><tr><td>JDK</td><td>The root Maven compiler floor described below, raised to 17 if lower. Otherwise a literal <code>java.version</code> default hint, or <code>lts</code>: the newest long-term-support release</td><td><code>[tools] java</code></td></tr><tr><td>Maven</td><td><code>3.9</code>, which supports Java 8 and newer</td><td><code>[tools] maven</code></td></tr><tr><td>Gradle</td><td>Gradle 8, or Gradle 9 when the root script or native daemon criteria declares a Java level above 24</td><td><code>[tools] gradle</code></td></tr></tbody></table></div>
+<p>For Maven, Oyzu reads direct root <code>maven-compiler-plugin</code> configuration and root
+<code>maven.compiler.release</code>, <code>maven.compiler.source</code> and <code>maven.compiler.target</code>
+properties. Configuration wins over its corresponding property; release then
+overrides both source and target. Without release, both source and target floors
+are retained, and the higher one chooses the default JDK. Values must be literal
+Java levels (<code>1.8</code> means 8). A configuration reference to its corresponding literal
+root property, such as <code>${maven.compiler.release}</code>, also works. An invalid or
+unresolved winning value stops discovery instead of falling back to a lower level.</p>
+<p>Literal release configuration requires an explicit literal compiler-plugin 3.x
+version of at least 3.6. The plugin must have artifact ID <code>maven-compiler-plugin</code>
+and group <code>org.apache.maven.plugins</code> (or omit the group). Foreign literal groups
+are ignored; ambiguous identities and duplicate compiler entries are refused.
+Root <code>java.version</code> alone is a legacy default hint, not a compiler compatibility
+constraint: it can be overridden by <code>[tools] java</code>.</p>
+<p>This is partial root discovery, not Maven&#x27;s effective model. Relevant profiles,
+executions, test-specific levels, executable/toolchain/compiler overrides and
+configuration merge directives need native evaluation and stop inference with
+their location. Managed compiler parameters that could supply or mask a level
+also stop inference, even without a direct plugin declaration. Make the compiler
+parameters explicit in a supported root declaration to resolve the diagnostic.
+An <code>inherited=false</code> compiler entry in a <code>pom</code> root without executions is inactive
+and supplies no module floor. Parent and module POMs are not evaluated here;
+existing literal root-property facts remain available for parent-based projects.
+Unknown or older release-configuration semantics and Maven 4 are outside this
+inference subset. Maven still owns its effective configuration and compilation.</p>
+<p>The compiler level is a minimum, not the newest JDK: a project declaring 21 gets JDK 21. A project
 declaring 8, 9 or 11 gets JDK 17, the oldest JDK that Maven, Gradle and oyzu&#x27;s Java
 support run on. JDK 17 still compiles for older levels correctly (<code>--release 8</code>
 checks against the Java 8 API). Gradle projects follow the same rule. The lock
 records the exact versions.</p>
+<p>Gradle&#x27;s static startup requirements come only from the root script and native
+daemon JVM criteria. Native preparation checks the effective compiler providers
+of standard Java tasks in nested members; see
+<a class="" href="/docs/reference/gradle#compiler-availability">Gradle compiler availability</a>. Unregistered
+sibling scripts do not select the JDK.</p>
 <p>Isolated (Docker) builds use the same locked JDK instead of the image&#x27;s (see
 <a class="" href="/docs/reference/maven#locked-jdk-in-isolated-builds">Maven</a>). An explicit <code>[tools] java</code>
 below 17 still installs for use on your machine, but an isolated build refuses it
@@ -101,6 +130,12 @@ route scoped to <code>java</code>, <code>maven</code>, <code>oyzu:java</code>, <
 <a class="" href="/docs/reference/tool-proxy-acquisition">proxy acquisition</a>). When a route is set, oyzu never
 falls back to the public site. Under an <a class="" href="/docs/reference/tool-catalog">organization tool catalog</a>,
 only approved releases install.</p>
+<p>Maven and Gradle dependency downloads use the JVM&#x27;s trust configuration. Behind
+a TLS-inspecting proxy, add your organization&#x27;s CA to a Java trust store that
+retains the public roots and select it with
+<code>JAVA_TOOL_OPTIONS=-Djavax.net.ssl.trustStore=/path/to/company-cacerts</code>.
+Oyzu&#x27;s <a class="" href="/docs/reference/acquisition-transport">acquisition trust bundle</a> configures Oyzu&#x27;s own
+downloads; it does not replace the JVM&#x27;s trust store. A native <code>PKIX path building failed</code> error needs the JVM trust configuration corrected before retrying.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-oyzu-sets-when-java-runs">What oyzu sets when Java runs<a href="#what-oyzu-sets-when-java-runs" class="hash-link" aria-label="Direct link to What oyzu sets when Java runs" title="Direct link to What oyzu sets when Java runs" translate="no">​</a></h2>
 <ul>
 <li class=""><code>JAVA_HOME</code> points at the installed JDK (on macOS, its <code>Contents/Home</code>).</li>
@@ -124,14 +159,20 @@ verify it.</li>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-a-native-maven-or-gradle-build-runs">What a native Maven or Gradle build runs<a href="#what-a-native-maven-or-gradle-build-runs" class="hash-link" aria-label="Direct link to What a native Maven or Gradle build runs" title="Direct link to What a native Maven or Gradle build runs" translate="no">​</a></h2>
 <p><strong>Maven</strong> runs <code>verify</code>, so tests run as part of the build.</p>
 <ul>
-<li class="">Each module with tests must produce Surefire XML in <code>target/surefire-reports</code>.
+<li class="">Each module with Java sources under <code>src/test/java</code> must produce Surefire XML
+in <code>target/surefire-reports</code>.
 Results show as <code>Tests N passed · M failed</code>. A failing test fails the build and
 no artifacts are published.</li>
+<li class="">Files under <code>src/test/resources</code> alone do not require Surefire or JaCoCo
+reports. Java files stored as resources do not count as test sources.</li>
 <li class="">JaCoCo 0.8.13 runs around <code>verify</code>, and each tested module&#x27;s
 <code>target/site/jacoco/jacoco.xml</code> is collected as coverage.</li>
 <li class="">A module that declares <code>maven-failsafe-plugin</code> and has an <code>IT*</code>, <code>*IT</code> or
-<code>*ITCase</code> test class must also produce <code>target/failsafe-reports</code>, collected as
-integration tests.</li>
+<code>*ITCase</code> Java test class under <code>src/test/java</code> must also produce
+<code>target/failsafe-reports</code>, collected as integration tests.</li>
+<li class="">Automatic host report discovery covers this conventional Java test directory.
+Custom test source roots and other JVM languages need an authored build task
+with explicit reports.</li>
 <li class="">Custom report directories aren&#x27;t collected. An authored <code>build</code> command
 supplies its own reports.</li>
 </ul>

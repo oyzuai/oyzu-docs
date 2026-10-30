@@ -3,9 +3,9 @@
 <head>
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
-<title data-rh="true">Python dependency preparation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/python-preparation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python dependency preparation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/python-preparation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python dependency preparation","item":"https://docs.oyzu.ai/docs/reference/python-preparation"}]}</script><link rel="stylesheet" href="/assets/css/styles.ee44c84e.css">
-<script src="/assets/js/runtime~main.a79a31c6.js" defer="defer"></script>
-<script src="/assets/js/main.ecd8c6ee.js" defer="defer"></script>
+<title data-rh="true">Python dependency preparation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/python-preparation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python dependency preparation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/python-preparation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python dependency preparation","item":"https://docs.oyzu.ai/docs/reference/python-preparation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
@@ -21,8 +21,108 @@
 <p>The <code>python/package</code> builder (also available as <code>python/library</code>) and <code>python/app</code> come from the <code>oyzu/python</code> plugin package. The plugin reads your project files, picks the package manager and quality tools you already use, and declares the commands, reports and artifacts. Oyzu itself downloads dependencies, runs the steps offline and checks the reports.</p>
 <p>If the plugin refuses a project, the build fails. There is no fallback to another builder.</p>
 <p>An isolated pip build needs a plugin package built for Linux, not a raw development executable. See <a class="" href="/docs/reference/plugin-packages#isolated-pip-python-packages">plugin packages</a>. A Linux environment image and its system libraries are also required; choosing a CPython version does not provide them.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-each-stage-reads">What each stage reads<a href="#what-each-stage-reads" class="hash-link" aria-label="Direct link to What each stage reads" title="Direct link to What each stage reads" translate="no">​</a></h2>
+<p>The Python plugin declares source reads separately for each operation:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Stage</th><th>Captured source contract</th></tr></thead><tbody><tr><td><code>prepare</code></td><td>Project metadata and dependency declarations for pip projects without local source references; other managers and local source dependencies remain unbounded.</td></tr><tr><td><code>build</code></td><td>Declarative <code>setuptools.build_meta</code> packages, modules, script files, metadata, <code>uv.toml</code> and discovery directories, only when build requirements contain setuptools and optionally wheel. A directory includes its listing, so adding a source file changes the key. Default flat discovery covers the whole target.</td></tr><tr><td><code>test</code></td><td>Python modules, test directories, pytest and coverage configuration, enforced by the private source view. Add root data folders outside <code>tests/</code> or <code>test/</code> with <code>inputs</code> in <code>build.yaml</code>; otherwise the captured view hides them. Absent pytest, coverage and uv configuration candidates are included so adding configuration invalidates the stage.</td></tr><tr><td><code>lint</code>, <code>format-check</code></td><td>Unbounded. The captured-plan request does not bind the finally selected Ruff task to its read prediction; Black and flake8 also lack a complete read contract.</td></tr><tr><td><code>package</code></td><td>Packages and applications copy only upstream outputs, with no source reads. The plan fixes the application layout.</td></tr></tbody></table></div>
+<p><code>setup.py</code>, project-defined backends, dynamic metadata, unknown backends (including
+Hatch), and unmodeled setuptools selection such as <code>MANIFEST.in</code>, <code>setup.cfg</code>,
+custom command classes or extension modules keep the build unbounded. Additional
+build requirements (such as setuptools-scm or setuptools-rust), extras and direct
+references also keep it unbounded, naming the requirement. Application
+assembly also retains the whole-target identity it embeds in its archive.</p>
+<p>Native PEP 517 builds, pytest and quality checks remain unbounded: they provide no
+complete observed-read record. Wheel <code>RECORD</code> and sdist membership show what was
+packaged, not everything the backend read. Native pytest may read files at run time.
+The read-only <code>--plan</code> preview does not invoke the plugin; its explanation may be
+generic until recorded contracts are available. Captured predictions are enforced
+by the source view even with caching off;
+declared <code>inputs</code> add files but never remove a required read.</p>
+<p>Read declarations alone do not guarantee reuse across an unrelated edit. Python
+snapshot versions currently include the whole-target source digest, which changes
+action environments and artifact names.
+The version identity is passed separately from dependency identity, including
+for post/dev, epoch and multi-part PEP 440 versions and declarative PDM version
+files. A source edit changes their snapshot version and wheel filename.
+Acquired <code>packages.json</code> stores only native version facts and a snapshot base;
+the shared version decision adds the source suffix during dependency preparation.
+That decision is kept outside the acquired tree and projected into action requests. An
+unrelated README edit therefore does not change the prepared dependency tree.
+Legacy <code>setup.py</code> metadata remains native and is compared again before building.
+The build projects the selected version into the wheel and sdist; dependency
+identity never supplies a version suffix.</p>
+<p>For supported <a class="" href="/docs/reference/python-testing#reuse-within-a-test-file">development-source tests</a>,
+preparation also retains the exact captured native <code>pyproject.toml</code> before that
+projection. The test preparation restores those bytes and installs the captured
+project through its selected backend&#x27;s real PEP 660 path into a separate private
+environment. Its native version, METADATA, installer RECORD and import mapping
+are bound as observed runtime facts. The inferred wheel version and its separate
+environment are not inputs to this development test subject. They remain inputs
+to built-package testing, packaging and release validation. No native version or
+metadata is synthesized to make case keys stable.</p>
+<p>This route requires all declared backend and test dependencies to have been
+captured already; <code>--no-index --no-deps --no-build-isolation</code> never acquires a
+missing backend. Unsupported declarative layouts use built-package testing;
+an install or observed mapping failure is an error. The additional test venv is
+task-owned producer state under <code>.oyzu-build/python/development-venv</code>, separate
+from the build venv. Direct runs and application archive testing are unchanged.</p>
+<p>Captured <code>prepare</code> and <code>build</code> store their reusable environment and distributions
+at the fixed task-owned <code>.oyzu-build/python</code> path inside the private target
+workspace. The action cache records and restores these outputs, so consumers key
+on the built wheel bytes, including package data. Wheel member timestamps are
+normalized to the ZIP epoch, and sdist timestamps to zero, before producer
+outputs are recorded. Rebuilding the same inputs with different native member
+timestamps therefore preserves archive bytes. Dependency identity covers
+dependency declarations and local source dependencies, rather than unrelated
+target files. See <a class="" href="/docs/reference/action-cache">action cache</a>.</p>
+<p>Application assembly creates its own invocation-local scratch directory. A
+restored prepare supplies the environment without depending on scratch left by
+the original worker; that scratch is not part of the cached output.</p>
+<p>Generated tasks use the target-root environment even when their working directory
+is a subdirectory. An authored task replacement owns its interpreter and required
+report output; <code>python</code> alone selects the pinned base interpreter, not the prepared
+environment. Flake8, Black and Ruff explicitly exclude <code>.oyzu-build</code> before
+file discovery, retaining native default exclusions, project <code>exclude</code> and
+<code>extend-exclude</code>, and Black <code>force-exclude</code> configuration. Native flags precede path arguments, including
+an explicit <code>--</code>.
+This excludes producer state; ordinary source lint and format failures still fail.
+Ruff 0.11 formatting lacks <code>--extend-exclude</code>; its native <code>--config</code> override
+extends the exclusion list instead. Black resolves configuration before merging
+the producer-state regex into its selected <code>extend-exclude</code> expression.</p>
+<p>Captured PEP 517 builds run without a second build-isolation environment. Backend
+plugins installed as project dependencies are therefore visible too; a strict
+<code>build-system.requires</code> list cannot detect them. Projects relying on undeclared
+backend plugins fail an isolated native build and must declare their build inputs.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="selected-interpreter-and-manager-runtime">Selected interpreter and manager runtime<a href="#selected-interpreter-and-manager-runtime" class="hash-link" aria-label="Direct link to Selected interpreter and manager runtime" title="Direct link to Selected interpreter and manager runtime" translate="no">​</a></h2>
-<p>An isolated build uses the CPython version recorded in <code>oyzu.lock</code>. It comes from <code>[tools].python</code> and from your project&#x27;s own requirements (<code>requires-python</code>, <code>.python-version</code>). <code>oyzu pin</code> records the choice, and <code>oyzu build --isolated --full --frozen</code> reads it without rewriting the lock.</p>
+<p>An isolated build uses the CPython version recorded in <code>oyzu.lock</code>. It comes from <code>[tools].python</code> and from your project&#x27;s own requirements (<code>requires-python</code>, native Poetry Python comparisons, <code>.python-version</code>). Both Python range declarations apply when present; unsupported Poetry-only range syntax fails with guidance to use supported comparisons. See <a class="" href="/docs/reference/tool-python-installation#how-a-version-is-chosen">Python installation</a>. <code>oyzu pin</code> records the choice, and <code>oyzu build --isolated --full --frozen</code> reads it without rewriting the lock.</p>
 <ul>
 <li class="">Oyzu checks the CPython archive against its locked digest and mounts it read-only in the worker.</li>
 <li class="">If the lock has no entry for the platform, the build stops and tells you how to fix it. It never falls back to the image&#x27;s Python.</li>
@@ -54,6 +154,15 @@
 <div class="oyzu-table-scroll"><table><thead><tr><th>Manager</th><th>Interpreter</th></tr></thead><tbody><tr><td>pip</td><td>The selected CPython</td></tr><tr><td>uv</td><td>The selected CPython, passed explicitly. uv&#x27;s managed Python and downloads are turned off</td></tr><tr><td>Poetry</td><td>The exporter runs in the image&#x27;s own interpreter, where Poetry is installed. Your <code>PATH</code> is unchanged</td></tr></tbody></table></div>
 <p>The image still supplies pip, uv or Poetry and any compilers or system libraries you need.</p>
 <p>A Docker image that asks for runtime-only dependencies uses its own interpreter, markers and compatibility, not the producer project&#x27;s CPython. If a Python pin from your configuration or policy conflicts with that interpreter, the build fails.</p>
+<p>Runtime-only stores contain captured wheels and their hash manifest, not UV&#x27;s
+installed environment. A Dockerfile choosing <code>uv pip install</code> creates its own
+installer metadata, which can embed Unix ctime even when input mtime and
+<code>SOURCE_DATE_EPOCH</code> are fixed. For byte-identical offline installed trees with
+uv 0.12.21, use its native <code>--no-installer-metadata</code> option alongside
+<code>--require-hashes</code>, <code>--no-index</code> and the captured wheel store. UV then omits
+optional installer files and their RECORD rows at installation. Oyzu preserves
+wheel bytes, native integrity checks and authored Dockerfile contents; it does
+not filter installed files or rewrite metadata after installation.</p>
 <p>Legacy <code>setup.py</code> projects with runtime dependencies are refused. A legacy package takes its version from the shared <a class="" href="/docs/reference/version-inference">version decision</a>, and planning fails if its metadata disagrees.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-pip-full-build-environment">Native pip full-build environment<a href="#native-pip-full-build-environment" class="hash-link" aria-label="Direct link to Native pip full-build environment" title="Direct link to Native pip full-build environment" translate="no">​</a></h2>
 <p>A native <code>python/package</code> pip build runs on your machine, not in a container. Supported on Linux x86-64 (glibc).</p>
@@ -105,7 +214,16 @@
 <li class="">Extra backend requirements, <code>requirements.txt</code> and injected tool requirements are resolved by pip, with your lock as constraints. They keep their extras and transitive dependencies.</li>
 <li class="">A pip project resolves all its declarations.</li>
 </ul>
+<p>uv writes its locked export to a private requirements file. Preparation reads that file separately from the plugin&#x27;s JSON response. If export fails, preparation stops with uv&#x27;s diagnostic; it does not accept an empty response or refresh the lock to hide the failure.</p>
 <p>Oyzu records every wheel&#x27;s digest in the dependency snapshot.</p>
+<p>Requirements files accept LF or CRLF line endings, backslash continuations and
+comments beginning with <code>#</code> at the start of a line or after whitespace:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">idna==3.10 # runtime dependency</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">httpx[http2]==0.28.1 \</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    ; python_version &gt;= &quot;3.10&quot; # native marker</span><br></div></code></pre></div></div>
+<p>Continuations join before comments are removed. A URL fragment such as
+<code>#sha256=...</code> remains part of its URL; accepting comments does not approve a new
+download source. Requirements, extras and environment markers keep their native
+semantics. Includes (<code>-r</code>), constraint files (<code>-c</code>), alternate-index options and
+editable references to other projects remain unsupported.</p>
 <p>An authored <code>build-system.requires</code> is always authoritative, even when it conflicts with a lock. When it is missing, the default setuptools and wheel backend uses versions your lock already selects. For a tool the lock does not select, Oyzu falls back to <code>setuptools==80.9.0</code> or <code>wheel==0.45.1</code>. Oyzu never refreshes a lock or drops one of your requirements to hide a conflict.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-current-package-as-a-quality-tool">The current package as a quality tool<a href="#the-current-package-as-a-quality-tool" class="hash-link" aria-label="Direct link to The current package as a quality tool" title="Direct link to The current package as a quality tool" translate="no">​</a></h3>
 <p>A package can provide its own quality tool, for example building Black and formatting with Black. The offline build installs your wheel before the quality checks, so the checks use that installed copy. Oyzu skips the default download of a quality tool whose name matches the current package. Explicit requirements, locked constraints and the report gates are unchanged.</p>
@@ -293,6 +411,6 @@
 <li class=""><a class="" href="/docs/reference/python-applications">Python applications</a></li>
 <li class=""><a class="" href="/docs/reference/version-inference">Version inference</a></li>
 <li class=""><a class="" href="/docs/reference/tool-python-installation">Python installation</a></li>
-</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/node-static-analysis"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Node static analysis</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/python-testing"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Python test discovery and reports</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#isolated-pip-packages" class="table-of-contents__link toc-highlight">Isolated pip packages</a></li><li><a href="#selected-interpreter-and-manager-runtime" class="table-of-contents__link toc-highlight">Selected interpreter and manager runtime</a></li><li><a href="#native-pip-full-build-environment" class="table-of-contents__link toc-highlight">Native pip full-build environment</a></li><li><a href="#what-preparation-reads" class="table-of-contents__link toc-highlight">What preparation reads</a><ul><li><a href="#the-current-package-as-a-quality-tool" class="table-of-contents__link toc-highlight">The current package as a quality tool</a></li><li><a href="#dependency-group-includes" class="table-of-contents__link toc-highlight">Dependency-group includes</a></li><li><a href="#the-project-itself-as-a-requirement" class="table-of-contents__link toc-highlight">The project itself as a requirement</a></li><li><a href="#dependencies-that-require-the-current-project" class="table-of-contents__link toc-highlight">Dependencies that require the current project</a></li><li><a href="#dynamic-versions" class="table-of-contents__link toc-highlight">Dynamic versions</a></li><li><a href="#packages-built-from-source" class="table-of-contents__link toc-highlight">Packages built from source</a></li></ul></li><li><a href="#private-build-state" class="table-of-contents__link toc-highlight">Private build state</a></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#coverage-reports-no-data" class="table-of-contents__link toc-highlight">Coverage reports no data</a></li></ul></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</ul></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/node-static-analysis"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Node static analysis</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/python-testing"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Python test discovery and reports</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#isolated-pip-packages" class="table-of-contents__link toc-highlight">Isolated pip packages</a></li><li><a href="#what-each-stage-reads" class="table-of-contents__link toc-highlight">What each stage reads</a></li><li><a href="#selected-interpreter-and-manager-runtime" class="table-of-contents__link toc-highlight">Selected interpreter and manager runtime</a></li><li><a href="#native-pip-full-build-environment" class="table-of-contents__link toc-highlight">Native pip full-build environment</a></li><li><a href="#what-preparation-reads" class="table-of-contents__link toc-highlight">What preparation reads</a><ul><li><a href="#the-current-package-as-a-quality-tool" class="table-of-contents__link toc-highlight">The current package as a quality tool</a></li><li><a href="#dependency-group-includes" class="table-of-contents__link toc-highlight">Dependency-group includes</a></li><li><a href="#the-project-itself-as-a-requirement" class="table-of-contents__link toc-highlight">The project itself as a requirement</a></li><li><a href="#dependencies-that-require-the-current-project" class="table-of-contents__link toc-highlight">Dependencies that require the current project</a></li><li><a href="#dynamic-versions" class="table-of-contents__link toc-highlight">Dynamic versions</a></li><li><a href="#packages-built-from-source" class="table-of-contents__link toc-highlight">Packages built from source</a></li></ul></li><li><a href="#private-build-state" class="table-of-contents__link toc-highlight">Private build state</a></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#coverage-reports-no-data" class="table-of-contents__link toc-highlight">Coverage reports no data</a></li></ul></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>
