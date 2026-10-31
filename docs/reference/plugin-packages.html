@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Plugin packages, the plugin store and lock selections | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-packages"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin packages, the plugin store and lock selections | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-packages"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin packages, the plugin store and lock selections","item":"https://docs.oyzu.ai/docs/reference/plugin-packages"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -456,6 +456,15 @@ as the package&#x27;s exact native API. Older engines skip that release and can 
 selecting an eligible earlier package; a direct incompatible package binding
 fails before any plugin role runs. This does not waive preview opt-in, signature,
 withdrawal or platform checks.</p>
+<p>Python packages implementing per-test-case facts require
+<code>python-test-case-facts</code> on their builder role. The engine must implement those
+facts and use the package&#x27;s exact native API; the strict prepared API/version
+check still rejects mixed runtimes. Older engines skip the newer release and
+retain an eligible earlier package. Direct incompatible bindings fail before a
+plugin operation. After a compatible signed release is available, use
+<code>oyzu plugins update python/app</code> (or the selected Python profile) to update an
+existing lock; a source merge or local engineering package does not update the
+published default.</p>
 <p>.NET lock preparation requires <code>dotnet-lock-admission</code> on the selected
 package&#x27;s builder role. The engine checks that declaration before admitting its
 native worker for private lock-facts/acquisition. An older exact lock is replayed

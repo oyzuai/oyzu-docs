@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Helm charts and native chart tests | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/helm"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Helm charts and native chart tests | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/helm.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/helm"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/helm" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Helm charts and native chart tests","item":"https://docs.oyzu.ai/docs/reference/helm"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -306,8 +306,10 @@ or the plugin and does not admit cache reuse.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="build-outputs-and-failure-handling">Build outputs and failure handling<a href="#build-outputs-and-failure-handling" class="hash-link" aria-label="Direct link to Build outputs and failure handling" title="Direct link to Build outputs and failure handling" translate="no">​</a></h2>
 <p>Preparation unpacks contained subcharts in its private workspace and captures the chart&#x27;s local <code>file://</code> dependencies. It rejects cycles and paths that escape, and runs dependency preparation offline. Existing locks are honored and stale locks fail. Lock timestamps and archive metadata are normalized. If a packed and an unpacked copy of a subchart both exist, the build fails instead of overwriting. Your source archives are never modified.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="locked-https-repositories">Locked HTTPS repositories<a href="#locked-https-repositories" class="hash-link" aria-label="Direct link to Locked HTTPS repositories" title="Direct link to Locked HTTPS repositories" translate="no">​</a></h3>
-<p>A captured chart can use one public, credential-free HTTPS chart repository.
-Declare it in native <code>Chart.yaml</code>, generate <code>Chart.lock</code> with native
+<p>A captured chart can use up to two public, credential-free HTTPS chart
+repositories with distinct raw dependency names and non-overlapping HTTPS
+origin/path scopes. Declare them in native
+<code>Chart.yaml</code>, generate <code>Chart.lock</code> with native
 <code>helm dependency update</code>, and commit that lock. Native Helm validates lock
 consistency and selects versions; Oyzu does not resolve chart versions itself.
 For example, a dependency may name <code>vault</code>, version constraint <code>~0.30.0</code>, and
@@ -326,26 +328,37 @@ aliases are outside this path&#x27;s supported scope.</p>
 <div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">secrets</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">injector</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">enabled</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean important" style="color:#36acaa">false</span><br></div></code></pre></div></div>
 <p>Generate the native lock normally; do not rename the locked chart or its archive
 to <code>secrets</code>.</p>
-<p>The repository index, selected archive URLs and every redirect must remain under
-that repository&#x27;s HTTPS origin and path prefix. Each selected index entry needs
-a SHA-256 archive digest. Oyzu captures the original index and archive, checks the
-complete archive before supplying it to Helm, and validates the acquired chart
+<p>Each repository index, its selected archive URLs and every redirect must remain
+under that original repository&#x27;s HTTPS origin and path prefix. Declaring a
+second repository does not let the first redirect to it: Oyzu refuses that hop
+before contacting the second repository. On the same origin, neither normalized
+repository path prefix may contain the other. For example,
+<code>https://charts.example.test/</code> and <code>https://charts.example.test/team-b/</code>
+cannot be captured together. This is
+checked before any capture lookup or upstream request. Each selected index entry
+needs a SHA-256 archive digest. Oyzu captures the original index and archive,
+checks the complete archive before supplying it to Helm, and validates the acquired chart
 names, versions and vendored dependency closure. Original chart and lock files
 remain unchanged. Dependency records distinguish original archive digests from
 the prepared chart bytes; a chart lock alone is not archive integrity evidence.</p>
+<p>Two repositories retain separate indexes, original archives and source-bound
+receipts. Both share one acquisition allowance of 4,096 requests, 1 GiB of
+response bytes and at most eight concurrent requests. Restoring a capture still
+requires current source and tool admission and the complete locked dependency
+set for each repository.</p>
 <p>An unchanged selection can reuse its verified acquisition snapshot. This reuses
 the recorded index, without claiming that the current upstream index is
 unchanged. Offline builds require that exact capture, locked tools and execution
 image to be available already. Missing inputs fail with a request to prepare the
 selection online; there is no network fallback during execution.</p>
 <p>Repository aliases (<code>@repo</code> or <code>alias:repo</code> in the repository field), OCI,
-authentication, managed connector routing, multiple remote repositories and
+authentication, managed connector routing, more than two remote repositories and
 archives hosted outside the repository prefix are not supported by this path.
 Remote archives must include their complete vendored
 closure; Oyzu does not acquire additional remote dependencies from those charts.
-The index and each compressed archive are limited to 4 MiB, with at most 4,096
-archive URL slots. Existing archive expansion and source containment limits also
-apply. The direct native <code>install</code> task keeps its existing native behavior.</p>
+Each index and compressed archive is limited to 4 MiB, with at most 4,096
+archive URL slots per index. Existing archive expansion and source containment
+limits also apply. The direct native <code>install</code> task keeps its existing native behavior.</p>
 
 
 
@@ -379,7 +392,7 @@ apply. The direct native <code>install</code> task keeps its existing native beh
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Failure</th><th>Meaning and recovery</th></tr></thead><tbody><tr><td><code>HELM_LOCK_REQUIRED</code> / <code>HELM_LOCK_INVALID</code></td><td>Generate and review an authored native lock matching the declared repository</td></tr><tr><td><code>HELM_SOURCE_UNSUPPORTED</code></td><td>Use the supported single public HTTPS repository form, or vendor the dependency locally</td></tr><tr><td><code>SOURCE_DENIED</code></td><td>An archive or redirect leaves the original repository prefix; use a supported source or vendor it</td></tr><tr><td><code>HELM_INTEGRITY</code></td><td>Captured archive bytes differ from the advertised SHA-256; inspect the repository rather than bypassing verification</td></tr><tr><td><code>HELM_CAPTURE_INVALID</code> / <code>HELM_CLOSURE_INVALID</code></td><td>Required native outputs, identity bindings or vendored dependencies are missing or inconsistent</td></tr><tr><td><code>OFFLINE_ASSET_UNAVAILABLE</code></td><td>Prepare the exact selection online before retrying offline</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Failure</th><th>Meaning and recovery</th></tr></thead><tbody><tr><td><code>HELM_LOCK_REQUIRED</code> / <code>HELM_LOCK_INVALID</code></td><td>Generate and review an authored native lock matching the declared repository</td></tr><tr><td><code>HELM_SOURCE_UNSUPPORTED</code></td><td>Use at most two public HTTPS repositories with distinct raw chart dependencies and non-overlapping origin/path scopes, or vendor the dependency locally</td></tr><tr><td><code>SOURCE_DENIED</code></td><td>An archive or redirect leaves the original repository prefix; use a supported source or vendor it</td></tr><tr><td><code>HELM_INTEGRITY</code></td><td>Captured archive bytes differ from the advertised SHA-256; inspect the repository rather than bypassing verification</td></tr><tr><td><code>HELM_CAPTURE_INVALID</code> / <code>HELM_CLOSURE_INVALID</code></td><td>Required native outputs, identity bindings or vendored dependencies are missing or inconsistent</td></tr><tr><td><code>OFFLINE_ASSET_UNAVAILABLE</code></td><td>Prepare the exact selection online before retrying offline</td></tr></tbody></table></div>
 <p>The chart version comes from <a class="" href="/docs/reference/version-inference">version inference</a> over its native version and Git history, with a suffix from the source snapshot. <code>appVersion</code> and dependency versions keep their own meanings.</p>
 <p>A build packages the chart, runs the tests, strict lint and the read-only YAML format check, and collects the outputs if all pass. Application charts produce a versioned <code>.tgz</code> and <code>rendered.yaml</code>. Library charts produce the <code>.tgz</code> only. Building, generated files and the version change happen in private workspaces, so your checkout stays unchanged. The format check covers your source YAML, not the regenerated dependency chart.</p>
 <p>Reports are collected in <code>dist/</code>, and <code>dist/manifest.json</code> records their paths, digests and summaries:</p>

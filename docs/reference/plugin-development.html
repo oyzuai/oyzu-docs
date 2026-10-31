@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Writing and testing builder plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Writing and testing builder plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing and testing builder plugins","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -859,9 +859,11 @@ builds from source only when no release executable can be used here (<code>--sou
 downloads, so it builds whenever no usable <code>oyzu</code> is already there). An <code>oyzu</code> older than
 the plugin protocol of the pinned <code>rust/app</code> and <code>node/app</code> plugins (<code>plugin_protocol_release</code>
 at the top of the script) can&#x27;t be used either, because it refuses their results. The
-current minimum is 0.2.4: Rust preview.3 emits <code>native_reads</code>, which older CLI
-versions reject. <code>--no-plugins</code>,
-which runs no plugin, skips that check. On a
+current minimum is 0.3.0, which implements Rust&#x27;s <code>native-private-outputs</code> and
+<code>captured-cargo-projection</code> requirements. This version check does not publish or
+select a marked package; normal signed package and catalog admission still apply.
+<code>--no-plugins</code>, which runs no plugin, skips that check, so the released 0.2.5
+driver can still provide the tools used to produce plugin packages. On a
 platform with no release that new yet, the script builds the CLI from source once, until
 such a release publishes an executable there. With <code>--require-release</code> (CI&#x27;s setup action)
 it fails instead, before invoking a plugin. Raising the minimum does not provide a

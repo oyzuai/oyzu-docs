@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -137,6 +137,32 @@ applies to conventional check tasks, including Java lint and format checks.</p>
 <li class="">Required reports must be produced and artifacts collected before a target counts as built. See <a class="" href="/docs/reference/build-tasks">build tasks</a>.</li>
 <li class="">Two targets that would produce executables with the same file name are refused before anything runs.</li>
 </ul>
+<p>On Unix, native private source workspaces preserve ordinary file and selected
+directory permissions (<code>0777</code>) on cold population and later refreshes, including
+mode-only changes with unchanged file bytes and modification times. This includes
+selected nested and empty directories and target directories below the source
+boundary. Directory modes are applied after population; read-only directories
+are temporarily writable only in the private copy during refresh and pruning.
+The authored source tree is unchanged.</p>
+<p>The projection&#x27;s engine-owned boundary root remains writable working storage;
+its mode does not reproduce the source boundary root. Captured execution views
+retain their existing directory behavior. ACLs, ownership and special bits are
+outside this native projection guarantee.</p>
+<p>Action-result cache identity and restoration still preserve file executable
+intent rather than all ordinary Unix file or directory permissions. Use
+<code>oyzu build --no-cache</code> when other permission bits affect build outputs. See
+<a class="" href="/docs/reference/action-cache">action caching</a> for the current reuse limits.</p>
+<p>Linux native host action keys bind the file-creation mask inherited by child
+processes. A build launched with <code>umask 0077</code> cannot reuse a result keyed under
+<code>0022</code>, even when source files are unchanged. Oyzu reads the mask without changing
+it, freezes it once before cache lookup, and records the same bounded value in
+the host action&#x27;s invocation and native command identity.</p>
+<p>If the mask cannot be read or validated on Linux, or cannot be observed on another
+Unix host, native host targets run without action-result reuse. Existing worker,
+builder and secret-environment restrictions retain their reasons. Image workers
+do not bind the coordinator&#x27;s mask, and Windows has no Unix creation-mask fact.
+This does not establish full file/directory mode identity or output metadata
+restoration; the permission limits above still apply.</p>
 <p>Ecosystem notes:</p>
 <ul>
 <li class=""><strong>npm</strong> runs <code>npm ci</code> and needs a lockfile. Installation is the target&#x27;s <code>prepare</code> step. It runs before <code>pre_build</code> hooks, is skipped on a full cache hit, and runs again with <code>--no-cache</code>. A failed install blocks the build and publishes nothing. npm lifecycle scripts run as usual.</li>

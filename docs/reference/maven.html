@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Maven builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/maven"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Maven builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/maven.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/maven.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/maven"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/maven" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/maven" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Maven builds","item":"https://docs.oyzu.ai/docs/reference/maven"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -21,13 +21,15 @@
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu -C examples/builds/java-maven-reactor/project run list</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu -C examples/builds/java-maven-reactor/project build</span><br></div></code></pre></div></div>
 <p>Captured builds need Docker and the <a class="" href="/docs/reference/execution-image">base execution image</a>. Oyzu pulls the image when it&#x27;s missing. The JDK and, for a project without a Maven wrapper, Maven itself are restored from <code>oyzu.lock</code>.</p>
 <p>Development tasks use your provisioned Maven or the project&#x27;s Maven wrapper. <code>oyzu run list</code> doesn&#x27;t run Maven.</p>
-<p>JDK inference accepts literal root compiler-plugin release/source/target facts
-and their corresponding root properties. Configuration wins for each parameter,
-then release overrides source and target; otherwise both floors are retained.
-Literal release configuration requires a canonical compiler-plugin 3.x declaration
+<p>JDK inference accepts literal root compiler-plugin release/source/target and
+testRelease facts and their corresponding root properties. Configuration wins
+for each parameter, then release overrides source and target; otherwise both
+production floors are retained. A separate <code>testRelease</code> floor is also retained:
+production release 17 and test release 25 select JDK 25 or newer.
+Literal release/testRelease configuration requires a canonical compiler-plugin 3.x declaration
 at version 3.6 or newer. Incompatible explicit Java selections stop before native
 compilation. This does not evaluate the effective reactor model: relevant managed,
-profile, execution, test-compiler and toolchain overrides report an unsupported
+profile, execution, other test-compiler and toolchain overrides report an unsupported
 inference location. Parent-based projects retain partial root-property discovery.
 <code>java.version</code> alone supplies a default hint without asserting a compiler floor.
 See <a class="" href="/docs/reference/tool-java-installation#how-versions-are-chosen">JDK selection and its limits</a>

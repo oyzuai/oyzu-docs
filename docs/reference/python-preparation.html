@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Python dependency preparation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/python-preparation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python dependency preparation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/python-preparation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python dependency preparation","item":"https://docs.oyzu.ai/docs/reference/python-preparation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -216,10 +216,13 @@ not filter installed files or rewrite metadata after installation.</p>
 </ul>
 <p>uv writes its locked export to a private requirements file. Preparation reads that file separately from the plugin&#x27;s JSON response. If export fails, preparation stops with uv&#x27;s diagnostic; it does not accept an empty response or refresh the lock to hide the failure.</p>
 <p>Oyzu records every wheel&#x27;s digest in the dependency snapshot.</p>
-<p>Requirements files accept LF or CRLF line endings, backslash continuations and
-comments beginning with <code>#</code> at the start of a line or after whitespace:</p>
+<p>Requirements files accept an optional leading UTF-8 byte-order mark (BOM), LF
+or CRLF line endings, backslash continuations and comments beginning with <code>#</code>
+at the start of a line or after whitespace:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">idna==3.10 # runtime dependency</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">httpx[http2]==0.28.1 \</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    ; python_version &gt;= &quot;3.10&quot; # native marker</span><br></div></code></pre></div></div>
-<p>Continuations join before comments are removed. A URL fragment such as
+<p>The leading BOM is ignored for parsing; retained requirement records keep their
+original bytes when an editable project reference is removed. Continuations
+join before comments are removed. A URL fragment such as
 <code>#sha256=...</code> remains part of its URL; accepting comments does not approve a new
 download source. Requirements, extras and environment markers keep their native
 semantics. Includes (<code>-r</code>), constraint files (<code>-c</code>), alternate-index options and

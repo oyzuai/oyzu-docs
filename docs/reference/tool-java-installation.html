@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Java, Maven and Gradle installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-java-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Java, Maven and Gradle installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-java-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-java-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-java-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Java, Maven and Gradle installation","item":"https://docs.oyzu.ai/docs/reference/tool-java-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.44a50bdd.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -56,25 +56,31 @@ builds:</p>
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Tool</th><th>Default</th><th>Override</th></tr></thead><tbody><tr><td>JDK</td><td>The root Maven compiler floor described below, raised to 17 if lower. Otherwise a literal <code>java.version</code> default hint, or <code>lts</code>: the newest long-term-support release</td><td><code>[tools] java</code></td></tr><tr><td>Maven</td><td><code>3.9</code>, which supports Java 8 and newer</td><td><code>[tools] maven</code></td></tr><tr><td>Gradle</td><td>Gradle 8, or Gradle 9 when the root script or native daemon criteria declares a Java level above 24</td><td><code>[tools] gradle</code></td></tr></tbody></table></div>
 <p>For Maven, Oyzu reads direct root <code>maven-compiler-plugin</code> configuration and root
-<code>maven.compiler.release</code>, <code>maven.compiler.source</code> and <code>maven.compiler.target</code>
+<code>maven.compiler.release</code>, <code>maven.compiler.source</code>, <code>maven.compiler.target</code> and
+<code>maven.compiler.testRelease</code>
 properties. Configuration wins over its corresponding property; release then
 overrides both source and target. Without release, both source and target floors
-are retained, and the higher one chooses the default JDK. Values must be literal
+are retained. A separate <code>testRelease</code> floor is retained alongside the production
+compiler facts; their highest floor chooses the default JDK. For example,
+production release 17 with <code>testRelease</code> 25 selects JDK 25 or newer, while a lower
+test release does not lower the production requirement. Values must be literal
 Java levels (<code>1.8</code> means 8). A configuration reference to its corresponding literal
 root property, such as <code>${maven.compiler.release}</code>, also works. An invalid or
 unresolved winning value stops discovery instead of falling back to a lower level.</p>
-<p>Literal release configuration requires an explicit literal compiler-plugin 3.x
+<p>Literal release/testRelease configuration requires an explicit literal compiler-plugin 3.x
 version of at least 3.6. The plugin must have artifact ID <code>maven-compiler-plugin</code>
 and group <code>org.apache.maven.plugins</code> (or omit the group). Foreign literal groups
 are ignored; ambiguous identities and duplicate compiler entries are refused.
 Root <code>java.version</code> alone is a legacy default hint, not a compiler compatibility
 constraint: it can be overridden by <code>[tools] java</code>.</p>
 <p>This is partial root discovery, not Maven&#x27;s effective model. Relevant profiles,
-executions, test-specific levels, executable/toolchain/compiler overrides and
+executions, other test-specific levels (<code>testSource</code>/<code>testTarget</code>), executable/toolchain/compiler overrides and
 configuration merge directives need native evaluation and stop inference with
 their location. Managed compiler parameters that could supply or mask a level
 also stop inference, even without a direct plugin declaration. Make the compiler
 parameters explicit in a supported root declaration to resolve the diagnostic.
+The main release does not shadow a managed <code>testRelease</code>; only a direct
+<code>testRelease</code> declaration makes that managed value irrelevant.
 An <code>inherited=false</code> compiler entry in a <code>pom</code> root without executions is inactive
 and supplies no module floor. Parent and module POMs are not evaluated here;
 existing literal root-property facts remain available for parent-based projects.
