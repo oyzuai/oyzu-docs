@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Cache build results | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/guides/caching"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Cache build results | Oyzu documentation"><meta data-rh="true" name="description" content="Reuse unchanged build results locally, find out why a stage ran, and share results through a remote OCI cache."><meta data-rh="true" property="og:description" content="Reuse unchanged build results locally, find out why a stage ran, and share results through a remote OCI cache."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/guides/caching"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/guides/caching" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/guides/caching" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Cache build results","item":"https://docs.oyzu.ai/docs/guides/caching"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -74,16 +74,15 @@
 </span></code></pre></div>
 <p>The same answers are kept with each build: <code>oyzu history &lt;invocation-id&gt;</code> shows up to eight of them.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-inspect-skip-or-clear-the-cache">3. Inspect, skip or clear the cache<a href="#3-inspect-skip-or-clear-the-cache" class="hash-link" aria-label="Direct link to 3. Inspect, skip or clear the cache" title="Direct link to 3. Inspect, skip or clear the cache" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache status"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache status</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Action cache</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache status"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache status</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Action cache</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>  Location   C:\Users\you\AppData\Local\Oyzu\cache\actions (default per-user location)</span>
-</span><span class="oyzu-ansi-line"><span>  Entries    552 results · 2841 blobs</span>
-</span><span class="oyzu-ansi-line"><span>  Size       9.9 GiB of 10.0 GiB retention budget</span>
-</span><span class="oyzu-ansi-line"><span>  Docker     5 images · 2.6 GiB of 20.0 GiB image budget (cache.dockerMaxMiB)</span>
-</span><span class="oyzu-ansi-line"><span>  Local use  </span><span class="ansi-fg-2">enabled</span>
-</span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>Reuse is local to this user and machine. Ephemeral CI runners start empty; shared caching is a later milestone.</span>
-</span><span class="oyzu-ansi-line"><span>Use `oyzu cache clear` to empty it, or `oyzu build --no-cache` to bypass it once.</span>
+</span><span class="oyzu-ansi-line"><span>  Location   ~/.cache/oyzu/actions (default per-user location)</span>
+</span><span class="oyzu-ansi-line"><span>  Entries    301 results · 8603 blobs</span>
+</span><span class="oyzu-ansi-line"><span>  Size       8.4 GiB of 10.0 GiB retention budget</span>
+</span><span class="oyzu-ansi-line"><span>  Auxiliary  4.9 MiB history, quarantine, markers and staging</span>
+</span><span class="oyzu-ansi-line"><span>  Docker     3 images · 1.7 GiB of 20.0 GiB image budget (cache.dockerMaxMiB)</span>
+</span><span class="oyzu-ansi-line"><span>  Local use  enabled</span>
+</span><span class="oyzu-ansi-line"><span>…</span>
 </span></code></pre></div>
 
 
@@ -142,9 +141,9 @@
 <li class="">Targets with hooks that declare no <code>outputs</code>. <code>oyzu history</code> reports <code>contains authored tasks or hooks without declared outputs, which are never cached by default</code>.</li>
 <li class="">Targets that use secret environment values.</li>
 <li class="">Tasks run directly with <code>oyzu run</code>.</li>
-<li class="">Failed, blocked or cancelled targets. Their results are never stored.</li>
+<li class="">Failed, blocked or cancelled targets are never stored as complete results. Eligible successful actions can remain reusable after a later action fails.</li>
 </ul>
-<p>Optimized and development builds never share results, and upgrading Oyzu starts the cache fresh. A damaged entry is set aside and the stage runs. An unusable cache location never fails a build.</p>
+<p>Development and optimized builds have different keys when their commands produce different output; builders with identical profiles share results. Upgrading Oyzu can invalidate entries. A damaged entry is set aside and the stage runs. An unavailable store warns and computes normally; invalid cache configuration can still fail before building.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-share-results-through-a-remote-oci-cache-experimental">4. Share results through a remote OCI cache (experimental)<a href="#4-share-results-through-a-remote-oci-cache-experimental" class="hash-link" aria-label="Direct link to 4. Share results through a remote OCI cache (experimental)" title="Direct link to 4. Share results through a remote OCI cache (experimental)" translate="no">​</a></h2>
 <blockquote>
 <p><strong>Note:</strong> The remote cache is experimental and supported on Linux. It has been tested with zot, CNCF Distribution behind a token service, and a Harbor proxy-cache project.</p>

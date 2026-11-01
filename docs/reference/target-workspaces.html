@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Host target workspaces and artifact inputs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/target-workspaces"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Host target workspaces and artifact inputs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/target-workspaces.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/target-workspaces"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/target-workspaces" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Host target workspaces and artifact inputs","item":"https://docs.oyzu.ai/docs/reference/target-workspaces"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 <p>A native <code>oyzu build</code> gives each target its own private copy of its source before it prepares dependencies. The target&#x27;s hooks and stages share that copy, but other targets can&#x27;t see the files it generates. To pass files from one target to another, use <code>materialize</code>. This page covers which source goes into a target&#x27;s workspace, how artifacts are passed between targets, and how Python wheels and Docker images fit in.</p>
 <blockquote>
 <p><strong>Note:</strong> Private workspaces keep targets apart; they aren&#x27;t a sandbox. Native processes still have your user&#x27;s access to files and the network. <code>oyzu run</code> tasks run in your checkout as usual.</p>
+</blockquote>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="source-selection">Source selection<a href="#source-selection" class="hash-link" aria-label="Direct link to Source selection" title="Direct link to Source selection" translate="no">​</a></h2>
 <p>Each target&#x27;s folder is copied with your current edits and untracked files, minus the usual exclusions (<code>.git</code>, <code>.oyzu</code>, <code>dist</code>, <code>target</code>, <code>node_modules</code>, virtual environments). Files outside the target&#x27;s folder must be listed in <code>inputs</code>, unless they already belong to the same native project:</p>
@@ -207,9 +211,9 @@ subfolder. Declarations add reads; they cannot make an unbounded stage confined.
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="limits">Limits<a href="#limits" class="hash-link" aria-label="Direct link to Limits" title="Direct link to Limits" translate="no">​</a></h2>
 <ul>
 <li class="">Private workspaces are separation, not sandboxing, and don&#x27;t make a build eligible for production publication.</li>
-<li class="">Native workspaces and image workers are tested on Windows. Linux and macOS hosts aren&#x27;t supported yet.</li>
+<li class="">Native workspaces support Linux and Windows x86-64. macOS support is limited to the <a class="" href="/docs/reference/zig">Zig path</a>. Image-worker limits depend on the builder.</li>
 <li class="">The <code>usage: build</code> path is tested on Linux x86-64.</li>
-<li class="">Native wheel handling covers Linux x86_64 and aarch64 tags. A Linux arm64 consumer, deeper libc version checks and Windows or macOS tags aren&#x27;t supported.</li>
+<li class="">Native wheel handling supports Linux x86_64 tags. ARM64 consumers, deeper libc version checks and Windows or macOS tags are unsupported.</li>
 <li class="">Choosing a build tool from a producer with several platform variants isn&#x27;t supported.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rust installation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust installation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-rust-installation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-rust-installation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust installation","item":"https://docs.oyzu.ai/docs/reference/tool-rust-installation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -17,6 +17,10 @@
 Clippy and the LLVM coverage tools) and the Cargo helpers the Rust builder uses, so
 you don&#x27;t need rustup or Rust installed on the machine. The exact release is
 recorded in <code>oyzu.lock</code>.</p>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="usage">Usage<a href="#usage" class="hash-link" aria-label="Direct link to Usage" title="Direct link to Usage" translate="no">​</a></h2>
 <p>Pinning is optional. With nothing declared, <code>oyzu pin</code> or your first <code>oyzu build</code>
 picks the newest stable Rust and records it in <code>oyzu.lock</code>. To choose a version,
@@ -298,7 +302,7 @@ fetching, because cached crate replay isn&#x27;t available yet.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Platform</th><th>Status</th></tr></thead><tbody><tr><td>Linux x86-64 (glibc)</td><td>Supported</td></tr><tr><td>Windows x86-64 (MSVC)</td><td>Supported</td></tr><tr><td>macOS Intel</td><td>Supported with an existing lock; automatic default pinning isn&#x27;t available yet</td></tr><tr><td>Windows ARM64 (MSVC)</td><td><code>oyzu install</code> installs Rust from a lock that covers <code>windows/arm64/msvc</code>; building on this platform isn&#x27;t verified yet</td></tr><tr><td>macOS Apple silicon, Linux ARM64</td><td>Not supported yet</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Platform</th><th>Status</th></tr></thead><tbody><tr><td>Linux x86-64 (glibc)</td><td>Supported</td></tr><tr><td>Windows x86-64 (MSVC)</td><td>Supported</td></tr><tr><td>macOS Intel</td><td>Supported with an existing lock; automatic default pinning isn&#x27;t available yet</td></tr><tr><td>Windows ARM64 (MSVC)</td><td>Unsupported; retained lock metadata is not native installation qualification</td></tr><tr><td>macOS Apple silicon, Linux ARM64</td><td>Not supported yet</td></tr></tbody></table></div>
 <p>Helper installation (<code>cargo-nextest</code>, <code>cargo-llvm-cov</code>) is supported on Windows
 x86-64; on other platforms it isn&#x27;t supported yet.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="missing-installed-components">Missing installed components<a href="#missing-installed-components" class="hash-link" aria-label="Direct link to Missing installed components" title="Direct link to Missing installed components" translate="no">​</a></h2>

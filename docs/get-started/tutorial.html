@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tutorial: build your first project | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/get-started/tutorial"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tutorial: build your first project | Oyzu documentation"><meta data-rh="true" name="description" content="Build, test, inspect, rebuild and debug a small Go program with Oyzu, with real output at every step."><meta data-rh="true" property="og:description" content="Build, test, inspect, rebuild and debug a small Go program with Oyzu, with real output at every step."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/get-started/tutorial"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/get-started/tutorial" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/get-started/tutorial" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tutorial: build your first project","item":"https://docs.oyzu.ai/docs/get-started/tutorial"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -23,17 +23,24 @@
 <p>Create <code>main_test.go</code>:</p>
 <div class="language-go codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-go codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token keyword" style="color:#00009f">package</span><span class="token plain"> main</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">import</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;testing&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token keyword" style="color:#00009f">func</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">TestGreeting</span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">t </span><span class="token operator" style="color:#393A34">*</span><span class="token plain">testing</span><span class="token punctuation" style="color:#393A34">.</span><span class="token plain">T</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token keyword" style="color:#00009f">if</span><span class="token plain"> got </span><span class="token operator" style="color:#393A34">:=</span><span class="token plain"> </span><span class="token function" style="color:#d73a49">greeting</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;Oyzu&quot;</span><span class="token punctuation" style="color:#393A34">)</span><span class="token punctuation" style="color:#393A34">;</span><span class="token plain"> got </span><span class="token operator" style="color:#393A34">!=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;Hello, Oyzu!&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">		t</span><span class="token punctuation" style="color:#393A34">.</span><span class="token function" style="color:#d73a49">Fatalf</span><span class="token punctuation" style="color:#393A34">(</span><span class="token string" style="color:#e3116c">&quot;unexpected greeting: %q&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> got</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">	</span><span class="token punctuation" style="color:#393A34">}</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
 <p>That&#x27;s the whole project. There is no Oyzu configuration file: Oyzu works from the files Go already uses.</p>
+<blockquote>
+<p><strong>Known limitation:</strong> Resolving the unpinned <code>go 1.22</code> requirement can fail with
+<code>TOOL_RELEASE_AGE_UNAVAILABLE</code> when release publication dates are unavailable.
+If you encounter this error, an exact native <code>toolchain go1.22.12</code> line in
+<code>go.mod</code> selects the compiler used in the successful output below. That output
+includes this workaround; it does not show a successful unpinned build.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="2-see-what-oyzu-found">2. See what Oyzu found<a href="#2-see-what-oyzu-found" class="hash-link" aria-label="Direct link to 2. See what Oyzu found" title="Direct link to 2. See what Oyzu found" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu discover"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu discover</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">1 target · 6 tasks discovered without running project code</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu discover"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu discover</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>1 target · 6 tasks discovered without running project code</span>
 </span><span class="oyzu-ansi-line"><span>Project root: ~/hello</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">project · go/app</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Chosen by        </span><span>  detected from project files</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Location         </span><span>  .</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Manager          </span><span>  go</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Version          </span><span>  0.0.0</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Part of builds   </span><span>  build, format-check, lint, test</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Development tasks</span><span>  format, install</span>
+</span><span class="oyzu-ansi-line"><span>project · go/app</span>
+</span><span class="oyzu-ansi-line"><span>  Chosen by          detected from project files</span>
+</span><span class="oyzu-ansi-line"><span>  Location           .</span>
+</span><span class="oyzu-ansi-line"><span>  Manager            go</span>
+</span><span class="oyzu-ansi-line"><span>  Version            0.0.0</span>
+</span><span class="oyzu-ansi-line"><span>  Part of builds     build, format-check, lint, test</span>
+</span><span class="oyzu-ansi-line"><span>  Development tasks  format, install</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Target names are what `oyzu build &lt;target&gt;` accepts.</span>
 </span><span class="oyzu-ansi-line"><span>Next steps:</span>
@@ -42,57 +49,66 @@
 </span><span class="oyzu-ansi-line"><span>Use --json for the complete discovery record, including each task&#x27;s environment and dependencies.</span>
 </span></code></pre></div>
 <p>Oyzu found one Go application, which it calls <code>project</code>. It only read files; it ran nothing. To see the commands behind each task:</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu run list"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu run list</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Available tasks · 6 across 1 target</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu run list"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu run list</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Available tasks · 6 across 1 target</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Task</span><span>                  </span><span class="ansi-bold">Source</span><span>         </span><span class="ansi-bold">Command</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">project · go/app (6)</span>
-</span><span class="oyzu-ansi-line"><span>project:build         </span><span class="ansi-dim">Inferred · go</span><span>  go build ./...</span>
-</span><span class="oyzu-ansi-line"><span>project:format        </span><span class="ansi-dim">Inferred · go</span><span>  gofmt -w .</span>
-</span><span class="oyzu-ansi-line"><span>project:format-check  </span><span class="ansi-dim">Inferred · go</span><span>  gofmt -l .</span>
-</span><span class="oyzu-ansi-line"><span>project:install       </span><span class="ansi-dim">Inferred · go</span><span>  go mod download</span>
-</span><span class="oyzu-ansi-line"><span>project:lint          </span><span class="ansi-dim">Inferred · go</span><span>  go vet ./...</span>
-</span><span class="oyzu-ansi-line"><span>project:test          </span><span class="ansi-dim">Inferred · go</span><span>  go test ./...</span>
+</span><span class="oyzu-ansi-line"><span>Task                  Source         Command</span>
+</span><span class="oyzu-ansi-line"><span>project · go/app (6)</span>
+</span><span class="oyzu-ansi-line"><span>project:build         Inferred · go  go build ./...</span>
+</span><span class="oyzu-ansi-line"><span>project:format        Inferred · go  gofmt -w .</span>
+</span><span class="oyzu-ansi-line"><span>project:format-check  Inferred · go  gofmt -l .</span>
+</span><span class="oyzu-ansi-line"><span>project:install       Inferred · go  go mod download</span>
+</span><span class="oyzu-ansi-line"><span>project:lint          Inferred · go  go vet ./...</span>
+</span><span class="oyzu-ansi-line"><span>project:test          Inferred · go  go test ./...</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Run one with: oyzu run &lt;task&gt;   (extra arguments go after --)</span>
 </span><span class="oyzu-ansi-line"><span>Commands show argv; task dependencies and hooks may also run. Use --json for full task records.</span>
 </span></code></pre></div>
 <p>These are ordinary Go commands. You can run any of them with <code>oyzu run</code>, for example <code>oyzu run test</code>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="3-preview-before-you-build">3. Preview before you build<a href="#3-preview-before-you-build" class="hash-link" aria-label="Direct link to 3. Preview before you build" title="Direct link to 3. Preview before you build" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --plan"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --plan</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Planning hello</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --plan"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --plan</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Planning hello</span>
 </span><span class="oyzu-ansi-line"><span>Linux x86_64 (host) · Local · context local · Fast build requested</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Build preview</span>
+</span><span class="oyzu-ansi-line"><span>Build preview</span>
 </span><span class="oyzu-ansi-line"><span>Execution: host · No tools installed, dependencies downloaded or build actions run.</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">project · go/app · linux/x86_64</span>
-</span><span class="oyzu-ansi-line"><span>Executor: host</span>
-</span><span class="oyzu-ansi-line"><span>Profile: development · local dist only (no difference: the Go compiler always optimizes)</span>
-</span><span class="oyzu-ansi-line"><span>Placement: runs on linux/x86_64 · no Docker engine needed · Runs as host processes without a container engine</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Stage</span><span>         </span><span class="ansi-bold">Selection</span><span>  </span><span class="ansi-bold">Details</span>
-</span><span class="oyzu-ansi-line"><span>build         selected   Native commands and report bindings resolve during preparation</span>
-</span><span class="oyzu-ansi-line"><span>format-check  skipped    fast local build</span>
-</span><span class="oyzu-ansi-line"><span>lint          skipped    fast local build</span>
-</span><span class="oyzu-ansi-line"><span>test          skipped    fast local build</span>
+</span><span class="oyzu-ansi-line"><span>Engine</span>
+</span><span class="oyzu-ansi-line"><span>  Actual   0.3.2-dev.engine.a8a7e85bedeff595630bd111cc1dc163db9b405adf58e1c997fdc4c65cc5ff84</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Platforms · how each is built here</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Target</span><span>   </span><span class="ansi-bold">Platform</span><span>      </span><span class="ansi-bold">Here</span><span>           </span><span class="ansi-bold">CI runner</span><span>     </span><span class="ansi-bold">Note</span>
+</span><span class="oyzu-ansi-line"><span>project · go/app · linux/x86_64</span>
+</span><span class="oyzu-ansi-line"><span>Executor: host</span>
+</span><span class="oyzu-ansi-line"><span>Profile: development · local dist only (no difference: this builder has no separate optimized build)</span>
+</span><span class="oyzu-ansi-line"><span>Placement: runs on linux/x86_64 · no Docker engine needed · Runs as host processes without a container engine</span>
+</span><span class="oyzu-ansi-line"><span>Stage         Selection  Details                                Why</span>
+</span><span class="oyzu-ansi-line"><span>build         selected   Native commands and report bindings    unbounded: native stage has no</span>
+</span><span class="oyzu-ansi-line"><span>                         resolve during preparation             complete observed reads (last build)</span>
+</span><span class="oyzu-ansi-line"><span>format-check  skipped    fast local build                       unbounded: native stage has no</span>
+</span><span class="oyzu-ansi-line"><span>                                                                complete observed reads (last build)</span>
+</span><span class="oyzu-ansi-line"><span>lint          skipped    fast local build                       unbounded: native stage has no</span>
+</span><span class="oyzu-ansi-line"><span>                                                                complete observed reads (last build)</span>
+</span><span class="oyzu-ansi-line"><span>test          skipped    fast local build                       unbounded: tests may read files at</span>
+</span><span class="oyzu-ansi-line"><span>                                                                run time (last build)</span>
+</span><span class="oyzu-ansi-line"><span>coverage      skipped    fast local build                       reported when the builder answers</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>Platforms · how each is built here</span>
+</span><span class="oyzu-ansi-line"><span>Target   Platform      Here           CI runner     Note</span>
 </span><span class="oyzu-ansi-line"><span>project  linux/x86_64  builds · host  linux x86_64</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Tool requirements · availability not checked</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Requirement</span><span>  </span><span class="ansi-bold">Kind</span><span>             </span><span class="ansi-bold">Constraint</span><span>                      </span><span class="ansi-bold">Targets</span><span>  </span><span class="ansi-bold">Source</span>
-</span><span class="oyzu-ansi-line"><span>oyzu:go      minimum-version  &gt;=1.22                          project  </span><span class="ansi-fg-5">go.mod go</span>
-</span><span class="oyzu-ansi-line"><span>oyzu:go      request          1.22                            project  </span><span class="ansi-fg-5">go.mod (native pin)</span>
-</span><span class="oyzu-ansi-line"><span>oyzu:go      tool             from configuration / native     project  </span><span class="ansi-fg-5">Go compiler for selected </span>
-</span><span class="oyzu-ansi-line"><span>                              manifest                                 </span><span class="ansi-fg-5">build stages</span>
+</span><span class="oyzu-ansi-line"><span>Tool requirements · availability not checked</span>
+</span><span class="oyzu-ansi-line"><span>Requirement  Kind             Constraint                      Targets  Source</span>
+</span><span class="oyzu-ansi-line"><span>oyzu:go      minimum-version  &gt;=1.22                          project  go.mod go</span>
+</span><span class="oyzu-ansi-line"><span>oyzu:go      minimum-version  &gt;=1.22.12                       project  go.mod toolchain</span>
+</span><span class="oyzu-ansi-line"><span>oyzu:go      request          1.22.12                         project  go.mod (native pin)</span>
+</span><span class="oyzu-ansi-line"><span>oyzu:go      tool             from configuration / native     project  Go compiler for selected</span>
+</span><span class="oyzu-ansi-line"><span>                              manifest                                 build stages</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Declared task ordering</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Task</span><span>           </span><span class="ansi-bold">After</span>
+</span><span class="oyzu-ansi-line"><span>Declared task ordering</span>
+</span><span class="oyzu-ansi-line"><span>Task           After</span>
 </span><span class="oyzu-ansi-line"><span>project:build</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Static analysis</span>
+</span><span class="oyzu-ansi-line"><span>Static analysis</span>
 </span><span class="oyzu-ansi-line"><span>analyzed from the working tree · read-only, no project code executed</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Unresolved until preparation</span>
+</span><span class="oyzu-ansi-line"><span>Unresolved until preparation</span>
 </span><span class="oyzu-ansi-line"><span>  • Tool installations and executor prerequisites have not been checked.</span>
 </span><span class="oyzu-ansi-line"><span>  • Application dependency availability and native metadata require preparation.</span>
 </span><span class="oyzu-ansi-line"><span>  • Exact commands, additional native stages, artifacts and report bindings require preparation.</span>
@@ -101,61 +117,78 @@
 </span></code></pre></div>
 <p>The plan shows what a build would do without doing it. Two things to notice:</p>
 <ul>
-<li class="">Oyzu needs Go 1.22 or newer, and it read that from the <code>go 1.22</code> line in <code>go.mod</code>.</li>
+<li class="">Oyzu reads the minimum version from <code>go 1.22</code> and the exact compiler request from <code>toolchain go1.22.12</code>.</li>
 <li class="">A plain <code>oyzu build</code> runs only the <code>build</code> stage. Tests, lint and format checks are skipped to keep local builds fast. <code>--full</code> turns them on.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="4-build-and-check-everything">4. Build and check everything<a href="#4-build-and-check-everything" class="hash-link" aria-label="Direct link to 4. Build and check everything" title="Direct link to 4. Build and check everything" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Building hello</span><span>                linux/x86_64 (host) · local · context local · full</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Building hello                linux/x86_64 (host) · local · context local · full</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Prepare ─────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Configuration           Loaded and validated                           &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Tool versions           Resolved and locked                             5.2s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Source workspaces       1 private target workspaces ready              &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> project dependencies    Ready                                          &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Output bundle           Ready                                          &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Compiler cache          0.0 MiB / 8192 MiB retained budget             &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Source evidence         4 captured/observed entries recorded in 0.00s  &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> CLI identity            Verified in 2.17s                               2.2s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Report preparation      Contracts and bindings ready                   &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-fg-2">✓</span><span> Tools                   1 tool pinned · 1 installed now                22.8s</span>
-</span><span class="oyzu-ansi-line"><span>      go          1.22.12  </span><span class="ansi-fg-2">installed now    </span><span>  </span><span class="ansi-dim">detected from go.mod</span>
+</span><span class="oyzu-ansi-line"><span>-- Prepare ---------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Configuration           Loaded and validated                      0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Tool versions           Resolved and locked                       2.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source workspaces       1 private target workspaces ready        &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      project dependencies    Ready                                     0.5s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Output bundle           Ready                                    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Compiler cache          0.0 MiB / 8192 MiB retained budget       &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source evidence                                                  &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>      4 captured/observed entries recorded in 0.00s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      CLI identity            Verified in 0.16s                         0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Report preparation      Contracts and bindings ready             &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Tools                   1 tool pinned · 0 installed now          &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>      go          1.22.12  already installed  detected from go.mod</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Plugins                 1 plugin · 0 installed now</span>
+</span><span class="oyzu-ansi-line"><span>      oyzu/go 0.1.0  plugin store · project</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>…</span>
+</span><span class="oyzu-ansi-line"><span>-- Facts -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>    Branch           master</span>
+</span><span class="oyzu-ansi-line"><span>    Commit           unknown · no captured Git commit</span>
+</span><span class="oyzu-ansi-line"><span>    Git state        not verified · source digest identifies build inputs</span>
+</span><span class="oyzu-ansi-line"><span>    Source digest    sha256:e52ee6b61ade…</span>
+</span><span class="oyzu-ansi-line"><span>    Version project  0.0.0-dev.gcfac4fb0ec55</span>
+</span><span class="oyzu-ansi-line"><span>    Basis project    no native version; 0.0.0 + source hash</span>
+</span><span class="oyzu-ansi-line"><span>    Kind             snapshot</span>
+</span><span class="oyzu-ansi-line"><span>    Context          local (detected, no CI signal)</span>
+</span><span class="oyzu-ansi-line"><span>    Protection       unknown · not queried</span>
+</span><span class="oyzu-ansi-line"><span>    Release          not eligible for production · project version decisions</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Plan ────────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>            format   lint   test   build</span>
-</span><span class="oyzu-ansi-line"><span>  project   run      run    run    run</span>
+</span><span class="oyzu-ansi-line"><span>-- Selection ---------------------------------------- official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>  reused  go/app  project  oyzu/go 0.1.0 (locked)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">profile  </span><span class="ansi-dim">project · development · local dist only</span>
+</span><span class="oyzu-ansi-line"><span>-- Plan ------------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>            format   lint   test   build   export</span>
+</span><span class="oyzu-ansi-line"><span>  project   run      run    run    run     run</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Build ───────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:30</span><span>  </span><span class="ansi-fg-6">..</span><span> project  build                                            started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:34</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  build         go build -trimpath -buildvcs=fals…  executed     4.4s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:34</span><span>  </span><span class="ansi-fg-6">..</span><span> project  test                                             started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:40</span><span>  still running: project test 5s · 2 waiting</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:41</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  test          go test -json -coverprofile=/tmp/…  executed     6.3s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:41</span><span>  </span><span class="ansi-fg-6">..</span><span> project  lint                                             started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:42</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  lint          go vet ./...                        executed     1.0s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:42</span><span>  </span><span class="ansi-fg-6">..</span><span> project  format-check                                     started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:42</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  format-check  gofmt -l .                          executed    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  profile  project · development · local dist only</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Outputs ─────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  project  dist/project/linux/x86_64/project-0.0.0-dev.ga0bde8664a74  1.9 MB  development</span>
+</span><span class="oyzu-ansi-line"><span>-- Build -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ..      project  build                                       started</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ok      project  build         oyzu-plugin-go --native {&quot;o…  executed     0.3s</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ..      project  lint                                        started</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ok      project  lint          oyzu-plugin-go --native {&quot;o…  executed     0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ..      project  format-check                                started</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ok      project  format-check  gofmt -l .                    executed    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:03  ..      project  export                                      started</span>
+</span><span class="oyzu-ansi-line"><span>  00:04  ok      project  export        oyzu-plugin-go --native {&quot;o…  executed    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:04  ..      project  test                                        started</span>
+</span><span class="oyzu-ansi-line"><span>  00:04  ok      project  test          go test -json -coverprofile…  executed     0.3s</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Outputs ---------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  project  dist/project/linux/x86_64/project-0.0.0-dev.gcfac4fb0ec55  1.9 MB  development</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Checks selected  3 actions · 3 succeeded</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Tests run now  1 passed · 0 failed · 0 skipped (1 collected reports)</span>
 </span><span class="oyzu-ansi-line"><span>Coverage    project: 50.0% (1/2 statements)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">✓ Build succeeded   1 target · 4 executed · 42.2s</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-dim">  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 1410-1792893472911570613-1</span>
+</span><span class="oyzu-ansi-line"><span>ok      Build succeeded   1 target · 5 executed · 4.6s</span>
+</span><span class="oyzu-ansi-line"><span>  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 561934-1793484985021011907-1</span>
 </span></code></pre></div>
 <p>Output shortened. Read it from the top:</p>
 <ul>
-<li class=""><strong>Prepare</strong> loads configuration, picks the Go version and installs it. Here Oyzu downloaded Go 1.22.12, the newest 1.22 release, and checked it against its published digest.</li>
+<li class=""><strong>Prepare</strong> loads configuration, picks the Go version and installs it. Here Go 1.22.12 was already installed. A missing compiler is downloaded and checked against its recorded digest before use.</li>
 <li class=""><strong>Plan</strong> shows which stages run for each target.</li>
-<li class=""><strong>Build</strong> has one row per action, with the real command (<code>go build</code>, <code>go test</code>, <code>go vet</code>, <code>gofmt -l</code>), the result and the time.</li>
-<li class=""><strong>Outputs</strong> lists the program Oyzu built.</li>
+<li class=""><strong>Build</strong> has one row per action, with the command or plugin operation, the result and the time.</li>
+<li class=""><strong>Export</strong> copies the built program to its versioned artifact path. <strong>Outputs</strong> lists that path.</li>
 <li class="">The last lines summarize the tests that ran, coverage and the overall result.</li>
 </ul>
 <p>The build added two things to your project:</p>
@@ -182,35 +215,37 @@
 <div class="oyzu-table-scroll"><table><thead><tr><th>Path</th><th>What it is</th><th>Commit it?</th></tr></thead><tbody><tr><td><code>oyzu.lock</code></td><td>The exact Go version and download digest Oyzu used</td><td>Yes, so everyone gets the same Go</td></tr><tr><td><code>dist/</code></td><td>The output bundle: the program, test reports, logs and a manifest</td><td>No, add it to <code>.gitignore</code></td></tr></tbody></table></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="5-inspect-what-was-recorded">5. Inspect what was recorded<a href="#5-inspect-what-was-recorded" class="hash-link" aria-label="Direct link to 5. Inspect what was recorded" title="Direct link to 5. Inspect what was recorded" translate="no">​</a></h2>
 <p>Every build keeps a record. <code>oyzu history</code> lists them:</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu history"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu history</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Invocation evidence</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Invocation / run</span><span>            </span><span class="ansi-bold">Outcome</span><span>    </span><span class="ansi-bold">Scope</span><span>                  </span><span class="ansi-bold">Started</span>
-</span><span class="oyzu-ansi-line"><span>1410-1792893472911570613-1  succeeded  1 targets · 4 actions  2026-10-25T01:58:23.389005878+00:00</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu history"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu history</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Invocation evidence</span>
+</span><span class="oyzu-ansi-line"><span>Invocation / run              Outcome    Scope                 Started</span>
+</span><span class="oyzu-ansi-line"><span>566674-1793485015732001339-1  succeeded  1 target · 5 actions  2026-10-31T22:16:57.695913939+00:00</span>
+</span><span class="oyzu-ansi-line"><span>561934-1793484985021011907-1  succeeded  1 target · 5 actions  2026-10-31T22:16:28.395324552+00:00</span>
 </span><span class="oyzu-ansi-line"><span>  0 older entries omitted · 0 incomplete bundles</span>
 </span><span class="oyzu-ansi-line"><span>  Next: oyzu history &lt;ID&gt; for a bounded summary and evidence paths</span>
 </span><span class="oyzu-ansi-line"><span>  Recorded observations; this summary does not verify artifact contents.</span>
 </span></code></pre></div>
 <p><code>oyzu inspect</code> checks the bundle in <code>dist/</code>:</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu inspect dist"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu inspect dist</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">✓ Bundle contents verified</span><span> · build </span><span class="ansi-fg-2">succeeded</span>
-</span><span class="oyzu-ansi-line"><span>Run 1410-1792893503389005878 · source sha256:50d4437e1473 · uncommitted changes</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu inspect dist"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu inspect dist</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>✓ Bundle contents verified · build succeeded</span>
+</span><span class="oyzu-ansi-line"><span>Run 566674-1793485017695913939 · source sha256:e52ee6b61ade · uncommitted changes</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Targets</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Target</span><span>   </span><span class="ansi-bold">Builder</span><span>  </span><span class="ansi-bold">Platform</span><span>      </span><span class="ansi-bold">Path</span>
+</span><span class="oyzu-ansi-line"><span>Targets</span>
+</span><span class="oyzu-ansi-line"><span>Target   Builder  Platform      Path</span>
 </span><span class="oyzu-ansi-line"><span>project  go/app   linux/x86_64  .</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Actions</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Action</span><span>                </span><span class="ansi-bold">Status</span><span>     </span><span class="ansi-bold">Exit</span><span>  </span><span class="ansi-bold">Gate</span>
+</span><span class="oyzu-ansi-line"><span>Actions</span>
+</span><span class="oyzu-ansi-line"><span>Action                Status     Exit  Gate</span>
 </span><span class="oyzu-ansi-line"><span>project:build         succeeded  0     required</span>
-</span><span class="oyzu-ansi-line"><span>project:test          succeeded  0     required</span>
 </span><span class="oyzu-ansi-line"><span>project:lint          succeeded  0     required</span>
 </span><span class="oyzu-ansi-line"><span>project:format-check  succeeded  0     required</span>
+</span><span class="oyzu-ansi-line"><span>project:export        succeeded  0     required</span>
+</span><span class="oyzu-ansi-line"><span>project:test          succeeded  0     required</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Artifacts</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Path (under dist/)</span><span>                                   </span><span class="ansi-bold">Kind</span><span>  </span><span class="ansi-bold">Size</span><span>    </span><span class="ansi-bold">Platform</span><span>      </span><span class="ansi-bold">Digest</span>
+</span><span class="oyzu-ansi-line"><span>Artifacts</span>
+</span><span class="oyzu-ansi-line"><span>Path (under dist/)                                   Kind  Size    Platform      Digest</span>
 </span><span class="oyzu-ansi-line"><span>project/linux/x86_64/                                file  1.9 MB  linux/x86_64  sha256:bc329b1b6748</span>
-</span><span class="oyzu-ansi-line"><span>project-0.0.0-dev.ga0bde8664a74</span>
+</span><span class="oyzu-ansi-line"><span>project-0.0.0-dev.gcfac4fb0ec55</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Reports</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Report</span><span>            </span><span class="ansi-bold">Path</span><span>                                       </span><span class="ansi-bold">Status</span>
+</span><span class="oyzu-ansi-line"><span>Reports</span>
+</span><span class="oyzu-ansi-line"><span>Report            Path                                       Status</span>
 </span><span class="oyzu-ansi-line"><span>project:test      project/linux/x86_64/reports/junit.xml     collected</span>
 </span><span class="oyzu-ansi-line"><span>project:coverage  project/linux/x86_64/reports/coverage.out  collected</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
@@ -220,45 +255,139 @@
 <p><code>inspect</code> confirms that every file in <code>dist/</code> is exactly the file the build recorded, by comparing digests. It tells you the bundle is intact. It doesn&#x27;t tell you who built it, and the last line says so.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="6-build-again-and-watch-reuse">6. Build again and watch reuse<a href="#6-build-again-and-watch-reuse" class="hash-link" aria-label="Direct link to 6. Build again and watch reuse" title="Direct link to 6. Build again and watch reuse" translate="no">​</a></h2>
 <p>Run the same command again without changing anything:</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Building hello</span><span>                linux/x86_64 (host) · local · context local · full</span>
-</span><span class="oyzu-ansi-line"><span>…</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Build ───────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  · project · linux/x86_64  Reused from an earlier run · not executed now ·</span>
-</span><span class="oyzu-ansi-line"><span>                            originally ran 2026-10-25T01:58:35Z (key</span>
-</span><span class="oyzu-ansi-line"><span>                            e2c2f69bdfe3)</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">↺</span><span> project  build                                            reused    was 4.4s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">↺</span><span> project  test                                             reused    was 6.3s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">↺</span><span> project  lint                                             reused    was 1.0s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">↺</span><span> project  format-check                                    reused    was &lt;0.1s</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Building hello                linux/x86_64 (host) · local · context local · full</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Outputs ─────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  project  dist/project/linux/x86_64/project-0.0.0-dev.ga0bde8664a74  1.9 MB  development</span>
+</span><span class="oyzu-ansi-line"><span>-- Prepare ---------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Configuration           Loaded and validated                      0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source workspaces       1 private target workspaces ready        &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      project dependencies    Ready                                     0.4s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Output bundle           Ready                                    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Compiler cache          0.0 MiB / 8192 MiB retained budget       &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source evidence                                                  &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>      4 captured/observed entries recorded in 0.00s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      CLI identity            Verified in 0.15s                         0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Report preparation      Contracts and bindings ready             &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Tools                   1 tool pinned · 0 installed now           1.2s</span>
+</span><span class="oyzu-ansi-line"><span>      go          1.22.12  already installed  detected from go.mod</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Plugins                 1 plugin · 0 installed now</span>
+</span><span class="oyzu-ansi-line"><span>      oyzu/go 0.1.0  plugin store · project</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Facts -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>    Branch           master</span>
+</span><span class="oyzu-ansi-line"><span>    Commit           unknown · no captured Git commit</span>
+</span><span class="oyzu-ansi-line"><span>    Git state        not verified · source digest identifies build inputs</span>
+</span><span class="oyzu-ansi-line"><span>    Source digest    sha256:e52ee6b61ade…</span>
+</span><span class="oyzu-ansi-line"><span>    Version project  0.0.0-dev.gcfac4fb0ec55</span>
+</span><span class="oyzu-ansi-line"><span>    Basis project    no native version; 0.0.0 + source hash</span>
+</span><span class="oyzu-ansi-line"><span>    Kind             snapshot</span>
+</span><span class="oyzu-ansi-line"><span>    Context          local (detected, no CI signal)</span>
+</span><span class="oyzu-ansi-line"><span>    Protection       unknown · not queried</span>
+</span><span class="oyzu-ansi-line"><span>    Release          not eligible for production · project version decisions</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Selection ---------------------------------------- official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>  reused  go/app  project  oyzu/go 0.1.0 (locked)</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Plan ------------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>            format   lint   test   build   export</span>
+</span><span class="oyzu-ansi-line"><span>  project   run      run    run    run     run</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>  profile  project · development · local dist only</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Build -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  reused  project  build                                      reused    was 0.3s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  reused  project  lint                                       reused    was 0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  reused  project  format-check                              reused    was &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  reused  project  export                                    reused    was &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  test                                        started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ok      project  test          go test -json -coverprofile…  executed     0.3s</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Outputs ---------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  project  dist/project/linux/x86_64/project-0.0.0-dev.gcfac4fb0ec55  1.9 MB  development</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Checks selected  3 actions · 3 succeeded</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>Reused test evidence  1 passed · 0 failed · 0 skipped (1 collected reports; not run now)</span>
-</span><span class="oyzu-ansi-line"><span>Coverage    project: 50.0% (1/2 statements) · reused from an earlier run, not run now</span>
-</span><span class="oyzu-ansi-line"><span>  Evidence origin  local · producer 1410-1792893503389005878 · completed 2026-10-25T01:58:35Z</span>
+</span><span class="oyzu-ansi-line"><span>Tests run now  1 passed · 0 failed · 0 skipped (1 collected reports)</span>
+</span><span class="oyzu-ansi-line"><span>Coverage    project: 50.0% (1/2 statements)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">✓ Build succeeded   1 target · 4 reused · 1.5s</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-dim">  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 4502-1792893522584342917-1</span>
+</span><span class="oyzu-ansi-line"><span>ok      Build succeeded   1 target · 1 executed · 4 reused · 2.6s</span>
+</span><span class="oyzu-ansi-line"><span>  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 570597-1793485042781277948-1</span>
 </span></code></pre></div>
-<p>Output shortened. Nothing changed, so Oyzu reused the earlier results instead of running the commands again: 1.5 seconds instead of 42. Each reused row shows how long the original run took, and the test summary says <strong>not run now</strong>, so you always know whether tests actually ran. See <a class="" href="/docs/get-started/results">Read your build results</a>.</p>
+<p>The compile, lint, format and export results were reused. Native Go tests ran
+again: their runtime file reads are unbounded. The output keeps executed work
+separate from reused results. Other builders and execution paths can reuse test
+reports when their cache contracts permit it; those reports are labelled as not
+run now. See <a class="" href="/docs/get-started/results">Read your build results</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="7-break-something-and-read-the-failure">7. Break something and read the failure<a href="#7-break-something-and-read-the-failure" class="hash-link" aria-label="Direct link to 7. Break something and read the failure" title="Direct link to 7. Break something and read the failure" translate="no">​</a></h2>
 <p>In <code>main.go</code>, change <code>&quot;Hello, &quot;</code> to <code>&quot;Hi, &quot;</code> and build again:</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Building hello</span><span>                linux/x86_64 (host) · local · context local · full</span>
-</span><span class="oyzu-ansi-line"><span>…</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Build ───────────────────────────────────────────────────────────────────────</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">..</span><span> project  build                                            started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  build         go build -trimpath -buildvcs=fals…  executed     0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">..</span><span> project  test                                             started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-1">✗</span><span> project  test          go test -json -coverprofile=/tmp/…  failed       0.2s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">..</span><span> project  lint                                             started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  lint          go vet ./...                        executed    &lt;0.1s</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-6">..</span><span> project  format-check                                     started</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-dim">00:01</span><span>  </span><span class="ansi-fg-2">✓</span><span> project  format-check  gofmt -l .                          executed    &lt;0.1s</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu build --full"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu build --full</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Building hello                linux/x86_64 (host) · local · context local · full</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">── Failure: project · test ─────────────────────────────────────────────────────</span>
+</span><span class="oyzu-ansi-line"><span>-- Prepare ---------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Configuration           Loaded and validated                      0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source workspaces       1 private target workspaces ready        &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      project dependencies    Ready                                     0.3s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Output bundle           Ready                                    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Compiler cache          0.0 MiB / 8192 MiB retained budget       &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Source evidence                                                  &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>      4 captured/observed entries recorded in 0.00s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      CLI identity            Verified in 0.15s                         0.2s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Report preparation      Contracts and bindings ready             &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Tools                   1 tool pinned · 0 installed now           1.2s</span>
+</span><span class="oyzu-ansi-line"><span>      go          1.22.12  already installed  detected from go.mod</span>
+</span><span class="oyzu-ansi-line"><span>  ok      Plugins                 1 plugin · 0 installed now</span>
+</span><span class="oyzu-ansi-line"><span>      oyzu/go 0.1.0  plugin store · project</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Facts -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>    Branch           master</span>
+</span><span class="oyzu-ansi-line"><span>    Commit           unknown · no captured Git commit</span>
+</span><span class="oyzu-ansi-line"><span>    Git state        not verified · source digest identifies build inputs</span>
+</span><span class="oyzu-ansi-line"><span>    Source digest    sha256:35bfe2ac4531…</span>
+</span><span class="oyzu-ansi-line"><span>    Version project  0.0.0-dev.g1034ca2c964b</span>
+</span><span class="oyzu-ansi-line"><span>    Basis project    no native version; 0.0.0 + source hash</span>
+</span><span class="oyzu-ansi-line"><span>    Kind             snapshot</span>
+</span><span class="oyzu-ansi-line"><span>    Context          local (detected, no CI signal)</span>
+</span><span class="oyzu-ansi-line"><span>    Protection       unknown · not queried</span>
+</span><span class="oyzu-ansi-line"><span>    Release          not eligible for production · project version decisions</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Selection ---------------------------------------- official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>  reused  go/app  project  oyzu/go 0.1.0 (locked)</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Plan ------------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>            format   lint   test   build   export</span>
+</span><span class="oyzu-ansi-line"><span>  project   run      run    run    run     run</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>  profile  project · development · local dist only</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Build -----------------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  build                                       started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ok      project  build         oyzu-plugin-go --native {&quot;o…  executed     0.3s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  lint                                        started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ok      project  lint          oyzu-plugin-go --native {&quot;o…  executed     0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  format-check                                started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ok      project  format-check  gofmt -l .                    executed    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  export                                      started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ok      project  export        oyzu-plugin-go --native {&quot;o…  executed    &lt;0.1s</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  ..      project  test                                        started</span>
+</span><span class="oyzu-ansi-line"><span>  00:02  FAIL    project  test          go test -json -coverprofile…  failed       0.3s</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>-- Failure: project · test -----------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  native-action-failed</span>
+</span><span class="oyzu-ansi-line"><span>  Native command exited 1</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884526881Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Test&quot;:&quot;TestGreeting&quot;,&quot;Output&quot;:&quot;=== RUN   TestGreeting\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884594703Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Test&quot;:&quot;TestGreeting&quot;,&quot;Output&quot;:&quot;    main_test.go:7: unexpected greeting: \&quot;Hi, Oyzu!\&quot;\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884604653Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Test&quot;:&quot;TestGreeting&quot;,&quot;Output&quot;:&quot;--- FAIL: TestGreeting (0.00s)\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884609883Z&quot;,&quot;Action&quot;:&quot;fail&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Test&quot;:&quot;TestGreeting&quot;,&quot;Elapsed&quot;:0}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884615753Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Output&quot;:&quot;FAIL\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884618523Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Output&quot;:&quot;coverage: 50.0% of statements\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884701965Z&quot;,&quot;Action&quot;:&quot;output&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Output&quot;:&quot;FAIL\texample.com/oyzu/hello\t0.003s\n&quot;}</span>
+</span><span class="oyzu-ansi-line"><span>  {&quot;Time&quot;:&quot;2026-10-31T22:19:07.884712775Z&quot;,&quot;Action&quot;:&quot;fail&quot;,&quot;Package&quot;:&quot;example.com/oyzu/</span>
+</span><span class="oyzu-ansi-line"><span>  hello&quot;,&quot;Elapsed&quot;:0.003}</span>
 </span><span class="oyzu-ansi-line"><span>  --- FAIL: TestGreeting (0.00s)</span>
 </span><span class="oyzu-ansi-line"><span>  FAIL example.com/oyzu/hello · TestGreeting</span>
 </span><span class="oyzu-ansi-line"><span>  FAIL</span>
@@ -267,7 +396,8 @@
 </span><span class="oyzu-ansi-line"><span>  FAIL example.com/oyzu/hello</span>
 </span><span class="oyzu-ansi-line"><span>  Exit  1</span>
 </span><span class="oyzu-ansi-line"><span>  Log   dist/logs/native-2e05b5df14bb75bffc73cd4b76b6b9f01ba018113cbfb2f6ec747663d1de7a60.stderr</span>
-</span><span class="oyzu-ansi-line"><span>  Next  oyzu build project --full   re-run only this target</span>
+</span><span class="oyzu-ansi-line"><span>  Next  Open the action&#x27;s retained stderr/stdout to inspect the native cause, correct it, then</span>
+</span><span class="oyzu-ansi-line"><span>        rerun the selected work.</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Checks selected  3 actions · 2 succeeded · 1 failed</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
@@ -280,12 +410,16 @@
 </span><span class="oyzu-ansi-line"><span>  Coverage     50.0% of statements (1/2)</span>
 </span><span class="oyzu-ansi-line"><span>  Acceptance   rejected · required evidence is absent, invalid or failing</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-1 ansi-bold">✗ Build failed   1 failed · 3 succeeded · 1.8s</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-dim">  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 4551-1792893524068393468-1</span>
+</span><span class="oyzu-ansi-line"><span>-- Warnings (1) ----------------------------------------------------------------</span>
+</span><span class="oyzu-ansi-line"><span>  warn    oyzu  BUILD_STOP_REQUESTED: Stopped after project:test failed; waiting for running steps</span>
+</span><span class="oyzu-ansi-line"><span>                to stop.</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>FAIL    Build failed · project:test   1 failed · 4 succeeded · 3.0s</span>
+</span><span class="oyzu-ansi-line"><span>  Details  dist/manifest.json · dist/logs/events.jsonl · invocation 580765-1793485145029791481-1</span>
 </span><span class="oyzu-ansi-line"><span>  Note     Local binaries were not updated; existing binaries are from the previous successful</span>
 </span><span class="oyzu-ansi-line"><span>           build.</span>
 </span></code></pre></div>
-<p>Output shortened. The command exits with status 1. The failing test gets its own section with the test output, the exit code, the full log file and a command that re-runs only this target. The other checks still ran. Because the build failed, Oyzu kept the program from your last successful build.</p>
+<p>Output shortened. The command exits with status 1. The failing test gets its own section with the test output, the exit code, the full log file and a next step for correcting the native failure. The other selected actions completed. Because the build failed, Oyzu kept the program from your last successful build.</p>
 <p>Change <code>&quot;Hi, &quot;</code> back to <code>&quot;Hello, &quot;</code> and the build passes again.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-you-learned">What you learned<a href="#what-you-learned" class="hash-link" aria-label="Direct link to What you learned" title="Direct link to What you learned" translate="no">​</a></h2>
 

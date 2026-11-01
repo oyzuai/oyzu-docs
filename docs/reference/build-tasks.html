@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build tasks, stages and hooks | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-tasks"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build tasks, stages and hooks | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-tasks.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-tasks"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-tasks" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build tasks, stages and hooks","item":"https://docs.oyzu.ai/docs/reference/build-tasks"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -484,10 +484,8 @@ invocation does not stage build artifacts. Other selected hooks and dependencies
 still run. A full isolated build continues to refuse hooks that read artifacts.</p>
 <p>Successful actions record their enforced sandbox controls. A failed or
 interrupted action currently omits those fields, so its manifest alone cannot
-establish that action&#x27;s isolation. Qualifying those cases requires retained
-execution logs and trusted observations of the actual runtime processes.
-Cancellation qualification also checks process cleanup; pool jobs include the
-outer job container&#x27;s teardown in that check.</p>
+establish that action&#x27;s isolation. Keep the execution logs when diagnosing interruption or cancellation; the failed
+action&#x27;s manifest does not record all runtime controls.</p>
 <p>A qualified target task uses that target&#x27;s existing builder/image. An unqualified
 root task needs exactly one target, or must be reached from a qualified task
 whose owner it can inherit. Missing or ambiguous ownership is refused before
@@ -507,8 +505,8 @@ require admitted native JVM model preparation before they can provide native
 test commands and JUnit/coverage duties; legacy metadata or a placeholder is
 insufficient. Windows wrapper commands such as <code>mvnw.cmd</code> and <code>gradlew.bat</code> are
 never substituted into a Linux captured task. The current Node provider supplies
-captured <code>test</code> and <code>build</code> operations; their selection/report lowering and
-authored custom tasks are checked separately from runtime qualification. Use
+captured <code>test</code> and <code>build</code> operations; report collection and authored task behavior still depend on the selected
+operation and isolation backend. Use
 <code>oyzu build --isolated</code> for the full captured build lifecycle. Ordinary host
 tasks are unchanged.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="live-development-task-output">Live development task output<a href="#live-development-task-output" class="hash-link" aria-label="Direct link to Live development task output" title="Direct link to Live development task output" translate="no">​</a></h2>

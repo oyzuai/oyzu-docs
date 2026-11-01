@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rust applications, libraries and workspaces | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/rust"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust applications, libraries and workspaces | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/rust"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust applications, libraries and workspaces","item":"https://docs.oyzu.ai/docs/reference/rust"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 <p>Oyzu builds Cargo packages and workspaces with no Oyzu configuration. It finds <code>Cargo.toml</code>, runs Cargo, and collects binaries, crate archives, test reports and coverage into a <a class="" href="/docs/reference/build-bundles">build bundle</a>. Use this page for what the Rust builder runs, the options it accepts, and how host builds differ from isolated (container) builds.</p>
 <blockquote>
 <p><strong>Note:</strong> The Rust builder is experimental. Private Cargo registries, private Git sources and Git LFS aren&#x27;t supported in isolated builds. See <a href="#limits" class="">Limits</a>.</p>
+</blockquote>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-start">Quick start<a href="#quick-start" class="hash-link" aria-label="Direct link to Quick start" title="Direct link to Quick start" translate="no">​</a></h2>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --plan          # preview the stages and tool requirements</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build                 # build for this machine</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --full          # also run tests, doctests, Clippy and rustfmt</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu inspect dist          # check the bundle</span><br></div></code></pre></div></div>
@@ -46,8 +50,7 @@ and engine admission; a build never silently changes a locked selection.</p>
 to native cache identity. Keep that mask unchanged across cached builds with
 this core: after a mask change, cached outputs can retain stale permissions.
 It also does not preserve every authored directory mode in native source
-projections. Changed-mask reuse and custom directory-mode fidelity are outside
-this release&#x27;s qualification.</p>
+projections. Changed-mask reuse and custom directory-mode fidelity are unsupported by that release.</p>
 <p>Native builds retain Cargo compiler state for incremental work, but discard
 integration-test scratch under <code>tmp/</code> and <code>&lt;target-triple&gt;/tmp/</code> before measuring
 the retained cache. See <a class="" href="/docs/reference/local-builds#native-compiler-cache-retention">native compiler cache retention</a>

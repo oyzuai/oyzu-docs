@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust) | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-index"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust) | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-index.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-index.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-index"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-index" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-index" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The public tool index (toolIndex, tools check --catalog, tools migrate, tools trust)","item":"https://docs.oyzu.ai/docs/reference/tool-index"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -27,6 +27,10 @@ OpenPGP verification belongs to the non-shipping producer; signing an index
 alone does not upgrade publisher evidence. The public producer must integrate
 the publisher-verification step and publish those verdicts before clients can
 claim stronger evidence for its records.</p>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="oyzu-provider-coverage">Oyzu provider coverage<a href="#oyzu-provider-coverage" class="hash-link" aria-label="Direct link to Oyzu provider coverage" title="Direct link to Oyzu provider coverage" translate="no">​</a></h2>
 <p>The index can carry Oyzu&#x27;s own providers: Java, Node, Go, Python, Maven, Gradle, Helm, kubectl, k3d, Liquibase, Tailscale, npm, pnpm, Yarn and Rust.</p>
 <ul>
@@ -332,7 +336,7 @@ claim stronger evidence for its records.</p>
 <li class="">A release published in the last hour may not be seen until the hour is up. There is no flag to force a fetch.</li>
 <li class="">If a new release is published between Oyzu&#x27;s two downloads, they won&#x27;t verify together, and the cached copy is used (with a warning) until the next run.</li>
 <li class="">The built-in trusted root is never refreshed automatically. Update Oyzu or run <code>oyzu tools trust refresh</code>. <code>tools evidence</code> always uses the built-in root.</li>
-<li class="">There is no minimum-release-age rule.</li>
+<li class="">Moving defaults use a release cool-down. Exact versions can be selected explicitly; see <a class="" href="/docs/reference/tool-lock-inspection#publisher-evidence-and-release-age">release age</a>.</li>
 <li class="">Supported on Linux x86-64 only.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>

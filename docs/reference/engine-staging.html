@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Engine staging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/engine-staging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Engine staging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/engine-staging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/engine-staging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/engine-staging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/engine-staging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/engine-staging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Engine staging","item":"https://docs.oyzu.ai/docs/reference/engine-staging"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -28,6 +28,10 @@ A Linux <code>oyzu</code> mounts itself. On Windows and macOS, <code>oyzu</code>
 package that pairs it with the Linux <code>oyzu</code> built from the same source; see
 <a href="#installing-this-oyzu-with-its-linux-member" class="">Installing this oyzu with its Linux member</a>.
 The install scripts do this for releases.</p>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-start">Quick start<a href="#quick-start" class="hash-link" aria-label="Direct link to Quick start" title="Direct link to Quick start" translate="no">​</a></h2>
 <p>Install a package you built and verified:</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu engine </span><span class="token function" style="color:#d73a49">install</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--identity</span><span class="token plain"> </span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">BUILD_ID</span><span class="token operator" style="color:#393A34">&gt;</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--archive</span><span class="token plain"> ./engine.tar.gz </span><span class="token parameter variable" style="color:#36acaa">--sha256</span><span class="token plain"> sha256:</span><span class="token operator" style="color:#393A34">&lt;</span><span class="token plain">HEX</span><span class="token operator" style="color:#393A34">&gt;</span><br></div></code></pre></div></div>
@@ -244,6 +248,9 @@ features, shared profile settings and compiler release. The identity does not
 cover user <code>[patch]</code> overrides or source replacement, or C toolchain inputs; it is
 not a source attestation. Each member&#x27;s executable digest separately binds its
 bytes. Release members use their shared explicit release stamp.</p>
+<p>Local package inventories retain native Cargo manifest path spelling and the
+compiling invocation&#x27;s working directory/configuration. Captured file identities
+remain canonical, including on Windows.</p>
 <p>Development package composition checks Cargo&#x27;s aggregate binary dep-info against
 the actual files hashed by the identity capture. That record covers the binary
 and its linked workspace crates. Compiler/sysroot and Cargo registry sources have

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Docker image inputs and offline builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/docker-images"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Docker image inputs and offline builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/docker-images.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/docker-images.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/docker-images"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/docker-images" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/docker-images" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Docker image inputs and offline builds","item":"https://docs.oyzu.ai/docs/reference/docker-images"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -22,6 +22,10 @@ also forbids network acquisition during preparation. That lane does not support
 offline Docker preparation yet and refuses before any action, even with cached
 declared fetches. Repeat an online <code>oyzu build --isolated</code> to reuse verified fetch
 bytes.</p>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-each-stage-reads">What each stage reads<a href="#what-each-stage-reads" class="hash-link" aria-label="Direct link to What each stage reads" title="Direct link to What each stage reads" translate="no">​</a></h2>
 <p>The Docker plugin declares the following source contracts for captured builds:</p>
 
@@ -126,28 +130,11 @@ workers: those builds still run every action.</p>
 <p>After a BuildKit action succeeds, Oyzu waits up to 30 seconds for Docker to confirm that the worker container is gone. If Docker does not, the build fails and its output is not accepted. Check the Docker daemon and build again.</p>
 <p>If a build stops with <code>cannot verify the BuildKit worker&#x27;s AppArmor boundary</code>, Docker did not report its security options in the expected form (<code>docker info --format &#x27;{{json .SecurityOptions}}&#x27;</code> should return a list of strings). Wait until the Docker engine is fully running and try again.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="artifact-target-and-worker-platform">Artifact target and worker platform<a href="#artifact-target-and-worker-platform" class="hash-link" aria-label="Direct link to Artifact target and worker platform" title="Direct link to Artifact target and worker platform" translate="no">​</a></h3>
-<p>An image can target a different platform than the worker when building it runs no target code. For example, a Dockerfile with only <code>FROM scratch</code> and <code>COPY</code> can build an arm64 image on an amd64 worker:</p>
-<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">image</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> docker/image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">platforms</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">linux/arm64</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Setting</th><th>Values</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>platforms</code></td><td><code>linux/x86_64</code>, <code>linux/arm64</code> (<code>linux/amd64</code> and <code>linux/aarch64</code> are accepted; no ABI)</td><td>The worker&#x27;s platform</td><td>The image&#x27;s target platform. Variant suffixes and other platforms fail.</td></tr></tbody></table></div>
+<p>Image targets currently support <code>linux/x86_64</code> only (<code>linux/amd64</code> is an alias).
+ARM64 targets and multi-architecture images are unsupported. Do not use retained
+ARM64 identifiers or metadata as a supported build configuration.</p>
+<div class="language-yaml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-yaml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token key atrule" style="color:#00a4db">builds</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token key atrule" style="color:#00a4db">image</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">uses</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> docker/image</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">    </span><span class="token key atrule" style="color:#00a4db">platforms</span><span class="token punctuation" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token plain">linux/x86_64</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
 <ul>
-<li class="">List several platforms (<code>platforms: [linux/x86_64, linux/arm64]</code>) to build one image for each. Each has its own versioned archive and reports. A complete set also produces an <a class="" href="/docs/reference/oci-indices">OCI index</a>. See <a class="" href="/docs/reference/runtime-matrices#platform-requirements-and-producer-selection">matrix builds</a>.</li>
 <li class="">Oyzu installs no image or emulator for you.</li>
 <li class="">A base image must match the platform of the stage that uses it: the target platform, or the worker&#x27;s platform for a <code>FROM --platform=$BUILDPLATFORM</code> stage. A base with the wrong architecture fails before export, even if the tag matches.</li>
 <li class="">A target built from another target&#x27;s output (see <a class="" href="/docs/reference/target-workspaces#artifact-placement">target workspaces</a>) must have the same OS and architecture as its consumer. Setting the image&#x27;s platform sets the producers&#x27; platforms too.</li>
@@ -228,7 +215,7 @@ destinations alone do not change the working directory.</p>
 <li class="">Classic Docker stores that expose only a config ID cannot be used for local capture.</li>
 <li class="">If Docker is missing or not running, you pass <code>--no-docker</code>, or the image is not in the local store, Oyzu pulls from the registry instead.</li>
 </ul>
-<p>Registry pulls use the OCI Distribution API by digest, so a moved tag can never change the content. For an index, Oyzu uses the entry for the target platform (<code>linux/amd64</code> or <code>linux/arm64</code>).</p>
+<p>Registry pulls use the OCI Distribution API by digest, so a moved tag can never change the content. For an index, Oyzu uses the entry for the target platform (<code>linux/amd64</code>).</p>
 <ul>
 <li class="">Verified content is kept in your image cache: <code>%LocalAppData%\Oyzu\cache\images</code> on Windows, <code>~/Library/Caches/Oyzu/images</code> on macOS, <code>$XDG_CACHE_HOME/oyzu/images</code> or <code>~/.cache/oyzu/images</code> on Linux. The project&#x27;s <code>cache.dir</code> does not move it.</li>
 <li class="">Later builds trust content already in the cache. Offline registry builds need it cached. Local images can be used offline.</li>
@@ -322,7 +309,7 @@ still requires the admitted plugin package and runtime described above.</p>
 <ul>
 <li class="">A global declaration can replace the target defaults. For example, <code>ARG BASE=registry.example/runtime:${TARGETARCH}</code> selects an architecture-specific image without reading the host architecture.</li>
 <li class="">These values do not let you run foreign-platform code. <code>RUN</code> still needs matching target and worker platforms.</li>
-<li class="">The common cross-compile pattern works: <code>FROM --platform=$BUILDPLATFORM golang AS build</code>, then <code>COPY --from=build</code> into a target-platform stage with no <code>RUN</code>. It builds an arm64 image on an amd64 worker. <code>RUN</code> in the target-platform stage still fails before any action runs.</li>
+<li class="">The common cross-compile pattern works: <code>FROM --platform=$BUILDPLATFORM golang AS build</code>, then <code>COPY --from=build</code> into a target-platform stage with no <code>RUN</code>. Foreign ARM64 image targets remain unsupported. <code>RUN</code> in the target-platform stage still fails before any action runs.</li>
 <li class="">Hadolint&#x27;s rules about explicit <code>FROM --platform</code> flags still apply.</li>
 <li class="">You cannot override build arguments on the command line, and variables in stage-level mounts are not expanded.</li>
 </ul>
@@ -400,7 +387,7 @@ native <code>task-command</code> operation.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="published-execution-images">Published execution images<a href="#published-execution-images" class="hash-link" aria-label="Direct link to Published execution images" title="Direct link to Published execution images" translate="no">​</a></h2>
 <p>When a build needs one of Oyzu&#x27;s execution images and your Docker engine doesn&#x27;t have it, Oyzu pulls it by the digest pinned in <code>src/executor/published_images.json</code> and tags it with the name the build expects. The registry verifies the content, so a moved tag can&#x27;t swap in a different image. No login or credentials are involved.</p>
 <ul>
-<li class="">Pinned today: the <a class="" href="/docs/reference/execution-image">base execution image</a> <code>oyzu-execution/base:1</code>, from <code>ghcr.io/oyzuai/oyzu-execution/base</code> (linux/amd64 and linux/arm64), and the BuildKit worker <code>oyzu-execution/buildkit:0.34.0</code>, from <code>docker.io/moby/buildkit</code> (0.34.0 rootless).</li>
+<li class="">Pinned today: the <a class="" href="/docs/reference/execution-image">base execution image</a> <code>oyzu-execution/base:1</code>, from <code>ghcr.io/oyzuai/oyzu-execution/base</code> (linux/amd64 supported), and the BuildKit worker <code>oyzu-execution/buildkit:0.34.0</code>, from <code>docker.io/moby/buildkit</code> (0.34.0 rootless).</li>
 <li class="">Dockerfile base images and <code>--image</code> references you bring are never pulled.</li>
 <li class="">An image already on your machine is used as is, never replaced.</li>
 <li class="">Set <code>OYZU_NO_TOOLCHAIN_PULL=1</code> to forbid pulling, for example on an air-gapped host. A missing image then fails with a message that says how to provide it.</li>

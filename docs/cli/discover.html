@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">oyzu discover | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/cli/discover"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="oyzu discover | Oyzu documentation"><meta data-rh="true" name="description" content="oyzu discover shows the targets Oyzu found, which builder handles each and why, and can declare them in build.yaml or check that build.yaml is complete."><meta data-rh="true" property="og:description" content="oyzu discover shows the targets Oyzu found, which builder handles each and why, and can declare them in build.yaml or check that build.yaml is complete."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/cli/discover"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/discover" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/discover" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"oyzu discover","item":"https://docs.oyzu.ai/docs/cli/discover"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -37,19 +37,22 @@
 <p>When a <code>build.yaml</code> exists, only its builds are built. An entry can leave out <code>uses</code> when exactly one builder recognizes its folder. Folders that discovery recognizes but <code>build.yaml</code> leaves out are listed, never built. Inside Git, only tracked files count.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="examples">Examples<a href="#examples" class="hash-link" aria-label="Direct link to Examples" title="Direct link to Examples" translate="no">​</a></h2>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-what-oyzu-found">See what Oyzu found<a href="#see-what-oyzu-found" class="hash-link" aria-label="Direct link to See what Oyzu found" title="Direct link to See what Oyzu found" translate="no">​</a></h3>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu discover"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu discover</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">1 target · 6 tasks discovered without running project code</span>
-</span><span class="oyzu-ansi-line"><span>Project root: …\hello</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu discover"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu discover</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>1 target · 6 tasks discovered without running project code</span>
+</span><span class="oyzu-ansi-line"><span>Project root: ~/hello</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">project · go/app</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Chosen by        </span><span>  detected from project files</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Location         </span><span>  .</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Manager          </span><span>  go</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Version          </span><span>  0.0.0</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Part of builds   </span><span>  build, format-check, lint, test</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">Development tasks</span><span>  format, install</span>
+</span><span class="oyzu-ansi-line"><span>project · go/app</span>
+</span><span class="oyzu-ansi-line"><span>  Chosen by          detected from project files</span>
+</span><span class="oyzu-ansi-line"><span>  Location           .</span>
+</span><span class="oyzu-ansi-line"><span>  Manager            go</span>
+</span><span class="oyzu-ansi-line"><span>  Version            0.0.0</span>
+</span><span class="oyzu-ansi-line"><span>  Part of builds     build, format-check, lint, test</span>
+</span><span class="oyzu-ansi-line"><span>  Development tasks  format, install</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Target names are what `oyzu build &lt;target&gt;` accepts.</span>
-</span><span class="oyzu-ansi-line"><span>…</span>
+</span><span class="oyzu-ansi-line"><span>Next steps:</span>
+</span><span class="oyzu-ansi-line"><span>  oyzu run list      every task and the command it runs</span>
+</span><span class="oyzu-ansi-line"><span>  oyzu build --plan  preview the build stages without running them</span>
+</span><span class="oyzu-ansi-line"><span>Use --json for the complete discovery record, including each task&#x27;s environment and dependencies.</span>
 </span></code></pre></div>
 <p><strong>Part of builds</strong> are the stages <code>oyzu build</code> runs for this target. <strong>Development tasks</strong> are available only through <code>oyzu run</code>.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="declare-the-builds-in-buildyaml">Declare the builds in build.yaml<a href="#declare-the-builds-in-buildyaml" class="hash-link" aria-label="Direct link to Declare the builds in build.yaml" title="Direct link to Declare the builds in build.yaml" translate="no">​</a></h3>

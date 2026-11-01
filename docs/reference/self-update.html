@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Updating oyzu itself | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/self-update"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Updating oyzu itself | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/self-update.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/self-update.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/self-update"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/self-update" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/self-update" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Updating oyzu itself","item":"https://docs.oyzu.ai/docs/reference/self-update"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 <p><code>oyzu self</code> keeps the <code>oyzu</code> you installed up to date. It follows a release channel (stable, beta or nightly), installs the newest version of that channel, installs one exact version on request, and rolls back to the version you had before. Every download is checked against the signed evidence oyzu&#x27;s own releases carry before it replaces anything.</p>
 <blockquote>
 <p><strong>Note:</strong> Releases are previews. They are published on the public <a href="https://github.com/oyzuai/oyzu-releases" target="_blank" rel="noopener noreferrer" class=""><code>oyzuai/oyzu-releases</code></a> repository, which <code>oyzu self</code> reads by default, so you need no account or token. Nightly builds and pull request builds are not published yet.</p>
+</blockquote>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="commands">Commands<a href="#commands" class="hash-link" aria-label="Direct link to Commands" title="Direct link to Commands" translate="no">​</a></h2>
 
@@ -293,8 +297,8 @@ unchanged.</p>
 <p>All of them exit with status 1.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="platforms-and-limits">Platforms and limits<a href="#platforms-and-limits" class="hash-link" aria-label="Direct link to Platforms and limits" title="Direct link to Platforms and limits" translate="no">​</a></h2>
 <ul>
-<li class="">Linux, macOS and Windows on x86_64 and arm64 use the same rename swap. The flow is tested on Linux; Windows and macOS are not tested yet.</li>
-<li class="">An x86_64 <code>oyzu</code> running under emulation (Rosetta, or x64 on Windows ARM64) updates to the x86_64 build; reinstall with the install script to move to the native one.</li>
+<li class="">Linux, macOS and Windows on x86_64 use the same rename swap. The flow is tested on Linux; Windows and macOS are not tested yet.</li>
+<li class="">ARM64 hosts, including x64 executables running under emulation, are unsupported. Existing architecture detection and old release assets do not establish support.</li>
 <li class="">The channel list reads the newest 30 releases (100 with <code>versions --all</code>).</li>
 <li class="">Release signing uses oyzu&#x27;s self-managed release keys, not keyless Sigstore. Changing those keys needs a release, signed with the old keys, whose binary carries the new ones.</li>
 <li class="">oyzu 0.2.0 predates <code>oyzu self</code>, so after installing it the command is missing. Run <code>oyzu.previous self rollback</code> (Windows: <code>oyzu.previous.exe self rollback</code>) from the same folder to go back, or reinstall with the install script.</li>

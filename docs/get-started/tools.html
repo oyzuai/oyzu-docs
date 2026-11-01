@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Manage your tools | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/get-started/tools"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Manage your tools | Oyzu documentation"><meta data-rh="true" name="description" content="See which tools a project needs, lock exact versions for the whole team and run commands with them."><meta data-rh="true" property="og:description" content="See which tools a project needs, lock exact versions for the whole team and run commands with them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/get-started/tools"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/get-started/tools" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/get-started/tools" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Manage your tools","item":"https://docs.oyzu.ai/docs/get-started/tools"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -21,39 +21,33 @@
 </ol>
 <p>Write each version in one place only. If a native file already says it, leave it out of <code>oyzu.toml</code>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-what-a-project-needs">See what a project needs<a href="#see-what-a-project-needs" class="hash-link" aria-label="Direct link to See what a project needs" title="Direct link to See what a project needs" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu pin --dry-run"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu pin --dry-run</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Build requirements · preview</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu pin --dry-run"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu pin --dry-run</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Build requirements · preview</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Consolidated across 1 build target(s).</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Tool requirements</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Requirement</span><span>  </span><span class="ansi-bold">Requested version</span><span>  </span><span class="ansi-bold">Needed for</span><span>            </span><span class="ansi-bold">Installation support</span><span>  </span><span class="ansi-bold">Applies to</span>
-</span><span class="oyzu-ansi-line"><span>oyzu:go      1.22               Declared requirement  Oyzu                  All targets</span>
+</span><span class="oyzu-ansi-line"><span>Tool requirements</span>
+</span><span class="oyzu-ansi-line"><span>Requirement  Requested version  Needed for            Installation support  Applies to</span>
+</span><span class="oyzu-ansi-line"><span>oyzu:go      1.22.12            Declared requirement  Oyzu                  All targets</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Executor prerequisites</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Requirement</span><span>  </span><span class="ansi-bold">Needed for</span><span>  </span><span class="ansi-bold">Availability</span><span>  </span><span class="ansi-bold">Applies to</span>
+</span><span class="oyzu-ansi-line"><span>Executor prerequisites</span>
+</span><span class="oyzu-ansi-line"><span>Requirement  Needed for  Availability  Applies to</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Check tools are required when their checks are enabled by the build or policy.</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Tool execution platform coverage</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">OS</span><span>     </span><span class="ansi-bold">Architecture</span><span>  </span><span class="ansi-bold">ABI</span>
+</span><span class="oyzu-ansi-line"><span>Tool execution platform coverage</span>
+</span><span class="oyzu-ansi-line"><span>OS     Architecture  ABI</span>
 </span><span class="oyzu-ansi-line"><span>linux  amd64         gnu</span>
 </span><span class="oyzu-ansi-line"><span>Metadata coverage only; native installation support varies.</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-2">No files changed. Tool resolution complete.</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-3">Installed availability was not checked. Nothing was installed.</span>
+</span><span class="oyzu-ansi-line"><span>No files changed. Tool resolution complete.</span>
+</span><span class="oyzu-ansi-line"><span>Installed availability was not checked. Nothing was installed.</span>
 </span><span class="oyzu-ansi-line"><span>Use --json for sources, constraints and discovery limitations.</span>
 </span></code></pre></div>
 <p><code>--dry-run</code> writes and installs nothing. Add <code>--json</code> to see where each requirement came from.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="lock-and-install">Lock and install<a href="#lock-and-install" class="hash-link" aria-label="Direct link to Lock and install" title="Direct link to Lock and install" translate="no">​</a></h2>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu pin        </span><span class="token comment" style="color:#999988;font-style:italic"># pick exact versions and write oyzu.lock</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token function" style="color:#d73a49">install</span><span class="token plain">    </span><span class="token comment" style="color:#999988;font-style:italic"># install the tools declared in oyzu.toml</span><br></div></code></pre></div></div>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu install"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu install</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Installing tools</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu install"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu install</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Installing tools</span>
 </span><span class="oyzu-ansi-line"><span>Checking pinned tools and verifying reusable installations</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Tool installation</span>
-</span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Tool</span><span>  </span><span class="ansi-bold">Version</span><span>  </span><span class="ansi-bold">Result</span>
-</span><span class="oyzu-ansi-line"><span>go    1.22.12  reused</span>
-</span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>Selected installations verified. Use oyzu tools current to inspect availability.</span>
 </span></code></pre></div>
 <p>Oyzu checks each download against its recorded digest and publisher information before using it, and trusts the installed tool after that. You often don&#x27;t need either command: <code>oyzu build</code> locks and installs what it needs. Commit <code>oyzu.lock</code>.</p>
 

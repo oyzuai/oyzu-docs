@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Plugin packages, the plugin store and lock selections | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-packages"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin packages, the plugin store and lock selections | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-packages"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin packages, the plugin store and lock selections","item":"https://docs.oyzu.ai/docs/reference/plugin-packages"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -20,9 +20,9 @@ packages come from, how they&#x27;re verified, how they&#x27;re locked and how b
 <blockquote>
 <p><strong>Note:</strong> Plugins are experimental. Builders are not built into the CLI, so every
 target needs a package. A package comes from the <a class="" href="/docs/reference/plugin-catalog">plugin catalog</a>,
-from a <code>plugins.packages</code> binding, or from a direct <code>oci://</code> reference. Only the
-<a class="" href="/docs/reference/plugin-preview">Go preview</a> is published. For the other first-party builders, build
-the package yourself and bind it, or use a <a class="" href="/docs/reference/plugin-development">development binding</a>.</p>
+from a <code>plugins.packages</code> binding, or from a direct <code>oci://</code> reference. The
+official catalog supplies the first-party builders; use <code>oyzu plugins search --refresh</code>
+to list them. You can also use a <a class="" href="/docs/reference/plugin-development">development binding</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="package-format">Package format<a href="#package-format" class="hash-link" aria-label="Direct link to Package format" title="Direct link to Package format" translate="no">​</a></h2>
 <p>A package is a <code>.tar.gz</code> or <code>.zip</code> archive containing:</p>
@@ -465,6 +465,12 @@ plugin operation. After a compatible signed release is available, use
 <code>oyzu plugins update python/app</code> (or the selected Python profile) to update an
 existing lock; a source merge or local engineering package does not update the
 published default.</p>
+<p>Python packages providing complete current case closures also require
+<code>python-current-case-closure</code>. Engines without this capability skip that release
+during catalog selection and reject a direct binding before any role runs.
+This marker does not relax the exact native runtime check or make an older
+package compatible with a new core. An existing lock remains exact until an
+explicit plugin update selects a compatible signed release.</p>
 <p>.NET lock preparation requires <code>dotnet-lock-admission</code> on the selected
 package&#x27;s builder role. The engine checks that declaration before admitting its
 native worker for private lock-facts/acquisition. An older exact lock is replayed
@@ -489,8 +495,10 @@ removed when the command ends. If oyzu is killed by a signal, the copy stays in 
 temporary directory as <code>oyzu-plugin-*</code>; delete it by hand.</p>
 <p>For a wrapper script, the digest covers only the script, not the program it starts, so
 its targets are never reused from the action cache. Bind the plugin executable itself.</p>
-<p>Action cache keys include the plugin&#x27;s identity (reference, release, version, executable
-digest and runtime), recorded on each target as <code>extensions[&quot;oyzu.dev/builder-plugin&quot;]</code>;
+<p>Action cache keys include the plugin&#x27;s semantic identity (reference, protocol, runtime
+and package release/version, or compiled development source-closure digest). The target&#x27;s
+<code>extensions[&quot;oyzu.dev/builder-plugin&quot;]</code> also retains executable digests for admission
+and provenance; those bytes are excluded only when deriving cache keys;
 see <a class="" href="/docs/reference/action-cache#external-builder-targets">external builder targets</a>.</p>
 <p>Every plan, execution envelope and manifest of a build or <code>oyzu run</code> carries
 <code>extensions[&quot;oyzu.dev/plugins&quot;]</code> when a plugin is used, so plugin-built output is
@@ -545,8 +553,8 @@ explicitly.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-pip-python-packages">Isolated pip Python packages<a href="#isolated-pip-python-packages" class="hash-link" aria-label="Direct link to Isolated pip Python packages" title="Direct link to Isolated pip Python packages" translate="no">​</a></h3>
 <p>Supported: <code>python/package</code> targets built with pip and PEP 517. The package must declare
-<code>captured-plan</code>. No Python plugin is published yet, so you supply the package and bind it
-yourself.</p>
+<code>captured-plan</code>. The official catalog supplies the Python plugin; a user or machine
+binding can select another compatible package.</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu -C &lt;fixture&gt; --json build demo --isolated --full --frozen --no-cache --jobs 1</span><br></div></code></pre></div></div>
 <p>Oyzu freezes the selected CPython archive and the prepared dependencies, then lowers the
 plugin&#x27;s intent to a wheel or sdist build. Put tool versions in native pin files or

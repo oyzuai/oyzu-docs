@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Known limitations | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/support/limitations"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Known limitations | Oyzu documentation"><meta data-rh="true" name="description" content="Known limits of Oyzu today - distribution, platforms, caching, publishing and remote builds."><meta data-rh="true" property="og:description" content="Known limits of Oyzu today - distribution, platforms, caching, publishing and remote builds."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/support/limitations"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/support/limitations" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/support/limitations" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Known limitations","item":"https://docs.oyzu.ai/docs/support/limitations"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,7 +16,7 @@
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="installation">Installation<a href="#installation" class="hash-link" aria-label="Direct link to Installation" title="Direct link to Installation" translate="no">​</a></h2>
 <ul>
 <li class="">Every release so far is a preview.</li>
-<li class="">The release repository is not public yet. The <a class="" href="/docs/get-started/install">install script</a> works for people with access who pass a GitHub token.</li>
+<li class="">The <a class="" href="/docs/get-started/install">install script</a> downloads from the public <code>oyzuai/oyzu-releases</code> repository without a token.</li>
 <li class="">There is no Linux musl executable; build from source on those systems.</li>
 <li class="">The install script checks the release&#x27;s SHA-256 digest but not its provenance files.</li>
 <li class="">There is no package-manager distribution.</li>
@@ -35,9 +35,9 @@
 </ul>
 <p>See <a class="" href="/docs/guides/caching">Cache build results</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="publishing">Publishing<a href="#publishing" class="hash-link" aria-label="Direct link to Publishing" title="Direct link to Publishing" translate="no">​</a></h2>
-<p>Publishing is experimental. It supports OCI registries and existing GitHub releases only; npm and PyPI publishing are not available. See <a class="" href="/docs/guides/publishing">Publish artifacts</a>.</p>
+<p>Publishing is experimental. OCI publication is built in. Existing GitHub releases and npm use publisher plugins whose catalog releases are pending; use an admitted development binding. PyPI is not implemented. See <a class="" href="/docs/guides/publishing">Publish artifacts</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="remote-builds">Remote builds<a href="#remote-builds" class="hash-link" aria-label="Direct link to Remote builds" title="Direct link to Remote builds" translate="no">​</a></h2>
-<p>Remote builds are experimental and need a platform account or access to a standalone pool. Standalone pools support pushed commits; worktree uploads and output downloads are not available. See <a class="" href="/docs/guides/remote">Remote builds</a>.</p>
+<p>Remote builds are experimental and need a platform account or access to a standalone pool. Standalone pools support pushed commits and, on snapshot-capable servers, local changes through <code>--worktree</code>. Output downloads are not available. See <a class="" href="/docs/guides/remote">Remote builds</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="documentation">Documentation<a href="#documentation" class="hash-link" aria-label="Direct link to Documentation" title="Direct link to Documentation" translate="no">​</a></h2>
 <p>The site uses the Segoe UI font when it is installed on your system and a fallback font otherwise.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="reporting-a-problem">Reporting a problem<a href="#reporting-a-problem" class="hash-link" aria-label="Direct link to Reporting a problem" title="Direct link to Reporting a problem" translate="no">​</a></h2>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tool lock files and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool lock files and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool lock files and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-lock-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 <p><code>oyzu.lock</code> records the exact tool versions, download URLs and digests a project uses. This page describes what the lock contains, how <code>oyzu pin</code> decides which platforms to lock, and how to check a lock file with <code>oyzu tools inspect-lock</code>.</p>
 <blockquote>
 <p><strong>Note:</strong> Experimental. The lock format may change.</p>
+</blockquote>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-a-lock-contains">What a lock contains<a href="#what-a-lock-contains" class="hash-link" aria-label="Direct link to What a lock contains" title="Direct link to What a lock contains" translate="no">​</a></h2>
 <p>All tool locks use <code>format = 1</code>. One file can hold two kinds of records, and neither implies the other:</p>
@@ -123,6 +127,10 @@ publication date to compare; its weaker evidence remains visible.</p>
 <li class="">Rust and Cargo helper requests must be exact versions.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-platforms-are-locked">Which platforms are locked<a href="#which-platforms-are-locked" class="hash-link" aria-label="Direct link to Which platforms are locked" title="Direct link to Which platforms are locked" translate="no">​</a></h3>
+<p>ARM64 is unsupported. A project may retain
+ARM64 metadata in an existing lock without installing it. The Oyzu repository
+requires x64 Linux, Intel macOS and Windows lock coverage; updating this scope
+does not delete old lock records or installations.</p>
 <p>By default, the lock covers the platforms declared by every build in the project, plus the host, whatever command you run.</p>
 <ul>
 <li class="">Inferred platforms without a matching provider artifact are listed in <code>platformsNotLocked</code> (human output: <strong>Inferred platforms not locked</strong>). This includes a GitHub release whose only applicable asset belongs to another platform, such as the reviewed Darwin gettext xcframework when Linux coverage is inferred.</li>
@@ -132,17 +140,18 @@ publication date to compare; its weaker evidence remains visible.</p>
 <li class=""><code>oyzu install</code> installs the host entry and keeps the rest of the lock. A repeat offline install reuses the verified copy in your store.</li>
 </ul>
 <p>To lock platforms explicitly, for example for another machine that runs your builds, set <code>tools.lockPlatforms</code>:</p>
-<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tools</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">rust</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;1.95.0&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">lockPlatforms</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;windows/amd64/gnullvm&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;linux/arm64/gnu&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tools</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">rust</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;1.95.0&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">lockPlatforms</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;windows/amd64/gnullvm&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;linux/amd64/gnu&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
 <ul>
 <li class="">The list must not be empty and must use exact supported platforms. The host is always included.</li>
 <li class=""><code>tools.platforms</code> is no longer accepted. Remove it, or rename it to <code>lockPlatforms</code>. See <a class="" href="/docs/reference/configuration#tool-lock-execution-platform-coverage">mapping and migration</a>.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="rust-platforms">Rust platforms<a href="#rust-platforms" class="hash-link" aria-label="Direct link to Rust platforms" title="Direct link to Rust platforms" translate="no">​</a></h3>
 <p>Rust uses the current <a href="#which-platforms-are-locked" class="">lock coverage</a>, rather than
-every platform an older lock recorded. Supported execution tuples are
-<code>linux/amd64/gnu</code>, <code>linux/arm64/gnu</code>, <code>darwin/amd64/native</code>,
-<code>darwin/arm64/native</code>, <code>windows/amd64/msvc</code>, <code>windows/arm64/msvc</code>,
-<code>windows/amd64/gnullvm</code> and <code>windows/arm64/gnullvm</code>.</p>
+every platform an older lock recorded. Current x64 execution tuples are
+<code>linux/amd64/gnu</code>, <code>darwin/amd64/native</code>, <code>windows/amd64/msvc</code> and
+<code>windows/amd64/gnullvm</code>; native installation limits still apply. ARM64 tuples
+remain readable as metadata, but ARM64 installation and execution are unsupported
+regardless of retained metadata.</p>
 <ul>
 <li class="">Windows GNU/LLVM entries also lock the <code>rust-mingw</code> component. Windows amd64 installs use MSVC.</li>
 <li class="">Pin resolves every requested platform and its components before writing. Missing publisher data fails without writing a partial lock.</li>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Plugin catalog and builder selection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-catalog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin catalog and builder selection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-catalog"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin catalog and builder selection","item":"https://docs.oyzu.ai/docs/reference/plugin-catalog"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -21,15 +21,15 @@ chooses a builder, and shows you what it chose and how to change it.</p>
 <p><strong>Note:</strong> Plugins are experimental. No builder is built into the CLI. Each target
 needs a plugin from a catalog, a package you bind yourself or a local development
 binding. When none is available, the build fails with advice; it never falls back to
-another builder. Today the official catalog lists the Go builder (<code>oyzu/go</code>) as a
-preview release. See <a class="" href="/docs/reference/plugin-preview">Go builder preview</a>.</p>
+another builder. The official catalog lists Docker, .NET, Go, Helm, Java, Node,
+Python, Rust and Zig builders. Some releases require preview opt-in.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-start-build-a-go-project">Quick start: build a Go project<a href="#quick-start-build-a-go-project" class="hash-link" aria-label="Direct link to Quick start: build a Go project" title="Direct link to Quick start: build a Go project" translate="no">​</a></h2>
 <p>Opt in to preview releases in your <strong>user</strong> configuration (a project file can&#x27;t set
 this):</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">preview</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
 <p>Then run <code>oyzu build</code> in a Go module. Oyzu detects <code>go/app</code> from the catalog, downloads
-<code>oyzu/go 0.1.0-preview.1</code> from <code>ghcr.io/oyzuai/plugins/go</code> (anonymously, with its
+the selected <code>oyzu/go</code> release from <code>ghcr.io/oyzuai/plugins/go</code> (anonymously, with its
 signature checked), records the release in <code>oyzu.lock</code> and builds with it. The build
 prints the choice in its <a href="#the-selection-section" class="">Selection section</a> with the source
 <code>official default</code>.</p>
@@ -185,11 +185,15 @@ state is &quot;Absent&quot;: a lock replays without any withdrawal check.</p>
 <code>note  using the last verified &lt;catalog&gt;: &lt;reason&gt;</code>, and JSON carries it as
 <code>catalog.note</code>.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-official-catalog">The official catalog<a href="#the-official-catalog" class="hash-link" aria-label="Direct link to The official catalog" title="Direct link to The official catalog" translate="no">​</a></h3>
-<p>The official catalog lists the Go preview (<code>oyzu/go 0.1.0-preview.1</code>), its references
-<code>go/app</code> and <code>go/library</code>, and two detections: <code>go-module</code> (a <code>go.mod</code> with a <code>module</code>
-line and no <code>go.work</code>) and <code>go-workspace</code> (a <code>go.work</code>). A real build refreshes the
-primary catalog even with <code>plugins.preview</code> off, so stable releases can be discovered
-and withdrawals apply.</p>
+<p>The official catalog supplies signed first-party builder packages for Docker,
+.NET, Go, Helm, Java, Node, Python, Rust and Zig. Go, Java and Python have stable
+releases; the other builders currently require preview opt-in. A stable plugin
+release does not expand the platforms or features supported by its builder.</p>
+<p>Use <code>oyzu plugins search --refresh</code> to see the current set, and
+<code>oyzu plugins versions &lt;reference&gt;</code> to check compatibility before adopting a
+release. Builds keep the exact selection in <code>oyzu.lock</code>. They refresh the primary
+catalog even with <code>plugins.preview</code> off, so stable releases and withdrawals can
+be discovered.</p>
 <p>Offline on a machine that has never obtained the catalog, a builder reference needs
 a lock entry or a binding.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="local-preview-supplement">Local Preview supplement<a href="#local-preview-supplement" class="hash-link" aria-label="Direct link to Local Preview supplement" title="Direct link to Local Preview supplement" translate="no">​</a></h3>
@@ -314,7 +318,7 @@ never load a catalog or select a builder.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Package</th><th>What oyzu requires</th></tr></thead><tbody><tr><td>Publisher <code>oyzu</code> (for example <code>oyzu/go</code>)</td><td>A signature from the <code>plugin-release.yml</code> workflow of <code>oyzuai/oyzu</code> on <code>refs/heads/main</code>, from a GitHub-hosted runner, verified against Sigstore&#x27;s production trusted root. This holds for the official <code>ghcr.io/oyzuai/plugins/&lt;name&gt;</code> route and for a company mirror. Nothing in a catalog or in configuration can name another signer or root</td></tr><tr><td>Any other publisher (for example <code>acme/go</code> on a company registry)</td><td>Trusted by digest: the signed catalog lists the root digest. No signature is requested</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Package</th><th>What oyzu requires</th></tr></thead><tbody><tr><td>Publisher <code>oyzu</code> (for example <code>oyzu/go</code>)</td><td>A signature from the <code>plugin-release.yml</code> workflow of <code>oyzuai/oyzu</code> on <code>refs/heads/main</code>, from a GitHub-hosted or self-hosted runner, verified against Sigstore&#x27;s production trusted root. This holds for the official <code>ghcr.io/oyzuai/plugins/&lt;name&gt;</code> route and for a company mirror. Nothing in a catalog or in configuration can name another signer or root</td></tr><tr><td>Any other publisher (for example <code>acme/go</code> on a company registry)</td><td>Trusted by digest: the signed catalog lists the root digest. No signature is requested</td></tr></tbody></table></div>
 <p>A mirror of an official package must therefore serve the release&#x27;s signature referrers
 as well as its root, manifests and blobs, and the root it serves must hash to the digest
 the catalog lists. A refused mirror reports one of:</p>

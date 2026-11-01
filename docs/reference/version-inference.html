@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Artifact version inference | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/version-inference"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Artifact version inference | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/version-inference.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/version-inference"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/version-inference" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Artifact version inference","item":"https://docs.oyzu.ai/docs/reference/version-inference"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -19,6 +19,10 @@ configure anything: build as usual and each artifact gets a version that says wh
 release it&#x27;s heading for and exactly which source it came from.</p>
 <p>Supported builders: Cargo, Node (npm, pnpm, Yarn), Helm, Go, Docker, Python, Maven,
 Gradle and Ant.</p>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="example">Example<a href="#example" class="hash-link" aria-label="Direct link to Example" title="Direct link to Example" translate="no">​</a></h2>
 <p>A single-package repository declares version <code>1.4.2</code>, has the tag <code>v1.4.2</code>, and one
 newer commit <code>feat: add endpoint</code>. <code>oyzu build</code> resolves the next version to <code>1.5.0</code>,
@@ -359,10 +363,8 @@ shipping version scope. The ignore control remains in scope. See
 <a class="" href="/docs/reference/helm#chart-documentation-and-development-versions">Helm documentation inputs</a>.</p>
 <p>Helm staging reads the keyed prepared chart, not source. Its native version stays
 unchanged in preparation; the captured stage projects the final core version into
-its private chart. This change does not implement declared-read prepared-content
-or hidden-copy dependency views; those remain separate work in
-#1253. Unix source-view support alone
-does not establish those dependency-view guarantees.</p>
+its private chart. Cache narrowing also requires complete read declarations and dependency views
+that hide unselected prepared files. See <a class="" href="/docs/reference/helm#what-each-stage-reads">Helm source reads</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="versions-finalized-after-hooks">Versions finalized after hooks<a href="#versions-finalized-after-hooks" class="hash-link" aria-label="Direct link to Versions finalized after hooks" title="Direct link to Versions finalized after hooks" translate="no">​</a></h2>
 <p>For isolated Node builds, a <code>pre_build</code> hook that declares <code>outputs</code> counts as a
 generator.</p>
@@ -614,7 +616,7 @@ the test and check commands execute again.</p>
 <p>The staging record&#x27;s <code>testEvidence</code> names the packages, host and target triples,
 and report IDs. For a cross build, <code>targetRuntimeTested</code> is false. These host tests
 do not establish target-specific behavior, linking at runtime, or tests behind
-target-only conditional compilation. Run target-runtime qualification separately.</p>
+target-only conditional compilation. Run the artifact&#x27;s tests on its target platform separately.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugin-members-and-composed-roots">Plugin members and composed roots<a href="#plugin-members-and-composed-roots" class="hash-link" aria-label="Direct link to Plugin members and composed roots" title="Direct link to Plugin members and composed roots" translate="no">​</a></h3>
 <p>An <code>oyzu/plugin-package</code> member takes the exact version only from its staged
 executable artifact and package decision. Build each member with

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">oyzu plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/cli/plugins"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="oyzu plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Find builder plugins, see which one each target of your project uses and why, list installed releases, and update the plugin selections locked in oyzu.lock."><meta data-rh="true" property="og:description" content="Find builder plugins, see which one each target of your project uses and why, list installed releases, and update the plugin selections locked in oyzu.lock."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/cli/plugins"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/plugins" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/plugins" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"oyzu plugins","item":"https://docs.oyzu.ai/docs/cli/plugins"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -58,7 +58,7 @@
 <div class="oyzu-table-scroll"><table><thead><tr><th>Subcommand</th><th>What it does</th></tr></thead><tbody><tr><td><a href="#plugins-search" class=""><code>search [QUERY]</code></a></td><td>Browse or search the references the catalogs offer</td></tr><tr><td><a href="#plugins-versions-and-plugins-info" class=""><code>versions &lt;REFERENCE&gt;</code></a></td><td>Show a reference&#x27;s known releases and why each can or cannot be selected here</td></tr><tr><td><a href="#plugins-versions-and-plugins-info" class=""><code>info &lt;REFERENCE[@VERSION]&gt;</code></a></td><td>Show a release&#x27;s package, platforms, download routes and verification</td></tr><tr><td><a href="#plugins-list" class=""><code>list</code></a></td><td>List the plugin releases installed in the plugin store</td></tr><tr><td><a href="#plugins-current-and-plugins-explain" class=""><code>current</code></a></td><td>Show this project&#x27;s locked plugin selections, whether they are installed, and whether they can run here</td></tr><tr><td><a href="#plugins-current-and-plugins-explain" class=""><code>explain [TARGET]</code></a></td><td>Explain which plugin a target uses and why, with the ways to change it</td></tr><tr><td><a href="#plugins-update" class=""><code>update [REFERENCE[@SELECTOR]]...</code></a></td><td>Update locked selections within their adopted major version</td></tr><tr><td><a href="#plugins-prune" class=""><code>prune SHA256...</code></a></td><td>Preview, then remove, installed copies of revoked releases</td></tr></tbody></table></div>
 <p><code>search</code>, <code>versions</code>, <code>info</code>, <code>list</code>, <code>current</code> and <code>explain</code> only read: the cached catalog, the plugin store and <code>oyzu.lock</code>. They never download or start a plugin, run a project tool or change a file. Only <code>--refresh</code> updates the cached catalog. <code>update</code> changes <code>oyzu.lock</code>, and <code>prune --apply</code> deletes installed copies.</p>
 <blockquote>
-<p><strong>Note:</strong> Plugins are experimental. Releases published so far are previews. To let builds use previews, opt in once for your user account: <code>oyzu config set --global plugins.preview true</code>. A project file cannot do this, because the release is code that runs on your machine.</p>
+<p><strong>Note:</strong> Plugins are experimental. Some first-party builders are still previews. To let builds use previews, opt in once for your user account: <code>oyzu config set --global plugins.preview true</code>. A project file cannot do this, because the release is code that runs on your machine.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-a-plugin-is-chosen">How a plugin is chosen<a href="#how-a-plugin-is-chosen" class="hash-link" aria-label="Direct link to How a plugin is chosen" title="Direct link to How a plugin is chosen" translate="no">​</a></h2>
 <p>For each target, <code>oyzu build</code> looks for a plugin in this order and uses the first match:</p>
@@ -97,53 +97,76 @@
 <p><code>search</code> also takes <code>--type &lt;TYPE&gt;</code>, which shows only plugins that serve one capability. The only value today is <code>build</code>. <code>update</code> takes <code>--dry-run</code>, <code>--store</code> and <code>--offline</code>. The <a class="" href="/docs/cli#global-options">global options</a> apply to all subcommands.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugins-search">plugins search<a href="#plugins-search" class="hash-link" aria-label="Direct link to plugins search" title="Direct link to plugins search" translate="no">​</a></h2>
 <p>Lists the references the catalogs offer.</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins search --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins search --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">2 plugin references in the catalog</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins search --refresh"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins search --refresh</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>14 plugin references in the catalog</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Reference</span><span>   </span><span class="ansi-bold">Package</span><span>          </span><span class="ansi-bold">Latest stable</span><span>  </span><span class="ansi-bold">Build selects</span><span>  </span><span class="ansi-bold">Status</span>
-</span><span class="oyzu-ansi-line"><span>go/app      oyzu/go (build)  —              —              unavailable: preview only</span>
-</span><span class="oyzu-ansi-line"><span>go/library  oyzu/go (build)  —              —              unavailable: preview only</span>
+</span><span class="oyzu-ansi-line"><span>Reference       Package              Latest stable  Build selects    Status</span>
+</span><span class="oyzu-ansi-line"><span>docker/image    oyzu/docker (build)  —              0.1.0-preview.1  available</span>
+</span><span class="oyzu-ansi-line"><span>dotnet/sdk      oyzu/dotnet (build)  —              0.1.0-preview.1  available</span>
+</span><span class="oyzu-ansi-line"><span>go/app          oyzu/go (build)      0.1.0          0.1.0            available</span>
+</span><span class="oyzu-ansi-line"><span>go/library      oyzu/go (build)      0.1.0          0.1.0            available</span>
+</span><span class="oyzu-ansi-line"><span>helm/chart      oyzu/helm (build)    —              0.1.0-preview.1  available</span>
+</span><span class="oyzu-ansi-line"><span>java/app        oyzu/java (build)    0.1.0          0.1.0            available</span>
+</span><span class="oyzu-ansi-line"><span>node/app        oyzu/node (build)    —              0.1.0-preview.3  available</span>
+</span><span class="oyzu-ansi-line"><span>node/package    oyzu/node (build)    —              0.1.0-preview.3  available</span>
+</span><span class="oyzu-ansi-line"><span>python/app      oyzu/python (build)  0.1.1          0.1.1            available</span>
+</span><span class="oyzu-ansi-line"><span>python/library  oyzu/python (build)  0.1.1          0.1.1            available</span>
+</span><span class="oyzu-ansi-line"><span>python/package  oyzu/python (build)  0.1.1          0.1.1            available</span>
+</span><span class="oyzu-ansi-line"><span>rust/app        oyzu/rust (build)    —              0.1.0-preview.4  available</span>
+</span><span class="oyzu-ansi-line"><span>rust/library    oyzu/rust (build)    —              0.1.0-preview.4  available</span>
+</span><span class="oyzu-ansi-line"><span>zig/project     oyzu/zig (build)     —              0.1.0-preview.3  available</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">About</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">go/app</span><span>  Build, test and package Go modules and workspaces with the native go toolchain.</span>
-</span><span class="oyzu-ansi-line"><span>      official default · official catalog serial 21 · publisher oyzu</span>
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">go/library</span><span>  Test and vet Go library modules without producing an executable.</span>
-</span><span class="oyzu-ansi-line"><span>      official default · official catalog serial 21 · publisher oyzu</span>
-</span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>Inspect one with oyzu plugins versions &lt;reference&gt; or oyzu plugins info &lt;reference&gt;[@v&lt;major&gt;].</span>
+</span><span class="oyzu-ansi-line"><span>…</span>
 </span></code></pre></div>
-<p>Output shortened. &quot;unavailable: preview only&quot; means the only release is a preview and you have not opted in. Search covers the official catalog and your organization&#x27;s catalog. It does not crawl OCI registries, so a plugin you reference explicitly can work without being listed. Eligibility is judged for this machine only.</p>
+<p>Output shortened. A reference that says &quot;unavailable: preview only&quot; has no eligible stable release and needs preview opt-in. Search covers the official catalog and your organization&#x27;s catalog. It does not crawl OCI registries, so a plugin you reference explicitly can work without being listed. Eligibility is judged for this machine only.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugins-versions-and-plugins-info">plugins versions and plugins info<a href="#plugins-versions-and-plugins-info" class="hash-link" aria-label="Direct link to plugins versions and plugins info" title="Direct link to plugins versions and plugins info" translate="no">​</a></h2>
 <p><code>versions</code> lists a reference&#x27;s known releases and why each can or cannot be selected on this machine. <code>info</code> shows one release in detail. The selector can be a major version (<code>@v0</code>) or an exact version (<code>@0.1.0</code>).</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins versions go/app --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins versions go/app --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">1 known release of go/app · oyzu/go (official default)</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins versions go/app --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins versions go/app --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>3 known releases of go/app · oyzu/go (official default)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-dim">  Locked here  nothing: this project has not adopted this reference</span>
+</span><span class="oyzu-ansi-line"><span>  Locked here  oyzu/go 0.1.0 (release sha256:a2b9a529…c989)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Version</span><span>                    </span><span class="ansi-bold">Labels</span><span>  </span><span class="ansi-bold">Selectable here</span><span>   </span><span class="ansi-bold">Release</span>
-</span><span class="oyzu-ansi-line"><span>0.1.0-preview.1 (preview)          no: preview only  sha256:25f830bd…f9bf</span>
+</span><span class="oyzu-ansi-line"><span>Version                    Labels                              Selectable here  Release</span>
+</span><span class="oyzu-ansi-line"><span>0.1.0                      latest-stable, latest-compatible,   yes              sha256:a2b9a529…c989</span>
+</span><span class="oyzu-ansi-line"><span>                           update-candidate, locked</span>
+</span><span class="oyzu-ansi-line"><span>0.1.0-preview.2 (preview)                                      yes              sha256:177c30e7…6d45</span>
+</span><span class="oyzu-ansi-line"><span>0.1.0-preview.1 (preview)                                      yes              sha256:25f830bd…f9bf</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>Preview releases are selectable only with: oyzu config set --global plugins.preview true</span>
+</span><span class="oyzu-ansi-line"><span>latest-stable is the newest stable release known, even if it cannot run here. latest-compatible is</span>
+</span><span class="oyzu-ansi-line"><span>the newest that fits this engine, contracts and platform. update-candidate stays inside the adopted</span>
+</span><span class="oyzu-ansi-line"><span>major; adoption-candidate is what oyzu build would adopt.</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>…</span>
 </span></code></pre></div>
 <p>Output shortened. <code>latest-stable</code> is the newest stable release even if it cannot run here. <code>latest-compatible</code> is the newest that fits your Oyzu version and platform. <code>update-candidate</code> is what <code>plugins update</code> would move to inside the adopted major version. <code>adoption-candidate</code> is what the next <code>oyzu build</code> would adopt.</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins info go/app --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins info go/app --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-2 ansi-bold">go/app 0.1.0-preview.1 · oyzu/go (build)</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins info go/app --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins info go/app --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>go/app 0.1.0 · oyzu/go (build)</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
 </span><span class="oyzu-ansi-line"><span>Build, test and package Go modules and workspaces with the native go toolchain.</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Release</span>
-</span><span class="oyzu-ansi-line"><span>  Publisher    oyzu</span>
-</span><span class="oyzu-ansi-line"><span>  Source       official default · official catalog serial 21</span>
-</span><span class="oyzu-ansi-line"><span>  Status       not selectable here: preview only</span>
-</span><span class="oyzu-ansi-line"><span>  Release      sha256:25f830bd740620e6a54a5eac922d1a9505e12f1e1db732f8538152447ba1f9bf</span>
+</span><span class="oyzu-ansi-line"><span>Release</span>
+</span><span class="oyzu-ansi-line"><span>  Publisher    oyzu (maintainer Oyzu maintainers)</span>
+</span><span class="oyzu-ansi-line"><span>  Source       official default · official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>  Status       selectable here</span>
+</span><span class="oyzu-ansi-line"><span>  Labels       latest-stable, latest-compatible, update-candidate, locked</span>
+</span><span class="oyzu-ansi-line"><span>  Release      sha256:a2b9a529697f8345158c13719cd8a2ab93371ec48c3c2fac305c45eb0b35c989</span>
+</span><span class="oyzu-ansi-line"><span>  Contracts    v1alpha1</span>
 </span><span class="oyzu-ansi-line"><span>  Profiles     app (builder), library (builder)</span>
+</span><span class="oyzu-ansi-line"><span>  Support      supported</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Platforms</span>
-</span><span class="oyzu-ansi-line"><span class="ansi-bold">Platform</span><span>            </span><span class="ansi-bold">Size</span><span>       </span><span class="ansi-bold">Payload</span>
-</span><span class="oyzu-ansi-line"><span>linux/amd64-musl    408.9 KiB  sha256:de17b89e…9dba</span>
-</span><span class="oyzu-ansi-line"><span>windows/amd64-msvc  278.3 KiB  sha256:0127cd09…d48a</span>
-</span><span class="oyzu-ansi-line"><span>…</span>
+</span><span class="oyzu-ansi-line"><span>Platforms</span>
+</span><span class="oyzu-ansi-line"><span>Platform          Size     Payload</span>
+</span><span class="oyzu-ansi-line"><span>linux/amd64-musl  9.6 MiB  sha256:161cac62…25f2</span>
+</span><span class="oyzu-ansi-line"><span>linux/arm64-musl  9.4 MiB  sha256:843e0d2b…42b3</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Verification</span>
+</span><span class="oyzu-ansi-line"><span>Acquisition routes</span>
+</span><span class="oyzu-ansi-line"><span>  oci  ghcr.io/oyzuai/plugins/go@sha256:a2b9a529697f8345158c13719cd8a2ab93371ec48c3c2fac305c45eb0b35c989</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>Verification</span>
 </span><span class="oyzu-ansi-line"><span>  Metadata     verified signed catalog</span>
+</span><span class="oyzu-ansi-line"><span>  Snapshot     serial 49 · content sha256:a00cc5a4…7995</span>
 </span><span class="oyzu-ansi-line"><span>  The catalog metadata is verified. Package bytes are verified when installed; this view downloads none.</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>  Locked here  oyzu/go 0.1.0 (release sha256:a2b9a529…c989)</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>…</span>
 </span></code></pre></div>
 <p>Output shortened.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugins-list">plugins list<a href="#plugins-list" class="hash-link" aria-label="Direct link to plugins list" title="Direct link to plugins list" translate="no">​</a></h2>
@@ -165,9 +188,22 @@
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Argument</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[TARGET]</code></td><td>A target, by name or path. Omit it for every plugin-backed target</td></tr></tbody></table></div>
 <p><code>current</code> shows each locked selection with its install state and whether it can run here. <code>explain</code> prints the same Selection record <code>oyzu build</code> prints: which release, why it was chosen and how to change it.</p>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins explain --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins explain --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-3 ansi-bold">No target here uses a plugin</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu plugins explain --offline"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu plugins explain --offline</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>-- Selection ---------------------------------------- official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>  reused  go/app  project  oyzu/go 0.1.0 (locked)</span>
+</span><span class="oyzu-ansi-line"><span>      selected by  go.mod module (rule go-module, official catalog serial 49)</span>
+</span><span class="oyzu-ansi-line"><span>      source       official default · from the official catalog serial 49</span>
+</span><span class="oyzu-ansi-line"><span>      package      reused from the store · sha256:a2b9a529…c989</span>
+</span><span class="oyzu-ansi-line"><span>      lock         replayed from oyzu.lock</span>
+</span><span class="oyzu-ansi-line"><span>      tool         deferred: the plugin reports its native tool requirements when it runs; oyzu build lists them</span>
+</span><span class="oyzu-ansi-line"><span>      not what you wanted?</span>
+</span><span class="oyzu-ansi-line"><span>        not a go/app target? Declare the targets you want in build.yaml; undeclared directories add none</span>
+</span><span class="oyzu-ansi-line"><span>          build.yaml: {builds: {project: {uses: &lt;builder&gt;, path: .}}}</span>
+</span><span class="oyzu-ansi-line"><span>        another implementation of go/app? Bind its package for this reference (or use your organization&#x27;s catalog) and select again</span>
+</span><span class="oyzu-ansi-line"><span>          oyzu config set --global --json-value &#x27;plugins.packages.&quot;go/app&quot;&#x27; &#x27;{&quot;archive&quot;:&quot;&lt;path&gt;&quot;,&quot;sha256&quot;:&quot;&lt;digest&gt;&quot;}&#x27;; then oyzu plugins update go/app</span>
+</span><span class="oyzu-ansi-line"><span>        another version of a tool the build uses? Pin it in oyzu.toml</span>
+</span><span class="oyzu-ansi-line"><span>          oyzu pin &lt;tool&gt;@&lt;version&gt;</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>No package-backed target is selected. Declare uses: &lt;reference&gt; in build.yaml or supply the required admitted package; find catalog entries with oyzu plugins search.</span>
+</span><span class="oyzu-ansi-line"><span>Nothing was installed, launched or written.</span>
 </span></code></pre></div>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="plugins-update">plugins update<a href="#plugins-update" class="hash-link" aria-label="Direct link to plugins update" title="Direct link to plugins update" translate="no">​</a></h2>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins update [OPTIONS] [REFERENCE[@SELECTOR]]...</span><br></div></code></pre></div></div>
@@ -234,7 +270,7 @@
 <p>The build runs on the host and collects the artifacts the plugin declares. Oyzu still resolves the tools the plugin asks for through your normal configuration, lock, tool policy and offline rules. A local binding does not add zero-config detection, <code>with</code> options, dependency preparation or isolated execution.</p>
 <p>A target can also name an OCI package directly, for example <code>uses: oci://registry.example/team/builder@sha256:&lt;digest&gt;#app</code>. The package&#x27;s manifest supplies its identity. Tags outside the official namespace need a user-level signer binding for the full URI. See <a class="" href="/docs/reference/plugin-packages#direct-oci-target-references">direct OCI references</a> and <a class="" href="/docs/reference/plugin-development#independent-profiles">local plugin bindings</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="company-catalogs-and-offline-builds">Company catalogs and offline builds<a href="#company-catalogs-and-offline-builds" class="hash-link" aria-label="Direct link to Company catalogs and offline builds" title="Direct link to Company catalogs and offline builds" translate="no">​</a></h2>
-<p>An organization can publish its own signed tool index with a plugin catalog. Configure it in user or machine configuration, following the <a class="" href="/docs/reference/tool-index">tool index reference</a>. A company catalog is exclusive: if it selects a release and that release&#x27;s route fails, Oyzu does not fall back to the official catalog. If the company catalog has no matching entry, ordinary selection continues as usual.</p>
+<p>An organization can publish its own signed tool index with a plugin catalog. Configure it in user or machine configuration, following the <a class="" href="/docs/reference/tool-index">tool index reference</a>. A company catalog replaces the official catalog. If it has no matching entry, or its selected release&#x27;s route fails, Oyzu refuses the reference; it does not fall back to the official catalog.</p>
 <p>A typical workflow:</p>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins search </span><span class="token parameter variable" style="color:#36acaa">--refresh</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu tools check </span><span class="token parameter variable" style="color:#36acaa">--catalog</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--json</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--full</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Keep the approved oyzu.lock and the installed tools and plugins for this user.</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--offline</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--frozen</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--full</span><span class="token plain"> --no-cache</span><br></div></code></pre></div></div>
 <p>The online build installs the selected release. The frozen offline build replays exactly the locked installation and also needs the tool metadata prepared by the online build. If you use <code>--store DIR</code>, prepare that store too. Native Go builds also read the default user metadata store.</p>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Deploy a static site | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/deploy"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Deploy a static site | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/deploy.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/deploy.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/deploy"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/deploy" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/deploy" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Deploy a static site","item":"https://docs.oyzu.ai/docs/reference/deploy"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -152,9 +152,12 @@ own output must leave <code>/.well-known/oyzu/</code> free. Core serves two evid
 <li class=""><code>manifest.json</code>: a public projection with <code>schemaVersion = &quot;v1alpha1&quot;</code>,
 <code>kind = &quot;deployment-manifest&quot;</code> and one <code>artifact</code> object. Its fields are
 <code>id</code>, <code>name</code>, <code>target</code>, <code>kind</code>, <code>digest</code>, <code>size</code> and <code>entries</code> when recorded.
-Each entry contains only <code>path</code>, <code>kind</code>, <code>digest</code>, <code>size</code> and <code>executable</code>
-when present. Paths are relative to the served tree. Bundle locations,
-other artifacts, actions, environments, runner facts and extensions are omitted.</li>
+Each entry contains only <code>path</code>, <code>kind</code>, <code>digest</code>, <code>size</code>, <code>executable</code> and
+<code>unixMode</code> when recorded. The observed Unix regular-file mode participates in
+the directory tree digest; retaining it lets readers verify that identity.
+Hosts without Unix mode observations omit it. Paths are relative to the served
+tree. Bundle locations, other artifacts, actions, environments, runner facts
+and extensions are omitted.</li>
 <li class=""><code>provenance.sigstore.json</code>: the accepted signed build provenance, byte for
 byte. Its signature and subject tree digest can be checked against the
 public inventory. Provenance is public too; use a builder whose signed

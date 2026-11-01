@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">oyzu cache | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/cli/cache"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="oyzu cache | Oyzu documentation"><meta data-rh="true" name="description" content="oyzu cache shows where the local action cache lives and how large it is, explains why a stage&#x27;s cache key changed, and clears cached results."><meta data-rh="true" property="og:description" content="oyzu cache shows where the local action cache lives and how large it is, explains why a stage&#x27;s cache key changed, and clears cached results."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/cli/cache"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/cache" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/cli/cache" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"oyzu cache","item":"https://docs.oyzu.ai/docs/cli/cache"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -41,13 +41,14 @@
 <p><strong>Note:</strong> The action cache is experimental. Results are reused only on the same machine and user account unless you set up a shared remote cache (<a class="" href="/docs/reference/action-cache">action cache</a>).</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cache-status">cache status<a href="#cache-status" class="hash-link" aria-label="Direct link to cache status" title="Direct link to cache status" translate="no">​</a></h2>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache status"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache status</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Action cache</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache status"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache status</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Action cache</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>  Location   C:\Users\you\AppData\Local\Oyzu\cache\actions (default per-user location)</span>
-</span><span class="oyzu-ansi-line"><span>  Entries    552 results · 2841 blobs</span>
-</span><span class="oyzu-ansi-line"><span>  Size       9.9 GiB of 10.0 GiB retention budget</span>
-</span><span class="oyzu-ansi-line"><span>  Docker     5 images · 2.6 GiB of 20.0 GiB image budget (cache.dockerMaxMiB)</span>
-</span><span class="oyzu-ansi-line"><span>  Local use  </span><span class="ansi-fg-2">enabled</span>
+</span><span class="oyzu-ansi-line"><span>  Location   ~/.cache/oyzu/actions (default per-user location)</span>
+</span><span class="oyzu-ansi-line"><span>  Entries    301 results · 8603 blobs</span>
+</span><span class="oyzu-ansi-line"><span>  Size       8.4 GiB of 10.0 GiB retention budget</span>
+</span><span class="oyzu-ansi-line"><span>  Auxiliary  4.9 MiB history, quarantine, markers and staging</span>
+</span><span class="oyzu-ansi-line"><span>  Docker     3 images · 1.7 GiB of 20.0 GiB image budget (cache.dockerMaxMiB)</span>
+</span><span class="oyzu-ansi-line"><span>  Local use  enabled</span>
 </span><span class="oyzu-ansi-line"><span>…</span>
 </span></code></pre></div>
 
@@ -90,12 +91,15 @@ compiling stages when that identity changes. See <a class="" href="/docs/referen
 
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Argument</th><th>Meaning</th></tr></thead><tbody><tr><td><code>&lt;TARGET&gt;</code></td><td>A target ID, or one stage&#x27;s action ID such as <code>api:build</code></td></tr></tbody></table></div>
-<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache explain project:build"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache explain project:build</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span class="ansi-fg-6 ansi-bold">Cache key explanation</span><span>  project:build</span>
+<div class="oyzu-ansi" role="group" aria-label="Terminal output: $ oyzu cache explain project:build"><div class="oyzu-ansi-bar"><span class="oyzu-ansi-title">$ oyzu cache explain project:build</span><button type="button" class="oyzu-ansi-copy" aria-label="Copy output as plain text">Copy</button></div><pre tabindex="0"><code><span class="oyzu-ansi-line"><span>Cache key explanation  project:build</span>
 </span><span class="oyzu-ansi-line">​<!-- -->
-</span><span class="oyzu-ansi-line"><span>  </span><span class="ansi-bold">project:build</span><span> (stage)</span>
-</span><span class="oyzu-ansi-line"><span>    Key        d7dbf45c44f6 · since run 7340-1792534273646063700 · last seen run 7340-1792534273646063700 (2026-10-20T22:11:22Z)</span>
-</span><span class="oyzu-ansi-line"><span>    Result     </span><span class="ansi-fg-2">stored · the next build with these inputs reuses it</span>
-</span><span class="oyzu-ansi-line"><span>    Changed    since run 13316-1792534220089452300: prepared dependencies changed (also: source files in scope; action definition: argv, env.OYZU_VERSION and 2 more; output of an earlier action: project:prepare)</span>
+</span><span class="oyzu-ansi-line"><span>  project:build (stage)</span>
+</span><span class="oyzu-ansi-line"><span>    Key        255fd1e82d4c · since run 566674-1793485017695913939 · last seen run 566674-1793485017695913939 (2026-10-31T22:16:57Z)</span>
+</span><span class="oyzu-ansi-line"><span>    Result     stored · the next build with these inputs reuses it</span>
+</span><span class="oyzu-ansi-line"><span>    Changed    since run 561934-1793484988395324552: action definition changed: extensions</span>
+</span><span class="oyzu-ansi-line">​<!-- -->
+</span><span class="oyzu-ansi-line"><span>Keys come from the toolchain, dependencies, stage definition, source in scope and consumed outputs.</span>
+</span><span class="oyzu-ansi-line"><span>Use `oyzu build --explain` to see this for every stage of a build.</span>
 </span></code></pre></div>
 <p>It reads recorded keys and runs nothing. <strong>Changed</strong> names the first part of the key that differs from the previous build of that stage, then the others. <code>oyzu build --explain</code> prints the same reasoning for every stage right after a build.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="cache-clear">cache clear<a href="#cache-clear" class="hash-link" aria-label="Direct link to cache clear" title="Direct link to cache clear" translate="no">​</a></h2>

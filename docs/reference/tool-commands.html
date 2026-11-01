@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tool commands: install, update, uninstall and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-commands"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool commands: install, update, uninstall and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-commands"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool commands: install, update, uninstall and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-commands"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -24,6 +24,10 @@
 <li class="">Rust: <code>rust</code> and the Cargo helpers <code>cargo-nextest</code> and <code>cargo-llvm-cov</code>.</li>
 <li class="">Experimental registry packages: <code>aqua:&lt;owner&gt;/&lt;repo&gt;</code> (see <a class="" href="/docs/reference/tool-aqua">the <code>aqua:</code> backend</a>) and <code>github:&lt;owner&gt;/&lt;repo&gt;</code> (see <a class="" href="/docs/reference/tool-github">the <code>github:</code> backend</a>).</li>
 </ul>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
+</blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="scope">Scope<a href="#scope" class="hash-link" aria-label="Direct link to Scope" title="Direct link to Scope" translate="no">​</a></h2>
 <p>Each command acts on one scope. The default is the current project.</p>
 
@@ -193,6 +197,12 @@ and <code>oyzu run</code> use the same set. Downloads are admitted and verified 
 installed payloads are trusted on reuse. Native project tools and authored task
 replacements retain their documented precedence. No separate checker-home
 environment variable or repository provisioner is required.</p>
+<p>Concurrent tasks needing the same bundle share its installation. In a cold
+store, one caller publishes the verified bundle while others wait and then
+reuse it. Active consumers can keep using it while later callers acquire it.
+A caller waits up to 30 minutes for another publisher; acquisition and task
+execution retain their own limits. Malformed installed metadata is refused
+and retained unchanged.</p>
 <p>New default sets ship with Oyzu releases. Ordinary builds, runs and <code>oyzu pin</code>
 keep an existing exact selection. Two explicit operations adopt the current
 CLI&#x27;s defaults:</p>
@@ -228,7 +238,7 @@ the existing Java 17 runtime baseline: base classes requiring a newer JVM are
 excluded, while optional multi-release classes do not raise the baseline. This
 bytecode check limits candidate selection but cannot establish compatibility
 with the JDK&#x27;s compiler APIs. The formatter remains capped below 1.29 on its
-Java 17-compatible line; 1.28.0 is the demonstrated default. The native Java
+Java 17-compatible line; 1.28.0 is the default. The native Java
 acceptance suite still verifies the selected formatter on Java 17. Freshness
 reports continue to show newer minor and major releases for maintainer review;
 the cap does not declare those releases current or compatible. Raising the

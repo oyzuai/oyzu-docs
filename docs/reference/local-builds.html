@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Native local builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/local-builds"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Native local builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/local-builds.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/local-builds"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/local-builds" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Native local builds","item":"https://docs.oyzu.ai/docs/reference/local-builds"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.b6fc9e54.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -16,6 +16,10 @@
 <p>Plain <code>oyzu build</code> runs your project&#x27;s own tools (Cargo, Go, npm, pip, Maven, Gradle) directly on your machine and collects the results into a <a class="" href="/docs/reference/build-bundles">build bundle</a>. These builders need no Docker. This page covers which builds run natively, how to choose platforms and executors, how to preview a build, and how to split a build into separate jobs.</p>
 <blockquote>
 <p><strong>Note:</strong> A native build runs with your user account&#x27;s access to files and the network. It is not a sandbox. Use <code>oyzu build --isolated</code> when you need the container executor.</p>
+</blockquote>
+<blockquote>
+<p><strong>Platform scope:</strong> Use an x64 host and supported x64 build targets. ARM64 is
+unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="quick-start">Quick start<a href="#quick-start" class="hash-link" aria-label="Direct link to Quick start" title="Direct link to Quick start" translate="no">​</a></h2>
 <div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--plan</span><span class="token plain">                     </span><span class="token comment" style="color:#999988;font-style:italic"># preview; installs and runs nothing</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build                            </span><span class="token comment" style="color:#999988;font-style:italic"># host build with fast checks</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--full</span><span class="token plain">                     </span><span class="token comment" style="color:#999988;font-style:italic"># also run tests, lint and format checks</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--platform</span><span class="token plain"> linux/arm64     </span><span class="token comment" style="color:#999988;font-style:italic"># build for one other platform</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build </span><span class="token parameter variable" style="color:#36acaa">--isolated</span><span class="token plain">                 </span><span class="token comment" style="color:#999988;font-style:italic"># use the container executor</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu inspect dist                     </span><span class="token comment" style="color:#999988;font-style:italic"># verify the bundle</span><br></div></code></pre></div></div>
@@ -148,9 +152,15 @@ The authored source tree is unchanged.</p>
 its mode does not reproduce the source boundary root. Captured execution views
 retain their existing directory behavior. ACLs, ownership and special bits are
 outside this native projection guarantee.</p>
-<p>Action-result cache identity and restoration still preserve file executable
-intent rather than all ordinary Unix file or directory permissions. Use
-<code>oyzu build --no-cache</code> when other permission bits affect build outputs. See
+<p>Regular-file source observations include the ordinary Unix mode as well as
+executable intent. A mode-only change invalidates affected action keys, while
+source versions remain permission-independent. Cached regular files restore
+their verified ordinary mode; Unix admission refuses missing, invalid or
+inconsistent mode facts instead of assuming <code>0644</code> or <code>0755</code>. Hosts without Unix
+mode observation leave that fact absent.</p>
+<p>Directory modes remain outside action-result cache identity and output metadata
+restoration. Use <code>oyzu build --no-cache</code> when directory permissions affect build
+outputs. ACLs, ownership and special bits remain outside this guarantee. See
 <a class="" href="/docs/reference/action-cache">action caching</a> for the current reuse limits.</p>
 <p>Linux native host action keys bind the file-creation mask inherited by child
 processes. A build launched with <code>umask 0077</code> cannot reuse a result keyed under
@@ -650,7 +660,7 @@ Remote pool webhook/trigger integration remains a later, separate design.</p>
 <p>Quality stages need their tools: rustfmt, Clippy, and for tests nextest, cargo-llvm-cov and the compiler&#x27;s LLVM tools and profiler runtime. With a pinned Rust, the build installs nextest and cargo-llvm-cov automatically when tests are selected. See <a class="" href="/docs/reference/rust#direct-test-evidence">Rust test reports</a>.</p>
 <p>On Windows, test coverage needs MSVC or windows-gnullvm (LLVM-MinGW UCRT). The windows-gnu toolchain lacks <code>profiler_builtins</code>, so coverage fails there.</p>
 <p>The native path builds the development profile unless the build is optimized: <code>--optimized</code>, <code>build.optimized = true</code>, or a build whose artifacts leave the machine (a slice, a shared remote cache write, a packaging target, the <code>release</code> context). Optimized Rust builds run <code>cargo build --release</code>. Tests keep Cargo&#x27;s test profile. See <a class="" href="/docs/reference/configuration#optimized-builds">optimized builds</a>.</p>
-<p>Development and optimized artifacts use separate cache entries. An optimized result never satisfies a development build. Native Rust shared-cache writers also compile and publish the development stage when their selected output is optimized. The reader&#x27;s default stays development; <code>--optimized</code> selects the separate optimized compile entry. Both stages use the same preparation. Other profile-dependent builders do not yet publish an additional profile. Tool-environment and computation-setting differences can still prevent reuse; see <a class="" href="/docs/reference/action-cache#native-host-builds">native action caching</a>.</p>
+<p>Development and optimized artifacts use separate cache entries. An optimized result never satisfies a development build. Shared-cache writers for profile-dependent builders (Rust and .NET) also compile and publish the development stage when their selected output is optimized. The reader&#x27;s default stays development; <code>--optimized</code> selects the separate optimized compile entry. Both stages use the same preparation. Rust uses host-native stages; .NET uses captured Debug and Release stages. Builders whose commands do not differ by profile keep one entry. Tool-environment and computation-setting differences can still prevent reuse; see <a class="" href="/docs/reference/action-cache#native-host-builds">native action caching</a>.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-rust-versions">Native Rust versions<a href="#native-rust-versions" class="hash-link" aria-label="Direct link to Native Rust versions" title="Direct link to Native Rust versions" translate="no">​</a></h3>
 <p>Native Rust artifacts keep their inferred snapshot version. Their native compiled version depends on the build&#x27;s use:</p>
 <ul>
@@ -728,6 +738,13 @@ write credentials. Enabling a trusted producer is separate work; this client
 only consumes seeds. See <a class="" href="/docs/reference/action-cache#compiler-state-seeds">compiler-state seeds</a>
 for the trust boundary and limits.</p>
 <p>Native Rust builds keep Cargo&#x27;s compiler state under <code>.oyzu/native/rust/&lt;host&gt;/</code> in your project, so repeated builds stay incremental. Oyzu keeps <code>Cargo.toml</code> and <code>Cargo.lock</code> modification times unchanged when their contents didn&#x27;t change, so Cargo doesn&#x27;t rebuild for nothing. This also applies with <code>--no-cache</code>, which turns off Oyzu&#x27;s action cache but keeps compiler caches.</p>
+<p>The experimental Linux <a class="" href="/docs/reference/action-cache#native-rust-compiler-outputs">compiler-output tier</a>
+can reuse eligible already non-incremental workspace libraries through the
+existing action cache. It preserves Cargo&#x27;s native incremental choices and keeps
+fingerprints/dep-info local. Unsupported inputs, configuration, diagnostics and
+path-sensitive invocations execute normally. Logical debug/metadata paths and
+the admitted creation mask are part of that compiler contract; this tier does
+not make opaque Cargo state portable or establish successful tests/reports.</p>
 <p>Cargo&#x27;s integration-test scratch (<code>CARGO_TARGET_TMPDIR</code>) is disposable. Before
 measuring retained caches at preparation and finalization, Oyzu removes <code>tmp/</code>
 and <code>&lt;target-triple&gt;/tmp/</code> from each Cargo target directory, including the coverage
@@ -750,7 +767,14 @@ state without following scratch links or deleting their destinations. Correct
 permissions first if the move itself fails. Quarantined data remains on disk
 until you remove it safely; it is no longer part of the retained cache budget.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-cache-budget">The cache budget<a href="#the-cache-budget" class="hash-link" aria-label="Direct link to The cache budget" title="Direct link to The cache budget" translate="no">​</a></h3>
-<p>After each build, Oyzu trims those compiler caches to a size budget:</p>
+<p>After each build, including a fail-fast test failure, Oyzu trims those compiler
+caches to a size budget. Native cleanup commands share a 60-second budget for
+that retention pass, with bounded output and process-tree cleanup. The original
+build failure remains recorded through native build finalization. User cancellation
+stops cleanup before scratch removal as well as before native commands; a cleanup
+failure includes the cleaner&#x27;s exit status and bounded standard output/error,
+without discarding collected artifacts and reports.</p>
+<p>Configure the retained size with:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">nativeMaxMiB</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token number" style="color:#36acaa">8192</span><br></div></code></pre></div></div>
 
 
@@ -833,7 +857,7 @@ private copies; subsequent builds recreate them.</p>
 <li class="">Native execution has your user account&#x27;s access. Cargo&#x27;s offline mode doesn&#x27;t stop a build script from using the network.</li>
 <li class="">A local build, even with <code>--isolated</code>, can&#x27;t grant production publication rights.</li>
 <li class=""><code>--require-release</code> refuses the build unless it is an authenticated release-candidate or release tag build; ordinary local tags and <code>--context release</code> don&#x27;t count. See <a class="" href="/docs/reference/version-inference#authenticated-release-staging">release staging</a>.</li>
-<li class="">Native builds are tested on Windows and Linux (x86-64). macOS isn&#x27;t supported yet.</li>
+<li class="">Native builds support Windows and Linux x86-64, with builder-specific limits. Intel macOS supports the <a class="" href="/docs/reference/zig">Zig native path</a>; other macOS builders are unsupported.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="building-oyzu-from-source">Building oyzu from source<a href="#building-oyzu-from-source" class="hash-link" aria-label="Direct link to Building oyzu from source" title="Direct link to Building oyzu from source" translate="no">​</a></h2>
 <p>These notes are for building the <code>oyzu</code> CLI itself from a source checkout.</p>
