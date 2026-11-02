@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Writing and testing builder plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Writing and testing builder plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing and testing builder plugins","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -73,11 +73,35 @@ and the plan, envelope and manifest carry <code>extensions[&quot;oyzu.dev/plugin
 <p>For action-cache reuse, a native development executable must return its compiled
 source-closure digest as <code>plugin.source_digest</code> in <code>describe</code> (<code>sha256:</code> followed
 by 64 lowercase hexadecimal digits). This binds the plugin&#x27;s source inputs and
-local build/runtime dependencies, rather than its linked executable bytes. First-party
-plugins embed this identity when compiled. Rebuild after source changes; core reads
-the identity from the private executable copy, never from a possibly newer source
-tree. Without this declaration, builds still run but development results are not
-reused. Scripts remain ineligible for reuse. The declaration grants no package trust
+local build/runtime dependencies, rather than its linked executable bytes. Admission
+reads the supported role&#x27;s describe contract, including publisher descriptions. First-party
+plugins embed this identity when compiled. The private source/Cargo locator is
+development-only: build with <code>OYZU_PLUGIN_DEVELOPMENT_LOCATOR=1</code> to include it,
+regardless of Cargo profile. Repository source bootstrap and development refresh
+set this opt-in. Without it the locator file is empty, so published binaries do not
+contain build-host paths from this capture. Published package bindings never consult
+the locator. Before using
+a native development executable or an archive&#x27;s host member, core reads the compiled
+identity from its private copy and compares it with the current source closure.
+Cargo&#x27;s package inventory includes added files and local build/runtime dependencies.
+Inventory excludes Cargo&#x27;s generated package lockfile and does not resolve registry
+dependencies; the existing workspace lockfile is captured separately. Freshness
+checks work offline with an empty Cargo home, including for coverage-built plugins.
+Core caches development freshness verdicts under <code>.oyzu/plugin-freshness</code>, keyed
+by the binding&#x27;s length/modification time, frozen executable digest and current
+source-closure digest, only for adopting operations such as an actual build.
+Read-only commands such as <code>build --plan</code> check freshness without writing this cache.
+It still inventories source bytes on each invocation;
+the cache avoids rescanning the whole executable for its locator. Removing the
+cache only makes the next admission scan again.
+A missing digest, missing source locator, unavailable checkout or build-time Cargo,
+or changed source fails with <code>PLUGIN_DEVELOPMENT_STALE</code>, naming the binding and a
+refresh command. Rebuild the executable and any bound archive from current source,
+then retry. In this repository use
+<code>oyzu run bootstrap -- --source --development-plugins</code>. Other plugin authors rebuild
+and rebind their own plugin; native plugins need the same private source capture as
+the first-party build scripts. Automatic rebuilding is not provided.
+Scripts remain ineligible for reuse. The declaration grants no package trust
 and development results stay out of shared remote caches. Publisher and deployer
 package descriptions still match the admitted publisher/name/version coordinates;
 optional compiled source metadata is separate from package admission.</p>
@@ -310,6 +334,14 @@ its digest and an <code>executable_digests</code> map from runtime executable na
 The native inventory is authoritative: core runs undeclared compiled units
 without reuse and keeps per-unit reuse for known compiled units. Malformed
 names, duplicate names and invalid digests still fail validation.</p>
+<p>The Rust native adapter may additionally report <code>cargo_package_digest</code>: the
+owning package&#x27;s full Cargo package-file closure, resolved local dependencies
+(including workspace, dev and build dependencies), and workspace lockfile.
+Core requests this capture during native preparation through the private
+<code>OYZU_TEST_UNITS_TRUST_NATIVE_READS=1</code> phase environment only when the resolved
+<code>cache.trustNativeTestReads</code> setting is on. It admits reuse with a visible
+<code>trust-native-test-reads</code> fact; this field never establishes confinement.
+Missing package identity keeps unbounded native units running.</p>
 <p>Bounded runtime reads require an enforced captured view; native units must give
 an unbounded reason. Shared setup reads belong to every affected unit. The
 combined JUnit report labels each suite with <code>oyzu.unit</code> and <code>oyzu.outcome</code>
@@ -652,6 +684,40 @@ regressions stay with the Go fixtures; other ecosystems do not inherit Go-specif
 <code>target-path</code> requirements. It runs no native application builds.
 Python&#x27;s translated test tasks use <code>python -m pytest</code>; the native and captured
 fixtures require its pytest adapter and mandatory JUnit/Cobertura report intent.</p>
+<p>Protocol reply equality does not establish reproducible build outputs. The
+conformance report&#x27;s <code>check_clean_builds</code> check runs a fixture twice in distinct,
+empty directories and compares the complete map of artifact identities to collected
+digests. The native runner must disable action reuse and use fresh native build
+workspaces; acquisition still follows ordinary verification. Builds are separated
+by two seconds so archive timestamps cannot hide within one clock tick. A changed
+digest fails unless the fixture stage declares a nonblank nondeterminism reason
+identifying its native cause and tracked fix. The report prints that reason even
+when the digests match. Missing outputs, changed output identities and native build
+failures always fail, including stages with an exception. An exception affects
+conformance only; it grants no cache, trust or signing exemption.</p>
+<p>The compiled-CLI native fixture table covers Docker, .NET, Go, Helm, Java, Node,
+Python, Rust and Zig:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> </span><span class="token builtin class-name">test</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--locked</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--test</span><span class="token plain"> integration deterministic_conformance::all_first_party_outputs_are_deterministic -- </span><span class="token parameter variable" style="color:#36acaa">--ignored</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--exact</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--nocapture</span><br></div></code></pre></div></div>
+<p>The native table runs on Linux x64 and requires the applicable native tools,
+acquisition access, Docker and the base execution image for captured builders.
+The scheduled acceptance workflow runs the full table on its Linux path, with
+the base execution image and Docker payload provisioned before the test.
+Docker also needs <code>OYZU_TEST_DOCKER_PAYLOAD</code> pointing to the helpers and notices
+prepared by <code>tooling/docker-plugin-payload.sh</code>; the fixture packages those files
+through ordinary archive admission rather than substituting a bare executable.
+The comparison library itself is portable. Set <code>OYZU_CONFORMANCE_BUILDER</code> to one of
+<code>docker</code>, <code>dotnet</code>, <code>go</code>, <code>helm</code>, <code>java</code>, <code>node</code>, <code>python</code>, <code>rust</code> or <code>zig</code> to select
+one row. Each row invokes the compiled CLI with <code>build --no-cache --json</code>, using
+ordinary development plugin bindings and engine admission. It compares artifact
+digests from the admitted build manifest, excluding per-run reports and evidence
+whose timestamps describe the run. A protocol-only pass does not imply a native
+determinism pass, and missing prerequisites are failures rather than exemptions.</p>
+<p>The native Rust and Zig Debug fixture stages currently declare temporary DWARF
+path differences (Rust fix,
+Zig fix); the .NET stage declares an
+embedded PDB path difference.
+These tracked exceptions remain visible in the report. All other fixture stages
+require matching artifact digests.</p>
 <p>Then try the plugin in a real project through a local binding.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-recovery">Failures and recovery<a href="#failures-and-recovery" class="hash-link" aria-label="Direct link to Failures and recovery" title="Direct link to Failures and recovery" translate="no">​</a></h2>
 
@@ -899,11 +965,14 @@ it fails instead, before invoking a plugin. Raising the minimum does not provide
 compatible executable: strict CI must wait for one to be published. The release
 workflow&#x27;s existing non-strict <code>--ci-machine-binding</code> bootstrap can build only the
 CLI and shim for that first compatible release; it still uses signed published plugins.
-On Linux it then installs the published <code>rust/app</code> and <code>node/app</code> releases that
+By default, on every host it then installs the published <code>rust/app</code> and <code>node/app</code> releases that
 <code>oyzu.lock</code> selects into the plugin store, from the release digests pinned at the top of
 the script, through a temporary user file that binds only them; your own configuration
-isn&#x27;t changed. A failed install is only a warning. A source build makes the CLI, native shim, Rust plugin and Node plugin (only the CLI and
-shim with <code>--ci-machine-binding</code>, which binds the published plugins)
+isn&#x27;t changed. A failed install stops bootstrap. Missing Windows payloads must be
+published and pinned before a Windows build can use them. Development plugins
+require explicit <code>--development-plugins</code>; only that mode builds and binds the
+Rust and Node plugins from source. A CLI source fallback alone does not opt in.
+<code>--ci-machine-binding</code> continues to use published plugins exclusively
 (this repository declares both a <code>cli</code> and a <code>docs</code> build, so both builders must resolve
 before <code>oyzu build cli</code>). When an older CLI supplies the compiler, it resolves only
 the checkout&#x27;s <code>[tools]</code> requests in a temporary project using its normal trusted
@@ -911,15 +980,15 @@ tool resolver. The repository&#x27;s <code>oyzu.lock</code> stays unchanged; new
 lock fields are not copied into that tool-only project. It compiles with the pinned
 Rust and Cargo&#x27;s <code>--locked</code> dependency graph, and
 honors <code>CARGO_TARGET_DIR</code> and <code>CARGO_BUILD_TARGET</code>. It needs no Python, Node or <code>jq</code> just
-to read configuration; only the Linux plugin installation above and the read-back in the CI
+to read configuration; only the published plugin installation above and the read-back in the CI
 machine binding below use Python.</p>
-<p>On a machine with no user configuration file and no existing plugin choices, the script
-writes the two development bindings to <code>.oyzu/bootstrap/config.toml</code> and prints the
+<p>With <code>--development-plugins</code>, on a machine with no user configuration file and no
+existing plugin choices, the script writes the two development bindings to <code>.oyzu/bootstrap/config.toml</code> and prints the
 <code>OYZU_USER_CONFIG</code> export (or records it through <code>CLAUDE_ENV_FILE</code>, or through <code>GITHUB_ENV</code> for later GitHub Actions steps). It doesn&#x27;t touch your
 own user configuration, project or local files, or shell profiles. If any step fails,
 it removes the file it created. Running it again with the same unchanged file prints
 <code>Reusing this checkout&#x27;s unchanged bootstrap USER file</code> and the same export.</p>
-<p><code>oyzu run bootstrap</code> (on macOS and Windows, or with <code>--source</code>) uses the same file, but once it has packed
+<p><code>oyzu run bootstrap -- --source --development-plugins</code> uses the same file, but once it has packed
 <code>.oyzu/bin/oyzu-plugin-rust.tar.gz</code> the file binds <code>rust/app</code> to that
 <a href="#binding-a-package-archive" class="">package archive</a> so isolated builds work (see
 <a class="" href="/docs/reference/local-builds#refreshing-the-oyzu-on-your-path">refreshing the <code>oyzu</code> on your PATH</a>). An earlier file with the

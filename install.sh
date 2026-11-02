@@ -161,10 +161,15 @@ pick() {
 # Records the install for `oyzu self` (its channel, pin and digest) beside the
 # binaries; a failure only means `oyzu self` treats the folder as unmanaged.
 write_receipt() {
+  # Receipt format owner minimum; raise only for content older readers mis-handle.
+  receipt_marker= old_min=$(sed -n 's/.*"min_oyzu_version"[[:space:]]*:[[:space:]]*"\([^"]*\)".*/\1/p' "$dir/.oyzu-install.json" 2>/dev/null || true)
+  if [ -n "$old_min" ] && printf '%s\n' "$old_min" | awk -F. '{exit !($1 > 0 || $2 > 3 || ($2 == 3 && $3+0 > 5))}'; then
+    receipt_marker="\"min_oyzu_version\":\"$old_min\","
+  fi
   v=${tag#oyzu/}; v=${v#v}; pin=null
   [ -z "$version" ] || pin="\"$v\""
-  printf '{"type":"https://oyzu.dev/self-install/v1alpha1","channel":"%s","pin":%s,"mode":"auto","repository":"%s","version":"%s","tag":"%s","digest":"%s","installedBy":"install.sh","installedAt":"%s"}\n' \
-    "$channel" "$pin" "$repo" "$v" "$tag" "$digest" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >"$dir/.oyzu-install.json.new" &&
+  printf '{%s"type":"https://oyzu.dev/self-install/v1alpha1","channel":"%s","pin":%s,"mode":"auto","repository":"%s","version":"%s","tag":"%s","digest":"%s","installedBy":"install.sh","installedAt":"%s"}\n' \
+    "$receipt_marker" "$channel" "$pin" "$repo" "$v" "$tag" "$digest" "$(date -u +%Y-%m-%dT%H:%M:%SZ)" >"$dir/.oyzu-install.json.new" &&
     mv -f "$dir/.oyzu-install.json.new" "$dir/.oyzu-install.json" ||
     say "oyzu install: could not record the install for oyzu self in $dir" >&2
 }

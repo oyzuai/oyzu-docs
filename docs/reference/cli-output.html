@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">CLI output | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/cli-output"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="CLI output | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/cli-output.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/cli-output"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/cli-output" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"CLI output","item":"https://docs.oyzu.ai/docs/reference/cli-output"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -508,6 +508,12 @@ Oyzu&#x27;s own codes are always shown.</p>
 (<code>2 targets · 1 executed · 1 reused · 235.3s</code>), followed by a dim <code>Details</code> line
 with the manifest and event paths and the invocation ID. <code>-v</code> adds reuse and cache
 details.</p>
+<p>Native Rust actions with compiler-cache observations append <code>rustc</code> counts to
+their completion row: <code>compiled</code> and <code>local</code> executed the compiler, while
+<code>reused</code> restored an individual compiler result. These differ from whole-action
+reuse. The action&#x27;s <code>extensions.oyzu.dev/rustc-invocations</code> retains the same
+counts in the JSON build manifest; a whole-action reuse keeps the earlier
+receipt rather than claiming those compilers ran now.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="marks-and-colors">Marks and colors<a href="#marks-and-colors" class="hash-link" aria-label="Direct link to Marks and colors" title="Direct link to Marks and colors" translate="no">​</a></h4>
 <ul>
 <li class="">With color, state is a symbol: <code>✓</code> ok, <code>↺</code> reused, <code>!</code> warning, <code>✗</code> failed.</li>

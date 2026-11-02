@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Publishing finalized artifacts | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/publish"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Publishing finalized artifacts | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/publish.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/publish"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/publish" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Publishing finalized artifacts","item":"https://docs.oyzu.ai/docs/reference/publish"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -736,29 +736,56 @@ authored artifacts (available in v0.2.4). Both building and publishing bootstrap
 released CLI with <code>--require-release</code>, excluding the tag being built. A missing
 or older driver stops the job; there is no Cargo driver fallback and the
 publishing job does not use a binary built by the current run.
-The shared bootstrap currently has published Rust/Node builder bindings only
-on Linux. The release workflow stops before bootstrap on macOS and Windows
-until published bindings are qualified there; it never takes their source
-plugin bootstrap path. The declared three-platform x64 matrix is not a claim of
-qualified three-platform x64 release support.</p>
+The shared release set in <code>.github/release-platforms.sh</code> currently requires
+<code>linux/x86_64</code> and <code>windows/x86_64</code>. Every declared platform must build and audit
+successfully before publication; failed, skipped or cancelled legs block the
+release. The CLI plan also includes Darwin, which is recorded as omitted while
+it is outside this release set. Adding <code>darwin/x86_64</code> to the shared declaration
+enables its native runner for CLI and plugin releases.</p>
+<p>Normal Windows builds require published binaries. The explicit
+<code>windows_bootstrap_1679=true</code> exception permits the authorized one-time Windows
+source bootstrap only for <code>oyzu/v0.3.8</code> on its designated release runner and
+refuses once a compatible published Windows CLI exists.</p>
+<p>CLI release build and publish jobs, and plugin release build legs, use isolated
+home/data directories under <code>RUNNER_TEMP</code> before bootstrap and for the whole job.
+Each run attempt and platform gets fresh tool stores, so an older bootstrap CLI
+never reads receipts left by a newer CLI in another job. The runner&#x27;s existing
+shared store is left untouched. This costs a cold tool install in every release
+job, including retries. The workflows use <code>HOME</code> (also honored by 0.2.2 on
+Windows and macOS) and <code>XDG_DATA_HOME</code> on Linux: <code>OYZU_STORE</code> alone is not a CLI
+environment override. Plugin producers pass their job-local store explicitly
+with <code>--store</code>.</p>
+<p>Before any job receives release secrets, <code>release.yml</code> resolves the supplied tag
+(including annotated tags) to its commit and requires a completed, successful
+push-to-main run of <strong>CI</strong> (<code>ci.yml</code>) on that exact commit. Missing, running,
+cancelled or failed runs block release; the error names the workflow, commit and
+available run URLs. Restore green main CI before retrying; there is no override.
+<strong>CLI and scenarios</strong> (<code>build.yml</code>) runs only on schedules or dispatch and is
+not a push-to-main prerequisite. GitHub API access is required; API failures
+block release. Unsigned <code>audit_only=true</code> runs explicitly log that they skip
+this gate. This check does not replace the required desktop Windows pre-tag
+release qualification.</p>
 <p>To cut a release:</p>
 <ol>
-<li class="">Merge a commit whose <code>Cargo.toml</code> says <code>X.Y.Z</code>, tag it <code>oyzu/vX.Y.Z</code> and push the tag to <code>oyzuai/oyzu</code>.</li>
+<li class="">Integrate the version commit (<code>Cargo.toml</code> says <code>X.Y.Z</code>) through a PR to <code>dev</code>, then fast-forward <code>main</code> to that chosen dev commit. Do not merge directly into main. Wait for full main CI on that exact commit and run the full Windows release-like suite on MICAH-DESKTOP from a fresh worktree: <code>OYZU_CONTEXT=release oyzu build cli --output plain</code>, with <code>OYZU_RELEASE_COMMIT</code> and <code>SOURCE_DATE_EPOCH</code> set for the promoted commit. A failed, cancelled or missing main run, or a failed desktop suite, blocks the tag. Fix on dev and promote again. Once both pass, tag that main commit <code>oyzu/vX.Y.Z</code> and push the tag to <code>oyzuai/oyzu</code>.</li>
 <li class="">Create and publish the release with the same tag in <code>oyzuai/oyzu-releases</code>.</li>
-<li class="">Start the release workflow: <code>gh workflow run release.yml -f tag=oyzu/vX.Y.Z</code>.</li>
+<li class="">Start the release workflow: <code>gh workflow run release.yml --ref main -f tag=oyzu/vX.Y.Z</code>.</li>
 </ol>
 <p>The workflow attaches assets to that release. It never creates the release or the tag. It writes to <code>oyzuai/oyzu-releases</code> with the <code>OYZU_RELEASES_TOKEN</code> secret, a token with Contents read/write on that repository only, because the workflow&#x27;s own token can&#x27;t write to another repository. If <code>OYZU_RELEASES_TOKEN</code> is missing, or the release repository differs from the committed destination, the run stops before publishing. A fork sets the repository variable <code>OYZU_RELEASE_REPO</code> and edits the destination&#x27;s <code>repository</code>.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="unsigned-native-audits">Unsigned native audits<a href="#unsigned-native-audits" class="hash-link" aria-label="Direct link to Unsigned native audits" title="Direct link to Unsigned native audits" translate="no">​</a></h4>
 <p>Set <code>audit_only=true</code> to build and audit the requested native platforms at the
 selected ref without a tag, provenance signing, release publication or schema
-attachment. An empty <code>incomplete</code> input requests the three declared x64 platforms:
-<code>linux/x86_64</code>, <code>darwin/x86_64</code> and <code>windows/x86_64</code>. <code>linux/x86_64</code> is mandatory.</p>
-<p>To request a subset, use the existing <code>incomplete</code> input to name each omitted
-platform with a nonempty reason, separated by semicolons or newlines. Names must
-be canonical: <code>linux/x86_64</code>, <code>darwin/x86_64</code> or <code>windows/x86_64</code>. Aliases, combined names, missing reasons,
-repeated platforms and omitting <code>linux/x86_64</code> fail before any build decision.</p>
-<p>For example, these inputs request Linux x86_64 only (illustrative):</p>
-<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">audit_only=true</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">incomplete=darwin/x86_64=not requested;windows/x86_64=not requested</span><br></div></code></pre></div></div>
+attachment. An empty <code>incomplete</code> input requests all declared release platforms:
+<code>linux/x86_64</code> and <code>windows/x86_64</code>. Darwin is automatically recorded as outside
+the declared release set, without waiting for its unavailable native runner.</p>
+<p>The <code>incomplete</code> input can name only undeclared canonical platforms with a
+nonempty reason, separated by semicolons or newlines. For example,
+<code>incomplete=darwin/x86_64=Mac mini runner unavailable</code> is accepted.
+<code>incomplete=windows/x86_64=runner unavailable</code> is refused. Aliases, combined
+names, missing reasons, repeated platforms and any declared omission fail before
+building.</p>
+<p>For example, these inputs audit the declared Linux and Windows set (illustrative):</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">audit_only=true</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">incomplete=darwin/x86_64=Mac mini runner unavailable</span><br></div></code></pre></div></div>
 <p>Every requested platform retains its build, tests, notices/source audit and
 independent final companion verification. The job summary and retained bundle
 status record each omission as <code>UNQUALIFIED / NOT RUN</code>, with its reason. Missing
@@ -801,6 +828,11 @@ never overwrites original inputs with retry skips. If originals expired, are
 incomplete or fail validation, publication stops before uploads. Restore those
 exact accepted inputs before retrying; rebuilding cannot reconstruct the plan.</p>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="oyzus-own-ci-jobs">oyzu&#x27;s own CI jobs<a href="#oyzus-own-ci-jobs" class="hash-link" aria-label="Direct link to oyzu&#x27;s own CI jobs" title="Direct link to oyzu&#x27;s own CI jobs" translate="no">​</a></h4>
+<p>Every PR targets <code>dev</code>; its push CI is a latest-wins signal after local verification.
+Main promotion CI always selects all jobs and keeps running for the release gate.
+Trusted dev and main jobs use <code>OYZU_MAIN_RUNNER</code> when configured, sharing the CI
+cache; pull requests remain readers. Cache service admission must explicitly trust
+both branch identities. Publishing workflows and signatures remain main-only.</p>
 <p>Oyzu&#x27;s own CI jobs start from the newest published release of oyzu and run Cargo with the Rust it pins, so the project builds itself with the tool it ships.</p>
 <ul>
 <li class=""><strong>Setup action.</strong> The setup step runs <code>tooling/bootstrap-oyzu.sh --release --require-release --ci-machine-binding</code>, reading releases from the public <code>oyzuai/oyzu-releases</code> (<code>OYZU_RELEASE_REPO</code> names another repository, for forks). It uses the downloaded executable only when its SHA-256 digest matches the one GitHub reports for the asset, as the <a class="" href="/docs/reference/install-script">install script</a> does, then puts <code>.oyzu/bin</code> on <code>PATH</code> and writes one summary line naming the release tag, asset and digest of the <code>oyzu</code> used. After <code>oyzu install --frozen</code> it puts the installed tools on <code>PATH</code> for later steps (<code>.github/actions/oyzu-env</code>, CI&#x27;s version of <a class="" href="/docs/reference/shell-activation">shell activation</a>), so steps run <code>cargo</code>, <code>node</code> or <code>python</code> directly and never through <code>oyzu exec</code>. A job that installs into its own store or a toolset runs the same action after its install, with <code>store</code> or <code>toolset</code>. For a separately pinned source tree, <code>root</code> selects that tree&#x27;s configuration and lock; the action fails if it cannot enter that root. CI ignores user configuration, so <code>--ci-machine-binding</code> binds the signed published Rust and Node plugins in a new machine configuration on the job&#x27;s ephemeral runner, without building plugins from source (see <a class="" href="/docs/reference/plugin-development#ci-machine-binding">CI machine binding</a>).</li>
@@ -823,6 +855,15 @@ exact accepted inputs before retrying; rebuilding cannot reconstruct the plan.</
 <li class="">The job needs a Docker engine, so it runs on GitHub-hosted runners, and each run needs the maintainer&#x27;s approval.</li>
 </ul>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="bootstrap">Bootstrap<a href="#bootstrap" class="hash-link" aria-label="Direct link to Bootstrap" title="Direct link to Bootstrap" translate="no">​</a></h3>
+<p>The one-time <code>windows_bootstrap_1679=true</code> release dispatch for <code>oyzu/v0.3.8</code>
+uses development Rust and Node bindings when compatible Windows packages are
+unavailable. On that Windows path, <code>oyzu build cli --plan --output plain</code> in the
+release context validates configuration through normal builder discovery;
+metadata-only <code>oyzu config validate</code> cannot inspect development bindings.
+The subsequent release build and artifact/source gates remain required.
+Ordinary releases and the publishing job still require <code>oyzu config validate</code>.
+The dispatch workflow supplies this choice; bootstrap and compliance scripts
+are read from the release tag (the dispatch revision for audit-only runs).</p>
 <p>Release assets for the oyzu CLI are named per host. The install script and the repository bootstrap pick the one for your host and check the SHA-256 digest GitHub reports for it before installing:</p>
 
 

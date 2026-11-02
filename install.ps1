@@ -194,13 +194,20 @@ function Install-Oyzu([string]$Channel, [string]$Version, [string]$InstallDir, [
     $releases = Invoke-OyzuGet $ctx "$($ctx.Api)/repos/$($ctx.Repo)/releases?per_page=30" 'application/vnd.github+json' "the release list of $($ctx.Repo)"
   }
   $release = $null; $asset = $null
+  # Private checkout-refresh guard: the ordinary standalone installer has no floor.
+  $minimum = $env:OYZU_BOOTSTRAP_MIN_VERSION
+  if ($minimum -and $minimum -notmatch '^\d+\.\d+\.\d+$') { Stop-OyzuInstall 2 'invalid checkout bootstrap minimum version' }
   foreach ($candidate in $releases) {
     if ($candidate.draft) { continue }
+    if ($minimum) {
+      if ($candidate.tag_name -notmatch '^oyzu/v(\d+\.\d+\.\d+)(?:-|$)' -or [version]$Matches[1] -lt [version]$minimum) { continue }
+    }
     if (-not $Version -and (($candidate.tag_name -like '*/*' -and $candidate.tag_name -notlike 'oyzu/v*') -or (Get-OyzuChannelRank $candidate.tag_name) -gt $rank)) { continue }
     $asset = $candidate.assets | Where-Object { $_.name -eq $assetName } | Select-Object -First 1
     if ($asset) { $release = $candidate; break }
   }
   if (-not $release) {
+    if ($minimum) { Stop-OyzuInstall 1 "no published $Channel Windows release at least $minimum has $assetName; this checkout cannot use an older CLI. Run oyzu run bootstrap -- --source instead." }
     if ($Version) { Stop-OyzuInstall 1 "release $Version of $($ctx.Repo) has no $assetName, the executable for this platform. Choose another release, or build from source: https://docs.oyzu.ai/docs/get-started/install" }
     Stop-OyzuInstall 1 "no published $Channel release of $($ctx.Repo) has $assetName, the executable for this platform. Try -Channel beta or nightly, or build from source: https://docs.oyzu.ai/docs/get-started/install"
   }
@@ -239,10 +246,22 @@ function Install-Oyzu([string]$Channel, [string]$Version, [string]$InstallDir, [
     }
     # Records the install for `oyzu self` (its channel, pin and digest) beside the binaries.
     $v = $tag -replace '^oyzu/', '' -replace '^v', ''
-    $receipt = [ordered]@{ type = 'https://oyzu.dev/self-install/v1alpha1'; channel = $Channel; pin = $(if ($Version) { $v } else { $null })
-      mode = 'auto'; repository = $ctx.Repo; version = $v; tag = $tag; digest = [string]$asset.digest
-      installedBy = 'install.ps1'; installedAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ') }
-    try { [IO.File]::WriteAllText((Join-Path $InstallDir '.oyzu-install.json'), ($receipt | ConvertTo-Json -Compress) + "`n") }
+    try {
+      # Receipt format owner minimum; raise only for content older readers mis-handle.
+      $receiptMinimum = $null
+      $oldReceiptPath = Join-Path $InstallDir '.oyzu-install.json'
+      if (Test-Path -LiteralPath $oldReceiptPath) {
+        $oldMinimum = (Get-Content -LiteralPath $oldReceiptPath -Raw | ConvertFrom-Json).min_oyzu_version
+        if ($oldMinimum -and ([version]($oldMinimum -split '[-+]')[0]) -gt [version]'0.3.5') {
+          $receiptMinimum = $oldMinimum
+        }
+      }
+      $receipt = [ordered]@{ type = 'https://oyzu.dev/self-install/v1alpha1'; channel = $Channel; pin = $(if ($Version) { $v } else { $null })
+        mode = 'auto'; repository = $ctx.Repo; version = $v; tag = $tag; digest = [string]$asset.digest
+        installedBy = 'install.ps1'; installedAt = [DateTime]::UtcNow.ToString('yyyy-MM-ddTHH:mm:ssZ') }
+      if ($receiptMinimum) { $receipt.min_oyzu_version = $receiptMinimum }
+      [IO.File]::WriteAllText((Join-Path $InstallDir '.oyzu-install.json'), ($receipt | ConvertTo-Json -Compress) + "`n")
+    }
     catch { [Console]::Error.WriteLine("oyzu install: could not record the install for oyzu self in $InstallDir") }
     if ($linux) { Initialize-OyzuEngine (Join-Path $InstallDir 'oyzu.exe') $linux $linuxName }
   } finally {

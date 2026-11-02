@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tool lock files and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool lock files and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool lock files and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-lock-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -22,7 +22,26 @@
 unsupported. Feature-specific limits are listed in the <a class="" href="/docs/reference/ecosystem-support#platforms">support matrix</a>.</p>
 </blockquote>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-a-lock-contains">What a lock contains<a href="#what-a-lock-contains" class="hash-link" aria-label="Direct link to What a lock contains" title="Direct link to What a lock contains" translate="no">​</a></h2>
-<p>All tool locks use <code>format = 1</code>. One file can hold two kinds of records, and neither implies the other:</p>
+<p>All tool locks use <code>format = 1</code>. Writers optionally set the top-level
+<code>min_oyzu_version</code> to the minimum reader the owner declares for the content, written only when the content requires a reader newer than the marker baseline (0.3.5) (a semantic version
+such as <code>0.3.6</code>). Rewrites retain a higher existing minimum; changing the writer&#x27;s
+release version alone does not change the marker. Existing unmarked developer-reuse
+snapshots remain reusable after lock validation; reuse retains their immutable bytes. This is independent of <code>format</code>, which remains <code>1</code>.</p>
+<p>Before decoding the lock records, Oyzu checks the marker locally. A newer
+requirement fails with <code>FILE_READER_TOO_OLD</code>, exit status <code>3</code>, in human output
+and the <code>--json</code> <code>code</code> field:</p>
+<div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">this lock (oyzu.lock) needs oyzu &gt;= 9999.0.0 (you have 0.3.4); run `oyzu self update`</span><br></div></code></pre></div></div>
+<p>This example is illustrative. Inspection leaves the lock unchanged and needs
+no network; updating Oyzu requires access to its release source. Missing markers
+are accepted for existing files. Malformed markers fail with
+<code>FILE_READER_INVALID</code>. Unknown fields in otherwise readable locks fail with
+<code>FILE_UNKNOWN_FIELD</code>, name the field and suggest <code>oyzu self update</code> before
+correcting a possible spelling mistake.</p>
+<p>The diagnostic is available from Oyzu 0.3.5 onward. Released 0.3.4 and older
+binaries cannot acquire it without updating and may still report an unknown
+field. A marker grants no permission to skip lock validation or publisher
+verification.</p>
+<p>One file can hold two kinds of records, and neither implies the other:</p>
 <ul>
 <li class=""><code>resolved_environment</code> and <code>resolution</code> records: what <code>oyzu pin</code> or an online, non-frozen project install resolved (versions, URLs and digests per platform).</li>
 <li class=""><code>environment</code> and <code>tool</code> records: verified installations.</li>
@@ -61,6 +80,13 @@ evidence actually verified:</p>
 
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Strength</th><th>Meaning</th></tr></thead><tbody><tr><td><code>digest-only</code></td><td>Pinned SHA-256, with no authenticated publisher identity.</td></tr><tr><td><code>checksum-file</code></td><td>The digest agrees with a publisher checksum file. A file from the same origin is not proof of publisher identity.</td></tr><tr><td><code>signature</code></td><td>A publisher signature, including a signed checksum list or an authenticated checksum-database entry, binds the selected bytes.</td></tr><tr><td><code>provenance</code></td><td>Verified publisher build provenance binds the selected bytes.</td></tr></tbody></table></div>
+<p>If activation reports <code>unknown field strength</code> while reading an installed-tool
+receipt, use a current Oyzu executable that understands <code>verification.strength</code>
+and rerun <code>oyzu --toolset checks activate bash</code> with that executable. Older
+development executables can reject receipts written by a newer executable.
+Keep the receipts and installed tools intact; removing the field would discard
+recorded evidence. Updating the executable does not require reinstalling those
+tools.</p>
 <p>The signed tool index records the verdict for a version; it is the weakest
 strength among its resolved platforms. OpenPGP verification happens in index
 production, outside the shipping CLI. At pin time, a supplied Sigstore bundle

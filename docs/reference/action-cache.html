@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Action cache | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/action-cache"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Action cache | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/action-cache.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/action-cache"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/action-cache" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Action cache","item":"https://docs.oyzu.ai/docs/reference/action-cache"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.549186c0.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
 <script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
 </head>
 <body>
@@ -38,8 +38,9 @@ when a self-host build installs its newly built CLI. A plugin without this ident
 can still build, but its development results are not reused. Published packages keep
 their admitted release digest in the key. Executable verification, private invocation
 copies and package admission remain required independently of cache identity.</p>
-<p>Moving an unchanged checkout on the same platform does not by itself change its
-action keys. Before hashing, Oyzu replaces known checkout, private-workspace and
+<p>Moving an unchanged checkout on the same platform preserves keys only for
+stages whose builder declares every retained output relocatable. Before hashing,
+Oyzu replaces known checkout, private-workspace and
 per-run scratch locations in command arguments, environment values and declared
 paths with stable relative locations. This includes paths inside native JSON
 arguments and Windows drive, separator and verbatim-prefix forms. Paths to inputs
@@ -52,6 +53,73 @@ containment, so ambiguous text retains its original identity.
 Entries written by versions that retained checkout-specific paths can miss once
 after upgrading; the existing cache need not be cleared.
 An unavailable cache is different from <code>--no-cache</code>. If the store can&#x27;t be used, permitted native builds continue with a warning and run everything.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="output-relocation">Output relocation<a href="#output-relocation" class="hash-link" aria-label="Direct link to Output relocation" title="Direct link to Output relocation" translate="no">​</a></h3>
+<p>The builder&#x27;s <code>relocatable_outputs</code> command promise covers intermediate trees
+and reports as well as delivered artifacts. Without that promise, the key also
+binds the actual checkout, execution working directory, arguments and environment
+before location normalization. Moving the checkout or changing those native
+locations causes recomputation instead of restoring files that refer to the old
+location. The location input is stored as a digest. This is automatic; there is
+no project setting to override the builder&#x27;s promise.
+Core-allocated temporary report directories do not change this digest between
+invocations; checkout, working-directory and native compiler-cache paths still do.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Builder</th><th>Outputs eligible for cross-location action reuse</th></tr></thead><tbody><tr><td>Rust</td><td>Native copy/export operations and rustfmt checks. Compilation, package verification and arbitrary tests remain location-sensitive: debug information, dep-info and build-script products are not a portable tree.</td></tr><tr><td>Go</td><td>Conventional application compilation with frozen ordinary compiler controls uses native <code>-trimpath</code> and <code>-buildvcs=false</code>. Unknown controls, custom flags/commands, preparation and other stages remain location-sensitive.</td></tr><tr><td>Node</td><td>Native single-package archive packing (with lifecycle scripts disabled) and entry verification. Installation, workspace operations and authored build/test tasks remain location-sensitive, including executable shims and generated source maps.</td></tr><tr><td>Python</td><td>Native package export. Preparation, backend execution, tests and quality tools remain location-sensitive, including interpreter paths and bytecode.</td></tr><tr><td>Java, .NET, Helm, Docker, Zig</td><td>Location-sensitive unless their command explicitly declares all retained outputs relocatable. Artifact portability alone does not grant intermediate-tree reuse.</td></tr></tbody></table></div>
+<p>Portable consumers still depend on the content identity of their upstream
+outputs. Declaring a copy or archive operation portable never makes its producer
+portable. Location-sensitive stages can miss even in an unchanged checkout when
+their native arguments contain newly allocated scratch paths; native compiler
+incremental state remains independently available. This does not rewrite cached
+outputs or weaken artifact validation, cache admission or required checks.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="inherited-native-environment">Inherited native environment<a href="#inherited-native-environment" class="hash-link" aria-label="Direct link to Inherited native environment" title="Direct link to Inherited native environment" translate="no">​</a></h2>
+<p>Native host builds preserve the compiler/runtime controls declared by their
+builder and freeze their inherited values into the action environment before
+cache lookup. Changing one of these values invalidates both whole-target and
+individual-stage reuse. Explicit project/task environment settings still take
+precedence; configuration removals and environment policy validation still apply.
+Human output and <code>--json</code> report the same executed/reused actions.</p>
+<p>The Rust builder declares Cargo/rustc flags (including encoded flags), compiler
+and documentation executables, compiler wrappers, toolchain/build-target controls,
+Cargo/Rustup home locations, the selected target&#x27;s Cargo flags/linker/runner, native C/C++ compiler and linker
+controls, and reproducible-build stamps. The Node builder declares <code>NODE_ENV</code>,
+<code>NODE_OPTIONS</code>, <code>NODE_PATH</code>, <code>NODE_ICU_DATA</code>, <code>OPENSSL_CONF</code>, <code>TZ</code>, native C/C++
+compiler and linker controls, and <code>SOURCE_DATE_EPOCH</code>. The lists live beside each
+builder&#x27;s stage declarations. npm installation also retains its existing binding
+of discovered <code>npm_config_*</code> controls.</p>
+<p>Native build actions receive only their frozen declared and configured environment,
+plus executor-owned temporary paths. Shared launch/home controls (<code>PATH</code>, <code>HOME</code>,
+<code>USERPROFILE</code>, <code>SYSTEMROOT</code>, <code>WINDIR</code>, <code>COMSPEC</code>, <code>PATHEXT</code>) are frozen and keyed too. Undeclared host variables are absent, even
+with <code>--no-cache</code>; declare project-specific inputs in configuration. Development
+tasks retain host inheritance. Host builds do not provide filesystem or network
+isolation.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="regular-file-permissions">Regular-file permissions<a href="#regular-file-permissions" class="hash-link" aria-label="Direct link to Regular-file permissions" title="Direct link to Regular-file permissions" translate="no">​</a></h2>
 <p>On Unix, source and output inventories record ordinary regular-file permission
 bits as <code>unixMode</code> (<code>0</code> through <code>511</code>, the octal <code>0777</code> mask), retaining the
@@ -72,6 +140,11 @@ file restore preserves its existing destination.</p>
 <p>On hosts that cannot observe Unix modes, the optional fact is absent. Directory
 output modes, ACLs, ownership and special bits are not added to the cache
 contract. Use <code>--no-cache</code> when those properties affect the required output.</p>
+<p>Directory output trees retain empty roots and nested empty directories as well
+as regular files. Restore verifies the complete directory inventory against the
+artifact record; missing directories are corruption, even when no file bytes
+are missing. Directory artifacts reject symbolic links, including links to
+directories and linked artifact roots. Cache capture does not follow them.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="flaky-tests-and-quarantine">Flaky tests and quarantine<a href="#flaky-tests-and-quarantine" class="hash-link" aria-label="Direct link to Flaky tests and quarantine" title="Direct link to Flaky tests and quarantine" translate="no">​</a></h2>
 <p>Automatic flaky-test detection and quarantine are not available yet. A failed
 test remains a failure under the configured <a class="" href="/docs/reference/configuration#check-levels">check level</a>;
@@ -119,7 +192,7 @@ flaky-test output section or persisted same-input test history.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Control</th><th>Effect</th></tr></thead><tbody><tr><td><code>oyzu build --no-cache</code></td><td>No lookup and no storage for this build. The summary shows <code>disabled (--no-cache)</code>.</td></tr><tr><td><code>cache.local = false</code></td><td>Same, from configuration (default <code>true</code>).</td></tr><tr><td><code>cache.dir</code></td><td>Absolute directory that replaces the default store location. User or system scope only. A project <code>oyzu.toml</code> or <code>oyzu.local.toml</code> that sets it is rejected with <code>CONFIG_SCOPE</code>. User-scope configuration is ignored in CI.</td></tr><tr><td><code>oyzu cache status</code> / <code>clear</code></td><td>Show or empty the store. <code>status</code> also reports the <a class="" href="/docs/reference/docker-images#docker-storage-budget">Docker image budget</a>.</td></tr><tr><td><code>oyzu build --explain</code>, <code>oyzu cache explain &lt;target&gt;</code></td><td><a href="#explaining-reuse" class="">Explain</a> why stages were reused or ran. Read-only.</td></tr><tr><td><code>cache.remote</code>, <code>cache.read</code>, <code>cache.write</code></td><td>The <a href="#remote-oci-cache" class="">remote OCI cache</a>: destination, lookup (default on) and publishing (default off).</td></tr><tr><td><code>cache.ciRemote</code>, <code>cache.immutableTags</code></td><td>The <a href="#ci-and-development-repositories" class="">CI repository</a>, and whether the registry refuses to replace tags (default off).</td></tr><tr><td><code>build.host-workspaces-dir</code></td><td>Absolute directory where native builds park private copies of your source. User or machine configuration only. Doesn&#x27;t affect cache keys.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Control</th><th>Effect</th></tr></thead><tbody><tr><td><code>oyzu build --no-cache</code></td><td>No lookup and no storage for this build. The summary shows <code>disabled (--no-cache)</code>.</td></tr><tr><td><code>cache.local = false</code></td><td>Same, from configuration (default <code>true</code>).</td></tr><tr><td><code>cache.dir</code></td><td>Absolute directory that replaces the default store location. User or system scope only. A project <code>oyzu.toml</code> or <code>oyzu.local.toml</code> that sets it is rejected with <code>CONFIG_SCOPE</code>. User-scope configuration is ignored in CI.</td></tr><tr><td><code>oyzu cache status</code> / <code>clear</code></td><td>Show or empty the store. <code>status</code> also reports the <a class="" href="/docs/reference/docker-images#docker-storage-budget">Docker image budget</a>.</td></tr><tr><td><code>oyzu build --explain</code>, <code>oyzu cache explain &lt;target&gt;</code></td><td><a href="#explaining-reuse" class="">Explain</a> why stages were reused or ran. Read-only.</td></tr><tr><td><code>cache.remote</code>, <code>cache.read</code>, <code>cache.write</code></td><td>The <a href="#remote-oci-cache" class="">remote OCI cache</a>: destination, lookup (default on) and publishing (default off).</td></tr><tr><td><code>cache.ciRemote</code>, <code>cache.immutableTags</code></td><td>The <a href="#ci-and-development-repositories" class="">CI repository</a>, and whether the registry refuses to replace tags (default off).</td></tr><tr><td><code>build.host-workspaces-dir</code></td><td>Absolute directory where native builds park private copies of your source. User or machine configuration only. Changed execution locations invalidate location-sensitive stages.</td></tr></tbody></table></div>
 <p>See <a class="" href="/docs/reference/configuration#registered-settings">configuration</a>. Keys and cache paths are never user-authored.</p>
 <p>Native builds work from a private copy of each target&#x27;s source, kept in a <code>host-workspaces</code> folder next to the action store. It follows the platform cache location, not <code>cache.dir</code>. If that folder is on a different drive than your checkout (for example the cache on <code>C:</code> and the repository on <code>E:</code>), Oyzu parks the copy in the repository&#x27;s Git directory instead (<code>.git/oyzu/host-workspaces</code>, or the linked worktree&#x27;s Git directory), so parking stays a rename rather than a full copy. The first such build moves a copy parked at the old location. Use <code>build.host-workspaces-dir</code> to choose the folder yourself. It must be outside the source tree; the Git directory counts as outside. The path must not pass through a symbolic link, except root-owned top-level links in a root-owned filesystem root that is not writable by group or others, such as macOS <code>/tmp</code> and <code>/var</code>. Oyzu renames the copy into place when it can, and otherwise copies only the pruned source, keeping file times and permissions so native tools such as Cargo still see unchanged files as fresh. A real source edit still invalidates native compilation. Oyzu never copies compiler, dependency or tool caches. Changing the setting doesn&#x27;t move existing parked workspaces.</p>
 <p>The Git fallback requires an existing repository, recognized by the same
@@ -651,7 +724,7 @@ for the target; a target without a private root uses whole-target caching.</li>
 <li class="">Private branches start from the frozen pre-run source projection plus the finite outputs of their admitted producers. They never copy later shared-stage changes, even inside their declared reads. The prepared source projection stays immutable while shared stages and deferred cache restores use a separate retained execution root. Private branches are populated only on execution and carry the projection&#x27;s admitted digests without hashing copied source again. Reused private stages do not populate their forks; reused producer bytes are handed off only when a consumer executes. Producer files come from their executed fork or verified cached bytes, not from the live shared root.</li>
 <li class="">Native artifacts are collected from the workspace of their declared producing stage, including shared execution roots beside private checks.</li>
 <li class="">A target can mix private and shared stages. Cached shared-stage changes are captured from and restored into the shared execution root. If a later stage fails, retrying can reuse a successful producer and restore its files before the consumer executes, without changing the source of later private forks. Editing a check&#x27;s declared reads reruns that check. Shared, unconfined native actions follow every <code>dependsOn</code> edge, including order-only edges. Private branches retain the existing order-only non-observation rule and follow real producer dependencies.</li>
-<li class="">Cargo declares these neutral facts for its host stages and indexed binary exports. Compilation and Clippy need complete observations before using narrow keys; rustfmt uses its fixed tool rule. The separately lowered test has no complete native read basis. Its unbounded outputs keep it on the shared execution path with AlwaysRun and no reusable test-result storage; it retains conservative action configuration and whole-target source identity. Hooks, task replacements and materialized inputs retain the serial whole-target fallback. Maven and Gradle formatter admission additionally requires their plugin&#x27;s fixed-read declarations; a private-stage request alone grants no narrow key. Compile, test and package remain whole-target unless their native read and output contracts qualify.</li>
+<li class="">Cargo declares these neutral facts for its host stages and indexed binary exports. Compilation and Clippy need complete observations before using narrow keys; rustfmt uses its fixed tool rule. The separately lowered test has no complete native read basis. Its unbounded outputs keep it on the shared execution path with AlwaysRun; unit results require the explicit native Rust trust opt-in described below. By default, it retains conservative action configuration and whole-target source identity. Hooks, task replacements and materialized inputs retain the serial whole-target fallback. Maven and Gradle formatter admission additionally requires their plugin&#x27;s fixed-read declarations; a private-stage request alone grants no narrow key. Compile, test and package remain whole-target unless their native read and output contracts qualify.</li>
 <li class="">A fixed-read formatter can reuse independently of unbounded build and test stages when its builder opts into a private workspace. Its default pipeline edges are order-only; explicit data dependencies still invalidate it when their outputs change. An unrelated file edit can still change inferred version or whole-target projection identity and cause a conservative miss. The same mechanism admits Go build and vet with complete observed reads and gofmt with fixed reads once their plugin opts in. A successful completion binds its own complete observation before publication, so the next unchanged build can reuse that narrow result.</li>
 <li class="">Admitted test-unit plans can expose independent results; see <a href="#test-unit-evidence" class="">test-unit evidence</a>. Unit reuse remains subject to the stage&#x27;s native read and cache admission.</li>
 <li class="">Cargo integration-test scratch is removed before <a class="" href="/docs/reference/local-builds#native-compiler-cache-retention">native compiler cache retention</a>, even under budget. Compiler state remains available for incremental work, and action results retain their normal reuse rules.</li>
@@ -673,7 +746,7 @@ stage does not gain reusable result storage merely by exposing a unit plan.</p>
 <p>An enclosing stage with unbounded outputs still runs on every invocation. Its
 test units may reuse results independently only when core admits the stage&#x27;s
 frozen tool, dependency, environment, materialized-input and predecessor facts
-and enforces each unit&#x27;s bounded runtime view. This does not admit a reusable
+and enforces each unit&#x27;s bounded runtime view, or the native Rust trust opt-in below explicitly admits package-file reads. This does not admit a reusable
 whole-stage result. Missing predecessor or materialized-input bindings keep the
 ordinary stage path. Under an unbounded stage, units without proven runtime
 bounds run without reuse.</p>
@@ -681,8 +754,9 @@ bounds run without reuse.</p>
 contract: Cargo target metadata does not establish their complete runtime reads
 or nested helper compilation and writes. They use the ordinary test stage&#x27;s
 admitted workspace, tools, materializations and scratch, retaining whole-source
-and upstream key inputs. They are not independently stored or reused under an
-unbounded enclosing stage. Captured library and binary unit tests keep their
+and upstream key inputs. Without the native trust opt-in below, they are not
+independently stored or reused under an unbounded enclosing stage.
+Captured library and binary unit tests keep their
 bounded runtime contracts and remain eligible for independent reuse. Declared
 inputs add reads; they do not establish a missing integration-test write closure.</p>
 <p>The combined report retains each unit&#x27;s contribution. Summary totals put cases
@@ -703,16 +777,35 @@ their projected identities against the private workspace. Keys cover the actual
 projected bytes and observed absence; the worker&#x27;s version-control guard remains
 binding inside the unit view. These paths are resolved from the prepared context
 root, independently of an individual test&#x27;s working directory.
-On the native host path, runtime reads remain unbounded: the unit&#x27;s key also includes the
-whole target&#x27;s source digest, so any target edit reruns its units. This includes
-edits outside declared <code>inputs</code>. Cargo dep-info alone cannot bound runtime reads. An unchanged native repeat can reuse every successful unit, including while lint or format checks run in parallel.
-Unbounded unit keys also retain the upstream outputs followed by the ordinary
-stage key, including admitted build-script outputs, on native hosts and captured
-execution without an individually enforced runtime-read boundary. Executor
-support alone does not narrow a unit: an unbounded or nonconfinable contract,
-or a missing compiled artifact-file inventory, retains both source and upstream
-identities. Untracked host files still have
-the native cache limitations described below.
+On the native host path, runtime reads remain unbounded. By default, unbounded
+Rust test stages do not reuse unit results. <code>oyzu cache explain &lt;target&gt;</code> records
+the refusal and names <code>cache.trustNativeTestReads</code>.</p>
+<p>To opt in, set this in project, user or local <code>oyzu.toml</code>:</p>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">cache</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">trustNativeTestReads</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><br></div></code></pre></div></div>
+<p>This explicitly trusts native Rust tests to read only the owning crate&#x27;s full
+Cargo package file set, its resolved local dependency package files, and the
+declared environment. Cargo&#x27;s package include/exclude rules apply; <code>tests/</code>,
+fixtures, <code>build.rs</code> and README files participate when packaged. Undeclared host
+files, excluded files, network state and undeclared environment are outside this
+trust contract. Policy can lock the setting to <code>false</code>; profiles cannot grant it.
+It does not enforce isolation or relax acquisition or report validation.</p>
+<p>A Rust adapter supplying Cargo package identities is required. Each unit key
+binds its package closure and lockfile, compiled test executable, companion
+executables, declared environment, toolchain and prepared dependencies. An
+unchanged repeat can reuse every successful unit; a packaged fixture edit reruns
+the owning crate and units depending on it. Unrelated crates retain their keys.
+For example, a library test and an independent integration test in the same
+crate both rerun after a packaged README or source edit: their admitted package
+file identity changes even if an executable&#x27;s bytes stay identical. An unchanged
+repeat can report <code>0 ran, 2 reused (trusted native reads)</code>.
+Only unit reports are restored. Finalization still combines JUnit and coverage
+and runs required doctests. Receipts and cache explanations name
+<code>trust-native-test-reads</code>; human build output identifies reused trusted native
+reads. Hooks and authored tasks retain their existing cache behavior.</p>
+<p>The isolated execution path continues to require its enforced runtime views.
+Without an individually enforced view or explicit native trust admission,
+unbounded unit keys retain whole-target source and upstream output identities.
+Executor support alone does not narrow an unbounded or nonconfinable unit.
 Per-run inventory paths and coverage environment are not bounded key inputs.</p>
 <p>Targets with hooks or authored tasks retain their existing stage or whole-target
 cache behavior. Their outputs are never narrowed to unit identities. If
@@ -1588,8 +1681,55 @@ configuration rather than assuming the token was rejected.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Build</th><th>Reads (after a local miss)</th><th>Writes (with <code>cache.write</code>)</th></tr></thead><tbody><tr><td>CI (the <a class="" href="/docs/reference/configuration">execution context</a> detects a CI provider or <code>CI</code>)</td><td><code>cache.ciRemote</code> only. <code>cache.remote</code> is recorded as <code>skipped</code>.</td><td><code>cache.ciRemote</code></td></tr><tr><td>Anywhere else</td><td><code>cache.ciRemote</code>, then <code>cache.remote</code></td><td><code>cache.remote</code> only, never <code>cache.ciRemote</code></td></tr><tr><td>No <code>cache.ciRemote</code></td><td><code>cache.remote</code></td><td><code>cache.remote</code></td></tr></tbody></table></div>
-<p>The registry, not Oyzu, makes the CI repository trusted. It must refuse writes to that repository without the CI credential. Detecting CI only narrows what a build accepts.</p>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Build</th><th>Reads (after a local miss)</th><th>Writes (with <code>cache.write</code>)</th></tr></thead><tbody><tr><td>CI (the <a class="" href="/docs/reference/configuration">execution context</a> detects a CI provider or <code>CI</code>)</td><td><code>cache.ciRemote</code> only. <code>cache.remote</code> is recorded as <code>skipped</code>.</td><td><code>cache.ciRemote</code>, for an upstream branch push authorized by the registry gate</td></tr><tr><td>Anywhere else</td><td><code>cache.ciRemote</code>, then <code>cache.remote</code></td><td><code>cache.remote</code> only, never <code>cache.ciRemote</code></td></tr><tr><td>No <code>cache.ciRemote</code></td><td><code>cache.remote</code></td><td><code>cache.remote</code></td></tr></tbody></table></div>
+<p>On an upstream CI branch push with <code>cache.write</code> enabled, the client requests
+pull and push scope for the configured CI repository. The registry&#x27;s cache gate
+authorizes the job and the ref it is building; it alone decides which refs may
+write. Upstream feature-branch pushes request the same scopes as other branch
+pushes, regardless of branch protection. Pull-request
+and merge-request jobs (including fork requests) remain read-only even with a
+write credential. Unknown providers, missing ref facts, tags and non-push events
+also remain read-only. Reads and all existing cache verification checks stay enabled.</p>
+<p>The same remote-cache ref rule restricts action results and compiler-state
+publication; compiler-state publication remains disabled independently. Ref facts
+are caller hints that restrict the client, not authenticated authority. Configure
+the registry to restrict write credentials to trusted upstream jobs and refs;
+never expose them to fork jobs. A changed client or forged environment cannot be
+made trustworthy by this client-side guard.</p>
+<p>Supported CI facts are:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Provider</th><th>Required facts to request push scope</th></tr></thead><tbody><tr><td>GitHub Actions</td><td><code>GITHUB_EVENT_NAME=push</code>, <code>GITHUB_REF=refs/heads/&lt;branch&gt;</code>, and <code>GITHUB_EVENT_PATH</code> containing <code>repository.fork=false</code></td></tr><tr><td>GitLab</td><td><code>CI_PIPELINE_SOURCE=push</code> and a nonempty <code>CI_COMMIT_BRANCH</code>; fork and merge-request detection must identify an upstream push</td></tr></tbody></table></div>
+<p>Provider detection uses the existing execution-context markers. Conflicting
+provider markers refuse writes. Context and profile overrides never grant write
+permission. There is no Oyzu branch allowlist. Other providers can read the CI
+repository but cannot publish until their branch/event facts are supported.</p>
+<p>If the OCI gate refuses push scope (401/403), the client requests pull-only scope
+once with the same credential. It disables writes for that CI cache client for
+the rest of the invocation, preserves admitted reads and explains the fallback.
+It never tries another credential or falls back to anonymous access. A refused
+upload also disables further writes while preserving reads. If pull is refused
+too, the remote is disabled and the build continues locally. Artifact publication
+retains its separate failure behavior.</p>
+<p>The build record&#x27;s <code>ciRemote.write</code> is false when the event guard or registry
+refuses writes, and <code>ciRemote.writeSkippedReason</code> explains why. Human output shows
+the same reason as <code>writes skipped: ...</code>; JSON retains the structured fields. This also
+covers reused local results and the native compiler-result tier.</p>
 <ul>
 <li class="">A build that sets <code>CI</code> without the credential is refused (403), keeps building and writes nothing.</li>
 <li class="">A CI build never reuses a developer&#x27;s upload. It doesn&#x27;t read <code>cache.remote</code>, and a result in its local store that came from a development remote is looked up again in the CI repository.</li>
@@ -1812,7 +1952,7 @@ cost does not describe REAPI.</p>
 <li class="">Targets built by a host-coordinated image worker, and authored tasks around hooks on the native host path, aren&#x27;t cached.</li>
 <li class="">Version finalization after hooks covers only <code>pre_build</code> hooks on captured Node targets.</li>
 <li class="">Narrow keys require a confined action or an admitted native read contract. Stages with an unbounded reason retain the whole-target key.</li>
-<li class="">Execution-only settings such as <code>cache.local</code> and <code>cache.nativeMaxMiB</code> currently change keys.</li>
+<li class=""><code>cache.local</code> and <code>cache.nativeMaxMiB</code> control reuse and native-cache retention, not computation identity. Changing their resolved values does not change configuration-derived action keys; <code>cache.local = false</code> still disables lookup and storage. Source files explicitly read by an action remain normal key inputs.</li>
 <li class="">Windows has no confined actions. macOS isn&#x27;t supported yet.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="related">Related<a href="#related" class="hash-link" aria-label="Direct link to Related" title="Direct link to Related" translate="no">​</a></h2>
@@ -1961,17 +2101,57 @@ order-dependence finding. Reused cases remain evidence <strong>not run now</stro
 summaries. Existing v1alpha1 records are extended in place; records without case
 facts continue to use unit-level behavior.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-rust-compiler-outputs">Native Rust compiler outputs<a href="#native-rust-compiler-outputs" class="hash-link" aria-label="Direct link to Native Rust compiler outputs" title="Direct link to Native Rust compiler outputs" translate="no">​</a></h2>
-<p>The experimental native Linux compiler tier reuses individual already
-non-incremental library compilations beneath a Cargo build. Use the normal
+<p>The experimental native Linux and Windows compiler tier reuses individual already
+non-incremental library compilations beneath a Cargo build. Linux also supports
+build-script compilation reuse. Use the normal
 <code>oyzu build</code> entry point and existing cache settings. <code>--no-cache</code> disables this
-tier too. Cargo still creates consumer-local bookkeeping and decides whether an
+tier too. Action records include <code>localReasons</code> alongside compiler outcome totals in
+<code>extensions[&quot;oyzu.dev/rustc-invocations&quot;]</code>. Local receipts distinguish unsupported
+arguments, binary compilations, incremental state, unresolved inputs/linkers and
+cache/input rejection. These reasons explain native fallback without treating it
+as reuse.</p>
+<p>The tier also reuses Cargo&#x27;s exact empty-stdin capability query for the native
+Linux x86-64 toolchain. The supported request prints file names, sysroot,
+split-debuginfo modes, crate name and target cfg, with Cargo&#x27;s conventional crate
+types and optional <code>x86_64-unknown-linux-gnu</code> target. Its exact arguments, empty
+source, compiler identity, compiler environment and physical compiler/workspace
+placements are keyed. Successful stdout is restored byte for byte through the
+verified store. Failed queries or queries producing diagnostics are not stored.
+Other flags, custom targets and nonempty stdin retain native execution; a
+nonempty source is forwarded intact and reported as
+<code>nonempty-capability-query-source</code>.</p>
+<p>Cargo still creates consumer-local bookkeeping and decides whether an
 invocation is needed; its freshness messages do not count as compiler-cache hits.</p>
-<p>A candidate must use supported ordinary library arguments and admitted workspace
+<p>Compiler admission uses the exact canonical managed rustc retained by native
+preparation, independently of whole-stage tool completeness. Build scripts still
+execute locally; their presence and proc macros do not prevent invocation reuse.
+Whole-stage caching retains its existing tool-completeness checks and
+conservative whole-lock fallback.
+Cargo configuration may supply rustflags and target settings; effective rustc
+arguments and encoded rustflags remain keyed. Compiler or wrapper substitutions
+in the environment or <code>.cargo/config*</code> keep the stage&#x27;s compiler invocations local.
+Proc-macro and build-script compilation keys also bind resolved linker file contents and linker arguments.
+Unresolved linkers and explicit linkers outside retained managed tools stay local;
+rlib/rmeta invocations do not require a linker identity.
+On Windows, <code>.dll</code> proc-macro extern inputs are keyed by content. Proc-macro and
+build-script compilation and native <code>-l</code> library closures remain local with
+<code>unresolved-windows-linker-closure</code> or <code>unresolved-windows-native-library</code>:
+MSVC linker discovery, SDK libraries and auxiliary inputs are not yet admitted.
+Windows support covers native x64/MSVC library invocations. Locally rebuilt
+proc-macro DLLs can change bytes between builds, including PE timestamps and
+CodeView/PDB identity or age fields. Those bytes remain part of the extern digest:
+changed DLLs invalidate dependent library results even when their Rust sources
+are unchanged. Oyzu does not strip or normalize them to force a cache hit.</p>
+<p>A candidate must use supported library, proc-macro or <code>build_script_build</code> binary arguments and admitted workspace
 or lock/archive-bound crates.io inputs. Fresh local rustc dep-info supplies source and environment dependencies
 before lookup. Keys bind file/extern contents, compiler/profile/lock controls,
 actual consumed environment values and the invocation&#x27;s admitted Unix creation
 mask. Builds under masks <code>0022</code> and <code>0077</code> cannot share compiler results. Cache
 descriptors retain environment digests rather than their raw values.
+Windows has no Unix creation mask; its not-applicable value is keyed with the
+host platform. Missing Unix mask evidence still prevents admission.
+Windows compiler invocations use rustc response files so large registry remap
+lists fit within the native process command-line limit.
 The native owner&#x27;s explicit <code>RUSTC</code> is accepted only when it is the exact
 canonical selected managed compiler path. Custom compilers, aliases and
 alternate path spellings retain local execution. Frozen source facts come from
@@ -1994,9 +2174,11 @@ per package; it does not scan the extracted source tree.</p>
 <p>Registry admission compares canonical filesystem paths, including Windows
 verbatim paths and registry roots reached through symbolic links. Only the exact
 admitted package manifest qualifies; similarly named directories do not.</p>
-<p>Only expected rlib/rmeta files pass through the existing verified result store.
-Metadata-only invocations restore rmeta outputs; link invocations restore both
-rlib and rmeta. Extern inputs retain their exact file kind and content identity.
+<p>Only expected rlib/rmeta files, host proc-macro dylibs and compiled build-script
+executables pass through the existing verified result store. Metadata-only library
+invocations restore rmeta outputs; linked library invocations restore both rlib and
+rmeta. Build-script invocations restore their executable; proc macros restore their
+dylib. Extern inputs retain their exact file kind and content identity.
 Their modes are preserved. A CI reader treats development-origin local results
 as misses before probing its CI remote. Existing read/write permissions, remote
 scope, integrity checks and failed-output/report gates still apply; a compiler
@@ -2011,13 +2193,51 @@ arguments retain their original spelling.
 Relative source filenames remain unchanged; relative and absolute source
 spellings have distinct keys. Oyzu does
 not rewrite <code>CARGO_MANIFEST_DIR</code>, environment values or source text. A consumed
-absolute path stays local. Dep-info is freshly generated on the consumer and
+absolute environment path stays local, except admitted <code>OUT_DIR</code> under the
+physical location contract below. Dep-info is freshly generated on the consumer and
 never restored from the producer. Only typed artifact notifications may replay
 with consumer output paths; diagnostics prevent publication.</p>
-<p>Incremental invocations, active/unknown Cargo configuration, authored wrappers, unknown compiler
-arguments, build-script/procedural-macro closures, macro definitions and inputs
-outside the admitted workspace or verified registry archive retain native execution. Incremental arguments
-are never removed. Frozen Cargo configuration containing only exact target
+<p>Sources containing declarative macros, proc-macro declarations outside a
+proc-macro crate, absolute path literals or standalone <code>env!(&quot;OUT_DIR&quot;)</code> use
+an explicit physical location contract alongside the native source remapping.
+Their keys additionally bind the working directory, source root, target root,
+admitted registry roots and generated-output directory. An unchanged build at
+the same locations can reuse these outputs; moving any bound location selects
+a different key. Standalone <code>OUT_DIR</code> observations retain their exact value.
+Restored bytes are never rewritten. Receipt reasons name
+<code>keyed-physical-location-contract</code>; <code>localReasons</code> includes that contract count
+for compiled and reused invocations as well as reasons for local execution.</p>
+<p>Cargo runs build scripts itself. A library consuming its own build-script output
+can reuse compiler results when generated file reads appear in fresh dep-info
+under its contained <code>OUT_DIR</code>. Those files are keyed by content and an
+<code>OUT_DIR</code>-relative name. Consumed <code>cargo:rustc-env</code> values are keyed through
+rustc&#x27;s environment dependencies. <code>--cfg</code>, <code>--check-cfg</code> and <code>--env-set</code> arguments
+remain key inputs. Native <code>-l</code> inputs must resolve to exactly one regular file
+in admitted <code>-L</code> directories inside the target tree; unresolved, ambiguous or
+unsupported libraries retain local execution. Search-directory and generated
+output placements use logical paths. Dependencies of build-script and proc-macro
+packages are admitted independently; extern contents bind their compiled inputs.
+Build-script binary compilation can reuse its executable, preserving its bytes and
+executable permissions; Cargo still runs that script and owns its generated outputs.
+Editing <code>build.rs</code> invalidates its compilation key. The physical location contract
+also applies when the script source needs it, so same-path repeats can hit.
+Application binaries remain local (<code>binary-link-inputs-not-fully-bound</code>): the
+current linker key does not describe their complete link closure, including
+transitive rlibs, system native libraries and linker support programs. Cargo
+capability queries outside the exact empty-source request above remain local
+(<code>cargo-capability-probe</code>). Build-script feature probes such as <code>autocfg</code>
+remain local (<code>unfrozen-stdin-source</code>): their generated stdin source and LLVM IR
+outputs are outside the frozen source and compiler-artifact contract. <code>autocfg</code>
+also generates a fresh crate name for each probe; the name and LLVM IR output
+identity cannot be erased or rewritten to manufacture a hit.</p>
+<p>Incremental invocations, active/unknown Cargo configuration, authored wrappers,
+unknown compiler arguments and inputs outside
+the admitted source or generated-output roots retain native execution.
+Incremental arguments are never removed. This repository sets
+<code>CARGO_INCREMENTAL = &quot;0&quot;</code> in <code>[context.ci.env]</code> through normal configuration
+resolution so CI dev-profile compilations can qualify. Local development keeps
+Cargo&#x27;s incremental default; it trades cross-checkout compiler reuse for local
+incremental compilation. Frozen Cargo configuration containing only exact target
 tables for neither the selected target nor compiler host may be admitted: those
 tables have no compilation effect, and their captured digests remain keyed.
 Conditional <code>cfg(...)</code> tables and other settings retain local execution.
@@ -2025,13 +2245,27 @@ Linux x86-64 OCI consumers can reuse admitted compiler results across checkout
 roots. After a source edit, unchanged dependency compilations can reuse their
 results while changed crates compile locally. Development readers restore only
 their matching profile, even when the writer also stores optimized entries.
-Registry reuse retains the same conservative source rules, including local
-fallback for macro definitions and consumed absolute environment paths. Build
-scripts and procedural-macro reverse dependency closures remain local. Registry
-support does not establish an Oyzu CLI dependency/edit proof, every crate,
+Registry reuse follows the same location contract and retains local fallback
+for other consumed absolute environment paths. Registry
+support does not establish reuse for every crate,
 REAPI compiler-result transport or another host platform.
 The compiler summary reports <code>reused</code>, <code>compiled</code> and <code>local</code> invocation counts
-separately from whole-action reuse.</p>
+separately from whole-action reuse. Both <code>compiled</code> and <code>local</code> execute rustc;
+<code>local</code> means the invocation did not qualify for shared compiler reuse.
+Action receipts retain these counts under
+<code>extensions.oyzu.dev/rustc-invocations</code>, including in the JSON build manifest.
+The receipt also includes <code>timingsMs</code> for source-compilation invocations, summed
+separately for <code>compiled</code>, <code>reused</code> and <code>local</code>, plus up to eight <code>slowest</code>
+invocations with their phase timings. Capability-query outcomes remain counted
+without source-compilation phase timings.
+Phases separate binding preparation, argument/extern classification, the fresh
+dep-info probe, input admission, lookup, verified restore, output installation,
+compilation and publication/rechecks. Native compilation includes linker work.
+These are elapsed times per compiler process: concurrent invocations overlap,
+so their sums are not the build&#x27;s wall time. Store lookups use a nonblocking
+maintenance lease; contention refuses reuse rather than waiting for a lock.
+A whole-action hit retains its original receipt; those original counts and
+timings do not represent new compiler work.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="compiler-state-seeds">Compiler-state seeds<a href="#compiler-state-seeds" class="hash-link" aria-label="Direct link to Compiler-state seeds" title="Direct link to Compiler-state seeds" translate="no">​</a></h2>
 <p>Captured Rust compilation can start from a compiler-state seed in an OCI
 <code>cache.ciRemote</code> repository. REAPI remotes do not supply or publish compiler
@@ -2077,6 +2311,6 @@ dep-info retain their original bytes. Capture and restore read the compiler
 tree to verify it and inspect source contents to bind freshness; this work
 happens only for an active, readable OCI CI seed consumer. REAPI-only remotes
 skip it, and installed-tool use does not trigger it. Archive bounds are 1 GiB compressed,
-12 GiB expanded and 32 MiB for the inventory; an oversized seed is refused.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/acquisition-transport"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Scoped dependency acquisition transport</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-bundles"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build bundles and retention</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a></li><li><a href="#regular-file-permissions" class="table-of-contents__link toc-highlight">Regular-file permissions</a></li><li><a href="#flaky-tests-and-quarantine" class="table-of-contents__link toc-highlight">Flaky tests and quarantine</a></li><li><a href="#controls" class="table-of-contents__link toc-highlight">Controls</a><ul><li><a href="#location" class="table-of-contents__link toc-highlight">Location</a></li><li><a href="#retention" class="table-of-contents__link toc-highlight">Retention</a></li><li><a href="#copying-and-verifying-cached-bytes" class="table-of-contents__link toc-highlight">Copying and verifying cached bytes</a></li></ul></li><li><a href="#what-is-reused" class="table-of-contents__link toc-highlight">What is reused</a><ul><li><a href="#not-cached-by-default" class="table-of-contents__link toc-highlight">Not cached by default</a></li><li><a href="#native-npm-applications" class="table-of-contents__link toc-highlight">Native npm applications</a></li><li><a href="#isolated-npm-downloads" class="table-of-contents__link toc-highlight">Isolated npm downloads</a></li><li><a href="#prepared-resources-and-go-tests" class="table-of-contents__link toc-highlight">Prepared resources and Go tests</a></li></ul></li><li><a href="#prerequisites-and-platforms" class="table-of-contents__link toc-highlight">Prerequisites and platforms</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#explaining-reuse" class="table-of-contents__link toc-highlight">Explaining reuse</a><ul><li><a href="#oyzu-build---explain" class="table-of-contents__link toc-highlight"><code>oyzu build --explain</code></a></li><li><a href="#source-comparison" class="table-of-contents__link toc-highlight">Source comparison</a></li><li><a href="#oyzu-cache-explain-target" class="table-of-contents__link toc-highlight"><code>oyzu cache explain &lt;target&gt;</code></a></li></ul></li><li><a href="#inputs-and-what-invalidates-a-target" class="table-of-contents__link toc-highlight">Inputs and what invalidates a target</a><ul><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#test-unit-evidence" class="table-of-contents__link toc-highlight">Test-unit evidence</a></li><li><a href="#trust-model-and-its-limit" class="table-of-contents__link toc-highlight">Trust model and its limit</a></li><li><a href="#external-builder-targets" class="table-of-contents__link toc-highlight">External builder targets</a></li></ul></li><li><a href="#per-action-reuse" class="table-of-contents__link toc-highlight">Per-action reuse</a><ul><li><a href="#core-prepared-input-staging" class="table-of-contents__link toc-highlight">Core prepared-input staging</a></li></ul></li><li><a href="#hooks-as-always-run-actions" class="table-of-contents__link toc-highlight">Hooks as always-run actions</a><ul><li><a href="#version-finalization-after-hooks" class="table-of-contents__link toc-highlight">Version finalization after hooks</a></li></ul></li><li><a href="#authored-tasks-cached-on-request" class="table-of-contents__link toc-highlight">Authored tasks cached on request</a></li><li><a href="#confined-actions-and-narrow-keys" class="table-of-contents__link toc-highlight">Confined actions and narrow keys</a><ul><li><a href="#bounded-unknowns" class="table-of-contents__link toc-highlight">Bounded unknowns</a></li><li><a href="#checks-that-run-at-once" class="table-of-contents__link toc-highlight">Checks that run at once</a></li><li><a href="#development-versions-and-test-files" class="table-of-contents__link toc-highlight">Development versions and test files</a></li><li><a href="#when-a-confined-action-reads-something-undeclared" class="table-of-contents__link toc-highlight">When a confined action reads something undeclared</a></li><li><a href="#declared-inputs" class="table-of-contents__link toc-highlight">Declared inputs</a></li><li><a href="#go-source-read-coverage" class="table-of-contents__link toc-highlight">Go source-read coverage</a></li><li><a href="#native-java-source-reads" class="table-of-contents__link toc-highlight">Native Java source reads</a></li><li><a href="#native-host-read-admission" class="table-of-contents__link toc-highlight">Native host read admission</a></li><li><a href="#python-source-reads" class="table-of-contents__link toc-highlight">Python source reads</a></li><li><a href="#native-rust-source-reads" class="table-of-contents__link toc-highlight">Native Rust source reads</a></li></ul></li><li><a href="#verifying-a-contract" class="table-of-contents__link toc-highlight">Verifying a contract</a></li><li><a href="#remote-oci-cache" class="table-of-contents__link toc-highlight">Remote OCI cache</a><ul><li><a href="#settings-and-scope" class="table-of-contents__link toc-highlight">Settings and scope</a></li><li><a href="#what-is-shared" class="table-of-contents__link toc-highlight">What is shared</a></li><li><a href="#request-flow" class="table-of-contents__link toc-highlight">Request flow</a></li><li><a href="#sign-in-and-redirects" class="table-of-contents__link toc-highlight">Sign-in and redirects</a></li><li><a href="#entry-layout" class="table-of-contents__link toc-highlight">Entry layout</a></li><li><a href="#build-record" class="table-of-contents__link toc-highlight">Build record</a></li><li><a href="#reapi-servers" class="table-of-contents__link toc-highlight">REAPI servers</a></li><li><a href="#ci-and-development-repositories" class="table-of-contents__link toc-highlight">CI and development repositories</a></li><li><a href="#requests-per-build" class="table-of-contents__link toc-highlight">Requests per build</a></li><li><a href="#remote-failures" class="table-of-contents__link toc-highlight">Remote failures</a></li><li><a href="#remote-limits" class="table-of-contents__link toc-highlight">Remote limits</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li><li><a href="#independent-test-results" class="table-of-contents__link toc-highlight">Independent test results</a><ul><li><a href="#python-cases-inside-a-bounded-unit" class="table-of-contents__link toc-highlight">Python cases inside a bounded unit</a></li></ul></li><li><a href="#native-rust-compiler-outputs" class="table-of-contents__link toc-highlight">Native Rust compiler outputs</a></li><li><a href="#compiler-state-seeds" class="table-of-contents__link toc-highlight">Compiler-state seeds</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+12 GiB expanded and 32 MiB for the inventory; an oversized seed is refused.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/acquisition-transport"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Scoped dependency acquisition transport</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-bundles"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build bundles and retention</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#usage" class="table-of-contents__link toc-highlight">Usage</a><ul><li><a href="#output-relocation" class="table-of-contents__link toc-highlight">Output relocation</a></li></ul></li><li><a href="#inherited-native-environment" class="table-of-contents__link toc-highlight">Inherited native environment</a></li><li><a href="#regular-file-permissions" class="table-of-contents__link toc-highlight">Regular-file permissions</a></li><li><a href="#flaky-tests-and-quarantine" class="table-of-contents__link toc-highlight">Flaky tests and quarantine</a></li><li><a href="#controls" class="table-of-contents__link toc-highlight">Controls</a><ul><li><a href="#location" class="table-of-contents__link toc-highlight">Location</a></li><li><a href="#retention" class="table-of-contents__link toc-highlight">Retention</a></li><li><a href="#copying-and-verifying-cached-bytes" class="table-of-contents__link toc-highlight">Copying and verifying cached bytes</a></li></ul></li><li><a href="#what-is-reused" class="table-of-contents__link toc-highlight">What is reused</a><ul><li><a href="#not-cached-by-default" class="table-of-contents__link toc-highlight">Not cached by default</a></li><li><a href="#native-npm-applications" class="table-of-contents__link toc-highlight">Native npm applications</a></li><li><a href="#isolated-npm-downloads" class="table-of-contents__link toc-highlight">Isolated npm downloads</a></li><li><a href="#prepared-resources-and-go-tests" class="table-of-contents__link toc-highlight">Prepared resources and Go tests</a></li></ul></li><li><a href="#prerequisites-and-platforms" class="table-of-contents__link toc-highlight">Prerequisites and platforms</a></li><li><a href="#output" class="table-of-contents__link toc-highlight">Output</a></li><li><a href="#explaining-reuse" class="table-of-contents__link toc-highlight">Explaining reuse</a><ul><li><a href="#oyzu-build---explain" class="table-of-contents__link toc-highlight"><code>oyzu build --explain</code></a></li><li><a href="#source-comparison" class="table-of-contents__link toc-highlight">Source comparison</a></li><li><a href="#oyzu-cache-explain-target" class="table-of-contents__link toc-highlight"><code>oyzu cache explain &lt;target&gt;</code></a></li></ul></li><li><a href="#inputs-and-what-invalidates-a-target" class="table-of-contents__link toc-highlight">Inputs and what invalidates a target</a><ul><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#test-unit-evidence" class="table-of-contents__link toc-highlight">Test-unit evidence</a></li><li><a href="#trust-model-and-its-limit" class="table-of-contents__link toc-highlight">Trust model and its limit</a></li><li><a href="#external-builder-targets" class="table-of-contents__link toc-highlight">External builder targets</a></li></ul></li><li><a href="#per-action-reuse" class="table-of-contents__link toc-highlight">Per-action reuse</a><ul><li><a href="#core-prepared-input-staging" class="table-of-contents__link toc-highlight">Core prepared-input staging</a></li></ul></li><li><a href="#hooks-as-always-run-actions" class="table-of-contents__link toc-highlight">Hooks as always-run actions</a><ul><li><a href="#version-finalization-after-hooks" class="table-of-contents__link toc-highlight">Version finalization after hooks</a></li></ul></li><li><a href="#authored-tasks-cached-on-request" class="table-of-contents__link toc-highlight">Authored tasks cached on request</a></li><li><a href="#confined-actions-and-narrow-keys" class="table-of-contents__link toc-highlight">Confined actions and narrow keys</a><ul><li><a href="#bounded-unknowns" class="table-of-contents__link toc-highlight">Bounded unknowns</a></li><li><a href="#checks-that-run-at-once" class="table-of-contents__link toc-highlight">Checks that run at once</a></li><li><a href="#development-versions-and-test-files" class="table-of-contents__link toc-highlight">Development versions and test files</a></li><li><a href="#when-a-confined-action-reads-something-undeclared" class="table-of-contents__link toc-highlight">When a confined action reads something undeclared</a></li><li><a href="#declared-inputs" class="table-of-contents__link toc-highlight">Declared inputs</a></li><li><a href="#go-source-read-coverage" class="table-of-contents__link toc-highlight">Go source-read coverage</a></li><li><a href="#native-java-source-reads" class="table-of-contents__link toc-highlight">Native Java source reads</a></li><li><a href="#native-host-read-admission" class="table-of-contents__link toc-highlight">Native host read admission</a></li><li><a href="#python-source-reads" class="table-of-contents__link toc-highlight">Python source reads</a></li><li><a href="#native-rust-source-reads" class="table-of-contents__link toc-highlight">Native Rust source reads</a></li></ul></li><li><a href="#verifying-a-contract" class="table-of-contents__link toc-highlight">Verifying a contract</a></li><li><a href="#remote-oci-cache" class="table-of-contents__link toc-highlight">Remote OCI cache</a><ul><li><a href="#settings-and-scope" class="table-of-contents__link toc-highlight">Settings and scope</a></li><li><a href="#what-is-shared" class="table-of-contents__link toc-highlight">What is shared</a></li><li><a href="#request-flow" class="table-of-contents__link toc-highlight">Request flow</a></li><li><a href="#sign-in-and-redirects" class="table-of-contents__link toc-highlight">Sign-in and redirects</a></li><li><a href="#entry-layout" class="table-of-contents__link toc-highlight">Entry layout</a></li><li><a href="#build-record" class="table-of-contents__link toc-highlight">Build record</a></li><li><a href="#reapi-servers" class="table-of-contents__link toc-highlight">REAPI servers</a></li><li><a href="#ci-and-development-repositories" class="table-of-contents__link toc-highlight">CI and development repositories</a></li><li><a href="#requests-per-build" class="table-of-contents__link toc-highlight">Requests per build</a></li><li><a href="#remote-failures" class="table-of-contents__link toc-highlight">Remote failures</a></li><li><a href="#remote-limits" class="table-of-contents__link toc-highlight">Remote limits</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a></li><li><a href="#independent-test-results" class="table-of-contents__link toc-highlight">Independent test results</a><ul><li><a href="#python-cases-inside-a-bounded-unit" class="table-of-contents__link toc-highlight">Python cases inside a bounded unit</a></li></ul></li><li><a href="#native-rust-compiler-outputs" class="table-of-contents__link toc-highlight">Native Rust compiler outputs</a></li><li><a href="#compiler-state-seeds" class="table-of-contents__link toc-highlight">Compiler-state seeds</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>
