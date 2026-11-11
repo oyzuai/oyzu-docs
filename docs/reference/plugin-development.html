@@ -4,20 +4,101 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Writing and testing builder plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Writing and testing builder plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing and testing builder plugins","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.0e61fc73.js" defer="defer"></script>
-<script src="/assets/js/main.3a20be2a.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
 <svg style="display: none;"><defs>
 <symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
 </defs></svg>
-<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/plugin-development">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Writing and testing builder plugins</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Plugins</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Writing and testing builder plugins</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Writing and testing builder plugins</h1></header>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/plugin-development">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/reference/how-oyzu-compares"><span class="linkLabel_WmDU">How oyzu compares</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-catalog"><span class="linkLabel_WmDU">Plugin catalog and builder selection</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-inspection"><span class="linkLabel_WmDU">Inspecting plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-packages"><span class="linkLabel_WmDU">Plugin packages, the plugin store and lock selections</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-updates"><span class="linkLabel_WmDU">Updating plugins</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/plugin-preview"><span class="linkLabel_WmDU">Go builder preview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/plugin-development"><span class="linkLabel_WmDU">Writing and testing builder plugins</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Plugins</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Writing and testing builder plugins</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Writing and testing builder plugins</h1></header>
 <div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/plugin-development.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Captured Go intent includes <code>prepare-tests</code>, with <code>packages</code> and a workspace
+<code>directory</code> under <code>.oyzu-build/tests/</code>. Its manifest and compiled tests are
+declared producer outputs. The <code>test</code> command&#x27;s optional <code>prepared_manifest</code>
+consumes that output through a produced relationship and read declaration.
+The captured command binds <code>OYZU_GO_TEST_MANIFEST</code> to that same path; core
+rejects inconsistent intent or a missing producer.
+Core identifies current bytes before lookup and refuses undeclared carried
+files. Native-host tests omit the field and retain their existing admission.
+The plugin contract evolves in place; older engines refuse unknown commands.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="same-input-attribution-and-explicit-quarantine">Same-input attribution and explicit quarantine<a href="#same-input-attribution-and-explicit-quarantine" class="hash-link" aria-label="Direct link to Same-input attribution and explicit quarantine" title="Direct link to Same-input attribution and explicit quarantine" translate="no">​</a></h2>
+<p>Core admits execution history only for complete native test reports under an
+already admitted unit/case key. Builders keep native failures and report all
+cases, including setup/error facts. Optional compiled-manifest
+<code>test_failure_exit_code</code> constrains ordinary assertion exits; optional
+<code>test_failure_report = &quot;nextest-junit&quot;</code> additionally requires the native nextest
+failure type. Modern attempt reports supply validated completion and failure-kind
+facts without these legacy hints. Neither hints nor native retry facts authorize
+quarantine: the configuration cascade controls it, default off, and release
+and governed main CI ignore it. Unknown descriptive report fields remain tolerantly readable;
+unknown execution controls never grant authority. See
+<a class="" href="/docs/reference/configuration#flaky-test-quarantine">quarantine configuration</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="test-attempt-reporting">Test-attempt reporting<a href="#test-attempt-reporting" class="hash-link" aria-label="Direct link to Test-attempt reporting" title="Direct link to Test-attempt reporting" translate="no">​</a></h2>
+<p>An optional builder <code>describe</code> feature, <code>rerun-cases</code>, advertises exact case
+selection through the existing JSON <code>OYZU_TEST_CASE_IDS</code> in the <code>run</code> phase.
+Core owns retry policy and cache admission. Without the feature, JUnit-reporting
+tasks use whole-unit or whole-step retries.</p>
+<p>The first-party Rust package template also lists <code>rerun-cases</code> as a required
+engine feature. Its signed release therefore needs a supporting driver (Oyzu
+0.4.0 or newer); an older engine refuses it before running a plugin operation.
+The optional <code>describe</code> advertisement controls case filtering independently.
+Without it, a retried unit reports <code>TEST_RETRY_UNIT</code> and reruns all its cases.</p>
+<p>Core supplies <code>OYZU_TEST_ATTEMPT</code> (one-based) and <code>OYZU_TEST_ATTEMPT_DIR</code>, relative
+to the report root: <code>units/&lt;sha256-of-unit-name&gt;/attempts/&lt;n&gt;</code>. Each directory is
+fresh. The adapter writes <code>junit.xml</code> and <code>cases.json</code> with <code>schema_version: &quot;v1alpha1&quot;</code>, <code>unit</code>, <code>attempt</code>, <code>end</code>, and a <code>cases</code> array. Each case carries its
+exact <code>id</code>, <code>outcome</code> (<code>passed</code>, <code>failed</code>, <code>skipped</code>), failure <code>kind</code> when failed
+(<code>failure</code>, <code>error</code>, <code>timeout</code>, <code>crash</code>), optional <code>rerun_group</code>, <code>junit</code> identity
+(<code>classname</code>, <code>name</code>), and optional native <code>attempts</code>. <code>end</code> distinguishes
+<code>normal</code>, <code>crash</code>, <code>timeout</code>, <code>killed</code>, and <code>truncated</code>. The SDK supplies shared
+directory, selection, JUnit parsing and writing helpers in <code>native::test_attempts</code>.</p>
+<p>Compiled units may declare <code>native_retries</code> with <code>mechanism</code>, <code>max_attempts</code>
+and <code>attempts_visible</code>. An attempt report may declare the same <code>native_retries</code>
+object when the runner exposes that fact only during execution. Runtime facts
+refine the prepare declaration and remain subject to the policy maximum. A
+visible declaration requires a complete, counted <code>attempts</code> history for every
+reported case, including the final outcome. Core never stacks its retries on native retries.
+Invisible attempts warn and prevent storage. A retry missing any requested ID
+stays failed. Core checks <code>cases.json</code> against JUnit before trusting it.
+The Go adapter uses the same phase and case-result contract: its typed native
+<code>go</code> command <code>test</code> carries <code>packages</code> and an allocated <code>report_dir</code>. Preparation
+uses Go&#x27;s package inventory and compiled test executable digests; <code>run</code> translates
+case IDs into anchored, escaped <code>-run</code> patterns, one invocation per case.
+<code>go test -json</code> conversion retains repeated results and failure kinds. Go has
+no native retry mechanism to declare. No private retry callback is involved.</p>
+<p>Combined JUnit remains at the existing unit path; <code>oyzu.outcome</code> also accepts
+<code>flaky</code>, and the unit cannot be stored as a clean result.</p>
+<p>Python&#x27;s existing <code>ExecutedTestCase</code> facts also carry optional <code>kind</code>, using
+the same failure vocabulary. Its selective-reuse report and attempt reports
+derive from the same pytest events; setup errors remain errors when reuse
+combines JUnit contributions. The pytest attempt example
+shows a parameterized node ID with a setup error and its native JUnit identity.</p>
+<p>Native-build requests may carry <code>cache_dir</code>, an absolute directory allocated by
+core for a plugin declaring <code>native-cache</code>. It is separate from the fresh
+<code>output_dir</code>: use it only for disposable native compiler state, never as an
+artifact source. Core owns admission, the retained-size budget and eviction.
+Captured requests omit it. The native Zig builder uses this directory to keep
+compiler caches across unchanged builds and source edits.</p>
 <p>A builder plugin is a separate program that tells <code>oyzu</code> how to build one kind of
 project: which tasks it has, which tools it needs, which command builds it and where the
 output lands. This page shows how to run a plugin from a local path while you develop
 it, how plugins work, what a plugin has to provide, and how to package it. It also covers
 the Node plugin&#x27;s behavior, since it&#x27;s the largest first-party plugin.</p>
+<p>Each operation&#x27;s source contract accepts <code>home: &quot;required&quot;</code> (the default when
+absent) or <code>home: &quot;none&quot;</code>. The requirement covers <code>HOME</code>, <code>USERPROFILE</code>,
+<code>APPDATA</code> and <code>LOCALAPPDATA</code> together, including child processes. Explicit tool
+homes remain separate environment inputs. The SDK source constructors declare
+<code>required</code>; older plugins may omit the field. The existing protocol evolves in
+place, with no version gate. This execution-affecting field is strict, rather
+than an optional display annotation: unsupported values are refused.</p>
+<p>A <code>none</code> declaration grants no isolation or cache authority. Core admits only
+the first-party packaged Rust formatter&#x27;s bounded Cargo command under the Linux
+crun enforced read boundary. Its exact selected package and tools remain keyed;
+native hosts and other scopes retain home. Unqualified claims refuse native
+action and enclosing result reuse. Configured or declared home inputs cancel
+the claim. Package admission alone, fixed source rules and compiler observations
+cannot establish home independence. See the scoped
+<a class="" href="/docs/reference/action-cache#inherited-native-environment">home exception</a>.</p>
 <blockquote>
 <p><strong>Note:</strong> The plugin interface (<code>plugins-v1alpha1</code>) is experimental. It&#x27;s edited in
 place and can change without a new version. The Rust crates in the oyzu repository that
@@ -58,10 +139,23 @@ authority. Read-back must use fresh core observations after writes close; core
 also fetches and compares the Git inventory independently. Requests outside the
 declared destination and bodies above 64 MiB are refused.
 See <a class="" href="/docs/reference/deploy#github-pages-behavior">deployment limits</a>.</p>
-<p>Bind your executable to a builder reference in your <strong>user</strong> configuration
+<p>Bind your plugin archive to a builder reference in your <strong>user</strong> configuration
 (<code>~/.config/oyzu/config.toml</code> on Linux, <code>~/Library/Application Support/Oyzu/config.toml</code>
 on macOS, <code>%APPDATA%\Oyzu\config.toml</code> on Windows, or the file <code>OYZU_USER_CONFIG</code> names):</p>
-<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins.development</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;go/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/target/debug/oyzu-plugin-go&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;node/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/target/debug/oyzu-plugin-node&quot;</span><br></div></code></pre></div></div>
+<div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">plugins.development</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;go/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/oyzu-plugin-go.tar.gz&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">&quot;node/app&quot;</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;/home/me/src/oyzu/oyzu-plugin-node.tar.gz&quot;</span><br></div></code></pre></div></div>
+<p>Use the <a href="#packing-a-source-built-plugin" class="">packaging helper</a> to include the manifest
+that admits the plugin&#x27;s tools. A raw executable is sufficient only for a builder
+that returns no tool requirements and requests no observations.</p>
+<p>These USER bindings apply in a local execution context. CI, PR and release
+contexts exclude USER computation settings, even when <code>OYZU_USER_CONFIG</code> selects
+the file. <code>CI=true</code> or a provider marker such as <code>GITHUB_ACTIONS=true</code> activates
+that exclusion. In CI, use an authorized machine or administrative binding;
+see <a class="" href="/docs/reference/configuration#local-and-ci-execution-context">execution context</a>.</p>
+<p>For the maintained <code>tooling/test-fresh-checkout.py</code> harness, set
+<code>OYZU_TEST_JAVA_PLUGIN</code> to the absolute path of your compiled Java plugin. Each
+fresh user configuration binds <code>java/app</code> through this same development admission
+path; its empty tool store and isolated build PATH remain in effect. Without the
+variable, the harness selects the signed catalog package.</p>
 <p>Then build as usual:</p>
 <div class="language-text codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-text codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build --full</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu run test</span><br></div></code></pre></div></div>
 <p>Oyzu runs your executable for that reference instead of a catalog package. The build
@@ -80,27 +174,69 @@ development-only: build with <code>OYZU_PLUGIN_DEVELOPMENT_LOCATOR=1</code> to i
 regardless of Cargo profile. Repository source bootstrap and development refresh
 set this opt-in. Without it the locator file is empty, so published binaries do not
 contain build-host paths from this capture. Published package bindings never consult
-the locator. Before using
+the locator. Before execution uses
 a native development executable or an archive&#x27;s host member, core reads the compiled
 identity from its private copy and compares it with the current source closure.
 Cargo&#x27;s package inventory includes added files and local build/runtime dependencies.
+Core runs the Cargo recorded in the locator when that file still exists. A binding
+made in another job or on another host (a transferred CI candidate, for example) may
+not have that managed install. Only then, core runs the absolute Cargo named by
+<code>OYZU_PLUGIN_FRESHNESS_CARGO</code>. This variable is internal CI plumbing, not a user
+setting: nothing else (<code>PATH</code>, <code>CARGO</code>, <code>RUSTUP_TOOLCHAIN</code>) is consulted, a relative
+value is ignored, and the compiled digest is still compared with the inventory, so a
+different Cargo that lists different files makes the binding stale. With neither
+Cargo available the binding fails with <code>PLUGIN_DEVELOPMENT_STALE</code> and a message
+naming the recorded Cargo and the variable&#x27;s state; rebuild and rebind the plugin
+on this host (<code>oyzu run bootstrap -- --source --development-plugins</code>).
 Inventory excludes Cargo&#x27;s generated package lockfile and does not resolve registry
 dependencies; the existing workspace lockfile is captured separately. Freshness
 checks work offline with an empty Cargo home, including for coverage-built plugins.
-Core caches development freshness verdicts under <code>.oyzu/plugin-freshness</code>, keyed
-by the binding&#x27;s length/modification time, frozen executable digest and current
-source-closure digest, only for adopting operations such as an actual build.
-Read-only commands such as <code>build --plan</code> check freshness without writing this cache.
-It still inventories source bytes on each invocation;
-the cache avoids rescanning the whole executable for its locator. Removing the
-cache only makes the next admission scan again.
+On adopting executions, core stores locator hints under <code>.oyzu/plugin-freshness</code>,
+keyed by the binding path, length/modification time and frozen executable digest.
+Task runs check freshness without persisting locator hints.
+Read-only commands (<code>run list</code>, <code>tasks list</code>, <code>config validate</code>, <code>config show</code>
+and <code>inspect</code>) do not compute source-closure digests or write this cache. A stale
+development binding alone cannot make these commands fail. Commands that select
+development bindings for metadata report
+<code>PLUGIN_DEVELOPMENT_UNVERIFIED</code> once per selected development binding, with the
+repair command. This warning means freshness has not been checked; it does not
+claim the plugin is stale. Help remains configuration-free and prints no binding
+warnings. <code>build --plan</code> checks selected builders&#x27; freshness and refuses stale or
+unverifiable development bindings with <code>PLUGIN_DEVELOPMENT_STALE</code>, without writing
+this cache. Preview and execution inventory source bytes once per admitted runtime; a
+persisted hint only avoids rescanning the executable for its locator and never
+substitutes for source validation. Removing the cache makes the next execution
+admission scan the executable again.
+The first selected execution therefore pays the cold source-inventory and digest
+cost; listing commands do not precompute it. A later invocation still inventories
+the selected plugin&#x27;s source. The persisted locator hint is not a source-digest
+cache. The exact one-inventory-per-run count is tested on Linux only; other hosts
+are unverified.
+For builders, freshness admission also precedes native test preparation and tool selection from
+plugin requirements. <code>oyzu pin</code> refuses stale selected bindings before publishing
+tool selections. Explicit installation refuses; the shell hook warns and leaves
+the selection unavailable without installing from stale requirements.
+Development deployers and publishers follow the same freshness rule. After
+reading the copied executable&#x27;s description, core verifies its source closure
+before deployment or destination planning, tool provisioning or credential access.
+Stale or unverifiable bindings fail with <code>PLUGIN_DEVELOPMENT_STALE</code>; rebuild and
+rebind the plugin before retrying. Published packages retain package admission
+and do not require an available source checkout.
+Only development bindings required by the selected builds or task are admitted.
+An unused stale or unverifiable binding does not block the selected work. Each
+invocation freezes its selected bindings; another discovery in the same process
+can select a different set without replacing the first invocation&#x27;s plugins.
 A missing digest, missing source locator, unavailable checkout or build-time Cargo,
-or changed source fails with <code>PLUGIN_DEVELOPMENT_STALE</code>, naming the binding and a
+or changed source fails at execution admission with <code>PLUGIN_DEVELOPMENT_STALE</code>, naming the binding and a
 refresh command. Rebuild the executable and any bound archive from current source,
-then retry. In this repository use
-<code>oyzu run bootstrap -- --source --development-plugins</code>. Other plugin authors rebuild
+then retry. In this repository, run
+<code>oyzu run bootstrap -- --source --development-plugins</code> to refresh the plugins;
+unused stale bindings do not prevent that repair task from starting. Other plugin authors rebuild
 and rebind their own plugin; native plugins need the same private source capture as
-the first-party build scripts. Automatic rebuilding is not provided.
+the first-party build scripts. Automatic rebuilding is not provided. Replacing
+the CLI does not itself change a plugin&#x27;s source identity, but a newer CLI can
+enforce freshness checks that an older CLI did not enforce. Plugins built without
+the development locator must be rebuilt with the opt-in above.
 Scripts remain ineligible for reuse. The declaration grants no package trust
 and development results stay out of shared remote caches. Publisher and deployer
 package descriptions still match the admitted publisher/name/version coordinates;
@@ -108,6 +244,18 @@ optional compiled source metadata is separate from package admission.</p>
 <p>Remove the entry to stop using the local executable. The next build then has to find the
 package some other way: the catalog, a <code>plugins.packages</code> binding or the lock. There&#x27;s no
 built-in fallback.</p>
+<p>For Oyzu CLI development, keep the everyday build driver outside the checkout
+and use <code>oyzu-dev</code> for the CLI under test. Source promotion with
+<code>oyzu run bootstrap</code> builds and installs only the host CLI. Existing Rust/Node
+development bindings require <code>--development-plugins</code> to refresh the checkout
+payloads and bindings using the promoted CLI. Add <code>--isolated</code> to also build the
+Linux Rust plugin and prepare the Linux CLI engine.</p>
+<p>To return to published plugins, remove the relevant <code>plugins.development</code> entries
+from your user configuration (including a selected <code>OYZU_USER_CONFIG</code> file), then
+run <code>oyzu run bootstrap</code> to build the host CLI against the published locked
+packages (use <code>-- --channel stable</code> only to also replace your CLI with the newest release). Neither helper silently deletes personal choices. Windows still requires a published Rust host
+payload; that gap is tracked in #1679.
+This development loop does not supply that missing payload.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="setting">Setting<a href="#setting" class="hash-link" aria-label="Direct link to Setting" title="Direct link to Setting" translate="no">​</a></h3>
 
 
@@ -136,7 +284,7 @@ profile is refused with <code>CONFIG_SCOPE: plugins.development is not permitted
 Pass <code>--ci-machine-binding</code> to the repository bootstrap to create one on an ephemeral
 runner (see <a href="#ci-machine-binding" class="">CI machine binding</a>).</li>
 <li class="">The table is replaced as a whole by a later source.</li>
-<li class="">Bindings are read once per command, before targets are discovered. A missing or
+<li class="">Each command admits and freezes its selected bindings. A selected missing or
 unreadable executable fails with <code>PLUGIN_BINDING_INVALID</code>; a malformed or versioned
 key fails with <code>CONFIG_INVALID_VALUE</code>.</li>
 <li class="">A local binding has no download, signature check or <code>oyzu.lock</code> entry. An executable
@@ -160,6 +308,95 @@ member&#x27;s digest.</li>
 <li class="">An archive that isn&#x27;t a valid package for that reference fails with
 <code>PLUGIN_BINDING_INVALID</code> and the reason.</li>
 </ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="reference-names-for-first-party-plugins">Reference names for first-party plugins<a href="#reference-names-for-first-party-plugins" class="hash-link" aria-label="Direct link to Reference names for first-party plugins" title="Direct link to Reference names for first-party plugins" translate="no">​</a></h3>
+<p>A binding key is <code>&lt;plugin&gt;/&lt;profile&gt;</code>, and the profile is not always <code>app</code>. Each
+first-party plugin declares its profiles in its manifest
+(<code>docs/contracts/plugins-v1alpha1/examples/manifest.&lt;plugin&gt;.json</code>). <code>oyzu build</code>
+prints the reference it selected (for example <code>helm/chart</code>) in its Builders
+section; if that line does not say <code>local development</code>, your binding used the wrong
+key and the published plugin ran instead.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Plugin</th><th>References</th></tr></thead><tbody><tr><td>Go</td><td><code>go/app</code>, <code>go/library</code></td></tr><tr><td>Java (Maven and Gradle)</td><td><code>java/app</code></td></tr><tr><td>.NET</td><td><code>dotnet/sdk</code></td></tr><tr><td>Python</td><td><code>python/app</code>, <code>python/library</code>, <code>python/package</code></td></tr><tr><td>Docker</td><td><code>docker/image</code></td></tr><tr><td>Helm</td><td><code>helm/chart</code></td></tr><tr><td>Node</td><td><code>node/app</code></td></tr><tr><td>Rust</td><td><code>rust/app</code></td></tr></tbody></table></div>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="packing-a-source-built-plugin">Packing a source-built plugin<a href="#packing-a-source-built-plugin" class="hash-link" aria-label="Direct link to Packing a source-built plugin" title="Direct link to Packing a source-built plugin" translate="no">​</a></h3>
+<p>Profiles that run isolated or captured (Helm and Python among them) refuse a raw
+executable with <code>PLUGIN_ISOLATED_UNSUPPORTED</code>. To exercise your build of such a
+plugin, pack it with the manifest for its plugin and bind the archive:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token function" style="color:#d73a49">cargo</span><span class="token plain"> build </span><span class="token parameter variable" style="color:#36acaa">-p</span><span class="token plain"> oyzu-plugin-helm </span><span class="token parameter variable" style="color:#36acaa">--features</span><span class="token plain"> plugin </span><span class="token parameter variable" style="color:#36acaa">--bin</span><span class="token plain"> oyzu-plugin-helm</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">python3 tooling/package-plugin.py </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--executable</span><span class="token plain"> target/debug/oyzu-plugin-helm </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--manifest</span><span class="token plain"> docs/contracts/plugins-v1alpha1/examples/manifest.helm.json </span><span class="token punctuation" style="color:#393A34">\</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token parameter variable" style="color:#36acaa">--out</span><span class="token plain"> /tmp/oyzu-plugin-helm.tar.gz</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu config </span><span class="token builtin class-name">set</span><span class="token plain"> </span><span class="token parameter variable" style="color:#36acaa">--global</span><span class="token plain"> plugins.development.helm/chart /tmp/oyzu-plugin-helm.tar.gz</span><br></div></code></pre></div></div>
+<p>The helper ships only the host runtime member, so it covers builds that run on this
+machine. It requires Git and a clean source checkout: commit source changes before
+building and packing. It reads <code>git rev-parse HEAD</code> in the repository containing
+the helper, regardless of your current directory or the manifest&#x27;s location, and
+writes that full 40-hex commit to <code>provenance.source_revision</code> for every package. It also refuses to pack a manifest whose <code>provenance</code> contains the text <code>illustrative template</code> (case-insensitive), so a packed release <code>plugin.json</code> cannot carry template wording; the example manifests use <code>Oyzu maintainers</code>.
+Inherited Git repository, worktree, index, object-store, namespace and discovery
+selectors are removed from every Git subprocess&#x27;s environment; unrelated
+variables such as <code>PATH</code> and <code>HOME</code> remain available.
+The example manifest&#x27;s revision is a placeholder and is always overwritten;
+other provenance fields, including unknown optional fields, are retained.
+Outside the existing host-runtime and optional version edits, other manifest
+fields retain their original JSON bytes. Duplicate JSON keys in templates are
+refused. The edited manifest is re-parsed to check the stamped revision and any
+requested <code>--version</code> before writing the archive.</p>
+<p>Use <code>--revision &lt;full-sha&gt;</code> to assert an expected commit. It must equal HEAD;
+abbreviated, malformed or mismatching revisions fail with a nonzero exit before
+an archive is written. Missing Git, an unavailable HEAD, or a dirty checkout also
+fails. Dirty means any staged, unstaged or untracked changes reported by
+<code>git status --porcelain</code>; ignored files are allowed. Put build and package output
+in ignored directories such as this repository&#x27;s <code>target/</code>, <code>dist/</code> or <code>.oyzu/</code>,
+or outside the checkout. The helper also checks <code>git ls-files -v</code> and refuses
+assume-unchanged and skip-worktree entries, including sparse checkouts, even
+when Git status reports a clean tree. Clear the index flags with
+<code>git update-index --no-assume-unchanged -- &lt;path&gt;</code> and
+<code>git update-index --no-skip-worktree -- &lt;path&gt;</code>, and use a full checkout before
+packing.</p>
+<p>You are responsible for rebuilding the executable from that same clean commit.
+The helper stamps the source checkout and does not verify a binary&#x27;s build history
+or bind its development locator or source digest to the checkout. A stale binary
+or one built in another worktree can still be packaged with this checkout&#x27;s HEAD.
+These checks run locally and require no network.</p>
+<p>Build with <code>OYZU_PLUGIN_DEVELOPMENT_LOCATOR=1</code> set (as the repository
+bootstrap does) so Oyzu accepts the executable as current source. Remove the
+binding with <code>oyzu config unset --global plugins.development.helm/chart</code> to return to the
+published plugin.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="independent-profiles">Independent profiles<a href="#independent-profiles" class="hash-link" aria-label="Direct link to Independent profiles" title="Direct link to Independent profiles" translate="no">​</a></h3>
 <p>A plugin doesn&#x27;t have to match a built-in family. To develop a new profile such as
 <code>independent/app</code>, bind its id and name it in <code>build.yaml</code>. The names and path are
@@ -170,8 +407,24 @@ illustrative:</p>
 the binding adds no detection, no <code>with</code> options, no dependency preparation and no
 isolated execution. Tool versions still come from your configuration or native files, and
 oyzu installs the tools the plugin&#x27;s <code>requirements</code> answer names under the usual policy.
-A local binding can&#x27;t ask oyzu to run <code>task-command</code> observations (see below), even for
-an installed tool.</p>
+Each returned tool must use a fully qualified identity, such as <code>oyzu:go</code>, and be
+declared in the builder descriptor, derived from the package manifest requirements.
+Declare conditional requirements too, including package managers and stage tools.
+Each declaration&#x27;s <code>stages</code> should cover the stages for which the runtime
+<code>requirements</code> answer can return that tool. For example, the Node manifest
+declares <code>oyzu:node</code>, <code>oyzu:npm</code>, <code>oyzu:pnpm</code> and <code>oyzu:yarn</code> for <code>install</code>,
+<code>build</code>, <code>test</code>, <code>lint</code> and <code>format-check</code>; the runtime selects the manager
+declared by the project&#x27;s <code>package.json</code>.
+The operation selects which of these tools the current project and stages need;
+<code>tools.allowed</code> checks that selection, rather than every potential manifest tool.
+Other providers retain their complete identity: for example,
+<code>github:helm-unittest/helm-unittest</code> or <code>cargo:cargo-nextest</code>. Declarations from
+another namespace or repository do not admit them. Bare names such as <code>go</code> and
+undeclared tools are refused, including in cached answers. Tool selection and
+installation still enforce provider and policy admission.
+A bare development executable has no declared tools; pack it with a manifest
+and bind the archive when it returns requirements or needs <code>task-command</code>
+observations (see below).</p>
 <p>When <code>tools.allowed</code> is set, <code>oyzu run</code> admits a task of a plugin-built target only if
 every tool the plugin&#x27;s requirements declare for that task is on the list. A task whose
 binding declares no tool for it is refused with <code>CONFIG_OVERRIDE_DENIED</code> before anything
@@ -205,9 +458,9 @@ gets no credentials.</p>
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Stream</th><th>Content</th></tr></thead><tbody><tr><td>Standard input</td><td>One request, then end of input</td></tr><tr><td>Standard output</td><td>One result and nothing else</td></tr><tr><td>Standard error</td><td>Diagnostic lines as JSON. Other lines are kept only for troubleshooting</td></tr></tbody></table></div>
 <ul>
-<li class="">Documents use snake_case, <code>schema_version: &quot;v1alpha1&quot;</code> and a constant <code>type</code>. Unknown
-members, duplicate keys, <code>null</code> members and numbers written with a fraction or exponent
-are invalid.</li>
+<li class="">Documents use snake_case, <code>schema_version: &quot;v1alpha1&quot;</code> and a constant <code>type</code>.
+Duplicate keys, <code>null</code> members and numbers written with a fraction or exponent
+are invalid. Unknown members follow the <a href="#driver-and-plugin-compatibility" class="">compatibility rules</a>.</li>
 <li class="">A request carries an <code>operation_id</code>, <code>role</code> (<code>builder</code>), <code>operation</code>,
 <code>required_features</code>, <code>deadline_ms</code>, the <code>target</code> (name, <code>uses</code>, whether the reference
 was inferred or explicit, absolute native-context source <code>root</code>, an optional relative <code>path</code>, and the base version) and
@@ -327,7 +580,14 @@ segment.</li>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Operation</th><th>Called to</th><th>Your answer</th></tr></thead><tbody><tr><td><code>describe</code></td><td>Confirm identity and roles</td><td>Protocol generations, plugin identity, roles with their profiles, operations and features</td></tr><tr><td><code>tasks</code></td><td>Discover conventional tasks</td><td>The package manager, optional native package name and version (with the file they came from), and tasks (<code>name</code>, <code>argv</code>, build stage, whether it changes source, optional environment defaults)</td></tr><tr><td><code>requirements</code></td><td>Find the tools a target needs</td><td>Tools (for example <code>oyzu:go</code>), stages, components, version constraints with their source files, and why. Read-only</td></tr><tr><td><code>native-admission</code></td><td>Decide whether the plugin can build this target on the host</td><td><code>{admitted, reason}</code>. Read-only</td></tr><tr><td><code>native-build</code></td><td>Plan a host build</td><td>The build operations and the artifacts. Oyzu supplies the version, a fresh <code>output_dir</code>, <code>offline</code> and the execution platform</td></tr><tr><td><code>native-test</code></td><td>Plan the direct test run</td><td>An optional test command and the reports it must write, into a fresh <code>report_dir</code></td></tr><tr><td><code>task-command</code></td><td>Adjust a task&#x27;s command</td><td>An optional replacement command, or <code>observe</code> to ask oyzu to run tool commands and call again once</td></tr><tr><td><code>captured-plan</code></td><td>Plan an <a class="" href="/docs/reference/plugin-packages#isolated-builds-with-plugins">isolated build</a></td><td>Build and test intent, from read-only source. No observations or downloads</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Operation</th><th>Called to</th><th>Your answer</th></tr></thead><tbody><tr><td><code>describe</code></td><td>Confirm identity and roles</td><td>Protocol generations, plugin identity, roles with their profiles, operations and features</td></tr><tr><td><code>tasks</code></td><td>Discover conventional tasks</td><td>The package manager, optional native package name and version (with the file they came from), and tasks (<code>name</code>, <code>argv</code>, build stage, whether it changes source, optional environment defaults)</td></tr><tr><td><code>requirements</code></td><td>Find the tools a target needs</td><td>Tools (for example <code>oyzu:go</code>), stages, components, version constraints with their source files, and why. Read-only</td></tr><tr><td><code>native-admission</code></td><td>Decide whether the plugin can build this target on the host</td><td><code>{admitted, reason}</code>. Read-only</td></tr><tr><td><code>native-build</code></td><td>Plan a host build</td><td>The build operations and the artifacts. Oyzu supplies the version, a fresh <code>output_dir</code>, <code>offline</code> and the execution platform</td></tr><tr><td><code>native-test</code></td><td>Plan the direct test run</td><td>An optional test command, optional <code>offline</code> acquisition policy and the reports it must write, into a fresh <code>report_dir</code></td></tr><tr><td><code>task-command</code></td><td>Adjust a task&#x27;s command</td><td>An optional replacement command, or <code>observe</code> to ask oyzu to run tool commands and call again once</td></tr><tr><td><code>captured-plan</code></td><td>Plan an <a class="" href="/docs/reference/plugin-packages#isolated-builds-with-plugins">isolated build</a></td><td>Build and test intent, from read-only source. No observations or downloads</td></tr></tbody></table></div>
+<p>The Zig adapter&#x27;s <code>zig-native-test-report</code> capability covers one JUnit case for
+the conventional <code>zig build test</code> step. Its typed test command binds <code>junit</code>
+to the allocated report directory. Captured commands set <code>prepared_packages</code>
+to use the build&#x27;s fixed read-only <code>/dependencies/packages/p</code> tree through
+<code>--system</code> and <code>-j1</code>; native commands leave it false. Core validates the mode,
+selected test task, working directory and report destination before lowering.
+The adapter never fetches dependencies or satisfies a coverage requirement.</p>
 <p>Native and captured test operations may declare <code>test_units</code> in the existing
 v1alpha1 contract. During preparation, report each compiled test executable with
 its digest and an <code>executable_digests</code> map from runtime executable name to digest.
@@ -365,10 +625,24 @@ Plugins must keep native version projection in executable intent, so output byte
 embed that same bound version. Helm&#x27;s captured <code>stage</code> command carries the version
 it writes into its private chart; it never rewrites the source chart.</p>
 <p>A <code>task-command</code> observation names a core tool identity and its command line. Oyzu
-checks that the tool is one the builder may use and that <code>argv[0]</code> is that tool&#x27;s
-command, runs it once on the task&#x27;s PATH (stdout up to 1 MiB, stderr up to 64 KiB), then
+checks that the tool is one the builder may use and is eligible under the target&#x27;s
+effective <code>tools.allowed</code> policy, that its command name is a single
+plain component without path separators or a drive prefix, and that <code>argv[0]</code>
+matches that name. Paths such as <code>./tool</code> and <code>tools/tool</code> are rejected even when
+declared by a manifest. A manifest declaration does not override tool policy:
+even a tool omitted from the task&#x27;s selected requirements is checked when an
+observation requests it. Policy exclusions fail with <code>CONFIG_OVERRIDE_DENIED</code>
+before executable lookup or launch. Observations require resolved target
+configuration. Oyzu runs the command once on the task&#x27;s absolute PATH
+entries, with the task environment followed by observation overrides. The shared
+plugin host supervises its process tree with a 60-second deadline and a 2-second
+termination grace. Stdout up to 1 MiB and stderr up to 64 KiB are retained; exceeding
+either limit stops the tree while reading, rather than buffering unbounded output. Oyzu then
 calls <code>task-command</code> again in a new process with the results. One round only. A local
 development binding may not use observations.</p>
+<p>External builder host planning supports Linux, macOS and Windows on x86_64 and
+aarch64. Other hosts return a typed unsupported-host error with supported-host
+guidance.</p>
 <p>Artifacts must have unique names and sources (compared without regard to case). A
 default artifact lives inside <code>output_dir</code>. An artifact marked <code>executable</code> is promoted
 to <code>.oyzu/bin</code> after a successful build.</p>
@@ -456,6 +730,28 @@ Core binds named commands to its own retained verified installations; a plugin
 cannot supply an installation identity or grant itself tool access. Missing
 admitted commands keep the fallback. The SDK&#x27;s <code>source::tools(contract, names)</code>
 helper records this declaration. Source-read bounds remain a separate claim.</p>
+<p>Use <code>external_inputs: [{kind: locked-tool, tool: java}]</code> to bind an external
+tool read without claiming a complete command set. The SDK helper is
+<code>source::external_tools(contract, names)</code>. Core resolves the identity from
+retained preparation and <code>oyzu.lock</code>; a missing identity is an error. The
+declaration supplies neither host paths nor plugin-chosen digests. Observed
+reports may name the same typed inputs, which must be declared in the contract.
+This field does not authorize filesystem access or establish read completeness.</p>
+<p><code>external_inputs: [{kind: ancestor-file, path: ../Directory.Build.props}]</code>
+names a file above a host-native target: one to 32 <code>../</code> segments, then one
+portable file name (no separators, colons, control characters, trailing dot or
+space, or Windows device names such as <code>NUL</code> or <code>COM1</code>). Case is significant, so
+<code>NuGet.Config</code> and <code>nuget.config</code> are separate inputs. Core
+(not the plugin) reads each file beside the real target directory and keys its
+bytes, or its absence, in the action and target keys; a symlink, directory or
+file over 4 MiB refuses the key. A plugin that declares it requires the engine
+feature <code>dotnet-ancestor-inputs</code> (the SDK helper is
+<code>source::ancestor_files(contract, paths)</code>), so an older engine refuses the
+plugin rather than skipping the input. The declaration alone does not make a
+stage reusable: the stage must still be admitted by its other read claims. The
+input is must-understand: older readers fail to decode the contract rather than skip it,
+so update core before using a plugin that declares it. Other external-input
+kinds are unsupported.</p>
 <p>Declare a
 non-empty <code>reads</code> list, <code>unbounded_reason</code> with a non-empty explanation such as
 &quot;not analyzed yet&quot;, or <code>upstream_only: true</code> for an operation that reads no
@@ -477,7 +773,8 @@ declaration and treats those operations as unbounded. Their whole-target source
 keys retain the existing conservative behavior. The build records
 <code>plugin &lt;reference&gt; &lt;version&gt; declared no reads</code>, and one
 <code>PLUGIN_READS_UNDECLARED</code> warning per plugin per build asks users to update it.
-<code>oyzu build --plan</code> never runs a plugin. Its source reasons describe the stage
+<code>oyzu build --plan</code> never runs build actions. It reads plugin metadata and checks
+development-builder freshness first. Its source reasons describe the stage
 contracts in that target&#x27;s last retained build plan, so a later preview can show
 the recorded reason. Without a recorded contract, it says <code>reported when the builder answers</code>. Historical reasons do not prove current source completeness
 or cache admission.
@@ -506,7 +803,23 @@ retain the whole-target key. See <a class="" href="/docs/reference/action-cache#
 <p>For native host stages, use <code>oyzu_plugin_sdk::source::observed(selectors)</code> when
 the action reports its complete reads after each successful run. Core sets
 <code>OYZU_OBSERVED_READS</code> to a fresh output file path. Write this JSON there:</p>
-<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;complete&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;paths&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;src/main.rs&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;listings&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;assets&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;reasons&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;complete&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token boolean" style="color:#36acaa">true</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;paths&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;src/main.rs&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;listings&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;assets&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;env&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;FOO&quot;</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;reasons&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>ObservedReads.env</code> lists environment names read by this execution, including
+unset names. It defaults to an empty list for older reports and is bounded to
+65,536 names of 1-4,096 bytes each. Names cannot contain <code>=</code> or control
+characters. Core binds values from the effective task environment (absence is
+<code>None</code>); bound build actions clear ambient inheritance. The existing inheriting
+Node-install launch retains its environment rule. Per-run <code>TMP</code>, <code>TEMP</code> and
+<code>TMPDIR</code> names are excluded from observed env keys. Report names are dependencies,
+never permission to inject host values.</p>
+<p>Planning can tag a learned-only selector with <code>source: &quot;build-script-record&quot;</code>
+and list learned-only env names in <code>SourceContract.learned_env</code> (a subset of
+<code>env</code>). They remain in the admission set but leave the stable definition and
+history subject; base and configured names stay. The constant <code>observedEnv: true</code>
+payload marker separates current subjects from older path-only observations.
+A prediction candidate can be stored or backfilled only when its <code>env</code> covers
+every observed env name. These are in-place protocol additions, with no schema
+version change.</p>
 <p>Both path lists are relative to the action cwd; core rebases them to the target
 and captured workspace before prediction checks and evidence recording. Set <code>complete: false</code> and explain
 unknown reads in <code>reasons</code> when the tool cannot account for them. Missing,
@@ -596,10 +909,354 @@ local development result. The plugin still names its stage <code>compile-develop
 and exports its indexed binary directly. Core records its actual <code>compiledVersion</code>
 separately from the inferred artifact version; stamped consumers reject that
 marker. When <code>final_projection</code> is present, the exported binary must follow the
-final stage. Plugins cannot choose development eligibility or remove the inferred
-<code>OYZU_VERSION</code> binding.</p>
+final stage. Plugins cannot choose development eligibility. The Rust plugin lists the
+engine-injected <code>OYZU_VERSION</code> default in <code>excluded_default_env</code> for its host compile,
+test, lint and format-check commands only; the final stage keeps it.
+Core allows this exclusion only for <code>compile-development</code>, <code>compile-optimized</code>,
+<code>lint</code>, <code>format-check</code> and <code>test</code> stages with Cargo build, quality or test commands.
+Package stages, renamed final stages and unknown stage names must retain the
+default. An empty exclusion list remains valid for older plugins.</p>
 <p>The existing experimental wire version evolves in place; there is no legacy
 empty-read format to preserve.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="driver-and-plugin-compatibility">Driver and plugin compatibility<a href="#driver-and-plugin-compatibility" class="hash-link" aria-label="Direct link to Driver and plugin compatibility" title="Direct link to Driver and plugin compatibility" translate="no">​</a></h2>
+<p>The Go adapter&#x27;s private prepared test inventory uses the existing
+<code>CompiledTestUnit.artifact_files</code>: the executable, adjacent <code>runtime.json</code>
+containing its workspace-relative <code>cwd</code>, and the prepared manifest itself.
+The producer and runtime reader ship in the same plugin. Core hashes and admits
+these actual files before narrowing runtime visibility; a package-name/source
+inventory alone never establishes complete runtime reads. Execution validates
+the executable digest and contained package directory before invoking
+<code>go tool test2json</code>. Missing or unsafe runtime artifacts fail execution instead
+of falling back to an unkeyed recompilation. No plugin wire fields or schema
+versions change.</p>
+<p><code>NativeTestInput.offline</code> is an optional boolean, defaulting to <code>false</code>.
+When true, native package acquisition must use local inputs and fail if they
+are missing. Full native builds pass their offline selection to test planning.
+Python&#x27;s generated uv test invocation adds <code>--offline</code>; when the plugin receives
+<code>offline=true</code>, core refuses a uv plan that omits it. The admitted typed
+<code>PoetryTest</code> path consumes previously staged, hash-verified wheels offline, even
+when the field is absent. The Poetry fallback (<code>poetry run -- python</code>),
+pip/application test paths and authored commands cannot enforce this policy and
+emit a warning when it is requested.
+This is an acquisition policy, not a sandbox: network isolation for arbitrary
+test code remains the executor&#x27;s responsibility.</p>
+<p>Plugins advertise <code>native-test-offline</code> in their builder describe features to
+accept this field. Host writers omit it for peers without that advertisement,
+including inside captured test input, so existing published readers keep their
+baseline messages, with a warning when a requested policy is omitted. The
+advertisement means the plugin accepts the policy and diagnoses unsupported
+paths; it does not promise enforcement on every path. Tolerant older readers
+can ignore the optional field; no
+schema version or minimum-reader change is required. Ignoring it does not grant
+an offline guarantee. Known values must still be booleans; execution records
+retain their validation.</p>
+<p>The policy is not separately hashed into action keys: it controls acquisition,
+not the identity of already admitted dependencies. Any changed executable
+invocation (such as uv&#x27;s <code>--offline</code>) remains part of the ordinary command key.
+Typed <code>PoetryTest</code> generates the same offline command under either policy.
+Captured planning leaves the optional test field absent: its executor already
+denies network access, and its frozen input and existing record digests retain
+their baseline representation.</p>
+<p>Writers must omit optional annotations unless the peer advertises support.
+The SDK adds <code>optional-annotations</code> to the existing describe role features.
+The initial describe exchange is annotation-free. After seeing support from
+that exact admitted plugin, the host selects the feature in request
+<code>required_features</code>, advertising that it can read annotated replies. SDK
+writers omit annotations when selection is absent, so released 0.3.8 receives
+baseline messages it can read. Version numbers and <code>min_oyzu_version</code> do not
+select this feature. An absent
+advertisement preserves baseline messages; negotiation adds no mandatory
+describe operation for a peer that previously worked without one.</p>
+<p>A builder can return display-only text through <code>BuilderPlugin::annotations</code>
+and <code>OptionalAnnotations</code>. The SDK gates the envelope and tolerant payload
+maps, consumes the transport selection before semantic builder dispatch, and
+retains all other required features. A writer cannot use this helper to add
+metadata to strict payloads or nested identity, signing, digest, authority or
+execution records. Raw optional fields outside this helper follow the same
+advertise-before-emitting rule. The host request writer applies the peer&#x27;s
+described support in the same way.</p>
+<p>The host retains negotiated envelope annotations for presentation. A tasks
+response can supply <code>test-input-bounds</code> as JSON text describing static package
+candidates: <code>bounds</code> contains <code>unit</code>, <code>entries</code> (<code>path</code>, <code>why</code>) and an optional
+<code>note</code>; <code>notes</code> explains unresolved candidates. Build previews render these
+entries in a Why column. Missing or unreadable advisory metadata is ignored.
+These annotations never supply source selectors or establish cache admission;
+the test unit&#x27;s validated <code>SourceContract</code> remains authoritative.</p>
+<p>The Rust detector&#x27;s framework layer retains package and ancestor
+<code>.config/nextest.toml</code> locations, including when parsing fails; it extracts no
+extra paths from their contents. Its literal layer scans ordinary and raw Rust
+strings without executing macros, build scripts or Cargo. Computed paths such
+as <code>env!(&quot;CARGO_MANIFEST_DIR&quot;)</code> joined with <code>..</code> need target <code>inputs</code> when they
+reach beyond the inferred bound.</p>
+<p>A detector failure must leave the affected package <code>unbounded</code> with its reason
+instead of failing the entire test plan. The Rust builder applies this fallback
+to source-read, string-scanning and SDK path-validation errors, including outside
+workspace literals and excluded-output overlaps. Preview notes show the same
+reason. Unparseable nextest contents add a note while retaining all known config
+paths and other inputs. An advisory note never substitutes for a conservative
+source contract, and ignoring an annotation never changes execution.</p>
+<p>Private <code>continuation</code> state is always refused, including inside tolerant
+query inputs, describe/tasks/requirements outputs and error records.</p>
+<p>Request and result envelopes tolerate unknown optional annotations. The same
+rule applies to the <code>requirements</code> query&#x27;s input, <code>describe</code> output for every
+role, builder <code>tasks</code> and <code>requirements</code> outputs, and failure <code>error</code> records.
+On replies it also applies to <code>SourceContract</code>, <code>SourceSelector</code>, <code>ActionRelation</code>,
+<code>OutputRef</code>, <code>NativeTooling</code> and diagnostic records. These carry source/graph
+intent or descriptive facts; core still independently admits reads and effects.
+After validating the original reply, the runtime reader counts ignored members
+separately for each operation&#x27;s contract (including read/write selectors) and
+relations. Any ignored member there retains the whole-target source key through
+an <code>unbounded_reason</code> that planning cannot replace with an analysis prediction,
+disables <code>confinable</code> and <code>bounded_outputs</code>, and clears native-read, upstream-only
+and narrowed tool-set claims. A clean sibling keeps its declaration.
+The same fallback applies independently to each
+<code>TestUnit.contract</code>, including units under build operations and captured plans.
+The reader preserves <code>home</code>; a downgraded action with explicit <code>home: none</code>
+fails planning when no-home execution is enforced; the error names the action,
+<code>home: none</code> and the reason, <code>plugin source intent contains ignored optional fields</code>.
+The accepted reply&#x27;s single debug note describes this fallback without exposing
+unknown names or values.</p>
+<p>There is no exemption for unknown source-intent members. <code>home</code> is a known field
+in this reader: omission means <code>required</code>, and explicit <code>none</code> grants no core
+admission. Historical strict readers without <code>home</code> reject explicit <code>none</code> and
+need an upgrade; tolerance cannot be retrofitted into an installed executable.
+An annotation must be safe to omit: ignoring it cannot change execution,
+validation, admission or authority. It is discarded rather than echoed or
+included in an action&#x27;s identity.</p>
+<p>All other typed records remain strict. This includes manifests, catalogs, OCI
+release records, plugin identities (also inside <code>describe</code>), role/capability
+records, digest-bearing source/prepared records, credential bindings, commands,
+artifacts, admission decisions and native/captured execution inputs and outputs.
+Nested <code>NativeReadBasis</code>, <code>ExternalInput</code> and <code>ObservedReads</code> remain strict:
+they bind native read admission and cache identity. Unknown relation, selector,
+confidence, home-policy and external-input kinds are refused even in a tolerant
+parent. The per-contract fallback prevents ignored source intent from authorizing
+a narrower cache key. <code>TestUnitPlan</code> and <code>TestUnit</code> records remain strict; their
+nested <code>SourceContract</code> uses the tolerant reader and fallback described above.
+Empty operation inputs remain empty. An unknown member in a strict record is
+refused. Known fields retain their required presence, types and validation;
+duplicate keys, unknown enum values and invalid digests are still errors.</p>
+<p>The Rust, Helm and Zig plugins use the shared SDK reader for their stdio requests,
+including the designated annotation containers above. The Rust plugin&#x27;s separate
+<code>--native</code> Cargo command and <code>--inspect</code> inputs retain their typed decoding;
+annotation tolerance does not extend to those execution and inspection records.
+Updating the driver alone does not replace an already-installed plugin&#x27;s reader.
+Helm&#x27;s separate <code>--native</code> input uses the shared closed-record decoder for
+<code>HelmCommand</code>; command, path and prepared-digest records remain strict before
+native work. Zig&#x27;s separate <code>--native</code> test command also uses the shared strict
+native decoder; it has no inspection or acquisition entry point. Core owns Zig
+acquisition and prepared closure admission.</p>
+<p>Go adoption uses the same stdio containers and shared SDK capability check.
+Its private <code>--native</code> Go command remains a strict execution record; Go has
+no <code>--inspect</code> entry point. Native Go tool output and acquisition metadata keep
+their existing ecosystem readers, outside the stdio annotation contract.
+Source adoption requires a new Go plugin release and normal package adoption;
+updating the driver alone does not replace an installed Go reader.</p>
+<p>The Java / JVM plugin uses the same SDK reader and capability preflight for
+stdio. Its Maven, Gradle and Ant <code>--native</code> commands and <code>--acquisition-api</code>
+assignments remain closed, including nested paths, digests and execution facts.
+Updating the driver alone does not replace an installed Java / JVM plugin;
+rebuild and rebind development packages after changing their source.</p>
+<p>The .NET plugin uses the same SDK reader and capability preflight. Its separate
+native helpers, <code>--acquire</code> and <code>--lock-facts</code> inputs remain strict, including
+nested MSBuild SDK package identities. Annotation tolerance does not extend to
+execution or acquisition records. Updating the driver alone does not replace an
+installed .NET reader.</p>
+<p>Node also uses the shared SDK reader for stdio. Its <code>--native</code>,
+<code>--metadata-api</code> and <code>--validate-store</code> inputs are closed execution, native
+metadata and acquisition-validation records, respectively. Empty native metadata
+queries such as <code>errno-facts</code> also reject extra members. Vite assignments
+also remain strict. Native metadata replies retain their existing fact validation; optional
+wire annotations grant no extra access or effects at these boundaries.
+Source adoption requires a Node plugin release and normal package adoption
+before an installed plugin gains the new reader behavior.</p>
+<p>The SDK writes one <code>debug</code> diagnostic with code <code>plugin.unknown-optional</code> when
+it ignores request annotations. The host retains the corresponding reply note
+in the operation&#x27;s diagnostics; logged planning operations publish it through
+the normal diagnostic view. Notes report a count, never field names or values.
+Protocol users can retain these notes with <code>decode_request_with_diagnostics</code>,
+<code>decode_result_with_diagnostics</code> and <code>accept_result_with_diagnostics</code>. The simpler
+decode helpers return the same typed records without retaining diagnostics.
+Diagnostic parsing aggregates ignored stderr fields into one such debug note.
+Writer serialization and the JSON Schemas retain their existing shapes.
+Conformance/CI can demand exact result shapes with <code>decode_result_exact</code> and
+exact diagnostic shapes with <code>Diagnostic::decode_exact</code>; runtime hosts use the
+tolerant readers. The exact result reader also requires source declarations.</p>
+<p>Already-published readers keep their original decoding behavior. Core sends a
+new optional request field only when the plugin&#x27;s <code>describe</code> advertises its
+feature; tolerance alone is not feature support. Package role features declare
+engine requirements before launch, and request <code>required_features</code> declare
+plugin requirements. This change introduces no new negotiated fields or driver
+floor. Sharing <code>schema_version: &quot;v1alpha1&quot;</code> alone does not establish
+compatibility. For an older reader&#x27;s <code>unknown field</code> error, select an admitted
+driver/plugin combination that understands the field. Changing the schema label
+does not upgrade a decoder.</p>
+<p>Unpatched drivers, including affected <code>0.5.0-dev</code> builds, cannot gain tolerant
+nested readers retroactively. If <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code> names an
+optional field such as <code>/output/operations/0/contract/home</code>, run <code>oyzu self update</code>
+to install a driver containing this reader fix, then retry. Until that driver is
+available on your update channel, use an admitted plugin that emits the baseline
+shape. Keep required semantics and trust checks intact; changing a schema label
+does not fix an installed decoder.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="required-capabilities-and-upgrade-direction">Required capabilities and upgrade direction<a href="#required-capabilities-and-upgrade-direction" class="hash-link" aria-label="Direct link to Required capabilities and upgrade direction" title="Direct link to Required capabilities and upgrade direction" translate="no">​</a></h3>
+<p>The Rust, Docker, Go, Helm, Java / JVM, .NET, Node, Python and Zig plugins check required
+capabilities through the shared SDK before family dispatch. A must-understand
+field changes what the operation does or how its safety is verified, so a reader
+cannot ignore it. The contract reuses request <code>required_features</code> for plugin-execution
+requirements and signed manifest <code>roles[].features</code> for requirements on Oyzu.
+Families adopt the shared check by implementing <code>BuilderPlugin::request_features</code>
+with their role/operation support; each adopted plugin uses one list for this method
+and its descriptions. Helm supports <code>captured-plan</code> and <code>native-adapter</code>;
+it has no <code>with</code> options or target-path capability. Unadopted families retain their
+existing checks. The shared
+execution check excludes host-permitted reply
+shapes such as <code>optional-annotations</code> and <code>artifact-archive</code>, preserving their
+separate transport and reply validation gates. There is no new reply requirement
+list, schema version or version gate.</p>
+<p>The directional message bodies are:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Missing support</th><th>Code</th><th>Message template</th></tr></thead><tbody><tr><td>Plugin cannot satisfy an Oyzu request</td><td>Keep <code>PLUGIN_FEATURE_UNSUPPORTED</code>, replace feature-refusal body</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not support request feature &quot;{feature}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu lacks a signed manifest&#x27;s required feature</td><td>Keep <code>PLUGIN_ENGINE_REQUIREMENT</code>, replace feature-refusal body only</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires feature &quot;{feature}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Plugin does not understand a required request field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, pointer confirmed against the outgoing request</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not understand required request field &quot;{pointer}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu encounters an unknown manifest field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, closed manifest refusal</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires understanding manifest field &quot;{pointer}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Reply contains undeclared required meaning after successful manifest preflight</td><td><code>PLUGIN_OPERATION_FAILED</code>, plugin contract violation</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; violated its contract by returning undeclared required feature &quot;{feature}&quot; for &quot;{operation}&quot;. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Reply contains an unknown required security/execution field</td><td>New agreed <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, plugin contract violation</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; violated its contract by returning unknown required field &quot;{pointer}&quot; for &quot;{operation}&quot;. Run oyzu plugins update {plugin} and retry.</code></td></tr></tbody></table></div>
+<p>The driver renders these bodies using its own admitted identity/binding:
+<code>{plugin}</code> is the update reference, such as <code>rust/app</code>, with the exact admitted
+release retained in diagnostic context. <code>{operation}</code> is its call; <code>{pointer}</code>
+comes from the decoder. For requests, <code>{feature}</code> is the lexicographically first
+outgoing execution requirement absent from the admitted peer&#x27;s advertisement.
+The plugin&#x27;s unstructured <code>unsupported</code> reason is untrusted secondary detail,
+never the source of identity, feature or remedy; without an independently
+established missing token, retain an operation-level unsupported failure.
+Rust&#x27;s native/inspection helpers, .NET&#x27;s native/acquisition/lock-facts helpers,
+Node&#x27;s native, metadata and store-validation helpers, Python&#x27;s native/acquisition
+helpers, and Zig&#x27;s native test helper emit the field code and decoder pointer only;
+the host supplies the admitted identity and recovery message.
+Captured planning also checks refusal control output: pointers must be JSON
+pointers of at most 1,024 bytes with valid RFC 6901 escapes and no control
+characters. Request-field claims must name a member of a frozen outgoing
+request, and feature claims must be supported by the engine and absent from the
+signed role requirements. Invalid claims remain operation failures.
+Manifest features come from authenticated requirements; reply features come
+from the protocol crate&#x27;s field-to-capability map next to strict records.</p>
+<p>Docker uses the shared stdio reader and advertises <code>captured-plan</code> and
+<code>build-options</code> from its SDK support list. Its typed OCI operations require
+<code>captured-plan</code> in the admitted manifest, including replies returned after
+successful preflight. Docker has no separate <code>--native</code> or <code>--inspect</code> stdio
+operation: captured metadata and acquisition helpers retain their closed
+records and existing core admission. Prepared paths/digests, nested OCI intent,
+commands, artifacts and plugin identities remain strict. Updating the driver
+alone does not replace an already-installed Docker plugin&#x27;s reader.</p>
+<p>Use <code>oyzu plugins update {plugin}</code> through the authorized <a class="" href="/docs/reference/plugin-updates">plugin update flow</a>;
+rebuild and rebind development plugins. Updating Oyzu uses <code>oyzu self update</code>
+and its allowed release source. Neither remedy bypasses admission or changes a
+lock silently. Capability checks themselves need no network; updates may need
+the configured source or already available admitted assets.</p>
+<p>Unknown manifest members at any level use <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code> with
+manifest-specific Oyzu-update guidance. Role/contract mismatch and a missing
+requested contract retain their existing incompatibility diagnostics, even
+though they share <code>PLUGIN_ENGINE_REQUIREMENT</code>; they are not self-update cases.
+Existing plugin-failure status and config exit <code>3</code> stay unchanged. Config&#x27;s
+<code>declared_minimum</code>, when present, remains attributed file guidance in <code>next_step</code>,
+not a version gate or proof of a feature&#x27;s first supporting release.</p>
+<p>Required capabilities must be checked before native work or writes. Declare
+every new required reply/native meaning in the signed manifest so incompatible
+drivers refuse before plugin launch; a check after apply/publish is too late.
+Undeclared required reply meaning or an unknown reply security field after
+preflight is a plugin contract violation, never a reason to upgrade Oyzu.
+Stop further work; do not claim effects from a violating plugin were undone.
+Tampered signatures/digests and malformed known values retain their existing
+checks and concrete repairs; the new field code is only for unknown required meaning.
+Unknown optional fields remain accepted at the containers listed above; nested
+identity, command, digest, credential and authority records stay strict. Where
+an optional-field warning applies, retain <code>CONFIG_WARNING</code>, the
+<code>CONFIG_UNKNOWN_OPTIONAL: </code> message prefix, preflight scope/phase and no
+<code>subcode</code> or <code>detail</code>; wire annotations keep their existing debug note.
+Published readers retain their historical behavior, so producer omission and
+signed package eligibility must protect them until compatible packages are
+normally published and adopted.</p>
+<p>The protocol crate&#x27;s <code>capabilities</code> module owns requirement classification,
+known reply-field capability mapping and directional message templates. The
+map covers Cargo native commands/private outputs; Go, Helm, Java / JVM, Node and
+Python native commands through <code>native-adapter</code>; .NET native/optimized/compile-stage/publish
+intent; Zig native test commands through <code>zig-native-test-report</code>; Jest report
+conversion; and shared artifact archive intent. Other families extend it with their
+existing owning capabilities as they adopt the SDK check.
+<code>request_features</code> derives requirements from the typed outgoing request;
+<code>missing_request_feature</code> chooses the first missing token in lexical order.
+Drivers compare with their admitted peer&#x27;s advertisement and never infer a
+feature or remedy from an <code>unsupported</code> reason or a reply&#x27;s claimed identity.
+An unsupported operation without an independently established missing token
+keeps its operation-level failure.</p>
+<p>New request/reply fields, including shared nested fields, must either be
+defaulted and documented informational-only, or mapped to a feature inferred by
+<code>request_features</code> / <code>reply_features</code>. A field that affects execution or safety
+needs the feature path. On strict records an informational field must also omit
+its default: <code>#[serde(default)]</code> alone does not prevent an older published plugin
+from rejecting a new key. Sending nondefault values to such a plugin still
+requires peer compatibility. <code>oyzu --toolset checks run check-wire-fields</code>, also
+included in <code>checks</code> and the protocol lib tests, checks these declarations;
+feature mappings need an executable classifier witness. Existing field
+exceptions are recorded individually without changing their wire behavior.</p>
+<p><code>Error::RequiredField</code> retains a decoder-derived JSON Pointer, including array
+indices and escaped member names. <code>decode_native_input</code> applies the same bounded,
+duplicate-key and object-only decoding to native helpers. When request framing
+is readable but a strict child is unknown, the SDK echoes a failed result with
+<code>error.code: &quot;PLUGIN_PROTOCOL_REQUIRED_FIELD&quot;</code> and the pointer in <code>error.message</code>.
+Malformed framing, reserved <code>continuation</code>, invalid known values and tampering
+retain their existing failures. This code is the sole uppercase exception to
+the existing wire error-code syntax.</p>
+<p>Released 0.3.8 accepts baseline SDK messages but rejects unrecognized members in
+reply envelopes and <code>describe</code>/<code>tasks</code> outputs. A newer reader&#x27;s annotation
+tolerance does not retrofit that release. Keep messages within the older
+reader&#x27;s supported fields until compatible readers are deployed; advertising
+an unrelated feature does not make a new annotation safe to send.</p>
+<p>Project/user-file <code>min_oyzu_version</code> guidance uses the same
+<a class="" href="/docs/reference/configuration#minimum-reader-version">minimum-reader policy</a> as other
+commands. A higher marker alone warns once and does not prevent discovery when
+the files and plugin messages are understood. It cannot relax identity,
+execution or package admission checks. Plugin messages add no second marker or
+upgrade-warning mechanism; their optional-field debug notes remain distinct
+from the command&#x27;s single compatibility notice.</p>
+<p>On Unix, a newly copied executable can briefly remain busy while an inherited
+writer closes. The host may wait up to one second before execution starts,
+within the original operation deadline. It never retries a plugin operation or
+accepts a failed result because of this startup handling.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="package-and-sign-your-plugin">Package and sign your plugin<a href="#package-and-sign-your-plugin" class="hash-link" aria-label="Direct link to Package and sign your plugin" title="Direct link to Package and sign your plugin" translate="no">​</a></h2>
 <p>A package is the archive described in <a class="" href="/docs/reference/plugin-packages#package-format">plugin packages</a>:
 <code>plugin.json</code> plus one executable per platform.</p>
@@ -646,7 +1303,10 @@ empty-read format to preserve.</p>
 first-party plugin are in the repository. <code>tooling/package-plugin.py</code> in the oyzu
 repository packages one built executable for the host platform and prints the archive
 digest:</p>
-<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">python3 tooling/package-plugin.py </span><span class="token parameter variable" style="color:#36acaa">--executable</span><span class="token plain"> target/debug/oyzu-plugin-go </span><span class="token parameter variable" style="color:#36acaa">--out</span><span class="token plain"> go.tar.gz</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># prints sha256:&lt;archive digest&gt;</span><br></div></code></pre></div></div>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">python3 tooling/package-plugin.py </span><span class="token parameter variable" style="color:#36acaa">--executable</span><span class="token plain"> target/debug/oyzu-plugin-go </span><span class="token parameter variable" style="color:#36acaa">--out</span><span class="token plain"> target/go.tar.gz</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># prints sha256:&lt;archive digest&gt;</span><br></div></code></pre></div></div>
+<p>The helper overwrites the example&#x27;s <code>provenance.source_revision</code> with the clean
+checkout&#x27;s full HEAD commit. See <a href="#packing-a-source-built-plugin" class="">packing a source-built plugin</a>
+for clean-tree requirements and the optional <code>--revision</code> assertion.</p>
 <p>To distribute your plugin through an OCI registry, publish a release root laid out as in
 the OCI package contract, with a Sigstore
 signature attached. Users then have two ways to trust it:</p>
@@ -708,16 +1368,21 @@ through ordinary archive admission rather than substituting a bare executable.
 The comparison library itself is portable. Set <code>OYZU_CONFORMANCE_BUILDER</code> to one of
 <code>docker</code>, <code>dotnet</code>, <code>go</code>, <code>helm</code>, <code>java</code>, <code>node</code>, <code>python</code>, <code>rust</code> or <code>zig</code> to select
 one row. Each row invokes the compiled CLI with <code>build --no-cache --json</code>, using
-ordinary development plugin bindings and engine admission. It compares artifact
+ordinary development plugin bindings and engine admission; Rust and the captured
+builders use package bindings. Rust also exercises installed plugin package
+admission and warm compilation reuse. The table compares artifact
 digests from the admitted build manifest, excluding per-run reports and evidence
 whose timestamps describe the run. A protocol-only pass does not imply a native
 determinism pass, and missing prerequisites are failures rather than exemptions.</p>
-<p>The native Rust and Zig Debug fixture stages currently declare temporary DWARF
-path differences (Rust fix,
-Zig fix); the .NET stage declares an
-embedded PDB path difference.
-These tracked exceptions remain visible in the report. All other fixture stages
-require matching artifact digests.</p>
+<p>The native Rust Debug fixture requires equal artifact digests, retained debug
+information with a logical <code>/oyzu/source</code> compilation directory, a working binary
+and an action-cache hit on an unchanged warm build. The Zig Debug stage declares
+the <a class="" href="/docs/reference/zig#debug-artifact-reproducibility">upstream Debug path limitation</a>.
+This documented exception remains visible in the report. The <code>zig-release</code> row
+selects <code>ReleaseFast</code>, runs both collected executables and compares their binary
+and installation-tree digests without an exception. Select that row alone with
+<code>OYZU_CONFORMANCE_BUILDER=zig-release</code>. All other fixture stages also require
+matching artifact digests.</p>
 <p>Then try the plugin in a real project through a local binding.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="failures-and-recovery">Failures and recovery<a href="#failures-and-recovery" class="hash-link" aria-label="Direct link to Failures and recovery" title="Direct link to Failures and recovery" translate="no">​</a></h2>
 
@@ -785,8 +1450,9 @@ build with a pin stops with <code>ENGINE_ASSET_UNAVAILABLE</code> naming the pin
 isolated package, for example), the build fails during preparation, before any build
 action or tool installation, with the code above and the plugin&#x27;s reason. The message
 lists every target the plugin kept off the host build, not only the first. A plugin that fails <code>native-admission</code> is named the
-same way. Human and <code>--json</code> output carry the same message. <code>oyzu build --plan</code> doesn&#x27;t
-fail; its &quot;Unresolved until preparation&quot; list (<code>unresolved</code> in JSON) adds a
+same way. Human and <code>--json</code> output carry the same message. For fresh bindings,
+<code>oyzu build --plan</code> represents these placement refusals in its
+&quot;Unresolved until preparation&quot; list (<code>unresolved</code> in JSON), adding a
 <code>Target &lt;id&gt; was not admitted to the native host lane: &lt;reason&gt;</code> line for each one.</p>
 <p>With <code>--isolated</code> or <code>--all-platforms</code>, oyzu selects the engine first without launching
 plugins, so you see the engine&#x27;s own refusal until an engine is available:
@@ -824,6 +1490,24 @@ environment is refused. Direct <code>oyzu run</code> tasks don&#x27;t use this b
 amd64 (GNU). The official catalog supplies the Python plugin. See
 <a class="" href="/docs/reference/python-preparation#native-pip-full-build-environment">Python preparation</a> and, for the
 isolated path, <a class="" href="/docs/reference/plugin-packages#isolated-pip-python-packages">captured pip Python packages</a>.</p>
+<p>Python uses the shared SDK&#x27;s request-capability check before family dispatch and
+source inspection. Its <code>describe</code> advertises the same execution support list;
+the SDK adds optional-annotation support and keeps reply permissions separate.
+Other roles still undergo preflight with an empty execution-support list, so
+unknown required features are refused before dispatch, including <code>describe</code>.
+The stdio envelopes and designated operation payloads accept inert optional
+fields as described above. Targets, commands, prepared identities, digests and
+paths retain their strict contracts. <code>--native</code> uses the protocol&#x27;s closed
+<code>PythonCommand</code> decoder; <code>--acquisition-api</code> (including stdin input with <code>-</code>)
+uses the same decoder for its closed operation/data/manager envelope. Its data
+retains the selected native API&#x27;s operation-specific semantics; it is not an
+optional annotation container. Python has no separate <code>--inspect</code> entry point.
+Unknown strict helper fields return <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code> and the
+decoder pointer before dispatch. The driver supplies the admitted plugin name
+and directional recovery text. Source and embedded runtime identities, package
+release mappings and normal signed admission remain binding. Rebuild/rebind a
+development executable, or adopt a normally published compatible Python plugin;
+updating the source does not change an installed release.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="the-node-plugin">The Node plugin<a href="#the-node-plugin" class="hash-link" aria-label="Direct link to The Node plugin" title="Direct link to The Node plugin" translate="no">​</a></h2>
 <p>The Node plugin serves <code>node/app</code> for npm, pnpm and Yarn (Classic and Berry). It&#x27;s
 experimental and available from the official catalog. A package or local binding can select another compatible implementation.</p>
@@ -923,6 +1607,10 @@ application. Oyzu keeps the npm lifecycle around one Vite build and stages the o
 after the native postbuild step. Tested with Vite 8.3.3. Other Vite flags, pnpm or Yarn
 with Vite, SSR, library and multi-environment builds, and watch or no-write modes aren&#x27;t
 supported. See <a class="" href="/docs/reference/node-applications#external-npm-execution">Node applications</a>.</p>
+<p>Node packages declaring <code>node-workspace-complete-read</code> require an engine that
+implements member read admission, non-crun/root-config refusal and contained
+installation restoration. Package preflight rejects engines missing this builder
+feature before any plugin role runs, independently of release version labels.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="tests-and-quality-checks">Tests and quality checks<a href="#tests-and-quality-checks" class="hash-link" aria-label="Direct link to Tests and quality checks" title="Direct link to Tests and quality checks" translate="no">​</a></h3>
 <p>For non-workspace npm, pnpm and Yarn targets, <code>oyzu run test</code> adds JUnit and LCOV
 reporting to a default <code>node --test</code>, to flag-only test scripts it recognizes, and to
@@ -945,33 +1633,62 @@ configuration and ignore files are authoritative. <code>oyzu run format</code> c
 normal configuration and policy checks; reserved <code>OYZU_*</code> names stay unavailable.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="repository-source-bootstrap">Repository source bootstrap<a href="#repository-source-bootstrap" class="hash-link" aria-label="Direct link to Repository source bootstrap" title="Direct link to Repository source bootstrap" translate="no">​</a></h2>
+<p>Claude repository sessions keep the existing bootstrap hook and also run
+<code>.claude/load-context.sh</code> through <code>.claude/settings.json</code>. The context hook prints
+the committed shared constitution, INDEX and <code>context commit &lt;sha&gt;</code>. A load
+failure emits an <code>ERROR: ... context load FAILED</code> marker on both stderr and
+SessionStart stdout; it exits zero so offline work remains possible. Restore
+private context access or correct the sibling cache branch/origin and retry
+before relying on shared policy. It does not report a loaded SHA on failure.
+See the hook instructions for the offline shell test,
+skill-link behavior and the separately provisioned user-level cloud hook needed
+when the session starts outside a repository. These files do not install cloud
+user settings.</p>
 <p>This section is for people working on the oyzu repository itself. Releases use the
 shared package store instead.</p>
-<p><code>tooling/bootstrap-oyzu.sh</code> uses an <code>oyzu</code> on <code>PATH</code> or in <code>.oyzu/bin</code> that can read this
-checkout&#x27;s configuration. Without one it downloads the newest release&#x27;s <code>oyzu</code> and
+<p><code>tooling/bootstrap-oyzu.sh</code> tries the <code>oyzu</code> on <code>PATH</code> before <code>.oyzu/bin</code>, accepting
+the first compatible driver. It does not select the newest version among them.
+Its development setup can preserve complete existing bindings without rebuilding
+them; use <code>oyzu run bootstrap -- --source --development-plugins</code> to refresh stale
+repository plugins. Without a compatible driver it downloads the newest release&#x27;s <code>oyzu</code> and
 <code>oyzu-shim</code> into <code>.oyzu/bin</code>, checking each against the digest the release reports, and
 builds from source only when no release executable can be used here (<code>--source</code> never
 downloads, so it builds whenever no usable <code>oyzu</code> is already there). An <code>oyzu</code> older than
-the plugin protocol of the pinned <code>rust/app</code> and <code>node/app</code> plugins (<code>plugin_protocol_release</code>
-at the top of the script) can&#x27;t be used either, because it refuses their results. The
-current minimum is 0.3.0, which implements Rust&#x27;s <code>native-private-outputs</code> and
-<code>captured-cargo-projection</code> requirements. This version check does not publish or
+the required plugin driver contract (<code>plugin_protocol_release</code> at the top of
+the script) can&#x27;t be used either. The current bootstrap minimum is 0.4.0,
+whose executables must publish for every required platform before adoption.
+The 0.4.0 driver owns same-build retries and Rust attempt evidence and supports
+<code>native-private-outputs</code> and <code>captured-cargo-projection</code>;
+repository dogfood adopts that driver floor after its executables publish
+for every required platform.
+This driver floor does not upgrade the pinned Rust preview.6 package, which
+still lacks exact case reruns. This version check does not publish or
 select a marked package; normal signed package and catalog admission still apply.
 <code>--no-plugins</code>, which runs no plugin, skips that check, so the released 0.2.5
 driver can still provide the tools used to produce plugin packages. On a
 platform with no release that new yet, the script builds the CLI from source once, until
 such a release publishes an executable there. With <code>--require-release</code> (CI&#x27;s setup action)
 it fails instead, before invoking a plugin. Raising the minimum does not provide a
-compatible executable: strict CI must wait for one to be published. The release
-workflow&#x27;s existing non-strict <code>--ci-machine-binding</code> bootstrap can build only the
-CLI and shim for that first compatible release; it still uses signed published plugins.
+compatible executable: the checkout must remain buildable by the previous
+published driver until publication. The release workflow also uses
+<code>--require-release</code> and has no ordinary source-driver fallback.
 By default, on every host it then installs the published <code>rust/app</code> and <code>node/app</code> releases that
-<code>oyzu.lock</code> selects into the plugin store, from the release digests pinned at the top of
-the script, through a temporary user file that binds only them; your own configuration
+<code>oyzu.lock</code> selects into the plugin store, reading the release digests directly
+from that lock, through a temporary user file that binds only them; your own configuration
 isn&#x27;t changed. A failed install stops bootstrap. Missing Windows payloads must be
 published and pinned before a Windows build can use them. Development plugins
 require explicit <code>--development-plugins</code>; only that mode builds and binds the
 Rust and Node plugins from source. A CLI source fallback alone does not opt in.
+A warm plugin store returns before reading pins or selecting a TOML reader.
+Reading initial pins uses Python&#x27;s standard TOML reader: bootstrap first checks
+PATH, then the already-installed <code>checks</code> Python. If neither can import
+<code>tomllib</code>, it explicitly reports and installs the existing <code>checks</code> toolset
+through Oyzu, then probes the pinned interpreter before reading the lock. On
+Windows it converts the complete native Python path, including spaces, for Git
+Bash. With <code>--no-install</code>, that toolset installation is forbidden: provision it
+first with <code>oyzu --toolset checks install --frozen</code>, or provide a capable Python
+on PATH, then retry. Ordinary provisioning may need network access before
+plugin acquisition starts.
 <code>--ci-machine-binding</code> continues to use published plugins exclusively
 (this repository declares both a <code>cli</code> and a <code>docs</code> build, so both builders must resolve
 before <code>oyzu build cli</code>). When an older CLI supplies the compiler, it resolves only
@@ -990,7 +1707,8 @@ it removes the file it created. Running it again with the same unchanged file pr
 <code>Reusing this checkout&#x27;s unchanged bootstrap USER file</code> and the same export.</p>
 <p><code>oyzu run bootstrap -- --source --development-plugins</code> uses the same file, but once it has packed
 <code>.oyzu/bin/oyzu-plugin-rust.tar.gz</code> the file binds <code>rust/app</code> to that
-<a href="#binding-a-package-archive" class="">package archive</a> so isolated builds work (see
+<a href="#binding-a-package-archive" class="">package archive</a>. Add <code>--isolated</code> to include the Linux
+plugin and prepare the CLI engine for isolated builds (see
 <a class="" href="/docs/reference/local-builds#refreshing-the-oyzu-on-your-path">refreshing the <code>oyzu</code> on your PATH</a>). An earlier file with the
 executable binding is rewritten then; the script above keeps using whichever binding
 the file has.</p>
@@ -1003,13 +1721,11 @@ it passes them through. From the checkout root:</p>
 <p>In CI the user file is ignored, so the script refuses fresh user setup there; a CI job
 uses the machine binding below instead.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="ci-machine-binding">CI machine binding<a href="#ci-machine-binding" class="hash-link" aria-label="Direct link to CI machine binding" title="Direct link to CI machine binding" translate="no">​</a></h3>
-<p>If this mode must build the CLI and shim from source, an authentic older Oyzu
-must supply managed Rust through its ordinary trusted tools-only resolver.
-Missing older driver refuses before host Cargo is queried or invoked. Non-CI
-source bootstrap retains its fallback, and <code>--require-release</code> still refuses
-source CLI builds. Any separately authorized one-time workflow source-bootstrap
-exception must be restored to <code>--require-release</code> afterward; it does not permit
-source-built plugins, general CI fallback or another run.</p>
+<p>CI machine binding requires <code>--release --require-release</code>: a missing compatible
+driver fails before a source build. The one-time Windows bootstrap exception has
+been removed. Local source bootstrap remains available outside CI; without
+<code>--development-plugins</code> it builds only the CLI and shim, then installs the
+published locked plugins.</p>
 <p>Pass <code>--ci-machine-binding</code> (used by the repository&#x27;s own setup action and release
 workflows) to bind the Rust and Node plugins in machine configuration on a GitHub Actions runner
 (<code>GITHUB_ACTIONS=true</code>; anywhere else the switch does nothing). Before the configuration
@@ -1026,17 +1742,17 @@ into or replaces machine configuration.</li>
 <li class="">Binds the published <code>rust</code> and <code>node</code> plugin releases on every platform: it creates
 the machine <code>config.toml</code> with only <code>[plugins.packages]</code> entries for <code>rust/app</code> and
 <code>node/app</code>, each an <code>oci</code> reference to <code>ghcr.io/oyzuai/plugins/&lt;name&gt;</code> pinned by
-release root digest (the digests live at the top of <code>tooling/bootstrap-oyzu.sh</code>).
-The pinned releases carry Linux amd64 and arm64 (musl), macOS amd64 and Windows
-amd64 payloads. The Rust pin selects <code>0.1.0-preview.3</code>, which also carries a
-macOS arm64 payload. Oyzu downloads each release on first use and checks its official
-signature. Nothing is built from source: a run with no recorded digest, or on a
+release root digest read directly from <code>oyzu.lock</code>. The current builder pins
+carry Linux amd64 musl and Windows amd64 MSVC payloads. Other hosts need a
+compatible published payload before bootstrap can use them. Oyzu downloads
+each release on first use and checks its official signature. Nothing is built from source: a run with no recorded digest, or on a
 platform the release has no payload for, fails instead. The script then runs
 <code>oyzu build</code> for a target that does not exist, which installs the bound plugins
 during plugin selection and stops before building anything (a plan or task only
 replays installed plugins), and requires <code>oyzu plugins current</code> to report both
-installed. <code>oyzu.lock</code> must hold their selections. Update the digests and lock when a
-new plugin release is published. The same file also binds <code>github-release/publish</code>
+installed. <code>oyzu.lock</code> must hold their selections. The automatic pin PR updates
+that lock after the new release appears in the signed catalog. The same file
+also binds <code>github-release/publish</code>
 to the signed GitHub release publisher (<code>ghcr.io/oyzuai/plugins/github-release</code>,
 Linux amd64 and arm64 musl), pinned by root digest, because the signed catalog
 has no publisher entries yet. Releases publish through it. It is installed when a
@@ -1058,6 +1774,11 @@ configuration, creates no bootstrap USER file and builds no plugin from source, 
 platform. Commands that select the Rust or Node plugins (<code>oyzu build</code>, <code>oyzu run</code>) fail
 in such a job until the plugins are bound.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-java-model-preparation">Native Java model preparation<a href="#native-java-model-preparation" class="hash-link" aria-label="Direct link to Native Java model preparation" title="Direct link to Native Java model preparation" translate="no">​</a></h2>
+<p>Ant&#x27;s typed <code>test</code> command accepts an optional ordered <code>targets</code> list for a
+captured coupled lifecycle. When omitted, it runs only <code>target</code>, preserving
+direct-test and native-host behavior. The listener attributes assertions to
+<code>target</code>; the complete selected target set, reports and workspace belong to one
+stage result. This evolves the existing <code>v1alpha1</code> command in place.</p>
 <p>Java host preparation uses typed Maven, Gradle and Ant <code>describe</code> commands in
 the existing <code>v1alpha1</code> native contract. Ant&#x27;s command carries the core-owned
 <code>model</code> output path and an optional <code>version</code> projection. Core binds the model
@@ -1126,6 +1847,35 @@ header locally; it is never forwarded to GitHub. Writes additionally match the
 frozen upload URL, filename and complete staged bytes before authorization.</p>
 <p>Protected workers plan from their frozen release facts with proxy requests denied
 until intent authorization. The admitted publisher identity and every native
-coordinate must match the frozen request before the worker can publish.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#run-a-local-plugin" class="table-of-contents__link toc-highlight">Run a local plugin</a><ul><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#binding-a-package-archive" class="table-of-contents__link toc-highlight">Binding a package archive</a></li><li><a href="#independent-profiles" class="table-of-contents__link toc-highlight">Independent profiles</a></li></ul></li><li><a href="#how-a-plugin-works" class="table-of-contents__link toc-highlight">How a plugin works</a><ul><li><a href="#operations" class="table-of-contents__link toc-highlight">Operations</a></li><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li><li><a href="#selected-native-tasks" class="table-of-contents__link toc-highlight">Selected native tasks</a></li><li><a href="#native-package-facts" class="table-of-contents__link toc-highlight">Native package facts</a></li><li><a href="#caching-and-cost" class="table-of-contents__link toc-highlight">Caching and cost</a></li><li><a href="#per-operation-source-contracts" class="table-of-contents__link toc-highlight">Per-operation source contracts</a></li></ul></li><li><a href="#package-and-sign-your-plugin" class="table-of-contents__link toc-highlight">Package and sign your plugin</a><ul><li><a href="#check-it" class="table-of-contents__link toc-highlight">Check it</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#the-python-plugin" class="table-of-contents__link toc-highlight">The Python plugin</a></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a><ul><li><a href="#what-it-runs" class="table-of-contents__link toc-highlight">What it runs</a></li><li><a href="#lock-files" class="table-of-contents__link toc-highlight">Lock files</a></li><li><a href="#pnpm" class="table-of-contents__link toc-highlight">pnpm</a></li><li><a href="#yarn" class="table-of-contents__link toc-highlight">Yarn</a></li><li><a href="#vite" class="table-of-contents__link toc-highlight">Vite</a></li><li><a href="#tests-and-quality-checks" class="table-of-contents__link toc-highlight">Tests and quality checks</a></li></ul></li><li><a href="#repository-source-bootstrap" class="table-of-contents__link toc-highlight">Repository source bootstrap</a><ul><li><a href="#ci-machine-binding" class="table-of-contents__link toc-highlight">CI machine binding</a></li><li><a href="#bootstrapping-without-plugins" class="table-of-contents__link toc-highlight">Bootstrapping without plugins</a></li></ul></li><li><a href="#native-java-model-preparation" class="table-of-contents__link toc-highlight">Native Java model preparation</a></li><li><a href="#publisher-plugins" class="table-of-contents__link toc-highlight">Publisher plugins</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a><ul><li><a href="#publisher-planning-and-destination-evidence" class="table-of-contents__link toc-highlight">Publisher planning and destination evidence</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+coordinate must match the frozen request before the worker can publish.</p>
+<p>Unit adapters write per-attempt completion facts even when they rerun whole
+units: <code>rerun-cases</code> describes filtering support. Core validates a supplied
+<code>cases.json</code> and its attempt history independently of that feature. Older
+JUnit-only units use the generic step safeguards, including an exit-zero final
+attempt with every originally failed testcase passing.
+Explicit non-normal native completion facts can accompany a suite-level
+termination error. A native unit crash retries the whole unit; a unit timeout,
+kill or incomplete setup remains failed. Ordinary JUnit steps still reject
+suite-level errors and signals without retrying.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="jvm-lifecycle-phases">JVM lifecycle phases<a href="#jvm-lifecycle-phases" class="hash-link" aria-label="Direct link to JVM lifecycle phases" title="Direct link to JVM lifecycle phases" translate="no">​</a></h3>
+<p>Maven and Gradle native build commands accept an optional <code>phase</code> of <code>compile</code>,
+<code>test</code> or <code>package</code> in the existing <code>v1alpha1</code> protocol. Omitting it keeps the
+single coupled module lifecycle. The <code>jvm-phase-reuse</code> builder feature
+advertises that a plugin understands the field; send it only to a plugin that
+describes the feature, and treat an unknown phase as a hard failure. The
+feature alone changes no planning or execution behavior. The step design is in
+OEP-0011 JVM phase reuse.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="jvm-lifecycle-attempt-commands">JVM lifecycle attempt commands<a href="#jvm-lifecycle-attempt-commands" class="hash-link" aria-label="Direct link to JVM lifecycle attempt commands" title="Direct link to JVM lifecycle attempt commands" translate="no">​</a></h3>
+<p>Java&#x27;s optional <code>rerun-cases</code> description uses the same test-unit phases and
+<code>cases.json</code> format as other plugins. Maven/Gradle native build commands accept
+an optional <code>attempt_reports</code> allocation in the existing <code>v1alpha1</code> protocol.
+A build operation can carry <code>test_units</code> when it supplies a command and JUnit
+report, as well as the existing test operation. When present, the package
+supplies a lifecycle test unit: prepare emits its
+manifest and native retry facts, run executes the ordinary lifecycle with native
+filters and completion facts, and finish exposes core&#x27;s combined JUnit report.
+Omitting the allocation invokes the ordinary native command. The first attempt
+keeps the native lifecycle; compile, tool and other non-test failures mark the
+attempt incomplete. Core alone chooses retries and validates requested cases.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#same-input-attribution-and-explicit-quarantine" class="table-of-contents__link toc-highlight">Same-input attribution and explicit quarantine</a></li><li><a href="#test-attempt-reporting" class="table-of-contents__link toc-highlight">Test-attempt reporting</a></li><li><a href="#run-a-local-plugin" class="table-of-contents__link toc-highlight">Run a local plugin</a><ul><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#binding-a-package-archive" class="table-of-contents__link toc-highlight">Binding a package archive</a></li><li><a href="#reference-names-for-first-party-plugins" class="table-of-contents__link toc-highlight">Reference names for first-party plugins</a></li><li><a href="#packing-a-source-built-plugin" class="table-of-contents__link toc-highlight">Packing a source-built plugin</a></li><li><a href="#independent-profiles" class="table-of-contents__link toc-highlight">Independent profiles</a></li></ul></li><li><a href="#how-a-plugin-works" class="table-of-contents__link toc-highlight">How a plugin works</a><ul><li><a href="#operations" class="table-of-contents__link toc-highlight">Operations</a></li><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li><li><a href="#selected-native-tasks" class="table-of-contents__link toc-highlight">Selected native tasks</a></li><li><a href="#native-package-facts" class="table-of-contents__link toc-highlight">Native package facts</a></li><li><a href="#caching-and-cost" class="table-of-contents__link toc-highlight">Caching and cost</a></li><li><a href="#per-operation-source-contracts" class="table-of-contents__link toc-highlight">Per-operation source contracts</a></li></ul></li><li><a href="#driver-and-plugin-compatibility" class="table-of-contents__link toc-highlight">Driver and plugin compatibility</a><ul><li><a href="#required-capabilities-and-upgrade-direction" class="table-of-contents__link toc-highlight">Required capabilities and upgrade direction</a></li></ul></li><li><a href="#package-and-sign-your-plugin" class="table-of-contents__link toc-highlight">Package and sign your plugin</a><ul><li><a href="#check-it" class="table-of-contents__link toc-highlight">Check it</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#the-python-plugin" class="table-of-contents__link toc-highlight">The Python plugin</a></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a><ul><li><a href="#what-it-runs" class="table-of-contents__link toc-highlight">What it runs</a></li><li><a href="#lock-files" class="table-of-contents__link toc-highlight">Lock files</a></li><li><a href="#pnpm" class="table-of-contents__link toc-highlight">pnpm</a></li><li><a href="#yarn" class="table-of-contents__link toc-highlight">Yarn</a></li><li><a href="#vite" class="table-of-contents__link toc-highlight">Vite</a></li><li><a href="#tests-and-quality-checks" class="table-of-contents__link toc-highlight">Tests and quality checks</a></li></ul></li><li><a href="#repository-source-bootstrap" class="table-of-contents__link toc-highlight">Repository source bootstrap</a><ul><li><a href="#ci-machine-binding" class="table-of-contents__link toc-highlight">CI machine binding</a></li><li><a href="#bootstrapping-without-plugins" class="table-of-contents__link toc-highlight">Bootstrapping without plugins</a></li></ul></li><li><a href="#native-java-model-preparation" class="table-of-contents__link toc-highlight">Native Java model preparation</a></li><li><a href="#publisher-plugins" class="table-of-contents__link toc-highlight">Publisher plugins</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a><ul><li><a href="#publisher-planning-and-destination-evidence" class="table-of-contents__link toc-highlight">Publisher planning and destination evidence</a></li><li><a href="#jvm-lifecycle-phases" class="table-of-contents__link toc-highlight">JVM lifecycle phases</a></li><li><a href="#jvm-lifecycle-attempt-commands" class="table-of-contents__link toc-highlight">JVM lifecycle attempt commands</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

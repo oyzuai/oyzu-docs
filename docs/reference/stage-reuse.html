@@ -1,0 +1,389 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-reference/stage-reuse" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.10.2">
+<title data-rh="true">Stage reuse | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/stage-reuse"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Stage reuse | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/stage-reuse.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/stage-reuse.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/stage-reuse"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/stage-reuse" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/stage-reuse" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Stage reuse","item":"https://docs.oyzu.ai/docs/reference/stage-reuse"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
+<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/main.1be42137.js" defer="defer"></script>
+</head>
+<body>
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div class="oyzu-technical-documentation"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand oyzu-navbar-brand" aria-label="Oyzu documentation home" href="/"><span class="oyzu-document-wordmark" aria-hidden="true">oyzu<span class="oyzu-document-dot">.</span></span><span class="oyzu-navbar-label">docs</span></a><a class="navbar__item navbar__link" href="/docs/get-started">Get started</a><a class="navbar__item navbar__link" href="/docs/guides/projects">Guides</a><a class="navbar__item navbar__link" href="/docs/cli">CLI reference</a><a class="navbar__item navbar__link" href="/docs/concepts/build-graph">Concepts</a><a class="navbar__item navbar__link" href="/docs/examples/catalog">Examples</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/docs/reference/stage-reuse">Next</a><div class="navbarSearchContainer_Bca1"><div class="navbar__search searchBarContainer_NW3z" dir="ltr"><svg aria-hidden="true" class="searchIcon_T3tP" focusable="false" viewBox="0 0 16 16"><path fill="currentColor" d="M6.02945 10.20327a4.17382 4.17382 0 1 1 4.17382-4.17382 4.15609 4.15609 0 0 1-4.17382 4.17382Zm9.69195 4.2199-4.8225-4.82338A5.88021 5.88021 0 0 0 12.058 6.02856 6.00467 6.00467 0 1 0 9.59979 10.8989l4.82338 4.82338a.89729.89729 0 0 0 1.29912 0 .89749.89749 0 0 0-.00087-1.29909Z"></path></svg><input placeholder="Search" aria-label="Search" class="navbar__search-input searchInput_YFbd" value=""><div class="loadingRing_RJI3 searchBarLoadingRing_YnHq"><div></div><div></div><div></div><div></div></div></div></div><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/get-started"><span class="linkLabel_WmDU">Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/docs/reference/how-oyzu-compares"><span class="linkLabel_WmDU">How oyzu compares</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="true" href="/docs/get-started/install"><span class="categoryLinkLabel_W154">Get started</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/install"><span class="linkLabel_WmDU">Install Oyzu</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tutorial"><span class="linkLabel_WmDU">Tutorial: build your first project</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/first-build"><span class="linkLabel_WmDU">Your first build</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/tools"><span class="linkLabel_WmDU">Manage your tools</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/get-started/results"><span class="linkLabel_WmDU">Read your build results</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/guides/projects"><span class="categoryLinkLabel_W154">Guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/ecosystems/rust"><span class="categoryLinkLabel_W154">Build guides</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/cli"><span class="categoryLinkLabel_W154">CLI reference</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Reference</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/install-script"><span class="categoryLinkLabel_W154">Commands and output</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/local-builds"><span class="categoryLinkLabel_W154">Builds and tasks</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret menu__link--active" role="button" aria-expanded="true" tabindex="0" href="/docs/reference/action-cache"><span class="categoryLinkLabel_W154">Caching, bundles and evidence</span></a></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/action-cache"><span class="linkLabel_WmDU">Action cache</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/docs/reference/stage-reuse"><span class="linkLabel_WmDU">Stage reuse</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/build-bundles"><span class="linkLabel_WmDU">Build bundles and retention</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-3 menu__list-item"><a class="menu__link" tabindex="0" href="/docs/reference/directory-artifacts"><span class="linkLabel_WmDU">Directory artifacts</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/oyzu-toml"><span class="categoryLinkLabel_W154">Configuration</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/tool-commands"><span class="categoryLinkLabel_W154">Tools</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/ecosystem-support"><span class="categoryLinkLabel_W154">Builders by ecosystem</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/publish"><span class="categoryLinkLabel_W154">Publishing and releases</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/plugin-catalog"><span class="categoryLinkLabel_W154">Plugins</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/remote-runs"><span class="categoryLinkLabel_W154">Remote runs and sign-in</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-2 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" tabindex="0" href="/docs/reference/installer-recipes"><span class="categoryLinkLabel_W154">Private registries and install-time downloads</span></a></div></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/concepts"><span class="categoryLinkLabel_W154">Concepts</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/examples/catalog"><span class="categoryLinkLabel_W154">Examples</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/support/capabilities"><span class="categoryLinkLabel_W154">Support</span></a></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--sublist-caret" role="button" aria-expanded="false" href="/docs/reference/engine-staging"><span class="categoryLinkLabel_W154">More reference</span></a></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Reference</span></li><li class="breadcrumbs__item"><span class="breadcrumbs__link">Caching, bundles and evidence</span></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Stage reuse</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Stage reuse</h1></header>
+<div class="theme-admonition theme-admonition-info admonition_xJq3 alert alert--info"><div class="admonitionHeading_Gvgb"><span class="admonitionIcon_Rf37"><svg viewBox="0 0 14 16"><path fill-rule="evenodd" d="M7 2.3c3.14 0 5.7 2.56 5.7 5.7s-2.56 5.7-5.7 5.7A5.71 5.71 0 0 1 1.3 8c0-3.14 2.56-5.7 5.7-5.7zM7 1C3.14 1 0 4.14 0 8s3.14 7 7 7 7-3.14 7-7-3.14-7-7-7zm1 3H6v5h2V4zm0 6H6v2h2v-2z"></path></svg></span>CLI reference</div><div class="admonitionContent_BuS1"><p>Published from the canonical <code>docs/reference/stage-reuse.md</code> file. Features marked experimental remain experimental; check support limitations before relying on them.</p></div></div>
+<p>Stage reuse restores an earlier build action&#x27;s outputs when its admitted inputs
+still match. Use this page to check which builders can reuse stages, which
+commands run again, and why an unchanged build can refuse reuse.</p>
+<p><a class="" href="/docs/reference/local-builds#the-daemonless-sandbox">crun</a> is the container runtime Oyzu uses
+to run isolated Linux actions without a Docker daemon.</p>
+<blockquote>
+<p><strong>Status: experimental.</strong> Complete-read lifecycle reuse is available for
+Maven, Gradle, Ant, npm, Helm, eligible <code>go/app</code> stages and conventional .NET
+compile/test/pack on Linux crun. Compatible Java plugins reuse eligible Maven
+modules and Gradle projects independently. Generated pip <code>python/app</code> builds reuse on
+Linux crun with a current plugin package; other Python lanes do not yet. Windows Rust compilation can still
+report incomplete reads on unchanged builds. Native Windows stages with
+incomplete reads run again.</p>
+</blockquote>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="see-why-a-stage-ran">See why a stage ran<a href="#see-why-a-stage-ran" class="hash-link" aria-label="Direct link to See why a stage ran" title="Direct link to See why a stage ran" translate="no">​</a></h2>
+<p>Illustrative commands, run from a project with a build target named <code>app</code>:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build app </span><span class="token parameter variable" style="color:#36acaa">--explain</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu cache explain app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu cache explain app:build</span><br></div></code></pre></div></div>
+<p>The build explanation reports reuse decisions for the current run. Cache
+explanation reads recorded key history for a target or action. Replace <code>app:build</code>
+with the action named by your builder. A reused action is labelled as reused;
+its tests and reports were not executed now.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-can-a-stage-reuse-a-result">When can a stage reuse a result?<a href="#when-can-a-stage-reuse-a-result" class="hash-link" aria-label="Direct link to When can a stage reuse a result?" title="Direct link to When can a stage reuse a result?" translate="no">​</a></h2>
+<p>A matching key is necessary, but reuse also requires admitted reads, bounded
+outputs and a valid stored result. The key binds source inputs, command and
+environment, admitted tools and dependencies, execution identity and producer
+outputs. Restored artifacts and required reports still pass the current checks.</p>
+<p>On the native host, reads must be complete through admitted native observations
+or fixed command semantics. A predicted source list or a private source copy
+alone does not establish completeness. Missing dep-info, unresolved runtime
+reads or unbounded outputs can require execution even when source is unchanged.</p>
+<p>Docker and crun share results keyed on the whole target: a stage that one
+isolated backend ran is reused by the other. Results keyed on enforced runtime
+reads exist only on crun, and a Docker result never satisfies one.</p>
+<p>An incomplete native stage cannot fall back to a whole-source key or be skipped
+by whole-target restoration. Other independently admitted stages can still hit.
+Adding <code>inputs</code> covers known files; it does not prove that a script, plugin or
+test reads nothing else.</p>
+<p>Authored tasks with <code>cache = true</code> and declared <code>outputs</code> follow the same rule:
+only complete reads of that action admit reuse. Supported native Node commands
+on Linux can use crun per action with frozen source, bounded producer outputs,
+the locked native tool and an identified runtime root. Captured isolated Node
+targets retain their own complete-read path. Unsupported commands and native
+Windows/macOS actions rerun with a named explanation. An inherited builder
+contract cannot admit an authored replacement. See
+<a class="" href="/docs/reference/action-cache#authored-tasks-cached-on-request">authored tasks</a> for prerequisites,
+source visibility, output bounds, diagnostics and the author&#x27;s ambient
+output-independence obligation.</p>
+<p>An admitted native authored action keeps its lookup when a companion lacks a stage
+contract. The companion executes each time and no whole-target group can skip
+it. Only separately bounded, frozen producer bytes are visible to the consumer;
+equal hook output can hit and changed consumed bytes miss. Required checks still
+run or reparse restored reports. <code>--no-cache</code> preserves the selected read view,
+including denied outside reads, while disabling lookup, storage and history.</p>
+<p>On native Windows, Maven/Gradle lifecycles and arbitrary npm scripts run again
+because their runtime reads are incomplete. <code>build --explain</code> and
+<code>cache explain app</code> name the refusal: <code>native reads are incomplete on this host</code>.
+Windows has no merged complete-read backend for Vite or uv lifecycles. An
+unchanged source tree or a private source copy cannot make them reusable.
+The explanation points to the isolated Linux crun path for supported builders;
+run that command on a Linux host. It does not enable native Windows reuse.
+Clearing the cache does not fix missing read admission. <code>--no-cache</code>
+executes the same native commands without action-cache reads or writes; an
+external input change must affect both ordinary and uncached builds. See
+<a class="" href="/docs/reference/action-cache#native-windows-refusal">native Windows refusal</a>.</p>
+<p>The experimental Windows ETW complete-read pipeline remains disabled by default.
+Capture and decoding exist, but live ETW coverage is unproven without an elevated
+validation run. Each capture
+retains at most 262,144 events and 64 MiB of event metadata plus payload bytes
+(allocator overhead is additional). Exceeding either limit permanently marks
+the capture incomplete, refusing reuse and publication. Malformed Close events
+also refuse. Path canonicalization refuses case-sensitive ancestor directories
+and unavailable case-sensitivity attributes, so distinct absence probes cannot
+be merged by case folding. There is no user-facing switch to enable this path.</p>
+<p>Stage reuse is separate from Cargo incremental state, individual compiler-result
+caching, tool downloads and prepared dependencies. A stage that executes again
+may still benefit from those caches. See <a class="" href="/docs/reference/action-cache#controls">action-cache controls</a>
+for disabling reuse or selecting local and remote storage. No account is needed
+for local reuse.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-can-reuse-for-each-builder">What can reuse for each builder?<a href="#what-can-reuse-for-each-builder" class="hash-link" aria-label="Direct link to What can reuse for each builder?" title="Direct link to What can reuse for each builder?" translate="no">​</a></h2>
+<p>The table describes successful unchanged builds with compatible CLI/plugin
+versions, caching enabled and no overriding hooks or tasks. A changed admitted
+input or rejected result can rerun any eligible stage. “Always reruns” means
+whenever that stage is selected. Preparation and validation can still run on a hit.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Builder</th><th>Path</th><th>What can reuse</th><th>What always reruns</th><th>How to see why</th></tr></thead><tbody><tr><td>Rust</td><td>Native host</td><td>Compilation and Clippy with complete Cargo observations; fixed-read rustfmt</td><td>Unbounded test/coverage stages; compile or lint with incomplete reads</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Java: Maven/Gradle</td><td>Isolated Linux crun</td><td>Coupled lifecycle per admitted module/project, including compilation, archives and validated test/coverage evidence; separate archive exports</td><td>Preparation and current report validation still apply; unbounded module views retain the whole lifecycle</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Java: Maven/Gradle</td><td>Native host</td><td>Fixed-read formatter, with a compatible plugin</td><td>Lifecycle and Checkstyle: incomplete reads/unbounded outputs</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Java: Ant</td><td>Isolated Linux crun</td><td>Coupled build/test/JAR target lifecycle and validated test/coverage reports; archive exports</td><td>Preparation, separate quality actions and current report/artifact validation; compound authored commands retain conservative reads</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Java: Ant</td><td>Native host</td><td>Archive export when its producer workspace is unchanged</td><td>Build/test/archive and quality actions: incomplete reads/unbounded outputs</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Node: npm/pnpm/Yarn Classic</td><td>Isolated Linux crun</td><td>Script-free shared install and independent member build/test actions; contained direct workspace links can restore</td><td>Install with lifecycle/environment-read uncertainty or unsupported links; aggregate root dispatch retains workspace scope</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;:&lt;stage&gt;</code></td></tr><tr><td>Node: npm</td><td>Native host</td><td>Independently admitted bounded helpers; download caches remain separate</td><td>Arbitrary build/package lifecycle scripts; bounded install selectors alone do not admit install reuse</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Helm</td><td>Isolated Linux crun</td><td>Packaging/rendering, lint, validation and helm-unittest with the enforced input view and locked tools</td><td>Preparation and current artifact/report validation still apply; outputs remain location sensitive unless declared relocatable</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;:&lt;stage&gt;</code></td></tr><tr><td>Helm</td><td>Native host</td><td>No complete runtime read guarantee from chart predictions</td><td>Incomplete chart stages rerun</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Go</td><td>Native host</td><td>Build, vet and format-check with complete admitted reads</td><td>Stages whose read/output contracts are not admitted</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Python application</td><td>Native host</td><td>No complete backend/runtime read guarantee</td><td>Preparation, application assembly and packaging without complete native admission</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>Python application</td><td>Captured Linux crun</td><td>pip and uv distribution applications: preparation, assembly, generated pytest tests and packaging under their captured source contracts; a source edit does not rerun preparation</td><td>Requirements applications and authored build or test tasks use the whole target as their read set. Poetry preparation always reruns</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;:&lt;stage&gt;</code></td></tr><tr><td>Go: <code>go/app</code></td><td>Isolated Linux crun</td><td>Stages with complete admitted reads: compilation, generated test preparation, test results and exports</td><td>Stages whose read/output contracts are not admitted; current report validation still applies</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;:&lt;stage&gt;</code></td></tr><tr><td>.NET</td><td>Native host</td><td>No native stage reuse: NuGet/MSBuild reads are unbounded</td><td>Native restore, build, tests and packaging when selected</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr><tr><td>.NET</td><td>Isolated Linux crun</td><td>Deterministic compile, test and pack per project for admitted literal reference graphs; otherwise conventional solution stages</td><td>Offline restore regenerates local assets; publish and unknown/unbounded customizations rerun</td><td><code>build --explain</code>; <code>cache explain &lt;target&gt;</code></td></tr></tbody></table></div>
+<p>Rust&#x27;s Windows x64/MSVC compile stage can report incomplete reads even on an
+unchanged build. Expect execution in that case. Fixed-read rustfmt, retained
+Cargo state and eligible individual compiler results have separate admission.
+Linux compilation can reuse when its observations are complete. See
+<a class="" href="/docs/reference/rust#native-host-builds">Rust native host builds</a> for the current limits,
+including the distinction between declared-version compilation and full-build
+inferred-version finalization.</p>
+<p>Java reuse keeps Maven&#x27;s <code>verify</code> or Gradle&#x27;s coupled lifecycle together inside
+each module/project, with a compatible Java plugin. Native models supply module
+membership and dependency edges; no additional configuration is needed. For
+<code>a</code> → <code>b</code> → <code>c</code> (each module depends on the one before it), an unchanged rebuild
+reuses all modules, a <code>c</code> source edit reruns only <code>c</code>, and an <code>a</code> source edit
+invalidates the chain. Module keys include their sources, shared native build
+definitions, declared producers and admitted tool/dependency identities. Reports
+retain module ownership and reused evidence is labelled reused. Ant keeps its
+selected target set together. This does not cache every native task or test class
+separately. Maven dependency
+preparation still runs on warm lifecycle hits. Plain Java builds remain native.
+See <a class="" href="/docs/reference/maven#isolated-stage-reuse">Maven</a>, <a class="" href="/docs/reference/gradle#isolated-stage-reuse">Gradle</a>
+and <a class="" href="/docs/reference/ant#isolated-stage-reuse">Ant</a>.</p>
+<p>Ant&#x27;s coupled lifecycle changes captured planning from <strong>0.3.x</strong>, which planned
+build, test and archive as separate actions. <code>oyzu build --isolated</code> now runs the
+selected tests even without <code>--full</code>, and a failing test blocks the JAR, matching
+Maven and Gradle in 0.4.0. To retain separate Ant stages, use <code>oyzu build --full</code>
+without <code>--isolated</code> on the native host, with the <a class="" href="/docs/reference/ant#prerequisites">native prerequisites</a>.
+Plain <code>oyzu build</code> keeps native fast-mode check selection. There is no switch to
+restore split planning on the captured path; native host stages retain their
+incomplete-read limits and run without container isolation.</p>
+<p>Node&#x27;s package-local workspace actions use native package-manager membership
+and dependency edges. An unchanged rebuild reuses every admitted member.
+Editing a leaf&#x27;s source reruns its build/tests; editing a shared member&#x27;s source
+also reruns its native dependents. Each member follows its own version output and required
+workspace producers. All member manifests key shared installation. For a
+metadata-only member <code>package.json</code> edit, <strong>npm</strong> and <strong>Yarn Classic</strong> can reuse
+an untouched leaf&#x27;s build/tests when installation output stays identical; the
+edited member and its native dependents rerun. <strong>pnpm</strong> changes shared
+installation bookkeeping and reruns every member, even when package code stays
+identical. This accepted precision limit retains all readable installation bytes
+in keys. <code>--explain</code> names <code>a stored result matches this key</code> for npm/Yarn leaf
+hits and the changed <code>app:prepare-dependencies</code> output for pnpm reruns.
+Changed shared installation output invalidates all members for any manager.
+Named JUnit/LCOV reports retain
+reused producer labels. Shared root configuration keeps the whole workspace visible and refuses
+member reuse with <code>node-member-shared-configuration</code>. Non-crun executors refuse
+it with <code>node-member-reuse-requires-crun</code>. pnpm hooks/patches and active Yarn rc
+configuration refuse manifest-only install narrowing. A failed command that
+names a hidden path can report <code>confined-read-outside-contract</code>; optional probes
+that succeed are not diagnosed. This does not trace every read. Root aggregate
+scripts and opaque root dispatch keep their whole-workspace
+boundary. See <a class="" href="/docs/reference/node-applications#package-local-workspace-reuse">Node workspace reuse</a>.</p>
+<p>Helm retains the plugin&#x27;s chart read bounds for bounded stages. Suites without
+complete observations use the entire admitted source view. Helm and helm-unittest
+bind their current locked tool identities, so a selected release or archive
+change invalidates reuse. <code>oyzu install</code> adopts the helm-unittest requirement
+without deleting existing installations. See <a class="" href="/docs/reference/helm#isolated-stage-reuse">Helm isolated reuse</a>.</p>
+<p>Go&#x27;s isolated <code>go/app</code> path can reuse stages with complete admitted reads.
+Build-phase generated test manifests and compiled tests are explicit outputs,
+consumed as identified inputs in test-stage read sets and keys. A changed manifest
+invalidates reuse; undeclared carried files are refused. Runtime tests include the
+whole admitted source view, so source edits can invalidate additional tests. See
+<a class="" href="/docs/reference/go#multiple-commands-in-one-module">Go isolated stage reuse</a>.</p>
+<p>Go&#x27;s <a class="" href="/docs/reference/go#what-each-stage-reads">native build/vet read observations</a> remain
+separate: incomplete native reads still refuse stage and whole-target reuse on
+Linux, Windows and macOS. Windows and macOS have no complete Go runtime-read
+enforcement backend.</p>
+<p>.NET&#x27;s <a class="" href="/docs/reference/dotnet#what-each-stage-reads">captured stage reads</a>
+admit conventional compile/test/pack under Linux crun, including cross-root
+reuse when their retained bytes are location-free. Native host execution still
+refuses incomplete reads; other executors do not gain this complete boundary.
+With a compatible plugin, eligible multi-project solutions reuse compile, test
+and pack per project along literal reference edges. Unchanged projects reuse
+their results; a source edit reruns its project and reference dependents. Shared
+configuration changes invalidate all affected projects. Failed actions execute
+again on repeated failing builds and never become reusable successes. Shared or
+nested project folders, solutions containing applications and unknown customizations retain
+the solution-wide path. See <a class="" href="/docs/reference/dotnet#what-each-stage-reads">.NET project reuse</a>.</p>
+<p>Module splitting retains the whole Maven reactor or Gradle lifecycle when the
+source inventory contains links, exceeds the selector limit, has an invalid
+module graph, or contains module-local control files outside <code>src/</code> and the
+native build definitions. This conservative fallback lets configurations share
+files such as <code>build-tools/checkstyle.xml</code> or <code>x/version.txt</code> on every captured
+executor, including Docker. It does not grant
+native-host reuse or relax isolated read enforcement. Runtime reads of sibling
+sources remain outside a split module&#x27;s admitted view.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="what-makes-isolated-reads-complete">What makes isolated reads complete?<a href="#what-makes-isolated-reads-complete" class="hash-link" aria-label="Direct link to What makes isolated reads complete?" title="Direct link to What makes isolated reads complete?" translate="no">​</a></h2>
+<p>For Maven, Gradle, Ant, npm, Helm, eligible <code>go/app</code> stages and .NET, select the
+existing Linux crun path:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu build app </span><span class="token parameter variable" style="color:#36acaa">--isolated</span><span class="token plain"> --no-docker </span><span class="token parameter variable" style="color:#36acaa">--explain</span><br></div></code></pre></div></div>
+<p>This requires the builder&#x27;s locked tools, prepared dependencies, admitted base
+execution image and an available Linux crun runtime. See the
+<a class="" href="/docs/reference/execution-image">execution image</a> for provisioning. No extra reuse setting
+is needed. Docker, other executors and native Windows/macOS execution do not
+inherit this complete-read guarantee.</p>
+<p>The executor enforces the identified source, dependency, tool/runtime and
+producer-output view. Live <code>/proc</code> and <code>/sys</code> data and undeclared host files are
+hidden except the closed startup allowance below; network access is denied. Private output state and validated phase
+handoffs prevent an action from reading unrelated bundle output. A handled file
+absence is stable within this view. A failed unsupported read stores no reusable
+success. This is enforcement, rather than a syscall trace.</p>
+<p>The closed non-keying device allowance is <code>/dev/random</code>, <code>/dev/urandom</code>,
+<code>/dev/null</code> and <code>/dev/zero</code>. The <a class="" href="/docs/reference/action-cache#native-host-read-admission">closed self-proc startup allowance</a>
+also supplies read-only files for the requesting process and its actual executable
+readlink, without exposing other processes&#x27; entries. Facts record self-proc
+presence only, never contents. These ambient values do not enter keys. Entropy must not
+affect retained outputs; workloads that embed random or ambient values are
+outside this reuse contract. Completion records retain these allowance facts
+under <code>oyzu.dev/ambient-reads</code>; they describe permitted reads, not observed
+syscalls. CPU count remains a separate keyed boundary fact.</p>
+<p><code>--no-cache</code> executes under the same isolation and report checks. It does not
+make an unsupported workload admissible. Offline execution still requires
+previously acquired tools, images and dependencies; stage reuse does not supply
+missing prerequisites.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="do-temporary-directory-changes-invalidate-native-reuse">Do temporary-directory changes invalidate native reuse?<a href="#do-temporary-directory-changes-invalidate-native-reuse" class="hash-link" aria-label="Direct link to Do temporary-directory changes invalidate native reuse?" title="Direct link to Do temporary-directory changes invalidate native reuse?" translate="no">​</a></h2>
+<p>Native actions receive private <code>TEMP</code>, <code>TMP</code> and <code>TMPDIR</code> paths allocated by
+Oyzu. Inherited, configured and builder-declared values for those three names
+are replaced before launch and excluded from native action keys. Changing only
+those overwritten values does not invalidate an otherwise reusable action.
+Environment policy still validates authored values and the final environment.</p>
+<p>This exception applies only to those executor-owned temporary variables. Passed
+<code>HOME</code>, <code>USERPROFILE</code>, <code>APPDATA</code> and <code>LOCALAPPDATA</code> values remain keyed. A
+configuration file read as ordinary program data also remains an input: editing
+its bytes can invalidate the stage. Private scratch does not establish complete
+reads or add host isolation. See <a class="" href="/docs/reference/action-cache#inherited-native-environment">native environment inputs</a>
+and <a class="" href="/docs/reference/local-builds">temporary directories</a>.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="which-tool-and-lock-changes-invalidate-reuse">Which tool and lock changes invalidate reuse?<a href="#which-tool-and-lock-changes-invalidate-reuse" class="hash-link" aria-label="Direct link to Which tool and lock changes invalidate reuse?" title="Direct link to Which tool and lock changes invalidate reuse?" translate="no">​</a></h2>
+<p>Typed <code>locked-tool</code> external inputs bind runtimes outside the source tree to
+core-admitted identities from <code>oyzu.lock</code>, such as Java&#x27;s JDK, Node&#x27;s runtime,
+Helm and its helm-unittest plugin, or the .NET SDK.
+Core resolves these identities before lookup; a missing binding fails admission.
+A changed identity invalidates its consumers. Naming a tool does not establish
+complete reads or grant arbitrary external file access.</p>
+<p>Prepared native builds project mandatory <code>oyzu.lock</code> source/version identity to
+the selected closure: selected tool recipes, plugin pins and transitive tool
+dependencies. Unrelated toolsets, unused plugin pins and valid unused current
+resolutions do not themselves invalidate that identity. Selected tool or builder
+changes still do. The whole lock remains structurally validated.</p>
+<p>This projection does not discard raw bytes when the lock is an authored input or
+read explicitly as program data. Unknown reads, incomplete tool declarations or
+missing preparation retain conservative fallbacks. See
+<a class="" href="/docs/reference/action-cache#native-host-builds">native cache keys</a> for the full rules.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="when-does-npm-installation-survive-a-source-edit">When does npm installation survive a source edit?<a href="#when-does-npm-installation-survive-a-source-edit" class="hash-link" aria-label="Direct link to When does npm installation survive a source edit?" title="Direct link to When does npm installation survive a source edit?" translate="no">​</a></h2>
+<p>A bounded single-root npm or script-free workspace install keys its manifests/lockfile,
+npm configuration, tool identity and other admitted execution inputs. Only the
+generated <code>OYZU_VERSION</code> default is omitted when the admitted model establishes
+that installation cannot read it. Build and test stages always keep their version
+input, and explicit environment values remain keyed.</p>
+<p>Workspace installation uses native membership and checks admitted registry
+archive manifests for lifecycle or implicit native-compilation uncertainty.
+It keys every member manifest and manager control. On Linux, relative workspace
+links can restore when they stay inside the workspace and point directly to
+ordinary files or directories. Escapes, indirect links and unsupported file
+types refuse restoration. Ordinary source edits leave this install key unchanged.</p>
+<p>Root or dependency install scripts, implicit native compilation,
+incomplete lock facts, interpolated manager configuration and runtime-loading hooks
+keep the version input and refuse install reuse. Reviewed dependency file-read
+allowances do not prove unread environment values. Arbitrary lifecycle code
+conservatively reads the whole admitted source view. See
+<a class="" href="/docs/reference/node-applications#what-each-stage-reads">Node stage reads</a> for configuration
+and package-manager limits.</p>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="why-did-unchanged-inputs-still-run">Why did unchanged inputs still run?<a href="#why-did-unchanged-inputs-still-run" class="hash-link" aria-label="Direct link to Why did unchanged inputs still run?" title="Direct link to Why did unchanged inputs still run?" translate="no">​</a></h2>
+<p><code>oyzu build --explain</code> reports refusals as well as key changes. A typical refusal
+is <code>native stage has no complete observed reads; native stage reuse requires complete reads</code>. A whole-target refusal names the stage that needs complete
+reads and bounded outputs. An incomplete-read refusal means the stage executes
+again; it is not a failed test or a corrupt cache entry.</p>
+<p>Read the named stage and reason; use <code>oyzu cache explain &lt;target&gt;</code> or the action
+ID for recorded decisions. Clearing the cache cannot supply missing read
+admission. Keep executing the stage, or update to a compatible builder/CLI when
+support is available. For ordinary misses, compare the named source, tool,
+builder, command/environment or producer input. See
+<a class="" href="/docs/reference/action-cache#explaining-reuse">explaining reuse</a> and
+<a class="" href="/docs/reference/action-cache#failures-and-recovery">failure recovery</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/action-cache"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Action cache</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/build-bundles"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Build bundles and retention</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#see-why-a-stage-ran" class="table-of-contents__link toc-highlight">See why a stage ran</a></li><li><a href="#when-can-a-stage-reuse-a-result" class="table-of-contents__link toc-highlight">When can a stage reuse a result?</a></li><li><a href="#what-can-reuse-for-each-builder" class="table-of-contents__link toc-highlight">What can reuse for each builder?</a></li><li><a href="#what-makes-isolated-reads-complete" class="table-of-contents__link toc-highlight">What makes isolated reads complete?</a></li><li><a href="#do-temporary-directory-changes-invalidate-native-reuse" class="table-of-contents__link toc-highlight">Do temporary-directory changes invalidate native reuse?</a></li><li><a href="#which-tool-and-lock-changes-invalidate-reuse" class="table-of-contents__link toc-highlight">Which tool and lock changes invalidate reuse?</a></li><li><a href="#when-does-npm-installation-survive-a-source-edit" class="table-of-contents__link toc-highlight">When does npm installation survive a source edit?</a></li><li><a href="#why-did-unchanged-inputs-still-run" class="table-of-contents__link toc-highlight">Why did unchanged inputs still run?</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+</body>
+</html>
