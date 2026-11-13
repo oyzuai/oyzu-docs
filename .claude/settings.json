@@ -1,0 +1,17 @@
+{
+  "extraKnownMarketplaces": {
+    "oyzu-context": {
+      "source": {
+        "source": "github",
+        "repo": "oyzuai/context"
+      },
+      "autoUpdate": true
+    }
+  },
+  "enabledPlugins": {
+    "context@oyzu-context": true,
+    "ponytail@oyzu-context": true,
+    "pstack@oyzu-context": true,
+    "thermonuclear@oyzu-context": true
+  }
+}
