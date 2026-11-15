@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Remote runs | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/remote-runs"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Remote runs | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/remote-runs.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/remote-runs"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/remote-runs" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Remote runs","item":"https://docs.oyzu.ai/docs/reference/remote-runs"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -93,9 +93,12 @@ file contents and 200,000 entries, checked before uploading.</p>
 files are not sent again.</p>
 <p>The Remote submission phase reports the transfer, for example
 <code>Uploaded 1 of 812 files (4.1 KiB)</code>. At most eight file blobs transfer at once.
-The CLI reuses its existing source stat cache for unchanged file digests and
-rehashes recently modified files. If pool cleanup removes a blob before the
-manifest is accepted, the CLI uploads the missing contents and retries once.</p>
+On Linux and macOS, the CLI reuses its source stat cache for unchanged file
+digests and rehashes recently modified files. On Windows, it reads and hashes
+files on every submission so a same-size rewrite with a restored modification
+time cannot reuse a stale digest. Unchanged blobs still avoid upload.
+If pool cleanup removes a blob before the manifest is accepted, the CLI uploads
+the missing contents and retries once.</p>
 <p>The transport carries regular files and relative symlinks whose targets stay
 inside the selected source tree. Outside, dangling and cyclic links are refused
 before upload. This does not extend the build engine&#x27;s source-link support:

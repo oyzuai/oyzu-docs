@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">.NET builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/dotnet"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content=".NET builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/dotnet.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/dotnet.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/dotnet"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/dotnet" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/dotnet" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":".NET builds","item":"https://docs.oyzu.ai/docs/reference/dotnet"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -111,7 +111,7 @@ Missing credentials and HTTP 401/403 remain native restore failures: check the
 named source and the corresponding user configuration, environment reference or
 credential provider. Providers must keep their own diagnostics free of secrets.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="provisioning">Provisioning<a href="#provisioning" class="hash-link" aria-label="Direct link to Provisioning" title="Direct link to Provisioning" translate="no">​</a></h2>
-<p>Isolated builds run on the <a class="" href="/docs/reference/execution-image">base execution image</a>, which has no .NET SDK. The SDK comes from <code>oyzu.lock</code> and is restored read-only into every action (see <a href="#capturing-a-selected-sdk" class="">Capturing a selected SDK</a>). Without a <code>[tools] dotnet</code> setting, <code>oyzu pin</code> locks the default SDK, 10.0.401.</p>
+<p>Isolated builds run on the <a class="" href="/docs/reference/execution-image">base execution image</a>, which has no .NET SDK. The SDK comes from an existing <code>oyzu.lock</code> and is restored read-only into every action (see <a href="#capturing-a-selected-sdk" class="">Capturing a selected SDK</a>). The default SDK request is 10.0.401; new SDK pinning is currently unavailable.</p>
 <ul>
 <li class="">The base image carries the shared libraries the official SDK loads (OpenSSL, ICU, Kerberos and zlib) and a C toolchain.</li>
 <li class="">Only Linux x64 GNU SDKs are supported, so .NET builds run on <code>linux/amd64</code>.</li>
@@ -214,13 +214,15 @@ not fall back to another root entry.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Setting</th><th>Where</th><th>Values</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[tools] dotnet</code></td><td><code>oyzu.toml</code></td><td>An exact stable SDK version, such as <code>10.0.402</code></td><td><code>10.0.401</code>, locked by <code>oyzu pin</code></td><td>Downloads and uses that SDK (see below).</td></tr><tr><td><code>lockPlatforms</code></td><td><code>oyzu.toml</code> <code>[tools]</code></td><td><code>[&quot;linux/amd64/gnu&quot;]</code></td><td></td><td>The platform of the SDK archive to lock.</td></tr><tr><td><code>sdk.version</code></td><td><code>global.json</code> in the target root</td><td>An exact SDK version</td><td></td><td>The build&#x27;s native pin (<a class="" href="/docs/reference/configuration#native-pin-files">native pin files</a>). A configured SDK must also satisfy it.</td></tr><tr><td><code>sdk.rollForward</code></td><td><code>global.json</code></td><td>Native roll-forward policies</td><td><code>patch</code> with a version, <code>latestMajor</code> without one</td><td>Native SDK selection.</td></tr><tr><td><code>sdk.allowPrerelease</code></td><td><code>global.json</code></td><td><code>true</code> or <code>false</code></td><td><code>true</code></td><td>Native SDK selection.</td></tr><tr><td><code>test.runner</code></td><td><code>global.json</code></td><td><code>Microsoft.Testing.Platform</code></td><td></td><td>Runs tests with Microsoft.Testing.Platform. Without it, tests use VSTest.</td></tr><tr><td><code>msbuild-sdks</code></td><td><code>global.json</code></td><td>Literal versions</td><td></td><td>NuGet-supplied MSBuild SDKs to restore (see <a href="#msbuild-project-sdks" class="">MSBuild project SDKs</a>).</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Setting</th><th>Where</th><th>Values</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>[tools] dotnet</code></td><td><code>oyzu.toml</code></td><td>An exact stable SDK version, such as <code>10.0.402</code></td><td><code>10.0.401</code></td><td>Names the SDK to use. A new SDK can&#x27;t be pinned until indexed .NET records exist; an existing lock keeps working (see below).</td></tr><tr><td><code>lockPlatforms</code></td><td><code>oyzu.toml</code> <code>[tools]</code></td><td><code>[&quot;linux/amd64/gnu&quot;]</code></td><td></td><td>The platform of the SDK archive to lock.</td></tr><tr><td><code>sdk.version</code></td><td><code>global.json</code> in the target root</td><td>An exact SDK version</td><td></td><td>The build&#x27;s native pin (<a class="" href="/docs/reference/configuration#native-pin-files">native pin files</a>). A configured SDK must also satisfy it.</td></tr><tr><td><code>sdk.rollForward</code></td><td><code>global.json</code></td><td>Native roll-forward policies</td><td><code>patch</code> with a version, <code>latestMajor</code> without one</td><td>Native SDK selection.</td></tr><tr><td><code>sdk.allowPrerelease</code></td><td><code>global.json</code></td><td><code>true</code> or <code>false</code></td><td><code>true</code></td><td>Native SDK selection.</td></tr><tr><td><code>test.runner</code></td><td><code>global.json</code></td><td><code>Microsoft.Testing.Platform</code></td><td></td><td>Runs tests with Microsoft.Testing.Platform. Without it, tests use VSTest.</td></tr><tr><td><code>msbuild-sdks</code></td><td><code>global.json</code></td><td>Literal versions</td><td></td><td>NuGet-supplied MSBuild SDKs to restore (see <a href="#msbuild-project-sdks" class="">MSBuild project SDKs</a>).</td></tr></tbody></table></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="capturing-a-selected-sdk">Capturing a selected SDK<a href="#capturing-a-selected-sdk" class="hash-link" aria-label="Direct link to Capturing a selected SDK" title="Direct link to Capturing a selected SDK" translate="no">​</a></h3>
-<p>By default the build uses the default SDK (10.0.401). To use another one, name an exact stable Linux x64 GNU SDK. Oyzu downloads it from Microsoft&#x27;s <code>builds.dotnet.microsoft.com</code> release metadata and archives. This is experimental.</p>
+<p>Selected-SDK pinning is unavailable until indexed .NET records exist. Oyzu&#x27;s tool index does not publish .NET records, and <code>oyzu tools evidence --provider</code> does not support them. A tool index configured with <code>toolIndex.url</code> is used for .NET only when its signature verifies and it carries an <code>oyzu:dotnet</code> record for the SDK and platform; the lock then keeps the evidence strength that record states. Setting <code>toolIndex.url</code> alone, without a validly signed record, cannot enable this workflow. Existing locks remain usable. The following configuration describes the requested SDK, but cannot create a new pin without such a record:</p>
 <div class="language-toml codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-toml codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">[</span><span class="token table class-name">tools</span><span class="token punctuation" style="color:#393A34">]</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">dotnet</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;10.0.402&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token key property" style="color:#36acaa">lockPlatforms</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">=</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token string" style="color:#e3116c">&quot;linux/amd64/gnu&quot;</span><span class="token punctuation" style="color:#393A34">]</span><br></div></code></pre></div></div>
-<p>Run <code>oyzu pin</code>, then <code>oyzu build --isolated --full --frozen</code>.</p>
+<p>With an existing matching lock, run <code>oyzu build --isolated --full --frozen</code>.</p>
 <ul>
-<li class="">Oyzu checks Microsoft&#x27;s SHA-512 for the archive and records its SHA-256 in <code>oyzu.lock</code>.</li>
+<li class="">Existing locks record the archive SHA-256 and available publisher evidence in <code>oyzu.lock</code>. An index signature does not establish a publisher signature; evidence retains the strength the index records.</li>
+<li class="">New pinning and install/update operations that need SDK resolution fail with <code>TOOL_PUBLISHER_UNTRUSTED</code>, naming the refused version and platform, before fetching unsigned release metadata or an archive. Microsoft&#x27;s SHA-512 and a derived SHA-256 alone cannot create a new pin. Wait for indexed .NET record support to select a new SDK. Organization catalog restrictions still apply.</li>
+<li class="">Existing frozen locks, including digest-only locks, remain usable with their pinned archive digest and layout checks. This restriction does not upgrade their publisher evidence or add publisher signature verification at installation.</li>
 <li class="">The archive is restored read-only and unchanged. Installation keeps all archive notices.</li>
 <li class=""><code>DOTNET_ROOT</code>, <code>PATH</code> and the exact version are fixed for restore, build, test, publish and pack.</li>
 <li class="">The <code>dotnet --version</code> seen inside the container must equal your selection and satisfy <code>global.json</code>. Another SDK is never picked silently instead.</li>
@@ -254,7 +256,7 @@ not fall back to another root entry.</p>
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Checksum mismatch, unsupported platform or archive layout</td><td>Don&#x27;t edit the lock digest to accept unexpected bytes. Restore the missing inputs online and rerun.</td></tr><tr><td><code>global.json</code> conflicts with the selected SDK</td><td>Make the two agree, run <code>oyzu pin</code>, and retry the frozen build.</td></tr><tr><td>You need a different SDK</td><td>Change <code>[tools] dotnet</code> and run <code>oyzu pin</code>. Changing only the image doesn&#x27;t override a locked SDK archive.</td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Problem</th><th>What to do</th></tr></thead><tbody><tr><td>Checksum mismatch, unsupported platform or archive layout</td><td>Don&#x27;t edit the lock digest to accept unexpected bytes. Restore the missing inputs online and rerun.</td></tr><tr><td><code>global.json</code> conflicts with the selected SDK</td><td>Make the two agree and retry the frozen build. Running <code>oyzu pin</code> only helps when the existing lock already matches the SDK you want; a new SDK can&#x27;t be pinned until indexed .NET records exist.</td></tr><tr><td>You need a different SDK</td><td>Selected-SDK pinning is unavailable until indexed .NET records exist. Changing only the image doesn&#x27;t override a locked SDK archive.</td></tr></tbody></table></div>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-sdk-preference">Native SDK preference<a href="#native-sdk-preference" class="hash-link" aria-label="Direct link to Native SDK preference" title="Direct link to Native SDK preference" translate="no">​</a></h3>
 <p><code>global.json</code> in the target root selects the SDK the way the .NET host does: <code>sdk.version</code>, <code>sdk.rollForward</code> and <code>sdk.allowPrerelease</code>.</p>
 <ul>
@@ -362,10 +364,11 @@ package output directory; writes outside the declared boundary fail the build.
 SDK analyzer and whitespace checks can update selected projects&#x27; <code>obj</code> metadata;
 their write declarations exclude source files.
 Test projects declare <code>IsTestProject</code>; their runtime source view contains their
-own project and admitted upstream outputs. Runtime files outside the test
-project folder (for example <code>../../testdata/x.json</code>) are not visible in project
-mode; include test data inside the test project folder. A test that requires a
-missing file fails. A test that tolerates its absence can still pass, and that
+own project, admitted upstream outputs and successfully detected literal test
+inputs. Parent-relative runtime literals such as <code>../../testdata/x.json</code> leave
+the unit unbounded: VSTest runs from the output folder, while static literals
+are resolved from the project folder. A test that requires a file outside its
+detected view fails. A test that tolerates its absence can still pass, and that
 successful result may be reused within this restricted view. Reused tests and reports are labelled
 <code>reused</code>, rather than counted as freshly executed tests. A library can reuse its
 package when only consuming tests change; selected checks still gate the final
@@ -388,7 +391,51 @@ evaluation and unknown MSBuild customizations retain the
 conservative solution-wide path. Unsupported reads keep a named refusal in
 <code>oyzu build --explain</code>; declaring a reference does not admit arbitrary reads.
 Single-project tests conservatively read the whole target.</p>
-<p>Offline restore always reruns from prepared packages. <code>project.assets.json</code>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="static-test-input-declarations">Static test-input declarations<a href="#static-test-input-declarations" class="hash-link" aria-label="Direct link to Static test-input declarations" title="Direct link to Static test-input declarations" translate="no">​</a></h3>
+<p>Conventional test-unit plans infer source inputs for xUnit, NUnit and MSTest
+from the project folder, ancestor <code>Directory.Build.props/targets</code>,
+<code>Directory.Packages.props</code>, <code>global.json</code>, NuGet configuration and the existing
+configuration inventory, including <code>*.runsettings</code>. The source bound excludes
+project <code>bin</code> and <code>obj</code> directories and Oyzu working directories. Consumed build
+outputs and prepared dependencies participate through their existing identities.</p>
+<p>The detector reads C# source bytes across the target, including helpers. Literal
+<code>File.ReadAllText</code>, <code>File.ReadAllBytes</code>, <code>File.OpenRead</code>, literal-segment
+<code>Path.Combine</code> and <code>[DeploymentItem]</code> paths widen the declared inputs inside the
+workspace. Literal <code>Environment.GetEnvironmentVariable</code> names join the declared
+environment. Runtime path literals starting with <code>..</code> or containing a <code>..</code> path
+component are refused, including backslash spellings and <code>Path.Combine</code>
+arguments. <code>OutputPath</code>, <code>BaseOutputPath</code> and <code>UseArtifactsOutput</code> overrides
+also leave units unbounded. Static project-owned <code>None</code>/<code>Content</code> items with
+literal <code>Include</code> or <code>Update</code> and <code>CopyToOutputDirectory</code>, and literal
+<code>EmbeddedResource</code> items, retain their source bytes. Linked source paths can reach another workspace
+folder. Conditions, expansions, wildcard items and unsupported metadata retain
+a named refusal.</p>
+<p>Any source-read failure, dynamic path or environment name, unsupported lexical
+form, workspace escape, link or overlap with excluded outputs leaves every
+conventional unit in that target unbounded with a reason. Supported C# strings
+are ordinary strings with basic escapes and verbatim strings. Interpolation,
+raw strings, aliases, static imports, directives and unresolved filesystem APIs
+also produce refusals. <code>oyzu build --plan</code> shows static candidate bounds and
+their contributing layers through optional plugin annotations.</p>
+<p>XML loader types (<code>XDocument</code>, <code>XElement</code>, <code>XmlDocument</code>, <code>XmlReader</code>,
+<code>XmlTextReader</code>, <code>XPathDocument</code>), <code>XslCompiledTransform.Load</code>, <code>AddJsonFile</code>,
+<code>AddXmlFile</code>, <code>AddIniFile</code>, <code>AddUserSecrets</code>, <code>AddKeyPerFile</code>, <code>SetBasePath</code>,
+<code>ConfigurationManager</code>, <code>AddEnvironmentVariables</code>, <code>X509Certificate2</code>,
+<code>TestContext.DeploymentDirectory</code> and <code>[DataSource]</code> also leave units unbounded,
+even with literal arguments. Their runtime inputs are not resolved by this
+detector.</p>
+<p>Project-mode tests receive the same detected unit declarations. Successful
+detection widens their enforced source view and declares environment names.
+Their producer relationships and write boundaries govern consumed outputs and
+workspace changes. A detection refusal leaves an unbounded unit declaration;
+the existing enforced stage view governs whole-stage execution and admission.
+Native-host test execution requires complete-read support for reuse. The
+detector never evaluates MSBuild: linked and copied items come from literal
+project XML, so an item that MSBuild would only produce through evaluation
+leaves the unit unbounded. A bounded unit keeps the user&#x27;s home as a key fact
+and keys the probed files above the target, so user NuGet and MSBuild state
+still invalidates it; targets too deep to name every probe stay unbounded.</p>
+<p>On Linux crun, offline restore always reruns from prepared packages. <code>project.assets.json</code>
 and other local NuGet metadata are regenerated, rather than treated as a
 portable result. Each project restore currently keeps a full private package
 copy, so project mode can use more disk than whole-solution restore.
@@ -396,6 +443,11 @@ Compiler <code>PathMap</code> and the deterministic SDK default normalize source
 locations; native-host intermediate trees remain location-sensitive.
 Unknown MSBuild reads and unsupported SDK/package customizations retain their
 conservative contracts. Publish still reruns.</p>
+<p>Docker uses the bounded source predictions below. An unchanged eligible library
+can reuse prepare, compile and pack, including on consecutive warm builds.
+Editing a packed <code>LICENSE</code> or literal <code>PackageLicenseExpression</code> invalidates all
+three stages under the shared configuration-read contract. Native-host stages
+remain unbounded, and crun retains its local-restore rule above.</p>
 <p>The crun view hides the proc/sys trees and permits only the
 <a class="" href="/docs/reference/action-cache#native-host-read-admission">closed startup allowance</a>.
 Its self-proc facts record presence only, never contents, and are non-keying.
@@ -436,7 +488,19 @@ outputs can still rerun lint even when its own command and source reads match.
 alone do not promise reuse across these version changes.</p>
 <p>Prediction conservatively covers all projects under the target. Literal imports
 inside analyzed target folders are followed recursively; references into skipped
-hidden or output folders keep the stage unbounded.</p>
+hidden or output folders keep the stage unbounded.
+Import edges must be unconditional, use only a literal <code>Project</code> attribute,
+and name an exact file in the analyzed inventory. Encoded, computed, external
+or aliased paths remain unbounded; <code>..</code> is allowed only within the target.
+Project references and <code>.slnx</code> project paths likewise require the exact analyzed
+inventory spelling after normalizing separators and in-target <code>.</code>/<code>..</code> segments.
+Case differences and trailing dot or space aliases keep a named project-reference
+refusal, even on filesystems that resolve them. Match the on-disk spelling to
+restore bounded reads.</p>
+<p>Project-reference and import paths containing <code>%</code> also keep a named refusal:
+MSBuild escapes can select a different source root from the literal path.
+Use ordinary literal paths for bounded reads; a file at the escaped spelling
+does not establish the referenced project&#x27;s read boundary.</p>
 <p>Project-owned <code>None</code> and <code>Content</code> additions can be bounded when <code>Include</code> names
 one existing literal file inside that project&#x27;s folder. Their allowed metadata
 is <code>Pack</code> (<code>true</code>/<code>false</code>), <code>PackagePath</code> (empty or a literal relative package
@@ -448,14 +512,30 @@ Default <code>None</code> items without an explicit declaration remain listing-o
 <p>The literal project properties <code>PackageLicenseExpression</code>, <code>PackageId</code>,
 <code>Authors</code>, <code>Description</code>, <code>PackageTags</code>, <code>RepositoryUrl</code>, <code>PackageProjectUrl</code>
 and <code>Copyright</code> are also bounded. Their values remain keyed through the complete
-project XML; package metadata is never ignored. This allowance does not extend
-to new properties or items in imported props/targets. Admitted property values
+project XML; package metadata is never ignored.</p>
+<p>An analyzed file named exactly <code>Directory.Build.props</code> can also supply
+<code>PackageLicenseExpression</code> as nonempty literal text in a direct <code>PropertyGroup</code>
+under its <code>Project</code> root. Root, group and property must have no attributes or
+namespace bindings. CDATA and decoded XML character references are accepted;
+<code>$</code>, <code>@</code> and <code>%</code> are refused. The full shared XML remains a byte input for every
+consumer&#x27;s prepare, compile and pack contract. Ancestor directory listings track
+added, removed or nearer props files. This exception applies to implicit discovery
+and literal in-target imports; it does not admit imported <code>None</code>/<code>Content</code> items,
+other shared packaging properties or license metadata in arbitrary props/targets.</p>
+<p>Admitted property values
 and item-metadata child values must contain only text: comments, processing
 instructions and nested elements keep named refusals, even around literal text.
 Unknown metadata, <code>Update</code>/<code>Remove</code>, conditions, computed or escaped values, wildcard/list includes,
-missing files, parent traversal, external paths and links keep named refusals.
-Properties that select other files or revision identity, including
-<code>EnableDefaultCompileItems</code>, <code>SourceRevisionId</code>, <code>InformationalVersion</code> and
+missing files, parent traversal, external paths and links keep named refusals.</p>
+<p>An unconditional, text-only <code>InformationalVersion</code> in the project XML is also
+bounded under the audited SDKs. The complete XML remains a byte input to prepare,
+compile and pack, so changing the literal changes their source keys. This applies
+to captured execution, where Git metadata is excluded from the source view;
+native-host reuse remains refused. The SDK can append a Git revision when a
+repository is visible, so this allowance does not establish a native read contract.
+Imported definitions, conditions, computed or escaped values remain unbounded.</p>
+<p>Properties that select other files or revision identity, including
+<code>EnableDefaultCompileItems</code>, <code>SourceRevisionId</code>, <code>IncludeSourceRevisionInInformationalVersion</code> and
 SourceLink controls, remain unbounded, as do explicit <code>Compile</code> items.</p>
 <p>Legacy <code>.sln</code> solutions,
 unresolved imports, custom SDKs/tasks, computed values, conditional evaluation, custom
@@ -597,6 +677,6 @@ changing lock paths under the final locked-mode properties is refused.</p>
 <li class="">The prepared tree is limited to 100,000 entries and 10 GiB.</li>
 <li class="">NuGet&#x27;s HTTP cache and extraction scratch use <code>/scratch/nuget</code>, which can grow with the action&#x27;s 4 GiB memory reservation instead of being limited by the 512 MiB <code>/tmp</code> mount. Large packages such as Microsoft.Playwright fit.</li>
 </ul>
-<p>For managed NuGet sessions with <code>oyzu exec</code>, see <a class="" href="/docs/reference/nuget-sessions">NuGet sessions</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/zig"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Zig projects</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/node-applications"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Node applications</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#the-net-plugin-package" class="table-of-contents__link toc-highlight">The .NET plugin package</a></li><li><a href="#quick-start" class="table-of-contents__link toc-highlight">Quick start</a></li><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#private-nuget-feeds-in-host-mode" class="table-of-contents__link toc-highlight">Private NuGet feeds in host mode</a></li><li><a href="#provisioning" class="table-of-contents__link toc-highlight">Provisioning</a></li><li><a href="#discovery-and-entry-selection" class="table-of-contents__link toc-highlight">Discovery and entry selection</a></li><li><a href="#sdk-selection" class="table-of-contents__link toc-highlight">SDK selection</a><ul><li><a href="#capturing-a-selected-sdk" class="table-of-contents__link toc-highlight">Capturing a selected SDK</a></li><li><a href="#native-sdk-preference" class="table-of-contents__link toc-highlight">Native SDK preference</a></li></ul></li><li><a href="#build-test-and-package" class="table-of-contents__link toc-highlight">Build, test and package</a></li><li><a href="#what-each-stage-reads" class="table-of-contents__link toc-highlight">What each stage reads</a></li><li><a href="#isolated-restore" class="table-of-contents__link toc-highlight">Isolated restore</a></li><li><a href="#nuget-audit" class="table-of-contents__link toc-highlight">NuGet audit</a></li><li><a href="#msbuild-project-sdks" class="table-of-contents__link toc-highlight">MSBuild project SDKs</a></li><li><a href="#built-in-checks" class="table-of-contents__link toc-highlight">Built-in checks</a></li><li><a href="#limits-and-possible-changes" class="table-of-contents__link toc-highlight">Limits and possible changes</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+<p>For managed NuGet sessions with <code>oyzu exec</code>, see <a class="" href="/docs/reference/nuget-sessions">NuGet sessions</a>.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/zig"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Zig projects</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/node-applications"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Node applications</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#the-net-plugin-package" class="table-of-contents__link toc-highlight">The .NET plugin package</a></li><li><a href="#quick-start" class="table-of-contents__link toc-highlight">Quick start</a></li><li><a href="#native-host-builds" class="table-of-contents__link toc-highlight">Native host builds</a></li><li><a href="#private-nuget-feeds-in-host-mode" class="table-of-contents__link toc-highlight">Private NuGet feeds in host mode</a></li><li><a href="#provisioning" class="table-of-contents__link toc-highlight">Provisioning</a></li><li><a href="#discovery-and-entry-selection" class="table-of-contents__link toc-highlight">Discovery and entry selection</a></li><li><a href="#sdk-selection" class="table-of-contents__link toc-highlight">SDK selection</a><ul><li><a href="#capturing-a-selected-sdk" class="table-of-contents__link toc-highlight">Capturing a selected SDK</a></li><li><a href="#native-sdk-preference" class="table-of-contents__link toc-highlight">Native SDK preference</a></li></ul></li><li><a href="#build-test-and-package" class="table-of-contents__link toc-highlight">Build, test and package</a></li><li><a href="#what-each-stage-reads" class="table-of-contents__link toc-highlight">What each stage reads</a><ul><li><a href="#static-test-input-declarations" class="table-of-contents__link toc-highlight">Static test-input declarations</a></li></ul></li><li><a href="#isolated-restore" class="table-of-contents__link toc-highlight">Isolated restore</a></li><li><a href="#nuget-audit" class="table-of-contents__link toc-highlight">NuGet audit</a></li><li><a href="#msbuild-project-sdks" class="table-of-contents__link toc-highlight">MSBuild project SDKs</a></li><li><a href="#built-in-checks" class="table-of-contents__link toc-highlight">Built-in checks</a></li><li><a href="#limits-and-possible-changes" class="table-of-contents__link toc-highlight">Limits and possible changes</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Zig projects | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/zig"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Zig projects | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/zig.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/zig.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/zig"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/zig" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/zig" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Zig projects","item":"https://docs.oyzu.ai/docs/reference/zig"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -19,8 +19,9 @@
 </blockquote>
 <p>Windows compiler recipes exist, but selection also requires a resolved Windows record in the signed tool index. Until the default <a class="" href="/docs/reference/tool-zig-installation">Zig installation</a> index publishes one, pinning Zig 0.15.2 on Windows reports <code>PLATFORM_UNSUPPORTED</code>; an existing Zig executable on <code>PATH</code> does not replace that record. Native Windows builds additionally require a Zig plugin package with a Windows payload.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="minimal-project">Minimal project<a href="#minimal-project" class="hash-link" aria-label="Direct link to Minimal project" title="Direct link to Minimal project" translate="no">​</a></h2>
-<p>Dependency-free native builds require a compatible Zig plugin declaring
-<code>native-cache</code>; native JUnit additionally requires <code>zig-native-test-report</code>.
+<p>Dependency-free native builds retain compiler caches across builds when the
+selected Zig plugin advertises <code>native-cache</code>; otherwise they use per-build
+compiler state. Native JUnit additionally requires <code>zig-native-test-report</code>.
 For a source build without a published compatible Windows package, use a
 <a class="" href="/docs/reference/plugin-development">local development binding</a> to the compiled Zig plugin.</p>
 <p>On Windows x86-64, compiler acquisition also needs a resolved Windows record in

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Plugin packages, the plugin store and lock selections | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-packages"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin packages, the plugin store and lock selections | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-packages.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-packages"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-packages" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin packages, the plugin store and lock selections","item":"https://docs.oyzu.ai/docs/reference/plugin-packages"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -209,6 +209,17 @@ stay within the same origin and directory.</li>
 <li class="">Downloads are anonymous and limited to 256 MiB. The whole archive is downloaded, even
 if it includes other platforms; only your platform&#x27;s payload is installed. Extraction
 uses the archive limits above and refuses links and unexpected paths.</li>
+<li class="">Downloads retry timeouts, connection failures, HTTP 408/429 and 5xx responses
+with exponential backoff (1, 2, then 4 seconds), at most four attempts within
+15 minutes including redirects, with at most five minutes per request (headers
+and the complete body). This download budget is separate from the shared
+30-second metadata refresh budget and its five-second request cap.
+<code>Retry-After</code> can lengthen a wait within that budget. Other HTTP failures and
+invalid archives or signatures are not retried; retrying never bypasses verification.</li>
+<li class="">Layout routes fetch the catalog-listed archive directly and do not use the
+artifact-set delivery-edge fill protocol. Disabling its extended pending wait
+under an explicit budget does not change layout routing. An <code>Oyzu-Fill: pending</code>
+response is an ordinary transient HTTP 503; it cannot extend or reset the budget.</li>
 <li class="">An installed release needs no archive request. <code>--offline</code> makes no request.
 <code>--frozen</code> can refresh catalog metadata but never downloads this route.</li>
 </ul>

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Gradle builds and tests | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/gradle"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Gradle builds and tests | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/gradle.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/gradle.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/gradle"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/gradle" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/gradle" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Gradle builds and tests","item":"https://docs.oyzu.ai/docs/reference/gradle"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -44,6 +44,44 @@ using an upstream-only contract. Shared <a class="" href="/docs/reference/java-q
 declare their own boundaries. These declarations reach users with the next
 release of the Java plugin.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-stage-reuse">Isolated stage reuse<a href="#isolated-stage-reuse" class="hash-link" aria-label="Direct link to Isolated stage reuse" title="Direct link to Isolated stage reuse" translate="no">​</a></h2>
+<p>Captured module test inputs include the module folder and native Test source-set
+resource directories, shared build/settings scripts, <code>gradle.properties</code>,
+version catalogs and captured convention-plugin sources. The prepared Test model
+adds working directories, TestNG suite XML and path-like system properties.
+File-valued properties and string property names ending in <code>file</code>, <code>path</code>, <code>dir</code>,
+<code>directory</code>, <code>resource</code> or <code>suite</code> (case insensitive) are supported. Other
+path-like strings retain a conservative reason rather than being guessed.
+Test environment variable names enter the read contract; path-like environment
+values and JVM arguments retain an unknown-input note without exposing their
+values. Gradle normalizes <code>jvmArgs</code> <code>-D</code> options into the Test system properties,
+which use the same path detection. Declared <code>task.inputs</code> files and directories
+retain an unknown-input note, including empty directories: enumerating Gradle&#x27;s
+input file trees alone cannot establish their roots. Explicit input registrations
+are inspected separately from Test&#x27;s built-in classpath and test-class inputs;
+those standard native inputs alone do not add this note.
+Directory reads include bytes and membership. Native output and dependency trees
+remain separate. A source folder or declared module named <code>dist/</code> remains an
+input unless the native model identifies it as output.
+Oyzu&#x27;s native JaCoCo JVM argument provider is recognized. Other
+JVM argument providers and unsupported property objects retain known paths with
+an unbounded reason for their module. A complete native <code>AbstractTestTask</code>
+inventory must be empty to establish known-empty test inputs. Kotlin JS/Native
+tasks and other <code>AbstractTestTask</code> types without JVM Test input facts keep their
+module unbounded, including alongside supported JVM tasks. Disabled tasks also
+remain in the inventory. Missing inventories or Test input facts remain unknown.
+Regenerate prepared dependencies to collect a missing inventory.
+Unsafe paths prevent module splitting. Composite
+builds still retain the conservative whole-lifecycle path.</p>
+<p>Detection consumes prepared facts without evaluating another Gradle script.
+Reads made from test code are caught only by the enforced Linux crun boundary,
+not this detection. This includes computed <code>File</code>/<code>Path</code>/<code>Files.*</code> paths,
+<code>getResource</code>, Spring <code>@TestPropertySource(file:...)</code> and Testcontainers.
+These predictions do not admit native-host caching or independent compiled-test
+reuse. Linux crun enforcement and the existing module lifecycle/report boundary
+remain required; source and resource changes invalidate their containing module
+and any affected produced-output consumers.
+<code>--plan</code> reports the need for prepared native facts rather than evaluating build
+programs; the captured lifecycle plan retains its final source reads and reasons.</p>
 <p>Linux crun execution (<code>oyzu build --isolated --no-docker</code>, or the existing
 <code>build.isolation = &quot;crun&quot;</code> with <code>--isolated</code>) enforces the captured input boundary
 before admitting lifecycle reuse. No new flag, setting or internal gate is needed.

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Build logging | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/build-logging"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Build logging | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/build-logging.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/build-logging"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/build-logging" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Build logging","item":"https://docs.oyzu.ai/docs/reference/build-logging"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -450,7 +450,19 @@ directly, so its log files are empty. See
 
 
 
-<div class="oyzu-table-scroll"><table><thead><tr><th><code>event</code></th><th>Contents</th></tr></thead><tbody><tr><td><code>diagnostic</code></td><td>A warning, error or other message, with <code>code</code>.</td></tr><tr><td><code>heading</code>, <code>fact</code>, <code>inventory</code></td><td>The build heading, context facts, and the selected targets, platforms, check mode and color preference.</td></tr><tr><td><code>preparation</code>, <code>phase</code>, <code>task</code>, <code>progress</code></td><td>Lifecycle changes.</td></tr><tr><td><code>plan</code></td><td>Target IDs and builders, action IDs, dependencies and artifact versions. Never action environments.</td></tr><tr><td><code>command</code></td><td>The redacted command.</td></tr><tr><td><code>output</code></td><td><code>stream</code>, <code>text</code> and <code>continued</code>.</td></tr><tr><td><code>finished</code></td><td><code>status</code>, and optional <code>exit_code</code> and <code>duration_ms</code>.</td></tr></tbody></table></div>
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th><code>event</code></th><th>Contents</th></tr></thead><tbody><tr><td><code>diagnostic</code></td><td>A warning, error or other message, with <code>code</code>.</td></tr><tr><td><code>heading</code>, <code>fact</code>, <code>inventory</code></td><td>The build heading, context facts, and the selected targets, platforms, check mode and color preference.</td></tr><tr><td><code>preparation</code>, <code>phase</code>, <code>task</code>, <code>progress</code></td><td>Lifecycle changes.</td></tr><tr><td><code>waiting</code></td><td><code>state</code>: what core is doing for an action that has not started (<code>checking cache</code>, <code>reading inputs</code>, <code>starting</code>). Display only.</td></tr><tr><td><code>log-file</code></td><td><code>path</code>: where the action&#x27;s native output is kept (the published bundle&#x27;s <code>logs/</code> entry, relative to the project when possible). Redacted like other events.</td></tr><tr><td><code>miss-detail</code></td><td>The structured cache miss of the action about to run: <code>changed</code>, <code>also</code>, <code>reuse</code> (candidates), <code>history</code> (subject, stored, unattributed records). Hashes are whole and every string is redacted like other events.</td></tr><tr><td><code>plan</code></td><td>Target IDs and builders, action IDs, dependencies and artifact versions. Never action environments.</td></tr><tr><td><code>command</code></td><td>The redacted command.</td></tr><tr><td><code>output</code></td><td><code>stream</code>, <code>text</code> and <code>continued</code>.</td></tr><tr><td><code>finished</code></td><td><code>status</code>, and optional <code>exit_code</code> and <code>duration_ms</code>.</td></tr></tbody></table></div>
 <ul>
 <li class="">Every warning and error is saved, whatever the console showed. Debug and trace
 messages are saved only when enabled.</li>

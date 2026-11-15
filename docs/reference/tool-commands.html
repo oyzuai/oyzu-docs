@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tool commands: install, update, uninstall and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-commands"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool commands: install, update, uninstall and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-commands.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-commands"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-commands" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool commands: install, update, uninstall and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-commands"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -318,6 +318,24 @@ fresh integrity check. An older receipt without a strength reports
 <code>digest-only</code>. See <a class="" href="/docs/reference/tool-lock-inspection#publisher-evidence-and-release-age">publisher evidence and release age</a>
 for pin-time verification, the seven-day default cool-down, security exceptions
 and explicit early-version warnings. Human and JSON modes use the same facts.</p>
+<p>In human output, <code>--details</code> prints a <strong>Verification</strong> line for every
+installation. It reads <code>stored metadata; payload not reverified</code>: the line
+reports what the receipt recorded, and no payload file is re-hashed. The
+evidence strength it accompanies is <code>digest-only</code> (also shown for a receipt
+without a strength), <code>checksum-file</code>, <code>signature</code> or <code>provenance</code>, as listed
+above. For other tools, <code>digest-only</code> is the documented default and prints no
+extra warning.</p>
+<p>For stored .NET SDK receipts with missing, <code>digest-only</code> or <code>checksum-file</code>
+strength, the line adds that publisher authentication is unproven, and JSON
+carries the same text in the row&#x27;s <code>verification</code> field. The warning applies to
+any stored receipt, including one written by installing from an existing
+digest-only lock. To obtain verified evidence, run <code>oyzu pin --refresh</code>, then
+<code>oyzu install</code>, once the index carries signed .NET evidence; new unsigned .NET
+pins are refused until then (see <a class="" href="/docs/reference/dotnet#capturing-a-selected-sdk">capturing a selected SDK</a>).
+Inspection works offline, leaves locks and receipts unchanged, and does not
+alter installation acceptance. A digest pin or a checksum from Microsoft&#x27;s
+release metadata does not establish a publisher signature or attestation;
+refreshing a lock cannot manufacture that evidence.</p>
 <p>These commands are read-only. They install nothing, don&#x27;t re-check installed files (tools are verified when installed, then trusted) and print the store path. All accept <code>--store DIR</code>.</p>
 
 

@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Maven builds | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/maven"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Maven builds | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/maven.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/maven.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/maven"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/maven" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/maven" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Maven builds","item":"https://docs.oyzu.ai/docs/reference/maven"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -362,6 +362,43 @@ separate bundle reports. JaCoCo coverage is collected separately.</li>
 <li class="">Direct tests (<code>oyzu run test</code>) keep native detection.</li>
 </ul>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-stage-reuse">Isolated stage reuse<a href="#isolated-stage-reuse" class="hash-link" aria-label="Direct link to Isolated stage reuse" title="Direct link to Isolated stage reuse" translate="no">​</a></h2>
+<p>Captured module test inputs include the module folder (including
+<code>src/test/resources</code>), effective Maven test-resource directories, reactor POMs
+and <code>.mvn/</code>. Surefire/Failsafe working directories, TestNG suite XML,
+<code>systemPropertiesFile</code> and path-like <code>systemPropertyVariables</code> widen those reads
+from the prepared native model. Directory reads include bytes and membership.
+Supported string property names end in <code>file</code>, <code>path</code>, <code>dir</code>, <code>directory</code>,
+<code>resource</code> or <code>suite</code> (case insensitive); other path-like values retain a reason
+for conservative execution instead of being guessed as file names.
+Path-like or unresolved Surefire/Failsafe <code>argLine</code> and <code>environmentVariables</code>
+values retain an unknown-input note; this includes <code>argLine</code> supplied only through
+a POM property or <code>-DargLine</code>, without a plugin configuration element. Environment
+variable names also enter the read contract. Values are not copied into diagnostics.
+Native output and dependency trees are excluded; a source folder or declared
+module named <code>dist/</code> remains an input unless the native model identifies it as
+output. Unsafe paths retain the conservative whole-lifecycle fallback.
+Unknown settings retain known paths and an unbounded
+reason for their module. Known-empty test inputs require native evidence that
+the effective lifecycle has no executions bound to <code>process-test-resources</code>,
+<code>test</code>, <code>pre-integration-test</code> or <code>integration-test</code>.
+POM aggregators with no such bindings retain known-empty inputs. Bindings from
+Tycho Surefire, ScalaTest, exec, frontend and other unsupported plugins keep the
+module unbounded, including alongside supported Surefire/Failsafe executions.
+This includes server or container startup in <code>pre-integration-test</code> and
+<code>process-test-resources</code> copy operations, including copies from outside the module.
+An execution with an unresolved default phase also retains unknown inputs when
+the selected plan supplies no facts for it. Missing native completeness evidence
+or test-input facts remain unknown. Regenerate prepared dependencies to collect
+missing evidence. Detection does not execute test code or another Maven goal.</p>
+<p>Reads made from test code are caught only by the enforced Linux crun boundary,
+not this detection. This includes computed <code>File</code>/<code>Path</code>/<code>Files.*</code> paths,
+<code>getResource</code>, Spring <code>@TestPropertySource(file:...)</code> and Testcontainers.</p>
+<p>This evidence does not admit native-host caching or independent compiled-test
+reuse. The existing Linux crun module lifecycle boundary and report checks
+remain required. A resource edit invalidates its module; actual consumers also
+depend on that module&#x27;s produced outputs. Unrelated modules can reuse.
+<code>--plan</code> reports the need for prepared native facts rather than evaluating build
+programs; the captured lifecycle plan retains its final source reads and reasons.</p>
 <p>On Linux, <code>oyzu build --isolated --no-docker</code> uses crun and admits lifecycle
 reuse through an enforced complete input boundary. The existing
 <code>build.isolation = &quot;crun&quot;</code> selection with <code>--isolated</code> is equivalent. No new

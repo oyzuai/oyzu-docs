@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rust applications, libraries and workspaces | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/rust"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust applications, libraries and workspaces | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/rust.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/rust"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/rust" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust applications, libraries and workspaces","item":"https://docs.oyzu.ai/docs/reference/rust"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -166,6 +166,15 @@ or acquires tools to fill in that preview. An authored replacement
 cannot inherit a native command&#x27;s narrow read contract. See <a class="" href="/docs/reference/action-cache">action caching</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-host-builds">Native host builds<a href="#native-host-builds" class="hash-link" aria-label="Direct link to Native host builds" title="Direct link to Native host builds" translate="no">​</a></h2>
 <p>A host build runs Cargo on your machine and keeps Cargo&#x27;s state under <code>.oyzu/native/</code>, so repeat builds stay incremental. <code>oyzu build</code> followed by <code>oyzu build --full</code> can reuse declared-version compilation when its complete native reads are admitted; the full build also requires inferred-version finalization and the extra checks. Each action uses a private source workspace and its own writable Cargo state. Clippy and tests use separate target directories, and coverage builds are kept apart from ordinary ones. Hooks and replaced tasks run without that reuse. See <a class="" href="/docs/reference/action-cache#native-host-builds">native action caching</a>.</p>
+<p>Native Cargo preparation inspects the compiler selected by Oyzu&#x27;s prepared
+<code>RUSTC</code> binding for its identity, sysroot and target library directory. Cargo
+uses that same binding and passes it to build scripts as <code>RUSTC</code>, so a competing
+<code>rustc</code> on <code>PATH</code> does not select the inspection compiler. A <code>RUSTC_WRAPPER</code>, if
+set, still wraps only Cargo&#x27;s own compiler runs. A missing
+or non-absolute binding fails with <code>EXECUTOR_PREREQUISITE_UNAVAILABLE</code>; prepare
+the selected Rust toolchain and retry. An ambient <code>RUSTC</code> alone cannot supply
+the preparation binding. This does not admit reads from other tool installations
+or make incomplete build-script observations reusable.</p>
 <p>Compilation and Clippy require complete Cargo observations; source prediction
 alone does not admit reuse. Missing dep-info, outside-source build-script reads
 and unresolved macro reads can keep a stage uncached. <code>oyzu build --explain</code>
@@ -178,6 +187,11 @@ rustfmt&#x27;s fixed-read check, Cargo&#x27;s retained incremental state and eli
 <a class="" href="/docs/reference/action-cache#native-rust-compiler-outputs">individual compiler results</a> have
 separate admission and can still avoid work. Linux compilation can reuse when
 its reports are complete. See <a class="" href="/docs/reference/action-cache#current-native-read-coverage">current native read coverage</a>.</p>
+<p>For supported Linux application links, a discovery-hint publication failure after
+the compiler result is stored is recorded in the compiled invocation receipt.
+The successful compile is retained without another compile or link. Source and
+output validation remain required; see
+<a class="" href="/docs/reference/action-cache#native-rust-compiler-outputs">individual compiler results</a>.</p>
 <p>Binary builds add a rustc source-path remap from the private
 compilation root to <code>/oyzu/source</code>. Development debug information stays enabled,
 so the ordinary Rust application fixture produces the same debug binary bytes
@@ -194,6 +208,11 @@ still affect artifact bytes. This remap does not declare retained Cargo state
 portable or change action-cache admission. Debug artifact equality is exercised
 on Linux x64; Windows PDB and macOS debug artifacts are not qualified.</p>
 <p>Shared-cache writers with optimized output run both <code>compile-development</code> and <code>compile-optimized</code> in one build plan. Readers reuse only the stage matching their requested profile. Check stages retain Cargo&#x27;s development/test profile independently of the exported artifact.</p>
+<p>Native host builds select format-check before runtime tests. The formatter uses
+its own source workspace and can overlap binary export once compilation finishes;
+it does not consume the packaged binary or test outputs. Host tests retain their
+conservative write boundary. Authored hooks and dependencies still apply, and a
+failed required check still fails the build.</p>
 <p>Compile, test, lint and format stages use declared Cargo versions. Plain local development readers may export the cached compile result directly; its <code>compiledVersion</code> is recorded separately from the inferred artifact version. Full, CI, optimized, packaged, handed-off, shared-cache writer and release paths require final projection so the exported binary&#x27;s <code>CARGO_PKG_VERSION</code> matches the artifact version. Development results are rejected by stamped packaging, publication and release gates. Host compilation, tests and checks do not receive the engine-injected <code>OYZU_VERSION</code> default (inferred or tagged), so <code>env!(&quot;OYZU_VERSION&quot;)</code> fails there and <code>option_env!</code> is unset; read <code>CARGO_PKG_VERSION</code> instead. An unrelated file no longer re-runs compile, lint or format-check; tests keep whole-target source scope and still re-run. The final stage receives the default, and explicit environment values remain keyed. A final-stage receipt names its version map and projected-control digests; restoring compile binaries does not transfer Cargo compiler state.</p>
 <p>Checkouts below <code>/workspace</code>, <code>/out</code> or <code>/oyzu</code> use their original native Cargo
 cache and inventory paths when a stage runs from its private source workspace.
@@ -243,6 +262,20 @@ subprocesses use only Cargo and Rust reporting helpers.</p>
 
 
 <div class="oyzu-table-scroll"><table><thead><tr><th>Option</th><th>Values</th><th>Default</th><th>Meaning</th></tr></thead><tbody><tr><td><code>with.features</code></td><td>List of unique Cargo feature names</td><td>none (Cargo&#x27;s default features stay on)</td><td>Applied to metadata, builds, lint, tests, doctests and package verification.</td></tr><tr><td><code>with.packages</code></td><td>List of unique Cargo package names</td><td>none (the whole workspace)</td><td>Limits the build to these workspace packages: <code>cargo build --package …</code>, and the same for lint, tests, doctests and package verification. Binaries and crate archives come only from them. <code>with.features</code> then belong to each of these packages, so they must be plain feature names (not <code>package/feature</code> or <code>dep:</code>). A name that is not a member of the workspace fails.</td></tr><tr><td><code>with.artifacts</code></td><td><code>all</code>, <code>binaries</code></td><td><code>all</code></td><td><code>all</code> delivers the binaries and the crate archives of publishable workspace packages in isolated builds. <code>binaries</code> delivers only enabled Cargo binaries and never packages crates.</td></tr><tr><td><code>with.test-packages</code></td><td>List of unique Cargo package names</td><td>inherits <code>with.packages</code></td><td>Overrides only the test scope, including nextest, coverage, doctests and test-unit discovery. <code>[]</code> explicitly selects the whole workspace. Every enabled test target of each selected package runs, including complete integration/e2e targets. Artifact packages, formatting, lint and archive verification retain their original scope. Unknown members fail.</td></tr></tbody></table></div>
+<p>Each doctest invocation selects one package and receives the configured feature
+names for that package. It does not inherit the workspace-wide list of
+package-qualified features used by the multi-package test command. Cargo&#x27;s
+default-feature and dependency-feature resolution remain native Cargo behavior.</p>
+<p>With an explicit package selection, every configured feature must exist on every
+selected package. If only <code>alpha</code> defines <code>probe</code>, selecting both <code>alpha</code> and
+<code>beta</code> with <code>features: [probe]</code> fails; Oyzu does not silently omit it for <code>beta</code>.
+This matches the package-qualified features used by the multi-package test
+command. Native Cargo with resolver 2 can accept the unqualified
+<code>cargo test --doc -p alpha -p beta --features probe</code> by enabling it only where
+available; that is broader than Oyzu&#x27;s explicit per-package feature contract.
+Select packages that share the feature or use separate builds for different
+feature sets. A doctest invocation that cannot resolve features is incomplete
+and cannot satisfy the required test report gate.</p>
 <ul>
 <li class="">Unknown <code>with</code> keys fail. Options are never raw command strings.</li>
 <li class="">Use <code>with.test-packages</code> when the candidate artifact and test packages differ. For example, <code>packages: [my-server]</code> with <code>test-packages: [my-library, my-server]</code> still produces only the server&#x27;s artifacts. A nonempty test selection also requires plain <code>with.features</code> names; Cargo applies them to the selected test packages. Metadata enables the union of artifact and test features. Coverage and report admission remain required for the selected scope. This option needs a core and Rust worker implementing independent test scope. An unrecognized option or mismatched prepared scope fails explicitly; update core and worker together rather than silently using artifact scope.</li>
@@ -484,6 +517,7 @@ compiler does not replace the pinned compiler or bypass acquisition controls.</p
 <ul>
 <li class="">A package&#x27;s version follows its path-dependency closure. A relevant dependency commit changes the consumer&#x27;s version, and an unrelated member&#x27;s commit doesn&#x27;t. Changes to root workspace inputs affect every member.</li>
 <li class="">Private manifests and packaged local requirements use each member&#x27;s selected version.</li>
+<li class="">In a host build, the source-derived suffix covers only the target files Cargo is predicted to read (manifests, the lock, Cargo and toolchain controls, member and local-dependency sources and literal includes), plus version controls, authored inputs, prerequisite directories and everything outside the target directory. Adding an unread file, such as a note at the target root, doesn&#x27;t change the inferred version, the final manifests or the finalize and package stages. A build script, a procedural macro, a dynamic include or a path the prediction can&#x27;t bound keeps the whole target in the suffix; the build log records why as <code>CARGO_VERSION_SCOPE_WHOLE_TARGET</code>. Tests keep whole-target source scope.</li>
 <li class="">See <a class="" href="/docs/reference/version-inference">version inference</a> for strategies and tags. In a supported GitHub Actions tag job, <a class="" href="/docs/reference/version-inference#authenticated-release-staging">release staging</a> can select exact release coordinates. It&#x27;s experimental and covers Linux x86-64 Cargo projects without repository hooks. <code>--require-release</code> refuses when the event or source evidence is insufficient.</li>
 </ul>
 <h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="cargo-fixed-version-groups">Cargo fixed version groups<a href="#cargo-fixed-version-groups" class="hash-link" aria-label="Direct link to Cargo fixed version groups" title="Direct link to Cargo fixed version groups" translate="no">​</a></h4>

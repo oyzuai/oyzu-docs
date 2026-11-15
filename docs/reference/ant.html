@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Ant builds and test reporting | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/ant"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Ant builds and test reporting | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/ant.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/ant.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/ant"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/ant" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/ant" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Ant builds and test reporting","item":"https://docs.oyzu.ai/docs/reference/ant"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -41,6 +41,16 @@ No conventional source layout is assumed.</p>
 <p>Native build, test, archive and quality actions currently run again on unchanged
 inputs because their output sets are unbounded. Packaging can reuse a result only
 when the upstream archive workspace is unchanged.</p>
+<p>For recognized test targets, literal Ant configuration supplies a coarse
+target-folder test-input prediction. A visible <code>dist</code> entry at the target root
+or beneath a scanned source directory makes that prediction unbounded:
+<code>dist/</code> can contain source or runtime fixtures as well as generated outputs.
+Oyzu reports the reason instead of silently omitting those inputs. This can
+disable test-result reuse for projects that keep generated files in <code>dist/</code>.</p>
+<p>Reads computed inside test code, including <code>File</code>/<code>Path</code>/<code>Files</code> calls,
+<code>getResource</code>, Spring <code>@TestPropertySource(file:...)</code> and Testcontainers, are
+not resolved by static prediction. Only the enforced Linux crun read boundary
+described below confines these runtime reads to admitted inputs.</p>
 <h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="isolated-stage-reuse">Isolated stage reuse<a href="#isolated-stage-reuse" class="hash-link" aria-label="Direct link to Isolated stage reuse" title="Direct link to Isolated stage reuse" translate="no">​</a></h3>
 <p>With a compatible Java plugin and the base execution image available, use the
 existing Linux crun executor:</p>

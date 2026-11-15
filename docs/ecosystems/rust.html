@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Rust | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/ecosystems/rust"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Rust | Oyzu documentation"><meta data-rh="true" name="description" content="Build, test, lint and package Cargo applications, libraries and workspaces with Oyzu, with the Rust toolchain chosen from rust-toolchain.toml."><meta data-rh="true" property="og:description" content="Build, test, lint and package Cargo applications, libraries and workspaces with Oyzu, with the Rust toolchain chosen from rust-toolchain.toml."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/ecosystems/rust"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/ecosystems/rust" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/ecosystems/rust" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Rust","item":"https://docs.oyzu.ai/docs/ecosystems/rust"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -82,6 +82,16 @@
 <div class="oyzu-table-scroll"><table><thead><tr><th>Command</th><th>What runs</th></tr></thead><tbody><tr><td><code>oyzu build --plan</code></td><td>Nothing. Shows the stages and the tools Oyzu read from your files</td></tr><tr><td><code>oyzu build</code></td><td>Compiles the workspace and collects the binaries. Checks are skipped locally</td></tr><tr><td><code>oyzu build --full</code></td><td>Also runs tests with coverage, doctests, Clippy and <code>cargo fmt --check</code></td></tr><tr><td><code>oyzu build --isolated</code></td><td>The same build in a Linux container (needs Docker; see <a href="#isolated-builds" class="">Isolated builds</a>)</td></tr></tbody></table></div>
 <p>In CI the checks run without <code>--full</code>. See <a class="" href="/docs/reference/build-tasks#local-fast-builds-and-ci-checks">build selection and checks</a>.</p>
 <p>Tests run through <code>cargo llvm-cov nextest</code>, so the test stage needs <a href="https://nexte.st/" target="_blank" rel="noopener noreferrer" class="">cargo-nextest</a>, <a href="https://github.com/taiki-e/cargo-llvm-cov" target="_blank" rel="noopener noreferrer" class="">cargo-llvm-cov</a> and the <code>llvm-tools-preview</code> Rust component. Oyzu pins and installs the first two for you. Doctests run in the same stage, because nextest doesn&#x27;t run them.</p>
+<p>For selected workspace packages, each doctest command receives the shared feature
+names in its own package scope. A feature enabled for one selected package does
+not become a request for another package&#x27;s feature during that doctest command.
+With an explicit package selection, each configured feature must exist on every
+selected package. Selecting <code>alpha</code> and <code>beta</code> with <code>features: [probe]</code> fails if
+only <code>alpha</code> defines <code>probe</code>; use separate builds for different feature sets.
+Oyzu retains this per-package requirement even though native Cargo with resolver
+2 can accept an unqualified feature present in only some selected packages.
+Feature-resolution errors leave doctest execution incomplete and block the test
+report gate.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="pin-the-toolchain">Pin the toolchain<a href="#pin-the-toolchain" class="hash-link" aria-label="Direct link to Pin the toolchain" title="Direct link to Pin the toolchain" translate="no">​</a></h2>
 <p>Oyzu reads the files Rust developers already use, in this order:</p>
 <ol>

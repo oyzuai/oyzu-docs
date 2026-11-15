@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Tool lock files and inspection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Tool lock files and inspection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-lock-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-lock-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Tool lock files and inspection","item":"https://docs.oyzu.ai/docs/reference/tool-lock-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -124,8 +124,8 @@ this change or by changing its input. The base verification type already accepts
 Run <code>oyzu self update</code> through a current installed executable,
 then run <code>oyzu shell install</code> through that executable to refresh the profile&#x27;s
 absolute CLI path and guarded activation block. Restart the shell or rerun
-<code>oyzu activate pwsh</code> (PowerShell) or <code>oyzu activate bash</code> (Bash) through the current
-executable. Keep receipts and installed tools intact; no reinstall is needed.</p>
+<code>oyzu activate pwsh</code> (PowerShell), <code>oyzu activate bash</code> (Bash) or <code>oyzu activate zsh</code>
+(Zsh) through the current executable. Keep receipts and installed tools intact; no reinstall is needed.</p>
 <p>Receipt readers from this version onward ignore unknown descriptive members inside
 <code>verification.annotations</code>, reporting one debug note per command, without
 rewriting receipts. <code>activate</code>, <code>which</code> and <code>shell</code> share these readers. The
@@ -143,6 +143,11 @@ justify the security or integrity semantics explicitly and update the owning
 contract, producers, consumers, fixtures and compatibility guidance together.
 Never put trust-gating data in annotations. Lock verification records remain
 closed and do not accept annotations.</p>
+<p>Receipt and lock readers fail closed on an unknown <code>kind</code> or <code>strength</code> value,
+a missing <code>kind</code> or digest, and an unknown flat verification member. An unknown
+member or value reports <code>FILE_UNKNOWN_FIELD</code> with the <code>oyzu self update</code> hint; a
+missing member names that field. The file is retained unchanged; no reader drops
+the member or rewrites the record.</p>
 <p>Flat verification writer allowlist: <code>strength</code>, <code>kind</code>, <code>evidence_digest</code>, <code>verifier_digest</code>, <code>subject_digest</code>.
 <code>strength</code> is optional and omitted when absent.</p>
 <p>The signed tool index records the verdict for a version; it is the weakest
@@ -169,6 +174,9 @@ publication dates from the signed index. Without suitable index metadata they
 fail with <code>TOOL_RELEASE_AGE_UNAVAILABLE</code>; configure an index or request an exact
 version explicitly. Offline operation reuses existing resolution records or a
 previously verified, unexpired index; it does not contact publishers.</p>
+<p>New .NET SDK pins require a verified signed-index record even for exact versions;
+without one they fail with <code>TOOL_PUBLISHER_UNTRUSTED</code> instead of using live
+publisher metadata. See <a class="" href="/docs/reference/dotnet#capturing-a-selected-sdk">SDK selection</a>.</p>
 <p>The direct <code>github:</code> adapter has no signed-index release dates and therefore
 requires an exact request. An explicit unindexed version has no authenticated
 publication date to compare; its weaker evidence remains visible.</p>

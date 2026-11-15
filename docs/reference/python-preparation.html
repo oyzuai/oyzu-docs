@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Python dependency preparation | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/python-preparation"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Python dependency preparation | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/python-preparation.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/python-preparation"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/python-preparation" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Python dependency preparation","item":"https://docs.oyzu.ai/docs/reference/python-preparation"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -216,6 +216,27 @@ different check.</p>
 <li class="">A stale or missing lock is refused with <code>Poetry lock is missing or stale; update it with poetry lock</code>.</li>
 </ul>
 <p>Poetry plugins, Git, path and non-PyPI sources, other operating systems, and <code>python/app</code> targets fall back to the isolated container build.</p>
+<p>A native Poetry <code>build</code> reuses its result on a warm run only when the files
+<code>poetry-core</code> selects are named by static <code>pyproject.toml</code> fields. Oyzu then keys
+the stage on <code>pyproject.toml</code>, <code>poetry.lock</code>, each <code>packages</code> path (or the default
+module directory or file, under the project root or <code>src/</code>), plain-path <code>include</code>
+entries, readmes, <code>type = &quot;file&quot;</code> scripts and the default license files. Unrelated
+files, such as documentation, do not invalidate it.</p>
+<p>Any construct that makes the selection depend on the working tree or on running
+code keeps the build unbounded, so it always reruns. <code>oyzu cache explain &lt;target&gt;:build</code> names the first one found:</p>
+<ul>
+<li class=""><code>tool.poetry.build</code>, <code>setup.py</code>, <code>build-system.backend-path</code>, <code>project.dynamic</code>,
+<code>tool.poetry.requires-plugins</code> and extra <code>build-system.requires</code> entries.</li>
+<li class=""><code>packages</code> or <code>include</code> entries that are globs, absolute or <code>..</code> paths, and
+<code>tool.poetry.exclude</code> or <code>project.license-files</code> patterns.</li>
+<li class="">Path, file, Git or URL dependencies, and symlinks inside a selected package.</li>
+<li class="">A project inside a Git work tree, because <code>poetry-core</code> skips Git-ignored files
+and Git ignore state is not part of the cache key.</li>
+</ul>
+<p>These are cache refusals only; the build still runs. The <code>test</code> stage always
+reruns. Oyzu does not run the build script to predict reads or treat wheel and
+source distribution membership as a complete read record. See
+<a class="" href="/docs/reference/stage-reuse">stage reuse</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="private-indexes-in-host-builds">Private indexes in host builds<a href="#private-indexes-in-host-builds" class="hash-link" aria-label="Direct link to Private indexes in host builds" title="Direct link to Private indexes in host builds" translate="no">​</a></h2>
 <p>Native pip and uv package builds use the native tool&#x27;s configuration and
 credentials. No Oyzu registry setting or platform account is required. Use

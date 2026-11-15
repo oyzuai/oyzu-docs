@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Plugin catalog and builder selection | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-catalog"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Plugin catalog and builder selection | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-catalog.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-catalog"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-catalog" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Plugin catalog and builder selection","item":"https://docs.oyzu.ai/docs/reference/plugin-catalog"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -138,6 +138,12 @@ higher serial generated earlier.</li>
 <p>The last verified copy is kept in <code>&lt;store&gt;/catalogs/plugins/</code> and the rollback floor in
 <code>&lt;store&gt;/state/plugins/</code>. If a newly fetched copy is refused, oyzu ignores it and keeps
 using the last verified copy, including its withdrawals.</p>
+<p>The catalog and its signature bundle share one 30-second download budget, with
+up to four attempts per asset and five seconds per request. Transient HTTP and
+connection failures use the <a class="" href="/docs/reference/tool-index#download-retries">tool-index retry policy</a>,
+including backoff and <code>Retry-After</code>. Permanent HTTP errors stop immediately;
+a missing catalog (404) remains unavailable. Download retries do not bypass
+signature, expiry or rollback checks. This also applies to the preview supplement.</p>
 <p>The 3600-second reuse window is separate from <code>expires_at</code>. A copy can expire sooner
 and still need a refresh. <code>oyzu build --frozen</code> refreshes catalog metadata the same way,
 so current withdrawals still apply, but it never changes the locked selection or

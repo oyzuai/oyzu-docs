@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Writing and testing builder plugins | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/plugin-development"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Writing and testing builder plugins | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/plugin-development.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/plugin-development"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/plugin-development" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Writing and testing builder plugins","item":"https://docs.oyzu.ai/docs/reference/plugin-development"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -51,7 +51,17 @@ exact <code>id</code>, <code>outcome</code> (<code>passed</code>, <code>failed</
 (<code>failure</code>, <code>error</code>, <code>timeout</code>, <code>crash</code>), optional <code>rerun_group</code>, <code>junit</code> identity
 (<code>classname</code>, <code>name</code>), and optional native <code>attempts</code>. <code>end</code> distinguishes
 <code>normal</code>, <code>crash</code>, <code>timeout</code>, <code>killed</code>, and <code>truncated</code>. The SDK supplies shared
-directory, selection, JUnit parsing and writing helpers in <code>native::test_attempts</code>.</p>
+directory, selection, JUnit parsing and writing helpers in <code>native::test_attempts</code>.
+Unit scaffolding lives in <code>native::test_units</code>: <code>unit_directory</code> (the per-unit report
+directory), <code>plan</code> (a unit plan that reads unbounded by default), <code>manifest_path</code> and
+<code>read_manifest</code> (the compiled-unit manifest core passes to each phase), <code>select</code> (the
+compiled unit named by the phase selector) and <code>compiled</code> (a compiled unit holding only
+its identity and artifact digest). <code>merge_reports</code> combines core-validated unit
+JUnit reports in the supplied order, preserving child XML and retained attempt
+histories verbatim. It fails on missing or malformed input before writing the
+combined report. The .NET finish phase uses this shared merge; TRX conversion
+and coverage merging remain native operations. Selectors, native runs and filters
+stay in the adapter, and core alone decides reuse.</p>
 <p>Compiled units may declare <code>native_retries</code> with <code>mechanism</code>, <code>max_attempts</code>
 and <code>attempts_visible</code>. An attempt report may declare the same <code>native_retries</code>
 object when the runner exposes that fact only during execution. Runtime facts
@@ -78,20 +88,25 @@ core for a plugin declaring <code>native-cache</code>. It is separate from the f
 <code>output_dir</code>: use it only for disposable native compiler state, never as an
 artifact source. Core owns admission, the retained-size budget and eviction.
 Captured requests omit it. The native Zig builder uses this directory to keep
-compiler caches across unchanged builds and source edits.</p>
+compiler caches across unchanged builds and source edits.
+Core sends <code>cache_dir</code> only when that admitted plugin executable advertises
+<code>native-cache</code> in its builder <code>describe</code> response. Without it, dependency-free
+native Zig builds use the plugin&#x27;s ordinary per-build compiler state.</p>
 <p>A builder plugin is a separate program that tells <code>oyzu</code> how to build one kind of
 project: which tasks it has, which tools it needs, which command builds it and where the
 output lands. This page shows how to run a plugin from a local path while you develop
 it, how plugins work, what a plugin has to provide, and how to package it. It also covers
 the Node plugin&#x27;s behavior, since it&#x27;s the largest first-party plugin.</p>
 <p>Each operation&#x27;s source contract accepts <code>home: &quot;required&quot;</code> (the default when
-absent) or <code>home: &quot;none&quot;</code>. The requirement covers <code>HOME</code>, <code>USERPROFILE</code>,
+absent) or <code>home: &quot;scrubbed&quot;</code>. The requirement covers <code>HOME</code>, <code>USERPROFILE</code>,
 <code>APPDATA</code> and <code>LOCALAPPDATA</code> together, including child processes. Explicit tool
 homes remain separate environment inputs. The SDK source constructors declare
-<code>required</code>; older plugins may omit the field. The existing protocol evolves in
-place, with no version gate. This execution-affecting field is strict, rather
-than an optional display annotation: unsupported values are refused.</p>
-<p>A <code>none</code> declaration grants no isolation or cache authority. Core admits only
+<code>required</code>; the field may be omitted. Contract v2 is a clean break: plugins
+published against the earlier contract stay refused until they are re-released,
+and core and the plugins ship together. This execution-affecting field is
+strict, rather than an optional display annotation: unsupported values are
+refused.</p>
+<p>A <code>scrubbed</code> declaration grants no isolation or cache authority. Core admits only
 the first-party packaged Rust formatter&#x27;s bounded Cargo command under the Linux
 crun enforced read boundary. Its exact selected package and tools remain keyed;
 native hosts and other scopes retain home. Unqualified claims refuse native
@@ -187,7 +202,7 @@ value is ignored, and the compiled digest is still compared with the inventory, 
 different Cargo that lists different files makes the binding stale. With neither
 Cargo available the binding fails with <code>PLUGIN_DEVELOPMENT_STALE</code> and a message
 naming the recorded Cargo and the variable&#x27;s state; rebuild and rebind the plugin
-on this host (<code>oyzu run bootstrap -- --source --development-plugins</code>).
+on this host.
 Inventory excludes Cargo&#x27;s generated package lockfile and does not resolve registry
 dependencies; the existing workspace lockfile is captured separately. Freshness
 checks work offline with an empty Cargo home, including for coverage-built plugins.
@@ -229,11 +244,16 @@ can select a different set without replacing the first invocation&#x27;s plugins
 A missing digest, missing source locator, unavailable checkout or build-time Cargo,
 or changed source fails at execution admission with <code>PLUGIN_DEVELOPMENT_STALE</code>, naming the binding and a
 refresh command. Rebuild the executable and any bound archive from current source,
-then retry. In this repository, run
-<code>oyzu run bootstrap -- --source --development-plugins</code> to refresh the plugins;
-unused stale bindings do not prevent that repair task from starting. Other plugin authors rebuild
+then retry. In this repository, a binding to the plugins that bootstrap placed in
+<code>.oyzu/bin</code> is rebuilt and repacked in place by <code>oyzu build</code> when its source closure
+differs, printing one line saying so, so a <code>git pull</code> needs no manual step. A
+binding anywhere else, or a rebuild that fails, still fails closed with the same
+error; the failure message carries the rebuild&#x27;s exit status, and its output goes to
+the debug log. The rebuild runs the repository&#x27;s bootstrap task with the internal
+<code>--plugins-only</code> flag and sets <code>OYZU_REFRESHING_DEVELOPMENT_PLUGINS</code> so it cannot start
+another rebuild; both are internal mechanics, not user settings. Other plugin authors rebuild
 and rebind their own plugin; native plugins need the same private source capture as
-the first-party build scripts. Automatic rebuilding is not provided. Replacing
+the first-party build scripts. Replacing
 the CLI does not itself change a plugin&#x27;s source identity, but a newer CLI can
 enforce freshness checks that an older CLI did not enforce. Plugins built without
 the development locator must be rebuilt with the opt-in above.
@@ -459,8 +479,12 @@ gets no credentials.</p>
 <div class="oyzu-table-scroll"><table><thead><tr><th>Stream</th><th>Content</th></tr></thead><tbody><tr><td>Standard input</td><td>One request, then end of input</td></tr><tr><td>Standard output</td><td>One result and nothing else</td></tr><tr><td>Standard error</td><td>Diagnostic lines as JSON. Other lines are kept only for troubleshooting</td></tr></tbody></table></div>
 <ul>
 <li class="">Documents use snake_case, <code>schema_version: &quot;v1alpha1&quot;</code> and a constant <code>type</code>.
-Duplicate keys, <code>null</code> members and numbers written with a fraction or exponent
-are invalid. Unknown members follow the <a href="#driver-and-plugin-compatibility" class="">compatibility rules</a>.</li>
+Duplicate keys, <code>null</code> for nonnullable members and numbers written with a
+fraction or exponent are invalid. Optional members of tagged native commands,
+OCI operations and OCI assembly changes accept <code>null</code> as absence. Required and
+defaulted nonoptional members still reject <code>null</code>; other optional members must
+be omitted unless their schema explicitly permits <code>null</code>. Unknown members
+follow the <a href="#driver-and-plugin-compatibility" class="">compatibility rules</a>.</li>
 <li class="">A request carries an <code>operation_id</code>, <code>role</code> (<code>builder</code>), <code>operation</code>,
 <code>required_features</code>, <code>deadline_ms</code>, the <code>target</code> (name, <code>uses</code>, whether the reference
 was inferred or explicit, absolute native-context source <code>root</code>, an optional relative <code>path</code>, and the base version) and
@@ -640,6 +664,13 @@ termination grace. Stdout up to 1 MiB and stderr up to 64 KiB are retained; exce
 either limit stops the tree while reading, rather than buffering unbounded output. Oyzu then
 calls <code>task-command</code> again in a new process with the results. One round only. A local
 development binding may not use observations.</p>
+<p>Cancelled observations report that the build was cancelled; observations that
+exceed the deadline report that they were terminated for exceeding it. Neither
+failure recommends installing the tool. Retry after resolving the cancellation
+or the slow command. Other launch failures retain command and <code>oyzu install</code>
+guidance. Deadline supervision has a portable regression test for Linux, Windows
+and macOS. Descendant-retirement regression coverage remains Linux-only;
+Windows and macOS process-tree behavior still needs platform qualification.</p>
 <p>External builder host planning supports Linux, macOS and Windows on x86_64 and
 aarch64. Other hosts return a typed unsupported-host error with supported-host
 guidance.</p>
@@ -752,25 +783,43 @@ stage reusable: the stage must still be admitted by its other read claims. The
 input is must-understand: older readers fail to decode the contract rather than skip it,
 so update core before using a plugin that declares it. Other external-input
 kinds are unsupported.</p>
-<p>Declare a
-non-empty <code>reads</code> list, <code>unbounded_reason</code> with a non-empty explanation such as
-&quot;not analyzed yet&quot;, or <code>upstream_only: true</code> for an operation that reads no
-source and only consumes declared upstream outputs. The SDK constructor
-<code>source::upstream_only()</code> sets empty reads and bounded outputs. This explicit
-form forbids source reads and an unbounded reason and requires
-<code>bounded_outputs: true</code>. An ordinary empty list without a reason remains invalid.
-The declaration grants no execution authority: native narrowing still requires
-complete observations or core-admitted fixed command semantics.</p>
-<p>An <code>unbounded_reason</code> must contain 1 to 4000 Unicode characters and must not
-be blank. Rust plugins can use <code>source::unbounded_reason(reasons)</code> to trim,
+<p>Every contract states a read <code>basis</code>, tagged by <code>kind</code>:</p>
+<ul>
+<li class=""><code>declared</code>: <code>reads</code> is a non-empty prediction of what the command reads.</li>
+<li class=""><code>observed</code>: the native command reports its complete reads after every run.</li>
+<li class=""><code>fixed</code> with a <code>rule</code>: the tool&#x27;s own rules fix the complete source boundary.</li>
+<li class=""><code>upstream-only</code>: the operation reads no source and only consumes declared
+upstream outputs. It requires empty <code>reads</code> and <code>outputs: bounded</code>; the SDK
+constructor <code>source::upstream_only()</code> sets both.</li>
+<li class=""><code>unknown</code> with a <code>code</code> and a <code>detail</code>: the reads are not bounded and the
+stage keeps the whole-target source key. <code>code</code> is one of <code>not-analyzed</code>,
+<code>program-input</code>, <code>dynamic-config</code>, <code>unvetted-tool</code>, <code>runtime-reads</code>,
+<code>host-effects</code>, <code>ignored-intent</code>, <code>undeclared</code> or <code>policy-refused</code>; <code>detail</code>
+is the explanation, such as &quot;not analyzed yet&quot;.</li>
+</ul>
+<p>Plugins must not send <code>ignored-intent</code>, <code>undeclared</code> or <code>policy-refused</code> in
+operation or test-unit contracts. Runtime and exact readers reject these
+core-reserved codes before normalizing unknown fields. Core may then generate
+these reasons itself; subsequent structural checks accept them.</p>
+<p>An empty <code>reads</code> list needs an <code>unknown</code> or <code>upstream-only</code> basis. A basis
+grants no execution authority: native narrowing still requires complete
+observations or core-admitted fixed command semantics.</p>
+<p>An <code>unknown</code> detail must contain 1 to 4000 Unicode characters and must not
+be blank. Rust plugins can use <code>source::unbounded_reason(code, reasons)</code> to trim,
 deduplicate and sort explanations, supply a fallback for an empty or blank set,
 and summarize long sets with an <code>(and N more)</code> suffix. It keeps complete reasons
 where possible; a single oversized first reason gets a character-safe preview
-and also counts toward omitted reasons. <code>source::unbounded(reason)</code> uses the
-same formatter. Summarizing the explanation does not narrow the source boundary.</p>
-<p>For compatibility with older published plugins, core accepts results without a
-declaration and treats those operations as unbounded. Their whole-target source
-keys retain the existing conservative behavior. The build records
+and also counts toward omitted reasons. <code>source::summarize(reasons)</code> returns
+only the text, and <code>source::unbounded(code, detail)</code> uses the same formatter.
+Summarizing the explanation does not narrow the source boundary.</p>
+<p>Results that use the earlier contract members (<code>bounded_outputs</code>, <code>confinable</code>,
+<code>bound_dependencies</code>, <code>unbounded_reason</code>, <code>upstream_only</code> or <code>native_reads</code>)
+are refused as a required-field mismatch, and core asks the user to run
+<code>oyzu plugins update</code>. This is a clean break: plugins published against the
+earlier contract stay refused until they are re-released, and core and plugins
+ship together. A result without any contract is accepted and its operations are
+treated as unbounded. Their whole-target source keys retain the existing conservative
+behavior. The build records an <code>undeclared</code> reason,
 <code>plugin &lt;reference&gt; &lt;version&gt; declared no reads</code>, and one
 <code>PLUGIN_READS_UNDECLARED</code> warning per plugin per build asks users to update it.
 <code>oyzu build --plan</code> never runs build actions. It reads plugin metadata and checks
@@ -785,16 +834,280 @@ subtrees. A listing covers direct entry names and kinds, without file contents
 or descendants; listing-only captured entries are empty placeholders. Read and write selectors must remain target-relative: <code>..</code> is
 refused for paths, globs and listings. A source projection narrows the target&#x27;s
 own folder and does not admit parent traversal. Required
-<code>writes</code>, <code>bounded_outputs</code>, <code>confinable</code> and <code>bound_dependencies</code> fields retain
-their meanings. Optional <code>env</code> contains environment dependency names, never
-values. The internal Rust SDK supplies <code>source::reads(selectors)</code> and
-<code>source::unbounded(reason)</code> helpers; authors still declare output bounds and
-confinement explicitly.</p>
+<code>writes</code>, <code>outputs</code> (<code>bounded</code> or <code>open</code>), <code>confine</code> (<code>allow</code> or <code>never</code>) and
+<code>dependencies</code> (<code>bound</code> when a bound in <code>reads</code> relies on the prepared
+dependencies, otherwise <code>whole</code>) complete the contract. Core derives every
+caching and confinement decision from these with <code>SourceContract::admission()</code>.
+Optional <code>env</code> contains environment dependency names, never values. Optional
+<code>home</code> is <code>required</code> (the default, omitted) or <code>scrubbed</code>.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="contract-fields-and-limits">Contract fields and limits<a href="#contract-fields-and-limits" class="hash-link" aria-label="Direct link to Contract fields and limits" title="Direct link to Contract fields and limits" translate="no">​</a></h4>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Field</th><th>Type and meaning</th></tr></thead><tbody><tr><td><code>reads</code>, <code>writes</code></td><td>Selectors (<code>kind</code>, <code>value</code>, <code>confidence</code>, and optional <code>source</code>). Required; up to 65,536 each.</td></tr><tr><td><code>basis</code></td><td>The <code>ReadBasis</code> above. Required.</td></tr><tr><td><code>outputs</code></td><td><code>bounded</code> or <code>open</code> (<code>OutputBound</code>). Required.</td></tr><tr><td><code>confine</code></td><td><code>allow</code> or <code>never</code> (<code>ConfineIntent</code>). Required.</td></tr><tr><td><code>dependencies</code></td><td><code>bound</code> or <code>whole</code> (<code>DependencyReads</code>). Required.</td></tr><tr><td><code>env</code></td><td>Environment variable names (1 to 256 characters of letters, digits, <code>_</code> or <code>-</code>), up to 4,096. Optional.</td></tr><tr><td><code>learned_env</code></td><td>A subset of <code>env</code>. Optional.</td></tr><tr><td><code>home</code></td><td><code>required</code> (default) or <code>scrubbed</code>. Optional.</td></tr><tr><td><code>external_inputs</code></td><td>Typed external reads (<code>locked-tool</code>, <code>ancestor-file</code>). Optional.</td></tr><tr><td><code>tools</code></td><td>The complete locked command set, up to 256 unique names of 1 to 256 characters. Optional.</td></tr></tbody></table></div>
+<p>A selector <code>value</code> is 1 to 4,096 characters, relative to the target, and cannot
+start with <code>/</code>, contain <code>\</code> or <code>:</code>, or contain an empty or <code>..</code> segment. A
+<code>fixed</code> basis <code>rule</code> is 1 to 4,096 characters and not blank. An <code>observed</code> or
+<code>fixed</code> basis requires a native operation, and an operation that declares
+<code>basis</code> <code>declared</code>, <code>observed</code> or <code>fixed</code> needs a non-empty <code>reads</code> list. A
+member that your plugin sends but a reader doesn&#x27;t know is ignored for
+reading, but core then treats the stage as having <code>ignored-intent</code> and keeps the
+whole-target source key; send only the members above.</p>
+<p>Choose an <code>unknown</code> reason code by the cause:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Code</th><th>Use it when</th></tr></thead><tbody><tr><td><code>not-analyzed</code></td><td>Your builder has no read model for the stage yet.</td></tr><tr><td><code>program-input</code></td><td>The tool&#x27;s inputs are a program, such as <code>build.zig</code>, <code>build.xml</code>, Gradle scripts, MSBuild targets or <code>build.rs</code>.</td></tr><tr><td><code>dynamic-config</code></td><td>Conditions, computed values or imports can&#x27;t be resolved.</td></tr><tr><td><code>unvetted-tool</code></td><td>A package, plugin or SDK is outside an audited allowlist.</td></tr><tr><td><code>runtime-reads</code></td><td>Tests or commands open files at run time.</td></tr><tr><td><code>host-effects</code></td><td>The command can read or write outside the workspace.</td></tr></tbody></table></div>
+<p>A stage that declares <code>host-effects</code> can&#x27;t overlap other checks (see
+<a href="#native-check-overlap" class="">check overlap</a>). <code>ignored-intent</code>, <code>undeclared</code> and
+<code>policy-refused</code> are never sent by a plugin.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="declare-a-read-only-check">Declare a read-only check<a href="#declare-a-read-only-check" class="hash-link" aria-label="Direct link to Declare a read-only check" title="Direct link to Declare a read-only check" translate="no">​</a></h4>
+<p>This illustrative v2 <code>contract</code> member describes a check whose complete source
+inputs are under <code>src</code> and which writes no files. Replace the selectors with
+all inputs your command can read, including configuration files outside <code>src</code>.
+Use <code>unknown</code> with a reason when you cannot establish that complete set.</p>
+<div class="language-json codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-json codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token punctuation" style="color:#393A34">{</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;reads&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;path&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;value&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;src&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"> </span><span class="token property" style="color:#36acaa">&quot;confidence&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;over-approximate&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;writes&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">[</span><span class="token punctuation" style="color:#393A34">]</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;basis&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token punctuation" style="color:#393A34">{</span><span class="token property" style="color:#36acaa">&quot;kind&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;declared&quot;</span><span class="token punctuation" style="color:#393A34">}</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;outputs&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;bounded&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;confine&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;never&quot;</span><span class="token punctuation" style="color:#393A34">,</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">  </span><span class="token property" style="color:#36acaa">&quot;dependencies&quot;</span><span class="token operator" style="color:#393A34">:</span><span class="token plain"> </span><span class="token string" style="color:#e3116c">&quot;whole&quot;</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token punctuation" style="color:#393A34">}</span><br></div></code></pre></div></div>
+<p><code>ReadBasis</code> describes the evidence for the reads. <code>OutputBound::Bounded</code> means
+all outputs are declared and cache-restorable; use <code>open</code> when that is unknown.
+<code>ConfineIntent::Never</code> withholds consent to a confined view. Setting it to
+<code>allow</code> consents to the declared read boundary, but core still decides whether
+confinement is safe. Bounded outputs alone do not prove complete reads or
+permit a narrow native cache key.</p>
+<p>For a command with unanalyzed runtime reads, replace the example&#x27;s <code>basis</code> with
+<code>{&quot;kind&quot;: &quot;unknown&quot;, &quot;code&quot;: &quot;runtime-reads&quot;, &quot;detail&quot;: &quot;Tests open paths computed at runtime&quot;}</code>
+and set <code>outputs</code> to <code>open</code> if its outputs are also unknown. Keep <code>writes</code>
+accurate even when reads are unknown. The closed <code>ReasonCode</code> identifies the
+cause; <code>detail</code> explains the command-specific limitation. Do not substitute
+free-form text for a reason code.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="choose-a-rust-sdk-preset">Choose a Rust SDK preset<a href="#choose-a-rust-sdk-preset" class="hash-link" aria-label="Direct link to Choose a Rust SDK preset" title="Direct link to Choose a Rust SDK preset" translate="no">​</a></h4>
+<p>The <code>oyzu-cache-kit</code> crate supplies these constructors through the SDK&#x27;s
+<code>oyzu_plugin_sdk::source</code> re-export. <code>selectors</code> is a <code>Vec&lt;SourceSelector&gt;</code>;
+<code>rule</code> explains the fixed tool semantics and <code>detail</code> explains unknown reads.</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Constructor</th><th>Read basis</th><th>Outputs</th><th>Confinement</th></tr></thead><tbody><tr><td><code>source::reads(selectors)</code></td><td><code>declared</code></td><td><code>open</code></td><td><code>never</code></td></tr><tr><td><code>source::observed(selectors)</code></td><td><code>observed</code></td><td><code>open</code></td><td><code>never</code></td></tr><tr><td><code>source::fixed(selectors, rule)</code></td><td><code>fixed</code></td><td><code>open</code></td><td><code>never</code></td></tr><tr><td><code>source::observed_bounded(selectors)</code></td><td><code>observed</code></td><td><code>bounded</code></td><td><code>never</code></td></tr><tr><td><code>source::fixed_bounded(selectors, rule)</code></td><td><code>fixed</code></td><td><code>bounded</code></td><td><code>never</code></td></tr><tr><td><code>source::check_only(selectors)</code></td><td><code>declared</code></td><td><code>bounded</code></td><td><code>never</code></td></tr><tr><td><code>source::upstream_only()</code></td><td><code>upstream-only</code>, empty reads</td><td><code>bounded</code></td><td><code>never</code></td></tr><tr><td><code>source::upstream_export()</code></td><td><code>upstream-only</code>, empty reads</td><td><code>bounded</code></td><td><code>allow</code></td></tr><tr><td><code>source::unbounded(code, detail)</code></td><td><code>unknown</code>, supplied code</td><td><code>open</code></td><td><code>never</code></td></tr><tr><td><code>source::program_unknown(code, detail)</code></td><td><code>unknown</code>, supplied code</td><td><code>open</code></td><td><code>never</code></td></tr><tr><td><code>source::runtime_reads(detail)</code></td><td><code>unknown</code>, <code>runtime-reads</code></td><td><code>open</code></td><td><code>never</code></td></tr></tbody></table></div>
+<p>Every constructor starts with empty writes and environment inputs,
+<code>dependencies: whole</code>, <code>home: required</code> and no complete tool declaration.
+The JSON check above is equivalent to <code>source::check_only(selectors)</code> with
+that source selector. Declare any actual writes after construction.
+<code>source::bounded(contract)</code> changes only the output bound;
+<code>source::allow_confinement(contract)</code> changes only confinement consent;
+<code>source::dependency_bound(contract)</code> changes only the dependency-read claim.
+Choose each modifier from the command&#x27;s behavior rather than assuming a
+preset grants cache admission.</p>
+<p>Use these constructors and modifiers for native preparation, captured build
+operations and test-unit contracts alike. Keep ecosystem-specific read analysis
+in the builder, and pass its facts to the shared helpers rather than copying
+contract defaults. Use <code>source::unbounded_reason</code> to combine refusal details,
+<code>source::tools</code> for complete tool declarations and <code>source::ancestor_files</code> for
+inputs above the target. Test adapters share <code>native::test_units</code> for report
+directories, compiled manifests and unit selection; native runners still own
+their filters, artifact digests, retry facts and reports.</p>
 <p>Native Cargo admission checks full-target input authority separately from output
 bounds. Compile and quality stages retain bounded outputs. The deferred test
 stage retains the same input authority with unbounded outputs, so arbitrary
 test effects use the existing always-run path rather than reusable results.
 Neither declaration permits narrower confinement or substituted native controls.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="how-core-reads-a-contract">How core reads a contract<a href="#how-core-reads-a-contract" class="hash-link" aria-label="Direct link to How core reads a contract" title="Direct link to How core reads a contract" translate="no">​</a></h4>
+<p>Core derives one admission from <code>basis</code>, <code>outputs</code> and <code>confine</code>:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Admission</th><th>True when</th></tr></thead><tbody><tr><td>Reads known</td><td><code>basis</code> is anything other than <code>unknown</code>.</td></tr><tr><td>Bounded outputs</td><td><code>outputs</code> is <code>bounded</code>.</td></tr><tr><td>Confined</td><td>Reads are known, outputs are bounded and <code>confine</code> is <code>allow</code>.</td></tr><tr><td>Native basis</td><td><code>basis</code> is <code>observed</code> or <code>fixed</code>.</td></tr><tr><td>Upstream only</td><td><code>basis</code> is <code>upstream-only</code>.</td></tr></tbody></table></div>
+<p>Each is a precondition, not a grant; core still applies its own checks before it
+reuses a result or confines a command.</p>
+<h4 class="anchor anchorTargetStickyNavbar_Vzrq" id="native-check-overlap">Native check overlap<a href="#native-check-overlap" class="hash-link" aria-label="Direct link to Native check overlap" title="Direct link to Native check overlap" translate="no">​</a></h4>
+<p>A native <code>test</code>, <code>lint</code> or <code>format-check</code> stage can start beside other checks of
+the same target (see <a class="" href="/docs/reference/action-cache#checks-that-run-at-once">check ordering</a>). Your
+contract decides whether it may: declare empty <code>writes</code>, and don&#x27;t use the
+<code>host-effects</code> reason code. A stage whose contract carries <code>host-effects</code>, or
+that core marks <code>ignored-intent</code> or <code>policy-refused</code>, stays in its place in the
+order, and so does one that declares <code>writes</code>. A read-only check needs <code>outputs: bounded</code> to
+overlap by this rule; a host <code>test</code> with <code>open</code> outputs overlaps only when core runs
+it in a private workspace, which needs the builder to declare <code>private_outputs</code>.
+This applies on the native lane only, and only when the stage&#x27;s reads are known: an
+<code>unknown</code> basis keeps the stage in its place in the order.</p>
+<p>A check stage whose basis is known must also list its reads: conformance fails
+a <code>test</code>, <code>lint</code>, <code>format-check</code> or <code>format:check</code> operation that declares
+<code>declared</code>, <code>observed</code> or <code>fixed</code> with empty <code>reads</code>, because an overlapping
+check runs without a copy of unlisted files.</p>
 <p>A read prediction alone does not permit a narrow native key. A native stage needs
 complete observed reads after execution, unless its tool&#x27;s own rules fix its read
 set. An observed path outside the prediction prevents storage and reports
@@ -831,9 +1144,9 @@ only for the same action definition. Outside-prediction reads prevent sealing a 
 run, they retire admission without failing that covered run.</p>
 <p>Use <code>source::fixed(selectors, rule)</code> for tools whose own rules fix their reads;
 name the rule in a short, nonblank string. This needs no runtime report. Without
-either basis, native predictions stay whole-target. A basis requires a native
-command and cannot accompany <code>unbounded_reason</code> or <code>upstream_only</code>. Source-free
-exports use the separately admitted upstream-output contract.</p>
+either basis, native predictions stay whole-target. An <code>observed</code> or <code>fixed</code>
+basis requires a native command. Source-free exports use the separately
+admitted <code>upstream-only</code> basis.</p>
 <p>For native host execution, set <code>BuildOperation.private_outputs</code> to the exact
 regular files the stage must retain in the target workspace for its consumers.
 Paths are target-relative; glob patterns and directory outputs are unsupported.
@@ -843,8 +1156,8 @@ This is a builder fact, not an execution capability: core requires a stage
 contract with bounded outputs and admitted producers. Private execution and
 narrow keying are separate: a stage without a native read basis can still run
 privately with its whole-target key and action configuration identity. Only
-<code>observed</code> or <code>fixed</code> reads without an unbounded reason admit a narrow key. Source-free copy/export stages instead declare
-<code>upstream_only</code>. Every producer must also be admitted; a consumer of an
+an <code>observed</code> or <code>fixed</code> basis admits a narrow key. Source-free copy/export stages instead declare
+the <code>upstream-only</code> basis. Every producer must also be admitted; a consumer of an
 unadmitted producer remains shared. Declare all generated inputs through the
 existing action relations. Core validates portable file paths and retains files
 through the existing contained output collector. A producer feeding a private
@@ -899,8 +1212,8 @@ empty files and directories, preserving names and kinds while hiding contents.
 Observed listings require an exact listing selector, a path on the directory or
 an ancestor, or a glob that provably matches every direct child (<code>dir/*</code>,
 <code>dir/**</code>, or an ancestor <code>**</code>). A glob matching only the directory name does not
-predict its listing. These contract additions reach users with each plugin&#x27;s next release. Release
-core first: older cores reject unknown native fields, including <code>native_reads</code>,
+predict its listing. These contract additions reach users with each plugin&#x27;s next release. Core and
+plugins ship together: older cores reject unknown native fields, including the read <code>basis</code>,
 Cargo <code>final_projection</code> and <code>development_compile</code>. The Rust core and plugin
 must both support the declared-version compile/final projection graph. A Rust
 plugin emitting it must follow a core release supporting it.</p>
@@ -919,6 +1232,59 @@ default. An empty exclusion list remains valid for older plugins.</p>
 <p>The existing experimental wire version evolves in place; there is no legacy
 empty-read format to preserve.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="driver-and-plugin-compatibility">Driver and plugin compatibility<a href="#driver-and-plugin-compatibility" class="hash-link" aria-label="Direct link to Driver and plugin compatibility" title="Direct link to Driver and plugin compatibility" translate="no">​</a></h2>
+<p>The repository&#x27;s published-plugin compatibility harness tests catalog-selected
+builder packages against the candidate driver. Its summary identifies each
+release and the actual probes performed. A missing Preview supplement permits
+measurement of the current verified primary catalog, with an explicit coverage
+limit; it does not establish the newest release across unavailable catalogs.
+Unknown coverage notes, expired snapshots and unavailable primary catalogs
+still refuse the affected probe. Signature and release-eligibility checks remain
+required. Publisher and deployer entries remain inventory-only.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="pairing-a-development-driver-with-plugins">Pairing a development driver with plugins<a href="#pairing-a-development-driver-with-plugins" class="hash-link" aria-label="Direct link to Pairing a development driver with plugins" title="Direct link to Pairing a development driver with plugins" translate="no">​</a></h3>
+<p>The supported development setup builds the driver, plugin executable and package
+manifest from the same clean source revision. Pack the executable with that
+revision&#x27;s manifest using <a href="#packing-a-source-built-plugin" class="">packing a source-built plugin</a>,
+then bind the archive under <code>plugins.development</code> in user or machine configuration.
+A raw executable binding has no manifest requirements: a builder that requests
+managed tools can fail with <code>requires tool oyzu:node, which its descriptor does not declare</code>. The archive supplies those declarations. Check the build&#x27;s Builders
+section for <code>local development</code> and the intended reference.</p>
+<p>A published preview is immutable and may predate a development driver&#x27;s request
+fields or tool-admission checks. Neither the shared <code>v1alpha1</code> label nor
+<code>plugins.preview=true</code> makes such a pair compatible; the latter only permits
+preview selection. Updating the driver does not replace a locked plugin.
+Inspect the pairing before changing it:</p>
+<div class="language-sh codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-sh codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><div class="token-line" style="color:#393A34"><span class="token plain">oyzu </span><span class="token parameter variable" style="color:#36acaa">--version</span><span class="token plain"></span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins current</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins explain</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins versions node/app</span><br></div><div class="token-line" style="color:#393A34"><span class="token plain">oyzu plugins versions go/app</span><br></div></code></pre></div></div>
+<p>These published previews have known incompatibilities with affected
+<code>0.5.0-dev</code> drivers:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Package</th><th>Failure</th><th>Recovery</th></tr></thead><tbody><tr><td><code>oyzu/node 0.1.0-preview.4</code></td><td>With an exact <code>packageManager</code> release, runtime requirements can name <code>oyzu:npm</code>, <code>oyzu:pnpm</code> or <code>oyzu:yarn</code>, but the manifest declares only <code>oyzu:node</code>; descriptor admission refuses the manager</td><td>Use a package whose manifest declares the selected manager as well as Node. The source manifest now declares all four tools; an already-published archive is unchanged</td></tr><tr><td><code>oyzu/go 0.1.0-preview.2</code></td><td>Windows native builds can fail with <code>request refused: invalid protocol document: input: unknown field host_reads</code> when the driver supplies newer prepared facts</td><td>Use a driver/package pair whose plugin reader understands those facts, such as the same-revision development setup above. A new driver cannot patch the old plugin executable</td></tr></tbody></table></div>
+<p>For published use, select a driver and signed package qualified together, with a
+payload for the host. Adopt a compatible release through
+<a class="" href="/docs/reference/plugin-updates"><code>oyzu plugins update</code></a>; inspection eligibility alone does not
+prove its build operations work. If no compatible release is available, use the
+development setup above for dogfooding. Do not remove prepared read facts, bypass
+descriptor admission or change schema labels to make an older package run.
+An archive built on one host supplies only that host&#x27;s runtime; isolated or
+other-platform execution still needs the appropriate package member.</p>
 <p>The Go adapter&#x27;s private prepared test inventory uses the existing
 <code>CompiledTestUnit.artifact_files</code>: the executable, adjacent <code>runtime.json</code>
 containing its workspace-relative <code>cwd</code>, and the prepared manifest itself.
@@ -1004,88 +1370,82 @@ On replies it also applies to <code>SourceContract</code>, <code>SourceSelector<
 <code>OutputRef</code>, <code>NativeTooling</code> and diagnostic records. These carry source/graph
 intent or descriptive facts; core still independently admits reads and effects.
 After validating the original reply, the runtime reader counts ignored members
-separately for each operation&#x27;s contract (including read/write selectors) and
-relations. Any ignored member there retains the whole-target source key through
-an <code>unbounded_reason</code> that planning cannot replace with an analysis prediction,
-disables <code>confinable</code> and <code>bounded_outputs</code>, and clears native-read, upstream-only
-and narrowed tool-set claims. A clean sibling keeps its declaration.
-The same fallback applies independently to each
-<code>TestUnit.contract</code>, including units under build operations and captured plans.
-The reader preserves <code>home</code>; a downgraded action with explicit <code>home: none</code>
+separately for each <code>BuildOperation</code>, including its command, reports, contract
+(including read/write selectors) and relations. Any ignored member there retains
+the whole-target source key through an <code>unknown</code> basis with code
+<code>ignored-intent</code> that planning cannot replace with an analysis prediction,
+sets <code>confine: never</code>, <code>outputs: open</code> and <code>dependencies: whole</code>, and clears
+narrowed tool-set claims. A clean sibling keeps its declaration.
+The same fallback applies independently to each <code>TestUnit</code>, including its
+contract and units under build operations and captured plans.
+The reader preserves <code>home</code>; a downgraded action with explicit <code>home: scrubbed</code>
 fails planning when no-home execution is enforced; the error names the action,
-<code>home: none</code> and the reason, <code>plugin source intent contains ignored optional fields</code>.
+<code>home: scrubbed</code> and the reason, <code>plugin source intent contains ignored optional fields</code>.
 The accepted reply&#x27;s single debug note describes this fallback without exposing
 unknown names or values.</p>
 <p>There is no exemption for unknown source-intent members. <code>home</code> is a known field
-in this reader: omission means <code>required</code>, and explicit <code>none</code> grants no core
-admission. Historical strict readers without <code>home</code> reject explicit <code>none</code> and
-need an upgrade; tolerance cannot be retrofitted into an installed executable.
+in this reader: omission means <code>required</code>, and explicit <code>scrubbed</code> grants no core
+admission. Historical strict readers reject <code>scrubbed</code> (they knew the value as
+<code>none</code>) and need an upgrade; tolerance cannot be retrofitted into an installed executable.
 An annotation must be safe to omit: ignoring it cannot change execution,
 validation, admission or authority. It is discarded rather than echoed or
 included in an action&#x27;s identity.</p>
-<p>All other typed records remain strict. This includes manifests, catalogs, OCI
-release records, plugin identities (also inside <code>describe</code>), role/capability
-records, digest-bearing source/prepared records, credential bindings, commands,
-artifacts, admission decisions and native/captured execution inputs and outputs.
-Nested <code>NativeReadBasis</code>, <code>ExternalInput</code> and <code>ObservedReads</code> remain strict:
-they bind native read admission and cache identity. Unknown relation, selector,
-confidence, home-policy and external-input kinds are refused even in a tolerant
-parent. The per-contract fallback prevents ignored source intent from authorizing
-a narrower cache key. <code>TestUnitPlan</code> and <code>TestUnit</code> records remain strict; their
-nested <code>SourceContract</code> uses the tolerant reader and fallback described above.
-Empty operation inputs remain empty. An unknown member in a strict record is
-refused. Known fields retain their required presence, types and validation;
-duplicate keys, unknown enum values and invalid digests are still errors.</p>
-<p>The Rust, Helm and Zig plugins use the shared SDK reader for their stdio requests,
-including the designated annotation containers above. The Rust plugin&#x27;s separate
-<code>--native</code> Cargo command and <code>--inspect</code> inputs retain their typed decoding;
-annotation tolerance does not extend to those execution and inspection records.
-Updating the driver alone does not replace an already-installed plugin&#x27;s reader.
-Helm&#x27;s separate <code>--native</code> input uses the shared closed-record decoder for
-<code>HelmCommand</code>; command, path and prepared-digest records remain strict before
-native work. Zig&#x27;s separate <code>--native</code> test command also uses the shared strict
-native decoder; it has no inspection or acquisition entry point. Core owns Zig
-acquisition and prepared closure admission.</p>
-<p>Go adoption uses the same stdio containers and shared SDK capability check.
-Its private <code>--native</code> Go command remains a strict execution record; Go has
-no <code>--inspect</code> entry point. Native Go tool output and acquisition metadata keep
-their existing ecosystem readers, outside the stdio annotation contract.
-Source adoption requires a new Go plugin release and normal package adoption;
-updating the driver alone does not replace an installed Go reader.</p>
-<p>The Java / JVM plugin uses the same SDK reader and capability preflight for
-stdio. Its Maven, Gradle and Ant <code>--native</code> commands and <code>--acquisition-api</code>
-assignments remain closed, including nested paths, digests and execution facts.
-Updating the driver alone does not replace an installed Java / JVM plugin;
-rebuild and rebind development packages after changing their source.</p>
-<p>The .NET plugin uses the same SDK reader and capability preflight. Its separate
-native helpers, <code>--acquire</code> and <code>--lock-facts</code> inputs remain strict, including
-nested MSBuild SDK package identities. Annotation tolerance does not extend to
-execution or acquisition records. Updating the driver alone does not replace an
-installed .NET reader.</p>
-<p>Node also uses the shared SDK reader for stdio. Its <code>--native</code>,
-<code>--metadata-api</code> and <code>--validate-store</code> inputs are closed execution, native
-metadata and acquisition-validation records, respectively. Empty native metadata
-queries such as <code>errno-facts</code> also reject extra members. Vite assignments
-also remain strict. Native metadata replies retain their existing fact validation; optional
-wire annotations grant no extra access or effects at these boundaries.
-Source adoption requires a Node plugin release and normal package adoption
-before an installed plugin gains the new reader behavior.</p>
+<p>Except for the closed security records below, object-shaped messages that cross
+the plugin boundary ignore unknown optional fields, including role/capability
+records, commands, artifacts, native/captured requests and replies, prepared
+facts, graph records and test-unit reports. <code>ObservedReads</code> accepts unknown
+members but marks the report incomplete, including reports nested in Go
+preparation facts; these reports never narrow a native cache key. Empty operation
+inputs also ignore optional additions. Known fields retain their required
+presence, types and validation. Duplicate keys, arrays in place of objects,
+unknown enum kinds and invalid digests remain errors. Ignoring an optional
+member grants no new effect, credential, execution strategy or digest authority.
+External-input digests and native-package strategy selection remain forbidden.
+Unknown members of native-read basis and external-input records inside source
+contracts trigger the same conservative per-contract fallback described above.</p>
+<p>Plugin identity records in describe replies and request targets remain closed:
+package coordinates, source digests and target source authority must be fully
+understood. Go native commands and their copy records also remain closed:
+unknown effect or authority fields return <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code> with
+the field pointer before native work or file writes. These records are not
+optional annotation containers. Unknown task metadata is tolerated,
+while missing required task fields and wrong-typed known fields are refused.
+Signed package manifests (including their identities), signed catalogs and
+host-internal configuration remain closed. First-party private worker
+assignments, acquisition inventories and native tool output keep their owning
+validators; this tolerance applies to protocol records shared with core.
+Rust and .NET <code>with</code> option validation also keeps its closed configuration
+surface. The shared native-input decoder uses each selected type&#x27;s policy:
+public native protocol records tolerate additions, while private assignments
+remain strict. Updating the driver alone does not replace any installed
+plugin&#x27;s reader; adoption requires a new admitted plugin package.</p>
 <p>The SDK writes one <code>debug</code> diagnostic with code <code>plugin.unknown-optional</code> when
 it ignores request annotations. The host retains the corresponding reply note
 in the operation&#x27;s diagnostics; logged planning operations publish it through
-the normal diagnostic view. Notes report a count, never field names or values.
+the normal diagnostic view. Accepted builder <code>describe</code> notes are retained
+through feature negotiation and published once execution supplies its invocation
+logger, including when features were cached earlier. These notes use the existing
+<code>PLUGIN_DIAGNOSTIC</code> log code and obey the normal log-level filter; use
+<code>--log-level debug</code> to see unknown-optional notes. Notes report a count, never
+field names or values.
 Protocol users can retain these notes with <code>decode_request_with_diagnostics</code>,
 <code>decode_result_with_diagnostics</code> and <code>accept_result_with_diagnostics</code>. The simpler
 decode helpers return the same typed records without retaining diagnostics.
 Diagnostic parsing aggregates ignored stderr fields into one such debug note.
-Writer serialization and the JSON Schemas retain their existing shapes.
+Writer serialization retains its existing shapes. Wire JSON Schemas allow
+additional properties except in security-relevant identity records; signed
+package/catalog schemas remain closed.
 Conformance/CI can demand exact result shapes with <code>decode_result_exact</code> and
 exact diagnostic shapes with <code>Diagnostic::decode_exact</code>; runtime hosts use the
 tolerant readers. The exact result reader also requires source declarations.</p>
 <p>Already-published readers keep their original decoding behavior. Core sends a
 new optional request field only when the plugin&#x27;s <code>describe</code> advertises its
-feature; tolerance alone is not feature support. Package role features declare
-engine requirements before launch, and request <code>required_features</code> declare
+feature, or omits the field at its default value when addressing an older strict
+reader. Every new field on a strict wire struct must be omit-when-default or
+capability-gated before core sends it to plugins. Must-honor execution or
+restriction fields in requests also require a <code>required_features</code> token, checked
+by <code>request_features</code>; tolerance alone never carries their semantics. Package
+role features declare engine requirements before launch, and request <code>required_features</code> declare
 plugin requirements. This change introduces no new negotiated fields or driver
 floor. Sharing <code>schema_version: &quot;v1alpha1&quot;</code> alone does not establish
 compatibility. For an older reader&#x27;s <code>unknown field</code> error, select an admitted
@@ -1149,12 +1509,14 @@ list, schema version or version gate.</p>
 
 
 
-
-
-
-
-
-<div class="oyzu-table-scroll"><table><thead><tr><th>Missing support</th><th>Code</th><th>Message template</th></tr></thead><tbody><tr><td>Plugin cannot satisfy an Oyzu request</td><td>Keep <code>PLUGIN_FEATURE_UNSUPPORTED</code>, replace feature-refusal body</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not support request feature &quot;{feature}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu lacks a signed manifest&#x27;s required feature</td><td>Keep <code>PLUGIN_ENGINE_REQUIREMENT</code>, replace feature-refusal body only</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires feature &quot;{feature}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Plugin does not understand a required request field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, pointer confirmed against the outgoing request</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not understand required request field &quot;{pointer}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu encounters an unknown manifest field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, closed manifest refusal</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires understanding manifest field &quot;{pointer}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Reply contains undeclared required meaning after successful manifest preflight</td><td><code>PLUGIN_OPERATION_FAILED</code>, plugin contract violation</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; violated its contract by returning undeclared required feature &quot;{feature}&quot; for &quot;{operation}&quot;. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Reply contains an unknown required security/execution field</td><td>New agreed <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, plugin contract violation</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; violated its contract by returning unknown required field &quot;{pointer}&quot; for &quot;{operation}&quot;. Run oyzu plugins update {plugin} and retry.</code></td></tr></tbody></table></div>
+<div class="oyzu-table-scroll"><table><thead><tr><th>Missing support</th><th>Code</th><th>Message template</th></tr></thead><tbody><tr><td>Plugin cannot satisfy an Oyzu request</td><td>Keep <code>PLUGIN_FEATURE_UNSUPPORTED</code>, replace feature-refusal body</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not support request feature &quot;{feature}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu lacks a signed manifest&#x27;s required feature</td><td>Keep <code>PLUGIN_ENGINE_REQUIREMENT</code>, replace feature-refusal body only</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires feature &quot;{feature}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Plugin does not understand a required request field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, pointer confirmed against the outgoing request</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; does not understand required request field &quot;{pointer}&quot; for &quot;{operation}&quot;. No native work or writes were started. Run oyzu plugins update {plugin} and retry.</code></td></tr><tr><td>Oyzu encounters an unknown manifest field</td><td><code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code>, closed manifest refusal</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; requires understanding manifest field &quot;{pointer}&quot;. No native work or writes were started. Run oyzu self update and retry.</code></td></tr><tr><td>Reply contains undeclared required meaning after successful manifest preflight</td><td><code>PLUGIN_OPERATION_FAILED</code>, plugin contract violation</td><td><code>Cannot safely continue: plugin &quot;{plugin}&quot; violated its contract by returning undeclared required feature &quot;{feature}&quot; for &quot;{operation}&quot;. Run oyzu plugins update {plugin} and retry.</code></td></tr></tbody></table></div>
+<p>Outside the closed security records above, unknown wire reply members do not
+produce <code>PLUGIN_PROTOCOL_REQUIRED_FIELD</code> in the tolerant reader.
+Ignored operation or test-unit members trigger the
+conservative source-contract fallback above. Unknown artifact or publisher
+host/credential members are tolerated and grant no authority. A reply field
+whose semantics must be understood requires a signed role feature before
+launch; known undeclared reply semantics use <code>PLUGIN_OPERATION_FAILED</code> as above.</p>
 <p>The driver renders these bodies using its own admitted identity/binding:
 <code>{plugin}</code> is the update reference, such as <code>rust/app</code>, with the exact admitted
 release retained in diagnostic context. <code>{operation}</code> is its call; <code>{pointer}</code>
@@ -1180,7 +1542,8 @@ from the protocol crate&#x27;s field-to-capability map next to strict records.</
 successful preflight. Docker has no separate <code>--native</code> or <code>--inspect</code> stdio
 operation: captured metadata and acquisition helpers retain their closed
 records and existing core admission. Prepared paths/digests, nested OCI intent,
-commands, artifacts and plugin identities remain strict. Updating the driver
+commands, artifacts and described identities tolerate optional additions while
+known-field validation remains binding. Updating the driver
 alone does not replace an already-installed Docker plugin&#x27;s reader.</p>
 <p>Use <code>oyzu plugins update {plugin}</code> through the authorized <a class="" href="/docs/reference/plugin-updates">plugin update flow</a>;
 rebuild and rebind development plugins. Updating Oyzu uses <code>oyzu self update</code>
@@ -1202,8 +1565,9 @@ preflight is a plugin contract violation, never a reason to upgrade Oyzu.
 Stop further work; do not claim effects from a violating plugin were undone.
 Tampered signatures/digests and malformed known values retain their existing
 checks and concrete repairs; the new field code is only for unknown required meaning.
-Unknown optional fields remain accepted at the containers listed above; nested
-identity, command, digest, credential and authority records stay strict. Where
+Unknown optional wire fields remain accepted, including in nested identities,
+commands and credential records; known-field validation and core admission remain
+binding. Signed manifests/catalogs and private assignments stay strict. Where
 an optional-field warning applies, retain <code>CONFIG_WARNING</code>, the
 <code>CONFIG_UNKNOWN_OPTIONAL: </code> message prefix, preflight scope/phase and no
 <code>subcode</code> or <code>detail</code>; wire annotations keep their existing debug note.
@@ -1328,6 +1692,81 @@ each result is valid and echoes its request, that the outcomes match the operati
 <code>describe</code> declares, and that the plugin is stateless (every request runs again in a new
 process in reverse order and must answer the same). It checks the protocol only. It runs
 no native tools, so it can&#x27;t tell you whether your commands build anything.</p>
+<p>Conformance is required for new and updated plugins. There are no waivers for
+the v2 source-contract rules: every operation in a native-build or captured
+command plan must declare a valid <code>contract</code>. The runtime&#x27;s conservative
+fallback for a missing contract does not pass this check. When reads are not
+known, declare an <code>unknown</code> basis with an allowed reason code and a useful
+detail; see <a href="#per-operation-source-contracts" class="">per-operation source contracts</a>.</p>
+<p>The harness prints <code>Plugin conformance passed</code> or <code>Plugin conformance failed</code>,
+the check counts, and a <code>pass</code> or <code>FAIL</code> line for each check. A failure includes
+the fixture name and explanation where applicable. The command exits with
+status 1 when a check fails and status 2 for incorrect arguments.</p>
+<p>Use the failed check&#x27;s explanation to correct the plugin, then rerun the same
+fixtures. Common failures and repairs include:</p>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="oyzu-table-scroll"><table><thead><tr><th>Failure</th><th>Repair</th></tr></thead><tbody><tr><td>Missing or invalid source contract</td><td>Add the required <code>basis</code>, <code>reads</code>, <code>writes</code>, <code>outputs</code>, <code>confine</code> and <code>dependencies</code> declarations; replace earlier contract members with the v2 fields. Use an honest <code>unknown</code> basis when reads are unbounded.</td></tr><tr><td>A check declares workspace writes</td><td>Make <code>test</code>, <code>lint</code>, <code>format-check</code> and <code>format:check</code> leave the workspace unchanged. Keep required generated files in producer operations and declare their relationships; do not hide writes by deleting their declarations.</td></tr><tr><td>A check stage declares a known basis but no reads</td><td>Add the <code>test</code>, <code>lint</code> or <code>format-check</code> stage&#x27;s source, configuration and lock-file selectors to <code>reads</code>, or declare an <code>unknown</code> basis.</td></tr><tr><td>A reserved reason code</td><td>Replace <code>ignored-intent</code>, <code>undeclared</code> or <code>policy-refused</code> with one of <code>not-analyzed</code>, <code>program-input</code>, <code>dynamic-config</code>, <code>unvetted-tool</code>, <code>runtime-reads</code> or <code>host-effects</code>. Core alone sets the reserved codes.</td></tr><tr><td>Result does not echo the request</td><td>Return the request&#x27;s <code>operation_id</code> and operation.</td></tr><tr><td>Declared operation answers unsupported</td><td>Implement the declared operation for a supported request, or correct the operations advertised by <code>describe</code>. Requests requiring unsupported features may answer unsupported.</td></tr><tr><td>A fresh process answers differently</td><td>Remove dependence on prior requests or process state so the same request yields the same result.</td></tr></tbody></table></div>
+<p>Passing conformance does not grant cache reuse or confinement. Core still
+applies the contract&#x27;s admission rules during a build. The separate allowance
+for explained output nondeterminism (the <code>check_clean_builds</code> paragraph below)
+does not waive source-contract rules.</p>
+<p>The Node plugin&#x27;s <code>differential</code> and <code>native_build</code> Cargo test targets also
+exercise the compiled CLI. This repository&#x27;s <code>plugins</code> build materializes the
+validated <code>cli</code> build&#x27;s <code>bin-oyzu</code> artifact into the declared compiled-CLI fixture.
+The artifact digest remains part of test-action and test-unit identity. For a
+focused Cargo run, supply <code>OYZU_CLI</code> as an absolute path to an immutable candidate
+built from the tested source, alongside the selected plugin executable.
+CLI-facing fixtures must package that plugin with its real manifest and bind the
+archive, as described under <a href="#packing-a-source-built-plugin" class="">packing a source-built plugin</a>.
+A bare development executable declares no tools and cannot satisfy tool requirements.
+Compile these test targets with <code>OYZU_PLUGIN_DEVELOPMENT_LOCATOR=1</code>, which embeds
+the development plugin&#x27;s source location for the ordinary freshness check.
+Enable it only during test compilation; distributed plugin build artifacts keep
+source capture disabled.
+The harness never rebuilds the CLI or substitutes a sibling executable or an
+installed driver. Test preparation must retain the candidate as a runtime input
+and bind its executable bytes to the test action before enabling reuse; passing
+an ambient path alone does not establish that binding. In an activated checks
+shell, run <code>cargo test --locked -p oyzu-plugin-node --features plugin --test differential --test native_build -- --test-threads=1</code>. Native cases resolve their
+Node and npm prerequisites through that candidate. Instrumented plugin children
+retain the caller&#x27;s <code>LLVM_PROFILE_FILE</code> destination outside fixture projects;
+their other ambient variables remain cleared for no-write reader checks.</p>
 <p>The examples include ecosystem-specific intent. Prepare a fixture directory for the
 plugin&#x27;s supported profiles: retain the <code>describe</code> request, supply real source roots
 when the plugin reads source, and translate generic examples only where their intent
@@ -1341,7 +1780,11 @@ from the repository root. This builds their <code>plugin</code> executables, pre
 projects and native facts for the applicable canonical requests, and prints each
 plugin&#x27;s verdict through the same harness. Go&#x27;s native-context and multi-binary
 regressions stay with the Go fixtures; other ecosystems do not inherit Go-specific
-<code>target-path</code> requirements. It runs no native application builds.
+<code>target-path</code> requirements. It runs no native application builds. The shared
+harness checks both native-build and captured command plans: <code>test</code>, <code>lint</code>,
+<code>format-check</code>, and <code>format:check</code> operations fail conformance when their
+contracts declare workspace writes. This is a declaration check; it does not
+detect undeclared writes at runtime.
 Python&#x27;s translated test tasks use <code>python -m pytest</code>; the native and captured
 fixtures require its pytest adapter and mandatory JUnit/Cobertura report intent.</p>
 <p>Protocol reply equality does not establish reproducible build outputs. The
@@ -1497,7 +1940,7 @@ Other roles still undergo preflight with an empty execution-support list, so
 unknown required features are refused before dispatch, including <code>describe</code>.
 The stdio envelopes and designated operation payloads accept inert optional
 fields as described above. Targets, commands, prepared identities, digests and
-paths retain their strict contracts. <code>--native</code> uses the protocol&#x27;s closed
+paths retain their owning validation. <code>--native</code> uses the protocol&#x27;s tolerant
 <code>PythonCommand</code> decoder; <code>--acquisition-api</code> (including stdin input with <code>-</code>)
 uses the same decoder for its closed operation/data/manager envelope. Its data
 retains the selected native API&#x27;s operation-specific semantics; it is not an
@@ -1649,8 +2092,7 @@ shared package store instead.</p>
 <p><code>tooling/bootstrap-oyzu.sh</code> tries the <code>oyzu</code> on <code>PATH</code> before <code>.oyzu/bin</code>, accepting
 the first compatible driver. It does not select the newest version among them.
 Its development setup can preserve complete existing bindings without rebuilding
-them; use <code>oyzu run bootstrap -- --source --development-plugins</code> to refresh stale
-repository plugins. Without a compatible driver it downloads the newest release&#x27;s <code>oyzu</code> and
+them; <code>oyzu build</code> refreshes stale repository plugins itself. Without a compatible driver it downloads the newest release&#x27;s <code>oyzu</code> and
 <code>oyzu-shim</code> into <code>.oyzu/bin</code>, checking each against the digest the release reports, and
 builds from source only when no release executable can be used here (<code>--source</code> never
 downloads, so it builds whenever no usable <code>oyzu</code> is already there). An <code>oyzu</code> older than
@@ -1876,6 +2318,6 @@ manifest and native retry facts, run executes the ordinary lifecycle with native
 filters and completion facts, and finish exposes core&#x27;s combined JUnit report.
 Omitting the allocation invokes the ordinary native command. The first attempt
 keeps the native lifecycle; compile, tool and other non-test failures mark the
-attempt incomplete. Core alone chooses retries and validates requested cases.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#same-input-attribution-and-explicit-quarantine" class="table-of-contents__link toc-highlight">Same-input attribution and explicit quarantine</a></li><li><a href="#test-attempt-reporting" class="table-of-contents__link toc-highlight">Test-attempt reporting</a></li><li><a href="#run-a-local-plugin" class="table-of-contents__link toc-highlight">Run a local plugin</a><ul><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#binding-a-package-archive" class="table-of-contents__link toc-highlight">Binding a package archive</a></li><li><a href="#reference-names-for-first-party-plugins" class="table-of-contents__link toc-highlight">Reference names for first-party plugins</a></li><li><a href="#packing-a-source-built-plugin" class="table-of-contents__link toc-highlight">Packing a source-built plugin</a></li><li><a href="#independent-profiles" class="table-of-contents__link toc-highlight">Independent profiles</a></li></ul></li><li><a href="#how-a-plugin-works" class="table-of-contents__link toc-highlight">How a plugin works</a><ul><li><a href="#operations" class="table-of-contents__link toc-highlight">Operations</a></li><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li><li><a href="#selected-native-tasks" class="table-of-contents__link toc-highlight">Selected native tasks</a></li><li><a href="#native-package-facts" class="table-of-contents__link toc-highlight">Native package facts</a></li><li><a href="#caching-and-cost" class="table-of-contents__link toc-highlight">Caching and cost</a></li><li><a href="#per-operation-source-contracts" class="table-of-contents__link toc-highlight">Per-operation source contracts</a></li></ul></li><li><a href="#driver-and-plugin-compatibility" class="table-of-contents__link toc-highlight">Driver and plugin compatibility</a><ul><li><a href="#required-capabilities-and-upgrade-direction" class="table-of-contents__link toc-highlight">Required capabilities and upgrade direction</a></li></ul></li><li><a href="#package-and-sign-your-plugin" class="table-of-contents__link toc-highlight">Package and sign your plugin</a><ul><li><a href="#check-it" class="table-of-contents__link toc-highlight">Check it</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#the-python-plugin" class="table-of-contents__link toc-highlight">The Python plugin</a></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a><ul><li><a href="#what-it-runs" class="table-of-contents__link toc-highlight">What it runs</a></li><li><a href="#lock-files" class="table-of-contents__link toc-highlight">Lock files</a></li><li><a href="#pnpm" class="table-of-contents__link toc-highlight">pnpm</a></li><li><a href="#yarn" class="table-of-contents__link toc-highlight">Yarn</a></li><li><a href="#vite" class="table-of-contents__link toc-highlight">Vite</a></li><li><a href="#tests-and-quality-checks" class="table-of-contents__link toc-highlight">Tests and quality checks</a></li></ul></li><li><a href="#repository-source-bootstrap" class="table-of-contents__link toc-highlight">Repository source bootstrap</a><ul><li><a href="#ci-machine-binding" class="table-of-contents__link toc-highlight">CI machine binding</a></li><li><a href="#bootstrapping-without-plugins" class="table-of-contents__link toc-highlight">Bootstrapping without plugins</a></li></ul></li><li><a href="#native-java-model-preparation" class="table-of-contents__link toc-highlight">Native Java model preparation</a></li><li><a href="#publisher-plugins" class="table-of-contents__link toc-highlight">Publisher plugins</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a><ul><li><a href="#publisher-planning-and-destination-evidence" class="table-of-contents__link toc-highlight">Publisher planning and destination evidence</a></li><li><a href="#jvm-lifecycle-phases" class="table-of-contents__link toc-highlight">JVM lifecycle phases</a></li><li><a href="#jvm-lifecycle-attempt-commands" class="table-of-contents__link toc-highlight">JVM lifecycle attempt commands</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
+attempt incomplete. Core alone chooses retries and validates requested cases.</p></div></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/docs/reference/plugin-preview"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Go builder preview</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/docs/reference/remote-runs"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Remote runs</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#same-input-attribution-and-explicit-quarantine" class="table-of-contents__link toc-highlight">Same-input attribution and explicit quarantine</a></li><li><a href="#test-attempt-reporting" class="table-of-contents__link toc-highlight">Test-attempt reporting</a></li><li><a href="#run-a-local-plugin" class="table-of-contents__link toc-highlight">Run a local plugin</a><ul><li><a href="#setting" class="table-of-contents__link toc-highlight">Setting</a></li><li><a href="#binding-a-package-archive" class="table-of-contents__link toc-highlight">Binding a package archive</a></li><li><a href="#reference-names-for-first-party-plugins" class="table-of-contents__link toc-highlight">Reference names for first-party plugins</a></li><li><a href="#packing-a-source-built-plugin" class="table-of-contents__link toc-highlight">Packing a source-built plugin</a></li><li><a href="#independent-profiles" class="table-of-contents__link toc-highlight">Independent profiles</a></li></ul></li><li><a href="#how-a-plugin-works" class="table-of-contents__link toc-highlight">How a plugin works</a><ul><li><a href="#operations" class="table-of-contents__link toc-highlight">Operations</a></li><li><a href="#project-written-outputs" class="table-of-contents__link toc-highlight">Project-written outputs</a></li><li><a href="#selected-native-tasks" class="table-of-contents__link toc-highlight">Selected native tasks</a></li><li><a href="#native-package-facts" class="table-of-contents__link toc-highlight">Native package facts</a></li><li><a href="#caching-and-cost" class="table-of-contents__link toc-highlight">Caching and cost</a></li><li><a href="#per-operation-source-contracts" class="table-of-contents__link toc-highlight">Per-operation source contracts</a></li></ul></li><li><a href="#driver-and-plugin-compatibility" class="table-of-contents__link toc-highlight">Driver and plugin compatibility</a><ul><li><a href="#pairing-a-development-driver-with-plugins" class="table-of-contents__link toc-highlight">Pairing a development driver with plugins</a></li><li><a href="#required-capabilities-and-upgrade-direction" class="table-of-contents__link toc-highlight">Required capabilities and upgrade direction</a></li></ul></li><li><a href="#package-and-sign-your-plugin" class="table-of-contents__link toc-highlight">Package and sign your plugin</a><ul><li><a href="#check-it" class="table-of-contents__link toc-highlight">Check it</a></li></ul></li><li><a href="#failures-and-recovery" class="table-of-contents__link toc-highlight">Failures and recovery</a><ul><li><a href="#where-a-refusal-reason-appears" class="table-of-contents__link toc-highlight">Where a refusal reason appears</a></li></ul></li><li><a href="#trust" class="table-of-contents__link toc-highlight">Trust</a></li><li><a href="#limits" class="table-of-contents__link toc-highlight">Limits</a></li><li><a href="#the-python-plugin" class="table-of-contents__link toc-highlight">The Python plugin</a></li><li><a href="#the-node-plugin" class="table-of-contents__link toc-highlight">The Node plugin</a><ul><li><a href="#what-it-runs" class="table-of-contents__link toc-highlight">What it runs</a></li><li><a href="#lock-files" class="table-of-contents__link toc-highlight">Lock files</a></li><li><a href="#pnpm" class="table-of-contents__link toc-highlight">pnpm</a></li><li><a href="#yarn" class="table-of-contents__link toc-highlight">Yarn</a></li><li><a href="#vite" class="table-of-contents__link toc-highlight">Vite</a></li><li><a href="#tests-and-quality-checks" class="table-of-contents__link toc-highlight">Tests and quality checks</a></li></ul></li><li><a href="#repository-source-bootstrap" class="table-of-contents__link toc-highlight">Repository source bootstrap</a><ul><li><a href="#ci-machine-binding" class="table-of-contents__link toc-highlight">CI machine binding</a></li><li><a href="#bootstrapping-without-plugins" class="table-of-contents__link toc-highlight">Bootstrapping without plugins</a></li></ul></li><li><a href="#native-java-model-preparation" class="table-of-contents__link toc-highlight">Native Java model preparation</a></li><li><a href="#publisher-plugins" class="table-of-contents__link toc-highlight">Publisher plugins</a></li><li><a href="#related" class="table-of-contents__link toc-highlight">Related</a><ul><li><a href="#publisher-planning-and-destination-evidence" class="table-of-contents__link toc-highlight">Publisher planning and destination evidence</a></li><li><a href="#jvm-lifecycle-phases" class="table-of-contents__link toc-highlight">JVM lifecycle phases</a></li><li><a href="#jvm-lifecycle-attempt-commands" class="table-of-contents__link toc-highlight">JVM lifecycle attempt commands</a></li></ul></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Learn</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/get-started">Get started</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/get-started/first-build">Build your first project</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/projects">Task-oriented guides</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Reference</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/cli">CLI commands</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/reference/configuration">Configuration</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/concepts/evidence">Build evidence</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Oyzu</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/docs/support/capabilities">Current capabilities</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/support/limitations">Known limitations</a></li><li class="footer__item"><a class="footer__link-item" href="/docs/guides/remote">Optional integrations</a></li><li class="footer__item"><a class="footer__link-item" href="/privacy">Website privacy</a></li><li class="footer__item"><a href="/THIRD_PARTY_NOTICES.txt" target="_blank" rel="noopener noreferrer" class="footer__link-item">Third-party notices<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Oyzu documentation · Current behavior and limitations are documented separately from roadmap proposals.</div></div></div></footer></div></div>
 </body>
 </html>

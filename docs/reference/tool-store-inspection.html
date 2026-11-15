@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">The tool store | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/tool-store-inspection"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="The tool store | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/tool-store-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/tool-store-inspection.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/tool-store-inspection"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-store-inspection" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/tool-store-inspection" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"The tool store","item":"https://docs.oyzu.ai/docs/reference/tool-store-inspection"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -104,12 +104,14 @@ constructing paths from the lock.</p>
 <li class="">A tool that is damaged or edited after install simply fails when it runs.</li>
 <li class="">An organization catalog or the tool index can still refuse an unapproved or withdrawn version when you install or reuse it.</li>
 </ul>
-<p>Tool installation receipts have no free-form annotation slot. Unknown receipt,
-verification, command or environment fields are rejected even when the receipt
-declares a newer minimum reader. The error says to reinstall the tool and retains
-the file unchanged. Run <code>oyzu self update</code> before retrying; do not remove
-unfamiliar fields to activate a tool. The
-<a class="" href="/docs/reference/self-update#what-changes-on-disk">self-install receipt</a> has a separate
+<p>Tool installation receipts accept descriptive fields inside
+<code>verification.annotations</code>, ignoring them without rewriting the receipt. Unknown
+receipt, verification, command or environment fields outside that object are
+rejected even when the receipt declares a newer minimum reader. The error says
+to reinstall the tool and retains the file unchanged. Run <code>oyzu self update</code>
+before retrying; do not remove unfamiliar fields to activate a tool. See
+<a class="" href="/docs/reference/tool-lock-inspection#publisher-evidence-and-release-age">receipt compatibility and recovery</a>.
+The <a class="" href="/docs/reference/self-update#what-changes-on-disk">self-install receipt</a> has a separate
 compatibility contract.</p>
 <p>Current readers understand the optional <code>verification.strength</code> field, including
 receipts that omit it. The field records publisher evidence and participates in

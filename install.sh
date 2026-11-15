@@ -103,8 +103,8 @@ http_fail() {
 }
 
 # Reads a GitHub releases response (a list, or one release) on standard input and
-# prints one line per asset: tag, draft, asset name, asset id and digest,
-# separated by tabs. A small JSON scanner, so neither jq nor python is needed.
+# prints one line per release with empty asset fields, then one line per asset:
+# tag, draft, asset name, asset id and digest, separated by tabs. A small JSON scanner, so neither jq nor python is needed.
 scan_releases() {
   awk '{ s = s $0 "\n" }
   END {
@@ -121,7 +121,7 @@ scan_releases() {
       }
       if (c == "}" || c == "]") {
         if (d == rd + 2 && c == "}" && pk[d - 1] == "assets") A[++na] = an "\t" ai "\t" ag
-        if (d == rd && c == "}") for (j = 1; j <= na; j++) print tag "\t" draft "\t" A[j]
+        if (d == rd && c == "}") { print tag "\t" draft "\t\t\t"; for (j = 1; j <= na; j++) print tag "\t" draft "\t" A[j] }
         d--; continue
       }
       if (c == "\"") {
@@ -150,12 +150,29 @@ rank_awk='function rank(tag,  v, p) { v = tag; sub(/^oyzu\//, "", v); sub(/^v/, 
   if (p ~ /^nightly(\.|$)/ || p ~ /^(rc|beta|alpha)\..*\.nightly(\.|$)/) return 3
   if (p ~ /^(rc|beta|alpha)(\.|$)/) return 2; return 9 }'
 
-# pick ASSET [TAG]: "tag id digest" of the newest published release (of TAG, the
+# vcmp A B: -1, 0 or 1 by semantic version precedence of two release versions
+# (`oyzu/v` and `v` prefixes ignored), prerelease parts compared identifier by identifier.
+vcmp_awk='function vcmp(a, b,  p, q, x, y, u, w, i, n, m, xn, yn) { sub(/^oyzu\//, "", a); sub(/^v/, "", a); sub(/^oyzu\//, "", b); sub(/^v/, "", b); sub(/\+.*/, "", a); sub(/\+.*/, "", b)
+  p = index(a, "-"); q = index(b, "-"); split(p ? substr(a, 1, p - 1) : a, u, "."); split(q ? substr(b, 1, q - 1) : b, w, ".")
+  for (i = 1; i <= 3; i++) if (u[i] + 0 != w[i] + 0) return u[i] + 0 < w[i] + 0 ? -1 : 1
+  if (!p || !q) return p ? -1 : q ? 1 : 0
+  n = split(substr(a, p + 1), u, "."); m = split(substr(b, q + 1), w, ".")
+  for (i = 1; i <= n && i <= m; i++) { xn = u[i] ~ /^[0-9]+$/; yn = w[i] ~ /^[0-9]+$/
+    if (xn && yn) { if (u[i] + 0 != w[i] + 0) return u[i] + 0 < w[i] + 0 ? -1 : 1 }
+    else if (xn != yn) return xn ? -1 : 1
+    else if (u[i] "" != w[i] "") return u[i] "" < w[i] "" ? -1 : 1 }
+  return n == m ? 0 : n < m ? -1 : 1 }'
+
+valid_awk='function valid(tag) { sub(/^oyzu\//, "", tag); sub(/^v/, "", tag); return tag ~ /^[0-9]+(\.[0-9]+)?(\.[0-9]+)?(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.+-]*)?$/ }'
+
+# pick ASSET [TAG]: "tag id digest" of the highest-version published release (of TAG, the
 # --version release, or else of the chosen channel or a narrower one) with ASSET.
-# Tags of other components (`plugin/v1`) never count.
+# Tags of other components (`plugin/v1`) and tags that are not versions never count; build
+# metadata (`+...`) is ignored when comparing.
 pick() {
-  awk -F '\t' -v a="$1" -v t="${2:-}" -v c="$rank" -v pinned="$version" "$rank_awk"'
-    $2 == "false" && $3 == a && (t != "" ? $1 == t : pinned != "" || (($1 !~ /\// || $1 ~ /^oyzu\/v/) && rank($1) <= c)) { print $1, $4, $5; exit }' "$tmp/assets.tsv"
+  awk -F '\t' -v a="$1" -v t="${2:-}" -v c="$rank" -v pinned="$version" "$rank_awk $vcmp_awk $valid_awk"'
+    $2 == "false" && $3 == a && (t != "" ? $1 == t : pinned != "" || (($1 !~ /\// || $1 ~ /^oyzu\/v/) && rank($1) <= c && valid($1))) && (best == "" || vcmp($1, best) > 0) { best = $1; line = $1 " " $4 " " $5 }
+    END { if (best != "") print line }' "$tmp/assets.tsv"
 }
 
 # Records the install for `oyzu self` (its channel, pin and digest) beside the
@@ -254,11 +271,18 @@ main() {
   trap 'rm -rf "$tmp"' EXIT
   trap 'exit 130' INT TERM
   mkdir "$tmp/bin"
-  if [ -n "$version" ]; then path=releases/tags/$version; what="release $version of $repo"
-  else path='releases?per_page=30'; what="the release list of $repo"; fi
-  fetch "$api/repos/$repo/$path" "$tmp/releases.json" application/vnd.github+json
-  [ "$code" = 200 ] || http_fail "$what"
-  scan_releases <"$tmp/releases.json" >"$tmp/assets.tsv"
+  # Read the whole release list (100 a page), so the newest version of a channel is never
+  # hidden behind newer releases of other kinds; an unreadable or endless list stops the install.
+  : >"$tmp/assets.tsv"; page=1
+  while :; do
+    if [ -n "$version" ]; then path=releases/tags/$version; what="release $version of $repo"
+    else path="releases?per_page=100&page=$page"; what="the release list of $repo (page $page)"; fi
+    fetch "$api/repos/$repo/$path" "$tmp/releases.json" application/vnd.github+json
+    [ "$code" = 200 ] || http_fail "$what"
+    scan_releases <"$tmp/releases.json" >"$tmp/page.tsv"; cat "$tmp/page.tsv" >>"$tmp/assets.tsv"
+    [ -z "$version" ] && [ "$(awk -F '\t' '$3 == ""' "$tmp/page.tsv" | wc -l)" -ge 100 ] || break
+    page=$((page + 1)); [ "$page" -le 10 ] || die 1 "the release list of $repo is longer than 1000 releases, so the newest $channel release cannot be chosen safely. Install a specific release with --version."
+  done
   found=$(pick "$asset")
   if [ -z "$found" ]; then
     [ -z "$version" ] || die 1 "release $version of $repo has no $asset, the executable for this platform. Choose another release, or build from source: https://docs.oyzu.ai/docs/get-started/install"

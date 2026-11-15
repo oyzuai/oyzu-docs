@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="generator" content="Docusaurus v3.10.2">
 <title data-rh="true">Go applications, libraries and workspaces | Oyzu documentation</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" name="twitter:image" content="https://docs.oyzu.ai/img/mark.svg"><meta data-rh="true" property="og:url" content="https://docs.oyzu.ai/docs/reference/go"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="google-site-verification" content="PL6AFbTu07MaMydycyyXJlTesrQNmnShvNEay1PNxTg"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Go applications, libraries and workspaces | Oyzu documentation"><meta data-rh="true" name="description" content="Published from the canonical docs/reference/go.md file. Features marked experimental remain experimental; check support limitations before relying on them."><meta data-rh="true" property="og:description" content="Published from the canonical docs/reference/go.md file. Features marked experimental remain experimental; check support limitations before relying on them."><link data-rh="true" rel="icon" href="/img/favicon.svg"><link data-rh="true" rel="canonical" href="https://docs.oyzu.ai/docs/reference/go"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/go" hreflang="en"><link data-rh="true" rel="alternate" href="https://docs.oyzu.ai/docs/reference/go" hreflang="x-default"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Go applications, libraries and workspaces","item":"https://docs.oyzu.ai/docs/reference/go"}]}</script><link rel="stylesheet" href="/assets/css/styles.cdd3e349.css">
-<script src="/assets/js/runtime~main.763233e2.js" defer="defer"></script>
+<script src="/assets/js/runtime~main.adf4a05e.js" defer="defer"></script>
 <script src="/assets/js/main.1be42137.js" defer="defer"></script>
 </head>
 <body>
@@ -79,7 +79,14 @@ commands, frozen environment checks and separate final export described below.</
 <p>Conventional native host <code>build</code> and <code>lint</code> (<code>go vet</code>) use per-stage source
 reads from Go&#x27;s package file lists. Preparation runs <code>go list -json -deps</code> with
 the selected tool and resolved Go settings; vet&#x27;s inventory also includes test
-packages. A declared command such as <code>path: cmd/api</code> predicts the selected main
+packages. <code>go list -m -json all</code> also inventories the selected module graph:
+owned local replacements contribute their <code>go.mod</code>, <code>go.sum</code> (including absence)
+and directory listings even when no package is imported from them. Local module
+roots outside the target or reached through redirected paths make the read facts
+incomplete; they are never treated as immutable downloaded modules. Failure to
+inventory the module graph, including unsupported vendor-mode listing, also
+prevents narrow reuse. Host workspace admission remains unchanged.
+A declared command such as <code>path: cmd/api</code> predicts the selected main
 package and its dependencies within the module context, even when other commands
 exist in that module. The prediction covers module manifests, vendor inputs
 when present, selected source and resolved embed files, and package/asset directory listings.
@@ -177,7 +184,7 @@ file stays unbounded. Native vet and format checks precede runtime tests so
 changing test reports cannot invalidate their results. Native <code>test</code> remains
 unbounded because tests may read files at run time.</p>
 <p>On the captured path, eligible per-package actions retain their confined read
-contracts. Source-free exports and grouping gates declare <code>upstream_only</code>;
+contracts. Source-free exports and grouping gates declare the <code>upstream-only</code> read basis;
 coarse stages keep their specific fallback reasons. See
 <a class="" href="/docs/reference/action-cache#confined-actions-and-narrow-keys">read contracts</a>.</p>
 <h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="multiple-commands-in-one-module">Multiple commands in one module<a href="#multiple-commands-in-one-module" class="hash-link" aria-label="Direct link to Multiple commands in one module" title="Direct link to Multiple commands in one module" translate="no">​</a></h2>
@@ -214,6 +221,18 @@ Required test and coverage report gates apply equally to executed and restored
 results. <code>--no-cache</code> keeps the same input boundary and executes every stage.
 Runtime test contracts conservatively include the whole admitted source view,
 so edits can invalidate tests beyond the package whose compiler inputs changed.</p>
+<p>Per-package test-input detection scans checkout production and helper sources
+as well as tests. Exact <code>/</code> and <code>//</code> separator strings and ordinary runtime
+queries such as <code>runtime.GOOS</code> or <code>runtime.NumCPU</code> allow bounded reuse. Absolute
+paths, parent-path evidence that cannot be safely bounded, and runtime
+source-location functions retain an unbounded fallback. Versioned, non-main
+module-cache packages use the prepared proxy&#x27;s content identity instead of a
+checkout source inventory, including dependencies imported only by tests. Their
+imports still lead to any checkout helpers that need scanning. Checkout and
+vendor sources, including local-directory replacements, remain scanned or
+refused when their source inventory is unavailable. Missing module-cache or
+proxy evidence retains the unbounded fallback. Dependency source is not scanned
+for environment or file reads; it is trusted through the proxy&#x27;s content identity.</p>
 <p>Native-host stages with incomplete reads rerun on Linux, Windows and macOS;
 unchanged source does not establish complete runtime reads. Independently
 admitted native compiler and fixed-read stages retain their existing reuse.

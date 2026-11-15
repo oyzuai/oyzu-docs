@@ -118,6 +118,34 @@ function Get-OyzuChannelRank([string]$Tag) {
   return 9
 }
 
+# Orders two release versions by semantic version precedence (`oyzu/v` and `v`
+# prefixes ignored): -1, 0 or 1. Prerelease parts compare identifier by identifier.
+function Compare-OyzuVersion([string]$A, [string]$B) {
+  $x = ($A -replace '^oyzu/', '' -replace '^v', '' -replace '\+.*$', '') -split '-', 2
+  $y = ($B -replace '^oyzu/', '' -replace '^v', '' -replace '\+.*$', '') -split '-', 2
+  $p = @($x[0] -split '\.'); $q = @($y[0] -split '\.')
+  for ($i = 0; $i -lt 3; $i++) {
+    $l = if ($i -lt $p.Count -and $p[$i] -match '^[0-9]+$') { [decimal]$p[$i] } else { 0 }
+    $r = if ($i -lt $q.Count -and $q[$i] -match '^[0-9]+$') { [decimal]$q[$i] } else { 0 }
+    if ($l -ne $r) { return [Math]::Sign($l - $r) }
+  }
+  if ($x.Count -ne $y.Count) { return $(if ($x.Count -gt 1) { -1 } else { 1 }) }
+  if ($x.Count -eq 1) { return 0 }
+  $m = $x[1] -split '\.'; $n = $y[1] -split '\.'
+  for ($i = 0; $i -lt [Math]::Min($m.Count, $n.Count); $i++) {
+    $mn = $m[$i] -match '^[0-9]+$'; $nn = $n[$i] -match '^[0-9]+$'
+    if ($mn -and $nn) { if ([decimal]$m[$i] -ne [decimal]$n[$i]) { return [Math]::Sign([decimal]$m[$i] - [decimal]$n[$i]) } }
+    elseif ($mn -ne $nn) { return $(if ($mn) { -1 } else { 1 }) }
+    elseif ($m[$i] -cne $n[$i]) { return $(if ([string]::CompareOrdinal($m[$i], $n[$i]) -lt 0) { -1 } else { 1 }) }
+  }
+  return [Math]::Sign($m.Count - $n.Count)
+}
+
+# Whether a tag names a version at all (`oyzu/v0.3.0`, `v1`, `0.3.0-rc.1+build`); other tags never count.
+function Test-OyzuVersionTag([string]$Tag) {
+  return (($Tag -replace '^oyzu/', '' -replace '^v', '') -match '^[0-9]+(\.[0-9]+)?(\.[0-9]+)?(-[0-9A-Za-z.-]+)?(\+[0-9A-Za-z.+-]*)?$')
+}
+
 # Runs `oyzu engine install --linux` with the release's Linux oyzu, so isolated
 # builds have their Linux engine. A failure does not undo the install.
 function Initialize-OyzuEngine([string]$Exe, [string]$Linux, [string]$Name) {
@@ -191,7 +219,14 @@ function Install-Oyzu([string]$Channel, [string]$Version, [string]$InstallDir, [
   if ($Version) {
     $releases = Invoke-OyzuGet $ctx "$($ctx.Api)/repos/$($ctx.Repo)/releases/tags/$Version" 'application/vnd.github+json' "release $Version of $($ctx.Repo)"
   } else {
-    $releases = Invoke-OyzuGet $ctx "$($ctx.Api)/repos/$($ctx.Repo)/releases?per_page=30" 'application/vnd.github+json' "the release list of $($ctx.Repo)"
+    # Read the whole list (100 a page), so a channel's newest release is never hidden behind other kinds.
+    $releases = @(); $page = 1
+    while ($true) {
+      $rows = @(Invoke-OyzuGet $ctx "$($ctx.Api)/repos/$($ctx.Repo)/releases?per_page=100&page=$page" 'application/vnd.github+json' "the release list of $($ctx.Repo) (page $page)")
+      $releases += $rows
+      if ($rows.Count -lt 100) { break }
+      if (++$page -gt 10) { Stop-OyzuInstall 1 "the release list of $($ctx.Repo) is longer than 1000 releases, so the newest $Channel release cannot be chosen safely. Install a specific release with -Version." }
+    }
   }
   $release = $null; $asset = $null
   # Private checkout-refresh guard: the ordinary standalone installer has no floor.
@@ -202,9 +237,9 @@ function Install-Oyzu([string]$Channel, [string]$Version, [string]$InstallDir, [
     if ($minimum) {
       if ($candidate.tag_name -notmatch '^oyzu/v(\d+\.\d+\.\d+)(?:-|$)' -or [version]$Matches[1] -lt [version]$minimum) { continue }
     }
-    if (-not $Version -and (($candidate.tag_name -like '*/*' -and $candidate.tag_name -notlike 'oyzu/v*') -or (Get-OyzuChannelRank $candidate.tag_name) -gt $rank)) { continue }
-    $asset = $candidate.assets | Where-Object { $_.name -eq $assetName } | Select-Object -First 1
-    if ($asset) { $release = $candidate; break }
+    if (-not $Version -and (($candidate.tag_name -like '*/*' -and $candidate.tag_name -notlike 'oyzu/v*') -or (Get-OyzuChannelRank $candidate.tag_name) -gt $rank -or -not (Test-OyzuVersionTag $candidate.tag_name))) { continue }
+    $found = $candidate.assets | Where-Object { $_.name -eq $assetName } | Select-Object -First 1
+    if ($found -and (-not $release -or (Compare-OyzuVersion $candidate.tag_name $release.tag_name) -gt 0)) { $release = $candidate; $asset = $found }
   }
   if (-not $release) {
     if ($minimum) { Stop-OyzuInstall 1 "no published $Channel Windows release at least $minimum has $assetName; this checkout cannot use an older CLI. Run oyzu run bootstrap -- --source instead." }

@@ -18,3 +18,15 @@ prose only; preserve project/security rules.
 [Setup/trust](https://github.com/oyzuai/context/blob/main/adoption/repository-setup.md).
 Native defaults grant no installation/trust/adoption.
 <!-- oyzu-context:end -->
+
+# Generated Oyzu documentation repository
+
+This repository contains the published documentation site. Change these
+instructions and native agent configurations in the owning Oyzu repository under
+`docs-site/static/`, then publish through its verified documentation artifact.
+
+Do not edit generated pages or agent files here; the next publication replaces
+the destination tree.
+
+Native plugin declarations still require installation,
+private repository access where applicable, and explicit hook trust.
